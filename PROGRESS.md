@@ -4,7 +4,8 @@
 
 ## Trạng thái hiện tại (cập nhật: 2026-09-26)
 
-- **Đang làm:** Giai đoạn 0 — brainstorm lộ trình v0 → v1 với Codex. Brief ở
+- **Đang làm:** Giai đoạn 0 — brainstorm lộ trình v0 → v1 với Codex trong
+  [issue #1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1). Brief ở
   [brainstorm/BRIEF.md](brainstorm/BRIEF.md); tiến trình từng vòng ở
   [brainstorm/README.md](brainstorm/README.md).
 - **Đã xong:**
@@ -17,12 +18,14 @@
     ngôn ngữ.
   - **Infographic:** bộ vẽ SVG từ một file nội dung cho cả 3 ngôn ngữ, 4 mẫu (compare, equation,
     cycle, flow) + bản đồ lộ trình ([ADR 006](docs/decisions/006-infographics-as-generated-svg.md)).
+    Không ô nào bị vẽ đè lên ô khác (có test trên chữ dài ở cả 3 ngôn ngữ); sơ đồ quá nhiều chữ bị
+    `validate` báo lỗi `diagram_crowded`.
   - Bài mẫu `chatbot-to-agent` đủ 3 thứ tiếng, có 4 infographic, trạng thái `review` (chờ Linh duyệt).
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`
     (thông báo bằng vi/en/ja), có test, mutation check và bước kiểm tra trong CI.
 - **Chưa xong / đang vướng:**
-  - Brainstorm với Codex: mở issue và gọi Codex trên commit đã tái cấu trúc; Claude kiểm chứng câu
-    trả lời theo `docs/claude-to-codex.md` §14.
+  - Brainstorm với Codex (vòng 1, issue #1): chờ Codex trả lời; Claude kiểm chứng câu trả lời theo
+    `docs/claude-to-codex.md` §14 rồi ghi kết luận vào `brainstorm/round-1.md`.
   - Linh duyệt bài mẫu (giọng văn, độ dài, ví dụ, infographic) → đổi trạng thái `review` → `done`.
   - 56 bài còn lại chưa viết — chờ chốt lộ trình v1 và "lộ trình tối thiểu".
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.

@@ -22,7 +22,7 @@ về AI, trước khi viết hàng chục bài học bằng 3 thứ tiếng.
 
 | Vòng | Issue | Commit gửi Codex | Trạng thái | Kết luận |
 |---|---|---|---|---|
-| 1 | *(sẽ ghi khi mở issue)* | | chờ | |
+| 1 | [#1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1) | ghi trong bình luận gọi Codex và trong `round-1.md` | chờ Codex | |
 
 ## Nhãn trên GitHub
 
