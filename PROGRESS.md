@@ -5,9 +5,9 @@
 ## Trạng thái hiện tại (cập nhật: 2026-09-26)
 
 - **Đang làm:** Giai đoạn 0 — brainstorm lộ trình v0 → v1 với Codex trong
-  [issue #1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1). Brief ở
-  [brainstorm/BRIEF.md](brainstorm/BRIEF.md); tiến trình từng vòng ở
-  [brainstorm/README.md](brainstorm/README.md).
+  [issue #1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1). Vòng 1 xong và đã kiểm
+  chứng: [brainstorm/round-1.md](brainstorm/round-1.md) — thực hành sớm, lộ trình tối thiểu 18 bài;
+  chờ Linh trả lời các câu hỏi cần quyết định trong file đó.
 - **Đã xong:**
   - Repo tạo từ `claude-agent-routing-template` (harness Claude Code, giao thức Codex).
   - **Mỗi ngôn ngữ một thư mục** (`course/vi`, `course/en`, `course/ja`): mọi trang chỉ dùng một
@@ -24,8 +24,7 @@
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`
     (thông báo bằng vi/en/ja), có test, mutation check và bước kiểm tra trong CI.
 - **Chưa xong / đang vướng:**
-  - Brainstorm với Codex (vòng 1, issue #1): chờ Codex trả lời; Claude kiểm chứng câu trả lời theo
-    `docs/claude-to-codex.md` §14 rồi ghi kết luận vào `brainstorm/round-1.md`.
+  - Linh trả lời các câu hỏi cần quyết định trong `brainstorm/round-1.md` (ít nhất 1, 4, 5, 6).
   - Linh duyệt bài mẫu (giọng văn, độ dài, ví dụ, infographic) → đổi trạng thái `review` → `done`.
   - 56 bài còn lại chưa viết — chờ chốt lộ trình v1 và "lộ trình tối thiểu".
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
@@ -34,8 +33,11 @@
 
 ## Bước tiếp theo
 
-1. Đọc câu trả lời của Codex trong issue brainstorm; ghi kết luận vào `brainstorm/round-1.md`.
-2. Cập nhật `course/data/curriculum.yaml` thành v1, rồi chạy `python -m src.main build`.
-3. Viết các bài của lộ trình tối thiểu: `python -m src.main scaffold <lesson-id>`, vẽ infographic
-   cho từng ý chính (`course/data/diagrams/`).
-4. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`.
+1. Linh trả lời các câu hỏi cần quyết định trong [brainstorm/round-1.md](brainstorm/round-1.md).
+2. Claude viết lộ trình v1 vào `course/data/curriculum.yaml` (giữ nguyên id), thêm các trường dữ liệu
+   mới (track, lộ trình tối thiểu, bài học trước, kết quả đầu ra…) kèm kiểm tra, tách bài mẫu, rồi
+   chạy `python -m src.main build`.
+3. Vòng 2 với Codex (vòng cuối): soát `curriculum.yaml` v1.
+4. Viết 6 bài mở đầu của lộ trình tối thiểu (`scaffold <lesson-id>`, vẽ infographic cho từng ý
+   chính), thử với vài người học thật, rồi làm tiếp.
+5. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`.
