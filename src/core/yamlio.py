@@ -20,8 +20,14 @@ class ContentYAMLError(ValueError):
     """A content file is not valid YAML, or names a key twice."""
 
 
-class _StrictLoader(yaml.SafeLoader):
-    """SafeLoader that refuses a mapping which names the same key twice."""
+# libyaml's parser when PyYAML was built with it (the PyPI wheels are), which is
+# several times faster; construction — and so the duplicate-key rule below — is
+# the same Python code either way.
+_SafeLoader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+
+
+class _StrictLoader(_SafeLoader):
+    """A safe loader that refuses a mapping which names the same key twice."""
 
     def construct_mapping(self, node, deep=False):
         if isinstance(node, yaml.MappingNode):
@@ -54,6 +60,6 @@ def read_text(path: Path) -> str:
 def loads(text: str):
     """Parse YAML text strictly; raise ContentYAMLError with a one-line reason."""
     try:
-        return yaml.load(text, Loader=_StrictLoader)  # noqa: S506 - _StrictLoader is a SafeLoader
+        return yaml.load(text, Loader=_StrictLoader)  # noqa: S506 - _StrictLoader is a safe loader
     except yaml.YAMLError as exc:
         raise ContentYAMLError(" ".join(str(exc).split())) from exc

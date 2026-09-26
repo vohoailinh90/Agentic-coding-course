@@ -282,7 +282,9 @@ def _sections(report: Report, root: Path, languages: tuple[str, ...]) -> tuple[S
         heading = check.localized(item, "heading", where, languages)
         hint = check.localized(item, "hint", where, languages)
         if key and heading and hint:
-            sections.append(Section(key, frozenset(required_for), heading, hint))
+            # Only the valid types: an unhashable entry was reported above, and must not crash here.
+            valid_types = frozenset(t for t in required_for if isinstance(t, str) and t in LESSON_TYPES)
+            sections.append(Section(key, valid_types, heading, hint))
     if not check.clean:
         raise _Invalid
     return tuple(sections)

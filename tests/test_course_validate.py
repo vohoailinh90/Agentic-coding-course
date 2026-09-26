@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from copy import deepcopy
 from pathlib import Path
 
 import yaml
@@ -232,3 +233,79 @@ class ValidateTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# One of each shape a hand edit produces: null, empty, number, boolean, the wrong
+# container, and an unhashable value inside a list.
+BAD_VALUES = (None, "", 0, True, [], {}, ["x"], {"x": 1}, [{"x": 1}])
+
+
+def _fast_dump(data) -> str:
+    """YAML text via libyaml when PyYAML has it: the fuzz below writes a file per value."""
+    return yaml.dump(data, Dumper=getattr(yaml, "CSafeDumper", yaml.SafeDumper), allow_unicode=True)
+
+
+def _paths(node, prefix=()):
+    """Every key path in a YAML document, the document itself excluded."""
+    if prefix:
+        yield prefix
+    if isinstance(node, dict):
+        for key, value in node.items():
+            yield from _paths(value, prefix + (key,))
+    elif isinstance(node, list):
+        for index, value in enumerate(node):
+            yield from _paths(value, prefix + (index,))
+
+
+def _replaced(document, path, value):
+    copy = deepcopy(document)
+    node = copy
+    for step in path[:-1]:
+        node = node[step]
+    node[path[-1]] = value
+    return copy
+
+
+class RobustnessTests(unittest.TestCase):
+    """Hand-edited files will hold wrong types; the validator must report them, never crash."""
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = make_store(Path(self._tmp.name))
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def assert_never_crashes(self, path: Path, document, *, write=None) -> None:
+        write = write or (lambda data: path.write_text(_fast_dump(data), encoding="utf-8"))
+        original = path.read_bytes()
+        try:
+            for key_path in _paths(document):
+                for value in BAD_VALUES:
+                    write(_replaced(document, key_path, value))
+                    try:
+                        validate(self.root, check_outline=False)
+                    except Exception as exc:  # noqa: BLE001 - any crash is the failure
+                        self.fail(f"{path.name} {key_path!r} = {value!r}: {type(exc).__name__}: {exc}")
+        finally:
+            path.write_bytes(original)
+
+    def test_wrong_types_in_the_yaml_files_are_reported_not_crashed_on(self) -> None:
+        for name in ("course.yaml", "curriculum.yaml", "glossary.yaml"):
+            with self.subTest(file=name):
+                path = self.root / "course" / name
+                self.assert_never_crashes(path, yaml.safe_load(path.read_text(encoding="utf-8")))
+        # One entry stands for every section: each has the same shape.
+        path = self.root / "course" / "sections.yaml"
+        document = yaml.safe_load(path.read_text(encoding="utf-8"))
+        self.assert_never_crashes(path, {"sections": document["sections"][:1]})
+
+    def test_wrong_types_in_lesson_front_matter_are_reported_not_crashed_on(self) -> None:
+        path = self.root / "course/lessons/alpha/vi.md"
+        text = path.read_text(encoding="utf-8")
+        _, front, body = text.split("---\n", 2)
+
+        def write(data) -> None:
+            path.write_text("---\n" + _fast_dump(data) + "---\n" + body, encoding="utf-8")
+
+        self.assert_never_crashes(path, yaml.safe_load(front), write=write)

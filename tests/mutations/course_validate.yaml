@@ -64,3 +64,7 @@ mutations:
   find: "    if actual != expected:\n        report.error(\"outline_stale\""
   replace: "    if False:\n        report.error(\"outline_stale\""
   test: tests.test_course_validate.ValidateTests.test_a_stale_outline_is_an_error
+- label: an unhashable entry in required_for crashes the validator instead of being reported
+  find: "            valid_types = frozenset(t for t in required_for if isinstance(t, str) and t in LESSON_TYPES)\n"
+  replace: "            valid_types = frozenset(required_for)\n"
+  test: tests.test_course_validate.RobustnessTests.test_wrong_types_in_the_yaml_files_are_reported_not_crashed_on
