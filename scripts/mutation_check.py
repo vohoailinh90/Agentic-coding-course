@@ -34,6 +34,8 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import contextlib
+import importlib.util
 import os
 import pathlib
 import subprocess
@@ -127,6 +129,20 @@ def mutate(source: str, entry: dict, where: pathlib.Path) -> str:
     return source.replace(entry["find"], entry["replace"], 1)
 
 
+def forget_bytecode(path: pathlib.Path) -> None:
+    """Delete the cached bytecode of a source file this script has just rewritten.
+
+    Python reuses a .pyc whose recorded source mtime (in whole seconds) and size
+    still match the file. The baseline run compiles the unmutated source, so a
+    mutation that keeps the size — `<= 4` to `<= 3` — written within the same
+    second was never executed: its test passed against the original code and
+    the verdict was about a change that was never made.
+    """
+    if path.suffix == ".py":
+        with contextlib.suppress(FileNotFoundError):
+            pathlib.Path(importlib.util.cache_from_source(str(path))).unlink()
+
+
 def run_test(target: str) -> bool:
     """True when the test failed, which is what a mutation must cause."""
     environment = dict(os.environ)
@@ -194,6 +210,7 @@ def check(manifest_path: pathlib.Path, allow_outside: bool = False) -> list[tupl
             continue
         try:
             where.write_text(mutated, encoding="utf-8")
+            forget_bytecode(where)
             caught = run_test(entry["test"])
         finally:
             # Restore before anything else can fail: a crash mid-run must never
@@ -203,6 +220,7 @@ def check(manifest_path: pathlib.Path, allow_outside: bool = False) -> list[tupl
             # leaves the operator worse off than no message.
             try:
                 where.write_text(original, encoding="utf-8")
+                forget_bytecode(where)
             except OSError as exc:
                 print(f"  !! NOT RESTORED: {shown(where)} is still mutated ({exc}). "
                       "Restore it from git before running anything else.", file=sys.stderr)

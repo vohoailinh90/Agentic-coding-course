@@ -9,6 +9,7 @@ from __future__ import annotations
 import ast
 import contextlib
 import io
+import os
 import tempfile
 import types
 import unittest
@@ -298,6 +299,51 @@ class CheckerBehaviourTests(unittest.TestCase):
             self.assertEqual([verdict for verdict, _, _ in results], [self.checker.SURVIVED])
             self.assertEqual(unguarded.read_text(encoding="utf-8"), "VALUE = 1\n",
                              "the source must be restored whatever the verdict")
+
+    def test_a_mutation_that_keeps_the_file_size_is_really_run(self) -> None:
+        """Python reuses a .pyc whose recorded source mtime and size still match.
+
+        The baseline run compiles the unmutated file; a mutation that keeps its
+        size (`LIMIT = 4` to `LIMIT = 3`) and is written within the same second
+        then runs the old bytecode, and SURVIVES although its test guards it.
+        The same second is simulated here by keeping the file's mtime on write.
+        """
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            target = folder / "scratch_target.py"
+            target.write_text("LIMIT = 4\n", encoding="utf-8")
+            (folder / "scratch_test.py").write_text(
+                "import unittest\n\nimport scratch_target\n\n\n"
+                "class LimitTests(unittest.TestCase):\n"
+                "    def test_the_limit_is_four(self):\n"
+                "        self.assertEqual(scratch_target.LIMIT, 4)\n",
+                encoding="utf-8",
+            )
+            manifest_path = folder / "m.yaml"
+            manifest_path.write_text(yaml.safe_dump({
+                "mutations": [{
+                    "label": "the limit changes, the file size does not",
+                    "file": str(target),
+                    "find": "LIMIT = 4",
+                    "replace": "LIMIT = 3",
+                    "test": "scratch_test.LimitTests.test_the_limit_is_four",
+                }]
+            }), encoding="utf-8")
+            write_text = Path.write_text
+
+            def same_second(path, *args, **kwargs):
+                before = path.stat()
+                written = write_text(path, *args, **kwargs)
+                os.utime(path, ns=(before.st_atime_ns, before.st_mtime_ns))
+                return written
+
+            with mock.patch.dict(os.environ, {"PYTHONPATH": directory}), \
+                    mock.patch.object(Path, "write_text", same_second):
+                os.environ.pop("PYTHONDONTWRITEBYTECODE", None)  # the bug needs a bytecode cache
+                results = self.checker.check(manifest_path, allow_outside=True)
+
+            self.assertEqual([verdict for verdict, _, _ in results], [self.checker.CAUGHT])
+            self.assertEqual(target.read_text(encoding="utf-8"), "LIMIT = 4\n")
 
 
 if __name__ == "__main__":
