@@ -18,7 +18,7 @@ def translator(locale: str | None = None) -> Translator:
 def translator_for(language: str) -> Translator:
     """A translator pinned to `language` whatever the environment says.
 
-    Generated files (OUTLINE.md, posts) must not change with the machine that
+    Generated files (course homes, glossaries, diagrams, posts) must not change with the machine that
     renders them, so a language without a catalog falls back to English
     explicitly instead of to $APP_LANG or the OS locale.
     """

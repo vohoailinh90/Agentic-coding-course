@@ -1,7 +1,7 @@
 # Brainstorm brief — the learning path (roadmap v0 → v1)
 
 > **Tóm tắt (vi):** Tài liệu này là "đề bài" gửi Codex để brainstorm lộ trình học. Nó mô tả người học,
-> các ràng buộc, lý do đằng sau lộ trình v0 do Claude soạn, những điểm yếu đã thấy, 10 câu hỏi cần
+> các ràng buộc, lý do đằng sau lộ trình v0 do Claude soạn, những điểm yếu đã thấy, 11 câu hỏi cần
 > trả lời và định dạng kết quả mong muốn. Kết quả từng vòng được ghi ở [README.md](README.md).
 
 ## 1. What this brainstorm must decide

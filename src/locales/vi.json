@@ -59,6 +59,7 @@
     "lesson_file_unknown": "{path}: không khớp với id bài học nào trong course/data/curriculum.yaml.",
     "language_bar": "{path}: dòng ngay dưới front matter phải là thanh chuyển ngôn ngữ: {expected}",
     "diagrams_differ": "{path}: bản {lang} có các sơ đồ [{actual}], nhưng bản {other} có [{expected}].",
+    "diagram_crowded": "{path}: quá nhiều chữ nên bản {language} của sơ đồ bị chồng chéo. Hãy rút gọn chú thích hoặc nhãn mũi tên, hoặc bớt số bước.",
     "diagram_unknown": "{path}: hình {target} không phải là sơ đồ trong course/data/diagrams/.",
     "image_alt_missing": "{path}: hình {target} cần có chữ mô tả (alt) cho người không xem được hình.",
     "link_broken": "{path}: liên kết {target} trỏ tới file không tồn tại.",

@@ -59,6 +59,7 @@
     "lesson_file_unknown": "{path}: matches no lesson id in course/data/curriculum.yaml.",
     "language_bar": "{path}: the line under the front matter must be the language bar: {expected}",
     "diagrams_differ": "{path}: {lang} shows the diagrams [{actual}], but {other} shows [{expected}].",
+    "diagram_crowded": "{path}: too much text to draw the {language} diagram without boxes overlapping. Shorten its captions or arrow labels, or use fewer steps.",
     "diagram_unknown": "{path}: the image {target} is not a diagram in course/data/diagrams/.",
     "image_alt_missing": "{path}: the image {target} needs alt text (what a reader who cannot see it is told).",
     "link_broken": "{path}: the link {target} points to a file that does not exist.",

@@ -28,7 +28,7 @@ from pathlib import Path
 
 from src.core import yamlio
 from src.core.build import generated_files, lesson_language_bar
-from src.core.infographics import PALETTE, TEMPLATES
+from src.core.infographics import PALETTE, TEMPLATES, crowded
 from src.core.lessonfile import LessonDoc, parse_lesson
 from src.core.model import (
     COURSE_DIR,
@@ -560,6 +560,12 @@ def _diagrams(report: Report, root: Path, languages: tuple[str, ...]) -> dict[st
             specs[entry.stem] = spec
     if len(report.errors) != start:
         raise _Invalid
+    # A valid spec can still hold more text than its template can lay out; it is
+    # still drawn (so the author can see why), but must not be published.
+    for diagram_id, spec in specs.items():
+        for language in languages:
+            if crowded(spec, language):
+                report.error("diagram_crowded", path=f"{DIAGRAMS_DIR}/{diagram_id}.yaml", language=language)
     return specs
 
 

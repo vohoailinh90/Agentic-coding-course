@@ -120,6 +120,9 @@ build` draws it into every language folder ([data-model.md](data-model.md) has e
 - Every translation shows the same diagrams in the same sections (`validate` checks it).
 - Look at the result in all three languages before committing: open the SVG in a browser. Boxes
   grow to fit wrapped text; if a label wraps into three lines, shorten it.
+- Nothing is ever drawn over something else: a cycle's ring grows and its labels move to free
+  space. When a language's text is too long for any layout that fits the width, `validate` fails with
+  `diagram_crowded` — shorten the captions or arrow labels, or use fewer steps.
 
 ## Accuracy
 

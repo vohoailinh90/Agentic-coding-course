@@ -10,7 +10,9 @@ Design rules, shared by every template:
 - Every colour, font and size is an attribute, so the static picture is complete
   even where CSS is ignored. The only <style> is optional motion (flowing arrows,
   a gently pulsing result) that stops under prefers-reduced-motion.
-- Short labels only; boxes grow to fit wrapped text, never overflow sideways.
+- Short labels only; boxes grow to fit wrapped text, never overflow sideways,
+  and no box is drawn over another (tests/test_course_infographics.py checks
+  this on long text in every language).
 - `<title>` and `<desc>` carry the diagram in words for screen readers.
 - Output is deterministic, so CI can tell a stale file from a current one.
 
@@ -20,6 +22,7 @@ journey map, drawn from curriculum.yaml rather than from a spec.
 
 from __future__ import annotations
 
+import itertools
 import math
 from html import escape
 
@@ -88,6 +91,7 @@ class Canvas:
         self.parts: list[str] = []
         self.defs: list[str] = []
         self.motion = False
+        self.crowded = False  # set when the text cannot be laid out without overlaps
 
     def add(self, markup: str) -> None:
         self.parts.append(markup)
@@ -359,10 +363,14 @@ def _step_card(canvas: Canvas, step: dict, lang: str, x: float, y: float, width:
         canvas.text(caption, x + width / 2, top + 4, 15, fill=MUTED)
 
 
-def _arrow_label(canvas: Canvas, text: str, cx: float, cy: float, max_width: float) -> None:
+def _label_size(text: str, max_width: float) -> tuple[list[str], float, float]:
+    """An arrow label's lines, width and height, measured before it is placed."""
     lines = wrap(text, max_width, 13.5)
-    width = widest(lines, 13.5) + 18
-    height = block(len(lines), 13.5) + 8
+    return lines, widest(lines, 13.5) + 18, block(len(lines), 13.5) + 8
+
+
+def _arrow_label(canvas: Canvas, label: tuple[list[str], float, float], cx: float, cy: float) -> None:
+    lines, width, height = label
     canvas.add(f'<rect x="{_n(cx - width / 2)}" y="{_n(cy - height / 2)}" width="{_n(width)}" height="{_n(height)}" '
                f'rx="{_n(min(height / 2, 12))}" fill="#FFFFFF" stroke="{LINE}" stroke-width="1.5"/>')
     canvas.text(lines, cx, cy - height / 2 + 4, 13.5, fill=MUTED)
@@ -381,11 +389,14 @@ def _flow(canvas: Canvas, spec: dict, lang: str, y: float) -> float:
             _step_card(canvas, step, lang, x, y, width, height, number=index + 1)
             y += height
             if index < len(steps) - 1:
-                canvas.add(f'<line x1="{WIDTH / 2}" y1="{_n(y + 4)}" x2="{WIDTH / 2}" y2="{_n(y + 50)}" stroke="{MUTED}" '
-                           f'stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#{marker})"/>')
-                if step.get("arrow"):
-                    _arrow_label(canvas, step["arrow"][lang], WIDTH / 2 + 110, y + 27, 180)
-                y += 56
+                label = _label_size(step["arrow"][lang], 180) if step.get("arrow") else None
+                gap = max(56, label[2] + 16) if label else 56  # a long label gets a longer arrow
+                canvas.add(f'<line x1="{WIDTH / 2}" y1="{_n(y + 4)}" x2="{WIDTH / 2}" y2="{_n(y + gap - 6)}" '
+                           f'stroke="{MUTED}" stroke-width="3" stroke-dasharray="9 9" class="flow" '
+                           f'marker-end="url(#{marker})"/>')
+                if label:
+                    _arrow_label(canvas, label, WIDTH / 2 + 110, y + gap / 2)
+                y += gap
         return y + 24
     gap = 58
     width = (INNER - gap * (len(steps) - 1)) / len(steps)
@@ -398,14 +409,14 @@ def _flow(canvas: Canvas, spec: dict, lang: str, y: float) -> float:
             cy = y + height / 2
             canvas.add(f'<line x1="{_n(x1)}" y1="{_n(cy)}" x2="{_n(x2)}" y2="{_n(cy)}" stroke="{MUTED}" '
                        f'stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#{marker})"/>')
-    labels = [step.get("arrow") for step in steps[:-1]]
+    labels = [_label_size(step["arrow"][lang], width) if step.get("arrow") else None for step in steps[:-1]]
     if any(labels):
-        top = y + height + 10
+        # under the cards, each centred below its arrow; all start on one line
+        top = y + height + 12
         for index, label in enumerate(labels):
             if label:
-                cx = MARGIN + (index + 1) * (width + gap) - gap / 2
-                _arrow_label(canvas, label[lang], cx, top + 14, width)
-        return top + 44
+                _arrow_label(canvas, label, MARGIN + (index + 1) * (width + gap) - gap / 2, top + label[2] / 2)
+        return top + max(label[2] for label in labels if label) + 24
     return y + height + 24
 
 
@@ -414,72 +425,179 @@ def _inside(px: float, py: float, box: tuple[float, float, float, float], margin
     return x - margin <= px <= x + w + margin and y - margin <= py <= y + h + margin
 
 
-def _cycle(canvas: Canvas, spec: dict, lang: str, y: float) -> float:
+def _touch(a: tuple[float, float, float, float], b: tuple[float, float, float, float], margin: float) -> bool:
+    """Whether two boxes come closer than `margin`."""
+    return (a[0] < b[0] + b[2] + margin and b[0] < a[0] + a[2] + margin
+            and a[1] < b[1] + b[3] + margin and b[1] < a[1] + a[3] + margin)
+
+
+Box = tuple[float, float, float, float]  # x, y, width, height
+HUB = 78  # radius of the cycle's centre disc
+
+
+def _clear_of_hub(box: Box, margin: float) -> bool:
+    """Whether a box, laid out around the centre (0, 0), stays `margin` away from the disc."""
+    x, y, width, height = box
+    return math.hypot(min(max(0.0, x), x + width), min(max(0.0, y), y + height)) >= HUB + margin
+
+
+def _label_spot(text: str, middle: float, radius: float, taken: list[Box], far: bool) -> tuple | None:
+    """Where an arrow label fits: level with the middle of its arrow, as close as
+    possible to just outside the ring, clear of every box already taken and inside
+    the canvas. Wider labels are tried first. None when nothing fits."""
+    preferred = radius + 34
+    offsets = range(-120, 400, 4) if far else range(-40, 120, 4)
+    distances = sorted((radius + offset for offset in offsets), key=lambda d: (abs(d - preferred), d))
+    for max_width in (150, 120, 96):
+        label = _label_size(text, max_width)
+        for distance in distances:
+            x, y = distance * math.cos(middle), distance * math.sin(middle)
+            box = (x - label[1] / 2, y - label[2] / 2, label[1], label[2])
+            if abs(x) + label[1] / 2 > WIDTH / 2 - MARGIN or not _clear_of_hub(box, 6):
+                continue
+            if any(_touch(box, other, 6) for other in taken):
+                continue
+            return label, x, y, box
+    return None
+
+
+def _cycle_layout(spec: dict, lang: str) -> tuple:
+    """(radius, card boxes, arcs, labels, crowded), all around the centre (0, 0).
+
+    The ring grows from its default size until no card covers another card or the
+    centre, then further if an arrow label has nowhere to go. `crowded` means the
+    text is too long for any ring that fits the width; the validator reports it."""
     steps = spec["steps"]
     count = len(steps)
-    radius = 185 if count <= 4 else 205
     card_w = 196 if count <= 4 else 170
     heights = [_step_height(step, lang, card_w - 24) for step in steps]
     angles = [-math.pi / 2 + 2 * math.pi * index / count for index in range(count)]
-    top_extent = max([h / 2 - radius * math.sin(a) for h, a in zip(heights, angles)] + [radius + 16])
-    cx, cy = WIDTH / 2, y + top_extent + 6
-    boxes = []
-    for angle, height in zip(angles, heights):
-        px, py = cx + radius * math.cos(angle), cy + radius * math.sin(angle)
-        boxes.append((px - card_w / 2, py - height / 2, card_w, height))
+    reach = (WIDTH / 2 - MARGIN - card_w / 2) / max(abs(math.cos(angle)) for angle in angles)
+
+    def ring(radius: float) -> list[Box]:
+        return [(radius * math.cos(angle) - card_w / 2, radius * math.sin(angle) - height / 2, card_w, height)
+                for angle, height in zip(angles, heights)]
+
+    def overlap(boxes: list[Box], margin: float) -> bool:
+        return (any(_touch(a, b, margin) for a, b in itertools.combinations(boxes, 2))
+                or not all(_clear_of_hub(box, margin) for box in boxes))
+
+    def arcs(radius: float, boxes: list[Box]) -> list[tuple[float, float]]:
+        """Each arrow runs from the edge of one card to the edge of the next."""
+        result = []
+        turn = math.radians(1)
+        for index in range(count):
+            end = angles[index] + 2 * math.pi / count
+            a0, a1 = angles[index], end
+            while a0 < end and _inside(radius * math.cos(a0), radius * math.sin(a0), boxes[index]):
+                a0 += turn
+            following = boxes[(index + 1) % count]
+            while a1 > a0 and _inside(radius * math.cos(a1), radius * math.sin(a1), following):
+                a1 -= turn
+            result.append((a0, a1))
+        return result
+
+    def labels(radius: float, boxes: list[Box], spans: list[tuple[float, float]], far: bool) -> list | None:
+        taken = list(boxes)
+        placed = []
+        for (a0, a1), step in zip(spans, steps):
+            if not step.get("arrow"):
+                placed.append(None)
+                continue
+            spot = _label_spot(step["arrow"][lang], (a0 + a1) / 2, radius, taken, far)
+            if spot is None:
+                return None
+            taken.append(spot[3])
+            placed.append(spot)
+        return placed
+
+    smallest = 185.0 if count <= 4 else 205.0
+    while smallest + 5 <= reach and overlap(ring(smallest), 12):
+        smallest += 5
+    for far in (False, True):  # labels near their arrows on any ring first, then anywhere
+        radius = smallest
+        while True:
+            boxes = ring(radius)
+            spans = arcs(radius, boxes)
+            placed = labels(radius, boxes, spans, far)
+            if placed is not None:
+                return radius, boxes, spans, placed, overlap(boxes, 0)
+            if radius + 5 > reach:
+                break
+            radius += 5
+    # Too much text for this width: draw it anyway, labels where they would go but
+    # inside the canvas, so the author sees what to shorten.
+    boxes = ring(smallest)
+    spans = arcs(smallest, boxes)
+    placed = []
+    for (a0, a1), step in zip(spans, steps):
+        if step.get("arrow"):
+            label = _label_size(step["arrow"][lang], 150)
+            x, y = (smallest + 34) * math.cos((a0 + a1) / 2), (smallest + 34) * math.sin((a0 + a1) / 2)
+            limit = WIDTH / 2 - MARGIN - label[1] / 2
+            x = max(-limit, min(limit, x))
+            placed.append((label, x, y, (x - label[1] / 2, y - label[2] / 2, label[1], label[2])))
+        else:
+            placed.append(None)
+    return smallest, boxes, spans, placed, True
+
+
+def _cycle(canvas: Canvas, spec: dict, lang: str, y: float) -> float:
+    steps = spec["steps"]
+    radius, boxes, spans, labels, crowded = _cycle_layout(spec, lang)
+    if crowded:
+        canvas.crowded = True
+    taken = boxes + [label[3] for label in labels if label]
+    top = min([box[1] for box in taken] + [-radius - 16])
+    bottom = max([box[1] + box[3] for box in taken] + [radius + 16])
+    cx, cy = WIDTH / 2, y - top + 6
     tone = PALETTE[spec["center"].get("color", "indigo")]
     marker = canvas.arrow_marker("cycle", tone["accent"])
     canvas.motion = True
     # arcs first, so the cards sit on top of them
-    for index in range(count):
-        start, end = angles[index], angles[index] + 2 * math.pi / count
-        step = math.radians(1)
-        a0 = start
-        while a0 < end and _inside(cx + radius * math.cos(a0), cy + radius * math.sin(a0), boxes[index]):
-            a0 += step
-        a1 = end
-        nxt = boxes[(index + 1) % count]
-        while a1 > a0 and _inside(cx + radius * math.cos(a1), cy + radius * math.sin(a1), nxt):
-            a1 -= step
+    for (a0, a1), label in zip(spans, labels):
         x0, y0 = cx + radius * math.cos(a0), cy + radius * math.sin(a0)
         x1, y1 = cx + radius * math.cos(a1), cy + radius * math.sin(a1)
         large = 1 if a1 - a0 > math.pi else 0
-        canvas.add(f'<path d="M{_n(x0)},{_n(y0)} A{radius},{radius} 0 {large} 1 {_n(x1)},{_n(y1)}" fill="none" '
-                   f'stroke="{tone["accent"]}" stroke-width="3.5" stroke-dasharray="9 9" class="flow" '
+        canvas.add(f'<path d="M{_n(x0)},{_n(y0)} A{_n(radius)},{_n(radius)} 0 {large} 1 {_n(x1)},{_n(y1)}" '
+                   f'fill="none" stroke="{tone["accent"]}" stroke-width="3.5" stroke-dasharray="9 9" class="flow" '
                    f'marker-end="url(#{marker})"/>')
-        if steps[index].get("arrow"):
-            mid = (a0 + a1) / 2
-            label_r = radius + 34
-            _arrow_label(canvas, steps[index]["arrow"][lang], cx + label_r * math.cos(mid),
-                         cy + label_r * math.sin(mid), 150)
+        if label:
+            _arrow_label(canvas, label[0], cx + label[1], cy + label[2])
     # the centre
     center = spec["center"]
     canvas.add('<g class="pulse">')
-    canvas.add(f'<circle cx="{_n(cx)}" cy="{_n(cy)}" r="78" fill="{tone["accent"]}"/>')
-    canvas.add(f'<circle cx="{_n(cx)}" cy="{_n(cy)}" r="70" fill="#FFFFFF" fill-opacity="0.14"/>')
+    canvas.add(f'<circle cx="{_n(cx)}" cy="{_n(cy)}" r="{HUB}" fill="{tone["accent"]}"/>')
+    canvas.add(f'<circle cx="{_n(cx)}" cy="{_n(cy)}" r="{HUB - 8}" fill="#FFFFFF" fill-opacity="0.14"/>')
     canvas.add(f'<text x="{_n(cx)}" y="{_n(cy - 8)}" font-size="34" text-anchor="middle" '
                f'font-family="{EMOJI_FONT}">{escape(center["icon"])}</text>')
     lines = wrap(center["name"][lang], 128, 16, bold=True)
     canvas.text(lines, cx, cy + 6, 16, fill="#FFFFFF", bold=True)
     canvas.add("</g>")
     for index, (step, box) in enumerate(zip(steps, boxes)):
-        _step_card(canvas, step, lang, *box, number=index + 1)
-    has_labels = any(step.get("arrow") for step in steps)
-    ring_bottom = cy + radius + (54 if has_labels else 16)
-    bottom = max([box[1] + box[3] for box in boxes] + [ring_bottom])
-    return bottom + 26
+        _step_card(canvas, step, lang, cx + box[0], cy + box[1], box[2], box[3], number=index + 1)
+    return cy + bottom + 26
 
 
 RENDERERS = {"compare": _compare, "equation": _equation, "cycle": _cycle, "flow": _flow}
 
 
-def render(spec: dict, lang: str) -> str:
-    """The SVG of one diagram spec in one language."""
+def _draw(spec: dict, lang: str) -> tuple[Canvas, float]:
     canvas = Canvas(lang)
     y = _header(canvas, spec, lang)
     y = RENDERERS[spec["template"]](canvas, spec, lang, y)
-    y = _takeaway(canvas, spec, lang, y)
-    return canvas.svg(y + 8, spec["title"][lang], describe(spec, lang))
+    return canvas, _takeaway(canvas, spec, lang, y)
+
+
+def render(spec: dict, lang: str) -> str:
+    """The SVG of one diagram spec in one language."""
+    canvas, bottom = _draw(spec, lang)
+    return canvas.svg(bottom + 8, spec["title"][lang], describe(spec, lang))
+
+
+def crowded(spec: dict, lang: str) -> bool:
+    """Whether the spec has too much text to draw in `lang` without boxes overlapping."""
+    return _draw(spec, lang)[0].crowded
 
 
 # ---------------------------------------------------------------------------

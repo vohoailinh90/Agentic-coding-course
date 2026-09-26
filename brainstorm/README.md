@@ -7,7 +7,7 @@ về AI, trước khi viết hàng chục bài học bằng 3 thứ tiếng.
 
 1. Claude soạn lộ trình v0 ([course/data/curriculum.yaml](../course/data/curriculum.yaml), xem bản đồ
    lộ trình ở [course/vi/README.md](../course/vi/README.md)) và "đề bài" [BRIEF.md](BRIEF.md): người học là ai,
-   ràng buộc gì, v0 dựa trên nguyên tắc nào, điểm yếu đã thấy, 10 câu hỏi cần trả lời.
+   ràng buộc gì, v0 dựa trên nguyên tắc nào, điểm yếu đã thấy, 11 câu hỏi cần trả lời.
 2. Claude mở một GitHub Issue và gọi Codex **đúng một lần mỗi vòng**, theo giao thức
    [docs/claude-to-codex.md](../docs/claude-to-codex.md): chế độ `BRAINSTORM`, chỉ đọc
    (`write_policy: none`), gắn với một commit SHA cụ thể.

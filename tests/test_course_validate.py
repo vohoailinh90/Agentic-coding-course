@@ -174,6 +174,19 @@ class ValidateTests(StoreTest):
         self.edit_diagram(lambda spec: spec["title"].pop("en"))
         self.assertIn("field_missing", codes(validate(self.root)))
 
+    def test_a_diagram_with_more_text_than_its_template_can_draw_is_an_error(self) -> None:
+        def text() -> dict:
+            return {"vi": "một câu chú thích dài, dài hơn nhiều so với mức một sơ đồ cần có " * 2,
+                    "en": "a caption that is much longer than any diagram should ever need " * 2,
+                    "ja": "図に必要な長さをはるかに超える、とても長い説明の文章です。" * 2}
+
+        steps = [{"icon": "🔁", "color": "teal", "name": text(), "caption": text(), "arrow": text()} for _ in range(6)]
+        spec = {"template": "cycle", "title": text(), "steps": steps, "center": {"icon": "🤖", "name": text()}}
+        dump(self.root / "course/data/diagrams/crowded.yaml", spec)
+        found = {(f.code, f.params.get("path"), f.params.get("language")) for f in validate(self.root).errors}
+        for language in ("vi", "en", "ja"):
+            self.assertIn(("diagram_crowded", "course/data/diagrams/crowded.yaml", language), found)
+
     # -- course folders and lesson files ---------------------------------------
 
     def test_a_missing_language_file_is_an_error(self) -> None:
@@ -409,6 +422,13 @@ class RobustnessTests(StoreTest):
             with self.subTest(template=name):
                 spec = yaml.safe_load((ROOT / "course/data/diagrams" / f"{name}.yaml").read_text(encoding="utf-8"))
                 self.assert_never_crashes(path, spec)
+        # No course diagram is a flow yet.
+        text = {"vi": "Bước", "en": "Step", "ja": "ステップ"}
+        flow = {"template": "flow", "title": text, "direction": "vertical",
+                "steps": [{"icon": "1️⃣", "color": "blue", "name": text, "caption": text, "arrow": text},
+                          {"icon": "2️⃣", "color": "green", "name": text}]}
+        with self.subTest(template="flow"):
+            self.assert_never_crashes(path, flow)
 
     def test_wrong_types_in_lesson_front_matter_are_reported_not_crashed_on(self) -> None:
         path = self.root / "course/vi/lessons/alpha.md"

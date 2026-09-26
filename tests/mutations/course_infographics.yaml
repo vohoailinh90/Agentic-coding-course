@@ -5,14 +5,55 @@
 # guards nothing.
 
 target: src/core/infographics.py
-note: The SVG infographics. Both entries are bugs the browser check caught once; the tests must catch them
-  without a browser.
+note: The SVG infographics. The course's own diagrams use only some templates and options, so most entries are
+  caught on the stress specs in tests/test_course_infographics.py; the first two are bugs the browser check
+  caught once.
 mutations:
 - label: the roadmap road uses a bounding-box gradient and is not painted
   find: "id=\"road\" gradientUnits=\"userSpaceOnUse\" "
   replace: "id=\"road\" "
   test: tests.test_course_infographics.RoadmapTests.test_the_roadmap_road_is_painted
 - label: the cycle's canvas ends at the cards, so the ring and its bottom label run into the takeaway
-  find: "    bottom = max([box[1] + box[3] for box in boxes] + [ring_bottom])\n"
+  find: "    bottom = max([box[1] + box[3] for box in taken] + [radius + 16])\n"
   replace: "    bottom = max(box[1] + box[3] for box in boxes)\n"
   test: tests.test_course_infographics.RenderTests.test_the_cycle_keeps_the_label_under_its_ring
+- label: a compare row is as tall as the first column's value, so a longer value runs into the next row
+  find: "+ 4 + max(block(len(v), size) for v in values) + 14"
+  replace: "+ 4 + block(len(values[0]), size) + 14"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: an equation loses the plus between its first two terms
+  find: "        if index:\n            _operator(canvas, \"+\""
+  replace: "        if index > 1:\n            _operator(canvas, \"+\""
+  test: tests.test_course_infographics.RenderTests.test_an_equation_joins_its_terms_with_plus_and_ends_with_equals
+- label: a four-step flow is drawn vertically by default
+  find: "\"horizontal\" if len(steps) <= 4 else \"vertical\""
+  replace: "\"horizontal\" if len(steps) <= 3 else \"vertical\""
+  test: tests.test_course_infographics.RenderTests.test_a_flow_is_horizontal_up_to_four_steps_and_has_one_arrow_between_steps
+- label: a horizontal flow's labels are centred on the line under the cards, so a tall one covers them
+  find: "gap / 2, top + label[2] / 2)"
+  replace: "gap / 2, top)"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: a vertical flow's arrow does not grow with its label, so a long label covers the cards
+  find: "                gap = max(56, label[2] + 16) if label else 56"
+  replace: "                gap = 56"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: the cycle keeps its default ring, so tall cards cover each other and the centre
+  find: "    while smallest + 5 <= reach and overlap(ring(smallest), 12):\n"
+  replace: "    while False:\n"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: a cycle label is placed over the cards next to it
+  find: "            if any(_touch(box, other, 6) for other in taken):\n"
+  replace: "            if False:\n"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: a cycle label may leave the canvas
+  find: "            if abs(x) + label[1] / 2 > WIDTH / 2 - MARGIN or not _clear_of_hub(box, 6):\n"
+  replace: "            if not _clear_of_hub(box, 6):\n"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: a crowded cycle is not reported
+  find: "        canvas.crowded = True\n"
+  replace: "        pass\n"
+  test: tests.test_course_infographics.RenderTests.test_too_much_text_is_reported_rather_than_drawn_over
+- label: a crowded cycle's labels may leave the canvas
+  find: "            x = max(-limit, min(limit, x))\n"
+  replace: "            pass\n"
+  test: tests.test_course_infographics.RenderTests.test_too_much_text_is_reported_rather_than_drawn_over

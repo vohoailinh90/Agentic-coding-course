@@ -10,6 +10,13 @@
   equation, cycle, flow) and a generated roadmap; the pilot lesson now explains with four of them.
 - `python -m src.main build [--check]` replaces `outline`; the validator also checks the language
   bar, diagram references and parity, relative links and images, and stale or orphan generated files.
+- Infographic layout: nothing is drawn over anything else. Flow labels are measured before they
+  are placed; a cycle's ring grows until its cards clear each other and the centre, and each arrow
+  label moves to the nearest free spot. A diagram whose text no layout can fit fails `validate` with
+  `diagram_crowded`. Checked on stress specs for every template in every language.
+- `scripts/mutation_check.py` (from the template) drops the target's cached bytecode after each
+  write: a mutation that kept the file size, written in the same second as the baseline run, was
+  never executed and was reported as SURVIVED.
 - ADRs 005 and 006; content guide chapter on infographics.
 
 ## v0.1.0 — 2026-09-26

@@ -100,3 +100,7 @@ mutations:
   find: "        if \"color\" in obj and not (isinstance(obj[\"color\"], str) and obj[\"color\"] in PALETTE):\n"
   replace: "        if \"color\" in obj and obj[\"color\"] not in PALETTE:\n"
   test: tests.test_course_validate.RobustnessTests.test_wrong_types_in_every_diagram_template_are_reported_not_crashed_on
+- label: a diagram with more text than its template can draw is published anyway
+  find: "            if crowded(spec, language):\n"
+  replace: "            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_diagram_with_more_text_than_its_template_can_draw_is_an_error

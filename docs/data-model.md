@@ -108,6 +108,9 @@ Every text field is localized; `icon` is one emoji; `color` is one of `blue`, `v
 | `cycle` | a loop that repeats | `steps` (3–6 × `icon`, `color`, `name`, optional `caption`, `arrow` — the label on the arrow leaving the step), `center` (`icon`, `name`, optional `color`) |
 | `flow` | steps in order | `steps` (2–6, as in `cycle`), optional `direction` (`horizontal` up to 4 steps by default, else `vertical`) |
 
+`validate` also draws every diagram in every language and fails with `diagram_crowded` when its text
+cannot be laid out without boxes overlapping (in practice: a cycle of 5–6 steps with long captions).
+
 A lesson shows a diagram with an image in the language folder's `diagrams/`:
 `![<alt text in the lesson's language>](../diagrams/<id>.svg)`.
 
