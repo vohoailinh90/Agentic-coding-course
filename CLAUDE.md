@@ -1,4 +1,31 @@
-# Claude Agent Routing Template
+# Agentic Coding Course — Claude instructions
+
+## This repository
+
+A trilingual (Vietnamese · English · Japanese) course that takes complete beginners from "what is
+software?" to directing AI agents. It is the course's **content store**: the single source for
+Facebook posts now and the course website later. Everything below *The template harness* comes
+from `claude-agent-routing-template` (see `TEMPLATE.md`) and governs how engineering work here is
+routed.
+
+- **Read `PROGRESS.md` first** at the start of every session; keep it current, and record
+  significant decisions as `docs/decisions/NNN-*.md`.
+- **Content lives in `course/`** (`course.yaml`, `curriculum.yaml`, `sections.yaml`,
+  `glossary.yaml`, `lessons/<id>/{vi,en,ja}.md`). Its rules are in `docs/data-model.md`; how to
+  write a lesson is in `docs/content-guide.md`. Vietnamese is the source language; English and
+  Japanese are localized, never left behind.
+- **`python -m src.main validate` must pass** before any commit that touches `course/`. After
+  editing `curriculum.yaml`, regenerate `course/OUTLINE.md` with `python -m src.main outline
+  --write` — it is generated; never edit it by hand.
+- **Never refer to a lesson by its number** in content; numbers change when the roadmap is
+  reordered. Lesson ids never change and are never reused.
+- **Verify every source link** before committing it, and never invent statistics.
+- The course CLI's user-facing text is in **vi, en and ja** (`src/locales/`), which extends the
+  bilingual rule below; `python3 scripts/i18n_check.py src/locales --require vi,en,ja` is its gate.
+- **Roadmap brainstorming with Codex** happens in GitHub issues following `docs/claude-to-codex.md`;
+  the brief and the per-round conclusions are in `brainstorm/`.
+
+# The template harness
 
 ## Purpose
 

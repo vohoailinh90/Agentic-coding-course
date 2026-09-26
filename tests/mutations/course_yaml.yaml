@@ -1,0 +1,14 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/yamlio.py
+note: Strict YAML loading. PyYAML keeps the last of two equal keys without a word; the course files are edited
+  by hand, so a repeated key must be an error.
+mutations:
+- label: a key named twice in one mapping is accepted
+  find: "                if duplicate:\n"
+  replace: "                if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_duplicate_yaml_key_is_an_error

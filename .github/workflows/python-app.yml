@@ -63,6 +63,15 @@ jobs:
       # .claude/skills/bilingual/SKILL.md.
       run: |
         python scripts/i18n_check.py
+    - name: Course content check
+      # The trilingual content store under course/ must validate: every started
+      # lesson in vi, en and ja, the same sections in each, glossary terms that
+      # exist, titles that match curriculum.yaml, and an OUTLINE.md that matches
+      # the tree. The CLI catalogs must carry Vietnamese as well as ja/en.
+      # See docs/data-model.md.
+      run: |
+        python -m src.main validate
+        python scripts/i18n_check.py src/locales --require vi,en,ja
     - name: Runner switch drift guard
       # A workflow added later must not quietly hardcode ubuntu-latest while the
       # CI_RUNNER switch appears to be on. See docs/ci-runner-mode.md.

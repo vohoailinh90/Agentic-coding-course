@@ -1,0 +1,499 @@
+# Trilingual glossary (vi / en / ja). Schema: docs/data-model.md.
+#
+# One entry per concept. Lessons reference terms by id (curriculum.yaml
+# `terms:`), and every render of a lesson (website, Facebook post) builds its
+# "3-language term box" from here, so a definition is written once and never
+# drifts between lessons. `reading` gives the kana for the kanji in a Japanese
+# term — for learners reading Japanese as a second language — and is shown in
+# ［ ］ after the term.
+#
+# Definitions are one or two plain sentences a complete beginner can follow.
+terms:
+  - id: chatbot
+    vi:
+      term: Chatbot
+      definition: Chương trình trò chuyện với bạn bằng chữ hoặc giọng nói; nó trả lời câu hỏi nhưng không tự thao tác trên máy tính hay hệ thống khác.
+    en:
+      term: Chatbot
+      definition: A program you talk to in text or voice; it replies with answers but does not act on your computer or other systems by itself.
+    ja:
+      term: チャットボット
+      definition: 文章や音声で会話できるプログラム。答えを返しますが、自分からパソコンやほかのシステムを操作することはありません。
+
+  - id: llm
+    vi:
+      term: Mô hình ngôn ngữ lớn (LLM)
+      definition: Mô hình AI được huấn luyện trên lượng văn bản khổng lồ để đoán phần chữ tiếp theo; là "bộ não" của chatbot và agent.
+    en:
+      term: Large language model (LLM)
+      definition: An AI model trained on huge amounts of text to predict the next piece of text; it is the "brain" of chatbots and agents.
+    ja:
+      term: 大規模言語モデル（LLM）
+      reading: だいきぼげんごモデル
+      definition: 大量の文章で学習し、次に続く言葉を予測するAIモデル。チャットボットやエージェントの「頭脳」です。
+
+  - id: ai-agent
+    vi:
+      term: AI agent (tác tử AI)
+      definition: Hệ thống AI nhận một mục tiêu, tự lập kế hoạch, dùng công cụ để hành động, kiểm tra kết quả và lặp lại cho đến khi xong việc.
+    en:
+      term: AI agent
+      definition: An AI system that takes a goal, plans the steps, uses tools to act, checks the results and repeats until the goal is done.
+    ja:
+      term: AIエージェント
+      definition: 目標を受け取り、手順を考え、ツールを使って実行し、結果を確かめながら、目標を達成するまで繰り返すAIシステム。
+
+  - id: tool
+    vi:
+      term: Công cụ (tool)
+      definition: Một khả năng mà AI có thể gọi để làm việc thật, như đọc file, chạy lệnh hay tìm kiếm trên web.
+    en:
+      term: Tool (for an AI)
+      definition: A capability the AI can call to act in the world, such as reading a file, running a command or searching the web.
+    ja:
+      term: ツール（AIの道具）
+      reading: エーアイのどうぐ
+      definition: AIが呼び出して実際の作業を行うための機能。ファイルを読む、コマンドを実行する、Webを検索するなど。
+
+  - id: agent-loop
+    vi:
+      term: Vòng lặp agent (agent loop)
+      definition: Chu trình agent lặp đi lặp lại — nghĩ bước tiếp theo, dùng công cụ để hành động, quan sát kết quả, rồi quyết định tiếp.
+    en:
+      term: Agent loop
+      definition: The repeating cycle an agent runs — think about the next step, act with a tool, observe the result, then decide again.
+    ja:
+      term: エージェントループ
+      definition: エージェントが繰り返すサイクル。次の一手を考え、ツールで行動し、結果を観察して、また判断します。
+
+  - id: software
+    vi:
+      term: Phần mềm (software)
+      definition: Các chương trình và dữ liệu ra lệnh cho máy tính phải làm gì, đối lập với phần cứng là cỗ máy vật lý.
+    en:
+      term: Software
+      definition: The programs and data that tell a computer what to do, as opposed to the physical machine (hardware).
+    ja:
+      term: ソフトウェア
+      definition: コンピュータに何をするかを指示するプログラムとデータ。機械そのもの（ハードウェア）と対になる言葉です。
+
+  - id: program
+    vi:
+      term: Chương trình (program)
+      definition: Tập hợp các chỉ dẫn từng bước, viết bằng code, mà máy tính có thể chạy.
+    en:
+      term: Program
+      definition: A set of step-by-step instructions written in code that a computer can run.
+    ja:
+      term: プログラム
+      definition: コンピュータが実行できるように、コードで書かれた手順の集まり。
+
+  - id: code
+    vi:
+      term: Code (mã nguồn)
+      definition: Văn bản viết bằng ngôn ngữ lập trình, con người đọc được và máy tính chạy được.
+    en:
+      term: Code (source code)
+      definition: Text written in a programming language that people can read and computers can run.
+    ja:
+      term: コード（ソースコード）
+      definition: プログラミング言語で書かれた文章。人が読めて、コンピュータが実行できます。
+
+  - id: file-path
+    vi:
+      term: Đường dẫn (file path)
+      definition: Địa chỉ của một file hoặc thư mục trong máy tính, ví dụ C:\Users\an\report.xlsx hoặc /home/an/report.xlsx.
+    en:
+      term: File path
+      definition: The address of a file or folder on a computer, such as C:\Users\an\report.xlsx or /home/an/report.xlsx.
+    ja:
+      term: ファイルパス
+      definition: パソコンの中でファイルやフォルダがある場所を示す住所。例：C:\Users\an\report.xlsx や /home/an/report.xlsx。
+
+  - id: terminal
+    vi:
+      term: Terminal (dòng lệnh)
+      definition: Cửa sổ dạng chữ để gõ lệnh cho máy tính thay vì bấm chuột.
+    en:
+      term: Terminal (command line)
+      definition: A text window where you type commands for the computer instead of clicking with the mouse.
+    ja:
+      term: ターミナル（コマンドライン）
+      definition: マウスでクリックする代わりに、文字でコマンドを入力してコンピュータに指示する画面。
+
+  - id: json
+    vi:
+      term: JSON
+      definition: Định dạng văn bản đơn giản cho dữ liệu có cấu trúc, gồm các cặp tên–giá trị trong dấu ngoặc nhọn; rất phổ biến giữa các chương trình.
+    en:
+      term: JSON
+      definition: A simple text format for structured data, made of names and values inside curly braces; widely used between programs.
+    ja:
+      term: JSON
+      definition: 名前と値を波かっこで囲んで表す、シンプルな文字形式のデータ。プログラム同士のやり取りでよく使われます。
+
+  - id: bug
+    vi:
+      term: Bug (lỗi phần mềm)
+      definition: Một sai sót trong chương trình khiến nó chạy khác với ý định.
+    en:
+      term: Bug
+      definition: A mistake in a program that makes it behave differently from what was intended.
+    ja:
+      term: バグ
+      definition: プログラムの誤りで、意図と違う動きをしてしまう原因。
+
+  - id: debugging
+    vi:
+      term: Gỡ lỗi (debugging)
+      definition: Tìm nguyên nhân của bug và sửa nó, thường bằng cách đọc thông báo lỗi và thử từng giả thuyết một.
+    en:
+      term: Debugging
+      definition: Finding the cause of a bug and fixing it, usually by reading error messages and testing ideas one at a time.
+    ja:
+      term: デバッグ
+      definition: バグの原因を探して直すこと。エラーメッセージを読み、仮説を一つずつ試すのが基本です。
+
+  - id: api
+    vi:
+      term: API
+      definition: Cách thức quy định sẵn để một chương trình nhờ chương trình khác cung cấp dữ liệu hoặc làm việc gì đó — giống thực đơn nhà hàng đưa cho khách.
+    en:
+      term: API
+      definition: A defined way for one program to ask another for data or actions — like the menu a restaurant hands to its customers.
+    ja:
+      term: API
+      definition: あるプログラムが別のプログラムにデータや処理を頼むための決まった窓口。レストランのメニューのようなものです。
+
+  - id: git
+    vi:
+      term: Git
+      definition: Công cụ quản lý phiên bản, lưu lại các "ảnh chụp" của dự án để bạn xem mọi thay đổi và quay về trạng thái cũ.
+    en:
+      term: Git
+      definition: A version control tool that records snapshots of a project so you can see every change and go back to an earlier state.
+    ja:
+      term: Git（ギット）
+      definition: プロジェクトのスナップショットを記録するバージョン管理ツール。すべての変更を確認でき、以前の状態に戻せます。
+
+  - id: commit
+    vi:
+      term: Commit
+      definition: Một lần lưu "ảnh chụp" trong Git, kèm lời nhắn mô tả đã thay đổi gì và vì sao.
+    en:
+      term: Commit
+      definition: One saved snapshot in Git, with a message describing what changed and why.
+    ja:
+      term: コミット
+      definition: Gitに保存した1回分のスナップショット。何を、なぜ変えたかのメッセージを添えます。
+
+  - id: diff
+    vi:
+      term: Diff (so sánh thay đổi)
+      definition: Cách hiển thị chính xác những dòng được thêm, xóa hay sửa giữa hai phiên bản của một file.
+    en:
+      term: Diff
+      definition: A view showing exactly which lines were added, removed or changed between two versions of a file.
+    ja:
+      term: 差分（diff）
+      reading: さぶん
+      definition: 2つのバージョンの間で、どの行が追加・削除・変更されたかを正確に示す表示。
+
+  - id: test
+    vi:
+      term: Kiểm thử tự động (test)
+      definition: Một đoạn chương trình nhỏ kiểm tra xem code khác có chạy đúng như mong đợi không, để bắt lỗi tự động.
+    en:
+      term: Test (automated test)
+      definition: A small program that checks whether other code behaves as expected, so mistakes are caught automatically.
+    ja:
+      term: テスト（自動テスト）
+      reading: じどうテスト
+      definition: コードが期待どおりに動くかを確認する小さなプログラム。間違いを自動で見つけられます。
+
+  - id: api-key
+    vi:
+      term: API key
+      definition: Chuỗi bí mật định danh bạn với một dịch vụ và có thể bị tính phí sử dụng; tuyệt đối không chia sẻ hay đưa vào file công khai.
+    en:
+      term: API key
+      definition: A secret string that identifies you to a service and can be billed for usage; never share it or put it in a public file.
+    ja:
+      term: APIキー
+      definition: サービスに対してあなたを識別する秘密の文字列。利用料金にも結びつくため、共有したり公開ファイルに書いたりしてはいけません。
+
+  - id: machine-learning
+    vi:
+      term: Học máy (machine learning)
+      definition: Cách xây dựng AI trong đó máy tính tự học quy luật từ các ví dụ (dữ liệu) thay vì làm theo luật do người viết sẵn.
+    en:
+      term: Machine learning (ML)
+      definition: A way to build AI in which a computer learns patterns from examples (data) instead of following hand-written rules.
+    ja:
+      term: 機械学習
+      reading: きかいがくしゅう
+      definition: 人が書いたルールに従うのではなく、例（データ）からパターンを学ぶことでAIを作る方法。
+
+  - id: deep-learning
+    vi:
+      term: Học sâu (deep learning)
+      definition: Một nhánh của học máy dùng mạng nơ-ron nhiều lớp; là nền tảng của AI hiện đại về hình ảnh, giọng nói và ngôn ngữ.
+    en:
+      term: Deep learning
+      definition: A kind of machine learning that uses neural networks with many layers; it powers modern image, speech and language AI.
+    ja:
+      term: 深層学習（ディープラーニング）
+      reading: しんそうがくしゅう
+      definition: 何層にも重なったニューラルネットワークを使う機械学習の一種。画像・音声・言語の最新AIを支えています。
+
+  - id: model
+    vi:
+      term: Mô hình (model)
+      definition: Kết quả của quá trình huấn luyện — một tập hợp khổng lồ các con số đã học, biến đầu vào thành đầu ra, ví dụ biến câu hỏi thành câu trả lời.
+    en:
+      term: Model (AI model)
+      definition: The result of training — a huge set of learned numbers that turns an input into an output, such as a question into a reply.
+    ja:
+      term: モデル（AIモデル）
+      definition: 学習の結果できあがるもの。学習した大量の数値の集まりで、入力（例：質問）を出力（例：回答）に変えます。
+
+  - id: training
+    vi:
+      term: Huấn luyện (training)
+      definition: Quá trình điều chỉnh các con số của mô hình bằng rất nhiều ví dụ cho đến khi mô hình cho ra kết quả tốt.
+    en:
+      term: Training
+      definition: The process of adjusting a model's numbers using many examples until its outputs become good.
+    ja:
+      term: 学習（トレーニング）
+      reading: がくしゅう
+      definition: 大量の例を使ってモデルの数値を少しずつ調整し、よい出力が出るようにする過程。
+
+  - id: generative-ai
+    vi:
+      term: AI tạo sinh (generative AI)
+      definition: AI tạo ra nội dung mới — chữ, hình ảnh, âm thanh, code — thay vì chỉ phân loại hay dự đoán nhãn.
+    en:
+      term: Generative AI
+      definition: AI that creates new content — text, images, audio, code — instead of only classifying things or predicting a label.
+    ja:
+      term: 生成AI
+      reading: せいせいエーアイ
+      definition: 文章・画像・音声・コードなどの新しいコンテンツを作り出すAI。分類や予測だけを行うAIと対比されます。
+
+  - id: foundation-model
+    vi:
+      term: Mô hình nền tảng (foundation model)
+      definition: Mô hình rất lớn được huấn luyện trên dữ liệu đa dạng, có thể điều chỉnh để làm nhiều loại việc khác nhau.
+    en:
+      term: Foundation model
+      definition: A very large model trained on broad data that can be adapted to many different tasks.
+    ja:
+      term: 基盤モデル
+      reading: きばんモデル
+      definition: 幅広いデータで学習した非常に大きなモデル。さまざまな用途に応用できます。
+
+  - id: prompt
+    vi:
+      term: Prompt (câu lệnh cho AI)
+      definition: Chỉ dẫn và thông tin bạn đưa cho mô hình AI để nhận được kết quả mong muốn.
+    en:
+      term: Prompt
+      definition: The instructions and information you give an AI model to get the output you want.
+    ja:
+      term: プロンプト
+      definition: 欲しい出力を得るためにAIモデルに渡す指示や情報。
+
+  - id: rag
+    vi:
+      term: RAG (tạo sinh có tăng cường truy xuất)
+      definition: Kỹ thuật tìm các đoạn liên quan trong tài liệu của bạn trước, rồi đưa cho mô hình để câu trả lời dựa trên chính các đoạn đó.
+    en:
+      term: RAG (retrieval-augmented generation)
+      definition: A technique that first searches your documents for relevant passages, then gives them to the model so its answer is grounded in them.
+    ja:
+      term: RAG（検索拡張生成）
+      reading: けんさくかくちょうせいせい
+      definition: まず資料から関連する部分を検索し、それをモデルに渡して、根拠のある回答を生成させる手法。
+
+  - id: fine-tuning
+    vi:
+      term: Tinh chỉnh (fine-tuning)
+      definition: Huấn luyện thêm một mô hình có sẵn bằng ví dụ của riêng bạn để nó học một phong cách hay kỹ năng cụ thể.
+    en:
+      term: Fine-tuning
+      definition: Training an existing model a little more on your own examples so it picks up a specific style or skill.
+    ja:
+      term: ファインチューニング
+      definition: 既存のモデルを自分の例で追加学習させ、特定の書き方や技能を身につけさせること。
+
+  - id: agentic-coding
+    vi:
+      term: Agentic coding (lập trình cùng AI agent)
+      definition: Cách làm phần mềm bằng việc giao mục tiêu cho AI agent tự viết, chạy và kiểm tra code, còn bạn định hướng và review.
+    en:
+      term: Agentic coding
+      definition: Building software by giving goals to AI agents that write, run and check code themselves, while you direct and review.
+    ja:
+      term: エージェント型コーディング
+      reading: エージェントがたコーディング
+      definition: AIエージェントに目標を与えてコードの作成・実行・確認を任せ、人は方向づけとレビューを担うソフトウェア開発の方法。
+
+  - id: vibe-coding
+    vi:
+      term: Vibe coding
+      definition: Cách ra lệnh cho AI sinh code một cách tùy hứng và chấp nhận kết quả mà không thực sự đọc; nhanh khi thử nghiệm nhưng rủi ro với sản phẩm thật.
+    en:
+      term: Vibe coding
+      definition: Casually prompting AI to generate code and accepting it without really reading it; fast for experiments, risky for real products.
+    ja:
+      term: バイブコーディング
+      definition: AIに気軽に指示してコードを作らせ、中身をよく読まずに受け入れるやり方。試作には速いものの、本番の製品には危険です。
+
+  - id: spec
+    vi:
+      term: Đặc tả (spec)
+      definition: Bản mô tả bằng văn bản những gì cần làm — mục tiêu, ràng buộc và cách biết khi nào là xong.
+    en:
+      term: Spec (specification)
+      definition: A written description of what to build — the goal, the constraints and how you will know it is done.
+    ja:
+      term: 仕様（スペック）
+      reading: しよう
+      definition: 何を作るかを書いた文書。目的・制約・完成の判断基準を含みます。
+
+  - id: acceptance-criteria
+    vi:
+      term: Tiêu chí nghiệm thu (acceptance criteria)
+      definition: Các điều kiện cụ thể, kiểm tra được, phải đúng thì công việc mới được coi là xong.
+    en:
+      term: Acceptance criteria
+      definition: Specific, checkable conditions that must be true for a task to count as finished.
+    ja:
+      term: 受け入れ基準
+      reading: うけいれきじゅん
+      definition: タスクを完了とみなすために満たすべき、具体的で確認できる条件。
+
+  - id: token
+    vi:
+      term: Token
+      definition: Mẩu chữ nhỏ — một từ, một phần của từ hoặc một ký hiệu — mà LLM đọc và viết; chi phí và giới hạn được tính theo token.
+    en:
+      term: Token
+      definition: A small piece of text — a word, part of a word or a symbol — that an LLM reads and writes; usage and limits are counted in tokens.
+    ja:
+      term: トークン
+      definition: LLMが読み書きする文章の小さな単位（単語・単語の一部・記号）。利用量や上限はトークン数で数えます。
+
+  - id: context-window
+    vi:
+      term: Cửa sổ ngữ cảnh (context window)
+      definition: Lượng văn bản tối đa (tính bằng token) mà mô hình xem xét được cùng lúc — giống trí nhớ làm việc ngắn hạn.
+    en:
+      term: Context window
+      definition: The maximum amount of text (counted in tokens) a model can consider at once — its short-term working memory.
+    ja:
+      term: コンテキストウィンドウ
+      definition: モデルが一度に考慮できる文章の最大量（トークン数）。いわば短期的な作業記憶です。
+
+  - id: hallucination
+    vi:
+      term: Ảo giác AI (hallucination)
+      definition: Hiện tượng AI nói ra điều sai hoặc bịa đặt như thể đó là sự thật.
+    en:
+      term: Hallucination
+      definition: When an AI states something false or made up as if it were true.
+    ja:
+      term: ハルシネーション
+      definition: AIが事実でないことや作り話を、本当のことのように述べてしまう現象。
+
+  - id: function-calling
+    vi:
+      term: Gọi công cụ (function calling / tool calling)
+      definition: Khả năng mô hình trả lời bằng một yêu cầu có cấu trúc để chạy một công cụ cụ thể; chương trình bao quanh sẽ thực thi yêu cầu đó.
+    en:
+      term: Function calling (tool calling)
+      definition: A model's ability to reply with a structured request to run a specific tool, which the surrounding program then executes.
+    ja:
+      term: 関数呼び出し（ツール呼び出し）
+      reading: かんすうよびだし・ツールよびだし
+      definition: モデルが「このツールをこの引数で実行して」という構造化された要求を返し、周りのプログラムがそれを実行するしくみ。
+
+  - id: harness
+    vi:
+      term: Harness (bộ khung điều khiển agent)
+      definition: Mọi thứ bao quanh mô hình để biến nó thành một agent làm được việc — chỉ dẫn, ngữ cảnh, công cụ, quyền hạn, trí nhớ và cơ chế kiểm tra.
+    en:
+      term: Harness (agent harness)
+      definition: Everything around the model that turns it into a working agent — instructions, context, tools, permissions, memory and checks.
+    ja:
+      term: ハーネス（エージェントハーネス）
+      definition: モデルを実際に働くエージェントにするための周辺のしくみ全体。指示・コンテキスト・ツール・権限・メモリ・チェックなど。
+
+  - id: context-engineering
+    vi:
+      term: Context engineering
+      definition: Việc quyết định đưa thông tin nào vào cửa sổ ngữ cảnh của mô hình, và vào lúc nào, để nó có đúng những gì cần cho nhiệm vụ.
+    en:
+      term: Context engineering
+      definition: Deciding what information goes into a model's context window, and when, so it has exactly what the task needs.
+    ja:
+      term: コンテキストエンジニアリング
+      definition: どんな情報をいつモデルのコンテキストウィンドウに入れるかを設計し、タスクに必要なものを過不足なく渡す技術。
+
+  - id: subagent
+    vi:
+      term: Subagent (agent phụ)
+      definition: Agent trợ giúp do agent chính khởi tạo để xử lý một phần việc cụ thể trong ngữ cảnh riêng của nó.
+    en:
+      term: Subagent
+      definition: A helper agent started by a main agent to handle one focused part of a task in its own separate context.
+    ja:
+      term: サブエージェント
+      definition: メインのエージェントが呼び出す補助のエージェント。タスクの一部を、独立したコンテキストで担当します。
+
+  - id: hook
+    vi:
+      term: Hook
+      definition: Đoạn script tự động chạy tại một thời điểm định sẵn khi agent làm việc — ví dụ trước khi chạy một lệnh — để kiểm tra hoặc chặn lại.
+    en:
+      term: Hook
+      definition: A script that runs automatically at a set moment in an agent's work — for example before a command runs — to check or block it.
+    ja:
+      term: フック
+      definition: エージェントの作業の決まったタイミング（例：コマンドを実行する前）に自動で動くスクリプト。確認したり止めたりできます。
+
+  - id: mcp
+    vi:
+      term: MCP (Model Context Protocol)
+      definition: Chuẩn mở để kết nối ứng dụng AI với công cụ và nguồn dữ liệu bên ngoài qua một giao diện chung.
+    en:
+      term: MCP (Model Context Protocol)
+      definition: An open standard for connecting AI applications to external tools and data sources through a common interface.
+    ja:
+      term: MCP（モデル・コンテキスト・プロトコル）
+      definition: AIアプリを外部のツールやデータソースに共通の方法で接続するための、オープンな標準規格。
+
+  - id: ci
+    vi:
+      term: CI (tích hợp liên tục)
+      definition: Dịch vụ tự động build và chạy test cho dự án mỗi khi có người đẩy (push) thay đổi lên.
+    en:
+      term: CI (continuous integration)
+      definition: A service that automatically builds and tests a project every time someone pushes a change.
+    ja:
+      term: CI（継続的インテグレーション）
+      reading: けいぞくてきインテグレーション
+      definition: 変更が送られるたびに、プロジェクトのビルドとテストを自動で実行するしくみ。
+
+  - id: eval
+    vi:
+      term: Eval (bài đánh giá)
+      definition: Bộ tình huống kiểm tra và quy tắc chấm điểm có thể chạy lặp lại để đo xem hệ thống AI làm tốt đến đâu.
+    en:
+      term: Eval (evaluation)
+      definition: A repeatable set of test cases and scoring rules used to measure how well an AI system performs.
+    ja:
+      term: 評価（Eval）
+      reading: ひょうか
+      definition: AIシステムの性能を測るための、繰り返し実行できるテストケースと採点ルールの集まり。

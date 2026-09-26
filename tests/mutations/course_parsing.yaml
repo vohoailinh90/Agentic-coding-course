@@ -1,0 +1,18 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/lessonfile.py
+note: Lesson-file parsing. A heading inside a code block must stay body text, or a shell comment in a lesson
+  would start a phantom section.
+mutations:
+- label: headings inside a fenced code block become sections
+  find: "        if fence is not None:\n            keep(line, number)\n"
+  replace: "        if False:\n            keep(line, number)\n"
+  test: tests.test_course_lessonfile.ParseTests.test_headings_inside_a_code_block_are_body_text
+- label: a heading without its marker is silently absorbed
+  find: "                doc.problems.append(\n                    (\"heading_without_marker\""
+  replace: "                (\n                    (\"heading_without_marker\""
+  test: tests.test_course_lessonfile.ParseTests.test_a_heading_without_a_marker_is_reported

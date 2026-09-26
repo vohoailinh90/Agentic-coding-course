@@ -1,0 +1,97 @@
+{
+  "cli": {
+    "description": "Công cụ quản lý kho nội dung (course/) của khóa học Agentic Coding 3 thứ tiếng.",
+    "lang_help": "ngôn ngữ hiển thị thông báo: {choices}",
+    "root_help": "thư mục gốc của repo cần xử lý (mặc định: repo này)",
+    "commands_title": "các lệnh",
+    "validate_help": "kiểm tra toàn bộ kho nội dung (CI cũng chạy lệnh này)",
+    "stats_help": "xem quy mô khóa học và tiến độ viết bài theo từng ngôn ngữ",
+    "outline_help": "in course/OUTLINE.md, hoặc ghi / kiểm tra file này",
+    "outline_write_help": "ghi file course/OUTLINE.md",
+    "outline_check_help": "thoát với mã 1 nếu course/OUTLINE.md đã cũ",
+    "scaffold_help": "tạo sẵn các file ngôn ngữ của một bài học theo course/sections.yaml",
+    "lesson_help": "id bài học trong course/curriculum.yaml",
+    "fb_help": "soạn bản nháp bài đăng Facebook từ một bài học",
+    "post_lang_help": "ngôn ngữ của bài đăng (mặc định: ngôn ngữ gốc của khóa học)",
+    "out_help": "ghi bài đăng ra file này thay vì in ra màn hình",
+    "fix_errors_first": "Kho nội dung đang có lỗi. Hãy chạy \"python -m src.main validate\", sửa lỗi rồi thử lại."
+  },
+  "levels": {
+    "error": "lỗi",
+    "warning": "cảnh báo"
+  },
+  "types": {
+    "text": "chuỗi văn bản",
+    "mapping": "một ánh xạ (các cặp khóa: giá trị)",
+    "list": "một danh sách",
+    "positive_integer": "một số nguyên lớn hơn 0",
+    "language_list": "danh sách mã ngôn ngữ, ví dụ [vi, en, ja]"
+  },
+  "findings": {
+    "file_missing": "{path}: thiếu file.",
+    "encoding_invalid": "{path}: file không phải văn bản UTF-8 hợp lệ.",
+    "yaml_invalid": "{path}: YAML không hợp lệ — {detail}",
+    "field_missing": "{path}: thiếu trường \"{field}\".",
+    "field_unknown": "{path}: trường \"{field}\" không hợp lệ — gõ nhầm, hay YAML đã tách một giá trị làm hai?",
+    "field_type": "{path}: \"{field}\" phải là {expected}.",
+    "field_empty": "{path}: \"{field}\" đang để trống.",
+    "value_invalid": "{path}: \"{field}\" có giá trị \"{value}\"; chỉ chấp nhận: {allowed}.",
+    "id_invalid": "{path}: id \"{id}\" chỉ được gồm chữ thường không dấu, chữ số và dấu gạch ngang (ví dụ: chatbot-to-agent).",
+    "id_duplicate": "{path}: \"{id}\" bị dùng nhiều hơn một lần.",
+    "term_unknown": "{path}: bài \"{lesson}\" dùng thuật ngữ \"{term}\" nhưng course/glossary.yaml chưa định nghĩa.",
+    "term_unused": "{path}: thuật ngữ \"{term}\" chưa được bài học nào sử dụng.",
+    "lesson_dir_unknown": "{path}: thư mục này không khớp với id bài học nào trong course/curriculum.yaml.",
+    "lesson_file_missing": "{path}: còn thiếu. Bài học đã bắt đầu cần đủ mỗi ngôn ngữ một file (lệnh python -m src.main scaffold <lesson-id> sẽ tạo sẵn).",
+    "lesson_file_unexpected": "{path}: không được đặt ở đây. Thư mục bài học chỉ chứa mỗi ngôn ngữ một file <ngôn-ngữ>.md và, nếu cần, thư mục assets/.",
+    "front_matter_missing": "{path}: file phải bắt đầu bằng khối front matter nằm giữa hai dòng \"---\".",
+    "front_matter_mismatch": "{path}: \"{field}\" đang là \"{actual}\", nhưng theo vị trí của file thì phải là \"{expected}\".",
+    "title_missing": "{path}: thiếu tiêu đề bài học (dòng bắt đầu bằng \"# \").",
+    "title_mismatch": "{path}: tiêu đề \"{actual}\" khác với course/curriculum.yaml: \"{expected}\".",
+    "content_outside_section": "{path}:{line}: có nội dung nằm ngoài mọi phần. Hãy chuyển nó xuống dưới một dấu mốc <!-- section: ... -->.",
+    "section_marker_orphan": "{path}:{line}: ngay sau dấu mốc phần phải là một tiêu đề \"## \".",
+    "heading_without_marker": "{path}:{line}: tiêu đề \"{heading}\" thiếu dấu mốc <!-- section: ... --> ở phía trên.",
+    "section_unknown": "{path}: phần \"{key}\" không có trong danh sách (xem course/sections.yaml).",
+    "section_duplicate": "{path}: phần \"{key}\" xuất hiện nhiều hơn một lần.",
+    "section_order": "{path}: phần \"{key}\" nằm sai thứ tự (thứ tự do course/sections.yaml quy định).",
+    "section_required": "{path}: thiếu phần bắt buộc \"{key}\".",
+    "section_empty": "{path}: phần \"{key}\" đang trống.",
+    "todo_left": "{path}: phần \"{key}\" vẫn còn chỗ đánh dấu TODO.",
+    "sections_differ": "{path}: {lang}.md có các phần [{actual}], nhưng {other}.md có [{expected}].",
+    "outline_stale": "{path}: chưa khớp với course/curriculum.yaml. Hãy chạy: python -m src.main outline --write"
+  },
+  "validate": {
+    "ok": "Kho nội dung hợp lệ. Số file bài học đã kiểm tra: {files}. Cảnh báo: {warnings}.",
+    "failed": "Lỗi: {errors}. Cảnh báo: {warnings}."
+  },
+  "stats": {
+    "heading": "{title} — lộ trình {version}",
+    "structure": "Chương: {modules} · Chủ đề: {units} · Bài: {lessons} · Tổng thời lượng: {minutes} phút",
+    "progress_heading": "Tiến độ viết bài theo ngôn ngữ:",
+    "progress_line": "{language}: xong {done} · chờ duyệt {review} · bản nháp {draft} · mới có khung {todo} · chưa bắt đầu {missing} (hoàn thành {percent}%)"
+  },
+  "outline": {
+    "title": "Lộ trình khóa học",
+    "totals": "{modules} chương · {units} chủ đề · {lessons} bài · {minutes} phút",
+    "version": "Phiên bản lộ trình",
+    "number": "#",
+    "type": "Loại",
+    "minutes": "Phút",
+    "written": "Đã ghi {path}.",
+    "up_to_date": "{path} đã khớp, không cần cập nhật."
+  },
+  "scaffold": {
+    "created": "Đã tạo {path}",
+    "exists": "Bỏ qua {path}: file đã tồn tại, không ghi đè.",
+    "unknown_lesson": "Không tìm thấy id bài học \"{lesson}\". Danh sách id nằm trong course/curriculum.yaml.",
+    "next": "Bước tiếp theo: viết bản {language} trước, rồi mới bản địa hóa sang các ngôn ngữ khác."
+  },
+  "fb": {
+    "lesson_line": "📘 Bài {number}: {title}",
+    "takeaways": "📌 Ghi nhớ:",
+    "terms": "🗣️ Thuật ngữ 3 thứ tiếng:",
+    "not_started": "Bài \"{lesson}\" chưa có file {language}. Hãy chạy: python -m src.main scaffold {lesson}",
+    "not_ready": "{path} đang ở trạng thái \"{status}\". Chỉ bài ở trạng thái review hoặc done mới được dùng để đăng.",
+    "review_warning": "Lưu ý: {path} vẫn đang chờ duyệt — hãy đọc lại một lần trước khi đăng.",
+    "written": "Đã ghi {path}."
+  }
+}

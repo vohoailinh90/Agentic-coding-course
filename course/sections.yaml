@@ -1,0 +1,134 @@
+# The sections a lesson file may contain, in the order they must appear.
+# Schema: docs/data-model.md. Writing guidance: docs/content-guide.md.
+#
+# Each section in a lesson file is introduced by an invisible marker followed by
+# its heading, so every language shares the same machine-readable structure
+# while the heading text itself is free to be localized:
+#
+#     <!-- section: analogy -->
+#     ## Ví dụ đời thường
+#
+# `required_for` lists the lesson types (curriculum.yaml `type`) that must have
+# the section once a file leaves `todo`. Everything else is optional: keep it
+# when it helps the learner, delete it when it does not.
+sections:
+  - key: objective
+    required_for: [concept, demo, hands-on, project]
+    heading:
+      vi: Mục tiêu bài học
+      en: Lesson Objective
+      ja: この授業のゴール
+    hint:
+      vi: "Sau bài này, bạn sẽ… — 2–3 gạch đầu dòng, mỗi dòng là một điều người học làm được."
+      en: "By the end of this lesson, you will be able to… — 2–3 bullets, each something the learner can do."
+      ja: "この授業を終えると… — 2〜3項目。それぞれ学習者が「できるようになること」として書く。"
+
+  - key: hook
+    required_for: [concept, demo, hands-on, project]
+    heading:
+      vi: "Mở đầu: vì sao nên quan tâm?"
+      en: Why It Matters
+      ja: なぜ大事なの？
+    hint:
+      vi: Một câu chuyện, tình huống hay câu hỏi đời thường khiến người học muốn đọc tiếp.
+      en: A story, situation or everyday question that makes the learner want to keep reading.
+      ja: 続きを読みたくなる、身近なエピソード・場面・問いかけ。
+
+  - key: read-first
+    required_for: []
+    heading:
+      vi: Xem và đọc trước
+      en: Watch and Read First
+      ja: まず見る・読む
+    hint:
+      vi: 1–3 video hoặc bài viết đáng tin cậy, ghi rõ ngôn ngữ của nguồn. Không bắt buộc.
+      en: 1–3 trustworthy videos or articles, noting the language of each source. Optional.
+      ja: 信頼できる動画・記事を1〜3本。資料の言語も明記する。任意。
+
+  - key: concept
+    required_for: [concept, demo, hands-on]
+    heading:
+      vi: Nội dung chính
+      en: Core Idea
+      ja: 本題
+    hint:
+      vi: Một ý chính duy nhất, giải thích từ cụ thể đến trừu tượng; dùng ### cho các ý nhỏ.
+      en: One single main idea, explained from concrete to abstract; use ### for sub-points.
+      ja: 伝えるのは一つの主題だけ。具体から抽象の順に説明し、小見出しには ### を使う。
+
+  - key: analogy
+    required_for: [concept]
+    heading:
+      vi: Ví dụ đời thường
+      en: Simple Analogy
+      ja: 身近なたとえ
+    hint:
+      vi: So sánh với một điều quen thuộc trong đời sống — và nói rõ phép so sánh sai ở chỗ nào.
+      en: Compare with something familiar from daily life — and say where the comparison breaks down.
+      ja: 日常のなじみ深いものにたとえる。たとえが当てはまらない点にも触れる。
+
+  - key: example
+    required_for: [concept, demo]
+    heading:
+      vi: Ví dụ thực tế
+      en: Real Example
+      ja: 具体例
+    hint:
+      vi: Một tình huống thật, từng bước, người học có thể hình dung hoặc làm theo.
+      en: A real situation, step by step, that the learner can picture or follow.
+      ja: 学習者が思い描ける、またはまねできる実際の場面を一歩ずつ。
+
+  - key: try-it
+    required_for: [hands-on, project]
+    heading:
+      vi: Thử ngay
+      en: Try It Yourself
+      ja: やってみよう
+    hint:
+      vi: Một bài tập 5–20 phút, có cách tự kiểm tra là đã làm đúng.
+      en: A 5–20 minute exercise, with a way to check it was done correctly.
+      ja: 5〜20分の演習と、正しくできたかを自分で確かめる方法。
+
+  - key: misconceptions
+    required_for: []
+    heading:
+      vi: Hiểu lầm thường gặp
+      en: Common Misconceptions
+      ja: よくある誤解
+    hint:
+      vi: 2–4 hiểu lầm người mới hay gặp, mỗi cái kèm lời giải thích ngắn.
+      en: 2–4 misunderstandings beginners often have, each with a short correction.
+      ja: 初心者によくある誤解を2〜4個。それぞれに短い解説をつける。
+
+  - key: takeaways
+    required_for: [concept, demo, hands-on, project]
+    heading:
+      vi: Ghi nhớ
+      en: Key Takeaways
+      ja: まとめ
+    hint:
+      vi: 3–5 gạch đầu dòng ngắn — cũng là phần được dùng lại trong bài đăng Facebook.
+      en: 3–5 short bullets — also reused in the Facebook post.
+      ja: 短い箇条書きを3〜5個。Facebook投稿にもそのまま使われます。
+
+  - key: quiz
+    required_for: [concept, demo, hands-on]
+    heading:
+      vi: Tự kiểm tra
+      en: Quick Check
+      ja: 確認クイズ
+    hint:
+      vi: 3 câu hỏi trắc nghiệm, mỗi câu 3 lựa chọn; đáp án kèm giải thích nằm trong khối <details>.
+      en: 3 multiple-choice questions with 3 options each; answers with reasons go in a <details> block.
+      ja: 3択の問題を3問。理由つきの答えは <details> ブロックに入れる。
+
+  - key: sources
+    required_for: []
+    heading:
+      vi: Nguồn tham khảo
+      en: Recommended Sources
+      ja: 参考資料
+    hint:
+      vi: Các nguồn đã kiểm chứng, ghi rõ tác giả/tổ chức, ngôn ngữ và thời điểm nếu nội dung dễ lỗi thời.
+      en: Verified sources, naming the author or organization, the language, and the date when content ages fast.
+      ja: 確認済みの資料。著者・組織、言語、内容が古くなりやすい場合は日付も明記する。

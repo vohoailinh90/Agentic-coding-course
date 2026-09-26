@@ -1,0 +1,97 @@
+{
+  "cli": {
+    "description": "Tools for the content store (course/) of the trilingual Agentic Coding course.",
+    "lang_help": "language of the messages: {choices}",
+    "root_help": "repository root to work on (default: this repository)",
+    "commands_title": "commands",
+    "validate_help": "check the whole content store (CI runs this)",
+    "stats_help": "show the size of the course and the writing progress per language",
+    "outline_help": "print course/OUTLINE.md, or write or check it",
+    "outline_write_help": "write course/OUTLINE.md",
+    "outline_check_help": "exit with status 1 when course/OUTLINE.md is out of date",
+    "scaffold_help": "create a lesson's language files from course/sections.yaml",
+    "lesson_help": "lesson id from course/curriculum.yaml",
+    "fb_help": "draft a Facebook post from a lesson",
+    "post_lang_help": "language of the post (default: the course's source language)",
+    "out_help": "write the post to this file instead of printing it",
+    "fix_errors_first": "The content store has errors. Run \"python -m src.main validate\", fix them, then try again."
+  },
+  "levels": {
+    "error": "error",
+    "warning": "warning"
+  },
+  "types": {
+    "text": "text",
+    "mapping": "a mapping (key: value pairs)",
+    "list": "a list",
+    "positive_integer": "a whole number greater than 0",
+    "language_list": "a list of language codes such as [vi, en, ja]"
+  },
+  "findings": {
+    "file_missing": "{path}: the file is missing.",
+    "encoding_invalid": "{path}: the file is not valid UTF-8 text.",
+    "yaml_invalid": "{path}: invalid YAML — {detail}",
+    "field_missing": "{path}: missing field \"{field}\".",
+    "field_unknown": "{path}: unknown field \"{field}\" — a typo, or a value that YAML split in two?",
+    "field_type": "{path}: \"{field}\" must be {expected}.",
+    "field_empty": "{path}: \"{field}\" is empty.",
+    "value_invalid": "{path}: \"{field}\" is \"{value}\"; allowed values: {allowed}.",
+    "id_invalid": "{path}: the id \"{id}\" may only use lowercase letters, digits and hyphens (for example: chatbot-to-agent).",
+    "id_duplicate": "{path}: \"{id}\" is used more than once.",
+    "term_unknown": "{path}: lesson \"{lesson}\" uses the glossary term \"{term}\", which course/glossary.yaml does not define.",
+    "term_unused": "{path}: the glossary term \"{term}\" is not used by any lesson.",
+    "lesson_dir_unknown": "{path}: this folder matches no lesson id in course/curriculum.yaml.",
+    "lesson_file_missing": "{path}: missing. A started lesson needs one file per language (python -m src.main scaffold <lesson-id> creates them).",
+    "lesson_file_unexpected": "{path}: does not belong here. A lesson folder holds one <language>.md per language and, optionally, an assets/ folder.",
+    "front_matter_missing": "{path}: the file must start with a front matter block between two \"---\" lines.",
+    "front_matter_mismatch": "{path}: \"{field}\" is \"{actual}\", but the file's location says \"{expected}\".",
+    "title_missing": "{path}: the lesson title (a line starting with \"# \") is missing.",
+    "title_mismatch": "{path}: the title \"{actual}\" differs from course/curriculum.yaml: \"{expected}\".",
+    "content_outside_section": "{path}:{line}: text outside any section. Move it under a <!-- section: ... --> marker.",
+    "section_marker_orphan": "{path}:{line}: a section marker must be followed by a \"## \" heading.",
+    "heading_without_marker": "{path}:{line}: the heading \"{heading}\" has no <!-- section: ... --> marker above it.",
+    "section_unknown": "{path}: unknown section \"{key}\" (the list is in course/sections.yaml).",
+    "section_duplicate": "{path}: the section \"{key}\" appears more than once.",
+    "section_order": "{path}: the section \"{key}\" is out of order (course/sections.yaml sets the order).",
+    "section_required": "{path}: the required section \"{key}\" is missing.",
+    "section_empty": "{path}: the section \"{key}\" is empty.",
+    "todo_left": "{path}: the section \"{key}\" still contains a TODO placeholder.",
+    "sections_differ": "{path}: {lang}.md has the sections [{actual}], but {other}.md has [{expected}].",
+    "outline_stale": "{path}: out of date with course/curriculum.yaml. Run: python -m src.main outline --write"
+  },
+  "validate": {
+    "ok": "Content store OK. Lesson files checked: {files}. Warnings: {warnings}.",
+    "failed": "Errors: {errors}. Warnings: {warnings}."
+  },
+  "stats": {
+    "heading": "{title} — roadmap {version}",
+    "structure": "Modules: {modules} · Units: {units} · Lessons: {lessons} · Total time: {minutes} min",
+    "progress_heading": "Writing progress by language:",
+    "progress_line": "{language}: done {done} · in review {review} · draft {draft} · skeleton {todo} · not started {missing} ({percent}% done)"
+  },
+  "outline": {
+    "title": "Course Outline",
+    "totals": "Modules: {modules} · Units: {units} · Lessons: {lessons} · {minutes} min",
+    "version": "Roadmap version",
+    "number": "#",
+    "type": "Type",
+    "minutes": "Min",
+    "written": "Wrote {path}.",
+    "up_to_date": "{path} is up to date."
+  },
+  "scaffold": {
+    "created": "Created {path}",
+    "exists": "Skipped {path}: it already exists, and nothing is overwritten.",
+    "unknown_lesson": "Unknown lesson id \"{lesson}\". The lesson ids are listed in course/curriculum.yaml.",
+    "next": "Next: write the {language} version first, then localize it into the other languages."
+  },
+  "fb": {
+    "lesson_line": "📘 Lesson {number}: {title}",
+    "takeaways": "📌 Key takeaways:",
+    "terms": "🗣️ Terms in 3 languages:",
+    "not_started": "Lesson \"{lesson}\" has no {language} file yet. Run: python -m src.main scaffold {lesson}",
+    "not_ready": "{path} has the status \"{status}\". Only lessons in review or done can become a post.",
+    "review_warning": "Note: {path} is still in review — read it once more before posting.",
+    "written": "Wrote {path}."
+  }
+}

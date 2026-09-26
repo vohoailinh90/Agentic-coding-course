@@ -1,0 +1,66 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/validate.py
+note: The content-store validator that CI runs on every push. Each entry removes one check the course relies
+  on and names the test that must notice.
+mutations:
+- label: a lesson missing one language file is accepted
+  find: "        if not path.is_file():\n            report.error(\"lesson_file_missing\""
+  replace: "        if False:\n            report.error(\"lesson_file_missing\""
+  test: tests.test_course_validate.ValidateTests.test_a_missing_language_file_is_an_error
+- label: translations with different sections are accepted
+  find: "        if language != reference_language and doc.keys != reference.keys:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_sections_that_differ_between_languages_are_an_error
+- label: a required section may be left out
+  find: "            if lesson.type in section.required_for and section.key not in seen:\n"
+  replace: "            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_required_section_missing_from_a_draft_is_an_error
+- label: an empty section passes review
+  find: "            if block.is_empty:\n"
+  replace: "            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_an_empty_section_in_review_is_an_error
+- label: a TODO placeholder passes review
+  find: "            if block.has_todo:\n"
+  replace: "            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_todo_placeholder_left_in_review_is_an_error
+- label: a done lesson may have no social hook
+  find: "        if hook == \"\":\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_done_file_needs_the_social_hook_and_question
+- label: a title may drift from curriculum.yaml
+  find: "    elif doc.title != lesson.title[language]:\n"
+  replace: "    elif False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_title_that_differs_from_the_curriculum_is_an_error
+- label: sections may appear in any order
+  find: "        if position < last_position:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_section_out_of_order_is_an_error
+- label: front matter may disagree with the file's location
+  find: "        if key in front and front[key] != expected:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_front_matter_that_disagrees_with_the_path_is_an_error
+- label: an unknown glossary term is accepted
+  find: "                    if not isinstance(term, str) or term not in glossary:\n"
+  replace: "                    if not isinstance(term, str):\n"
+  test: tests.test_course_validate.ValidateTests.test_an_unknown_glossary_term_is_an_error
+- label: a key that YAML split out of a flow-mapping value is accepted
+  find: "        for extra in value:\n            if extra not in languages:\n"
+  replace: "        for extra in ():\n            if extra not in languages:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_value_split_by_a_flow_mapping_comma_is_reported
+- label: a duplicate id is accepted
+  find: "        if value in seen:\n            self.error(\"id_duplicate\""
+  replace: "        if False:\n            self.error(\"id_duplicate\""
+  test: tests.test_course_validate.ValidateTests.test_a_duplicate_id_is_an_error
+- label: a folder that matches no lesson is accepted
+  find: "        elif entry.name not in known:\n"
+  replace: "        elif False:\n"
+  test: tests.test_course_validate.ValidateTests.test_an_unknown_lesson_folder_is_an_error
+- label: a stale OUTLINE.md is accepted
+  find: "    if actual != expected:\n        report.error(\"outline_stale\""
+  replace: "    if False:\n        report.error(\"outline_stale\""
+  test: tests.test_course_validate.ValidateTests.test_a_stale_outline_is_an_error

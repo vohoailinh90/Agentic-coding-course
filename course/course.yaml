@@ -1,0 +1,39 @@
+# Course metadata: the root of the data store. Schema: docs/data-model.md.
+#
+# Every user-facing field carries all three languages. `vi` is the primary
+# audience and the source language (docs/decisions/004-one-file-per-language.md);
+# `en` and `ja` are localized from it, never left empty.
+id: agentic-coding-course
+version: 0.1.0-draft
+languages: [vi, en, ja]
+source_language: vi
+
+title:
+  vi: Agentic Coding cho người mới bắt đầu
+  en: Agentic Coding for Absolute Beginners
+  ja: ゼロから学ぶエージェント型コーディング
+
+tagline:
+  vi: Từ "phần mềm là gì?" đến tự giao việc cho AI agent làm phần mềm — học bằng 3 thứ tiếng.
+  en: From "what is software?" to directing AI agents that build software — in three languages.
+  ja: 「ソフトウェアとは？」から、AIエージェントにソフトウェアづくりを任せられるようになるまで——3か国語で学ぶ。
+
+audience:
+  vi: >-
+    Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình —
+    muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Đặc biệt phù hợp với
+    người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
+  en: >-
+    Working adults, students and engineers from outside software who know nothing about AI or
+    programming yet, and want to use AI agents to build their own tools and automate their work.
+    Especially suited to Vietnamese learners who study or work in or with Japan.
+  ja: >-
+    AIやプログラミングをまだ知らない社会人・学生・ソフトウェア以外の分野のエンジニアで、
+    AIエージェントを使って自分のツールを作ったり仕事を自動化したりしたい人。
+    日本で学ぶ・働くベトナムの方、日本企業と仕事をする方に特におすすめです。
+
+# Hashtags appended to every social post generated from this course, per language.
+hashtags:
+  vi: ["#AgenticCoding", "#AIchonguoimoi", "#HocAI", "#AIagent"]
+  en: ["#AgenticCoding", "#AIforBeginners", "#LearnAI", "#AIagents"]
+  ja: ["#エージェント型コーディング", "#生成AI入門", "#AIエージェント", "#AgenticCoding"]

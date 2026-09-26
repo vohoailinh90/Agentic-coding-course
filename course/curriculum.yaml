@@ -1,0 +1,642 @@
+# Course tree: modules -> units -> lessons. Schema: docs/data-model.md.
+#
+# ROADMAP v0 — Claude's first draft, written to be challenged. The ordering,
+# scope and granularity are open questions in brainstorm/BRIEF.md; expect
+# lessons to move, merge or disappear after the Codex brainstorm.
+#
+# Rules the validator enforces (python -m src.main validate):
+#   - ids are kebab-case slugs, unique across the whole tree, and never reused.
+#     Order comes from position in this file, never from the id, so moving a
+#     lesson keeps its id, its files and every post that links to it.
+#   - every title/goal carries vi, en and ja.
+#   - type is one of: concept | demo | hands-on | project; minutes is a positive integer.
+#   - terms are ids from course/glossary.yaml.
+version: 0.1.0-draft
+
+modules:
+  - id: kickoff
+    title:
+      vi: "Khởi động: Chào mừng đến thế giới AI agent"
+      en: "Kick-off: Welcome to the World of AI Agents"
+      ja: "キックオフ：AIエージェントの世界へようこそ"
+    goal:
+      vi: Hiểu AI agent là gì, tận mắt thấy một agent làm ra phần mềm, và biết mình sẽ học gì, học thế nào.
+      en: Understand what an AI agent is, see one build software, and know what you will learn and how.
+      ja: AIエージェントとは何かを理解し、実際にソフトウェアを作る様子を見て、この講座で何をどう学ぶかを知る。
+    units:
+      - id: big-picture
+        title:
+          vi: Bức tranh toàn cảnh
+          en: The Big Picture
+          ja: 全体像をつかむ
+        lessons:
+          - id: chatbot-to-agent
+            title:
+              vi: "Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc"
+              en: "From Chatbot to AI Agent: AI That Does the Work, Not Just Answers"
+              ja: "チャットボットからAIエージェントへ：答えるだけでなく、仕事をするAI"
+            type: concept
+            minutes: 10
+            terms: [chatbot, llm, ai-agent, tool, agent-loop, agentic-coding]
+          - id: watch-an-agent-build
+            title:
+              vi: Xem một AI agent làm ra phần mềm từ A đến Z
+              en: Watch an AI Agent Build Software from Start to Finish
+              ja: AIエージェントがソフトウェアを作る一部始終を見てみよう
+            type: demo
+            minutes: 12
+            terms: [agent-loop, code]
+          - id: how-to-learn-this-course
+            title:
+              vi: "Bản đồ khóa học: học thế nào để không bỏ cuộc"
+              en: "Course Map: How to Learn Without Giving Up"
+              ja: "講座マップ：挫折しない学び方"
+            type: concept
+            minutes: 8
+
+  - id: software-foundations
+    title:
+      vi: "Nền tảng phần mềm — vừa đủ để làm chủ agent"
+      en: "Software Foundations — Just Enough to Lead an Agent"
+      ja: "ソフトウェアの基礎 — エージェントを使いこなすのに必要な分だけ"
+    goal:
+      vi: "Đọc hiểu được những gì agent làm trên máy của bạn: file, lệnh, code, lỗi, Git và test."
+      en: "Follow what an agent does on your computer: files, commands, code, errors, Git and tests."
+      ja: "エージェントがあなたのパソコンで何をしているか（ファイル・コマンド・コード・エラー・Git・テスト）を読み取れるようになる。"
+    units:
+      - id: computer-basics
+        title:
+          vi: Máy tính và phần mềm hoạt động thế nào
+          en: How Computers and Software Work
+          ja: コンピュータとソフトウェアのしくみ
+        lessons:
+          - id: what-is-software
+            title:
+              vi: "Phần mềm là gì? Chương trình giống một công thức nấu ăn"
+              en: "What Is Software? A Program Is Like a Recipe"
+              ja: "ソフトウェアとは？プログラムはレシピのようなもの"
+            type: concept
+            minutes: 8
+            terms: [software, program, code]
+          - id: files-folders-paths
+            title:
+              vi: "File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính"
+              en: "Files, Folders and Paths: The Map Inside Your Computer"
+              ja: "ファイル・フォルダ・パス：パソコンの中の地図"
+            type: concept
+            minutes: 10
+            terms: [file-path]
+          - id: command-line-basics
+            title:
+              vi: "Terminal không đáng sợ: 10 lệnh đầu tiên"
+              en: "The Terminal Is Not Scary: Your First 10 Commands"
+              ja: "ターミナルは怖くない：最初の10コマンド"
+            type: hands-on
+            minutes: 15
+            terms: [terminal]
+      - id: reading-code
+        title:
+          vi: Đọc hiểu code (không cần tự viết)
+          en: Reading Code (No Writing Required)
+          ja: コードを読む（書けなくても大丈夫）
+        lessons:
+          - id: programming-building-blocks
+            title:
+              vi: "Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình"
+              en: "Variables, Functions, Conditions, Loops: The Four Building Blocks"
+              ja: "変数・関数・条件分岐・ループ：プログラムの4つの部品"
+            type: concept
+            minutes: 12
+            terms: [program, code]
+          - id: data-formats
+            title:
+              vi: "Dữ liệu trông như thế nào: JSON, CSV, YAML"
+              en: "What Data Looks Like: JSON, CSV and YAML"
+              ja: "データの形：JSON・CSV・YAML"
+            type: concept
+            minutes: 10
+            terms: [json]
+          - id: errors-and-debugging
+            title:
+              vi: Đọc thông báo lỗi và gỡ lỗi như một thám tử
+              en: Reading Error Messages and Debugging Like a Detective
+              ja: エラーメッセージを読み、探偵のようにデバッグする
+            type: hands-on
+            minutes: 12
+            terms: [bug, debugging]
+      - id: how-software-is-built
+        title:
+          vi: Người ta làm phần mềm như thế nào
+          en: How Software Is Built
+          ja: ソフトウェアはどう作られるか
+        lessons:
+          - id: project-anatomy
+            title:
+              vi: "Giải phẫu một dự án: frontend, backend, database, API"
+              en: "Anatomy of a Project: Frontend, Backend, Database, API"
+              ja: "プロジェクトの解剖：フロントエンド・バックエンド・データベース・API"
+            type: concept
+            minutes: 12
+            terms: [api]
+          - id: git-version-control
+            title:
+              vi: "Git: nút Undo thần kỳ cho cả dự án"
+              en: "Git: A Magic Undo Button for Your Whole Project"
+              ja: "Git：プロジェクト全体の「元に戻す」ボタン"
+            type: hands-on
+            minutes: 15
+            terms: [git, commit, diff]
+          - id: testing-basics
+            title:
+              vi: "Kiểm thử: làm sao biết chương trình chạy đúng?"
+              en: "Testing: How Do You Know the Program Works?"
+              ja: "テスト：プログラムが正しく動くとどうしてわかる？"
+            type: concept
+            minutes: 10
+            terms: [test]
+          - id: security-basics
+            title:
+              vi: "An toàn cơ bản: API key, mật khẩu và dữ liệu cá nhân"
+              en: "Safety Basics: API Keys, Passwords and Personal Data"
+              ja: "安全の基本：APIキー・パスワード・個人情報"
+            type: concept
+            minutes: 10
+            terms: [api-key]
+
+  - id: ai-foundations
+    title:
+      vi: Nền tảng AI và Machine Learning
+      en: AI and Machine Learning Foundations
+      ja: AIと機械学習の基礎
+    goal:
+      vi: Giải thích bằng lời của mình AI, machine learning, deep learning và AI tạo sinh khác nhau thế nào — và vì sao AI có lúc sai.
+      en: Explain in your own words how AI, machine learning, deep learning and generative AI differ — and why AI is sometimes wrong.
+      ja: AI・機械学習・深層学習・生成AIの違いと、AIがときどき間違える理由を自分の言葉で説明できる。
+    units:
+      - id: ai-family-tree
+        title:
+          vi: Gia phả nhà AI
+          en: The AI Family Tree
+          ja: AIの家系図
+        lessons:
+          - id: ai-ml-dl
+            title:
+              vi: "AI, Machine Learning, Deep Learning: ba vòng tròn lồng nhau"
+              en: "AI, Machine Learning, Deep Learning: Three Nested Circles"
+              ja: "AI・機械学習・深層学習：入れ子になった3つの円"
+            type: concept
+            minutes: 10
+            terms: [machine-learning, deep-learning]
+          - id: how-machines-learn
+            title:
+              vi: "Máy \"học\" như thế nào? Dữ liệu, huấn luyện và mô hình"
+              en: "How Do Machines \"Learn\"? Data, Training and Models"
+              ja: "機械はどうやって「学ぶ」？データ・学習・モデル"
+            type: concept
+            minutes: 12
+            terms: [model, training]
+          - id: predictive-vs-generative
+            title:
+              vi: AI dự đoán và AI tạo sinh
+              en: Predictive AI vs Generative AI
+              ja: 予測AIと生成AI
+            type: concept
+            minutes: 10
+            terms: [generative-ai]
+          - id: foundation-models
+            title:
+              vi: "Mô hình nền tảng: một bộ não, nghìn công việc"
+              en: "Foundation Models: One Brain, a Thousand Jobs"
+              ja: "基盤モデル：ひとつの頭脳で千の仕事"
+            type: concept
+            minutes: 10
+            terms: [foundation-model, llm]
+      - id: teaching-ai-your-task
+        title:
+          vi: Làm AI giỏi hơn trong việc của bạn
+          en: Making AI Better at Your Task
+          ja: AIをあなたの仕事に強くする
+        lessons:
+          - id: prompting-basics
+            title:
+              vi: "Prompt căn bản: nói sao cho AI hiểu"
+              en: "Prompting Basics: Talking So AI Understands"
+              ja: "プロンプトの基本：AIに伝わる話し方"
+            type: hands-on
+            minutes: 12
+            terms: [prompt]
+          - id: rag-intro
+            title:
+              vi: "RAG: cho AI mở tài liệu ra tra cứu"
+              en: "RAG: Letting AI Look Things Up"
+              ja: "RAG：AIに資料を調べさせる"
+            type: concept
+            minutes: 10
+            terms: [rag]
+          - id: fine-tuning-intro
+            title:
+              vi: "Fine-tuning: khi nào cần \"đào tạo thêm\" cho AI?"
+              en: "Fine-Tuning: When Does AI Need Extra Training?"
+              ja: "ファインチューニング：AIの追加学習が必要なのはいつ？"
+            type: concept
+            minutes: 10
+            terms: [fine-tuning, training]
+          - id: prompt-rag-finetune-compare
+            title:
+              vi: "Prompt, RAG hay fine-tuning: chọn cách nào?"
+              en: "Prompting, RAG or Fine-Tuning: Which One When?"
+              ja: "プロンプト・RAG・ファインチューニング：どれを選ぶ？"
+            type: concept
+            minutes: 10
+            terms: [prompt, rag, fine-tuning]
+
+  - id: agentic-coding
+    title:
+      vi: "Agentic Coding: làm phần mềm cùng AI agent"
+      en: "Agentic Coding: Building Software with AI Agents"
+      ja: "エージェント型コーディング：AIエージェントとソフトウェアを作る"
+    goal:
+      vi: Tự giao việc cho một coding agent, rồi theo dõi, review và kiểm chứng kết quả như một trưởng nhóm.
+      en: Assign work to a coding agent, then follow, review and verify its results like a team lead.
+      ja: コーディングエージェントに仕事を任せ、チームリーダーのように進み具合を追い、レビューし、結果を検証できる。
+    units:
+      - id: what-is-agentic-coding
+        title:
+          vi: Agentic coding là gì?
+          en: What Is Agentic Coding?
+          ja: エージェント型コーディングとは？
+        lessons:
+          - id: traditional-vs-agentic
+            title:
+              vi: Lập trình truyền thống và agentic coding
+              en: Traditional Coding vs Agentic Coding
+              ja: 従来のコーディングとエージェント型コーディング
+            type: concept
+            minutes: 10
+            terms: [agentic-coding]
+          - id: vibe-vs-agentic
+            title:
+              vi: "Vibe coding và agentic coding: khác nhau ở đâu?"
+              en: "Vibe Coding vs Agentic Coding: What Is the Difference?"
+              ja: バイブコーディングとエージェント型コーディングの違い
+            type: concept
+            minutes: 10
+            terms: [vibe-coding, agentic-coding]
+          - id: the-agent-loop
+            title:
+              vi: "Bên trong agent: vòng lặp Suy nghĩ → Hành động → Quan sát"
+              en: "Inside an Agent: The Think → Act → Observe Loop"
+              ja: "エージェントの中身：考える→行動する→観察するのループ"
+            type: concept
+            minutes: 10
+            terms: [agent-loop, tool]
+      - id: mindset-and-workflow
+        title:
+          vi: Tư duy và quy trình làm việc
+          en: Mindset and Workflow
+          ja: マインドセットとワークフロー
+        lessons:
+          - id: lead-not-typist
+            title:
+              vi: "Tư duy mới: bạn là trưởng nhóm, không phải người gõ code"
+              en: "New Mindset: You Are the Lead, Not the Typist"
+              ja: "新しい考え方：あなたはタイピストではなくリーダー"
+            type: concept
+            minutes: 8
+          - id: explore-plan-build-verify
+            title:
+              vi: "Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng"
+              en: "The Four-Step Workflow: Explore → Plan → Build → Verify"
+              ja: "4ステップのワークフロー：調べる→計画する→作る→検証する"
+            type: concept
+            minutes: 12
+          - id: writing-good-specs
+            title:
+              vi: "Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành"
+              en: "Writing Good Specs: The Task and Its Definition of Done"
+              ja: "良い指示書の書き方：タスクと完了条件"
+            type: hands-on
+            minutes: 12
+            terms: [spec, acceptance-criteria]
+          - id: workflow-frameworks
+            title:
+              vi: "Các khung quy trình phổ biến: plan mode, TDD và review"
+              en: "Popular Workflow Frameworks: Plan Mode, TDD and Review"
+              ja: "よく使われるワークフロー：プランモード・TDD・レビュー"
+            type: concept
+            minutes: 12
+            terms: [test]
+      - id: tools-lab
+        title:
+          vi: Phòng thực hành công cụ
+          en: Tools Lab
+          ja: ツール実習室
+        lessons:
+          - id: tool-landscape
+            title:
+              vi: "Bản đồ công cụ: Claude Code, Codex, Cursor, Copilot…"
+              en: "The Tool Landscape: Claude Code, Codex, Cursor, Copilot…"
+              ja: "ツールの全体地図：Claude Code・Codex・Cursor・Copilot…"
+            type: concept
+            minutes: 10
+          - id: first-agent-session
+            title:
+              vi: "Phiên làm việc đầu tiên: nhờ agent làm một trang web nhỏ"
+              en: "Your First Session: Ask an Agent to Build a Small Web Page"
+              ja: "初めてのセッション：エージェントに小さなWebページを作ってもらう"
+            type: hands-on
+            minutes: 20
+            terms: [ai-agent]
+          - id: reviewing-agent-changes
+            title:
+              vi: Đọc và review thay đổi của agent (diff)
+              en: Reading and Reviewing an Agent's Changes (Diffs)
+              ja: エージェントの変更（差分）を読んでレビューする
+            type: hands-on
+            minutes: 15
+            terms: [diff, commit]
+
+  - id: llm-deep-dive
+    title:
+      vi: Hiểu sâu về LLM
+      en: LLM and Model Foundations
+      ja: LLMとモデルを深く理解する
+    goal:
+      vi: Hiểu LLM vận hành thế nào — token, ngữ cảnh, ảo giác, công cụ và chi phí — để giao việc cho agent khôn ngoan hơn.
+      en: Understand how LLMs work — tokens, context, hallucination, tools and cost — so you can direct agents more wisely.
+      ja: トークン・コンテキスト・ハルシネーション・ツール・コストなどLLMのしくみを理解し、エージェントをより賢く使いこなす。
+    units:
+      - id: inside-an-llm
+        title:
+          vi: Bên trong một LLM
+          en: Inside an LLM
+          ja: LLMの中身
+        lessons:
+          - id: tokens
+            title:
+              vi: "Token: AI đọc chữ theo từng mảnh"
+              en: "Tokens: How AI Reads Text in Pieces"
+              ja: "トークン：AIは文章を小さな断片で読む"
+            type: concept
+            minutes: 10
+            terms: [token]
+          - id: next-token-prediction
+            title:
+              vi: "Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM"
+              en: "Next-Token Prediction: The Simple Secret Behind LLMs"
+              ja: "次のトークンの予測：LLMのシンプルな秘密"
+            type: concept
+            minutes: 10
+            terms: [llm, token]
+          - id: context-window
+            title:
+              vi: "Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI"
+              en: "The Context Window: AI's Short-Term Memory"
+              ja: "コンテキストウィンドウ：AIの短期記憶"
+            type: concept
+            minutes: 10
+            terms: [context-window]
+          - id: hallucination
+            title:
+              vi: "Ảo giác AI: vì sao AI tự tin nói sai"
+              en: "Hallucination: Why AI Is Confidently Wrong"
+              ja: "ハルシネーション：AIが自信満々に間違える理由"
+            type: concept
+            minutes: 10
+            terms: [hallucination]
+      - id: working-with-models
+        title:
+          vi: Làm việc với các mô hình
+          en: Working with Models
+          ja: モデルとうまく付き合う
+        lessons:
+          - id: reasoning-models
+            title:
+              vi: "Mô hình biết \"suy nghĩ\": reasoning là gì?"
+              en: "Models That \"Think\": What Is Reasoning?"
+              ja: "「考える」モデル：推論（リーズニング）とは？"
+            type: concept
+            minutes: 10
+            terms: [llm]
+          - id: tool-calling
+            title:
+              vi: "Gọi công cụ: cách LLM \"bấm nút\" ngoài đời thật"
+              en: "Tool Calling: How an LLM Presses Real Buttons"
+              ja: "ツール呼び出し：LLMが現実のボタンを押すしくみ"
+            type: concept
+            minutes: 10
+            terms: [function-calling, tool]
+          - id: choosing-models
+            title:
+              vi: "Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt"
+              en: "Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly"
+              ja: "モデルの選び方：大きさ・速さ・コスト"
+            type: concept
+            minutes: 10
+            terms: [token, model]
+
+  - id: harness-engineering
+    title:
+      vi: "Harness Engineering: bộ yên cương cho AI agent"
+      en: "Harness Engineering: Reins for Your AI Agent"
+      ja: "ハーネスエンジニアリング：AIエージェントの手綱"
+    goal:
+      vi: Thiết kế môi trường làm việc cho agent — ngữ cảnh, kiểm soát, công cụ và kiểm chứng — để agent làm đúng và an toàn.
+      en: Design an agent's working environment — context, control, tools and verification — so it works correctly and safely.
+      ja: コンテキスト・制御・ツール・検証を設計し、エージェントが正しく安全に働ける環境を作れる。
+    units:
+      - id: harness-anatomy
+        title:
+          vi: Giải phẫu một agent harness
+          en: The Anatomy of an Agent Harness
+          ja: エージェントハーネスの解剖
+        lessons:
+          - id: model-plus-harness
+            title:
+              vi: "Model + Harness = Agent: con ngựa và bộ yên cương"
+              en: "Model + Harness = Agent: The Horse and the Reins"
+              ja: "モデル＋ハーネス＝エージェント：馬と手綱"
+            type: concept
+            minutes: 10
+            terms: [harness, model]
+          - id: context-and-control
+            title:
+              vi: Ngữ cảnh và kiểm soát
+              en: Context and Control
+              ja: コンテキストと制御
+            type: concept
+            minutes: 10
+            terms: [context-window, harness]
+          - id: action-and-persist
+            title:
+              vi: Hành động và lưu giữ
+              en: Action and Persistence
+              ja: 行動と永続化
+            type: concept
+            minutes: 10
+            terms: [tool]
+          - id: observe-and-verify
+            title:
+              vi: Quan sát và kiểm chứng
+              en: Observe and Verify
+              ja: 観察と検証
+            type: concept
+            minutes: 10
+            terms: [test]
+      - id: context-deep-dive
+        title:
+          vi: 'Đào sâu: Ngữ cảnh'
+          en: 'Deep Dive: Context'
+          ja: 深掘り：コンテキスト
+        lessons:
+          - id: prompt-engineering-for-agents
+            title:
+              vi: "Prompt engineering cho agent: system prompt và chỉ dẫn"
+              en: "Prompt Engineering for Agents: System Prompts and Instructions"
+              ja: "エージェントのためのプロンプトエンジニアリング：システムプロンプトと指示"
+            type: concept
+            minutes: 12
+            terms: [prompt]
+          - id: context-engineering
+            title:
+              vi: "Context engineering: đưa đúng thông tin, đúng lúc"
+              en: "Context Engineering: The Right Information at the Right Time"
+              ja: "コンテキストエンジニアリング：必要な情報を必要なときに"
+            type: concept
+            minutes: 12
+            terms: [context-engineering, context-window]
+          - id: memory-and-skills
+            title:
+              vi: "Trí nhớ và kỹ năng: CLAUDE.md, AGENTS.md và skills"
+              en: "Memory and Skills: CLAUDE.md, AGENTS.md and Skills"
+              ja: "メモリとスキル：CLAUDE.md・AGENTS.md・スキル"
+            type: hands-on
+            minutes: 15
+          - id: rag-for-agents
+            title:
+              vi: "RAG cho agent: tìm trong kho tài liệu lớn"
+              en: "RAG for Agents: Searching Large Knowledge Bases"
+              ja: "エージェントのためのRAG：大量の資料から探す"
+            type: concept
+            minutes: 10
+            terms: [rag]
+      - id: control-deep-dive
+        title:
+          vi: 'Đào sâu: Kiểm soát'
+          en: 'Deep Dive: Control'
+          ja: 深掘り：制御
+        lessons:
+          - id: agents-and-workflows
+            title:
+              vi: "Agent và workflow: khi nào cần nhiều agent?"
+              en: "Agents and Workflows: When Do You Need More Than One Agent?"
+              ja: "エージェントとワークフロー：複数のエージェントが必要なのはいつ？"
+            type: concept
+            minutes: 12
+            terms: [subagent]
+          - id: hooks-and-permissions
+            title:
+              vi: "Hooks và phân quyền: hàng rào an toàn tự động"
+              en: "Hooks and Permissions: Automatic Guardrails"
+              ja: "フックと権限：自動のガードレール"
+            type: concept
+            minutes: 12
+            terms: [hook]
+      - id: action-deep-dive
+        title:
+          vi: 'Đào sâu: Hành động'
+          en: 'Deep Dive: Action'
+          ja: 深掘り：行動
+        lessons:
+          - id: mcp
+            title:
+              vi: "MCP: cổng USB-C cho AI"
+              en: "MCP: A USB-C Port for AI"
+              ja: "MCP：AIのためのUSB-Cポート"
+            type: concept
+            minutes: 12
+            terms: [mcp]
+          - id: cli-for-agents
+            title:
+              vi: "CLI: agent làm việc qua dòng lệnh"
+              en: "CLI: How Agents Work Through the Command Line"
+              ja: "CLI：コマンドラインで働くエージェント"
+            type: concept
+            minutes: 10
+            terms: [terminal]
+          - id: api-for-agents
+            title:
+              vi: "API: agent trò chuyện với các dịch vụ khác"
+              en: "APIs: How Agents Talk to Other Services"
+              ja: "API：エージェントがほかのサービスと会話するしくみ"
+            type: concept
+            minutes: 10
+            terms: [api, api-key]
+      - id: verify-deep-dive
+        title:
+          vi: 'Đào sâu: Kiểm chứng'
+          en: 'Deep Dive: Verification'
+          ja: 深掘り：検証
+        lessons:
+          - id: tests-and-ci-for-agents
+            title:
+              vi: "Test và CI: để máy kiểm tra máy"
+              en: "Tests and CI: Let Machines Check Machines"
+              ja: "テストとCI：機械に機械をチェックさせる"
+            type: concept
+            minutes: 12
+            terms: [test, ci]
+          - id: evals
+            title:
+              vi: "Evals: chấm điểm chất lượng agent"
+              en: "Evals: Scoring an Agent's Quality"
+              ja: "Evals：エージェントの品質を採点する"
+            type: concept
+            minutes: 10
+            terms: [eval]
+
+  - id: projects
+    title:
+      vi: Dự án thực tế
+      en: Real Projects
+      ja: 実践プロジェクト
+    goal:
+      vi: Tự hoàn thành các dự án thật cùng AI agent và có sản phẩm để khoe.
+      en: Finish real projects with an AI agent and have something to show.
+      ja: AIエージェントと実際のプロジェクトを完成させ、人に見せられる成果物を作る。
+    units:
+      - id: capstone-projects
+        title:
+          vi: Các dự án
+          en: Projects
+          ja: プロジェクト
+        lessons:
+          - id: project-personal-page
+            title:
+              vi: "Dự án 1: Trang web giới thiệu bản thân"
+              en: "Project 1: Your Personal Web Page"
+              ja: "プロジェクト1：自己紹介Webページ"
+            type: project
+            minutes: 60
+          - id: project-office-automation
+            title:
+              vi: "Dự án 2: Tự động hóa một việc văn phòng (Excel → báo cáo)"
+              en: "Project 2: Automate an Office Task (Excel → Report)"
+              ja: "プロジェクト2：事務作業の自動化（Excel→レポート）"
+            type: project
+            minutes: 90
+          - id: project-mcp-tool
+            title:
+              vi: "Dự án 3: Tạo một công cụ MCP cho agent của bạn"
+              en: "Project 3: Build an MCP Tool for Your Agent"
+              ja: "プロジェクト3：自分のエージェント用のMCPツールを作る"
+            type: project
+            minutes: 90
+            terms: [mcp]
+          - id: capstone-your-idea
+            title:
+              vi: "Dự án cuối khóa: ý tưởng của riêng bạn"
+              en: "Capstone: Your Own Idea"
+              ja: "卒業プロジェクト：あなた自身のアイデア"
+            type: project
+            minutes: 120

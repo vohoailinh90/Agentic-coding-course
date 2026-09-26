@@ -32,3 +32,8 @@ evals/results/*
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Course repository
+.env
+outputs/*
+!outputs/.gitkeep
