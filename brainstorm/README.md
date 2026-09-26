@@ -23,7 +23,7 @@ về AI, trước khi viết hàng chục bài học bằng 3 thứ tiếng.
 | Vòng | Issue | Commit gửi Codex | Trạng thái | Kết luận |
 |---|---|---|---|---|
 | 1 | [#1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1) | `9c28f45` | xong, đã kiểm chứng và áp dụng thành lộ trình v1 ([ADR 007](../docs/decisions/007-roadmap-v1.md)) | [round-1.md](round-1.md) (nguyên văn: [round-1-codex.md](round-1-codex.md)) |
-| 2 | [#1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1) | ghi trong bình luận gọi Codex | soát lại lộ trình v1 | `round-2.md` |
+| 2 | [#1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1) | `8c942d2` | **tạm dừng (BLOCKED)**: Codex báo repo chưa có environment trên Codex Cloud — chờ Linh tạo, rồi gửi lại | `round-2.md` (chưa có) |
 
 ## Nhãn trên GitHub
 
