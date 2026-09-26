@@ -4,18 +4,18 @@
 
 ## [Tiếng Việt →](vi/README.md)
 
-**Agentic Coding cho người mới bắt đầu** — Từ "phần mềm là gì?" đến tự giao việc cho AI agent làm phần mềm — học bằng 3 thứ tiếng.
+**Agentic Coding cho người mới bắt đầu** — Từ "phần mềm là gì?" đến giao việc cho AI agent làm phần mềm và tự kiểm tra kết quả — học bằng 3 thứ tiếng.
 
 [Vào khóa học](vi/README.md) · [Thuật ngữ 3 thứ tiếng](vi/glossary.md)
 
 ## [English →](en/README.md)
 
-**Agentic Coding for Absolute Beginners** — From "what is software?" to directing AI agents that build software — in three languages.
+**Agentic Coding for Absolute Beginners** — From "what is software?" to directing AI agents that build software, and checking their work — in three languages.
 
 [Open the course](en/README.md) · [Glossary in three languages](en/glossary.md)
 
 ## [日本語 →](ja/README.md)
 
-**ゼロから学ぶエージェント型コーディング** — 「ソフトウェアとは？」から、AIエージェントにソフトウェアづくりを任せられるようになるまで——3か国語で学ぶ。
+**ゼロから学ぶエージェント型コーディング** — 「ソフトウェアとは？」から、AIエージェントにソフトウェアづくりを任せ、その結果を自分で確かめられるようになるまで——3か国語で学ぶ。
 
 [講座を開く](ja/README.md) · [3か国語の用語集](ja/glossary.md)

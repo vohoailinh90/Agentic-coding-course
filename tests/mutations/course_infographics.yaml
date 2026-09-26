@@ -57,3 +57,15 @@ mutations:
   find: "            x = max(-limit, min(limit, x))\n"
   replace: "            pass\n"
   test: tests.test_course_infographics.RenderTests.test_too_much_text_is_reported_rather_than_drawn_over
+- label: a four-point summary is laid out three across, leaving a lone card
+  find: "    columns = 2 if len(points) == 4 else 3"
+  replace: "    columns = 3"
+  test: tests.test_course_infographics.RenderTests.test_a_summary_numbers_its_points_on_a_centred_grid
+- label: a short last row of a summary is not centred
+  find: "        left = MARGIN + (INNER - len(row) * width - (len(row) - 1) * gap) / 2"
+  replace: "        left = MARGIN"
+  test: tests.test_course_infographics.RenderTests.test_a_summary_numbers_its_points_on_a_centred_grid
+- label: a summary row is as tall as its shortest card, so longer text spills out
+  find: "        height = max(_step_height(point, lang, width - 24) for point in row)"
+  replace: "        height = min(_step_height(point, lang, width - 24) for point in row)"
+  test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram

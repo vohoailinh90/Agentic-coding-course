@@ -4,182 +4,196 @@
 
 # Agentic Coding cho người mới bắt đầu
 
-> Từ "phần mềm là gì?" đến tự giao việc cho AI agent làm phần mềm — học bằng 3 thứ tiếng.
+> Từ "phần mềm là gì?" đến giao việc cho AI agent làm phần mềm và tự kiểm tra kết quả — học bằng 3 thứ tiếng.
 
-**Dành cho ai:** Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình — muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Đặc biệt phù hợp với người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
+**Dành cho ai:** Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình — muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Không cần biết lập trình trước: bạn học vừa đủ để giao việc viết code cho AI, kiểm tra và chịu trách nhiệm về kết quả. Đặc biệt phù hợp với người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
 
-**7 chương · 17 chủ đề · 57 bài · 944 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
+**6 chương · 17 chủ đề · 52 bài · 893 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
 
 ![Lộ trình học](diagrams/roadmap.svg)
 
 _Bài có liên kết là bài đã đọc được; các bài còn lại đang được viết._
 
-## 1. 🚀 Khởi động: Chào mừng đến thế giới AI agent
+## ⭐ Lộ trình tối thiểu
 
-🎯 Hiểu AI agent là gì, tận mắt thấy một agent làm ra phần mềm, và biết mình sẽ học gì, học thế nào.
+Bắt đầu từ đây: 18 bài · 337 phút, đủ để giao việc cho AI agent và tự kiểm tra kết quả. Các bài này có dấu ⭐ trong các bảng bên dưới; những bài còn lại học thêm khi cần.
 
-### 1.1 Bức tranh toàn cảnh
+1. [Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc](lessons/chatbot-to-agent.md) — 8 phút
+2. [Bộ não, đôi tay và vòng lặp: AI agent được ghép từ gì?](lessons/agent-parts-and-loop.md) — 8 phút
+3. Xem AI agent làm và tự kiểm tra một trang web nhỏ — 10 phút
+4. Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty — 10 phút
+5. Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm — 10 phút
+6. Buổi đầu với agent: làm một trang "Việc của tôi trong tuần" — 25 phút
+7. Tư duy mới: bạn là trưởng nhóm, không phải người gõ code — 8 phút
+8. Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành — 12 phút
+9. Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng — 12 phút
+10. Đọc và review thay đổi của agent (diff) — 15 phút
+11. Từ "trông có vẻ đúng" đến phép kiểm tra — 12 phút
+12. Đọc thông báo lỗi và gỡ lỗi như một thám tử — 12 phút
+13. Dự án: trang web cá nhân của bạn — 60 phút
+14. File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính — 10 phút
+15. Git: nút Undo thần kỳ cho cả dự án — 15 phút
+16. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
+17. Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI — 10 phút
+18. Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) — 90 phút
 
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 1.1.1 | [Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc](lessons/chatbot-to-agent.md) | 📖 Khái niệm | 10 phút |
-| 1.1.2 | Xem một AI agent làm ra phần mềm từ A đến Z | 🎬 Minh họa | 12 phút |
-| 1.1.3 | Bản đồ khóa học: học thế nào để không bỏ cuộc | 📖 Khái niệm | 8 phút |
+## 1. 🚀 Bắt đầu an toàn, làm được ngay buổi đầu
 
-## 2. 🧱 Nền tảng phần mềm — vừa đủ để làm chủ agent
+🎯 Hiểu AI agent khác chatbot ở đâu, chọn cách thực hành an toàn trên máy của mình, rồi nhờ agent làm sản phẩm đầu tiên và tự kiểm tra.
 
-🎯 Đọc hiểu được những gì agent làm trên máy của bạn: file, lệnh, code, lỗi, Git và test.
-
-### 2.1 Máy tính và phần mềm hoạt động thế nào
-
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 2.1.1 | Phần mềm là gì? Chương trình giống một công thức nấu ăn | 📖 Khái niệm | 8 phút |
-| 2.1.2 | File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính | 📖 Khái niệm | 10 phút |
-| 2.1.3 | Terminal không đáng sợ: 10 lệnh đầu tiên | 🛠️ Thực hành | 15 phút |
-
-### 2.2 Đọc hiểu code (không cần tự viết)
-
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 2.2.1 | Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình | 📖 Khái niệm | 12 phút |
-| 2.2.2 | Dữ liệu trông như thế nào: JSON, CSV, YAML | 📖 Khái niệm | 10 phút |
-| 2.2.3 | Đọc thông báo lỗi và gỡ lỗi như một thám tử | 🛠️ Thực hành | 12 phút |
-
-### 2.3 Người ta làm phần mềm như thế nào
+### 1.1 AI agent làm được gì
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 2.3.1 | Giải phẫu một dự án: frontend, backend, database, API | 📖 Khái niệm | 12 phút |
-| 2.3.2 | Git: nút Undo thần kỳ cho cả dự án | 🛠️ Thực hành | 15 phút |
-| 2.3.3 | Kiểm thử: làm sao biết chương trình chạy đúng? | 📖 Khái niệm | 10 phút |
-| 2.3.4 | An toàn cơ bản: API key, mật khẩu và dữ liệu cá nhân | 📖 Khái niệm | 10 phút |
+| 1.1.1 | ⭐ [Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc](lessons/chatbot-to-agent.md) | 📖 Khái niệm | 8 phút |
+| 1.1.2 | ⭐ [Bộ não, đôi tay và vòng lặp: AI agent được ghép từ gì?](lessons/agent-parts-and-loop.md) | 📖 Khái niệm | 8 phút |
+| 1.1.3 | ⭐ Xem AI agent làm và tự kiểm tra một trang web nhỏ | 🎬 Minh họa | 10 phút |
 
-## 3. 🧠 Nền tảng AI và Machine Learning
-
-🎯 Giải thích bằng lời của mình AI, machine learning, deep learning và AI tạo sinh khác nhau thế nào — và vì sao AI có lúc sai.
-
-### 3.1 Gia phả nhà AI
+### 1.2 Chọn cách học an toàn
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 3.1.1 | AI, Machine Learning, Deep Learning: ba vòng tròn lồng nhau | 📖 Khái niệm | 10 phút |
-| 3.1.2 | Máy "học" như thế nào? Dữ liệu, huấn luyện và mô hình | 📖 Khái niệm | 12 phút |
-| 3.1.3 | AI dự đoán và AI tạo sinh | 📖 Khái niệm | 10 phút |
-| 3.1.4 | Mô hình nền tảng: một bộ não, nghìn công việc | 📖 Khái niệm | 10 phút |
+| 1.2.1 | ⭐ Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty | 🛠️ Thực hành | 10 phút |
+| 1.2.2 | ⭐ Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm | 📖 Khái niệm | 10 phút |
 
-### 3.2 Làm AI giỏi hơn trong việc của bạn
+### 1.3 Sản phẩm đầu tiên
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 3.2.1 | Prompt căn bản: nói sao cho AI hiểu | 🛠️ Thực hành | 12 phút |
-| 3.2.2 | RAG: cho AI mở tài liệu ra tra cứu | 📖 Khái niệm | 10 phút |
-| 3.2.3 | Fine-tuning: khi nào cần "đào tạo thêm" cho AI? | 📖 Khái niệm | 10 phút |
-| 3.2.4 | Prompt, RAG hay fine-tuning: chọn cách nào? | 📖 Khái niệm | 10 phút |
+| 1.3.1 | ⭐ Buổi đầu với agent: làm một trang "Việc của tôi trong tuần" | 🛠️ Thực hành | 25 phút |
+| 1.3.2 | Chọn lộ trình và ghi nhật ký học | 🛠️ Thực hành | 8 phút |
 
-## 4. 🤖 Agentic Coding: làm phần mềm cùng AI agent
+## 2. 🧭 Giao việc, kiểm tra và sửa cùng agent
 
-🎯 Tự giao việc cho một coding agent, rồi theo dõi, review và kiểm chứng kết quả như một trưởng nhóm.
+🎯 Giao cho agent một việc rõ ràng, kiểm tra từng thay đổi bằng bằng chứng, và hoàn thành dự án có ý nghĩa đầu tiên.
 
-### 4.1 Agentic coding là gì?
+### 2.1 Giao việc rõ ràng
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 4.1.1 | Lập trình truyền thống và agentic coding | 📖 Khái niệm | 10 phút |
-| 4.1.2 | Vibe coding và agentic coding: khác nhau ở đâu? | 📖 Khái niệm | 10 phút |
-| 4.1.3 | Bên trong agent: vòng lặp Suy nghĩ → Hành động → Quan sát | 📖 Khái niệm | 10 phút |
+| 2.1.1 | ⭐ Tư duy mới: bạn là trưởng nhóm, không phải người gõ code | 📖 Khái niệm | 8 phút |
+| 2.1.2 | ⭐ Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành | 🛠️ Thực hành | 12 phút |
+| 2.1.3 | ⭐ Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng | 🛠️ Thực hành | 12 phút |
 
-### 4.2 Tư duy và quy trình làm việc
-
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 4.2.1 | Tư duy mới: bạn là trưởng nhóm, không phải người gõ code | 📖 Khái niệm | 8 phút |
-| 4.2.2 | Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng | 📖 Khái niệm | 12 phút |
-| 4.2.3 | Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành | 🛠️ Thực hành | 12 phút |
-| 4.2.4 | Các khung quy trình phổ biến: plan mode, TDD và review | 📖 Khái niệm | 12 phút |
-
-### 4.3 Phòng thực hành công cụ
+### 2.2 Kiểm tra kết quả
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 4.3.1 | Bản đồ công cụ: Claude Code, Codex, Cursor, Copilot… | 📖 Khái niệm | 10 phút |
-| 4.3.2 | Phiên làm việc đầu tiên: nhờ agent làm một trang web nhỏ | 🛠️ Thực hành | 20 phút |
-| 4.3.3 | Đọc và review thay đổi của agent (diff) | 🛠️ Thực hành | 15 phút |
+| 2.2.1 | ⭐ Đọc và review thay đổi của agent (diff) | 🛠️ Thực hành | 15 phút |
+| 2.2.2 | ⭐ Từ "trông có vẻ đúng" đến phép kiểm tra | 🛠️ Thực hành | 12 phút |
+| 2.2.3 | ⭐ Đọc thông báo lỗi và gỡ lỗi như một thám tử | 🛠️ Thực hành | 12 phút |
 
-## 5. 🔬 Hiểu sâu về LLM
-
-🎯 Hiểu LLM vận hành thế nào — token, ngữ cảnh, ảo giác, công cụ và chi phí — để giao việc cho agent khôn ngoan hơn.
-
-### 5.1 Bên trong một LLM
+### 2.3 Dự án đầu tiên
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 5.1.1 | Token: AI đọc chữ theo từng mảnh | 📖 Khái niệm | 10 phút |
-| 5.1.2 | Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM | 📖 Khái niệm | 10 phút |
-| 5.1.3 | Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI | 📖 Khái niệm | 10 phút |
-| 5.1.4 | Ảo giác AI: vì sao AI tự tin nói sai | 📖 Khái niệm | 10 phút |
+| 2.3.1 | ⭐ Dự án: trang web cá nhân của bạn | 🚀 Dự án | 60 phút |
 
-### 5.2 Làm việc với các mô hình
+## 3. 🧱 Hiểu phần mềm vừa đủ, đúng lúc cần
 
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 5.2.1 | Mô hình biết "suy nghĩ": reasoning là gì? | 📖 Khái niệm | 10 phút |
-| 5.2.2 | Gọi công cụ: cách LLM "bấm nút" ngoài đời thật | 📖 Khái niệm | 10 phút |
-| 5.2.3 | Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt | 📖 Khái niệm | 10 phút |
+🎯 Đọc hiểu những gì agent vừa tạo — file, thư mục, dữ liệu, mã và lịch sử thay đổi — đủ để giám sát và hoàn tác an toàn.
 
-## 6. 🧰 Harness Engineering: bộ yên cương cho AI agent
-
-🎯 Thiết kế môi trường làm việc cho agent — ngữ cảnh, kiểm soát, công cụ và kiểm chứng — để agent làm đúng và an toàn.
-
-### 6.1 Giải phẫu một agent harness
+### 3.1 File và dự án
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 6.1.1 | Model + Harness = Agent: con ngựa và bộ yên cương | 📖 Khái niệm | 10 phút |
-| 6.1.2 | Ngữ cảnh và kiểm soát | 📖 Khái niệm | 10 phút |
-| 6.1.3 | Hành động và lưu giữ | 📖 Khái niệm | 10 phút |
-| 6.1.4 | Quan sát và kiểm chứng | 📖 Khái niệm | 10 phút |
+| 3.1.1 | Phần mềm là gì? Chương trình giống một công thức nấu ăn | 📖 Khái niệm | 8 phút |
+| 3.1.2 | ⭐ File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính | 🛠️ Thực hành | 10 phút |
+| 3.1.3 | Giải phẫu một dự án: frontend, backend, database, API | 📖 Khái niệm | 10 phút |
+| 3.1.4 | Dữ liệu trông như thế nào: JSON, CSV, YAML | 🛠️ Thực hành | 10 phút |
 
-### 6.2 Đào sâu: Ngữ cảnh
-
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 6.2.1 | Prompt engineering cho agent: system prompt và chỉ dẫn | 📖 Khái niệm | 12 phút |
-| 6.2.2 | Context engineering: đưa đúng thông tin, đúng lúc | 📖 Khái niệm | 12 phút |
-| 6.2.3 | Trí nhớ và kỹ năng: CLAUDE.md, AGENTS.md và skills | 🛠️ Thực hành | 15 phút |
-| 6.2.4 | RAG cho agent: tìm trong kho tài liệu lớn | 📖 Khái niệm | 10 phút |
-
-### 6.3 Đào sâu: Kiểm soát
+### 3.2 Mã và lịch sử thay đổi
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 6.3.1 | Agent và workflow: khi nào cần nhiều agent? | 📖 Khái niệm | 12 phút |
-| 6.3.2 | Hooks và phân quyền: hàng rào an toàn tự động | 📖 Khái niệm | 12 phút |
+| 3.2.1 | Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình | 📖 Khái niệm | 12 phút |
+| 3.2.2 | ⭐ Git: nút Undo thần kỳ cho cả dự án | 🛠️ Thực hành | 15 phút |
+| 3.2.3 | Terminal không đáng sợ: 5 lệnh an toàn đầu tiên | 🛠️ Thực hành | 15 phút |
 
-### 6.4 Đào sâu: Hành động
-
-| # | Bài học | Loại | Thời lượng |
-|---|---|---|---|
-| 6.4.1 | MCP: cổng USB-C cho AI | 📖 Khái niệm | 12 phút |
-| 6.4.2 | CLI: agent làm việc qua dòng lệnh | 📖 Khái niệm | 10 phút |
-| 6.4.3 | API: agent trò chuyện với các dịch vụ khác | 📖 Khái niệm | 10 phút |
-
-### 6.5 Đào sâu: Kiểm chứng
+### 3.3 An toàn là trên hết
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 6.5.1 | Test và CI: để máy kiểm tra máy | 📖 Khái niệm | 12 phút |
-| 6.5.2 | Evals: chấm điểm chất lượng agent | 📖 Khái niệm | 10 phút |
+| 3.3.1 | An toàn cơ bản: API key, mật khẩu và dữ liệu cá nhân | 📖 Khái niệm | 12 phút |
 
-## 7. 💼 Dự án thực tế
+## 4. 🧠 Những hiểu biết về AI bạn thật sự cần
 
-🎯 Tự hoàn thành các dự án thật cùng AI agent và có sản phẩm để khoe.
+🎯 Biết vì sao câu trả lời trôi chảy của AI vẫn có thể sai, agent nhìn thấy gì và dùng công cụ ra sao; phần lý thuyết sâu hơn là tùy chọn.
 
-### 7.1 Các dự án
+### 4.1 Hỏi đúng và đòi bằng chứng
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 7.1.1 | Dự án 1: Trang web giới thiệu bản thân | 🚀 Dự án | 60 phút |
-| 7.1.2 | Dự án 2: Tự động hóa một việc văn phòng (Excel → báo cáo) | 🚀 Dự án | 90 phút |
-| 7.1.3 | Dự án 3: Tạo một công cụ MCP cho agent của bạn | 🚀 Dự án | 90 phút |
-| 7.1.4 | Dự án cuối khóa: ý tưởng của riêng bạn | 🚀 Dự án | 120 phút |
+| 4.1.1 | Prompt căn bản: nói sao cho AI hiểu | 🛠️ Thực hành | 12 phút |
+| 4.1.2 | ⭐ Ảo giác AI: vì sao AI tự tin nói sai | 📖 Khái niệm | 10 phút |
+| 4.1.3 | ⭐ Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI | 📖 Khái niệm | 10 phút |
+| 4.1.4 | Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM | 📖 Khái niệm | 10 phút |
+| 4.1.5 | Gọi công cụ: cách LLM "bấm nút" ngoài đời thật | 🎬 Minh họa | 10 phút |
+
+### 4.2 Nền tảng AI · _tùy chọn_
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 4.2.1 | Gia phả của AI trong một hình: từ machine learning đến LLM | 📖 Khái niệm | 8 phút |
+| 4.2.2 | Máy "học" như thế nào? Dữ liệu, huấn luyện và mô hình | 📖 Khái niệm | 10 phút |
+| 4.2.3 | RAG: cho AI mở tài liệu ra tra cứu | 🎬 Minh họa | 10 phút |
+| 4.2.4 | Prompt, RAG hay fine-tuning: chọn cách nào? | 📖 Khái niệm | 10 phút |
+
+### 4.3 Hiểu về mô hình · _tùy chọn_
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 4.3.1 | Token: AI đọc chữ theo từng mảnh | 🎬 Minh họa | 8 phút |
+| 4.3.2 | Mô hình biết "suy nghĩ": reasoning là gì? | 📖 Khái niệm | 10 phút |
+| 4.3.3 | Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt | 🛠️ Thực hành | 10 phút |
+
+## 5. 🧰 Làm việc với agent một cách đáng tin cậy
+
+🎯 Biến agent thành một đồng nghiệp đáng tin: đúng quy trình, đủ ngữ cảnh, quyền hạn rõ ràng và được máy tự kiểm tra.
+
+### 5.1 Agentic coding là một hệ thống
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 5.1.1 | Lập trình truyền thống và agentic coding | 📖 Khái niệm | 8 phút |
+| 5.1.2 | Vibe coding và agentic coding: khác nhau ở đâu? | 📖 Khái niệm | 8 phút |
+| 5.1.3 | Lần theo vòng lặp của agent qua một phiên làm việc thật | 🎬 Minh họa | 10 phút |
+| 5.1.4 | Chọn công cụ theo môi trường, không theo lời quảng cáo | 📖 Khái niệm | 10 phút |
+| 5.1.5 | Thêm quy trình khi việc cần: lập kế hoạch, viết test trước, duyệt lại | 📖 Khái niệm | 10 phút |
+
+### 5.2 Harness tối thiểu
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 5.2.1 | Model + Harness = Agent: con ngựa và bộ yên cương | 📖 Khái niệm | 10 phút |
+| 5.2.2 | Context engineering: đưa đúng thông tin, đúng lúc | 🛠️ Thực hành | 12 phút |
+| 5.2.3 | Prompt engineering cho agent: system prompt và chỉ dẫn | 🛠️ Thực hành | 12 phút |
+| 5.2.4 | Hooks và phân quyền: hàng rào an toàn tự động | 🛠️ Thực hành | 12 phút |
+| 5.2.5 | Test và CI: để máy kiểm tra máy | 🎬 Minh họa | 12 phút |
+
+### 5.3 Thực hành chuyên sâu · _nâng cao_
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 5.3.1 | Bộ nhớ dự án và kỹ năng dùng lại | 🛠️ Thực hành | 15 phút |
+| 5.3.2 | Agent và workflow: khi nào cần nhiều agent? | 📖 Khái niệm | 12 phút |
+| 5.3.3 | MCP: cổng USB-C cho AI | 🎬 Minh họa | 12 phút |
+| 5.3.4 | Evals: chấm điểm chất lượng agent | 🛠️ Thực hành | 15 phút |
+
+## 6. 💼 Làm ra thứ có ích
+
+🎯 Dùng những gì đã học để tự động hóa một việc văn phòng có kiểm chứng, rồi tùy ý làm thêm các dự án nâng cao.
+
+### 6.1 Tự động hóa việc văn phòng
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 6.1.1 | ⭐ Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) | 🚀 Dự án | 90 phút |
+| 6.1.2 | Nhìn lại dự án và gói bằng chứng | 🛠️ Thực hành | 15 phút |
+
+### 6.2 Dự án nâng cao · _nâng cao_
+
+| # | Bài học | Loại | Thời lượng |
+|---|---|---|---|
+| 6.2.1 | Dự án: làm một công cụ MCP nhỏ cho agent | 🚀 Dự án | 90 phút |
+| 6.2.2 | Dự án cuối khóa: ý tưởng của riêng bạn | 🚀 Dự án | 120 phút |

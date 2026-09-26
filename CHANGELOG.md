@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.3.0 — 2026-09-26
+
+- **Roadmap v1** from Codex brainstorm round 1 and the owner's decisions (ADR 007): 6 modules,
+  17 units, 52 lessons, 893 min; hands-on from the first sitting; `optional` and `advanced` units;
+  a **minimum path** of 18 lessons (337 min) listed first on every course home, ⭐ on its lessons and
+  counted per module on the roadmap; 9 v0 lessons merged or cut, recorded as `retired` so their ids
+  are never reused. Tagline and audience now promise "enough to supervise AI that writes code".
+- **Every lesson ends with a recap infographic** (ADR 008): a new `recap` section, required for every
+  lesson type, showing from `review` on exactly one diagram of its own; a new `summary` template draws
+  3–6 numbered key points.
+- The pilot lesson is split: `chatbot-to-agent` (who does the steps?) and the new
+  `agent-parts-and-loop` (brain, tools and the loop), each with two diagrams and a recap, in vi/en/ja.
+- `validate` checks `track`, `minimum_path` (known core lessons, once each, in course order) and
+  `retired`; `stats` reports the minimum path.
+- Fixed: `validate` crashed instead of printing a finding about a section (missing, empty, out of
+  order…) because the message's `{key}` placeholder collided with the translator's own argument; a
+  test now renders every finding in every language.
+- A test checks that no line of text runs out of its box in any diagram.
+
 ## v0.2.0 — 2026-09-26
 
 - One folder per language: `course/vi/`, `course/en/`, `course/ja/` hold everything a learner reads,

@@ -36,7 +36,8 @@ in that order. `required` depends on the lesson type in `curriculum.yaml`.
 | `example` | A real situation, step by step | concept, demo |
 | `try-it` | A 5–20 minute exercise with a way to self-check | hands-on, project |
 | `misconceptions` | 2–4 beginner misunderstandings, corrected | optional |
-| `takeaways` | 3–5 short bullets — reused verbatim in Facebook posts | every type |
+| `recap` | The whole lesson in one infographic of its own (see *Infographics*) | every type |
+| `takeaways` | 3–5 short bullets that say the recap's points in words — reused in Facebook posts | every type |
 | `quiz` | 3 questions × 3 options, answers with reasons in `<details>` | concept, demo, hands-on |
 | `sources` | Verified sources: organization, language, date if fast-moving | optional |
 
@@ -102,6 +103,7 @@ build` draws it into every language folder ([data-model.md](data-model.md) has e
 | `equation` | builds a whole from parts | LLM + tools + loop = agent |
 | `cycle` | describes something that repeats | think → act → observe |
 | `flow` | walks through steps in order | explore → plan → build → verify |
+| `summary` | sums up a whole lesson (the recap) | 3–6 numbered key points of the lesson |
 
 - **Draw the difference, not the names.** A comparison shares its rows across columns, so the eye
   lands on what changes; `emphasis_row` marks the row the lesson turns on, `highlight` the option it
@@ -118,6 +120,11 @@ build` draws it into every language folder ([data-model.md](data-model.md) has e
   ```
 
 - Every translation shows the same diagrams in the same sections (`validate` checks it).
+- **Every lesson ends with a recap** ([ADR 008](decisions/008-a-recap-infographic-in-every-lesson.md)):
+  the `recap` section, just before the takeaways, shows one infographic that sums up the whole
+  lesson — usually a `summary` of 3–6 key points, named `<lesson-id>-recap.yaml`. It must be its own
+  picture, not a diagram the lesson already showed; the takeaways then say the same points in words.
+  The recap is also the image posted with the lesson on Facebook.
 - Look at the result in all three languages before committing: open the SVG in a browser. Boxes
   grow to fit wrapped text; if a label wraps into three lines, shorten it.
 - Nothing is ever drawn over something else: a cycle's ring grows and its labels move to free
@@ -190,8 +197,12 @@ Only `review` and `done` lessons can become posts; `fb-draft` warns on `review`.
 
 ```bash
 python -m src.main scaffold <lesson-id>      # 1. create the file in course/vi, course/en, course/ja
-# 2. write course/vi/lessons/<id>.md, add its diagrams to course/data/diagrams/, then localize
+# 2. write course/vi/lessons/<id>.md, add its diagrams and its recap to course/data/diagrams/, then localize
 python -m src.main build                     # 3. draw the diagrams, refresh the course homes
 python -m src.main validate --lang vi        # 4. fix every error
 python -m src.main fb-draft <lesson-id>      # 5. once done: draft the post
 ```
+
+Write lessons in the order of the minimum path (the course home lists it first). For the minimum-path
+pilot, the Japanese text waits until the Vietnamese lessons have been tried with learners; the `ja`
+files stay `todo` until then ([ADR 007](decisions/007-roadmap-v1.md)).

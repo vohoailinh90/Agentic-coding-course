@@ -47,18 +47,25 @@
     "content_outside_section": "{path}:{line}：どのセクションにも属さない文章があります。<!-- section: ... --> マーカーの下に移してください。",
     "section_marker_orphan": "{path}:{line}：セクションマーカーの次には「## 」の見出しが必要です。",
     "heading_without_marker": "{path}:{line}：見出し「{heading}」の上に <!-- section: ... --> マーカーがありません。",
-    "section_unknown": "{path}：不明なセクション「{key}」です（一覧は course/data/sections.yaml にあります）。",
-    "section_duplicate": "{path}：セクション「{key}」が2回以上あります。",
-    "section_order": "{path}：セクション「{key}」の順番が正しくありません（順番は course/data/sections.yaml で決まります）。",
-    "section_required": "{path}：必須のセクション「{key}」がありません。",
-    "section_empty": "{path}：セクション「{key}」が空です。",
-    "todo_left": "{path}：セクション「{key}」にTODOの仮置きが残っています。",
+    "section_unknown": "{path}：不明なセクション「{section}」です（一覧は course/data/sections.yaml にあります）。",
+    "section_duplicate": "{path}：セクション「{section}」が2回以上あります。",
+    "section_order": "{path}：セクション「{section}」の順番が正しくありません（順番は course/data/sections.yaml で決まります）。",
+    "section_required": "{path}：必須のセクション「{section}」がありません。",
+    "section_empty": "{path}：セクション「{section}」が空です。",
+    "todo_left": "{path}：セクション「{section}」にTODOの仮置きが残っています。",
     "sections_differ": "{path}：{lang} のセクションは [{actual}] ですが、{other} は [{expected}] です。",
     "field_count": "{path}：「{field}」の項目数は{min}〜{max}個にしてください。",
     "entry_unexpected": "{path}：ここには置けません。置けるもの：{allowed}",
     "lesson_file_unknown": "{path}：course/data/curriculum.yaml のどのレッスンIDとも一致しません。",
     "language_bar": "{path}：フロントマターの次の行は、言語切り替えバーにしてください：{expected}",
     "diagrams_differ": "{path}：{lang} の図は [{actual}] ですが、{other} は [{expected}] です。",
+    "minimum_path_unknown": "{path}：最短ルートに {id} がありますが、カリキュラムにそのレッスンはありません。",
+    "minimum_path_track": "{path}：{id} は最短ルートに入っていますが、そのユニットのトラックは {track} です。最短ルートにはコア（core）のレッスンだけを入れてください。",
+    "minimum_path_order": "{path}：最短ルートでは {id} が {previous} の後にありますが、コースでは {id} を先に学びます。コースの順序を守ってください。",
+    "retired_in_use": "{path}：{id} は廃止済みですが、カリキュラムの ID としてまだ使われています。廃止した ID は二度と使えません。",
+    "retired_target_unknown": "{path}：{id} の統合先 {into} は、カリキュラムにあるレッスンではありません。",
+    "recap_diagram": "{path}：「1枚でわかるこのレッスン」には course/data/diagrams/ の図をちょうど1枚入れてください（現在の画像は{images}枚、そのうち図は{diagrams}枚）。",
+    "recap_reused": "{path}：まとめの図 {target} がほかのセクションでも使われています。まとめにはレッスン全体をまとめた専用の図を使ってください。",
     "diagram_crowded": "{path}：文字が多すぎて、{language}版の図で枠が重なります。説明や矢印のラベルを短くするか、ステップを減らしてください。",
     "diagram_unknown": "{path}：画像 {target} は course/data/diagrams/ にある図ではありません。",
     "image_alt_missing": "{path}：画像 {target} に代替テキスト（画像が見えない人に伝える説明）がありません。",
@@ -73,7 +80,8 @@
     "heading": "{title} — ロードマップ {version}",
     "structure": "モジュール：{modules}・ユニット：{units}・レッスン：{lessons}・合計時間：{minutes}分",
     "progress_heading": "言語ごとの執筆状況：",
-    "progress_line": "{language}：完成 {done}・レビュー中 {review}・下書き {draft}・枠のみ {todo}・未着手 {missing}（完成率 {percent}%）"
+    "progress_line": "{language}：完成 {done}・レビュー中 {review}・下書き {draft}・枠のみ {todo}・未着手 {missing}（完成率 {percent}%）",
+    "minimum": "最短ルート：{lessons}レッスン・{minutes}分"
   },
   "scaffold": {
     "created": "{path} を作成しました",
@@ -102,7 +110,11 @@
     "lesson": "レッスン",
     "type": "種類",
     "time": "時間",
-    "minutes": "{minutes}分"
+    "minutes": "{minutes}分",
+    "minimum_heading": "⭐ 最短ルート",
+    "minimum_intro": "まずはここから：{lessons}レッスン・{minutes}分。AIエージェントに仕事を任せ、その結果を自分で確かめられるようになります。下の表では⭐がついています。ほかのレッスンは必要になったときに学べます。",
+    "track_optional": "任意",
+    "track_advanced": "発展"
   },
   "lesson_types": {
     "concept": "解説",
@@ -120,7 +132,8 @@
     "title": "学習ロードマップ",
     "start": "スタート",
     "finish": "修了",
-    "meta": "{lessons}レッスン・{minutes}分"
+    "meta": "{lessons}レッスン・{minutes}分",
+    "minimum": "⭐ 最短ルート{lessons}"
   },
   "chooser": {
     "title": "言語を選ぶ",

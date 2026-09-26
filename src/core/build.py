@@ -18,6 +18,8 @@ from src.core.model import (
     CHOOSER_FILE,
     ROADMAP,
     Course,
+    Lesson,
+    Module,
     diagram_path,
     language_dir,
     lesson_path,
@@ -112,19 +114,37 @@ def render_home(course: Course, language: str, tr: Translator, started: set[str]
         f"_{tr.t('home.legend')}_",
         "",
     ]
+    minimum = course.minimum_path_lessons
+    if minimum:
+        lines += [
+            f"## {tr.t('home.minimum_heading')}",
+            "",
+            tr.t("home.minimum_intro", lessons=len(minimum), minutes=sum(lesson.minutes for lesson in minimum)),
+            "",
+        ]
+        lines += [f"{step}. {_lesson_title(lesson, language, started)} — {tr.t('home.minutes', minutes=lesson.minutes)}"
+                  for step, lesson in enumerate(minimum, start=1)]
+        lines.append("")
     header = f"| # | {tr.t('home.lesson')} | {tr.t('home.type')} | {tr.t('home.time')} |"
     for module in course.modules:
         lines += [f"## {module.number}. {module.icon} {module.title[language]}", "", f"🎯 {module.goal[language]}", ""]
         for unit in module.units:
-            lines += [f"### {unit.number} {unit.title[language]}", "", header, "|---|---|---|---|"]
+            track = "" if unit.track == "core" else f" · _{tr.t(f'home.track_{unit.track}')}_"
+            lines += [f"### {unit.number} {unit.title[language]}{track}", "", header, "|---|---|---|---|"]
             for lesson in unit.lessons:
-                title = _cell(lesson.title[language])
-                if lesson.id in started:
-                    title = f"[{title}](lessons/{lesson.id}.md)"
+                title = _lesson_title(lesson, language, started)
+                if lesson.id in course.minimum_path:
+                    title = f"⭐ {title}"
                 kind = f"{TYPE_ICONS[lesson.type]} {tr.t(f'lesson_types.{lesson.type}')}"
                 lines.append(f"| {lesson.number} | {title} | {kind} | {tr.t('home.minutes', minutes=lesson.minutes)} |")
             lines.append("")
     return "\n".join(lines).rstrip() + "\n"
+
+
+def _lesson_title(lesson: Lesson, language: str, started: set[str]) -> str:
+    """The lesson's title for a Markdown table or list, linked once its file exists."""
+    title = _cell(lesson.title[language])
+    return f"[{title}](lessons/{lesson.id}.md)" if lesson.id in started else title
 
 
 def render_glossary(course: Course, language: str, tr: Translator) -> str:
@@ -159,7 +179,7 @@ def roadmap_svg(course: Course, language: str, tr: Translator) -> str:
             "meta": tr.t(
                 "roadmap.meta", lessons=len(module.lessons),
                 minutes=sum(lesson.minutes for lesson in module.lessons),
-            ),
+            ) + _minimum_count(course, module, tr),
         }
         for module in course.modules
     ]
@@ -170,6 +190,11 @@ def roadmap_svg(course: Course, language: str, tr: Translator) -> str:
         "finish": tr.t("roadmap.finish"),
     }
     return render_roadmap(modules, labels, language)
+
+
+def _minimum_count(course: Course, module: Module, tr: Translator) -> str:
+    count = sum(lesson.id in course.minimum_path for lesson in module.lessons)
+    return f" · {tr.t('roadmap.minimum', lessons=count)}" if count else ""
 
 
 def generated_files(course: Course, started: set[str]) -> dict[str, str]:

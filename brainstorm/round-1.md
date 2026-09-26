@@ -114,9 +114,18 @@ Codex nêu 10 câu; năm câu đầu ảnh hưởng tới lộ trình tối thi�
 | 9 | Chỉ viết nhánh nâng cao sau khi có số liệu từ lộ trình tối thiểu? | Có |
 | 10 | Có giới thiệu thêm khái niệm "agentic engineering"? | Một lần, sau dự án đầu tiên |
 
+### Đã quyết (2026-09-26)
+
+Linh đồng ý với gợi ý của Claude cho các câu 1, 4, 5 và 6: dùng được công cụ chạy trên trình duyệt
+(kèm đường chạy trên máy cá nhân); bản tiếng Nhật làm sau khi bản tiếng Việt đã được thử với người học;
+khóa học hứa "biết đủ để giám sát AI viết code"; dự án văn phòng được dùng Python, kèm đường chỉ dùng
+bảng tính. Các câu còn lại tạm theo gợi ý của Claude cho đến khi Linh quyết khác. Lộ trình v1 đã áp
+dụng vào `course/data/curriculum.yaml` ([ADR 007](../docs/decisions/007-roadmap-v1.md)); Linh cũng yêu
+cầu mọi bài có một hình tóm tắt cả bài ([ADR 008](../docs/decisions/008-a-recap-infographic-in-every-lesson.md)).
+
 ## Bước tiếp theo
 
-1. Chủ khóa học trả lời các câu trên (ít nhất 1, 4, 5 và 6).
+1. Chủ khóa học trả lời các câu trên (ít nhất 1, 4, 5 và 6). — *xong, xem "Đã quyết" ở trên.*
 2. Claude viết lộ trình v1 vào `course/data/curriculum.yaml` (giữ nguyên id; ghi lại bài gộp/bỏ),
    thêm trường dữ liệu mới kèm kiểm tra, và tách bài mẫu.
 3. Vòng 2 với Codex: soát `curriculum.yaml` v1.

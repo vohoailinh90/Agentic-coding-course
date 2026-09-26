@@ -1,0 +1,31 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/build.py
+note: The generated course homes and the stats command, where a learner first meets the minimum path and
+  the optional and advanced tracks.
+mutations:
+- label: the course home has no minimum path block
+  find: "    if minimum:\n        lines += [\n"
+  replace: "    if False:\n        lines += [\n"
+  test: tests.test_course_tools.CommandTests.test_the_course_home_leads_with_the_minimum_path_and_names_tracks
+- label: minimum-path lessons carry no star in the course tables
+  find: "                if lesson.id in course.minimum_path:\n"
+  replace: "                if False:\n"
+  test: tests.test_course_tools.CommandTests.test_each_course_home_is_in_one_language
+- label: an optional or advanced unit looks like a core one
+  find: "            track = \"\" if unit.track == \"core\" else f\" · _{tr.t(f'home.track_{unit.track}')}_\"\n"
+  replace: "            track = \"\"\n"
+  test: tests.test_course_tools.CommandTests.test_the_course_home_leads_with_the_minimum_path_and_names_tracks
+- label: stats does not report the minimum path
+  file: src/tools/stats.py
+  find: "    if minimum:\n        print(tr.t(\"stats.minimum\""
+  replace: "    if False:\n        print(tr.t(\"stats.minimum\""
+  test: tests.test_course_tools.CommandTests.test_stats_prints_the_structure
+- label: the roadmap does not say how many minimum-path lessons a module holds
+  find: "    return f\" · {tr.t('roadmap.minimum', lessons=count)}\" if count else \"\"\n"
+  replace: "    return \"\"\n"
+  test: tests.test_course_infographics.RoadmapTests.test_the_roadmap_counts_each_module_s_minimum_path_lessons

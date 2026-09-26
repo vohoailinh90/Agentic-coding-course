@@ -4,182 +4,196 @@
 
 # Agentic Coding for Absolute Beginners
 
-> From "what is software?" to directing AI agents that build software — in three languages.
+> From "what is software?" to directing AI agents that build software, and checking their work — in three languages.
 
-**Who it is for:** Working adults, students and engineers from outside software who know nothing about AI or programming yet, and want to use AI agents to build their own tools and automate their work. Especially suited to Vietnamese learners who study or work in or with Japan.
+**Who it is for:** Working adults, students and engineers from outside software who know nothing about AI or programming yet, and want to use AI agents to build their own tools and automate their work. No programming needed to start: you learn enough to hand coding work to AI, check it and own the result. Especially suited to Vietnamese learners who study or work in or with Japan.
 
-**Modules: 7 · Units: 17 · Lessons: 57 · 944 min** · [Glossary in three languages](glossary.md)
+**Modules: 6 · Units: 17 · Lessons: 52 · 893 min** · [Glossary in three languages](glossary.md)
 
 ![Your Learning Journey](diagrams/roadmap.svg)
 
 _Lessons with a link are ready to read; the others are being written._
 
-## 1. 🚀 Kick-off: Welcome to the World of AI Agents
+## ⭐ The minimum path
 
-🎯 Understand what an AI agent is, see one build software, and know what you will learn and how.
+Start here: 18 lessons · 337 min, enough to give an AI agent real work and check the result yourself. They carry a ⭐ in the tables below; take the other lessons when you need them.
 
-### 1.1 The Big Picture
+1. [From Chatbot to AI Agent: AI That Does the Work, Not Just Answers](lessons/chatbot-to-agent.md) — 8 min
+2. [Brain, Tools and the Loop: What an AI Agent Is Made Of](lessons/agent-parts-and-loop.md) — 8 min
+3. Watch an AI Agent Build and Check a Tiny Web Page — 10 min
+4. Choose Your Setup: Browser, Personal PC or Work PC — 10 min
+5. Before You Let an Agent Act: Safe, Ask First, Never — 10 min
+6. Your First Agent Session: Build a One-File Task Card — 25 min
+7. New Mindset: You Are the Lead, Not the Typist — 8 min
+8. Writing Good Specs: The Task and Its Definition of Done — 12 min
+9. The Four-Step Workflow: Explore → Plan → Build → Verify — 12 min
+10. Reading and Reviewing an Agent's Changes (Diffs) — 15 min
+11. Turn "Looks Right" into Checks — 12 min
+12. Reading Error Messages and Debugging Like a Detective — 12 min
+13. Project: Your Personal Web Page — 60 min
+14. Files, Folders and Paths: The Map Inside Your Computer — 10 min
+15. Git: A Magic Undo Button for Your Whole Project — 15 min
+16. Hallucination: Why AI Is Confidently Wrong — 10 min
+17. The Context Window: AI's Short-Term Memory — 10 min
+18. Project: Automate an Office Task (Spreadsheet → Report) — 90 min
 
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 1.1.1 | [From Chatbot to AI Agent: AI That Does the Work, Not Just Answers](lessons/chatbot-to-agent.md) | 📖 Concept | 10 min |
-| 1.1.2 | Watch an AI Agent Build Software from Start to Finish | 🎬 Demo | 12 min |
-| 1.1.3 | Course Map: How to Learn Without Giving Up | 📖 Concept | 8 min |
+## 1. 🚀 Start Safely and Get a First Win
 
-## 2. 🧱 Software Foundations — Just Enough to Lead an Agent
+🎯 See how an AI agent differs from a chatbot, choose a safe way to practise on your own device, then have an agent build your first small artifact and check it yourself.
 
-🎯 Follow what an agent does on your computer: files, commands, code, errors, Git and tests.
-
-### 2.1 How Computers and Software Work
-
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 2.1.1 | What Is Software? A Program Is Like a Recipe | 📖 Concept | 8 min |
-| 2.1.2 | Files, Folders and Paths: The Map Inside Your Computer | 📖 Concept | 10 min |
-| 2.1.3 | The Terminal Is Not Scary: Your First 10 Commands | 🛠️ Hands-on | 15 min |
-
-### 2.2 Reading Code (No Writing Required)
-
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 2.2.1 | Variables, Functions, Conditions, Loops: The Four Building Blocks | 📖 Concept | 12 min |
-| 2.2.2 | What Data Looks Like: JSON, CSV and YAML | 📖 Concept | 10 min |
-| 2.2.3 | Reading Error Messages and Debugging Like a Detective | 🛠️ Hands-on | 12 min |
-
-### 2.3 How Software Is Built
+### 1.1 What Agents Do
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 2.3.1 | Anatomy of a Project: Frontend, Backend, Database, API | 📖 Concept | 12 min |
-| 2.3.2 | Git: A Magic Undo Button for Your Whole Project | 🛠️ Hands-on | 15 min |
-| 2.3.3 | Testing: How Do You Know the Program Works? | 📖 Concept | 10 min |
-| 2.3.4 | Safety Basics: API Keys, Passwords and Personal Data | 📖 Concept | 10 min |
+| 1.1.1 | ⭐ [From Chatbot to AI Agent: AI That Does the Work, Not Just Answers](lessons/chatbot-to-agent.md) | 📖 Concept | 8 min |
+| 1.1.2 | ⭐ [Brain, Tools and the Loop: What an AI Agent Is Made Of](lessons/agent-parts-and-loop.md) | 📖 Concept | 8 min |
+| 1.1.3 | ⭐ Watch an AI Agent Build and Check a Tiny Web Page | 🎬 Demo | 10 min |
 
-## 3. 🧠 AI and Machine Learning Foundations
-
-🎯 Explain in your own words how AI, machine learning, deep learning and generative AI differ — and why AI is sometimes wrong.
-
-### 3.1 The AI Family Tree
+### 1.2 Choose a Safe Route
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 3.1.1 | AI, Machine Learning, Deep Learning: Three Nested Circles | 📖 Concept | 10 min |
-| 3.1.2 | How Do Machines "Learn"? Data, Training and Models | 📖 Concept | 12 min |
-| 3.1.3 | Predictive AI vs Generative AI | 📖 Concept | 10 min |
-| 3.1.4 | Foundation Models: One Brain, a Thousand Jobs | 📖 Concept | 10 min |
+| 1.2.1 | ⭐ Choose Your Setup: Browser, Personal PC or Work PC | 🛠️ Hands-on | 10 min |
+| 1.2.2 | ⭐ Before You Let an Agent Act: Safe, Ask First, Never | 📖 Concept | 10 min |
 
-### 3.2 Making AI Better at Your Task
+### 1.3 Your First Build
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 3.2.1 | Prompting Basics: Talking So AI Understands | 🛠️ Hands-on | 12 min |
-| 3.2.2 | RAG: Letting AI Look Things Up | 📖 Concept | 10 min |
-| 3.2.3 | Fine-Tuning: When Does AI Need Extra Training? | 📖 Concept | 10 min |
-| 3.2.4 | Prompting, RAG or Fine-Tuning: Which One When? | 📖 Concept | 10 min |
+| 1.3.1 | ⭐ Your First Agent Session: Build a One-File Task Card | 🛠️ Hands-on | 25 min |
+| 1.3.2 | Choose Your Path and Keep a Learning Log | 🛠️ Hands-on | 8 min |
 
-## 4. 🤖 Agentic Coding: Building Software with AI Agents
+## 2. 🧭 Direct, Check and Improve an Agent
 
-🎯 Assign work to a coding agent, then follow, review and verify its results like a team lead.
+🎯 Give an agent clear work, check every change against evidence, and finish your first meaningful project.
 
-### 4.1 What Is Agentic Coding?
+### 2.1 Give Clear Work
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 4.1.1 | Traditional Coding vs Agentic Coding | 📖 Concept | 10 min |
-| 4.1.2 | Vibe Coding vs Agentic Coding: What Is the Difference? | 📖 Concept | 10 min |
-| 4.1.3 | Inside an Agent: The Think → Act → Observe Loop | 📖 Concept | 10 min |
+| 2.1.1 | ⭐ New Mindset: You Are the Lead, Not the Typist | 📖 Concept | 8 min |
+| 2.1.2 | ⭐ Writing Good Specs: The Task and Its Definition of Done | 🛠️ Hands-on | 12 min |
+| 2.1.3 | ⭐ The Four-Step Workflow: Explore → Plan → Build → Verify | 🛠️ Hands-on | 12 min |
 
-### 4.2 Mindset and Workflow
-
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 4.2.1 | New Mindset: You Are the Lead, Not the Typist | 📖 Concept | 8 min |
-| 4.2.2 | The Four-Step Workflow: Explore → Plan → Build → Verify | 📖 Concept | 12 min |
-| 4.2.3 | Writing Good Specs: The Task and Its Definition of Done | 🛠️ Hands-on | 12 min |
-| 4.2.4 | Popular Workflow Frameworks: Plan Mode, TDD and Review | 📖 Concept | 12 min |
-
-### 4.3 Tools Lab
+### 2.2 Inspect the Result
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 4.3.1 | The Tool Landscape: Claude Code, Codex, Cursor, Copilot… | 📖 Concept | 10 min |
-| 4.3.2 | Your First Session: Ask an Agent to Build a Small Web Page | 🛠️ Hands-on | 20 min |
-| 4.3.3 | Reading and Reviewing an Agent's Changes (Diffs) | 🛠️ Hands-on | 15 min |
+| 2.2.1 | ⭐ Reading and Reviewing an Agent's Changes (Diffs) | 🛠️ Hands-on | 15 min |
+| 2.2.2 | ⭐ Turn "Looks Right" into Checks | 🛠️ Hands-on | 12 min |
+| 2.2.3 | ⭐ Reading Error Messages and Debugging Like a Detective | 🛠️ Hands-on | 12 min |
 
-## 5. 🔬 LLM and Model Foundations
-
-🎯 Understand how LLMs work — tokens, context, hallucination, tools and cost — so you can direct agents more wisely.
-
-### 5.1 Inside an LLM
+### 2.3 Your First Project
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 5.1.1 | Tokens: How AI Reads Text in Pieces | 📖 Concept | 10 min |
-| 5.1.2 | Next-Token Prediction: The Simple Secret Behind LLMs | 📖 Concept | 10 min |
-| 5.1.3 | The Context Window: AI's Short-Term Memory | 📖 Concept | 10 min |
-| 5.1.4 | Hallucination: Why AI Is Confidently Wrong | 📖 Concept | 10 min |
+| 2.3.1 | ⭐ Project: Your Personal Web Page | 🚀 Project | 60 min |
 
-### 5.2 Working with Models
+## 3. 🧱 Software Literacy, Just in Time
 
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 5.2.1 | Models That "Think": What Is Reasoning? | 📖 Concept | 10 min |
-| 5.2.2 | Tool Calling: How an LLM Presses Real Buttons | 📖 Concept | 10 min |
-| 5.2.3 | Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly | 📖 Concept | 10 min |
+🎯 Understand what the agent just made — files, folders, data, code and history — well enough to supervise it and undo safely.
 
-## 6. 🧰 Harness Engineering: Reins for Your AI Agent
-
-🎯 Design an agent's working environment — context, control, tools and verification — so it works correctly and safely.
-
-### 6.1 The Anatomy of an Agent Harness
+### 3.1 Files and Projects
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 6.1.1 | Model + Harness = Agent: The Horse and the Reins | 📖 Concept | 10 min |
-| 6.1.2 | Context and Control | 📖 Concept | 10 min |
-| 6.1.3 | Action and Persistence | 📖 Concept | 10 min |
-| 6.1.4 | Observe and Verify | 📖 Concept | 10 min |
+| 3.1.1 | What Is Software? A Program Is Like a Recipe | 📖 Concept | 8 min |
+| 3.1.2 | ⭐ Files, Folders and Paths: The Map Inside Your Computer | 🛠️ Hands-on | 10 min |
+| 3.1.3 | Anatomy of a Project: Frontend, Backend, Database, API | 📖 Concept | 10 min |
+| 3.1.4 | What Data Looks Like: JSON, CSV and YAML | 🛠️ Hands-on | 10 min |
 
-### 6.2 Deep Dive: Context
-
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 6.2.1 | Prompt Engineering for Agents: System Prompts and Instructions | 📖 Concept | 12 min |
-| 6.2.2 | Context Engineering: The Right Information at the Right Time | 📖 Concept | 12 min |
-| 6.2.3 | Memory and Skills: CLAUDE.md, AGENTS.md and Skills | 🛠️ Hands-on | 15 min |
-| 6.2.4 | RAG for Agents: Searching Large Knowledge Bases | 📖 Concept | 10 min |
-
-### 6.3 Deep Dive: Control
+### 3.2 Code and History
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 6.3.1 | Agents and Workflows: When Do You Need More Than One Agent? | 📖 Concept | 12 min |
-| 6.3.2 | Hooks and Permissions: Automatic Guardrails | 📖 Concept | 12 min |
+| 3.2.1 | Variables, Functions, Conditions, Loops: The Four Building Blocks | 📖 Concept | 12 min |
+| 3.2.2 | ⭐ Git: A Magic Undo Button for Your Whole Project | 🛠️ Hands-on | 15 min |
+| 3.2.3 | The Terminal Is Not Scary: Your First Five Safe Commands | 🛠️ Hands-on | 15 min |
 
-### 6.4 Deep Dive: Action
-
-| # | Lesson | Type | Time |
-|---|---|---|---|
-| 6.4.1 | MCP: A USB-C Port for AI | 📖 Concept | 12 min |
-| 6.4.2 | CLI: How Agents Work Through the Command Line | 📖 Concept | 10 min |
-| 6.4.3 | APIs: How Agents Talk to Other Services | 📖 Concept | 10 min |
-
-### 6.5 Deep Dive: Verification
+### 3.3 Security Essentials
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 6.5.1 | Tests and CI: Let Machines Check Machines | 📖 Concept | 12 min |
-| 6.5.2 | Evals: Scoring an Agent's Quality | 📖 Concept | 10 min |
+| 3.3.1 | Safety Basics: API Keys, Passwords and Personal Data | 📖 Concept | 12 min |
 
-## 7. 💼 Real Projects
+## 4. 🧠 The AI Mental Models You Actually Need
 
-🎯 Finish real projects with an AI agent and have something to show.
+🎯 Know why a fluent AI answer can still be wrong, what an agent can see and how it uses tools; the deeper theory is optional.
 
-### 7.1 Projects
+### 4.1 Asking and Grounding
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 7.1.1 | Project 1: Your Personal Web Page | 🚀 Project | 60 min |
-| 7.1.2 | Project 2: Automate an Office Task (Excel → Report) | 🚀 Project | 90 min |
-| 7.1.3 | Project 3: Build an MCP Tool for Your Agent | 🚀 Project | 90 min |
-| 7.1.4 | Capstone: Your Own Idea | 🚀 Project | 120 min |
+| 4.1.1 | Prompting Basics: Talking So AI Understands | 🛠️ Hands-on | 12 min |
+| 4.1.2 | ⭐ Hallucination: Why AI Is Confidently Wrong | 📖 Concept | 10 min |
+| 4.1.3 | ⭐ The Context Window: AI's Short-Term Memory | 📖 Concept | 10 min |
+| 4.1.4 | Next-Token Prediction: The Simple Secret Behind LLMs | 📖 Concept | 10 min |
+| 4.1.5 | Tool Calling: How an LLM Presses Real Buttons | 🎬 Demo | 10 min |
+
+### 4.2 AI Foundations · _optional_
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 4.2.1 | The AI Family Tree in One Picture: From Machine Learning to LLMs | 📖 Concept | 8 min |
+| 4.2.2 | How Do Machines "Learn"? Data, Training and Models | 📖 Concept | 10 min |
+| 4.2.3 | RAG: Letting AI Look Things Up | 🎬 Demo | 10 min |
+| 4.2.4 | Prompting, RAG or Fine-Tuning: Which One When? | 📖 Concept | 10 min |
+
+### 4.3 Model Literacy · _optional_
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 4.3.1 | Tokens: How AI Reads Text in Pieces | 🎬 Demo | 8 min |
+| 4.3.2 | Models That "Think": What Is Reasoning? | 📖 Concept | 10 min |
+| 4.3.3 | Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly | 🛠️ Hands-on | 10 min |
+
+## 5. 🧰 Reliable Agent Work
+
+🎯 Make an agent a dependable colleague: the right workflow, the right context, clear permissions and automatic checks.
+
+### 5.1 Agentic Work as a System
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 5.1.1 | Traditional Coding vs Agentic Coding | 📖 Concept | 8 min |
+| 5.1.2 | Vibe Coding vs Agentic Coding: What Is the Difference? | 📖 Concept | 8 min |
+| 5.1.3 | Trace an Agent Loop Through a Real Session | 🎬 Demo | 10 min |
+| 5.1.4 | Choose a Tool by Environment, Not Hype | 📖 Concept | 10 min |
+| 5.1.5 | Add Structure When the Task Needs It: Plans, Tests First, Reviews | 📖 Concept | 10 min |
+
+### 5.2 The Minimum Useful Harness
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 5.2.1 | Model + Harness = Agent: The Horse and the Reins | 📖 Concept | 10 min |
+| 5.2.2 | Context Engineering: The Right Information at the Right Time | 🛠️ Hands-on | 12 min |
+| 5.2.3 | Prompt Engineering for Agents: System Prompts and Instructions | 🛠️ Hands-on | 12 min |
+| 5.2.4 | Hooks and Permissions: Automatic Guardrails | 🛠️ Hands-on | 12 min |
+| 5.2.5 | Tests and CI: Let Machines Check Machines | 🎬 Demo | 12 min |
+
+### 5.3 Deeper Practice · _advanced_
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 5.3.1 | Project Memory and Reusable Skills | 🛠️ Hands-on | 15 min |
+| 5.3.2 | Agents and Workflows: When Do You Need More Than One Agent? | 📖 Concept | 12 min |
+| 5.3.3 | MCP: A USB-C Port for AI | 🎬 Demo | 12 min |
+| 5.3.4 | Evals: Scoring an Agent's Quality | 🛠️ Hands-on | 15 min |
+
+## 6. 💼 Build Something Useful
+
+🎯 Use what you have learned to automate an office task you can verify, then take on advanced projects if you like.
+
+### 6.1 An Office Task, Automated
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 6.1.1 | ⭐ Project: Automate an Office Task (Spreadsheet → Report) | 🚀 Project | 90 min |
+| 6.1.2 | Project Retrospective and Evidence Pack | 🛠️ Hands-on | 15 min |
+
+### 6.2 Advanced Projects · _advanced_
+
+| # | Lesson | Type | Time |
+|---|---|---|---|
+| 6.2.1 | Project: Build a Small MCP Tool for Your Agent | 🚀 Project | 90 min |
+| 6.2.2 | Capstone: Your Own Idea | 🚀 Project | 120 min |

@@ -10,11 +10,13 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+import yaml
+
 from src.core.validate import validate
 from src.main import main
 from src.tools.fb_draft import plain
 from src.tools.stats import progress
-from tests.course_fixtures import language_bar, make_store, write_lesson
+from tests.course_fixtures import dump, language_bar, make_store, write_lesson
 
 
 def run_cli(*arguments: str) -> tuple[int, str, str]:
@@ -79,11 +81,29 @@ class CommandTests(unittest.TestCase):
         homes = {lang: (self.root / f"course/{lang}/README.md").read_text(encoding="utf-8")
                  for lang in ("vi", "en", "ja")}
         self.assertIn("| 1.1.2 | Bài beta | 🛠️ Thực hành | 15 phút |", homes["vi"])
-        self.assertIn("| 1.1.1 | [Lesson alpha](lessons/alpha.md) | 📖 Concept | 10 min |", homes["en"])
+        self.assertIn("| 1.1.1 | ⭐ [Lesson alpha](lessons/alpha.md) | 📖 Concept | 10 min |", homes["en"])
         self.assertIn("| 1.1.2 | レッスン・ベータ | 🛠️ 実習 | 15分 |", homes["ja"])
         self.assertNotIn("Lesson beta", homes["vi"] + homes["ja"])
         self.assertTrue(homes["ja"].split("\n")[2].startswith("🌐 [Tiếng Việt](../vi/README.md) · [English](../en/README.md)"))
         self.assertIn("![学習ロードマップ](diagrams/roadmap.svg)", homes["ja"])
+
+    def test_the_course_home_leads_with_the_minimum_path_and_names_tracks(self) -> None:
+        home = (self.root / "course/en/README.md").read_text(encoding="utf-8")
+        self.assertIn("1. [Lesson alpha](lessons/alpha.md) — 10 min", home)
+        self.assertLess(home.index("## ⭐ The minimum path"), home.index("## 1. 🚀 Start"))
+        curriculum = self.root / "course/data/curriculum.yaml"
+        data = yaml.safe_load(curriculum.read_text(encoding="utf-8"))
+        beta = data["modules"][0]["units"][0]["lessons"].pop()
+        data["modules"][0]["units"].append({
+            "id": "later", "track": "advanced", "lessons": [beta],
+            "title": {"vi": "Về sau", "en": "Later on", "ja": "あとで"},
+        })
+        dump(curriculum, data)
+        self.assertEqual(run_cli("--root", str(self.root), "build")[0], 0)
+        self.assertIn("### 1.2 Later on · _advanced_",
+                      (self.root / "course/en/README.md").read_text(encoding="utf-8"))
+        self.assertIn("### 1.2 Về sau · _nâng cao_",
+                      (self.root / "course/vi/README.md").read_text(encoding="utf-8"))
 
     def test_the_glossary_pages_define_terms_in_their_own_language(self) -> None:
         vi = (self.root / "course/vi/glossary.md").read_text(encoding="utf-8")
@@ -110,6 +130,7 @@ class CommandTests(unittest.TestCase):
         code, out, _ = run_cli("--root", str(self.root), "stats")
         self.assertEqual(code, 0)
         self.assertIn("Modules: 1 · Units: 1 · Lessons: 2 · Total time: 25 min", out)
+        self.assertIn("Minimum path — lessons: 1 · 10 min", out)
 
     # -- fb-draft ---------------------------------------------------------------
 

@@ -44,6 +44,7 @@ from src.core.model import (
     SECTIONS_FILE,
     SLUG,
     STATUSES,
+    TRACKS,
     Course,
     Lesson,
     Module,
@@ -58,6 +59,7 @@ from src.core.model import (
 COMPLETE = ("review", "done")  # statuses that promise a finished text
 DATA_ENTRIES = ("course.yaml", "curriculum.yaml", "sections.yaml", "glossary.yaml", "diagrams")
 EXTERNAL = ("http://", "https://", "mailto:", "#")
+RECAP = "recap"  # the section that sums up a lesson in one infographic
 
 
 @dataclass(frozen=True)
@@ -365,7 +367,7 @@ def _curriculum(
     data = check.mapping(_load(report, root, CURRICULUM_FILE), "")
     if data is None:
         raise _Invalid
-    check.keys(data, "", required=("version", "modules"))
+    check.keys(data, "", required=("version", "modules"), optional=("minimum_path", "retired"))
     version = check.text(data["version"], "version") if "version" in data else None
     seen: set[str] = set()  # one namespace for module, unit and lesson ids
     modules: list[Module] = []
@@ -387,9 +389,13 @@ def _curriculum(
             raw_unit = check.mapping(raw_unit, u_where)
             if raw_unit is None:
                 continue
-            check.keys(raw_unit, u_where, required=("id", "title", "lessons"))
+            check.keys(raw_unit, u_where, required=("id", "title", "lessons"), optional=("track",))
             unit_id = check.slug(raw_unit.get("id"), _where(u_where, "id"), seen)
             unit_title = check.localized(raw_unit, "title", u_where, languages)
+            track = raw_unit.get("track", "core")
+            if not isinstance(track, str) or track not in TRACKS:
+                check.error("value_invalid", field=_where(u_where, "track"), value=str(track), allowed=", ".join(TRACKS))
+                track = "core"
             unit_number = f"{m_index}.{u_index}"
             lessons: list[Lesson] = []
             raw_lessons = check.items(raw_unit["lessons"], _where(u_where, "lessons")) if "lessons" in raw_unit else []
@@ -426,20 +432,77 @@ def _curriculum(
                     lessons.append(Lesson(
                         lesson_id, lesson_title, str(lesson_type), minutes if isinstance(minutes, int) else 0,
                         tuple(used_in_order(terms)),
-                        f"{unit_number}.{l_index}", module_id, unit_id,
+                        f"{unit_number}.{l_index}", module_id, unit_id, track,
                     ))
             if unit_id and unit_title:
-                units.append(Unit(unit_id, unit_title, unit_number, tuple(lessons)))
+                units.append(Unit(unit_id, unit_title, unit_number, tuple(lessons), track))
         if module_id and module_title and goal:
             icon = raw_module.get("icon") if isinstance(raw_module.get("icon"), str) else "📘"
             modules.append(Module(module_id, module_title, goal, str(m_index), tuple(units), icon.strip() or "📘"))
+    lessons = [lesson for module in modules for lesson in module.lessons]
+    minimum_path = _minimum_path(check, data.get("minimum_path"), lessons) if "minimum_path" in data else ()
+    retired = _retired(check, data.get("retired"), seen, lessons) if "retired" in data else {}
     if not check.clean or version is None:
         raise _Invalid
     used_terms = {term for module in modules for unit in module.units for lesson in unit.lessons for term in lesson.terms}
     for term_id in glossary:
         if term_id not in used_terms:
             report.warning("term_unused", path=GLOSSARY_FILE, term=term_id)
-    return version, tuple(modules)
+    return version, tuple(modules), minimum_path, retired
+
+
+def _minimum_path(check: _Checker, value: object, lessons: list[Lesson]) -> tuple[str, ...]:
+    """The lessons a learner takes first: core lessons only, each once, in course order.
+
+    Course order, so that a learner who follows the course never meets a lesson
+    before one the minimum path puts ahead of it.
+    """
+    position = {lesson.id: (index, lesson) for index, lesson in enumerate(lessons)}
+    path: list[str] = []
+    furthest: tuple[int, str] | None = None
+    for entry in check.items(value, "minimum_path"):
+        if not isinstance(entry, str) or entry not in position:
+            check.error("minimum_path_unknown", id=str(entry))
+            continue
+        if entry in path:
+            check.error("id_duplicate", id=entry)
+            continue
+        index, lesson = position[entry]
+        if lesson.track != "core":
+            check.error("minimum_path_track", id=entry, track=lesson.track)
+        if furthest is not None and index < furthest[0]:
+            check.error("minimum_path_order", id=entry, previous=furthest[1])
+        else:
+            furthest = (index, entry)
+        path.append(entry)
+    return tuple(path)
+
+
+def _retired(check: _Checker, value: object, seen: set[str], lessons: list[Lesson]) -> dict[str, str | None]:
+    """Ids that were once lessons: never reused, and pointing at the lesson that took over."""
+    current = {lesson.id for lesson in lessons}
+    retired: dict[str, str | None] = {}
+    for index, raw in enumerate(check.items(value, "retired"), start=1):
+        where = f"retired[{_label(raw, index)}]"
+        raw = check.mapping(raw, where)
+        if raw is None:
+            continue
+        check.keys(raw, where, required=("id",), optional=("into",))
+        retired_id = raw.get("id")
+        if not isinstance(retired_id, str) or not SLUG.match(retired_id):
+            check.error("id_invalid", id=str(retired_id), field=_where(where, "id"))
+            continue
+        if retired_id in retired:
+            check.error("id_duplicate", id=retired_id)
+            continue
+        if retired_id in seen:
+            check.error("retired_in_use", id=retired_id)
+        into = raw.get("into")
+        if "into" in raw and not (isinstance(into, str) and into in current):
+            check.error("retired_target_unknown", id=retired_id, into=str(into))
+            into = None
+        retired[retired_id] = into
+    return retired
 
 
 # ---------------------------------------------------------------------------
@@ -452,6 +515,7 @@ _TEMPLATE_KEYS = {
     "equation": (("terms", "result"), ()),
     "cycle": (("steps", "center"), ()),
     "flow": (("steps",), ("direction",)),
+    "summary": (("points",), ()),
 }
 _COMMON_REQUIRED = ("template", "title")
 _COMMON_OPTIONAL = ("subtitle", "takeaway")
@@ -513,6 +577,10 @@ def _diagram(report: Report, relative: str, spec: object, languages: tuple[str, 
             row = spec["emphasis_row"]
             if isinstance(row, bool) or not isinstance(row, int) or not 1 <= row <= max(1, len(rows)):
                 check.error("value_invalid", field="emphasis_row", value=str(row), allowed=f"1–{len(rows)}")
+    elif template == "summary":
+        points = check.items(spec["points"], "points", minimum=3, maximum=6) if "points" in spec else []
+        for index, point in enumerate(points, start=1):
+            _visual(check, point, f"points[{index}]", languages, optional=("caption",), localized=("caption",))
     elif template == "equation":
         terms = check.items(spec["terms"], "terms", minimum=2, maximum=4) if "terms" in spec else []
         for index, term in enumerate(terms, start=1):
@@ -625,6 +693,17 @@ def _lessons(report: Report, root: Path, course: Course) -> None:
         _parity(report, course, lesson, docs)
 
 
+def _diagram_id(relative: str, target: str) -> str | None:
+    """The diagram an image in a lesson file shows, or None when it is no diagram."""
+    if target.startswith(EXTERNAL):
+        return None
+    folder = posixpath.dirname(relative)
+    resolved = posixpath.normpath(posixpath.join(folder, target.split("#", 1)[0]))
+    if posixpath.dirname(resolved) == posixpath.join(posixpath.dirname(folder), "diagrams") and resolved.endswith(".svg"):
+        return posixpath.basename(resolved)[: -len(".svg")]
+    return None
+
+
 def _references(check: _Checker, root: Path, course: Course, relative: str, doc: LessonDoc) -> None:
     """Every image and relative link in the lesson points at something that exists."""
     folder = posixpath.dirname(relative)
@@ -634,13 +713,12 @@ def _references(check: _Checker, root: Path, course: Course, relative: str, doc:
                 check.error("image_alt_missing", target=target)
             if target.startswith(EXTERNAL):
                 continue
-            resolved = posixpath.normpath(posixpath.join(folder, target.split("#", 1)[0]))
-            diagrams = posixpath.join(posixpath.dirname(folder), "diagrams")
-            if posixpath.dirname(resolved) == diagrams and resolved.endswith(".svg"):
-                diagram_id = posixpath.basename(resolved)[: -len(".svg")]
+            diagram_id = _diagram_id(relative, target)
+            if diagram_id is not None:
                 if diagram_id != ROADMAP and diagram_id not in course.diagrams:
                     check.error("diagram_unknown", target=target)
                 continue  # generated: its presence is the build check's business
+            resolved = posixpath.normpath(posixpath.join(folder, target.split("#", 1)[0]))
             if not (root / resolved).exists():
                 check.error("link_broken", target=target)
         for target in block.links:
@@ -649,6 +727,22 @@ def _references(check: _Checker, root: Path, course: Course, relative: str, doc:
             resolved = posixpath.normpath(posixpath.join(folder, target.split("#", 1)[0]))
             if not (root / resolved).exists():
                 check.error("link_broken", target=target)
+
+
+def _recap(check: _Checker, relative: str, doc: LessonDoc) -> None:
+    """A finished lesson sums itself up in one infographic of its own."""
+    block = doc.section(RECAP)
+    if block is None:
+        return  # a missing section is section_required's business
+    shown = [_diagram_id(relative, target) for _, target in block.images]
+    diagrams = [diagram_id for diagram_id in shown if diagram_id is not None]
+    if len(shown) != 1 or len(diagrams) != 1:
+        check.error("recap_diagram", images=len(shown), diagrams=len(diagrams))
+        return
+    for other in doc.sections:
+        if other is not block and any(_diagram_id(relative, target) == diagrams[0] for _, target in other.images):
+            check.error("recap_reused", target=block.images[0][1])
+            return
 
 
 def _lesson_file(
@@ -701,15 +795,15 @@ def _lesson_file(
     last_position = -1
     for block in doc.sections:
         if block.key not in order:
-            check.error("section_unknown", key=block.key)
+            check.error("section_unknown", section=block.key)
             continue
         if block.key in seen:
-            check.error("section_duplicate", key=block.key)
+            check.error("section_duplicate", section=block.key)
             continue
         seen.add(block.key)
         position = order.index(block.key)
         if position < last_position:
-            check.error("section_order", key=block.key)
+            check.error("section_order", section=block.key)
         last_position = max(last_position, position)
     _references(check, root, course, relative, doc)
 
@@ -719,15 +813,16 @@ def _lesson_file(
     if status != "todo":
         for section in course.sections:
             if lesson.type in section.required_for and section.key not in seen:
-                check.error("section_required", key=section.key)
+                check.error("section_required", section=section.key)
     if status in COMPLETE:
         for block in doc.sections:
             if block.is_empty:
-                check.error("section_empty", key=block.key)
+                check.error("section_empty", section=block.key)
             if block.has_todo:
-                check.error("todo_left", key=block.key)
+                check.error("todo_left", section=block.key)
         if summary == "":
             check.error("field_empty", field="summary")
+        _recap(check, relative, doc)
     if status == "done":
         if hook == "":
             check.error("field_empty", field="social.hook")
@@ -822,7 +917,7 @@ def validate(root: Path, *, check_generated: bool = True) -> Report:
                 pass
         if "glossary" not in results:
             raise _Invalid
-        version, modules = _curriculum(report, root, languages, results["glossary"])
+        version, modules, minimum_path, retired = _curriculum(report, root, languages, results["glossary"])
         if "sections" not in results or "diagrams" not in results:
             raise _Invalid
     except _Invalid:
@@ -841,6 +936,8 @@ def validate(root: Path, *, check_generated: bool = True) -> Report:
         glossary=results["glossary"],
         sections=results["sections"],
         diagrams=results["diagrams"],
+        minimum_path=minimum_path,
+        retired=retired,
     )
     _tree(report, root, report.course)
     _lessons(report, root, report.course)

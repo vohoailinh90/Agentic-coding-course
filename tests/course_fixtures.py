@@ -72,6 +72,8 @@ CURRICULUM = {
             ],
         }
     ],
+    "minimum_path": ["alpha"],
+    "retired": [{"id": "old-alpha", "into": "alpha"}],
 }
 
 DIAGRAM_ID = "compare-demo"
@@ -92,7 +94,19 @@ DIAGRAM = {
 }
 
 # The sections a finished concept lesson has, in sections.yaml order.
-ALPHA_SECTIONS = ("objective", "hook", "concept", "analogy", "example", "takeaways", "quiz")
+# The recap: a lesson summed up in one infographic of its own (sections.yaml `recap`).
+RECAP_ID = "alpha-recap"
+RECAP = {
+    "template": "summary",
+    "title": {"vi": "Tóm tắt", "en": "Recap", "ja": "まとめ"},
+    "points": [
+        {"icon": "💬", "color": "blue", "name": {"vi": "Chatbot trả lời", "en": "A chatbot answers", "ja": "チャットボットは答える"}},
+        {"icon": "🤖", "color": "green", "name": {"vi": "Agent hành động", "en": "An agent acts", "ja": "エージェントは行動する"},
+         "caption": {"vi": "Bạn kiểm tra kết quả", "en": "You check the result", "ja": "結果はあなたが確かめる"}},
+        {"icon": "✅", "color": "amber", "name": {"vi": "Bạn quyết định", "en": "You decide", "ja": "決めるのはあなた"}},
+    ],
+}
+ALPHA_SECTIONS = ("objective", "hook", "concept", "analogy", "example", "recap", "takeaways", "quiz")
 
 
 def dump(path: Path, data: object) -> None:
@@ -135,6 +149,8 @@ def lesson_text(
         default = f"- **Point** for {key} in {language}, see [docs](https://example.com)."
         if key == "concept":
             default += f"\n\n![{DIAGRAM['title'][language]}](../diagrams/{DIAGRAM_ID}.svg)"
+        if key == "recap":
+            default = f"![{RECAP['title'][language]}](../diagrams/{RECAP_ID}.svg)"
         body = bodies.get(key, default)
         lines += [f"<!-- section: {key} -->", f"## Heading {key}", "", body, ""]
     return "\n".join(lines)
@@ -166,6 +182,7 @@ def make_store(root: Path) -> Path:
     dump(data / "glossary.yaml", GLOSSARY)
     dump(data / "curriculum.yaml", CURRICULUM)
     dump(data / "diagrams" / f"{DIAGRAM_ID}.yaml", DIAGRAM)
+    dump(data / "diagrams" / f"{RECAP_ID}.yaml", RECAP)
     shutil.copy(ROOT / "course" / "data" / "sections.yaml", data / "sections.yaml")
     for language in LANGUAGES:
         write_lesson(root, "alpha", language)

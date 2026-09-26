@@ -16,8 +16,9 @@ Design rules, shared by every template:
 - `<title>` and `<desc>` carry the diagram in words for screen readers.
 - Output is deterministic, so CI can tell a stale file from a current one.
 
-Templates: compare, equation, cycle, flow; plus `render_roadmap` for the course
-journey map, drawn from curriculum.yaml rather than from a spec.
+Templates: compare, equation, cycle, flow, and summary (a lesson's recap: its key
+points on numbered cards); plus `render_roadmap` for the course journey map, drawn
+from curriculum.yaml rather than from a spec.
 """
 
 from __future__ import annotations
@@ -67,7 +68,7 @@ PALETTE: dict[str, dict[str, str]] = {
 # Colours given to modules on the roadmap, in order.
 MODULE_COLORS = ("blue", "violet", "green", "amber", "rose", "teal", "orange", "indigo", "pink")
 
-TEMPLATES = ("compare", "equation", "cycle", "flow")
+TEMPLATES = ("compare", "equation", "cycle", "flow", "summary")
 MOTION = """
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -193,6 +194,11 @@ def describe(spec: dict, lang: str) -> str:
     elif template == "equation":
         terms = " + ".join(term["name"][lang] for term in spec["terms"])
         parts.append(f"{terms} = {spec['result']['name'][lang]}")
+    elif template == "summary":
+        parts.append("; ".join(
+            f"{number}. {point['name'][lang]}" + (f" — {point['caption'][lang]}" if point.get("caption") else "")
+            for number, point in enumerate(spec["points"], start=1)
+        ))
     else:
         parts.append(" → ".join(step["name"][lang] for step in spec["steps"]))
     if spec.get("takeaway"):
@@ -579,7 +585,29 @@ def _cycle(canvas: Canvas, spec: dict, lang: str, y: float) -> float:
     return cy + bottom + 26
 
 
-RENDERERS = {"compare": _compare, "equation": _equation, "cycle": _cycle, "flow": _flow}
+# ---------------------------------------------------------------------------
+# summary — a lesson's key points on numbered cards: the whole lesson in one picture
+# ---------------------------------------------------------------------------
+
+
+def _summary(canvas: Canvas, spec: dict, lang: str, y: float) -> float:
+    points = spec["points"]
+    columns = 2 if len(points) == 4 else 3  # 3 points: one row; 4: 2×2; 5: 3 + 2; 6: 3×2
+    gap = 18
+    width = (INNER - gap * (columns - 1)) / columns
+    number = 0
+    for start in range(0, len(points), columns):
+        row = points[start:start + columns]
+        height = max(_step_height(point, lang, width - 24) for point in row)
+        left = MARGIN + (INNER - len(row) * width - (len(row) - 1) * gap) / 2  # a short last row is centred
+        for index, point in enumerate(row):
+            number += 1
+            _step_card(canvas, point, lang, left + index * (width + gap), y, width, height, number=number)
+        y += height + gap
+    return y - gap + 24
+
+
+RENDERERS = {"compare": _compare, "equation": _equation, "cycle": _cycle, "flow": _flow, "summary": _summary}
 
 
 def _draw(spec: dict, lang: str) -> tuple[Canvas, float]:

@@ -2,13 +2,18 @@
 
 from __future__ import annotations
 
+import json
 import os
+import re
 import unittest
 from datetime import date
 from unittest import mock
 
+from src.core.model import ROOT
+from src.core.validate import Finding
 from src.utils import i18n
 from src.utils.catalogs import translator, translator_for
+from src.utils.console import render_finding
 
 
 class VietnameseTests(unittest.TestCase):
@@ -41,3 +46,29 @@ class CatalogTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FindingMessageTests(unittest.TestCase):
+    """Every validator finding can be printed, in every language.
+
+    Params reach Translator.t as keywords, so a placeholder named like one of its
+    own arguments (`key`, `count`) cannot be filled: `{key}` once made `validate`
+    crash on the first missing section instead of naming it.
+    """
+
+    def test_every_finding_renders_in_every_language(self) -> None:
+        for language in ("vi", "en", "ja"):
+            tr = translator_for(language)
+            catalog = json.loads((ROOT / "src/locales" / f"{language}.json").read_text(encoding="utf-8"))
+            for code, message in catalog["findings"].items():
+                names = set(re.findall(r"{(\w+)}", message))
+                with self.subTest(language=language, code=code):
+                    self.assertFalse(names & {"key", "count"}, "these names belong to Translator.t")
+                    params = {name: f"<{name}>" for name in names}
+                    if "expected" in params and code == "field_type":
+                        params["expected"] = "text"  # rendered through types.<expected>
+                    text = render_finding(tr, Finding("error", code, params))
+                    self.assertNotRegex(text, r"{\w+}")
+                    for name, value in params.items():
+                        if value.startswith("<"):
+                            self.assertIn(value, text)

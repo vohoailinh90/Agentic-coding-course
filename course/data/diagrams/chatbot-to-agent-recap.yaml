@@ -1,0 +1,51 @@
+# Recap of chatbot-to-agent: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: từ chatbot đến AI agent"
+  en: "Recap: From Chatbot to AI Agent"
+  ja: "まとめ：チャットボットからAIエージェントへ"
+points:
+  - icon: "💬"
+    color: blue
+    name:
+      vi: Chatbot trả lời
+      en: A chatbot answers
+      ja: チャットボットは答える
+    caption:
+      vi: AI nghĩ, còn bạn tự làm từng bước
+      en: The AI thinks; you do every step
+      ja: AIが考え、手順はあなたが実行する
+  - icon: "🤖"
+    color: green
+    name:
+      vi: AI agent hành động
+      en: An AI agent acts
+      ja: AIエージェントは行動する
+    caption:
+      vi: Nhận một mục tiêu rồi tự làm các bước
+      en: It takes a goal and does the steps
+      ja: 目標を受け取り、手順を自分で実行する
+  - icon: "❓"
+    color: violet
+    name:
+      vi: "Hỏi: ai làm các bước?"
+      en: "Ask: who does the steps?"
+      ja: 問い：手順を実行するのは誰？
+    caption:
+      vi: Một câu hỏi phân biệt mọi loại AI
+      en: One question tells every kind of AI apart
+      ja: この一問でAIの種類を見分けられる
+  - icon: "✅"
+    color: teal
+    name:
+      vi: Bạn chỉ đạo và nghiệm thu
+      en: You direct and approve
+      ja: 指示と検収はあなた
+    caption:
+      vi: Giao việc rõ ràng, kiểm tra kết quả
+      en: Give clear work, check the result
+      ja: 明確に任せ、結果を確かめる
+takeaway:
+  vi: "Agentic coding: agent làm các bước, bạn quyết định làm gì và thế nào là đạt."
+  en: "Agentic coding: the agent does the steps; you decide what to build and when it is good enough."
+  ja: エージェント型コーディング：手順はエージェント、何を作り何をもって完成とするかはあなたが決める。

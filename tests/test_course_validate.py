@@ -19,6 +19,8 @@ from tests.course_fixtures import (
     CURRICULUM,
     DIAGRAM,
     DIAGRAM_ID,
+    RECAP,
+    RECAP_ID,
     dump,
     language_bar,
     make_store,
@@ -186,6 +188,72 @@ class ValidateTests(StoreTest):
         found = {(f.code, f.params.get("path"), f.params.get("language")) for f in validate(self.root).errors}
         for language in ("vi", "en", "ja"):
             self.assertIn(("diagram_crowded", "course/data/diagrams/crowded.yaml", language), found)
+
+    # -- tracks, the minimum path and retired ids --------------------------------
+
+    def test_the_roadmap_fields_reach_the_course(self) -> None:
+        course = validate(self.root).course
+        self.assertEqual(course.minimum_path, ("alpha",))
+        self.assertEqual(course.retired, {"old-alpha": "alpha"})
+        self.assertEqual([lesson.track for lesson in course.lessons], ["core", "core"])
+
+    def test_a_unit_track_outside_the_list_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["modules"][0]["units"][0].update(track="bonus"))
+        self.assertIn("value_invalid", codes(validate(self.root)))
+
+    def test_a_minimum_path_lesson_that_does_not_exist_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["minimum_path"].append("gamma"))
+        self.assertIn("minimum_path_unknown", codes(validate(self.root)))
+
+    def test_a_lesson_twice_on_the_minimum_path_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["minimum_path"].append("alpha"))
+        self.assertIn("id_duplicate", codes(validate(self.root)))
+
+    def test_an_optional_lesson_on_the_minimum_path_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["modules"][0]["units"][0].update(track="optional"))
+        self.assertIn("minimum_path_track", codes(validate(self.root)))
+
+    def test_a_minimum_path_out_of_course_order_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c.update(minimum_path=["beta", "alpha"]))
+        self.assertIn("minimum_path_order", codes(validate(self.root)))
+
+    def test_a_retired_id_still_in_use_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["retired"].append({"id": "beta", "into": "alpha"}))
+        self.assertIn("retired_in_use", codes(validate(self.root)))
+
+    def test_a_retired_id_merged_into_an_unknown_lesson_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["retired"][0].update(into="gamma"))
+        self.assertIn("retired_target_unknown", codes(validate(self.root)))
+
+    def test_an_id_retired_twice_is_an_error(self) -> None:
+        self.edit_curriculum(lambda c: c["retired"].append({"id": "old-alpha"}))
+        self.assertIn("id_duplicate", codes(validate(self.root)))
+
+    # -- the recap infographic ---------------------------------------------------
+
+    def test_a_finished_lesson_without_its_recap_infographic_is_an_error(self) -> None:
+        write_lesson(self.root, "alpha", "vi", bodies={"recap": "- Chatbot trả lời, agent hành động."})
+        self.assertIn("recap_diagram", codes(validate(self.root)))
+
+    def test_a_recap_shows_exactly_one_infographic(self) -> None:
+        both = f"![a](../diagrams/{RECAP_ID}.svg)\n\n![b](../diagrams/{RECAP_ID}.svg)"
+        write_lesson(self.root, "alpha", "vi", bodies={"recap": both})
+        self.assertIn("recap_diagram", codes(validate(self.root)))
+
+    def test_a_recap_that_repeats_a_diagram_of_the_lesson_is_an_error(self) -> None:
+        for language in ("vi", "en", "ja"):
+            write_lesson(self.root, "alpha", language, bodies={"recap": f"![x](../diagrams/{DIAGRAM_ID}.svg)"})
+        self.assertEqual(codes(validate(self.root)), ["recap_reused"] * 3)
+
+    def test_a_draft_may_leave_its_recap_for_later(self) -> None:
+        for language in ("vi", "en", "ja"):
+            write_lesson(self.root, "alpha", language, status="draft", bodies={"recap": "<!-- TODO: recap -->"})
+        self.assertEqual(validate(self.root).errors, [])
+
+    def test_a_lesson_without_a_recap_section_is_an_error(self) -> None:
+        sections = ("objective", "hook", "concept", "analogy", "example", "takeaways", "quiz")
+        write_lesson(self.root, "alpha", "vi", sections=sections)
+        self.assertIn("section_required", codes(validate(self.root)))
 
     # -- course folders and lesson files ---------------------------------------
 
@@ -422,6 +490,8 @@ class RobustnessTests(StoreTest):
             with self.subTest(template=name):
                 spec = yaml.safe_load((ROOT / "course/data/diagrams" / f"{name}.yaml").read_text(encoding="utf-8"))
                 self.assert_never_crashes(path, spec)
+        with self.subTest(template="summary"):
+            self.assert_never_crashes(path, RECAP)
         # No course diagram is a flow yet.
         text = {"vi": "Bước", "en": "Step", "ja": "ステップ"}
         flow = {"template": "flow", "title": text, "direction": "vertical",

@@ -32,8 +32,9 @@ thêm vào chương trình khi bắt đầu giai đoạn đăng bài.
 | Thứ 4 | D. Thuật ngữ 3 thứ tiếng (hoặc B) | "AI agent · AIエージェント · tác tử AI" |
 | Thứ 6 | C. Đố vui | "Việc nào cần AI agent thay vì chatbot? A/B/C — đáp án ở bình luận" |
 
-Một bài học mỗi tuần → lộ trình v0 (57 bài) đủ cho khoảng một năm. Nên đăng theo **lộ trình tối
-thiểu** (chốt sau buổi brainstorm với Codex) trước, rồi mới đến các bài nâng cao.
+Một bài học mỗi tuần → lộ trình v1 (52 bài) đủ cho khoảng một năm. Đăng theo **lộ trình tối thiểu**
+trước (18 bài, danh sách ở đầu [trang chủ khóa học](../course/vi/README.md)), rồi mới đến các bài
+khác. Ảnh đăng kèm bài học của tuần là **hình tóm tắt** của bài đó (phần "Tóm tắt bằng hình").
 
 ## Quy trình mỗi tuần
 

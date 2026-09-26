@@ -43,6 +43,8 @@ ROADMAP = "roadmap"  # the generated journey map; no spec may use this id
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LANGUAGE_CODE = re.compile(r"^[a-z]{2,3}$")
 LESSON_TYPES = ("concept", "demo", "hands-on", "project")
+# core: the main path; optional: background a learner may skip; advanced: after the course.
+TRACKS = ("core", "optional", "advanced")
 # todo: skeleton only · draft: being written · review: complete, awaiting review
 # · done: reviewed and publishable (the only status a post should come from).
 STATUSES = ("todo", "draft", "review", "done")
@@ -73,6 +75,7 @@ class Lesson:
     number: str  # "2.1.3": display only, derived from position
     module_id: str
     unit_id: str
+    track: str = "core"  # its unit's track
 
 
 @dataclass(frozen=True)
@@ -81,6 +84,7 @@ class Unit:
     title: dict[str, str]
     number: str
     lessons: tuple[Lesson, ...]
+    track: str = "core"
 
 
 @dataclass(frozen=True)
@@ -112,6 +116,8 @@ class Course:
     glossary: dict[str, Term]
     sections: tuple[Section, ...]
     diagrams: dict[str, dict] = field(default_factory=dict)  # id -> validated spec
+    minimum_path: tuple[str, ...] = ()  # lesson ids, in the order a learner takes them
+    retired: dict[str, str | None] = field(default_factory=dict)  # retired id -> the lesson that took over
 
     @property
     def units(self) -> list[Unit]:
@@ -127,6 +133,11 @@ class Course:
     @property
     def total_minutes(self) -> int:
         return sum(lesson.minutes for lesson in self.lessons)
+
+    @property
+    def minimum_path_lessons(self) -> list[Lesson]:
+        by_id = {lesson.id: lesson for lesson in self.lessons}
+        return [by_id[lesson_id] for lesson_id in self.minimum_path]
 
 
 def language_dir(language: str) -> str:

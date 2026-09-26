@@ -100,6 +100,26 @@ sections:
       en: 2–4 misunderstandings beginners often have, each with a short correction.
       ja: 初心者によくある誤解を2〜4個。それぞれに短い解説をつける。
 
+  - key: recap
+    required_for: [concept, demo, hands-on, project]
+    heading:
+      vi: Tóm tắt bằng hình
+      en: The Lesson in One Picture
+      ja: 1枚でわかるこのレッスン
+    hint:
+      vi: >-
+        Một infographic gói cả bài — thường là mẫu summary với 3–6 ý chính đánh số. Viết nó trong
+        course/data/diagrams/ (tên nên là <id-bài>-recap.yaml) rồi chèn hình vào đây; hình này cũng là
+        ảnh đăng kèm bài Facebook.
+      en: >-
+        One infographic that sums up the whole lesson — usually the summary template with 3–6 numbered
+        key points. Write it in course/data/diagrams/ (name it <lesson-id>-recap.yaml) and show it here;
+        it is also the image posted with the Facebook post.
+      ja: >-
+        レッスン全体を1枚にまとめた図。ふつうは summary テンプレートで、番号つきの要点を3〜6個。
+        course/data/diagrams/ に（<レッスンID>-recap.yaml という名前で）作り、ここに表示する。
+        Facebook投稿の画像にもなる。
+
   - key: takeaways
     required_for: [concept, demo, hands-on, project]
     heading:

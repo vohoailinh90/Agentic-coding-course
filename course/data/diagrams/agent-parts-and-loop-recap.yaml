@@ -1,0 +1,51 @@
+# Recap of agent-parts-and-loop: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: AI agent được ghép từ gì?"
+  en: "Recap: What an AI Agent Is Made Of"
+  ja: まとめ：AIエージェントは何でできている？
+points:
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: "Bộ não: LLM"
+      en: "Brain: the LLM"
+      ja: 頭脳：LLM
+    caption:
+      vi: Hiểu yêu cầu, chọn bước tiếp theo
+      en: Understands the request, picks the next step
+      ja: 依頼を理解し、次の一手を選ぶ
+  - icon: "🔧"
+    color: amber
+    name:
+      vi: "Đôi tay: công cụ"
+      en: "Hands: tools"
+      ja: 手：ツール
+    caption:
+      vi: Đọc, ghi file, chạy lệnh — trong phạm vi được phép
+      en: Reads and writes files, runs commands — only as allowed
+      ja: ファイルの読み書きやコマンド実行——許された範囲で
+  - icon: "🔁"
+    color: blue
+    name:
+      vi: Vòng lặp
+      en: The loop
+      ja: ループ
+    caption:
+      vi: Suy nghĩ → hành động → quan sát, rồi lặp lại
+      en: Think → act → observe, and again
+      ja: 考える→行動する→観察する、をくり返す
+  - icon: "🛑"
+    color: rose
+    name:
+      vi: Biết lúc dừng
+      en: Knowing when to stop
+      ja: 止めどきを知る
+    caption:
+      vi: Khi xong việc, hoặc cần bạn quyết định
+      en: When the job is done, or a decision is yours
+      ja: 完了したとき、またはあなたの判断が必要なとき
+takeaway:
+  vi: Agent tự sửa lỗi được đến đâu tùy vào công cụ, quyền hạn và phản hồi mà nó nhận được.
+  en: How far an agent can fix its own mistakes depends on its tools, its permissions and the feedback it gets.
+  ja: エージェントがどこまで自分で直せるかは、ツール・権限・受け取るフィードバックしだい。

@@ -19,15 +19,16 @@ AI agent (Claude, Codex) đều viết và sửa được mà không làm hỏng
 
 ## Trạng thái hiện tại
 
-Giai đoạn 0 — lộ trình v0 và kho dữ liệu. Xem [PROGRESS.md](PROGRESS.md) để biết đang làm gì và
-bước tiếp theo.
+Giai đoạn 0 → 1 — lộ trình v1 đã chốt, bắt đầu viết lộ trình tối thiểu. Xem [PROGRESS.md](PROGRESS.md)
+để biết đang làm gì và bước tiếp theo.
 
 | | |
 |---|---|
-| Lộ trình v0 | 7 chương · 17 chủ đề · 57 bài · ~16 giờ — [xem bản đồ lộ trình](course/vi/README.md) |
-| Bài mẫu | [Từ chatbot đến AI agent](course/vi/lessons/chatbot-to-agent.md) — có 4 infographic |
+| Lộ trình v1 | 6 chương · 17 chủ đề · 52 bài · ~15 giờ — [xem bản đồ lộ trình](course/vi/README.md) |
+| ⭐ Lộ trình tối thiểu | 18 bài · 337 phút, gồm 2 dự án — học trước, đăng Facebook trước |
+| Bài mẫu | [Từ chatbot đến AI agent](course/vi/lessons/chatbot-to-agent.md) và [Bộ não, đôi tay và vòng lặp](course/vi/lessons/agent-parts-and-loop.md) — mỗi bài có infographic và một hình tóm tắt cả bài |
 | Thuật ngữ 3 thứ tiếng | 43 thuật ngữ — [trang thuật ngữ](course/vi/glossary.md) |
-| Brainstorm với Codex | [brainstorm/](brainstorm/README.md) |
+| Brainstorm với Codex | [brainstorm/](brainstorm/README.md) — vòng 1 xong, đã áp dụng thành lộ trình v1 |
 
 ## Repo này có gì
 
@@ -72,9 +73,10 @@ python -m src.main fb-draft chatbot-to-agent --post-lang vi   # bản nháp bài
 
 1. `scaffold <lesson-id>` → có sẵn file bài học trong `course/vi`, `course/en`, `course/ja`.
 2. Viết bản **tiếng Việt** trước (ngôn ngữ gốc) theo [docs/content-guide.md](docs/content-guide.md);
-   ý nào so sánh, cộng dồn, lặp lại hay theo bước thì vẽ thành infographic trong `course/data/diagrams/`.
+   ý nào so sánh, cộng dồn, lặp lại hay theo bước thì vẽ thành infographic trong `course/data/diagrams/`,
+   và bài nào cũng kết thúc bằng **một hình tóm tắt cả bài** (phần "Tóm tắt bằng hình").
 3. Bản địa hóa sang tiếng Anh và tiếng Nhật — giữ nguyên các phần và các sơ đồ, thay ví dụ cho hợp
-   văn hóa.
+   văn hóa. Với lộ trình tối thiểu, bản tiếng Nhật viết sau khi bản tiếng Việt đã được thử với người học.
 4. `build` rồi `validate` cho đến khi sạch lỗi; đổi trạng thái `draft → review → done`.
 5. Bài `done` → `fb-draft` → đọc lại → đăng Facebook (xem [docs/facebook-plan.md](docs/facebook-plan.md)).
 
@@ -82,7 +84,7 @@ python -m src.main fb-draft chatbot-to-agent --post-lang vi   # bản nháp bài
 
 | Giai đoạn | Nội dung | Trạng thái |
 |---|---|---|
-| 0 | Kho dữ liệu, lộ trình v0, bài mẫu, infographic, brainstorm lộ trình với Codex | đang làm |
-| 1 | Chốt lộ trình v1; viết "lộ trình tối thiểu" (vi trước, rồi en/ja) | sắp tới |
+| 0 | Kho dữ liệu, lộ trình v0, bài mẫu, infographic, brainstorm lộ trình với Codex | xong |
+| 1 | Chốt lộ trình v1 (xong); viết "lộ trình tối thiểu" — tiếng Việt trước, thử với người học, rồi en/ja | đang làm |
 | 2 | Đăng Facebook đều đặn từ kho dữ liệu (xuất infographic thành ảnh) | sắp tới |
 | 3 | Website khóa học: nút chuyển ngôn ngữ, cây khóa học, tiến độ, mục lục từng bài | sau này |

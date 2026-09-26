@@ -15,12 +15,16 @@ routed.
   `course/data/` (`course.yaml`, `curriculum.yaml`, `sections.yaml`, `glossary.yaml`,
   `diagrams/<id>.yaml`). Its rules are in `docs/data-model.md`; how to write a lesson and its
   infographics is in `docs/content-guide.md`. Vietnamese is the source language; English and
-  Japanese are localized, never left behind, and never mixed into another language's folder.
+  Japanese are localized (Japanese after the Vietnamese pilot, `docs/decisions/007-roadmap-v1.md`)
+  and never mixed into another language's folder.
+- **The roadmap is v1** (`docs/decisions/007-roadmap-v1.md`): write lessons in the order of
+  `minimum_path`. **Every lesson ends with a recap infographic** of its own in the `recap` section
+  (`docs/decisions/008-a-recap-infographic-in-every-lesson.md`); `validate` enforces it.
 - **`python -m src.main validate` must pass** before any commit that touches `course/`. After
   editing anything in `course/data/` or adding a lesson, run `python -m src.main build`: course
   homes, glossary pages and infographic SVGs are generated — never edit them by hand.
 - **Never refer to a lesson by its number** in content; numbers change when the roadmap is
-  reordered. Lesson ids never change and are never reused.
+  reordered. Lesson ids never change and are never reused; a lesson taken out goes to `retired`.
 - **Verify every source link** before committing it, and never invent statistics.
 - The course CLI's user-facing text is in **vi, en and ja** (`src/locales/`), which extends the
   bilingual rule below; `python3 scripts/i18n_check.py src/locales --require vi,en,ja` is its gate.

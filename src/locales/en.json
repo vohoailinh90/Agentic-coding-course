@@ -47,18 +47,25 @@
     "content_outside_section": "{path}:{line}: text outside any section. Move it under a <!-- section: ... --> marker.",
     "section_marker_orphan": "{path}:{line}: a section marker must be followed by a \"## \" heading.",
     "heading_without_marker": "{path}:{line}: the heading \"{heading}\" has no <!-- section: ... --> marker above it.",
-    "section_unknown": "{path}: unknown section \"{key}\" (the list is in course/data/sections.yaml).",
-    "section_duplicate": "{path}: the section \"{key}\" appears more than once.",
-    "section_order": "{path}: the section \"{key}\" is out of order (course/data/sections.yaml sets the order).",
-    "section_required": "{path}: the required section \"{key}\" is missing.",
-    "section_empty": "{path}: the section \"{key}\" is empty.",
-    "todo_left": "{path}: the section \"{key}\" still contains a TODO placeholder.",
+    "section_unknown": "{path}: unknown section \"{section}\" (the list is in course/data/sections.yaml).",
+    "section_duplicate": "{path}: the section \"{section}\" appears more than once.",
+    "section_order": "{path}: the section \"{section}\" is out of order (course/data/sections.yaml sets the order).",
+    "section_required": "{path}: the required section \"{section}\" is missing.",
+    "section_empty": "{path}: the section \"{section}\" is empty.",
+    "todo_left": "{path}: the section \"{section}\" still contains a TODO placeholder.",
     "sections_differ": "{path}: {lang} has the sections [{actual}], but {other} has [{expected}].",
     "field_count": "{path}: \"{field}\" must have {min}–{max} items.",
     "entry_unexpected": "{path}: does not belong here. Allowed: {allowed}.",
     "lesson_file_unknown": "{path}: matches no lesson id in course/data/curriculum.yaml.",
     "language_bar": "{path}: the line under the front matter must be the language bar: {expected}",
     "diagrams_differ": "{path}: {lang} shows the diagrams [{actual}], but {other} shows [{expected}].",
+    "minimum_path_unknown": "{path}: the minimum path lists {id}, which is not a lesson in the curriculum.",
+    "minimum_path_track": "{path}: {id} is on the minimum path, but its unit's track is {track}; the minimum path takes core lessons only.",
+    "minimum_path_order": "{path}: the minimum path lists {id} after {previous}, but the course teaches {id} first. Keep the course order.",
+    "retired_in_use": "{path}: {id} is retired but is still an id in the curriculum. A retired id is never used again.",
+    "retired_target_unknown": "{path}: {id} is retired into {into}, which is not a lesson in the curriculum.",
+    "recap_diagram": "{path}: the recap must show exactly one infographic from course/data/diagrams/ — it shows {images} image(s), {diagrams} of them infographics.",
+    "recap_reused": "{path}: the recap infographic {target} is also shown in another section. The recap sums up the whole lesson in a picture of its own.",
     "diagram_crowded": "{path}: too much text to draw the {language} diagram without boxes overlapping. Shorten its captions or arrow labels, or use fewer steps.",
     "diagram_unknown": "{path}: the image {target} is not a diagram in course/data/diagrams/.",
     "image_alt_missing": "{path}: the image {target} needs alt text (what a reader who cannot see it is told).",
@@ -73,7 +80,8 @@
     "heading": "{title} — roadmap {version}",
     "structure": "Modules: {modules} · Units: {units} · Lessons: {lessons} · Total time: {minutes} min",
     "progress_heading": "Writing progress by language:",
-    "progress_line": "{language}: done {done} · in review {review} · draft {draft} · skeleton {todo} · not started {missing} ({percent}% done)"
+    "progress_line": "{language}: done {done} · in review {review} · draft {draft} · skeleton {todo} · not started {missing} ({percent}% done)",
+    "minimum": "Minimum path — lessons: {lessons} · {minutes} min"
   },
   "scaffold": {
     "created": "Created {path}",
@@ -102,7 +110,11 @@
     "lesson": "Lesson",
     "type": "Type",
     "time": "Time",
-    "minutes": "{minutes} min"
+    "minutes": "{minutes} min",
+    "minimum_heading": "⭐ The minimum path",
+    "minimum_intro": "Start here: {lessons} lessons · {minutes} min, enough to give an AI agent real work and check the result yourself. They carry a ⭐ in the tables below; take the other lessons when you need them.",
+    "track_optional": "optional",
+    "track_advanced": "advanced"
   },
   "lesson_types": {
     "concept": "Concept",
@@ -120,7 +132,8 @@
     "title": "Your Learning Journey",
     "start": "Start",
     "finish": "Course complete",
-    "meta": "Lessons: {lessons} · {minutes} min"
+    "meta": "Lessons: {lessons} · {minutes} min",
+    "minimum": "⭐ {lessons} on the minimum path"
   },
   "chooser": {
     "title": "Choose a language",

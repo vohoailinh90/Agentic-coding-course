@@ -59,24 +59,35 @@ and when a generated diagram no longer has a spec.
 ## `data/curriculum.yaml`
 
 ```yaml
-version: 0.1.0-draft
+version: 1.0.0-draft
 modules:
-  - id: kickoff
+  - id: first-win
     icon: "🚀"              # optional: one emoji, shown on the roadmap and course homes
     title: {...}            # localized
     goal: {...}             # localized: what the learner can do after the module
     units:
-      - id: big-picture
+      - id: what-agents-do
+        track: core         # optional: core (default) | optional | advanced
         title: {...}
         lessons:
           - id: chatbot-to-agent
             title: {...}
             type: concept       # concept | demo | hands-on | project
-            minutes: 10         # whole number > 0
+            minutes: 8          # whole number > 0
             terms: [chatbot, llm, ai-agent]   # optional: glossary ids, no repeats
+minimum_path:               # optional: the lessons a learner takes first, in order
+  - chatbot-to-agent
+retired:                    # optional: ids that were lessons once and are never reused
+  - id: cli-for-agents
+    into: command-line-basics   # optional: the lesson that now teaches its content
 ```
 
-Glossary terms that no lesson uses produce a warning, not an error.
+- Glossary terms that no lesson uses produce a warning, not an error.
+- `minimum_path` takes each lesson once, only lessons of `core` units, and in course order — so a
+  learner who goes through the course in order never meets a lesson before one the path puts ahead
+  of it. The course homes list it first and mark its lessons ⭐; the roadmap counts them per module.
+- A `retired` id may not appear anywhere in the tree, and `into` must be a current lesson. A lesson
+  file for a retired id is reported like any file for an unknown lesson.
 
 ## `data/sections.yaml`
 
@@ -107,6 +118,7 @@ Every text field is localized; `icon` is one emoji; `color` is one of `blue`, `v
 | `equation` | parts that add up to a whole | `terms` (2–4 × `icon`, `color`, `name`, optional `caption`), `result` (same shape) |
 | `cycle` | a loop that repeats | `steps` (3–6 × `icon`, `color`, `name`, optional `caption`, `arrow` — the label on the arrow leaving the step), `center` (`icon`, `name`, optional `color`) |
 | `flow` | steps in order | `steps` (2–6, as in `cycle`), optional `direction` (`horizontal` up to 4 steps by default, else `vertical`) |
+| `summary` | a lesson's recap: its key points | `points` (3–6 × `icon`, `color`, `name`, optional `caption`), drawn as numbered cards: 3 in a row, 2×2, 3 + 2 or 3×2 |
 
 `validate` also draws every diagram in every language and fails with `diagram_crowded` when its text
 cannot be laid out without boxes overlapping (in practice: a cycle of 5–6 steps with long captions).
@@ -150,6 +162,9 @@ social:
 - Section keys must exist in `sections.yaml`, appear once, and follow its order.
 - Every image needs alt text; an image in `../diagrams/` must name a diagram spec; every other
   relative image or link must point to a file that exists.
+- Every lesson type requires the `recap` section ([ADR 008](decisions/008-a-recap-infographic-in-every-lesson.md)).
+  From status `review`, it shows exactly one image, a diagram, and that diagram appears nowhere else in
+  the lesson: the recap sums up the whole lesson in a picture of its own (usually a `summary`).
 - All language files of a lesson whose status is not `todo` have the same section keys in the same
   order and show the same diagrams in the same sections; the source language file is the reference.
 
@@ -159,8 +174,8 @@ social:
 |---|---|---|---|
 | `todo` | – | – | – |
 | `draft` | ✓ | – | – |
-| `review` | ✓ | ✓ | – |
-| `done` | ✓ | ✓ | ✓ |
+| `review` | ✓ | ✓, and the recap shows its own infographic | – |
+| `done` | ✓ | ✓, and the recap shows its own infographic | ✓ |
 
 ## Who reads the store
 

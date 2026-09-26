@@ -37,6 +37,9 @@ def run(root, tr: Translator) -> int:
         modules=len(course.modules), units=len(course.units),
         lessons=len(course.lessons), minutes=course.total_minutes,
     ))
+    minimum = course.minimum_path_lessons
+    if minimum:
+        print(tr.t("stats.minimum", lessons=len(minimum), minutes=sum(lesson.minutes for lesson in minimum)))
     print(tr.t("stats.progress_heading"))
     total = len(course.lessons)
     for language, counts in progress(course, report.docs).items():

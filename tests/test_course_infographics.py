@@ -111,6 +111,9 @@ def _stress() -> dict[str, dict]:
     specs["flow-2-vertical"] = {"template": "flow", **common, "direction": "vertical", "steps": _steps(2)}
     specs["flow-6-horizontal"] = {"template": "flow", **common, "direction": "horizontal",
                                   "steps": _steps(6, arrows=False)}
+    for count in (3, 4, 5, 6):
+        points = [{"icon": icon, "color": color, "name": name, "caption": CAPTION} for icon, color, name in NAMES[:count]]
+        specs[f"summary-{count}"] = {"template": "summary", **common, "points": points}
     center = {"icon": "🤖", "name": _t("AI agent", "AI agent", "AIエージェント")}
     for count in (3, 4, 5):
         specs[f"cycle-{count}"] = {"template": "cycle", **common, "steps": _steps(count), "center": center}
@@ -162,6 +165,30 @@ def into_the_hub(root: ET.Element) -> list[str]:
         for (x, y, width, height), name in shape_boxes(root):
             if math.hypot(min(max(cx, x), x + width) - cx, min(max(cy, y), y + height) - cy) < 78:
                 problems.append(f"{name} reaches into the centre disc")
+    return problems
+
+
+def text_outside_its_box(root: ET.Element) -> list[str]:
+    """Lines of text that run out of the smallest box their first line starts in.
+
+    The whole-canvas frame counts as a box, so a title or a label drawn on the
+    background passes; a caption spilling out of a card, which a card too short
+    for its text would cause, does not.
+    """
+    boxes = [tuple(float(rect.get(key)) for key in ("x", "y", "width", "height")) for rect in root.iter(f"{SVG}rect")]
+    problems = []
+    for element in root.iter(f"{SVG}text"):
+        size = float(element.get("font-size"))
+        spans = list(element.iter(f"{SVG}tspan")) or [element]
+        first_x, first_y = float(spans[0].get("x")), float(spans[0].get("y"))
+        around = [box for box in boxes
+                  if box[0] <= first_x <= box[0] + box[2] and box[1] <= first_y - 0.8 * size <= box[1] + box[3]]
+        if not around:
+            continue  # nothing to be outside of
+        x, y, width, height = min(around, key=lambda box: box[2] * box[3])
+        for span in spans:
+            if float(span.get("y")) + 0.2 * size > y + height + 1:
+                problems.append(f"{span.text!r} runs out of the box at y={y + height:.1f}")
     return problems
 
 
@@ -251,6 +278,7 @@ class RenderTests(unittest.TestCase):
                     self.assertEqual(overlapping(text_boxes(root)), [])
                     self.assertEqual(overlapping(shape_boxes(root)), [])
                     self.assertEqual(into_the_hub(root), [])
+                    self.assertEqual(text_outside_its_box(root), [])
                     self.assertFalse(crowded(spec, language))
 
     def test_too_much_text_is_reported_rather_than_drawn_over(self) -> None:
@@ -286,6 +314,21 @@ class RenderTests(unittest.TestCase):
                     self.assertEqual(tops, sorted(tops))
                 arrows = [line for line in root.iter(f"{SVG}line") if line.get("class") == "flow"]
                 self.assertEqual(len(arrows), len(spec["steps"]) - 1)
+
+    def test_a_summary_numbers_its_points_on_a_centred_grid(self) -> None:
+        for count, rows in ((3, [3]), (4, [2, 2]), (5, [3, 2]), (6, [3, 3])):
+            with self.subTest(points=count):
+                root = ET.fromstring(render(STRESS[f"summary-{count}"], "en"))
+                cards = [rect for rect in root.iter(f"{SVG}rect") if rect.get("rx") == "18"]
+                tops = sorted({float(card.get("y")) for card in cards})
+                self.assertEqual([sum(float(card.get("y")) == top for card in cards) for top in tops], rows)
+                for top in tops:  # every row, a short last one included, is centred
+                    row = [card for card in cards if float(card.get("y")) == top]
+                    left = min(float(card.get("x")) for card in row)
+                    right = max(float(card.get("x")) + float(card.get("width")) for card in row)
+                    self.assertAlmostEqual((left + right) / 2, WIDTH / 2, delta=0.5)
+                badges = [element.text for element in root.iter(f"{SVG}text") if element.get("font-size") == "13"]
+                self.assertEqual(badges, [str(number) for number in range(1, count + 1)])
 
     def test_every_diagram_renders_inside_its_canvas_in_every_language(self) -> None:
         self.assertGreater(len(SPECS), 0)
@@ -344,6 +387,20 @@ class RoadmapTests(unittest.TestCase):
         gradient = next(element for element in ET.fromstring(svg).iter(f"{SVG}linearGradient")
                         if element.get("id") == "road")
         self.assertEqual(gradient.get("gradientUnits"), "userSpaceOnUse")
+
+    def test_the_roadmap_counts_each_module_s_minimum_path_lessons(self) -> None:
+        self.assertTrue(self.course.minimum_path)
+        for language in LANGUAGES:
+            tr = translator_for(language)
+            svg = roadmap_svg(self.course, language, tr)
+            for module in self.course.modules:
+                count = sum(lesson.id in self.course.minimum_path for lesson in module.lessons)
+                with self.subTest(language=language, module=module.id):
+                    label = tr.t("roadmap.minimum", lessons=count)
+                    if count:
+                        self.assertIn(label, svg)
+                    else:
+                        self.assertNotIn(label, svg)
 
     def test_the_roadmap_shows_every_module_inside_its_canvas(self) -> None:
         for language in LANGUAGES:

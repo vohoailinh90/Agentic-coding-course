@@ -14,23 +14,26 @@ title:
   ja: ゼロから学ぶエージェント型コーディング
 
 tagline:
-  vi: Từ "phần mềm là gì?" đến tự giao việc cho AI agent làm phần mềm — học bằng 3 thứ tiếng.
-  en: From "what is software?" to directing AI agents that build software — in three languages.
-  ja: 「ソフトウェアとは？」から、AIエージェントにソフトウェアづくりを任せられるようになるまで——3か国語で学ぶ。
+  vi: Từ "phần mềm là gì?" đến giao việc cho AI agent làm phần mềm và tự kiểm tra kết quả — học bằng 3 thứ tiếng.
+  en: From "what is software?" to directing AI agents that build software, and checking their work — in three languages.
+  ja: 「ソフトウェアとは？」から、AIエージェントにソフトウェアづくりを任せ、その結果を自分で確かめられるようになるまで——3か国語で学ぶ。
 
 audience:
   vi: >-
     Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình —
-    muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Đặc biệt phù hợp với
-    người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
+    muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Không cần biết lập trình trước:
+    bạn học vừa đủ để giao việc viết code cho AI, kiểm tra và chịu trách nhiệm về kết quả. Đặc biệt
+    phù hợp với người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
   en: >-
     Working adults, students and engineers from outside software who know nothing about AI or
     programming yet, and want to use AI agents to build their own tools and automate their work.
-    Especially suited to Vietnamese learners who study or work in or with Japan.
+    No programming needed to start: you learn enough to hand coding work to AI, check it and own
+    the result. Especially suited to Vietnamese learners who study or work in or with Japan.
   ja: >-
     AIやプログラミングをまだ知らない社会人・学生・ソフトウェア以外の分野のエンジニアで、
     AIエージェントを使って自分のツールを作ったり仕事を自動化したりしたい人。
-    日本で学ぶ・働くベトナムの方、日本企業と仕事をする方に特におすすめです。
+    プログラミングの経験は不要です。AIにコードを書かせ、それを確かめ、結果に責任を持てるだけの
+    知識を身につけます。日本で学ぶ・働くベトナムの方、日本企業と仕事をする方に特におすすめです。
 
 # Hashtags appended to every social post generated from this course, per language.
 hashtags:
