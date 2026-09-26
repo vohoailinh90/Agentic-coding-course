@@ -1,0 +1,398 @@
+version: 1
+name: documentai-editor-routing-overlay
+target_repository: vohoailinh90/DocumentAIEditor
+base_policy: agent-routing/policy.yaml
+
+# This file is an OVERLAY, not a replacement. It does not define a tier model,
+# a score range, a budget or a profile — those come from the base policy and
+# are used unchanged. It adds three things the base policy cannot know:
+#
+#   1. domain signals for the actions this codebase actually performs
+#   2. a mapping from those domain signals onto base signals, so the existing
+#      overrides fire without editing the base policy
+#   3. two overrides for risks the base vocabulary genuinely cannot express
+#
+# Everything here can only raise a tier. Nothing here lowers one.
+inherits:
+  scoring: base
+  score_tiers: base
+  profiles: base
+  budget: base
+  parallelism: base
+  deterministic_work: base
+
+# ─────────────────────────────────────────────────────────────────────
+#  Domain signals — verb-first actions, same discipline as the base
+#  taxonomy. The question is always "what does this change DO?", never
+#  "what does this file mention?".
+# ─────────────────────────────────────────────────────────────────────
+domain_signals:
+  writes-office-document: >-
+    Mutates and saves a .pptx/.docx/.xlsx/.pdf the user will ship to a
+    customer. Covers apply_changes, _replace_in_para, _set_paragraph_text,
+    fix_footers, add_page_number, save, export_pdf, merge_pdfs.
+  changes-run-formatting: >-
+    Touches run-level or paragraph-level formatting preservation — run
+    splitting/merging, font colour, bold/italic, size, or the placeholder
+    (%...%) fields that PowerPoint footers rely on.
+  writes-over-source-file: >-
+    Writes to input/ or over the file the user selected, rather than to
+    output/. Irreversible against a customer deliverable.
+  deletes-user-file: Removes a user-supplied or generated document from disk.
+  changes-ai-output-contract: >-
+    Edits either half of the prompt<->parser contract: default_prompt.txt,
+    REQUIRED_RULES, the STEP 2 block format, HEADER_RE/HEADER_SPLIT_RE/
+    STEP2_RE, SHAPE_ALIASES, or the change-record shape the handlers consume.
+  changes-bmf-endpoint-contract: >-
+    Changes the BMF_MODELS matrix or the URL/header/body shape produced by
+    _build_url, _build_headers, _build_body, or _parse_response.
+  changes-transport-verification: >-
+    Adds, widens or reorders a TLS-verification or proxy fallback path
+    (verify=False, ssl._create_unverified_context, the _call_like_pptx_reviewer
+    ladder).
+  writes-credential-to-disk: >-
+    Changes how the BMF API key or NTID is stored, read or logged
+    (BMFCredentials, input/User_info.txt).
+  changes-prompt-allowlist: >-
+    Changes the Prompt-Update authorisation logic — load_prompt_update_emails,
+    check_prompt_update_access, or the username-normalisation rules.
+  executes-outlook-send: >-
+    Changes recipient resolution, adds an auto-send path, or otherwise alters
+    what leaves the machine via Outlook COM. Composing the mail body is NOT
+    this signal — see discrimination_rules.
+  changes-packaging-manifest: >-
+    Changes DocumentAIEditor_v1.spec, the .bat launchers, or the frozen-vs-
+    script path resolution in _base_dir / _find_src / ensure_dirs.
+  adds-file-format-handler: >-
+    Adds a new *Handler class to file_handlers.py, joining the informal
+    handler protocol every caller assumes.
+  executes-release-build: >-
+    Builds and ships a new EXE to users. Once distributed a binary cannot be
+    recalled, so this is modelled as a signal and a change class rather than
+    as prose: a gate that only exists as an English sentence in human_gates
+    is unreachable to the classifier, which matches signals and class flags.
+
+# Read-only access to a sensitive area never raises a tier. It may still
+# raise the risk or verification score on its own merit — that path goes
+# through scoring, where it can be weighed.
+read_only_exempt:
+  - reads-office-document
+  - reads-customer-db
+  - reads-credential-file
+  - reads-prompt-allowlist
+  - calls-existing-bmf-deployment
+
+# ─────────────────────────────────────────────────────────────────────
+#  Mapping onto base signals. Preferred over new overrides: it reuses
+#  overrides that are already tested, and keeps one vocabulary of tiers.
+# ─────────────────────────────────────────────────────────────────────
+# Each entry names the base signal it maps onto AND the outcome it relies on.
+# Declaring the expected override and tier is what makes the mapping testable:
+# without them a test can only prove the target string exists somewhere in the
+# base vocabulary, which stays true even after the base moves that signal to a
+# different override or changes that override's tier — the mapping would drift
+# silently while every assertion still passed.
+signal_mapping:
+  writes-credential-to-disk:
+    base_signal: writes-secret
+    expected_override: security-sensitive
+    expected_minimum_tier: T2
+  changes-prompt-allowlist:
+    base_signal: changes-authorization-rule
+    expected_override: security-sensitive
+    expected_minimum_tier: T2
+  changes-transport-verification:
+    base_signal: changes-cryptography
+    expected_override: security-sensitive
+    expected_minimum_tier: T2
+  changes-bmf-endpoint-contract:
+    base_signal: changes-service-contract
+    expected_override: cross-service-change
+    expected_minimum_tier: T2
+    also_fires_conditional_agent: architect
+    note: >-
+      The architect claim in the bmf-endpoints change class depends on
+      changes-service-contract staying in profiles.T2.conditional_agents'
+      when_any_signal list. That is asserted separately, because the override
+      and the conditional-agent trigger are two independent base facts.
+  writes-over-source-file:
+    base_signal: executes-irreversible-operation
+    expected_override: irreversible-or-destructive
+    expected_minimum_tier: T3
+  deletes-user-file:
+    base_signal: deletes-data
+    expected_override: irreversible-or-destructive
+    expected_minimum_tier: T3
+  executes-outlook-send:
+    base_signal: executes-irreversible-operation
+    expected_override: irreversible-or-destructive
+    expected_minimum_tier: T3
+  executes-release-build:
+    base_signal: executes-irreversible-operation
+    expected_override: irreversible-or-destructive
+    expected_minimum_tier: T3
+
+# ─────────────────────────────────────────────────────────────────────
+#  Overrides the base vocabulary cannot express
+# ─────────────────────────────────────────────────────────────────────
+overrides:
+  - id: document-write-path
+    match_any_signal:
+      - writes-office-document
+      - changes-run-formatting
+      - adds-file-format-handler
+    minimum_tier: T2
+    rationale: >-
+      The tool's output IS a customer deliverable. A bug in the write path
+      does not crash — it silently ships a .pptx with a paragraph's bold
+      stripped, a footer placeholder flattened, or a run merged. There is no
+      user-visible failure signal, so review and verification cannot be
+      optional here regardless of how small the diff is.
+
+  - id: ai-output-contract
+    match_any_signal:
+      - changes-ai-output-contract
+    minimum_tier: T2
+    rationale: >-
+      The prompt and the parser are two halves of one contract across a
+      non-deterministic boundary. Editing either half alone can silently
+      change which text lands in a customer document, and the base
+      vocabulary has no signal for a contract whose other party is a model.
+
+# ─────────────────────────────────────────────────────────────────────
+#  Reviewer role substitution. NOT an added agent: it renames the single
+#  reviewer slot the base profile already requires, exactly as the base
+#  policy already lets T3 use code-reviewer-t3 in place of code-reviewer.
+#  Exactly one reviewer role runs per requirement. Budget is unchanged.
+# ─────────────────────────────────────────────────────────────────────
+reviewer_role_substitution:
+  - when_any_signal:
+      - writes-office-document
+      - changes-run-formatting
+      - adds-file-format-handler
+    substitute: document-fidelity-reviewer
+    replaces: [code-reviewer, code-reviewer-t3]
+    invocation_cost: 0
+    note: >-
+      One slot, one occupant. The generic reviewer cannot see run-level
+      formatting loss in a python-pptx diff, so on document-write changes the
+      slot is filled by the role that can. It is never invoked alongside the
+      role it replaces.
+
+# ─────────────────────────────────────────────────────────────────────
+#  Discrimination rules — the "action, not noun" discipline applied to
+#  the three places this codebase reliably produces false positives.
+# ─────────────────────────────────────────────────────────────────────
+discrimination_rules:
+  - about: outlook
+    is_signal: >-
+      Changing recipient resolution (_load_email_groups), adding a send path,
+      or altering _send_outlook_email* -> executes-outlook-send -> T3.
+    is_not_signal: >-
+      Changing the diff HTML, subject line or body layout in
+      _build_prompt_diff_mail, or the draft construction in
+      _create_outlook_draft / _get_outlook_mail_item, while recipient
+      resolution and the send trigger are untouched. Saving to Drafts is not
+      an outbound side effect — the user still reviews and sends by hand, and
+      a draft can be deleted. Score it normally, usually T1.
+  - about: credentials
+    is_signal: >-
+      Changing where the API key is stored, how it is read, or adding a path
+      that could log it -> writes-credential-to-disk -> T2.
+    is_not_signal: >-
+      Calling an existing BMF deployment with the key already loaded ->
+      calls-existing-bmf-deployment -> exempt.
+  - about: documents
+    is_signal: Any code path that mutates a document and then saves it.
+    is_not_signal: >-
+      extract_content / extract_footer_info / check_page_numbers and every
+      other read-only inspection -> reads-office-document -> exempt.
+
+# ─────────────────────────────────────────────────────────────────────
+#  Change-class fast path. A lookup that reaches the same answer as a
+#  full rubric scoring for the cases this repo sees every week. Scoring
+#  may raise the tier above the floor; it may never lower it below.
+# ─────────────────────────────────────────────────────────────────────
+change_classes:
+  - id: ui-surface
+    paths: ["ppt_editor.py::_build_*", "ppt_editor.py::_style_*", "_apply_zoom", "_refresh_*_tree"]
+    tier_floor: T0
+    signals: []
+    note: Tkinter widget layout, labels, colours, tree refresh. No document is written.
+
+  - id: checker-logic
+    paths: ["footer_checker.py", "customer_db.py::check_letter_numbers", "ai_parser.py::SpellCheckEngine"]
+    tier_floor: T1
+    signals: [reads-office-document]
+    note: >-
+      Pure functions over extracted text. Every change here is table-testable,
+      so the deterministic check is mandatory and the reviewer's job is to
+      confirm the table covers the new case.
+
+  - id: outlook-compose
+    paths: ["_build_prompt_diff_mail", "_refresh_diff_before_send", "_write_pending_body",
+            "_create_outlook_draft", "_get_outlook_mail_item"]
+    tier_floor: T1
+    signals: []
+    note: >-
+      Constructing a mail, including saving it to Drafts. _create_outlook_draft
+      calls mail.Save() and mail.Display() and never mail.Send(), so the user
+      still reviews and sends by hand — nothing leaves the machine and the
+      draft can simply be deleted. Reclassifies to outlook-send the moment a
+      change touches recipient resolution or any send trigger, including
+      altering how _get_outlook_mail_item assigns mail.To / mail.CC.
+
+  - id: packaging
+    paths: ["DocumentAIEditor_v1.spec", "*.bat", "_base_dir", "_find_src", "ensure_dirs"]
+    tier_floor: T1
+    signals: [changes-packaging-manifest]
+    note: >-
+      Frozen-vs-script path divergence is the single most common way this tool
+      breaks for users while working on the developer's machine.
+
+  - id: document-write
+    paths: ["file_handlers.py::apply_changes", "_replace_in_para", "_set_paragraph_text",
+            "fix_footers", "add_page_number", "save", "export_pdf", "merge_pdfs"]
+    tier_floor: T2
+    signals: [writes-office-document, changes-run-formatting]
+    reviewer: document-fidelity-reviewer
+
+  - id: ai-contract
+    paths: ["ai_parser.py::AIContentParser", "ai_parser.py::REQUIRED_RULES", "default_prompt.txt"]
+    tier_floor: T2
+    signals: [changes-ai-output-contract]
+
+  - id: bmf-endpoints
+    paths: ["bmf_client.py::BMF_MODELS", "_build_url", "_build_headers", "_build_body", "_parse_response"]
+    tier_floor: T2
+    signals: [changes-bmf-endpoint-contract]
+    note: Fires the T2 conditional architect via changes-service-contract.
+
+  - id: bmf-transport
+    paths: ["bmf_client.py::_httpx_post", "_requests_post*", "_urllib_post", "_httpclient_*",
+            "_curl_post", "_call_like_pptx_reviewer", "_build_proxy_dict"]
+    tier_floor: T2
+    signals: [changes-transport-verification]
+
+  - id: credentials
+    paths: ["bmf_client.py::BMFCredentials", "CRED_FILE_PATH"]
+    tier_floor: T2
+    signals: [writes-credential-to-disk]
+
+  - id: access-control
+    paths: ["customer_db.py::check_prompt_update_access", "load_prompt_update_emails",
+            "ppt_editor.py::_check_prompt_update_access"]
+    tier_floor: T2
+    signals: [changes-prompt-allowlist]
+    note: Must stay fail-closed. A change that makes an empty allow-list permit is a critical finding.
+
+  - id: new-format-handler
+    paths: ["file_handlers.py::*Handler"]
+    tier_floor: T2
+    signals: [adds-file-format-handler, writes-office-document]
+    reviewer: document-fidelity-reviewer
+
+  - id: outlook-send
+    paths: ["_send_outlook_email", "_send_outlook_email_core", "_load_email_groups"]
+    tier_floor: T3
+    signals: [executes-outlook-send]
+    human_gate: true
+    note: >-
+      Actual outbound side effects only: mail.Send(), the send=True path, and
+      the recipient resolution that decides who receives it. Proximity to
+      Outlook is not the trigger — see discrimination_rules.about=outlook.
+
+  - id: destructive-io
+    paths: ["any write to input/", "any unlink/remove of a user document"]
+    tier_floor: T3
+    signals: [writes-over-source-file, deletes-user-file]
+    human_gate: true
+
+  - id: release
+    paths: ["distributing a built EXE to users"]
+    tier_floor: T3
+    signals: [executes-release-build]
+    human_gate: true
+    note: >-
+      Matched by the ACTION, never by a file. Naming build_exe.bat or the
+      spec here would be wrong twice over: those files belong to the
+      packaging class, and since a requirement is scored against every class
+      it matches, an ordinary packaging edit would collect this class too and
+      be forced to gated T3 — the exact opposite of the rule that editing the
+      spec without distributing is packaging, not release. Packaging is
+      changing how the build is produced (T1); release is putting the
+      produced binary in users' hands (T3, gated).
+
+# ─────────────────────────────────────────────────────────────────────
+#  Human gates. Confirm with the user before, not after.
+#
+#  These are gates on CHANGES, not permissions for the running tool. The
+#  product invariant is absolute: the shipped tool never writes to input/,
+#  never overwrites the user's source file, and never deletes a user
+#  document. What a gate covers is a deliberate change that would introduce
+#  such a path — that change is T3 and needs explicit user approval before
+#  it is written. Approving one such change never relaxes the invariant for
+#  any other code path.
+# ─────────────────────────────────────────────────────────────────────
+# Every entry is a declared domain signal. A prose entry would be unreachable:
+# the classifier matches a change class's human_gate flag or a surviving
+# signal, so an English sentence here can never fire — it reads like a rule
+# and enforces nothing.
+human_gates:
+  - executes-outlook-send
+  - writes-over-source-file
+  - deletes-user-file
+  - writes-credential-to-disk
+  - executes-release-build
+
+# ─────────────────────────────────────────────────────────────────────
+#  Deterministic work. Computable answers get scripts, not agents.
+#  These are the checks this repository must own; see PROCESS.md for the
+#  exact assertions each one makes.
+# ─────────────────────────────────────────────────────────────────────
+#
+#  `status` is not decoration. `unittest discover` runs the files it finds and
+#  says nothing about the ones it does not, so a check listed here but never
+#  written is a gate that reads as enforced and enforces nothing — the exact
+#  failure mode this section exists to prevent. Every entry declares whether
+#  it exists yet, and check_required_checks_exist asserts that the declaration
+#  matches the checks/ directory in both directions.
+required_checks:
+  - id: check_endpoint_matrix
+    guards: [bmf-endpoints]
+    offline: true
+    status: implemented
+  - id: check_parser_fixtures
+    guards: [ai-contract]
+    offline: true
+    status: planned
+  - id: check_document_roundtrip
+    guards: [document-write, new-format-handler]
+    offline: true
+    status: implemented
+  - id: check_checker_tables
+    guards: [checker-logic]
+    offline: true
+    status: implemented
+  - id: check_packaging_manifest
+    guards: [packaging, release]
+    offline: true
+    status: planned
+  - id: check_access_control_matrix
+    guards: [access-control]
+    offline: true
+    status: planned
+  - id: check_transport_fallback_ladder
+    guards: [bmf-transport]
+    offline: true
+    status: planned
+  - id: check_no_secrets_committed
+    guards: [credentials]
+    offline: true
+    always_runs: true
+    status: implemented
+  - id: check_required_checks_exist
+    guards: [always]
+    offline: true
+    always_runs: true
+    status: implemented

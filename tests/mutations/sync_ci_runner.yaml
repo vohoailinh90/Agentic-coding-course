@@ -1,0 +1,35 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# The sync writes CI_RUNNER across every repository from one quota reading.
+# Its conservative refusals -- not deciding from a state it failed to observe,
+# and not writing a decision it never made -- are the difference between a
+# transient blip and a fleet-wide wrong answer.
+
+target: scripts/sync_ci_runner.py
+note: 'A read failure that reads as "unset" is the dangerous shape: `decide` treats unset as having no standing
+  choice, so a blip could hand a repository a label chosen from a state nobody observed.'
+mutations:
+- label: an unreadable variable is reported as unset
+  find: "    if status == 404:\n        return \"\"\n    return None\n"
+  replace: '    return ""
+
+    '
+  test: tests.test_ci_runner_mode.SyncTests.test_an_unreadable_variable_is_not_read_as_unset
+- label: a repository that could not be read is decided for anyway
+  find: '        if current is None:
+
+    '
+  replace: '        if False:
+
+    '
+  test: tests.test_ci_runner_mode.SyncTests.test_a_repository_whose_variable_cannot_be_read_is_skipped
+- label: a malformed 200 is reported as an observed value
+  find: "        value = payload.get(\"value\")\n        # A 200 whose body has no `value`, or a null one, is a\
+    \ malformed\n        # response, not an observation. `str(payload.get(\"value\", \"\"))` turned\n        # the\
+    \ first into \"\" -- indistinguishable from a genuine absence -- and\n        # the second into the literal\
+    \ string \"None\", which is worse: a label\n        # nothing answers to, reported as though it had been read.\n\
+    \        return value if isinstance(value, str) else None\n"
+  replace: '        return str(payload.get("value", ""))
+
+    '
+  test: tests.test_ci_runner_mode.SyncTests.test_a_200_without_a_string_value_is_unreadable

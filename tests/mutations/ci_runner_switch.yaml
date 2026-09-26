@@ -1,0 +1,210 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+target: scripts/switch_runner.py
+note: The drift guard is the only thing standing between a workflow added later and a silently hardcoded ubuntu-latest. A
+  guard that returns 0 on failure, or a rewriter that mangles a list-form runs-on, would leave the switch looking healthy
+  while doing nothing.
+mutations:
+- label: pin marker ignored
+  find: "def is_pinned(text: str) -> bool:\n    \"\"\"True only when the marker appears as a top-level YAML comment.\n\n \
+    \   A bare substring test exempted the whole file on any occurrence, so a step\n    that merely printed or grepped the\
+    \ marker -- inside `run:`, an input, any\n    string -- switched the guard off for that workflow and let it keep a\n \
+    \   hardcoded runner. The documented opt-out is a comment at column zero, so\n    that is what this matches.\n    \"\"\
+    \"\n    return any(PIN_LINE.match(line) for line in text.splitlines())"
+  replace: "def is_pinned(text: str) -> bool:\n    return False"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_a_pinned_workflow_is_exempt
+- label: drift guard stops failing CI
+  find: "            print(f\"\\n{len(problems)} workflow runner(s) out of step.\", file=sys.stderr)\n            return 1"
+  replace: "            print(f\"\\n{len(problems)} workflow runner(s) out of step.\", file=sys.stderr)\n            return\
+    \ 0"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_check_mode_exits_non_zero_so_ci_actually_fails
+- label: a workflow with no runner passes silently
+  find: "        if runs_on_required(text):\n            problems.append(f\"{name}: no runs-on found;"
+  replace: "        if False:\n            problems.append(f\"{name}: no runs-on found;"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_a_workflow_with_no_runner_at_all_is_reported
+- label: dry run writes anyway
+  find: "        if changed and not args.dry_run:\n            path.write_text(updated, encoding=\"utf-8\")"
+  replace: "        if changed:\n            path.write_text(updated, encoding=\"utf-8\")"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_dry_run_writes_nothing
+- label: a reusable-workflow caller demanded a runner it cannot have
+  find: "    if not isinstance(jobs, dict) or not jobs:\n        return True\n"
+  replace: "    return True\n    if False:\n"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_a_reusable_workflow_caller_needs_no_runner
+- label: check ignores the mode the tree was pinned to
+  find: '        problems = check(directory, targets[args.mode])
+
+    '
+  replace: '        problems = check(directory)
+
+    '
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_check_honours_the_mode_the_tree_was_pinned_to
+- label: a non-mapping workflow root crashes the guard
+  find: "    if not isinstance(spec, dict):\n        return True\n    jobs = spec.get(\"jobs\")\n"
+  replace: '    jobs = (spec or {}).get("jobs")
+
+    '
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_a_workflow_whose_root_is_not_a_mapping_does_not_crash
+- label: the fallback is ignored and every repository gets the hosted runner
+  find: '    return "${{ vars.CI_RUNNER || ''" + fallback + "'' }}"'
+  replace: '    return "${{ vars.CI_RUNNER || ''ubuntu-latest'' }}"'
+  test: tests.test_ci_runner_mode.SwitchFallbackTests.test_a_vps_repository_keeps_the_vps_when_the_variable_is_unset
+- label: a fallback that escapes the expression is accepted
+  find: "    if not FALLBACK.fullmatch(fallback):\n        raise ValueError(f\"invalid fallback {fallback!r}: expected a runner\
+    \ label matching {FALLBACK.pattern}\")\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchFallbackTests.test_a_fallback_that_could_escape_the_expression_is_refused
+- label: a missing yaml parser fails open instead of closed
+  find: "    if yaml is None:\n        # This guard is copied into other repositories and runs on whatever\n        # runner\
+    \ they use, where PyYAML may be absent and `pip install` may be\n        # refused outright (PEP 668). Losing the parser\
+    \ must not let a file\n        # through unchecked, so the exemption simply cannot be proved and a\n        # runner is\
+    \ demanded -- the operator sees a reported file they can pin,\n        # rather than a workflow with no runner passing\
+    \ silently.\n        return True\n"
+  replace: "    if yaml is None:\n        return False\n"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_the_guard_still_works_without_a_yaml_parser
+- label: the guard ignores the parsed jobs
+  find: "        if runners is not None:\n            # Authoritative when the document can be read: every job, whatever\n\
+    \            # spelling it used.\n            for job, value in sorted(runners.items(), key=lambda pair: str(pair[0])):\n\
+    \                if value != expected:\n                    problems.append(\n                        f\"{name}: job {job!r}\
+    \ runs-on is {value!r}, expected {expected!r}. \"\n                        f\"Run scripts/switch_runner.py, or add a '{PIN_MARKER}'\
+    \ comment if this one must pin.\"\n                    )\n            continue\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_a_hardcoded_runner_spelled_another_way_is_still_caught
+- label: the pin marker matches anywhere again, not only in a comment
+  find: "def is_pinned(text: str) -> bool:\n    \"\"\"True only when the marker appears as a top-level YAML comment.\n\n \
+    \   A bare substring test exempted the whole file on any occurrence, so a step\n    that merely printed or grepped the\
+    \ marker -- inside `run:`, an input, any\n    string -- switched the guard off for that workflow and let it keep a\n \
+    \   hardcoded runner. The documented opt-out is a comment at column zero, so\n    that is what this matches.\n    \"\"\
+    \"\n    return any(PIN_LINE.match(line) for line in text.splitlines())"
+  replace: "def is_pinned(text: str) -> bool:\n    return PIN_MARKER in text"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_the_pin_marker_only_counts_as_a_comment
+- label: job ids are loaded with YAML 1.1 boolean coercion again
+  find: "        spec = _load_workflow(text)\n    except yaml.YAMLError:\n        return None\n"
+  replace: "        spec = yaml.safe_load(text)\n    except yaml.YAMLError:\n        return None\n"
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_two_jobs_yaml_would_collapse_into_one_are_kept_apart
+- label: a missing parser does not fail the guard
+  find: "    if yaml is None:\n        # Failing closed, because the alternative is worse than failing. A line\n        #\
+    \ scan cannot see a job written `\"runs-on\":` or as a flow mapping, and\n        # one recognized line used to vouch\
+    \ for a whole file -- reporting\n        # success on exactly the drift the parsed reading was added to catch.\n     \
+    \   # A guard that cannot check must say so.\n        return [\"cannot verify runners: PyYAML is unavailable, and a line\
+    \ scan alone \"\n                \"cannot see every job shape. Install PyYAML for this step -- see docs/ci-runner-mode.md.\"\
+    ]\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_the_guard_refuses_to_report_success_with_no_parser
+- label: an unreadable workflow is certified by the line scan again
+  find: "        if runners is None and workflow_unreadable(text):\n            # Same rule as the missing-parser case above,\
+    \ for the same reason.\n            # Round two closed that one and left this one open: a file whose\n            # YAML\
+    \ raises still fell through to the line scan, and one\n            # recognized `runs-on:` line carrying the expected\
+    \ value set `found`\n            # and returned no problems -- reporting the tree clean while a\n            # second\
+    \ hardcoded job sat unread in the same file. Nothing here has\n            # been checked, so the guard says so instead\
+    \ of certifying it.\n            problems.append(\n                f\"{name}: could not be parsed, so its runners cannot\
+    \ be verified. \"\n                f\"Fix the YAML, or add a '{PIN_MARKER}' comment if this one must pin.\"\n        \
+    \    )\n            continue\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchCheckTests.test_an_unparseable_workflow_is_reported_not_certified_by_the_line_scan
+- label: a rewrite that left jobs unconverted exits zero
+  find: "        print(f\"{len(findings)} runner(s) left unconverted; see above.\", file=sys.stderr)\n        return 1"
+  replace: "        print(f\"{len(findings)} runner(s) left unconverted; see above.\", file=sys.stderr)\n        return 0"
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_run_that_leaves_a_job_unconverted_exits_non_zero
+- label: a list runner is rewritten instead of reported
+  find: '            not isinstance(node, yaml.ScalarNode)
+
+    '
+  replace: '            False
+
+    '
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_list_runner_is_reported_and_left_untouched
+- label: an anchored runner is rewritten and loses its anchor
+  find: '            or raw.startswith(("&", "!"))
+
+    '
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_an_anchored_or_aliased_runner_is_reported_not_rewritten
+- label: a runner spanning lines is rewritten
+  find: '            or node.start_mark.line != node.end_mark.line
+
+    '
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_runner_spanning_lines_is_reported_not_rewritten
+- label: a flow-mapping job is rewritten into invalid YAML
+  find: '            or flow
+
+    '
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_flow_mapping_job_is_reported_rather_than_silently_skipped
+- label: a matrix expression runner is overwritten
+  find: '            or ("${{" in node.value and not OWN_EXPRESSION.match(node.value))
+
+    '
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_matrix_expression_runner_is_reported_not_overwritten
+- label: the switch's own expression is treated as foreign
+  find: ' and not OWN_EXPRESSION.match(node.value)'
+  replace: ''
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_the_switch_expression_itself_can_change_fallback
+- label: a rewrite with no parser reports success
+  find: '        return text, 0, [Finding("cannot convert: PyYAML is unavailable; install it and re-run")]'
+  replace: '        return text, 0, []'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_rewrite_without_a_parser_does_not_claim_success
+- label: an unparseable workflow is converted silently as nothing
+  find: '        return text, 0, [Finding(f"could not be parsed ({problem}); fix the YAML or pin the file")]'
+  replace: '        return text, 0, []'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_an_unparseable_workflow_is_reported_and_left_alone
+- label: runs-on outside the jobs mapping is rewritten
+  find: '        if not (isinstance(key, yaml.ScalarNode) and key.value == "jobs" and isinstance(value, yaml.MappingNode)):'
+  replace: '        if not isinstance(value, yaml.MappingNode):'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_runs_on_outside_jobs_is_not_a_runner
+- label: a job the walk cannot reach passes without a finding
+  find: '        if value != target and str(job) not in reported:'
+  replace: '        if False:'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_job_the_walk_cannot_reach_is_still_reported
+- label: edits are computed but never applied
+  find: '        updated = updated[:begin] + lead + target + updated[finish:]'
+  replace: '        updated = updated'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_hardcoded_runner_becomes_the_dynamic_form
+- label: an empty runner is filled without the separating space
+  find: '        lead = " " if begin == finish and not text[begin - 1:begin].isspace() else ""'
+  replace: '        lead = ""'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_an_empty_runner_is_filled_with_valid_yaml
+- label: an unparseable rewrite is handed back to be written
+  find: '    if workflow_unreadable(updated):'
+  replace: '    if False:'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_rewrite_that_would_not_parse_changes_nothing
+- label: an already-converted flow job is reported as foreign
+  find: "        if isinstance(node, yaml.ScalarNode) and node.value == target:\n            # Already converted"
+  replace: "        if False:\n            # Already converted"
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_an_already_converted_flow_job_is_left_alone_quietly
+- label: a fallback with a trailing newline is accepted
+  find: '    if not FALLBACK.fullmatch(fallback):
+
+    '
+  replace: '    if not FALLBACK.match(fallback):
+
+    '
+  test: tests.test_ci_runner_mode.SwitchFallbackTests.test_a_fallback_with_a_trailing_newline_is_refused
+- label: an expression after a literal prefix is overwritten
+  find: '            or ("${{" in node.value and'
+  replace: '            or (node.value.startswith("${{") and'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_an_expression_after_a_literal_prefix_is_reported_not_overwritten
+- label: an aliased runner span is edited twice
+  find: '        if (node.start_mark.index, node.end_mark.index) not in edits:'
+  replace: '        if True:'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_an_aliased_job_mapping_is_rewritten_once
+- label: a jobless workflow converts with a clean exit
+  find: '    if parsed is None and runs_on_required(updated):'
+  replace: '    if False:'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_jobless_workflow_is_reported_like_check_does
+- label: a workflow of reusable-workflow callers is reported as jobless
+  find: '    if parsed is None and runs_on_required(updated):'
+  replace: '    if parsed is None or not parsed:'
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_workflow_of_callers_only_converts_quietly
+- label: a malformed date crashes the read-back
+  find: "    Loader.add_constructor(\"tag:yaml.org,2002:timestamp\",\n                           lambda loader_self, node: loader_self.construct_scalar(node))\n"
+  replace: ""
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_date_that_is_not_a_date_still_converts
+- label: a value the loader cannot build escapes as a traceback
+  find: "    except Exception as exc:  # noqa: BLE001"
+  replace: "    except (ValueError, TypeError) as exc:  # noqa: BLE001"
+  test: tests.test_ci_runner_mode.SwitchRewriteTests.test_a_value_the_loader_cannot_build_is_reported_not_raised

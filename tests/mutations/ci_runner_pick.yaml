@@ -1,0 +1,187 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+target: scripts/pick_runner.py
+note: 'Runner selection decides where every job in the repository runs, and it decides it from a third-party billing
+  payload whose shape cannot be verified from a test environment. The behaviors that matter are the conservative
+  ones - hold the current choice when quota is unreadable, hold it inside the hysteresis band, and refuse to convert
+  a runner SKU whose included-minute rate is not known - and each is exactly the kind a test can assert while guarding
+  nothing. The SKU entries came from a review round: summing native minutes across SKUs undercounts Windows at 2x
+  and macOS at 10x, overstating the remainder and keeping jobs on a hosted runner whose quota is already spent.'
+mutations:
+- label: hysteresis band removed
+  find: "    if not standing:\n        if current:\n            # Present but unusable. A GitHub expression treats\
+    \ any non-empty\n            # string as truthy, so `${{ vars.CI_RUNNER || '...' }}` resolves to\n         \
+    \   # the whitespace itself and every job queues against a label no\n            # runner answers to. Holding\
+    \ would leave CI stuck with nothing able\n            # to unstick it from here, so this one is repaired --\
+    \ by REMOVING\n            # the variable, not by writing the hosted label.\n            #\n            # Writing\
+    \ `github_label` here was the deadband bug one layer down,\n            # in the one branch the earlier fix\
+    \ did not reach: on a repository\n            # converted with `--fallback self-hosted` it moves every job back\n\
+    \            # onto billed minutes, which is exactly what that flag exists to\n            # prevent. Deleting\
+    \ unsticks CI just as well -- an absent variable\n            # makes `${{ vars.CI_RUNNER || '<fallback>' }}`\
+    \ resolve to the\n            # repository's own fallback -- and it is the only outcome that\n            #\
+    \ restores the standing choice the band is supposed to hold, rather\n            # than guessing at a fallback\
+    \ this function cannot see.\n            return _settle(\"\", current,\n                           f\"{quota.remaining}\
+    \ minutes left is between {low_water} and {high_water}; \"\n                           \"CI_RUNNER is whitespace-only\
+    \ and no runner answers to it; \"\n                           \"removed so the repository's own fallback applies\"\
+    , delete=True)\n        return _settle(current, current,\n                       f\"{quota.remaining} minutes\
+    \ left is between {low_water} and {high_water}; \"\n                       \"CI_RUNNER is unset, so the repository's\
+    \ own fallback stands\")\n    # `standing`, not `current`: a value carrying stray whitespace is repaired\n \
+    \   # to the label it meant rather than held in a form GitHub reads differently.\n    return _settle(standing,\
+    \ current, f\"{quota.remaining} minutes left is between {low_water} and {high_water}; held\")\n"
+  replace: '    return _settle(github_label, current, "no hysteresis")
+
+    '
+  test: tests.test_ci_runner_mode.DecisionTests.test_between_the_marks_the_standing_choice_holds
+- label: unknown quota guesses instead of holding
+  find: "    if quota.remaining is None:\n        return _settle(fallback, current, f\"quota {UNDETERMINED} ({quota.source});\
+    \ left unchanged\", undetermined=True)"
+  replace: "    if quota.remaining is None:\n        return _settle(self_hosted_label, current, \"assumed exhausted\"\
+    )"
+  test: tests.test_ci_runner_mode.DecisionTests.test_unreadable_quota_changes_nothing_and_says_so
+- label: bool accepted as a minute count
+  find: '    return isinstance(value, (int, float)) and not isinstance(value, bool)'
+  replace: '    return isinstance(value, (int, float))'
+  test: tests.test_ci_runner_mode.BillingParsingTests.test_boolean_minute_counts_are_rejected_as_a_broken_payload
+- label: overage clamp removed
+  find: '        return Quota(max(0, int(included) - int(used)), f"legacy billing: {int(used)}/{int(included)} minutes
+    used")'
+  replace: '        return Quota(int(included) - int(used), f"legacy billing: {int(used)}/{int(included)} minutes
+    used")'
+  test: tests.test_ci_runner_mode.BillingParsingTests.test_legacy_overage_clamps_at_zero_rather_than_going_negative
+- label: enhanced billing invents an allowance
+  find: "    if included_minutes is None:\n        return Quota(None, \"enhanced billing payload needs --included-minutes\
+    \ to yield a remainder\")"
+  replace: "    if included_minutes is None:\n        included_minutes = 2000"
+  test: tests.test_ci_runner_mode.BillingParsingTests.test_enhanced_payload_without_an_allowance_is_undetermined
+- label: hysteresis band allowed to collapse
+  find: "    if args.high_water <= args.low_water:\n        parser.error(f\"--high-water ({args.high_water}) must\
+    \ exceed --low-water ({args.low_water}) to give hysteresis\")"
+  replace: '    pass'
+  test: tests.test_ci_runner_mode.PickCliTests.test_high_water_must_exceed_low_water
+- label: output values can forge extra keys again
+  find: "def _one_line(value: str) -> str:\n    return \" \".join(str(value).splitlines()).strip()"
+  replace: "def _one_line(value: str) -> str:\n    return str(value)"
+  test: tests.test_ci_runner_mode.PickCliTests
+- label: stdout bound at import again
+  find: "def emit(decision: Decision, stream=None) -> None:\n    # Resolved per call, not bound at import: a default\
+    \ of `sys.stdout` captures\n    # whatever the stream was when this module was first executed, which is the\n\
+    \    # wrong one under any caller that redirects it.\n    stream = sys.stdout if stream is None else stream\n"
+  replace: 'def emit(decision: Decision, stream=sys.stdout) -> None:
+
+    '
+  test: tests.test_ci_runner_mode.PickCliTests.test_empty_stdin_is_undetermined_rather_than_a_crash
+- label: included-minute multipliers flattened
+  find: "INCLUDED_MINUTE_RATES = {\n    \"actions_linux\": 1,\n    \"actions_windows\": 2,\n    \"actions_macos\"\
+    : 10,\n}\n"
+  replace: "INCLUDED_MINUTE_RATES = {\n    \"actions_linux\": 1,\n    \"actions_windows\": 1,\n    \"actions_macos\"\
+    : 1,\n}\n"
+  test: tests.test_ci_runner_mode.BillingParsingTests.test_windows_and_macos_minutes_cost_more_than_they_report
+- label: an unconvertible SKU silently billed at 1x
+  find: "        if rate is None:\n            # Counting an unrecognized SKU at 1x is wrong in both directions\n\
+    \            # and silently: a macOS minute costs ten included minutes, a\n            # larger-runner minute\
+    \ costs none. Either way the remainder would\n            # be confidently wrong, and overstating it keeps jobs\
+    \ on a hosted\n            # runner whose quota is already gone -- the exact failure this\n            # switch\
+    \ exists to prevent.\n            return Quota(None, f\"enhanced billing reports an Actions SKU this cannot\
+    \ convert: {sku!r}\")\n"
+  replace: "        if rate is None:\n            rate = 1\n"
+  test: tests.test_ci_runner_mode.BillingParsingTests.test_an_unconvertible_sku_refuses_to_guess
+- label: a blank probe label reported as isolated
+  find: "        return [f\"CI_PROBE_LABEL={probe!r} is blank once normalized, so no runner can match it \"\n  \
+    \              \"while the workflow still queues the probe job against it\"]\n"
+  replace: '        return []
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_a_blank_probe_label_is_rejected_rather_than_approved
+- label: probe platform narrowing removed
+  find: '        platform |= {normalized} if normalized in vocabulary else set(vocabulary)
+
+    '
+  replace: '        platform |= set(vocabulary)
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_only_the_probes_own_platform_labels_collide
+- label: an unknown probe platform fails open instead of closed
+  find: '        platform |= {normalized} if normalized in vocabulary else set(vocabulary)
+
+    '
+  replace: '        platform |= {normalized} if normalized in vocabulary else set()
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_an_unknown_probe_platform_keeps_every_candidate
+- label: OS and arch widened jointly instead of per field
+  find: "    platform = {AUTO_SHARED_LABEL}\n    for value, vocabulary in ((os_name, AUTO_OS_LABELS), (arch, AUTO_ARCH_LABELS)):\n\
+    \        normalized = normalize_label(value)\n        platform |= {normalized} if normalized in vocabulary else\
+    \ set(vocabulary)\n    return frozenset(platform)\n"
+  replace: "    platform = {AUTO_SHARED_LABEL}\n    pairs = ((os_name, AUTO_OS_LABELS), (arch, AUTO_ARCH_LABELS))\n\
+    \    if any(normalize_label(v) not in vocab for v, vocab in pairs):\n        return AUTO_SELF_HOSTED_LABELS\n\
+    \    for value, vocabulary in pairs:\n        platform |= {normalize_label(value)}\n    return frozenset(platform)\n"
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_os_and_arch_narrow_independently
+- label: a documented runner arch dropped from the vocabulary
+  find: 'AUTO_ARCH_LABELS = frozenset({"x86", "x64", "arm", "arm64"})
+
+    '
+  replace: 'AUTO_ARCH_LABELS = frozenset({"x64", "arm", "arm64"})
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_every_documented_runner_arch_is_treated_as_shared
+- label: an unset variable is guessed as hosted inside the band
+  find: "    if not standing:\n        if current:\n            # Present but unusable. A GitHub expression treats\
+    \ any non-empty\n            # string as truthy, so `${{ vars.CI_RUNNER || '...' }}` resolves to\n         \
+    \   # the whitespace itself and every job queues against a label no\n            # runner answers to. Holding\
+    \ would leave CI stuck with nothing able\n            # to unstick it from here, so this one is repaired --\
+    \ by REMOVING\n            # the variable, not by writing the hosted label.\n            #\n            # Writing\
+    \ `github_label` here was the deadband bug one layer down,\n            # in the one branch the earlier fix\
+    \ did not reach: on a repository\n            # converted with `--fallback self-hosted` it moves every job back\n\
+    \            # onto billed minutes, which is exactly what that flag exists to\n            # prevent. Deleting\
+    \ unsticks CI just as well -- an absent variable\n            # makes `${{ vars.CI_RUNNER || '<fallback>' }}`\
+    \ resolve to the\n            # repository's own fallback -- and it is the only outcome that\n            #\
+    \ restores the standing choice the band is supposed to hold, rather\n            # than guessing at a fallback\
+    \ this function cannot see.\n            return _settle(\"\", current,\n                           f\"{quota.remaining}\
+    \ minutes left is between {low_water} and {high_water}; \"\n                           \"CI_RUNNER is whitespace-only\
+    \ and no runner answers to it; \"\n                           \"removed so the repository's own fallback applies\"\
+    , delete=True)\n        return _settle(current, current,\n                       f\"{quota.remaining} minutes\
+    \ left is between {low_water} and {high_water}; \"\n                       \"CI_RUNNER is unset, so the repository's\
+    \ own fallback stands\")\n    # `standing`, not `current`: a value carrying stray whitespace is repaired\n \
+    \   # to the label it meant rather than held in a form GitHub reads differently.\n    return _settle(standing,\
+    \ current, f\"{quota.remaining} minutes left is between {low_water} and {high_water}; held\")\n"
+  replace: '    return _settle(current or github_label, current, f"{quota.remaining} minutes left is between {low_water}
+    and {high_water}; held")
+
+    '
+  test: tests.test_ci_runner_mode.DecisionTests.test_between_the_marks_with_nothing_set_yet_leaves_it_unset
+- label: a whitespace-only variable is held instead of removed
+  find: "    if not standing:\n        if current:\n            # Present but unusable. A GitHub expression treats\
+    \ any non-empty\n            # string as truthy, so `${{ vars.CI_RUNNER || '...' }}` resolves to\n         \
+    \   # the whitespace itself and every job queues against a label no\n            # runner answers to. Holding\
+    \ would leave CI stuck with nothing able\n            # to unstick it from here, so this one is repaired --\
+    \ by REMOVING\n            # the variable, not by writing the hosted label.\n            #\n            # Writing\
+    \ `github_label` here was the deadband bug one layer down,\n            # in the one branch the earlier fix\
+    \ did not reach: on a repository\n            # converted with `--fallback self-hosted` it moves every job back\n\
+    \            # onto billed minutes, which is exactly what that flag exists to\n            # prevent. Deleting\
+    \ unsticks CI just as well -- an absent variable\n            # makes `${{ vars.CI_RUNNER || '<fallback>' }}`\
+    \ resolve to the\n            # repository's own fallback -- and it is the only outcome that\n            #\
+    \ restores the standing choice the band is supposed to hold, rather\n            # than guessing at a fallback\
+    \ this function cannot see.\n            return _settle(\"\", current,\n                           f\"{quota.remaining}\
+    \ minutes left is between {low_water} and {high_water}; \"\n                           \"CI_RUNNER is whitespace-only\
+    \ and no runner answers to it; \"\n                           \"removed so the repository's own fallback applies\"\
+    , delete=True)\n        return _settle(current, current,\n                       f\"{quota.remaining} minutes\
+    \ left is between {low_water} and {high_water}; \"\n                       \"CI_RUNNER is unset, so the repository's\
+    \ own fallback stands\")\n    # `standing`, not `current`: a value carrying stray whitespace is repaired\n \
+    \   # to the label it meant rather than held in a form GitHub reads differently.\n    return _settle(standing,\
+    \ current, f\"{quota.remaining} minutes left is between {low_water} and {high_water}; held\")\n"
+  replace: "    if not standing:\n        return _settle(current, current, f\"{quota.remaining} minutes left is\
+    \ between {low_water} and {high_water}; unset\")\n    return _settle(standing, current, f\"{quota.remaining}\
+    \ minutes left is between {low_water} and {high_water}; held\")\n"
+  test: tests.test_ci_runner_mode.DecisionTests.test_a_whitespace_only_variable_is_removed_not_repaired_to_hosted
+- label: a whitespace-only variable is repaired to the hosted label again
+  find: "            return _settle(\"\", current,\n                           f\"{quota.remaining} minutes left\
+    \ is between {low_water} and {high_water}; \"\n                           \"CI_RUNNER is whitespace-only and\
+    \ no runner answers to it; \"\n                           \"removed so the repository's own fallback applies\"\
+    , delete=True)\n"
+  replace: "            return _settle(github_label, current,\n                           f\"{quota.remaining} minutes\
+    \ left is between {low_water} and {high_water}; \"\n                           \"CI_RUNNER is whitespace-only;\
+    \ repaired\")\n"
+  test: tests.test_ci_runner_mode.DecisionTests.test_a_whitespace_only_variable_is_removed_not_repaired_to_hosted

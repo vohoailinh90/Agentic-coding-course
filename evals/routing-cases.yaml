@@ -1,0 +1,77 @@
+version: 2
+blind: true
+
+# Classifier input only. Keep every expected label, score, signal, and route out of
+# this file so the classifier cannot infer the oracle from its test fixture.
+cases:
+  - id: REQ-001
+    requirement: >-
+      Change the Login button label to Sign in on the existing login page.
+
+  - id: REQ-002
+    requirement: >-
+      Add a null guard to the existing displayName formatter so it returns an empty string when the input is null.
+
+  - id: REQ-003
+    requirement: >-
+      Rename an internal variable in the invoice mapper for clarity without changing behavior.
+
+  - id: REQ-004
+    requirement: >-
+      Add a GET /reports/invoices.csv endpoint using the same authorization, service, and repository patterns as the existing JSON report endpoint.
+
+  - id: REQ-005
+    requirement: >-
+      Refactor the notification preference module to remove duplicated validation while preserving all current API behavior.
+
+  - id: REQ-006
+    requirement: >-
+      Fix the search pagination bug where page 2 repeats the final item from page 1; add regression tests.
+
+  - id: REQ-007
+    requirement: >-
+      Add a new nullable customer_segment column, backfill it from existing profile data, then make it required in a later deployment with zero downtime.
+
+  - id: REQ-008
+    requirement: >-
+      Add an admin-only endpoint to rotate API credentials for a tenant and invalidate the old credential immediately.
+
+  - id: REQ-009
+    requirement: >-
+      Introduce Redis caching for product catalog reads, including stale-data behavior, invalidation on writes, fallback when Redis is unavailable, and metrics.
+
+  - id: REQ-010
+    requirement: >-
+      Implement idempotent payment processing for Kafka retry/redelivery so a message can never create a duplicate external charge, while preserving retryability after partial failures.
+
+  - id: REQ-011
+    requirement: >-
+      Migrate authentication from server sessions to OAuth2/OIDC across web, backend APIs, and mobile while keeping existing users signed in during a staged rollout.
+
+  - id: REQ-012
+    requirement: >-
+      Split the shared orders database into separate order and fulfillment ownership across two services with zero-downtime dual-write/backfill, rollback support, and no lost updates.
+
+  - id: REQ-013
+    requirement: >-
+      Add an admin-only support endpoint that returns a tenant's stored webhook signing secret so support staff can verify a failing integration.
+
+  - id: REQ-014
+    requirement: >-
+      Change the public /v1/orders response to return amounts as minor units with an explicit currency code, coordinating the cutover with existing API consumers.
+
+  - id: REQ-015
+    requirement: >-
+      Add a GET /payments/{id}/status endpoint using the existing tenant authorization and the existing read repository. Return only the same non-sensitive status text already shown in the account UI for that payment; do not add any new field, and do not expose ledger entries, audit history, or any other tenant's data.
+
+  - id: REQ-016
+    requirement: >-
+      Add a support-only endpoint that lets an existing support role retrieve another tenant's payment status, ledger entries, and audit history across tenants for troubleshooting, reusing the existing support authorization role without adding a new authorization check.
+
+  - id: REQ-017
+    requirement: >-
+      Split the single order-processing worker into two independently deployable processes, an intake process and a fulfillment-execution process, communicating over a new internal-only queue. The public API, the event schemas already published to other services, and which service owns the orders data store all stay exactly the same.
+
+  - id: REQ-018
+    requirement: >-
+      Add a new optional weight_grams field to the canonical Product model owned by the catalog service and already consumed read-only by the pricing and search-indexing services, backfilling the field for existing products. No consumer's existing behavior changes and no new consumer is added.

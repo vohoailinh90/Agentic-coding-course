@@ -1,0 +1,98 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+target: scripts/protect_branches.py
+note: Both halves of §20 live in one payload and one verdict function. A payload that drops `strict` or `enforce_admins`
+  certifies a repository as safe for autonomous merge when it is not, and a verdict that misreads GitHub's nesting
+  does the same for every repository at once. Neither failure is visible from a passing run.
+mutations:
+- label: branches no longer have to be up to date
+  find: '        "required_status_checks": {"strict": True, "contexts": list(contexts)},
+
+    '
+  replace: '        "required_status_checks": {"strict": False, "contexts": list(contexts)},
+
+    '
+  test: tests.test_protect_branches.DesiredProtectionTests.test_it_requires_branches_to_be_up_to_date
+- label: administrators are exempted again
+  find: '        "enforce_admins": True,
+
+    '
+  replace: '        "enforce_admins": False,
+
+    '
+  test: tests.test_protect_branches.DesiredProtectionTests.test_it_includes_administrators
+- label: a human approval is required, which forbids autonomous merge
+  find: '        "required_pull_request_reviews": None,
+
+    '
+  replace: '        "required_pull_request_reviews": {"required_approving_review_count": 1},
+
+    '
+  test: tests.test_protect_branches.DesiredProtectionTests.test_it_does_not_require_human_review
+- label: the enforce_admins nesting is read as a plain truthy value
+  find: '    enabled = admins.get("enabled") if isinstance(admins, dict) else bool(admins)
+
+    '
+  replace: '    enabled = bool(admins)
+
+    '
+  test: tests.test_protect_branches.ShortfallTests.test_exempt_administrators_are_caught
+- label: the checks array spelling is ignored
+  find: '    named = checks.get("contexts") or [c.get("context") for c in (checks.get("checks") or [])]
+
+    '
+  replace: '    named = checks.get("contexts") or []
+
+    '
+  test: tests.test_protect_branches.ShortfallTests.test_the_checks_array_form_counts_as_contexts
+- label: an absent protection is reported as satisfying
+  find: "    if not protection:\n        return [\"no branch protection at all\"]\n"
+  replace: "    if not protection:\n        return []\n"
+  test: tests.test_protect_branches.ShortfallTests.test_absent_protection_is_a_shortfall
+- label: a drifted branch is called satisfied and never repaired
+  find: "        if not before and not missing and not (stale and args.drop_unlisted):\n            print(f\"{repo}:\
+    \ already satisfies §20\")\n"
+  replace: "        if not before:\n            print(f\"{repo}: already satisfies §20\")\n"
+  test: tests.test_protect_branches.MainFlowTests.test_a_drifted_branch_is_written_instead_of_called_satisfied
+- label: every 404 is read as an unprotected branch again
+  find: "            exists = branch_exists(args.owner, repo, args.branch, token)\n            if exists is not\
+    \ True:\n                detail = (\"no such repository or branch, or none this token can see\"\n          \
+    \                if exists is False else \"could not confirm it exists\")\n                print(f\"{repo}:\
+    \ cannot read {args.branch} -- {detail}\")\n                failures += 1\n                continue\n"
+  replace: '            pass
+
+    '
+  test: tests.test_protect_branches.MainFlowTests.test_an_invisible_repository_is_not_reported_as_unprotected
+- label: context drift is never detected
+  find: "    have = set(configured_contexts(protection))\n    want = set(expected)\n    return sorted(have - want),\
+    \ sorted(want - have)\n"
+  replace: '    return [], []
+
+    '
+  test: tests.test_protect_branches.ContextDriftTests.test_drift_reports_the_stale_context_that_blocks_every_pull_request
+- label: reconciliation deletes required checks the table does not name
+  find: "        target = (sorted(expected) if args.drop_unlisted\n                  else sorted(set(expected) |\
+    \ set(configured_contexts(current))))\n"
+  replace: '        target = sorted(expected)
+
+    '
+  test: tests.test_protect_branches.MainFlowTests.test_the_default_write_preserves_a_context_the_table_does_not_name
+- label: drop-unlisted cannot survive the early return
+  find: '        if not before and not missing and not (stale and args.drop_unlisted):
+
+    '
+  replace: '        if not before and not missing:
+
+    '
+  test: tests.test_protect_branches.MainFlowTests.test_drop_unlisted_will_remove_an_operator_added_gate
+- label: the post-write check compares against the table instead of the intent
+  find: '        if written != target:
+
+    '
+  replace: '        if written != sorted(expected):
+
+    '
+  test: tests.test_protect_branches.MainFlowTests.test_a_preserving_write_is_reported_as_success

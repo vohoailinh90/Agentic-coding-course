@@ -1,0 +1,252 @@
+version: 3
+oracle: true
+
+# Evaluator-only ground truth. The classifier must not read this file before it
+# has emitted its classification results.
+#
+# v3 changes (routing outcomes are unchanged; the reasoning path is not):
+#   - signals are verb-first actions, matching policy.yaml `signal_taxonomy`
+#   - rosters follow the main-session-first profiles
+#   - every case carries max_agent_invocations so over-routing is measurable
+expected:
+  - id: REQ-001
+    semantic_hints: {ambiguity: 0, scope: 0, architecture: 0, dependencies: 0, risk: 0, verification: 0}
+    raw_score: 0
+    signals: []
+    score_tier: T0
+    tier: T0
+    strategy: main_session
+    required_agents: []
+    max_agent_invocations: 0
+    parallelizable: false
+    human_gate: false
+
+  - id: REQ-002
+    semantic_hints: {ambiguity: 0, scope: 0, architecture: 0, dependencies: 0, risk: 0, verification: 1}
+    raw_score: 1
+    signals: []
+    score_tier: T0
+    tier: T0
+    strategy: main_session
+    required_agents: []
+    max_agent_invocations: 0
+    parallelizable: false
+    human_gate: false
+
+  - id: REQ-003
+    semantic_hints: {ambiguity: 0, scope: 0, architecture: 0, dependencies: 0, risk: 0, verification: 0}
+    raw_score: 0
+    signals: []
+    score_tier: T0
+    tier: T0
+    strategy: main_session
+    required_agents: []
+    max_agent_invocations: 0
+    parallelizable: false
+    human_gate: false
+
+  - id: REQ-004
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 0, dependencies: 1, risk: 1, verification: 1}
+    raw_score: 4
+    signals: []
+    score_tier: T1
+    tier: T1
+    strategy: main_with_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 1
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The endpoint reuses the existing authorization pattern rather than changing it. Under the v3 taxonomy that is `reads-authorization-rule`, a read-only exempt signal, so it must not emit an override-eligible security signal. Emitting a bare `security` or `authorization` signal here is the false positive this taxonomy exists to prevent.
+
+  - id: REQ-005
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 1, dependencies: 0, risk: 1, verification: 1}
+    raw_score: 4
+    signals: []
+    score_tier: T1
+    tier: T1
+    strategy: main_with_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 1
+    parallelizable: false
+    human_gate: false
+
+  - id: REQ-006
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 0, dependencies: 1, risk: 1, verification: 1}
+    raw_score: 4
+    signals: []
+    score_tier: T1
+    tier: T1
+    strategy: main_with_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 1
+    parallelizable: false
+    human_gate: false
+
+  - id: REQ-007
+    semantic_hints: {ambiguity: 1, scope: 1, architecture: 1, dependencies: 1, risk: 2, verification: 2}
+    raw_score: 8
+    signals: [changes-schema, migrates-data, runs-backfill]
+    score_tier: T2
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      Treat this as a bounded schema/rollout design inside one data subsystem. It is a migration and high-risk verification problem, but not by itself a change to service boundaries, external contracts, or deployment topology. Architecture scores 1, so the conditional architect agent does not fire and the roster is the reviewer alone; the second budget slot stays unspent.
+
+  - id: REQ-008
+    semantic_hints: {ambiguity: 1, scope: 1, architecture: 1, dependencies: 1, risk: 2, verification: 2}
+    raw_score: 8
+    signals: [rotates-credential, writes-secret, changes-authentication-flow, executes-irreversible-operation]
+    score_tier: T2
+    tier: T3
+    strategy: main_with_critic_and_reviewer
+    required_agents: [architecture-critic, code-reviewer-t3]
+    max_agent_invocations: 3
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      Immediate invalidation of the old credential is `executes-irreversible-operation`, which raises the tier to T3. The standing human-gate requirement was removed from policy.yaml's irreversible-or-destructive override; completion and merge follow the autonomous policy in CLAUDE.md / docs/claude-to-codex.md §20. Ambiguity is 1, so the conditional requirement-analyst does not fire and the T3 budget stays at the base 3.
+
+  - id: REQ-009
+    semantic_hints: {ambiguity: 1, scope: 1, architecture: 1, dependencies: 2, risk: 1, verification: 2}
+    raw_score: 8
+    signals: [coordinates-distributed-work]
+    score_tier: T2
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: true
+    human_gate: false
+    oracle_note: >-
+      Redis adds a local caching/consistency design within the catalog subsystem. The dependency and verification dimensions carry the distributed-system complexity without treating the cache as a system-boundary or storage-ownership migration. `coordinates-distributed-work` alone matches no override — it is only override-eligible in combination, via critical-payment-distributed-consistency. Parallelizable is true, but that does not raise the budget above 2.
+
+  - id: REQ-010
+    semantic_hints: {ambiguity: 1, scope: 2, architecture: 2, dependencies: 2, risk: 2, verification: 2}
+    raw_score: 11
+    signals: [moves-money, creates-charge, coordinates-distributed-work, requires-idempotency]
+    score_tier: T3
+    tier: T3
+    strategy: main_with_critic_and_reviewer
+    required_agents: [architecture-critic, code-reviewer-t3]
+    max_agent_invocations: 3
+    parallelizable: true
+    human_gate: false
+    oracle_note: >-
+      T3 still applies via the payment/coordinates-distributed-work/idempotency combination, but critical-payment-distributed-consistency no longer sets a standing human-gate requirement; see CLAUDE.md / docs/claude-to-codex.md §20. Architecture scores 2, but at T3 architecture is main-session work — the critic challenges it rather than a separate architect authoring it. Ambiguity is 1 (the idempotency contract is explicit), so the conditional requirement-analyst does not fire.
+
+  - id: REQ-011
+    semantic_hints: {ambiguity: 2, scope: 2, architecture: 2, dependencies: 2, risk: 2, verification: 2}
+    raw_score: 12
+    signals: [changes-authentication-flow, migrates-data, rolls-out-across-clients, changes-service-contract]
+    score_tier: T3
+    tier: T3
+    strategy: main_with_critic_and_reviewer
+    required_agents: [requirement-analyst, architecture-critic, code-reviewer-t3]
+    max_agent_invocations: 4
+    parallelizable: true
+    human_gate: false
+    oracle_note: >-
+      T3 still applies via identity-model-migration, but that override no longer sets a standing human-gate requirement; see CLAUDE.md / docs/claude-to-codex.md §20. Ambiguity is 2 — "keeping existing users signed in" during the OAuth2/OIDC cutover leaves open whether that means uninterrupted requests, continued refresh-token validity, account-linking continuity, or fallback to old sessions, and a wrong assumption here risks account takeover or mass logout. That fires the conditional requirement-analyst before architecture begins, consuming budget.analyst_reserve.T3 and raising the ceiling from 3 to 4.
+
+  - id: REQ-012
+    semantic_hints: {ambiguity: 2, scope: 2, architecture: 2, dependencies: 2, risk: 2, verification: 2}
+    raw_score: 12
+    signals: [changes-schema, migrates-data, runs-backfill, changes-service-contract, changes-storage-ownership]
+    score_tier: T3
+    tier: T3
+    strategy: main_with_critic_and_reviewer
+    required_agents: [requirement-analyst, architecture-critic, code-reviewer-t3]
+    max_agent_invocations: 4
+    parallelizable: true
+    human_gate: false
+    oracle_note: >-
+      Ambiguity is 2 — the authoritative owner during each rollout phase, conflict resolution between legacy and new writes, the exact rollback boundary, and what "no lost updates" means under concurrent order/fulfillment mutations are all open before a design exists, and a wrong assumption risks silent divergence or irreversible data loss. That fires the conditional requirement-analyst before architecture begins, consuming budget.analyst_reserve.T3 and raising the ceiling from 3 to 4.
+
+  - id: REQ-013
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 0, dependencies: 0, risk: 2, verification: 1}
+    raw_score: 4
+    signals: [exposes-secret]
+    score_tier: T1
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The regression guard for the read-only exemption. Reading the stored secret is `reads-secret-config`, which is exempt and must be dropped before override matching — but returning it over an endpoint is `exposes-secret`, an action, and that must fire security-sensitive and lift a score-4 T1 to T2. A classifier that emits only the exempt read routes this to T1 and fails: that is exactly the disclosure hole the action taxonomy has to close. Architecture is 0, so the conditional architect does not fire.
+
+  - id: REQ-014
+    semantic_hints: {ambiguity: 1, scope: 2, architecture: 2, dependencies: 1, risk: 1, verification: 1}
+    raw_score: 8
+    signals: [changes-service-contract]
+    score_tier: T2
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [architect, code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The only fixture that fires the T2 conditional architect, and the reason that condition had to become a machine-checkable signal list rather than prose. Architecture is 2 and `changes-service-contract` matches, so the architect joins the reviewer and the T2 budget of 2 is fully spent. Compatibility and versioning design for existing consumers is the work the architect is there to author.
+
+  - id: REQ-015
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 0, dependencies: 1, risk: 1, verification: 1}
+    raw_score: 4
+    signals: []
+    score_tier: T1
+    tier: T1
+    strategy: main_with_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 1
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The safe half of the REQ-015/REQ-016 pair. `reads-authorization-rule` and `reads-payment-record` are both read-only exempt and must be dropped before override matching, leaving no emitted signals — this is a bounded read using existing patterns, the same shape as REQ-004. Paired with REQ-016, this proves the exemption does not merely fail to escalate everything (a vacuous property); it specifically keeps a harmless read at T1 while REQ-016's new disclosure action still escalates.
+
+  - id: REQ-016
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 0, dependencies: 0, risk: 2, verification: 1}
+    raw_score: 4
+    signals: [exposes-sensitive-record]
+    score_tier: T1
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The dangerous half of the pair, and the regression fixture for the Q3 finding on PR #4's brainstorm round: `reads-authorization-rule`, `reads-payment-record`, `reads-ledger` and `reads-audit-log` are all read-only exempt, but returning those records to a support role across tenants, through an endpoint that adds no new authorization check, is `exposes-sensitive-record` — an action, not a read. Before this signal existed, a classifier that emitted only the exempt reads routed this to T1, the same disclosure hole `exposes-secret`/REQ-013 closed for secrets. Architecture is 0, so the conditional architect does not fire; the security-sensitive override alone lifts a score-4 T1 to T2.
+
+  - id: REQ-017
+    semantic_hints: {ambiguity: 1, scope: 1, architecture: 2, dependencies: 1, risk: 1, verification: 1}
+    raw_score: 7
+    signals: []
+    score_tier: T2
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [architect, code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The round-2 regression fixture for the T2 architect condition's OR semantics: this fires the architect purely through `when_architecture_dimension_at_least: 2` (a deployment-topology split, the rubric's own architecture-2 example) while emitting no signal at all, let alone one from the architect's `when_any_signal` list. Paired with REQ-018, this proves the two conditional_agents entries are independently sufficient — a classifier or policy engine that (incorrectly) ANDed them together would drop the architect here, since no signal fires.
+
+  - id: REQ-018
+    semantic_hints: {ambiguity: 0, scope: 1, architecture: 1, dependencies: 1, risk: 1, verification: 1}
+    raw_score: 5
+    signals: [changes-canonical-model, runs-backfill]
+    score_tier: T1
+    tier: T2
+    strategy: main_with_architect_and_reviewer
+    required_agents: [architect, code-reviewer]
+    max_agent_invocations: 2
+    parallelizable: false
+    human_gate: false
+    oracle_note: >-
+      The other half of the OR-semantics pair: architecture is 1, not 2 — this is an additive, backward-compatible field on a canonical model whose ownership stays with the catalog service, matching the rubric's own architecture-1 example — so only the signal arm (`changes-canonical-model`) fires the architect, and `database-or-data-migration` separately lifts a score-5 T1 to T2. A classifier or policy engine that (incorrectly) ANDed the T2 architect's two conditions together would drop the architect here, since architecture never reaches 2.

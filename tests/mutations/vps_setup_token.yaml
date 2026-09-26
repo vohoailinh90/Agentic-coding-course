@@ -1,0 +1,41 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# The bootstrap script runs on the VPS, which is also where untrusted workflow
+# code runs. A credential on a command line there is readable by any process on
+# the box, so the test that forbids it must actually fail when it is put back.
+target: scripts/setup-vps-runner.sh
+note: The PAT reached /proc/<pid>/cmdline in the first version of this script. These mutations restore that shape
+  and require the guard to notice.
+mutations:
+- label: the PAT goes back onto the curl command line
+  find: "  reg_token=\"$(printf 'header = \"Authorization: Bearer %s\"\\n' \"${CI_RUNNER_TOKEN}\" \\\n    | curl\
+    \ -fsSL -X POST -K - \\\n"
+  replace: "  reg_token=\"$(curl -fsSL -X POST \\\n      -H \"Authorization: Bearer ${CI_RUNNER_TOKEN}\" \\\n"
+  test: tests.test_ci_runner_mode.SetupScriptTests.test_the_pat_never_reaches_a_command_line
+- label: the root refusal is dropped
+  find: '[ "$(id -u)" -ne 0 ] || { echo "refusing to run as root; use an unprivileged user" >&2; exit 1; }'
+  replace: ':'
+  test: tests.test_ci_runner_mode.SetupScriptTests.test_it_refuses_to_run_as_root
+- label: the runner user is validated only after the runner is registered
+  find: "# Resolved here, before anything with a side effect. This check used to sit\n# just above `svc.sh install`\
+    \ -- after a registration token had been minted and\n# config.sh had already registered the runner with GitHub\
+    \ and written\n# ${dir}/.runner. A misspelt --runner-user therefore exited having left a\n# registered runner\
+    \ with no service behind it, and the corrected rerun matched\n# that same .runner file, printed \"already configured\"\
+    , and skipped the\n# repository, so the service was never installed at all. Nothing below this\n# line can be\
+    \ undone by running the script again.\nif [ \"${RUNNER_USER}\" != \"$(id -un)\" ]; then\n  id -u \"${RUNNER_USER}\"\
+    \ >/dev/null 2>&1 || { echo \"no such user: ${RUNNER_USER}\" >&2; exit 1; }\nfi\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.SetupScriptTests.test_the_runner_user_is_resolved_before_anything_irreversible
+- label: the service is installed without checking the account can reach the tree
+  find: "# The service runs as ${RUNNER_USER} out of ${RUNNER_ROOT}, so that account has\n# to be able to traverse\
+    \ every directory above it. The default root sits under\n# this account's $HOME, which is routinely 0700 or\
+    \ 0750; chowning the runner's\n# own directory does not help when an ancestor blocks the path, and `svc.sh\n\
+    # install` succeeds either way -- leaving a service that can never start.\n#\n# Reported rather than repaired\
+    \ on purpose: widening the permissions on\n# somebody's home directory is not a side effect a setup script should\
+    \ have\n# silently. `test -x` on the deepest path fails if any ancestor denies\n# traversal, so one check covers\
+    \ the whole chain.\nif [ \"${RUNNER_USER}\" != \"$(id -un)\" ]; then\n  if ! sudo -u \"${RUNNER_USER}\" test\
+    \ -x \"${RUNNER_ROOT}\" 2>/dev/null; then\n    echo \"${RUNNER_USER} cannot traverse ${RUNNER_ROOT} (checked\
+    \ via sudo).\" >&2\n    echo \"Pass --root with a path that account can reach, e.g. --root /opt/actions-runners.\"\
+    \ >&2\n    exit 1\n  fi\nfi\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.SetupScriptTests.test_the_service_account_must_be_able_to_traverse_the_runner_tree

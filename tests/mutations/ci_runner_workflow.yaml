@@ -1,0 +1,131 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: .github/workflows/runner-mode.yml
+note: 'The workflow''s own shell is the one place the rest of the suite cannot reach. Five review rounds
+  found defects living there, and the collision guard was wrong in three consecutive rounds for the same
+  reason each time: it compared the state it could read rather than the state the probe was about to create.
+  It is no longer shell at all -- scripts/pick_runner.py owns that comparison, so the guard and the picker
+  cannot drift in normalization or in defaults. What remains here is ordering (the guard must precede
+  any step carrying the PAT) and completeness of the fetch, which are properties of the workflow rather
+  than the decision.'
+mutations:
+- label: billing step can exit without leaving a payload
+  find: "          : > billing.json\n          if [ -z \"${TOKEN}\" ]; then\n"
+  replace: '          if [ -z "${TOKEN}" ]; then
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_the_billing_step_always_leaves_a_readable_payload
+- label: a good result is overwritten by a later failure
+  find: '            if [ "${code}" = "200" ]; then break; fi
+
+    '
+  replace: '            :
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_a_probe_that_succeeds_first_stops_immediately
+- label: a failed probe leaves a 404 body behind
+  find: "            echo \"::warning::billing API returned ${code}; the decision will be left unchanged.\"\
+    \n            : > billing.json\n"
+  replace: '            echo "::warning::billing API returned ${code}; the decision will be left unchanged."
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_every_combination_failing_leaves_an_empty_payload
+- label: billing request can hang forever
+  find: "            curl -sS -o billing.json -D headers.txt -w '%{http_code}' \\\n              --connect-timeout\
+    \ 10 --max-time 60 \\\n"
+  replace: '            curl -sS -o billing.json -D headers.txt -w ''%{http_code}'' \
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_every_curl_bounds_its_own_runtime
+- label: enhanced org report sent to the legacy org path
+  find: '            "organizations/${OWNER}/settings/billing/usage?${window}"
+
+    '
+  replace: '            "orgs/${OWNER}/settings/billing/usage?${window}"
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_the_probe_requests_exactly_the_four_documented_endpoints
+- label: enhanced report widened from a month to a year
+  find: '          window="year=${year}&month=${month}"
+
+    '
+  replace: '          window="year=${year}"
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_the_enhanced_report_is_scoped_to_one_month
+- label: a paginated report is accepted as complete
+  find: '          elif grep -qi ''rel="next"'' headers.txt; then
+
+    '
+  replace: '          elif false; then
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_a_paginated_report_is_reported_incomplete
+- label: probe lock widened to hold the escape hatch
+  find: "    concurrency:\n      group: runner-mode-probe\n      cancel-in-progress: false\n"
+  replace: ''
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_the_reset_is_not_held_by_the_probe_lock
+- label: escape hatch needs the runner it exists to escape
+  find: "    if: ${{ inputs.reset }}\n    runs-on: ubuntu-latest\n"
+  replace: "    if: ${{ inputs.reset }}\n    runs-on: self-hosted\n"
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_the_reset_job_runs_on_a_hosted_runner
+- label: escape hatch cannot create a missing variable
+  find: "          code=\"$(api PATCH \"/CI_RUNNER\")\"\n          if [ \"${code}\" = \"404\" ]; then\n\
+    \            # Dispatched before the probe ever ran: the variable does not exist\n            # yet.\
+    \ Same first-run case the decide job already handles.\n            code=\"$(api POST \"\")\"\n   \
+    \       fi\n"
+  replace: '          code="$(api PATCH "/CI_RUNNER")"
+
+    '
+  test: tests.test_ci_runner_mode.WorkflowShellTests.test_the_reset_creates_the_variable_when_it_does_not_exist_yet
+- label: summary interpolates an expression into the shell again
+  find: '            echo "- reason: ${REASON:-the probe did not reach a decision}"
+
+    '
+  replace: '            echo "- reason: ${{ steps.pick.outputs.reason }}"
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_no_workflow_interpolates_an_expression_into_a_shell_script
+- label: scheduled probe races the reset job
+  find: '    if: ${{ !inputs.reset && vars.CI_PROBE_LABEL != '''' }}
+
+    '
+  replace: '    if: ${{ vars.CI_PROBE_LABEL != '''' }}
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_the_scheduled_probe_stands_down_during_a_reset
+- label: probe put back on the runner that executes pull-request code
+  find: '    runs-on: ${{ vars.CI_PROBE_LABEL }}
+
+    '
+  replace: '    runs-on: ${{ vars.CI_RUNNER || ''self-hosted'' }}
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_the_probe_needs_a_runner_of_its_own
+- label: an undetermined decision writes the variable anyway
+  find: '          && steps.pick.outputs.undetermined != ''true''
+
+    '
+  replace: ''
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_an_undetermined_decision_never_writes_the_variable
+- label: guard runs after the step that holds the token
+  find: '      - name: Refuse to run beside untrusted code
+
+    '
+  replace: '      - name: zzz-late-guard
+
+    '
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_the_guard_precedes_every_step_that_sees_the_token
+- label: the guard stops reading the platform it runs on
+  find: "          args+=(--probe-os \"${RUNNER_OS:-}\" --probe-arch \"${RUNNER_ARCH:-}\")\n"
+  replace: ""
+  test: tests.test_ci_runner_mode.EscapeHatchTests.test_the_guard_reads_the_platform_of_the_machine_it_runs_on
+- label: the step-test harness drops LD_LIBRARY_PATH again
+  file: tests/test_ci_runner_mode.py
+  find: "        environment[\"LD_LIBRARY_PATH\"] = os.environ[\"LD_LIBRARY_PATH\"]\n"
+  replace: "        pass\n"
+  test: tests.test_ci_runner_mode.RunScriptTests.test_the_bare_environment_keeps_the_dynamic_linker_path

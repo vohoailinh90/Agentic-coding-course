@@ -1,0 +1,69 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: scripts/hooks/statusline.py
+note: 'Every fix shipped in PR #9. Each entry breaks one behavior and names the test that must notice.
+  Six of the eleven fixes were already covered by tests that passed either way before this manifest existed:
+  flattening by_headroom to always-green left all six original status line tests green, because they assert
+  plain text and never the escape codes.'
+mutations:
+- label: git_worktree can shadow project_dir again
+  find: "    for key in (\"git_worktree\", \"project_dir\"):\n        place = workspace.get(key)\n   \
+    \     if isinstance(place, str) and place.strip():\n            return paint(one_line(os.path.basename(place.rstrip(\"\
+    /\")) or place), DIM)\n        if place is not None:\n            # Preferring a key must not mean\
+    \ a broken one shadows a good one.\n            rejected(f\"workspace.{key}\", f\"{type(place).__name__}\
+    \ is not a path\")\n    return None"
+  replace: "    place = workspace.get(\"git_worktree\") or workspace.get(\"project_dir\")\n    if not\
+    \ isinstance(place, str) or not place.strip():\n        return None\n    return paint(one_line(os.path.basename(place.rstrip(\"\
+    /\")) or place), DIM)"
+  test: tests.test_session_budget.StatusLineWorkspaceTests.test_an_unusable_git_worktree_does_not_shadow_a_good_project_dir
+- label: rejected reset timestamp goes silent again
+  find: "    except (ValueError, OverflowError, OSError) as exc:\n        # An upstream change of timestamp\
+    \ format must not look like a window\n        # that simply has no reset time.\n        note(f\"ignored\
+    \ rate_limits.five_hour.resets_at: {type(exc).__name__} ({exc})\")\n        return \"\""
+  replace: "    except (ValueError, OverflowError, OSError):\n        return \"\""
+  test: tests.test_session_budget.StatusLineRobustnessTests.test_a_broken_reset_timestamp_costs_the_clock_and_nothing_else
+- label: rejected numbers go silent
+  find: "    if field:\n        note(f\"ignored {field}: {reason}\")\n    return None"
+  replace: '    return None'
+  test: tests.test_session_budget.StatusLineRobustnessTests.test_non_finite_and_boolean_numbers_read_as_absent
+- label: absent fields wrongly reported as discards
+  find: "    if value is None:\n        return None\n    if isinstance(value, bool)"
+  replace: '    if isinstance(value, bool)'
+  test: tests.test_session_budget.StatusLineWorkspaceTests.test_an_absent_field_is_not_reported_as_a_discard
+- label: colour thresholds flattened
+  find: "    if remaining <= 15:\n        return RED\n    if remaining <= 30:\n        return YELLOW\n\
+    \    return GREEN"
+  replace: '    return GREEN'
+  test: tests.test_session_budget.StatusLineColourTests
+- label: clamp removed from the bar
+  find: "    remaining = clamp(remaining)\n    filled = round((100 - remaining) / 10)"
+  replace: '    filled = round((100 - remaining) / 10)'
+  test: tests.test_session_budget.StatusLineRobustnessTests.test_the_bar_is_ten_cells_whatever_the_percentage_says
+- label: float overflow guard removed
+  find: "    try:\n        value = float(value)\n    except (OverflowError, ValueError):\n        # An\
+    \ int too large for a float still has to cost only its own segment.\n        return rejected(field,\
+    \ \"too large to be a number\")"
+  replace: '    value = float(value)'
+  test: tests.test_session_budget.StatusLineRobustnessTests.test_a_number_too_large_for_a_float_costs_only_its_own_segment
+- label: control-char stripping removed
+  find: "    flattened = \"\".join(ch for ch in str(text) if ch.isprintable())\n    return flattened[:MAX_LABEL]"
+  replace: '    return str(text)'
+  test: tests.test_session_budget.StatusLineRobustnessTests
+- label: spend_limit dropped
+  find: '        ("spend_limit", "spend"),
+
+    '
+  replace: ''
+  test: tests.test_session_budget.StatusLineWorkspaceTests.test_spend_limit_renders_like_the_windows_beside_it
+- label: stdin/JSON stderr notes removed
+  find: '    print(f"statusline: {reason}", file=sys.stderr)'
+  replace: '    return None'
+  test: tests.test_session_budget.StatusLineProcessTests.test_a_swallowed_payload_leaves_a_note_on_stderr
+- label: stdin is decoded with the locale's error handler again
+  find: "        raw = sys.stdin.buffer.read().decode(\"utf-8\", errors=\"replace\")\n"
+  replace: "        raw = sys.stdin.read()\n"
+  test: tests.test_session_budget.StatusLineProcessTests.test_any_stdin_exits_zero_with_exactly_one_line

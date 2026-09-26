@@ -1,0 +1,70 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+concurrency:
+  # Only runs of the same PR share a group, so a newer push cancels that PR's
+  # older run. Every other run (push to main, dispatch) gets its own group from
+  # run_id, so it is never cancelled or displaced from the queue.
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Set up Node 22
+      # tests/test_bilingual.py runs the web i18n runtime under Node's
+      # TypeScript type stripping (22.6+); without it that test skips.
+      uses: actions/setup-node@v4
+      with:
+        node-version: "22"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f requirements-eval.txt ]; then pip install -r requirements-eval.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        pytest
+    - name: Mutation check
+      # Proves the tests named in tests/mutations/ actually fail when the
+      # behavior they guard is removed. A test that passes either way reports
+      # safety that is not there.
+      run: |
+        python scripts/mutation_check.py --all
+    - name: Bilingual catalog check
+      # Every locales/ directory must carry ja and en with the same keys and
+      # placeholders. Passes when there are no catalogs yet. See
+      # .claude/skills/bilingual/SKILL.md.
+      run: |
+        python scripts/i18n_check.py
+    - name: Runner switch drift guard
+      # A workflow added later must not quietly hardcode ubuntu-latest while the
+      # CI_RUNNER switch appears to be on. See docs/ci-runner-mode.md.
+      run: |
+        python scripts/switch_runner.py --check

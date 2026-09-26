@@ -1,0 +1,34 @@
+# Claude/local state
+.claude/settings.local.json
+
+# Generated artifacts (keep folders, ignore run outputs)
+artifacts/architecture/*
+!artifacts/architecture/.gitkeep
+artifacts/critiques/*
+!artifacts/critiques/.gitkeep
+artifacts/plans/*
+!artifacts/plans/.gitkeep
+artifacts/reviews/*
+!artifacts/reviews/.gitkeep
+
+# Session handoff is local session state, not repository content:
+# it quotes the last prompt and the working tree of one machine's run.
+artifacts/handoff/*
+!artifacts/handoff/.gitkeep
+
+# Generated eval reports. A committed baseline is the exception: it is the
+# measured accuracy the README quotes, and the blind workspace excludes
+# evals/results/ wholesale so a committed report can never leak into a run.
+evals/results/*
+!evals/results/.gitkeep
+!evals/results/baseline-*.json
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/

@@ -1,0 +1,298 @@
+# ci-runner-mode: pinned
+#
+# Pinned on purpose, and the pin is the whole design. The `decide` job has to
+# run when the GitHub-hosted quota is gone, so it runs on the VPS, where minutes
+# are not billed. Every other workflow reads the variable this one writes, which
+# keeps the decision in one place and off the critical path: no other job gains
+# a `needs:` edge, so a VPS outage leaves CI running on the last decision
+# instead of stalling it.
+#
+# `reset` is the exception, and it is pinned the other way. See its comment.
+
+name: Runner mode
+
+on:
+  schedule:
+    # Every six hours, offset off the hour to stay out of the :00 stampede.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Runner mode for this run"
+        type: choice
+        options: [inherit, auto, github, self-hosted]
+        default: inherit
+      reset:
+        description: "Emergency: force CI_RUNNER back to the hosted runner"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  decide:
+    # Opt-in, and it must be a runner that never executes repository code.
+    #
+    # This job holds CI_RUNNER_TOKEN. A self-hosted runner is persistent, and
+    # jobs on it share a user, so a process left behind by an earlier job can
+    # read a later job's environment out of /proc. `python-app.yml` runs on
+    # `pull_request` and does `pip install -r requirements.txt` and `pytest` --
+    # code authored by the pull request, plus whatever PyPI serves. Put that on
+    # the same runner as this job and pull-request code can harvest a long-lived
+    # PAT it would otherwise never reach, escalating well past the ephemeral
+    # read-scoped GITHUB_TOKEN it is supposed to get.
+    #
+    # Hence a separate label, and no default: unset CI_PROBE_LABEL means no
+    # probe job at all, rather than one that quietly shares a runner or queues
+    # forever against a label nobody registered.
+    if: ${{ !inputs.reset && vars.CI_PROBE_LABEL != '' }}
+    runs-on: ${{ vars.CI_PROBE_LABEL }}
+    # Scoped to this job, never to the workflow. A workflow-level group would
+    # make a dispatched `reset` run queue behind a scheduled probe that is
+    # itself stuck waiting for the offline runner the reset exists to escape --
+    # and GitHub keeps only one pending run per group, so the next scheduled
+    # probe would displace the pending reset outright. `timeout-minutes` does
+    # not rescue a job that has not begun executing, so it is no answer here.
+    concurrency:
+      group: runner-mode-probe
+      cancel-in-progress: false
+    # A hung curl must still not hold that group open: it does not cancel in
+    # progress, so later probes would queue behind it and automatic switching
+    # would stop without anything going red.
+    timeout-minutes: 10
+    steps:
+      # Checkout precedes the guard because the guard is a repository script:
+      # sharing one normalization and one set of defaults with the picker is
+      # what stops the two drifting, and shell cannot reach either. Checkout
+      # uses GITHUB_TOKEN, not the PAT, so nothing the guard protects is
+      # exposed before it runs.
+      - uses: actions/checkout@v4
+
+      - name: Refuse to run beside untrusted code
+        env:
+          PROBE: ${{ vars.CI_PROBE_LABEL }}
+          CURRENT: ${{ vars.CI_RUNNER }}
+          SELF_HOSTED: ${{ vars.CI_SELF_HOSTED_LABEL }}
+          HOSTED: ${{ vars.CI_GITHUB_LABEL }}
+        run: |
+          set -euo pipefail
+          # Label flags are passed only when set, so the script's own defaults
+          # are the single definition of what the picker will resolve to.
+          args=(--check-probe-isolation "${PROBE}" --current "${CURRENT:-}")
+          if [ -n "${SELF_HOSTED:-}" ]; then args+=(--self-hosted-label "${SELF_HOSTED}"); fi
+          if [ -n "${HOSTED:-}" ]; then args+=(--github-label "${HOSTED}"); fi
+          # This job runs ON the probe, so RUNNER_OS/RUNNER_ARCH describe the
+          # machine being validated. They narrow the automatic labels to the one
+          # OS and one architecture it actually carries, instead of treating the
+          # whole vocabulary as a collision and rejecting a Linux probe beside
+          # Windows jobs. Unset leaves the conservative set, so this can only
+          # ever admit a setup on evidence.
+          args+=(--probe-os "${RUNNER_OS:-}" --probe-arch "${RUNNER_ARCH:-}")
+          python3 scripts/pick_runner.py "${args[@]}"
+
+      - name: Fetch Actions billing
+        id: billing
+        env:
+          # GITHUB_TOKEN can read neither billing nor write variables, so this
+          # step is a no-op until a PAT is configured. See docs/ci-runner-mode.md.
+          TOKEN: ${{ secrets.CI_RUNNER_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          set -uo pipefail
+          # Every path out of this step must leave a readable billing.json: the
+          # next step redirects from it, and bash fails a redirection from a
+          # missing file whatever the exit code before it. An empty file is a
+          # valid "no payload" and reads as undetermined downstream.
+          : > billing.json
+          if [ -z "${TOKEN}" ]; then
+            echo "::warning::CI_RUNNER_TOKEN is not set; leaving CI_RUNNER untouched."
+            echo "token=absent" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "token=present" >> "$GITHUB_OUTPUT"
+          get() {
+            curl -sS -o billing.json -D headers.txt -w '%{http_code}' \
+              --connect-timeout 10 --max-time 60 \
+              -H "Authorization: Bearer ${TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/$1"
+          }
+          # Four explicit candidates rather than a cartesian product of path
+          # segments: the enhanced billing platform does not mirror the legacy
+          # paths. Its organization report lives under /organizations/, not
+          # /orgs/, and it takes an explicit year and month. Omitting the window
+          # matters more than a rejected request would: the allowance is
+          # monthly, so a year-wide report would overstate minutes used, clamp
+          # the remainder to zero and pin every job to the VPS for good. Failing
+          # to decide is safe; deciding the wrong way on a wider window is not.
+          year="$(date -u +%Y)"
+          month="$(date -u +%-m)"
+          window="year=${year}&month=${month}"
+          candidates=(
+            "users/${OWNER}/settings/billing/actions"
+            "orgs/${OWNER}/settings/billing/actions"
+            "users/${OWNER}/settings/billing/usage?${window}"
+            "organizations/${OWNER}/settings/billing/usage?${window}"
+          )
+          code=000
+          for path in "${candidates[@]}"; do
+            code="$(get "${path}" || echo 000)"
+            echo "GET /${path} -> ${code}"
+            if [ "${code}" = "200" ]; then break; fi
+          done
+          if [ "${code}" != "200" ]; then
+            echo "::warning::billing API returned ${code}; the decision will be left unchanged."
+            : > billing.json
+          elif grep -qi 'rel="next"' headers.txt; then
+            # One page of a paginated report is not the report. A first page
+            # carrying no Actions items would otherwise read as zero usage and
+            # move jobs onto an allowance that may already be spent. Rather than
+            # walk a pagination shape this cannot test, say so and decide
+            # nothing.
+            echo "::warning::billing report is paginated; the decision will be left unchanged."
+            printf '{"incomplete": true}' > billing.json
+          fi
+
+      - name: Pick the runner
+        id: pick
+        env:
+          MODE: ${{ inputs.mode == '' && 'inherit' || inputs.mode }}
+          VAR_MODE: ${{ vars.CI_RUNNER_MODE }}
+          CURRENT: ${{ vars.CI_RUNNER }}
+          GITHUB_LABEL: ${{ vars.CI_GITHUB_LABEL }}
+          SELF_HOSTED_LABEL: ${{ vars.CI_SELF_HOSTED_LABEL }}
+          INCLUDED: ${{ vars.CI_INCLUDED_MINUTES }}
+          LOW: ${{ vars.CI_LOW_WATER }}
+          HIGH: ${{ vars.CI_HIGH_WATER }}
+        run: |
+          set -euo pipefail
+          mode="${MODE}"
+          if [ "${mode}" = "inherit" ]; then mode="${VAR_MODE:-auto}"; fi
+          args=(--mode "${mode}" --current "${CURRENT:-}")
+          # Passed only when set, so scripts/pick_runner.py holds the one
+          # definition of each default and the guard above resolves identically.
+          if [ -n "${GITHUB_LABEL:-}" ]; then args+=(--github-label "${GITHUB_LABEL}"); fi
+          if [ -n "${SELF_HOSTED_LABEL:-}" ]; then args+=(--self-hosted-label "${SELF_HOSTED_LABEL}"); fi
+          args+=(--low-water "${LOW:-50}" --high-water "${HIGH:-200}")
+          if [ -n "${INCLUDED:-}" ]; then args+=(--included-minutes "${INCLUDED}"); fi
+          python3 scripts/pick_runner.py "${args[@]}" < billing.json
+
+      - name: Apply the decision
+        # `undetermined` gates the write, or it is a signal that reports a
+        # decision was refused while the variable is rewritten anyway: with no
+        # CI_RUNNER set yet, an unreadable billing response still comes back
+        # `changed`, and a 403 would write a label it never actually decided on.
+        if: >-
+          steps.pick.outputs.changed == 'true'
+          && steps.pick.outputs.undetermined != 'true'
+          && steps.billing.outputs.token == 'present'
+        env:
+          TOKEN: ${{ secrets.CI_RUNNER_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUNNER: ${{ steps.pick.outputs.runner }}
+          DELETE: ${{ steps.pick.outputs.delete }}
+        run: |
+          set -euo pipefail
+          api() {
+            curl -sS -o response.json -w '%{http_code}' -X "$1" \
+              --connect-timeout 10 --max-time 60 \
+              -H "Authorization: Bearer ${TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${REPO}/actions/variables$2" "${@:3}"
+          }
+
+          if [ "${DELETE}" = "true" ]; then
+            # CI_RUNNER held a value no runner answers to, and the quota is in
+            # the hysteresis band -- so there is no decisive answer to write.
+            # Removing it hands the choice back to this repository's own
+            # workflow default -- the `vars.CI_RUNNER or '<fallback>'` form
+            # every runs-on carries -- which is the standing choice the band
+            # exists to hold. Writing a label here
+            # instead would guess, and on a repository whose fallback is the
+            # VPS the guess costs billed minutes. 404 is success: an absent
+            # variable is exactly the state being asked for.
+            code="$(api DELETE "/CI_RUNNER")"
+            if [ "${code}" != "204" ] && [ "${code}" != "404" ]; then
+              echo "::error::could not remove CI_RUNNER (HTTP ${code}): $(cat response.json)"
+              exit 1
+            fi
+            echo "::notice::CI_RUNNER removed; this repository's own workflow fallback now applies"
+            exit 0
+          fi
+
+          body="$(printf '{"name":"CI_RUNNER","value":"%s"}' "${RUNNER}")"
+          code="$(api PATCH "/CI_RUNNER" -d "${body}")"
+          if [ "${code}" = "404" ]; then
+            code="$(api POST "" -d "${body}")"   # first run: the variable does not exist yet
+          fi
+          if [ "${code}" != "204" ] && [ "${code}" != "201" ]; then
+            echo "::error::could not set CI_RUNNER (HTTP ${code}): $(cat response.json)"
+            exit 1
+          fi
+          echo "::notice::CI_RUNNER is now ${RUNNER}"
+
+      - name: Summary
+        if: always()
+        env:
+          # Via env, not interpolated into the script text: a value carrying a
+          # backtick or $( ) would otherwise be executed by the shell before it
+          # ever ran. Nothing reaches these outputs from outside the repository
+          # today, which is exactly when the habit is cheap to keep.
+          RUNNER: ${{ steps.pick.outputs.runner }}
+          REASON: ${{ steps.pick.outputs.reason }}
+          CHANGED: ${{ steps.pick.outputs.changed }}
+        run: |
+          {
+            echo "### Runner mode"
+            echo ""
+            echo "- decision: \`${RUNNER:-none}\`"
+            echo "- reason: ${REASON:-the probe did not reach a decision}"
+            echo "- variable changed: ${CHANGED:-no}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  reset:
+    # Dispatch-only, and pinned to a hosted runner on purpose — the opposite of
+    # every other job here. If CI_RUNNER names a self-hosted runner that is gone,
+    # `decide` cannot run, and the variable breaking CI is the one thing nothing
+    # inside Actions can reach. This is the way back in. It costs hosted minutes
+    # only when a human asks for it, and it needs hosted quota to exist: when
+    # that is gone too, recover from outside Actions with
+    # `gh variable set CI_RUNNER --body ubuntu-latest`.
+    if: ${{ inputs.reset }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Force CI_RUNNER back to the hosted runner
+        env:
+          TOKEN: ${{ secrets.CI_RUNNER_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUNNER: ${{ vars.CI_GITHUB_LABEL || 'ubuntu-latest' }}
+        run: |
+          set -euo pipefail
+          if [ -z "${TOKEN}" ]; then
+            echo "::error::CI_RUNNER_TOKEN is not set; run 'gh variable set CI_RUNNER --body ${RUNNER}' instead."
+            exit 1
+          fi
+          body="$(printf '{"name":"CI_RUNNER","value":"%s"}' "${RUNNER}")"
+          api() {
+            curl -sS -o response.json -w '%{http_code}' -X "$1" \
+              --connect-timeout 10 --max-time 60 \
+              -H "Authorization: Bearer ${TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${REPO}/actions/variables$2" -d "${body}"
+          }
+          code="$(api PATCH "/CI_RUNNER")"
+          if [ "${code}" = "404" ]; then
+            # Dispatched before the probe ever ran: the variable does not exist
+            # yet. Same first-run case the decide job already handles.
+            code="$(api POST "")"
+          fi
+          if [ "${code}" != "204" ] && [ "${code}" != "201" ]; then
+            echo "::error::could not reset CI_RUNNER (HTTP ${code}): $(cat response.json)"
+            exit 1
+          fi
+          echo "::notice::CI_RUNNER reset to ${RUNNER}"

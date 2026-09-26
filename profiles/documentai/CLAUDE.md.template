@@ -1,0 +1,104 @@
+# DocumentAIEditor
+
+Windows desktop tool (Python 3.10+, Tkinter, shipped as a PyInstaller EXE)
+that reviews PPTX/DOCX/XLSX/PDF deliverables: extract content → send to a
+Bosch Model Farm LLM deployment → parse the correction blocks → write the
+corrections back into the document.
+
+**The output of this tool is a customer deliverable.** Its worst failure mode
+is silent: a saved document with formatting lost, a footer placeholder
+flattened, or a correction written into the wrong paragraph. Nothing raises,
+nothing looks wrong in a text diff. Every rule below follows from that.
+
+## Routing
+
+- Process: `docs/PROCESS.md`
+- Overlay (signals, change classes, overrides): `agent-routing/documentai-overlay.yaml`
+- Base policy and rubric: `agent-routing/policy.yaml`, `agent-routing/complexity-rubric.md`
+- Classifier: `.claude/skills/classify-requirement/SKILL.md`
+
+For any non-trivial change:
+
+1. State the change as an **action**, in one sentence, before scoring.
+2. Look it up in `change_classes` for a tier floor; run `/classify-requirement`
+   for the full score. Scoring may raise the floor, never lower it.
+3. Apply `discrimination_rules` before attaching any signal.
+4. Execute only the roles the profile requires, inside
+   `budget.max_agent_invocations`.
+5. Verify independently before declaring success.
+
+`document-fidelity-reviewer` **replaces** `code-reviewer` /
+`code-reviewer-t3` on any change that mutates and saves a document. It is
+never invoked alongside them — one reviewer slot, one occupant.
+
+## Hard rules
+
+- **Never write to `input/` or over the user's source file.** Every save goes
+  to `output/` with a timestamped name. This is a product invariant, not a
+  default: no user confirmation makes it acceptable for the shipped tool to
+  overwrite a source document. The one narrow exception is a *change* that
+  deliberately introduces such a path — that is a T3 `writes-over-source-file`
+  change and needs explicit approval before it is written, and approving it
+  never relaxes the invariant for any other code path.
+- **Never commit a credential.** `input/User_info.txt` holds the BMF API key
+  in plaintext; `input/`, `output/`, `dist/`, `build/` and `__pycache__/` must
+  be git-ignored, and `check_no_secrets_committed` runs on every push.
+- **Keep `check_prompt_update_access` fail-closed.** A missing or empty
+  `Prompt-Update` sheet must deny. Making it permit is a critical finding, not
+  a convenience fix.
+- **Do not weaken TLS further.** The `verify=False` /
+  `ssl._create_unverified_context` fallbacks exist for a CNTLM-inspecting
+  corporate proxy. Adding or widening one is a T2 change
+  (`changes-transport-verification`), never an incidental fix.
+- **Confirm with the user first** before writing a change that sends Outlook
+  mail, overwrites a source file, deletes a user document, alters credential
+  storage, or ships a rebuilt EXE. These gates apply to the change, not to the
+  running tool — the invariants above still bind the tool itself.
+
+## Deterministic work is not agent work
+
+If the answer is computable, compute it in a committed script — footer rules,
+letter-number formats, the BMF endpoint matrix, the packaging manifest,
+formatting preservation on round-trip. See `docs/PROCESS.md` §2 for the eight
+required checks and their exact assertions. Prefer adding a check to the
+repository over adding a role to the roster.
+
+## UI
+
+This is Tkinter with an established in-repo style system — `ACCENT_BLUE`,
+`TEXT_MUTED`, `FONT_SMALL`, `_btn`, `_card`, `_sep`, `_scrollable`. Extend
+those helpers. The `ui-kit` skill targets web (shadcn/Radix/Tailwind) and its
+own existing-UI-system exception applies here: do not fetch the kit, and do
+not introduce a second visual vocabulary.
+
+## Working in `ppt_editor.py`
+
+3,636 lines, one `App` class, mixing UI, orchestration, authorisation and
+Outlook COM. Refactor it only as a side effect of work already touching the
+region, extracting leaf-pure helpers first. Never open a PR whose only
+content is a refactor of this file — see `docs/PROCESS.md` §5.
+
+## Verification
+
+Implementation is not complete because code was written.
+
+- T0: launch the app and exercise the changed widget.
+- T1: the deterministic checks guarding the touched change class, plus an
+  independent diff review.
+- T2: the above, plus the round-trip corpus for any document-write change,
+  plus independent review and verification by the reviewer.
+- T3: the above, plus an end-to-end run on a real deck, a rollback statement,
+  and — for anything in the `outlook-send` class — a dry run that produces a
+  draft and sends nothing.
+
+Never report a check as passing that you did not execute. Never mark a
+document-write change verified because "the text came out right": the failure
+mode is formatting, not text.
+
+## Release
+
+Bump the version in the module headers and `README_startup.txt`, run every
+check offline, build with `build_exe.bat`, then launch **the built EXE** and
+confirm `_base_dir()` / `_find_src()` resolve `src/`, `prompts/`, `input/`
+and `output/` when frozen. A change that works from the script and breaks
+when frozen is this tool's most common regression.
