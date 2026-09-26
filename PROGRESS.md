@@ -5,10 +5,9 @@
 ## Trạng thái hiện tại (cập nhật: 2026-09-26)
 
 - **Đang làm:** Giai đoạn 1 — lộ trình v1 đã áp dụng
-  ([ADR 007](docs/decisions/007-roadmap-v1.md)). Vòng 2 với Codex (vòng cuối, soát lộ trình v1) đang
-  **tạm dừng**: Codex trả lời trong [issue #1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1)
-  rằng repo chưa có environment trên Codex Cloud. Linh tạo environment tại
-  https://chatgpt.com/codex/cloud/settings/environments, rồi Claude gửi lại yêu cầu vòng 2.
+  ([ADR 007](docs/decisions/007-roadmap-v1.md)). Vòng 2 với Codex (vòng cuối, soát lộ trình v1): lần
+  gửi đầu không chạy vì repo chưa có Codex environment; Linh đã tạo environment, và yêu cầu vòng 2 được
+  gửi lại trong [issue #1](https://github.com/vohoailinh90/Agentic-coding-course/issues/1).
 - **Đã xong:**
   - Repo tạo từ `claude-agent-routing-template` (harness Claude Code, giao thức Codex).
   - **Mỗi ngôn ngữ một thư mục** (`course/vi`, `course/en`, `course/ja`): mọi trang chỉ dùng một
@@ -28,8 +27,8 @@
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`
     (thông báo bằng vi/en/ja), có test, mutation check và bước kiểm tra trong CI.
 - **Chưa xong / đang vướng:**
-  - Codex vòng 2: chờ Linh tạo Codex environment cho repo; sau đó gửi lại yêu cầu và kiểm chứng
-    câu trả lời theo `docs/claude-to-codex.md` §14.
+  - Codex vòng 2: chờ câu trả lời, rồi kiểm chứng theo `docs/claude-to-codex.md` §14 và ghi vào
+    `brainstorm/round-2.md`.
   - Linh duyệt hai bài mẫu (giọng văn, độ dài, ví dụ, infographic) → đổi trạng thái `review` → `done`.
   - 16 bài còn lại của lộ trình tối thiểu chưa viết; phải thử thật công cụ cho buổi thực hành đầu tiên
     (trình duyệt, máy cá nhân, máy công ty) trước khi viết `choose-your-learning-setup` và
