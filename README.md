@@ -58,8 +58,8 @@ thức làm việc với Codex trong [`docs/claude-to-codex.md`](docs/claude-to-
 
 ## Chương trình quản lý kho dữ liệu
 
-Cần Python 3.10+ và PyYAML (`python -m pip install -r requirements-eval.txt`). Chạy từ thư mục gốc
-của repo; thêm `--lang vi|en|ja` để chọn ngôn ngữ thông báo.
+Cần Python 3.10+, PyYAML và markdown-it-py (`python -m pip install -r requirements.txt`). Chạy từ thư
+mục gốc của repo; thêm `--lang vi|en|ja` để chọn ngôn ngữ thông báo.
 
 ```bash
 python -m src.main validate                  # kiểm tra toàn bộ kho dữ liệu (CI cũng chạy)
@@ -67,7 +67,22 @@ python -m src.main build                     # vẽ infographic, sinh trang ch�
 python -m src.main stats                     # quy mô khóa học + tiến độ viết theo từng ngôn ngữ
 python -m src.main scaffold what-is-software # tạo sẵn bài mới trong cả 3 thư mục ngôn ngữ
 python -m src.main fb-draft chatbot-to-agent --post-lang vi   # bản nháp bài đăng Facebook
+python -m src.main export                    # file HTML xem offline để chia sẻ (outputs/html/)
 ```
+
+### Chia sẻ khóa học không cần GitHub
+
+`export` ghi vào `outputs/html/` (Git bỏ qua thư mục này) các file HTML **tự chứa**: mở bằng trình
+duyệt, không cần mạng, không cần file nào khác — infographic nằm sẵn bên trong.
+
+- `agentic-coding-course.html` — cả 3 thứ tiếng, mở ra trang chọn ngôn ngữ. Gửi một file này là đủ.
+- `agentic-coding-course-vi.html`, `-en.html`, `-ja.html` — từng ngôn ngữ riêng, nhẹ hơn; để chung
+  một thư mục thì liên kết 🌐 chuyển ngôn ngữ giữa các file vẫn chạy.
+- Muốn **PDF**: mở file của một ngôn ngữ → in (Ctrl+P, trên Mac ⌘+P) → "Lưu dưới dạng PDF": cả khóa học
+  trong một file, đáp án câu hỏi được in ra.
+
+Chỉ bài đã viết xong (`review` hoặc `done`) được xuất; bài còn ở `review` có nhãn "Bản nháp, đang chờ
+duyệt". Xem [ADR 009](docs/decisions/009-offline-html-export.md).
 
 ## Quy trình viết một bài
 
@@ -76,7 +91,7 @@ python -m src.main fb-draft chatbot-to-agent --post-lang vi   # bản nháp bài
    ý nào so sánh, cộng dồn, lặp lại hay theo bước thì vẽ thành infographic trong `course/data/diagrams/`,
    và bài nào cũng kết thúc bằng **một hình tóm tắt cả bài** (phần "Tóm tắt bằng hình").
 3. Bản địa hóa sang tiếng Anh và tiếng Nhật — giữ nguyên các phần và các sơ đồ, thay ví dụ cho hợp
-   văn hóa. Với lộ trình tối thiểu, bản tiếng Nhật viết sau khi bản tiếng Việt đã được thử với người học.
+   văn hóa.
 4. `build` rồi `validate` cho đến khi sạch lỗi; đổi trạng thái `draft → review → done`.
 5. Bài `done` → `fb-draft` → đọc lại → đăng Facebook (xem [docs/facebook-plan.md](docs/facebook-plan.md)).
 
@@ -85,6 +100,6 @@ python -m src.main fb-draft chatbot-to-agent --post-lang vi   # bản nháp bài
 | Giai đoạn | Nội dung | Trạng thái |
 |---|---|---|
 | 0 | Kho dữ liệu, lộ trình v0, bài mẫu, infographic, brainstorm lộ trình với Codex | xong |
-| 1 | Chốt lộ trình v1 (xong); viết "lộ trình tối thiểu" — tiếng Việt trước, thử với người học, rồi en/ja | đang làm |
+| 1 | Chốt lộ trình v1 (xong); viết cả khóa học bằng 3 thứ tiếng, "lộ trình tối thiểu" trước; xuất HTML để chia sẻ (xong) | đang làm |
 | 2 | Đăng Facebook đều đặn từ kho dữ liệu (xuất infographic thành ảnh) | sắp tới |
 | 3 | Website khóa học: nút chuyển ngôn ngữ, cây khóa học, tiến độ, mục lục từng bài | sau này |

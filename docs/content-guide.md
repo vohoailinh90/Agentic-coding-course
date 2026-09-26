@@ -228,6 +228,5 @@ python -m src.main validate --lang vi        # 4. fix every error
 python -m src.main fb-draft <lesson-id>      # 5. once done: draft the post
 ```
 
-Write lessons in the order of the minimum path (the course home lists it first). For the minimum-path
-pilot, the Japanese text waits until the Vietnamese lessons have been tried with learners; the `ja`
-files stay `todo` until then ([ADR 007](decisions/007-roadmap-v1.md)).
+Write lessons in the order of the minimum path (the course home lists it first), all three languages
+in the same pass ([ADR 007](decisions/007-roadmap-v1.md), owner decision of 2026-09-27).

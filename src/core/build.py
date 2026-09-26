@@ -67,12 +67,12 @@ def _cell(text: str) -> str:
     return text.replace("|", "\\|").replace("\n", " ")
 
 
-def _term_label(entry: dict[str, str]) -> str:
+def term_label(entry: dict[str, str]) -> str:
     reading = entry.get("reading")
     return f"{entry['term']}［{reading}］" if reading else entry["term"]
 
 
-def _totals(course: Course, tr: Translator) -> str:
+def totals(course: Course, tr: Translator) -> str:
     return tr.t(
         "home.totals", modules=len(course.modules), units=len(course.units),
         lessons=len(course.lessons), minutes=course.total_minutes,
@@ -107,7 +107,7 @@ def render_home(course: Course, language: str, tr: Translator, started: set[str]
         "",
         f"**{tr.t('home.audience')}** {course.audience[language]}",
         "",
-        f"**{_totals(course, tr)}** · [{tr.t('home.glossary')}](glossary.md)",
+        f"**{totals(course, tr)}** · [{tr.t('home.glossary')}](glossary.md)",
         "",
         f"![{tr.t('roadmap.title')}](diagrams/{ROADMAP}.svg)",
         "",
@@ -164,8 +164,8 @@ def render_glossary(course: Course, language: str, tr: Translator) -> str:
     ]
     for term in course.glossary.values():
         entry = term.entries[language]
-        cells = [f"**{_cell(_term_label(entry))}**", _cell(entry["definition"])]
-        cells += [_cell(_term_label(term.entries[other])) for other in others]
+        cells = [f"**{_cell(term_label(entry))}**", _cell(entry["definition"])]
+        cells += [_cell(term_label(term.entries[other])) for other in others]
         lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines) + "\n"
 
@@ -185,7 +185,7 @@ def roadmap_svg(course: Course, language: str, tr: Translator) -> str:
     ]
     labels = {
         "title": tr.t("roadmap.title"),
-        "subtitle": _totals(course, tr),
+        "subtitle": totals(course, tr),
         "start": tr.t("roadmap.start"),
         "finish": tr.t("roadmap.finish"),
     }

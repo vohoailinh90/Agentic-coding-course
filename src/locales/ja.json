@@ -13,7 +13,9 @@
     "out_help": "画面に表示する代わりに、このファイルへ投稿を書き出します",
     "fix_errors_first": "コンテンツにエラーがあります。「python -m src.main validate」を実行して修正してから、もう一度お試しください。",
     "build_help": "生成ファイル（講座のトップ、用語集、インフォグラフィック）をすべて書き出します",
-    "build_check_help": "生成ファイルが古いときは終了コード1で終わります"
+    "build_check_help": "生成ファイルが古いときは終了コード1で終わります",
+    "export_help": "コースをオフラインで開けるHTMLファイルとして保存（GitHubを使わずに共有するため）",
+    "export_out_help": "HTMLファイルの保存先フォルダー（既定：リポジトリ内の outputs/html）"
   },
   "levels": {
     "error": "エラー",
@@ -138,5 +140,18 @@
   "chooser": {
     "title": "言語を選ぶ",
     "open": "講座を開く"
+  },
+  "export": {
+    "written": "{folder} に HTMLファイルを {files} 個書き出しました：",
+    "file": "{file} — レッスン数：{lessons}",
+    "open_hint": "ファイルをダブルクリックするとブラウザーで開きます。インターネットは不要です。🌐 の言語リンクを使うには、ファイルを同じフォルダーに置いてください。{combined} だけで3か国語すべてが入っています。",
+    "home": "🏠 コースのホーム",
+    "in_review": "下書き（確認待ち）",
+    "terms": "🗣️ このレッスンの用語",
+    "previous": "← 前のレッスン",
+    "next": "次のレッスン →",
+    "footer": "{date} 作成のオフライン版・公開中のレッスン：{total} 本中 {ready} 本",
+    "print_tip": "ヒント：PDFにしたいときは、このページを印刷（Ctrl+P、Macは ⌘+P）して「PDFとして保存」を選ぶと、コース全体が1つのファイルになります。",
+    "missing_dependency": "export には markdown-it-py ライブラリが必要です。次のコマンドでインストールしてください：python -m pip install -r requirements.txt"
   }
 }

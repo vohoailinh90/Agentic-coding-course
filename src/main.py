@@ -5,6 +5,7 @@
     python -m src.main build [--check]               # course homes, glossary pages, infographics
     python -m src.main scaffold <lesson-id>          # start a lesson in every language
     python -m src.main fb-draft <lesson-id> [--post-lang vi] [--out FILE]
+    python -m src.main export [--out DIR]            # HTML files to share, readable offline
 
 `--lang vi|en|ja` picks the language of the messages (otherwise $APP_LANG, then
 the system language). Exit status: 0 success, 1 content problems, 2 bad usage.
@@ -18,7 +19,7 @@ from pathlib import Path
 
 from src.core.model import ROOT
 from src.core.validate import validate
-from src.tools import build, fb_draft, scaffold, stats
+from src.tools import build, export, fb_draft, scaffold, stats
 from src.utils.catalogs import translator
 from src.utils.console import print_findings
 from src.utils.i18n import Translator
@@ -65,6 +66,8 @@ def build_parser(tr: Translator) -> argparse.ArgumentParser:
     fb_parser.add_argument("lesson", help=tr.t("cli.lesson_help"))
     fb_parser.add_argument("--post-lang", choices=tr.locales, help=tr.t("cli.post_lang_help"))
     fb_parser.add_argument("--out", type=Path, help=tr.t("cli.out_help"))
+    export_parser = command("export", "cli.export_help")
+    export_parser.add_argument("--out", type=Path, help=tr.t("cli.export_out_help"))
     return parser
 
 
@@ -97,6 +100,8 @@ def main(argv: list[str] | None = None) -> int:
         return build.run(root, tr, check=args.check)
     if args.command == "scaffold":
         return scaffold.run(root, tr, args.lesson)
+    if args.command == "export":
+        return export.run(root, tr, args.out)
     return fb_draft.run(root, tr, args.lesson, args.post_lang, args.out)
 
 

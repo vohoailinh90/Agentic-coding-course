@@ -13,7 +13,9 @@
     "out_help": "write the post to this file instead of printing it",
     "fix_errors_first": "The content store has errors. Run \"python -m src.main validate\", fix them, then try again.",
     "build_help": "write every generated file: course homes, glossary pages, infographics",
-    "build_check_help": "exit with status 1 when a generated file is out of date"
+    "build_check_help": "exit with status 1 when a generated file is out of date",
+    "export_help": "save the course as HTML files that open offline, to share it without GitHub",
+    "export_out_help": "folder to write the HTML files to (default: outputs/html in the repository)"
   },
   "levels": {
     "error": "error",
@@ -138,5 +140,18 @@
   "chooser": {
     "title": "Choose a language",
     "open": "Open the course"
+  },
+  "export": {
+    "written": "Wrote {files} HTML files to {folder}:",
+    "file": "{file} — lessons: {lessons}",
+    "open_hint": "Double-click a file to open it in a browser; no internet needed. Keep the files in one folder so the 🌐 language links work; {combined} alone holds all three languages.",
+    "home": "🏠 Course home",
+    "in_review": "Draft, awaiting review",
+    "terms": "🗣️ Terms in this lesson",
+    "previous": "← Previous lesson",
+    "next": "Next lesson →",
+    "footer": "Offline copy made on {date} · lessons ready: {ready} of {total}.",
+    "print_tip": "Tip: to get a PDF, print this page (Ctrl+P, or ⌘+P on a Mac) and choose “Save as PDF”: the whole course in one file.",
+    "missing_dependency": "export needs the markdown-it-py library. Install it with: python -m pip install -r requirements.txt"
   }
 }

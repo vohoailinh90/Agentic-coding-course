@@ -1,0 +1,50 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/export.py
+note: The offline HTML export, which people read without the repository, so a dead link or a
+  missing picture there has no GitHub page to fall back on.
+mutations:
+- label: unfinished lessons are exported too
+  find: "        return doc is not None and doc.status in COMPLETE\n"
+  replace: "        return doc is not None\n"
+  test: tests.test_course_export.ExportTests.test_only_finished_lessons_are_exported
+- label: a link to a lesson that is not exported keeps pointing at it
+  find: "                if self.sources.has(other, lesson_id):\n                    return self.href(other, lesson_anchor(other, lesson_id))\n                return None\n"
+  replace: "                return self.href(other, lesson_anchor(other, lesson_id))\n"
+  test: tests.test_course_export.ExportTests.test_every_link_lands_on_a_page_of_the_export
+- label: a link to another language stays inside a file that does not hold that language
+  find: "        if language in self.languages:\n            return f\"#{anchor}\"\n"
+  replace: "        if True:\n            return f\"#{anchor}\"\n"
+  test: tests.test_course_export.ExportTests.test_every_link_lands_on_a_page_of_the_export
+- label: the language bar sends readers to a lesson that language does not have
+  find: "        if self.sources.has(language, lesson_id):\n            return lesson_anchor(language, lesson_id)\n        return home_anchor(language)\n"
+  replace: "        return lesson_anchor(language, lesson_id)\n"
+  test: tests.test_course_export.ExportTests.test_links_to_another_language_point_into_its_file
+- label: infographics are left as links to SVG files next to the page
+  find: "                return data_uri(svg.encode(\"utf-8\"), \"image/svg+xml\")\n"
+  replace: "                return target\n"
+  test: tests.test_course_export.ExportTests.test_a_file_needs_nothing_from_outside_itself
+- label: text from the data store reaches the page unescaped
+  find: "    return html.escape(text, quote=True)\n"
+  replace: "    return text\n"
+  test: tests.test_course_export.ExportTests.test_text_from_the_data_is_escaped
+- label: a lesson in review looks finished
+  find: "if doc.status == \"review\" else \"\"\n"
+  replace: "if False else \"\"\n"
+  test: tests.test_course_export.ExportTests.test_a_lesson_in_review_carries_a_badge
+- label: lessons do not link to the next one
+  find: "        if following is not None:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_export.ExportTests.test_lessons_link_to_their_neighbours
+- label: the all-languages file opens on nothing
+  find: "        return _page(CHOOSER, None, \"chooser landing\", parts)\n"
+  replace: "        return _page(CHOOSER, None, \"chooser\", parts)\n"
+  test: tests.test_course_export.ExportTests.test_each_file_opens_on_one_landing_page
+- label: markdown-it-py is imported with the module, so every command needs it
+  find: "if TYPE_CHECKING:  # markdown-it-py is imported when an export runs"
+  replace: "if True:  # markdown-it-py is imported when an export runs"
+  test: tests.test_course_export.ExportCommandTests.test_only_export_needs_markdown_it

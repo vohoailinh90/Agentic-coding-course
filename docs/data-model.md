@@ -185,6 +185,9 @@ social:
   `social.question` and the hashtags ([facebook-plan.md](facebook-plan.md)).
 - **GitHub, today** — each language folder is the whole course in that language, and the language
   bar switches between them.
+- **`python -m src.main export`** — self-contained HTML files for reading offline, one with every
+  language and one per language, holding every lesson that is `review` or `done` in that language
+  ([ADR 009](decisions/009-offline-html-export.md)).
 - **The website (phase 3)** — the same tree with a real language toggle, module/unit/lesson counts
   and per-learner progress; a lesson's "On this page" contents are its `## ` headings. Everything it
   needs is already in this model; the site only renders it.

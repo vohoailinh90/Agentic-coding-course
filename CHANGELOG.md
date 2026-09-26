@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.0 — 2026-09-27
+
+- **`python -m src.main export`**: the course as self-contained HTML files to share without GitHub
+  (ADR 009) — one file with every language opening on a language chooser, and one per language;
+  infographics embedded, no script, pages switched by the URL fragment, and printing a one-language
+  file to PDF gives the whole course with the quiz answers. Only `review` and `done` lessons are
+  exported; `review` ones carry a draft badge.
+- `requirements.txt` declares the course tools' dependencies: PyYAML and, for the export only,
+  markdown-it-py.
+- The owner decided that the whole course is written now, in all three languages, without a native
+  Japanese review (ADR 007); the content guide gains the conventions every lesson shares.
+
 ## v0.3.1 — 2026-09-26
 
 - Codex brainstorm round 2 ([brainstorm/round-2.md](brainstorm/round-2.md)), all five findings

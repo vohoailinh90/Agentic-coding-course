@@ -13,7 +13,9 @@
     "out_help": "ghi bài đăng ra file này thay vì in ra màn hình",
     "fix_errors_first": "Kho nội dung đang có lỗi. Hãy chạy \"python -m src.main validate\", sửa lỗi rồi thử lại.",
     "build_help": "ghi mọi file được sinh tự động: trang chủ khóa học, trang thuật ngữ, infographic",
-    "build_check_help": "thoát với mã 1 nếu có file sinh tự động đã cũ"
+    "build_check_help": "thoát với mã 1 nếu có file sinh tự động đã cũ",
+    "export_help": "lưu khóa học thành file HTML mở được khi không có mạng, để chia sẻ mà không cần GitHub",
+    "export_out_help": "thư mục ghi các file HTML (mặc định: outputs/html trong repo)"
   },
   "levels": {
     "error": "lỗi",
@@ -138,5 +140,18 @@
   "chooser": {
     "title": "Chọn ngôn ngữ",
     "open": "Vào khóa học"
+  },
+  "export": {
+    "written": "Đã ghi {files} file HTML vào {folder}:",
+    "file": "{file} — số bài: {lessons}",
+    "open_hint": "Nhấp đúp vào một file để mở bằng trình duyệt, không cần mạng. Hãy để các file chung một thư mục thì các liên kết 🌐 chuyển ngôn ngữ mới chạy; riêng {combined} đã có đủ 3 thứ tiếng.",
+    "home": "🏠 Trang chính",
+    "in_review": "Bản nháp, đang chờ duyệt",
+    "terms": "🗣️ Thuật ngữ trong bài",
+    "previous": "← Bài trước",
+    "next": "Bài tiếp theo →",
+    "footer": "Bản offline, tạo {date} · bài đã sẵn sàng: {ready}/{total}.",
+    "print_tip": "Mẹo: muốn có file PDF, hãy in trang này (Ctrl+P, trên Mac là ⌘+P) rồi chọn “Lưu dưới dạng PDF”: cả khóa học nằm trong một file.",
+    "missing_dependency": "Lệnh export cần thư viện markdown-it-py. Cài bằng: python -m pip install -r requirements.txt"
   }
 }
