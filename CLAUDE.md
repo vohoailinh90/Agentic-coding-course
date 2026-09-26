@@ -10,13 +10,15 @@ routed.
 
 - **Read `PROGRESS.md` first** at the start of every session; keep it current, and record
   significant decisions as `docs/decisions/NNN-*.md`.
-- **Content lives in `course/`** (`course.yaml`, `curriculum.yaml`, `sections.yaml`,
-  `glossary.yaml`, `lessons/<id>/{vi,en,ja}.md`). Its rules are in `docs/data-model.md`; how to
-  write a lesson is in `docs/content-guide.md`. Vietnamese is the source language; English and
-  Japanese are localized, never left behind.
+- **Content lives in `course/`**: one folder per language (`course/vi|en|ja/` — every file in it
+  in that language only, starting with the 🌐 language bar) and the shared sources in
+  `course/data/` (`course.yaml`, `curriculum.yaml`, `sections.yaml`, `glossary.yaml`,
+  `diagrams/<id>.yaml`). Its rules are in `docs/data-model.md`; how to write a lesson and its
+  infographics is in `docs/content-guide.md`. Vietnamese is the source language; English and
+  Japanese are localized, never left behind, and never mixed into another language's folder.
 - **`python -m src.main validate` must pass** before any commit that touches `course/`. After
-  editing `curriculum.yaml`, regenerate `course/OUTLINE.md` with `python -m src.main outline
-  --write` — it is generated; never edit it by hand.
+  editing anything in `course/data/` or adding a lesson, run `python -m src.main build`: course
+  homes, glossary pages and infographic SVGs are generated — never edit them by hand.
 - **Never refer to a lesson by its number** in content; numbers change when the roadmap is
   reordered. Lesson ids never change and are never reused.
 - **Verify every source link** before committing it, and never invent statistics.

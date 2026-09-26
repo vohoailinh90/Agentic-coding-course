@@ -9,13 +9,17 @@ note: The content-store validator that CI runs on every push. Each entry removes
   on and names the test that must notice.
 mutations:
 - label: a lesson missing one language file is accepted
-  find: "        if not path.is_file():\n            report.error(\"lesson_file_missing\""
-  replace: "        if False:\n            report.error(\"lesson_file_missing\""
+  find: "            if not (root / relative).is_file():\n"
+  replace: "            if False:\n"
   test: tests.test_course_validate.ValidateTests.test_a_missing_language_file_is_an_error
 - label: translations with different sections are accepted
-  find: "        if language != reference_language and doc.keys != reference.keys:\n"
+  find: "        if doc.keys != reference.keys:\n"
   replace: "        if False:\n"
   test: tests.test_course_validate.ValidateTests.test_sections_that_differ_between_languages_are_an_error
+- label: translations that show different diagrams are accepted
+  find: "        elif doc.diagram_layout != reference.diagram_layout:\n"
+  replace: "        elif False:\n"
+  test: tests.test_course_validate.ValidateTests.test_diagrams_that_differ_between_languages_are_an_error
 - label: a required section may be left out
   find: "            if lesson.type in section.required_for and section.key not in seen:\n"
   replace: "            if False:\n"
@@ -36,6 +40,10 @@ mutations:
   find: "    elif doc.title != lesson.title[language]:\n"
   replace: "    elif False:\n"
   test: tests.test_course_validate.ValidateTests.test_a_title_that_differs_from_the_curriculum_is_an_error
+- label: a lesson may lack its language bar or carry a wrong one
+  find: "    if doc.language_bar != expected_bar:\n"
+  replace: "    if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_wrong_or_missing_language_bar_is_an_error
 - label: sections may appear in any order
   find: "        if position < last_position:\n"
   replace: "        if False:\n"
@@ -56,15 +64,39 @@ mutations:
   find: "        if value in seen:\n            self.error(\"id_duplicate\""
   replace: "        if False:\n            self.error(\"id_duplicate\""
   test: tests.test_course_validate.ValidateTests.test_a_duplicate_id_is_an_error
-- label: a folder that matches no lesson is accepted
-  find: "        elif entry.name not in known:\n"
-  replace: "        elif False:\n"
-  test: tests.test_course_validate.ValidateTests.test_an_unknown_lesson_folder_is_an_error
-- label: a stale OUTLINE.md is accepted
-  find: "    if actual != expected:\n        report.error(\"outline_stale\""
-  replace: "    if False:\n        report.error(\"outline_stale\""
-  test: tests.test_course_validate.ValidateTests.test_a_stale_outline_is_an_error
+- label: a lesson file that matches no lesson is accepted
+  find: "            elif entry.stem not in known:\n"
+  replace: "            elif False:\n"
+  test: tests.test_course_validate.ValidateTests.test_an_unknown_lesson_file_is_an_error
+- label: stray files in course/ are accepted
+  find: "        if not entry.name.startswith(\".\") and entry.name not in allowed_root:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_unexpected_entries_in_the_course_folders_are_errors
+- label: an image that names no diagram is accepted
+  find: "                if diagram_id != ROADMAP and diagram_id not in course.diagrams:\n"
+  replace: "                if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_an_image_that_is_no_diagram_is_an_error
+- label: an image without alt text is accepted
+  find: "            if not alt.strip():\n"
+  replace: "            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_an_image_needs_alt_text
+- label: a broken relative link is accepted
+  find: "        for target in block.links:\n            if target.startswith(EXTERNAL):\n                continue\n            resolved = posixpath.normpath(posixpath.join(folder, target.split(\"#\", 1)[0]))\n            if not (root / resolved).exists():\n"
+  replace: "        for target in block.links:\n            if target.startswith(EXTERNAL):\n                continue\n            resolved = posixpath.normpath(posixpath.join(folder, target.split(\"#\", 1)[0]))\n            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_broken_relative_link_is_an_error
+- label: a stale generated file is accepted
+  find: "        if actual != content:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_stale_generated_file_is_an_error
+- label: an orphan generated diagram is kept
+  find: "                if not entry.name.startswith(\".\") and path not in expected:\n"
+  replace: "                if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_an_orphan_diagram_is_an_error_and_build_removes_it
 - label: an unhashable entry in required_for crashes the validator instead of being reported
   find: "            valid_types = frozenset(t for t in required_for if isinstance(t, str) and t in LESSON_TYPES)\n"
   replace: "            valid_types = frozenset(required_for)\n"
   test: tests.test_course_validate.RobustnessTests.test_wrong_types_in_the_yaml_files_are_reported_not_crashed_on
+- label: a colour of the wrong type crashes the validator instead of being reported
+  find: "        if \"color\" in obj and not (isinstance(obj[\"color\"], str) and obj[\"color\"] in PALETTE):\n"
+  replace: "        if \"color\" in obj and obj[\"color\"] not in PALETTE:\n"
+  test: tests.test_course_validate.RobustnessTests.test_wrong_types_in_every_diagram_template_are_reported_not_crashed_on

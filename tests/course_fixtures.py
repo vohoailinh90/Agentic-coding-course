@@ -1,8 +1,8 @@
 """A small but complete content store in a temporary directory, for the course tests.
 
-The real course/sections.yaml is copied in, so the tests exercise the section
-rules the course actually uses; everything else is a two-lesson miniature that
-each test then breaks in exactly one way.
+The real course/data/sections.yaml is copied in, so the tests exercise the
+section rules the course actually uses; everything else is a two-lesson
+miniature with one infographic, which each test then breaks in exactly one way.
 """
 
 from __future__ import annotations
@@ -13,11 +13,10 @@ from pathlib import Path
 import yaml
 
 from src.core.model import ROOT
-from src.core.outline import render_outline
-from src.core.validate import validate
-from src.utils.catalogs import translators_for
+from src.core.validate import stale_files, validate
 
 LANGUAGES = ("vi", "en", "ja")
+NAMES = {"vi": "Tiếng Việt", "en": "English", "ja": "日本語"}
 
 COURSE = {
     "id": "mini-course",
@@ -57,6 +56,7 @@ CURRICULUM = {
     "modules": [
         {
             "id": "start",
+            "icon": "🚀",
             "title": {"vi": "Bắt đầu", "en": "Start", "ja": "はじめに"},
             "goal": {"vi": "Học thử.", "en": "Try it.", "ja": "試してみる。"},
             "units": [
@@ -74,6 +74,23 @@ CURRICULUM = {
     ],
 }
 
+DIAGRAM_ID = "compare-demo"
+DIAGRAM = {
+    "template": "compare",
+    "title": {"vi": "Chatbot và agent", "en": "Chatbot and agent", "ja": "チャットボットとエージェント"},
+    "versus": True,
+    "rows": [{"vi": "Nó làm gì", "en": "What it does", "ja": "すること"}],
+    "emphasis_row": 1,
+    "columns": [
+        {"icon": "💬", "color": "blue", "name": {"vi": "Chatbot", "en": "Chatbot", "ja": "チャットボット"},
+         "values": [{"vi": "Trả lời", "en": "Answers", "ja": "答える"}]},
+        {"icon": "🤖", "color": "green", "highlight": True,
+         "name": {"vi": "Agent", "en": "Agent", "ja": "エージェント"},
+         "values": [{"vi": "Hành động", "en": "Acts", "ja": "行動する"}]},
+    ],
+    "takeaway": {"vi": "Agent hành động.", "en": "An agent acts.", "ja": "エージェントは行動する。"},
+}
+
 # The sections a finished concept lesson has, in sections.yaml order.
 ALPHA_SECTIONS = ("objective", "hook", "concept", "analogy", "example", "takeaways", "quiz")
 
@@ -83,6 +100,13 @@ def dump(path: Path, data: object) -> None:
     path.write_text(yaml.safe_dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
 
 
+def language_bar(lesson: str, language: str) -> str:
+    """Written out independently of src/core/build.py, so a format change there is noticed here."""
+    parts = [f"**{NAMES[other]}**" if other == language else f"[{NAMES[other]}](../../{other}/lessons/{lesson}.md)"
+             for other in LANGUAGES]
+    return "🌐 " + " · ".join(parts)
+
+
 def lesson_text(
     lesson: str,
     language: str,
@@ -90,6 +114,7 @@ def lesson_text(
     status: str = "review",
     sections: tuple[str, ...] = ALPHA_SECTIONS,
     title: str | None = None,
+    bar: str | None = None,
     summary: str = "Tóm tắt.",
     hook: str = "Hook!",
     question: str = "Question?",
@@ -104,37 +129,45 @@ def lesson_text(
         "social": {"hook": hook, "question": question},
     }
     lines = ["---", yaml.safe_dump(front, allow_unicode=True, sort_keys=False).strip(), "---", ""]
+    lines += [language_bar(lesson, language) if bar is None else bar, ""]
     lines += [f"# {TITLES[lesson][language] if title is None else title}", ""]
     for key in sections:
-        body = bodies.get(key, f"- **Point** for {key} in {language}, see [docs](https://example.com).")
+        default = f"- **Point** for {key} in {language}, see [docs](https://example.com)."
+        if key == "concept":
+            default += f"\n\n![{DIAGRAM['title'][language]}](../diagrams/{DIAGRAM_ID}.svg)"
+        body = bodies.get(key, default)
         lines += [f"<!-- section: {key} -->", f"## Heading {key}", "", body, ""]
     return "\n".join(lines)
 
 
 def write_lesson(root: Path, lesson: str, language: str, **options) -> Path:
-    path = root / "course" / "lessons" / lesson / f"{language}.md"
+    path = root / "course" / language / "lessons" / f"{lesson}.md"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(lesson_text(lesson, language, **options), encoding="utf-8")
     return path
 
 
-def write_outline(root: Path) -> None:
-    report = validate(root, check_outline=False)
+def write_generated(root: Path) -> None:
+    """What `python -m src.main build` does, without the console output."""
+    report = validate(root, check_generated=False)
     assert report.course is not None, report.errors
-    (root / "course" / "OUTLINE.md").write_text(
-        render_outline(report.course, translators_for(report.course.languages)), encoding="utf-8"
-    )
+    expected, stale, orphans = stale_files(root, report.course, report.started)
+    for path in stale:
+        (root / path).parent.mkdir(parents=True, exist_ok=True)
+        (root / path).write_text(expected[path], encoding="utf-8")
+    for path in orphans:
+        (root / path).unlink()
 
 
 def make_store(root: Path) -> Path:
     """A valid store: lesson `alpha` written in every language, `beta` not started."""
-    course = root / "course"
-    course.mkdir(parents=True, exist_ok=True)
-    dump(course / "course.yaml", COURSE)
-    dump(course / "glossary.yaml", GLOSSARY)
-    dump(course / "curriculum.yaml", CURRICULUM)
-    shutil.copy(ROOT / "course" / "sections.yaml", course / "sections.yaml")
+    data = root / "course" / "data"
+    dump(data / "course.yaml", COURSE)
+    dump(data / "glossary.yaml", GLOSSARY)
+    dump(data / "curriculum.yaml", CURRICULUM)
+    dump(data / "diagrams" / f"{DIAGRAM_ID}.yaml", DIAGRAM)
+    shutil.copy(ROOT / "course" / "data" / "sections.yaml", data / "sections.yaml")
     for language in LANGUAGES:
         write_lesson(root, "alpha", language)
-    write_outline(root)
+    write_generated(root)
     return root

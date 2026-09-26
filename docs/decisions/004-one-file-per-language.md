@@ -1,6 +1,7 @@
 # 004 — One file per language, aligned by section markers; Vietnamese is the source
 
-**Date:** 2026-09-26 · **Status:** accepted
+**Date:** 2026-09-26 · **Status:** accepted; the folder layout is superseded by
+[005](005-language-folders-and-language-bar.md) (files now live in one folder per language)
 
 ## Decision
 

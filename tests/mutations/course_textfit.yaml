@@ -1,0 +1,21 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/textfit.py
+note: Line breaking for the infographics, in Vietnamese, English and Japanese.
+mutations:
+- label: Japanese closing punctuation may start a line
+  find: "    if after in NO_LINE_START or before in NO_LINE_END:\n"
+  replace: "    if False:\n"
+  test: tests.test_course_infographics.WrapTests.test_japanese_punctuation_never_starts_a_line
+- label: a katakana word may be split across lines
+  find: "    if is_word_char(before) and is_word_char(after):\n"
+  replace: "    if False:\n"
+  test: tests.test_course_infographics.WrapTests.test_a_katakana_word_is_not_split
+- label: a word wider than the line overflows instead of being split
+  find: "            for char in token:  # a single piece wider than the line: split it by characters\n"
+  replace: "            line = token\n            for char in ():\n"
+  test: tests.test_course_infographics.WrapTests.test_a_word_wider_than_the_line_is_split_by_characters

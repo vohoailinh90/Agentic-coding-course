@@ -1,0 +1,18 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/infographics.py
+note: The SVG infographics. Both entries are bugs the browser check caught once; the tests must catch them
+  without a browser.
+mutations:
+- label: the roadmap road uses a bounding-box gradient and is not painted
+  find: "id=\"road\" gradientUnits=\"userSpaceOnUse\" "
+  replace: "id=\"road\" "
+  test: tests.test_course_infographics.RoadmapTests.test_the_roadmap_road_is_painted
+- label: the cycle's canvas ends at the cards, so the ring and its bottom label run into the takeaway
+  find: "    bottom = max([box[1] + box[3] for box in boxes] + [ring_bottom])\n"
+  replace: "    bottom = max(box[1] + box[3] for box in boxes)\n"
+  test: tests.test_course_infographics.RenderTests.test_the_cycle_keeps_the_label_under_its_ring

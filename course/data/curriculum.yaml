@@ -10,11 +10,12 @@
 #     lesson keeps its id, its files and every post that links to it.
 #   - every title/goal carries vi, en and ja.
 #   - type is one of: concept | demo | hands-on | project; minutes is a positive integer.
-#   - terms are ids from course/glossary.yaml.
+#   - terms are ids from course/data/glossary.yaml; icon (optional) is one emoji per module.
 version: 0.1.0-draft
 
 modules:
   - id: kickoff
+    icon: "🚀"
     title:
       vi: "Khởi động: Chào mừng đến thế giới AI agent"
       en: "Kick-off: Welcome to the World of AI Agents"
@@ -55,6 +56,7 @@ modules:
             minutes: 8
 
   - id: software-foundations
+    icon: "🧱"
     title:
       vi: "Nền tảng phần mềm — vừa đủ để làm chủ agent"
       en: "Software Foundations — Just Enough to Lead an Agent"
@@ -164,6 +166,7 @@ modules:
             terms: [api-key]
 
   - id: ai-foundations
+    icon: "🧠"
     title:
       vi: Nền tảng AI và Machine Learning
       en: AI and Machine Learning Foundations
@@ -251,6 +254,7 @@ modules:
             terms: [prompt, rag, fine-tuning]
 
   - id: agentic-coding
+    icon: "🤖"
     title:
       vi: "Agentic Coding: làm phần mềm cùng AI agent"
       en: "Agentic Coding: Building Software with AI Agents"
@@ -357,6 +361,7 @@ modules:
             terms: [diff, commit]
 
   - id: llm-deep-dive
+    icon: "🔬"
     title:
       vi: Hiểu sâu về LLM
       en: LLM and Model Foundations
@@ -436,6 +441,7 @@ modules:
             terms: [token, model]
 
   - id: harness-engineering
+    icon: "🧰"
     title:
       vi: "Harness Engineering: bộ yên cương cho AI agent"
       en: "Harness Engineering: Reins for Your AI Agent"
@@ -596,6 +602,7 @@ modules:
             terms: [eval]
 
   - id: projects
+    icon: "💼"
     title:
       vi: Dự án thực tế
       en: Real Projects

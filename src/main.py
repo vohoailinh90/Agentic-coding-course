@@ -2,7 +2,7 @@
 
     python -m src.main validate                      # check everything (CI runs this)
     python -m src.main stats                         # course size and writing progress
-    python -m src.main outline [--write | --check]   # course/OUTLINE.md
+    python -m src.main build [--check]               # course homes, glossary pages, infographics
     python -m src.main scaffold <lesson-id>          # start a lesson in every language
     python -m src.main fb-draft <lesson-id> [--post-lang vi] [--out FILE]
 
@@ -18,7 +18,7 @@ from pathlib import Path
 
 from src.core.model import ROOT
 from src.core.validate import validate
-from src.tools import fb_draft, outline, scaffold, stats
+from src.tools import build, fb_draft, scaffold, stats
 from src.utils.catalogs import translator
 from src.utils.console import print_findings
 from src.utils.i18n import Translator
@@ -57,10 +57,8 @@ def build_parser(tr: Translator) -> argparse.ArgumentParser:
 
     command("validate", "cli.validate_help")
     command("stats", "cli.stats_help")
-    outline_parser = command("outline", "cli.outline_help")
-    mode = outline_parser.add_mutually_exclusive_group()
-    mode.add_argument("--write", action="store_true", help=tr.t("cli.outline_write_help"))
-    mode.add_argument("--check", action="store_true", help=tr.t("cli.outline_check_help"))
+    build_parser_ = command("build", "cli.build_help")
+    build_parser_.add_argument("--check", action="store_true", help=tr.t("cli.build_check_help"))
     scaffold_parser = command("scaffold", "cli.scaffold_help")
     scaffold_parser.add_argument("lesson", help=tr.t("cli.lesson_help"))
     fb_parser = command("fb-draft", "cli.fb_help")
@@ -95,8 +93,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_validate(root, tr)
     if args.command == "stats":
         return stats.run(root, tr)
-    if args.command == "outline":
-        return outline.run(root, tr, write=args.write, check=args.check)
+    if args.command == "build":
+        return build.run(root, tr, check=args.check)
     if args.command == "scaffold":
         return scaffold.run(root, tr, args.lesson)
     return fb_draft.run(root, tr, args.lesson, args.post_lang, args.out)

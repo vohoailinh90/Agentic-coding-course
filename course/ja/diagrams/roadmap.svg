@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 976" width="800" height="976" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">学習ロードマップ</title>
+<desc id="desc">1. キックオフ：AIエージェントの世界へようこそ (3レッスン・30分). 2. ソフトウェアの基礎 — エージェントを使いこなすのに必要な分だけ (10レッスン・114分). 3. AIと機械学習の基礎 (8レッスン・84分). 4. エージェント型コーディング：AIエージェントとソフトウェアを作る (10レッスン・119分). 5. LLMとモデルを深く理解する (7レッスン・70分). 6. ハーネスエンジニアリング：AIエージェントの手綱 (15レッスン・167分). 7. 実践プロジェクト (4レッスン・360分)</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><linearGradient id="road" gradientUnits="userSpaceOnUse" x1="80" y1="202.2" x2="80" y2="857.6"><stop offset="0" stop-color="#2563EB"/><stop offset="0.2" stop-color="#7C3AED"/><stop offset="0.3" stop-color="#059669"/><stop offset="0.5" stop-color="#D97706"/><stop offset="0.7" stop-color="#E11D48"/><stop offset="0.8" stop-color="#0D9488"/><stop offset="1" stop-color="#EA580C"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="974" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="946" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">学習ロードマップ</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">7モジュール・17ユニット・57レッスン・944分</tspan></text>
+<text x="80" y="138.7" font-size="28" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚩</text>
+<text font-size="17" fill="#475569" text-anchor="start" font-weight="700"><tspan x="128" y="135.7">スタート</tspan></text>
+<line x1="80" y1="142.2" x2="80" y2="917.6" stroke="url(#road)" stroke-width="14" stroke-linecap="round"/>
+<line x1="80" y1="142.2" x2="80" y2="917.6" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="9 9" class="flow"/>
+<rect x="128" y="160.7" width="644" height="82.9" rx="18" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="2"/>
+<rect x="128" y="160.7" width="8" height="82.9" rx="4" fill="#2563EB"/>
+<circle cx="80" cy="202.2" r="24" fill="#2563EB" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="209.2" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="162" y="198.7" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚀</text>
+<text font-size="19" fill="#1E3A8A" text-anchor="start" font-weight="700"><tspan x="190" y="195.7">キックオフ：AIエージェントの世界へようこそ</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="222.8">3レッスン・30分</tspan></text>
+<rect x="128" y="261.6" width="644" height="108" rx="18" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="2"/>
+<rect x="128" y="261.6" width="8" height="108" rx="4" fill="#7C3AED"/>
+<circle cx="80" cy="315.6" r="24" fill="#7C3AED" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="322.6" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="162" y="299.6" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧱</text>
+<text font-size="19" fill="#4C1D95" text-anchor="start" font-weight="700"><tspan x="190" y="296.6">ソフトウェアの基礎 — エージェントを使いこなすのに必要</tspan><tspan x="190" y="321.7">な分だけ</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="348.8">10レッスン・114分</tspan></text>
+<rect x="128" y="387.6" width="644" height="82.9" rx="18" fill="#ECFDF5" stroke="#D1FAE5" stroke-width="2"/>
+<rect x="128" y="387.6" width="8" height="82.9" rx="4" fill="#059669"/>
+<circle cx="80" cy="429" r="24" fill="#059669" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="436" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="162" y="425.6" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧠</text>
+<text font-size="19" fill="#064E3B" text-anchor="start" font-weight="700"><tspan x="190" y="422.6">AIと機械学習の基礎</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="449.6">8レッスン・84分</tspan></text>
+<rect x="128" y="488.4" width="644" height="108" rx="18" fill="#FFFBEB" stroke="#FEF3C7" stroke-width="2"/>
+<rect x="128" y="488.4" width="8" height="108" rx="4" fill="#D97706"/>
+<circle cx="80" cy="542.4" r="24" fill="#D97706" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="549.4" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="162" y="526.4" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="19" fill="#78350F" text-anchor="start" font-weight="700"><tspan x="190" y="523.4">エージェント型コーディング：AIエージェントと</tspan><tspan x="190" y="548.5">ソフトウェアを作る</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="575.6">10レッスン・119分</tspan></text>
+<rect x="128" y="614.4" width="644" height="82.9" rx="18" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="2"/>
+<rect x="128" y="614.4" width="8" height="82.9" rx="4" fill="#E11D48"/>
+<circle cx="80" cy="655.8" r="24" fill="#E11D48" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="662.8" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="162" y="652.4" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔬</text>
+<text font-size="19" fill="#881337" text-anchor="start" font-weight="700"><tspan x="190" y="649.4">LLMとモデルを深く理解する</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="676.5">7レッスン・70分</tspan></text>
+<rect x="128" y="715.3" width="644" height="82.9" rx="18" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="2"/>
+<rect x="128" y="715.3" width="8" height="82.9" rx="4" fill="#0D9488"/>
+<circle cx="80" cy="756.7" r="24" fill="#0D9488" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="763.7" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<text x="162" y="753.3" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧰</text>
+<text font-size="19" fill="#134E4A" text-anchor="start" font-weight="700"><tspan x="190" y="750.3">ハーネスエンジニアリング：AIエージェントの手綱</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="777.4">15レッスン・167分</tspan></text>
+<rect x="128" y="816.2" width="644" height="82.9" rx="18" fill="#FFF7ED" stroke="#FFEDD5" stroke-width="2"/>
+<rect x="128" y="816.2" width="8" height="82.9" rx="4" fill="#EA580C"/>
+<circle cx="80" cy="857.6" r="24" fill="#EA580C" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="864.6" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+<text x="162" y="854.2" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💼</text>
+<text font-size="19" fill="#7C2D12" text-anchor="start" font-weight="700"><tspan x="190" y="851.2">実践プロジェクト</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="878.2">4レッスン・360分</tspan></text>
+<text x="80" y="953.6" font-size="30" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🏆</text>
+<text font-size="17" fill="#475569" text-anchor="start" font-weight="700"><tspan x="128" y="946.6">修了</tspan></text>
+</svg>

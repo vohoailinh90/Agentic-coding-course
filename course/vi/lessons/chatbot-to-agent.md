@@ -11,6 +11,8 @@ social:
   question: Việc nào trong công việc hằng ngày bạn muốn giao cho một AI agent nhất?
 ---
 
+🌐 **Tiếng Việt** · [English](../../en/lessons/chatbot-to-agent.md) · [日本語](../../ja/lessons/chatbot-to-agent.md)
+
 # Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc
 
 <!-- section: objective -->
@@ -46,12 +48,7 @@ Không bắt buộc — bài này đã đủ để hiểu. Nếu muốn đọc t
 
 ### Ba cấp độ AI bạn sẽ gặp
 
-| | Chatbot | Trợ lý AI (copilot) | AI agent |
-|---|---|---|---|
-| Bạn đưa cho nó | Một câu hỏi | Công việc đang làm dở | Một **mục tiêu** |
-| Nó làm gì | Trả lời bằng chữ | Gợi ý ngay trong công cụ của bạn | Lập kế hoạch, **tự hành động**, tự kiểm tra |
-| Ai thực hiện các bước? | Bạn | Bạn (có gợi ý) | **AI** (bạn giám sát) |
-| Ví dụ | Hỏi đáp trên ChatGPT | Gợi ý code trong trình soạn thảo | Claude Code, Codex tự làm cả một tính năng |
+![Ba cấp độ AI: ai là người làm các bước?](../diagrams/ai-three-levels.svg)
 
 Câu hỏi quan trọng nhất để phân biệt: **ai là người thực hiện các bước?** Với chatbot, AI nghĩ — bạn làm. Với agent, AI vừa nghĩ vừa làm — bạn giao việc và kiểm tra.
 
@@ -59,11 +56,13 @@ Câu hỏi quan trọng nhất để phân biệt: **ai là người thực hi�
 
 Hãy nhớ công thức:
 
-> **AI agent = bộ não (LLM) + đôi tay (công cụ) + vòng lặp (làm → kiểm → sửa)**
+![Một AI agent gồm những gì?](../diagrams/agent-formula.svg)
 
 - **Bộ não — LLM (mô hình ngôn ngữ lớn):** hiểu yêu cầu, suy luận và quyết định bước tiếp theo.
 - **Đôi tay — công cụ (tool):** những việc agent được phép làm thật: đọc/ghi file, chạy lệnh, tìm kiếm web, gọi dịch vụ khác.
 - **Vòng lặp:** agent không làm một lần là xong. Nó **suy nghĩ → hành động → quan sát kết quả**, rồi lặp lại cho đến khi đạt mục tiêu hoặc cần hỏi ý bạn.
+
+![Vòng lặp của một AI agent](../diagrams/agent-loop.svg)
 
 ### Agentic coding là gì?
 
@@ -71,6 +70,8 @@ Khi agent được dùng để làm phần mềm — viết code, chạy thử, 
 
 <!-- section: analogy -->
 ## Ví dụ đời thường
+
+![Chatbot như Google Maps, agent như tài xế taxi](../diagrams/maps-vs-taxi.svg)
 
 Bạn cần đi từ nhà ra sân bay.
 

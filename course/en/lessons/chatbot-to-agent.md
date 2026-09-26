@@ -11,6 +11,8 @@ social:
   question: Which task in your daily work would you most like to hand to an AI agent?
 ---
 
+🌐 [Tiếng Việt](../../vi/lessons/chatbot-to-agent.md) · **English** · [日本語](../../ja/lessons/chatbot-to-agent.md)
+
 # From Chatbot to AI Agent: AI That Does the Work, Not Just Answers
 
 <!-- section: objective -->
@@ -46,12 +48,7 @@ Optional — this lesson stands on its own. If you want to go further:
 
 ### Three levels of AI you will meet
 
-| | Chatbot | AI assistant (copilot) | AI agent |
-|---|---|---|---|
-| You give it | A question | Work in progress | A **goal** |
-| What it does | Answers in text | Suggests inside your tools | Plans, **acts on its own**, checks its work |
-| Who performs the steps? | You | You (with suggestions) | **The AI** (you supervise) |
-| Example | Q&A in ChatGPT | Code suggestions in an editor | Claude Code or Codex building a whole feature |
+![Three Levels of AI: Who Does the Steps?](../diagrams/ai-three-levels.svg)
 
 The single most useful question is: **who performs the steps?** With a chatbot, the AI thinks and you do. With an agent, the AI thinks *and* does — you assign the work and check it.
 
@@ -59,11 +56,13 @@ The single most useful question is: **who performs the steps?** With a chatbot, 
 
 Remember this formula:
 
-> **AI agent = brain (LLM) + hands (tools) + loop (do → check → fix)**
+![What Is an AI Agent Made Of?](../diagrams/agent-formula.svg)
 
 - **Brain — the LLM (large language model):** understands the request, reasons and decides the next step.
 - **Hands — tools:** the real actions the agent is allowed to take: reading and writing files, running commands, searching the web, calling other services.
 - **Loop:** an agent does not act once and stop. It **thinks → acts → observes the result**, and repeats until the goal is met or it needs to ask you.
+
+![The Agent Loop](../diagrams/agent-loop.svg)
 
 ### What is agentic coding?
 
@@ -71,6 +70,8 @@ When agents are used to build software — writing code, running it, fixing bugs
 
 <!-- section: analogy -->
 ## Simple Analogy
+
+![A Chatbot Is Like Google Maps, an Agent Like a Taxi Driver](../diagrams/maps-vs-taxi.svg)
 
 You need to get from home to the airport.
 

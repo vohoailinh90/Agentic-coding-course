@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 926" width="800" height="926" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Lộ trình học</title>
+<desc id="desc">1. Khởi động: Chào mừng đến thế giới AI agent (3 bài · 30 phút). 2. Nền tảng phần mềm — vừa đủ để làm chủ agent (10 bài · 114 phút). 3. Nền tảng AI và Machine Learning (8 bài · 84 phút). 4. Agentic Coding: làm phần mềm cùng AI agent (10 bài · 119 phút). 5. Hiểu sâu về LLM (7 bài · 70 phút). 6. Harness Engineering: bộ yên cương cho AI agent (15 bài · 167 phút). 7. Dự án thực tế (4 bài · 360 phút)</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><linearGradient id="road" gradientUnits="userSpaceOnUse" x1="80" y1="202.2" x2="80" y2="807.4"><stop offset="0" stop-color="#2563EB"/><stop offset="0.2" stop-color="#7C3AED"/><stop offset="0.3" stop-color="#059669"/><stop offset="0.5" stop-color="#D97706"/><stop offset="0.7" stop-color="#E11D48"/><stop offset="0.8" stop-color="#0D9488"/><stop offset="1" stop-color="#EA580C"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="924" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="896" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Lộ trình học</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">7 chương · 17 chủ đề · 57 bài · 944 phút</tspan></text>
+<text x="80" y="138.7" font-size="28" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚩</text>
+<text font-size="17" fill="#475569" text-anchor="start" font-weight="700"><tspan x="128" y="135.7">Bắt đầu</tspan></text>
+<line x1="80" y1="142.2" x2="80" y2="867.4" stroke="url(#road)" stroke-width="14" stroke-linecap="round"/>
+<line x1="80" y1="142.2" x2="80" y2="867.4" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="9 9" class="flow"/>
+<rect x="128" y="160.7" width="644" height="82.9" rx="18" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="2"/>
+<rect x="128" y="160.7" width="8" height="82.9" rx="4" fill="#2563EB"/>
+<circle cx="80" cy="202.2" r="24" fill="#2563EB" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="209.2" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="162" y="198.7" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚀</text>
+<text font-size="19" fill="#1E3A8A" text-anchor="start" font-weight="700"><tspan x="190" y="195.7">Khởi động: Chào mừng đến thế giới AI agent</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="222.8">3 bài · 30 phút</tspan></text>
+<rect x="128" y="261.6" width="644" height="82.9" rx="18" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="2"/>
+<rect x="128" y="261.6" width="8" height="82.9" rx="4" fill="#7C3AED"/>
+<circle cx="80" cy="303" r="24" fill="#7C3AED" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="310" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="162" y="299.6" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧱</text>
+<text font-size="19" fill="#4C1D95" text-anchor="start" font-weight="700"><tspan x="190" y="296.6">Nền tảng phần mềm — vừa đủ để làm chủ agent</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="323.7">10 bài · 114 phút</tspan></text>
+<rect x="128" y="362.5" width="644" height="82.9" rx="18" fill="#ECFDF5" stroke="#D1FAE5" stroke-width="2"/>
+<rect x="128" y="362.5" width="8" height="82.9" rx="4" fill="#059669"/>
+<circle cx="80" cy="403.9" r="24" fill="#059669" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="410.9" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="162" y="400.5" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧠</text>
+<text font-size="19" fill="#064E3B" text-anchor="start" font-weight="700"><tspan x="190" y="397.5">Nền tảng AI và Machine Learning</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="424.6">8 bài · 84 phút</tspan></text>
+<rect x="128" y="463.4" width="644" height="82.9" rx="18" fill="#FFFBEB" stroke="#FEF3C7" stroke-width="2"/>
+<rect x="128" y="463.4" width="8" height="82.9" rx="4" fill="#D97706"/>
+<circle cx="80" cy="504.8" r="24" fill="#D97706" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="511.8" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="162" y="501.4" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="19" fill="#78350F" text-anchor="start" font-weight="700"><tspan x="190" y="498.4">Agentic Coding: làm phần mềm cùng AI agent</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="525.4">10 bài · 119 phút</tspan></text>
+<rect x="128" y="564.2" width="644" height="82.9" rx="18" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="2"/>
+<rect x="128" y="564.2" width="8" height="82.9" rx="4" fill="#E11D48"/>
+<circle cx="80" cy="605.7" r="24" fill="#E11D48" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="612.7" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="162" y="602.2" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔬</text>
+<text font-size="19" fill="#881337" text-anchor="start" font-weight="700"><tspan x="190" y="599.2">Hiểu sâu về LLM</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="626.3">7 bài · 70 phút</tspan></text>
+<rect x="128" y="665.1" width="644" height="82.9" rx="18" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="2"/>
+<rect x="128" y="665.1" width="8" height="82.9" rx="4" fill="#0D9488"/>
+<circle cx="80" cy="706.6" r="24" fill="#0D9488" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="713.6" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<text x="162" y="703.1" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧰</text>
+<text font-size="19" fill="#134E4A" text-anchor="start" font-weight="700"><tspan x="190" y="700.1">Harness Engineering: bộ yên cương cho AI agent</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="727.2">15 bài · 167 phút</tspan></text>
+<rect x="128" y="766" width="644" height="82.9" rx="18" fill="#FFF7ED" stroke="#FFEDD5" stroke-width="2"/>
+<rect x="128" y="766" width="8" height="82.9" rx="4" fill="#EA580C"/>
+<circle cx="80" cy="807.4" r="24" fill="#EA580C" stroke="#FFFFFF" stroke-width="4"/>
+<text x="80" y="814.4" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+<text x="162" y="804" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💼</text>
+<text font-size="19" fill="#7C2D12" text-anchor="start" font-weight="700"><tspan x="190" y="801">Dự án thực tế</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="828.1">4 bài · 360 phút</tspan></text>
+<text x="80" y="903.4" font-size="30" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🏆</text>
+<text font-size="17" fill="#475569" text-anchor="start" font-weight="700"><tspan x="128" y="896.4">Hoàn thành khóa học</tspan></text>
+</svg>

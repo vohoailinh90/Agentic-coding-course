@@ -17,12 +17,14 @@ reader understand it on the first read, without searching anything?*
 - One main idea per lesson. If you need a second idea, it is a second lesson.
 - Concrete before abstract: story or situation → example → the general idea → the term.
 - Every new term is explained the first time it appears, and belongs in
-  [`course/glossary.yaml`](../course/glossary.yaml).
+  [`course/data/glossary.yaml`](../course/data/glossary.yaml).
+- **Show before you tell.** Wherever a lesson compares options, adds parts up, repeats a loop or
+  walks through steps, draw it as an infographic (below) and let the prose explain the picture.
 
 ## The sections
 
-Every lesson is built from the sections in [`course/sections.yaml`](../course/sections.yaml), in
-that order. `required` depends on the lesson type in `curriculum.yaml`.
+Every lesson is built from the sections in [`course/data/sections.yaml`](../course/data/sections.yaml),
+in that order. `required` depends on the lesson type in `curriculum.yaml`.
 
 | Key | Purpose | Required for |
 |---|---|---|
@@ -51,10 +53,15 @@ language files of a lesson must have the same sections in the same order.
 
 ## Three languages: localize, don't translate
 
-- **Vietnamese is the source language.** Write `vi.md` first; it decides the structure and the
-  points each section makes.
-- `en.md` and `ja.md` keep every section and every point, but localize what a reader in that
-  language would find foreign: names, money, places, workplace habits, idioms. The pilot lesson
+Each language has its own folder — `course/vi/`, `course/en/`, `course/ja/` — and every file in it
+is in that language only. A lesson is `course/<lang>/lessons/<lesson-id>.md`, and starts with the
+language bar that links the same lesson in the other languages (`scaffold` writes it; keep it as
+it is).
+
+- **Vietnamese is the source language.** Write `course/vi/lessons/<id>.md` first; it decides the
+  structure and the points each section makes.
+- The English and Japanese files keep every section, every point and every diagram, but localize
+  what a reader in that language would find foreign: names, money, places, workplace habits, idioms. The pilot lesson
   turns *12,4 triệu đồng* into *$1,240* and *12万4千円*, and its quiz option "translate a sentence
   into Japanese" becomes "into Vietnamese" in the Japanese file.
 - Terms follow the glossary, word for word. If a better translation comes up, change the glossary
@@ -82,6 +89,37 @@ language files of a lesson must have the same sections in the same order.
   （context window）*. Give hard kanji a `reading` in the glossary instead of writing furigana in
   the text.
 - Examples from Japanese working life: 円, 稟議, 報連相, 定例会議, 日報.
+
+## Infographics
+
+A good diagram lets a beginner understand the idea before reading a word of the lesson. Each one is
+a spec in `course/data/diagrams/<id>.yaml` with its text in all three languages; `python -m src.main
+build` draws it into every language folder ([data-model.md](data-model.md) has every key).
+
+| Template | Use it when the lesson… | Example |
+|---|---|---|
+| `compare` | contrasts 2–4 options | chatbot vs copilot vs agent; Google Maps vs taxi |
+| `equation` | builds a whole from parts | LLM + tools + loop = agent |
+| `cycle` | describes something that repeats | think → act → observe |
+| `flow` | walks through steps in order | explore → plan → build → verify |
+
+- **Draw the difference, not the names.** A comparison shares its rows across columns, so the eye
+  lands on what changes; `emphasis_row` marks the row the lesson turns on, `highlight` the option it
+  recommends.
+- **Labels, not sentences:** 2–6 words per value, a short caption at most. Explanations belong in
+  the lesson text around the picture; the `takeaway` is the one sentence worth remembering.
+- **Label the arrows** in `cycle` and `flow` (`arrow:`): "picks a tool" says what moves along it.
+- **One emoji per card** as its icon, one colour per idea. Keep the colour of an idea the same
+  across the lessons (tools are amber, the agent is green).
+- Embed it where it helps, with alt text in the lesson's language — usually the diagram's title:
+
+  ```markdown
+  ![Chatbot như Google Maps, agent như tài xế taxi](../diagrams/maps-vs-taxi.svg)
+  ```
+
+- Every translation shows the same diagrams in the same sections (`validate` checks it).
+- Look at the result in all three languages before committing: open the SVG in a browser. Boxes
+  grow to fit wrapped text; if a label wraps into three lines, shorten it.
 
 ## Accuracy
 
@@ -148,8 +186,9 @@ Only `review` and `done` lessons can become posts; `fb-draft` warns on `review`.
 ## Workflow
 
 ```bash
-python -m src.main scaffold <lesson-id>      # 1. create vi/en/ja skeletons
-# 2. write vi.md, then localize en.md and ja.md
-python -m src.main validate --lang vi        # 3. fix every error
-python -m src.main fb-draft <lesson-id>      # 4. once done: draft the post
+python -m src.main scaffold <lesson-id>      # 1. create the file in course/vi, course/en, course/ja
+# 2. write course/vi/lessons/<id>.md, add its diagrams to course/data/diagrams/, then localize
+python -m src.main build                     # 3. draw the diagrams, refresh the course homes
+python -m src.main validate --lang vi        # 4. fix every error
+python -m src.main fb-draft <lesson-id>      # 5. once done: draft the post
 ```

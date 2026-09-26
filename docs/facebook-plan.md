@@ -39,7 +39,7 @@ thiểu** (chốt sau buổi brainstorm với Codex) trước, rồi mới đế
 
 1. Chọn bài học tiếp theo có trạng thái `done` (xem `python -m src.main stats`).
 2. `python -m src.main fb-draft <lesson-id> --post-lang vi --out outputs/facebook/<lesson-id>-vi.txt`
-3. Đọc lại, chỉnh câu chữ cho hợp giọng Facebook, chọn ảnh minh họa.
+3. Đọc lại, chỉnh câu chữ cho hợp giọng Facebook; ảnh minh họa là infographic của bài (`course/vi/diagrams/`).
 4. Hẹn giờ đăng trong Meta Business Suite.
 5. Ghi lại bài đã đăng (giai đoạn 2 sẽ có file nhật ký đăng bài trong repo).
 
@@ -50,7 +50,7 @@ Thư mục `outputs/` không được commit — đó là bản nháp, không ph
 | Giai đoạn | Làm gì | Ghi chú |
 |---|---|---|
 | 1 — thủ công (bây giờ) | `fb-draft` soạn nháp dạng A, người đăng tay | không cần token, không rủi ro |
-| 2 — bán tự động | sinh cả 5 dạng bài và một lịch đăng (CSV) để tải lên Meta Business Suite; nhật ký đăng bài trong repo | vẫn có người duyệt từng bài |
+| 2 — bán tự động | sinh cả 5 dạng bài, xuất infographic của bài thành ảnh PNG để đăng kèm, và một lịch đăng (CSV) để tải lên Meta Business Suite; nhật ký đăng bài trong repo | vẫn có người duyệt từng bài |
 | 3 — tự động | đăng qua Facebook Graph API lên **Fanpage** (không áp dụng cho trang cá nhân) | token chỉ nằm trong `.env` (xem `.env.example`), không bao giờ trong repo; giữ bước duyệt |
 
 ## Đo lường

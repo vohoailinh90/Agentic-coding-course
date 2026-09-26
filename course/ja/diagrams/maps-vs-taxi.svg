@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 610" width="800" height="610" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">チャットボットはGoogleマップ、エージェントはタクシー</title>
+<desc id="desc">チャットボット ≈ Googleマップ — あなたが伝えること: 「空港への行き方は？」; 運転するのは？: あなた; あなたの役目: 運転・道探し・渋滞への対応. AIエージェント ≈ タクシー運転手 — あなたが伝えること: 「空港まで、8時までに」; 運転するのは？: 運転手; あなたの役目: 行き先を伝え、着いた場所を確かめる. タクシーでも、到着地を確かめるのはあなたの役目。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="608" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="580" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">チャットボットはGoogleマップ、エージェントは</tspan><tspan x="400" y="93.3">タクシー</tspan></text>
+<g>
+<rect x="28" y="124.6" width="340" height="382.9" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,144.6 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v135.4 h-340 z" fill="#2563EB"/>
+<circle cx="198" cy="176.6" r="26" fill="#2563EB"/>
+<circle cx="198" cy="176.6" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="186.4" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧭</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="229.6">チャットボット ≈</tspan><tspan x="198" y="257.3">Googleマップ</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="307.5">あなたが伝えること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="332.8">「空港への行き方は？」</tspan></text>
+<line x1="44" y1="352.3" x2="352" y2="352.3" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="379.8">運転するのは？</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="407.1">あなた</tspan></text>
+<line x1="44" y1="427.2" x2="352" y2="427.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="454.7">あなたの役目</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="480">運転・道探し・渋滞への対応</tspan></text>
+</g>
+<g class="pulse">
+<rect x="432" y="124.6" width="340" height="382.9" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M432,144.6 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v135.4 h-340 z" fill="#059669"/>
+<circle cx="602" cy="176.6" r="26" fill="#059669"/>
+<circle cx="602" cy="176.6" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="186.4" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚕</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="229.6">AIエージェント ≈ タクシー運</tspan><tspan x="602" y="257.3">転手</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="307.5">あなたが伝えること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="332.8">「空港まで、8時までに」</tspan></text>
+<line x1="448" y1="352.3" x2="756" y2="352.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="379.8">運転するのは？</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="407.1">運転手</tspan></text>
+<line x1="448" y1="427.2" x2="756" y2="427.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="454.7">あなたの役目</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="480">行き先を伝え、着いた場所を確かめる</tspan></text>
+</g>
+<circle cx="400" cy="210.3" r="25" fill="#0F172A"/>
+<text x="400" y="216.3" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="531.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="562.4">💡 タクシーでも、到着地を確かめるのはあなたの役目。</tspan></text>
+</svg>

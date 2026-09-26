@@ -6,15 +6,14 @@
     "commands_title": "コマンド",
     "validate_help": "コンテンツ全体をチェックします（CIでも実行されます）",
     "stats_help": "講座の規模と、言語ごとの執筆の進み具合を表示します",
-    "outline_help": "course/OUTLINE.md を表示します。書き出しやチェックもできます",
-    "outline_write_help": "course/OUTLINE.md を書き出します",
-    "outline_check_help": "course/OUTLINE.md が古いときは終了コード1で終わります",
-    "scaffold_help": "course/sections.yaml をもとに、レッスンの各言語のファイルを作成します",
-    "lesson_help": "course/curriculum.yaml にあるレッスンID",
+    "scaffold_help": "course/data/sections.yaml をもとに、各言語フォルダにレッスンのファイルを作成します",
+    "lesson_help": "course/data/curriculum.yaml にあるレッスンID",
     "fb_help": "レッスンからFacebook投稿の下書きを作ります",
     "post_lang_help": "投稿の言語（既定：講座の元言語）",
     "out_help": "画面に表示する代わりに、このファイルへ投稿を書き出します",
-    "fix_errors_first": "コンテンツにエラーがあります。「python -m src.main validate」を実行して修正してから、もう一度お試しください。"
+    "fix_errors_first": "コンテンツにエラーがあります。「python -m src.main validate」を実行して修正してから、もう一度お試しください。",
+    "build_help": "生成ファイル（講座のトップ、用語集、インフォグラフィック）をすべて書き出します",
+    "build_check_help": "生成ファイルが古いときは終了コード1で終わります"
   },
   "levels": {
     "error": "エラー",
@@ -38,26 +37,32 @@
     "value_invalid": "{path}：「{field}」の値「{value}」は使えません。使える値：{allowed}",
     "id_invalid": "{path}：ID「{id}」に使えるのは英小文字・数字・ハイフンだけです（例：chatbot-to-agent）。",
     "id_duplicate": "{path}：「{id}」が2回以上使われています。",
-    "term_unknown": "{path}：レッスン「{lesson}」が、course/glossary.yaml に定義されていない用語「{term}」を使っています。",
+    "term_unknown": "{path}：レッスン「{lesson}」が、course/data/glossary.yaml に定義されていない用語「{term}」を使っています。",
     "term_unused": "{path}：用語「{term}」はどのレッスンでも使われていません。",
-    "lesson_dir_unknown": "{path}：このフォルダは course/curriculum.yaml のどのレッスンIDとも一致しません。",
-    "lesson_file_missing": "{path}：ありません。書き始めたレッスンには言語ごとに1つのファイルが必要です（python -m src.main scaffold <lesson-id> で作成できます）。",
-    "lesson_file_unexpected": "{path}：ここには置けません。レッスンのフォルダに置けるのは、言語ごとの <言語>.md と、任意の assets/ フォルダだけです。",
+    "lesson_file_missing": "{path}：ありません。書き始めたレッスンには、すべての言語フォルダにファイルが必要です（python -m src.main scaffold <lesson-id> で作成できます）。",
     "front_matter_missing": "{path}：ファイルの先頭は、2つの「---」行で囲んだフロントマターで始める必要があります。",
     "front_matter_mismatch": "{path}：「{field}」は「{actual}」ですが、ファイルの場所からは「{expected}」のはずです。",
     "title_missing": "{path}：レッスンのタイトル（「# 」で始まる行）がありません。",
-    "title_mismatch": "{path}：タイトル「{actual}」が course/curriculum.yaml の「{expected}」と一致しません。",
+    "title_mismatch": "{path}：タイトル「{actual}」が course/data/curriculum.yaml の「{expected}」と一致しません。",
     "content_outside_section": "{path}:{line}：どのセクションにも属さない文章があります。<!-- section: ... --> マーカーの下に移してください。",
     "section_marker_orphan": "{path}:{line}：セクションマーカーの次には「## 」の見出しが必要です。",
     "heading_without_marker": "{path}:{line}：見出し「{heading}」の上に <!-- section: ... --> マーカーがありません。",
-    "section_unknown": "{path}：不明なセクション「{key}」です（一覧は course/sections.yaml にあります）。",
+    "section_unknown": "{path}：不明なセクション「{key}」です（一覧は course/data/sections.yaml にあります）。",
     "section_duplicate": "{path}：セクション「{key}」が2回以上あります。",
-    "section_order": "{path}：セクション「{key}」の順番が正しくありません（順番は course/sections.yaml で決まります）。",
+    "section_order": "{path}：セクション「{key}」の順番が正しくありません（順番は course/data/sections.yaml で決まります）。",
     "section_required": "{path}：必須のセクション「{key}」がありません。",
     "section_empty": "{path}：セクション「{key}」が空です。",
     "todo_left": "{path}：セクション「{key}」にTODOの仮置きが残っています。",
-    "sections_differ": "{path}：{lang}.md のセクションは [{actual}] ですが、{other}.md は [{expected}] です。",
-    "outline_stale": "{path}：course/curriculum.yaml と一致していません。次を実行してください：python -m src.main outline --write"
+    "sections_differ": "{path}：{lang} のセクションは [{actual}] ですが、{other} は [{expected}] です。",
+    "field_count": "{path}：「{field}」の項目数は{min}〜{max}個にしてください。",
+    "entry_unexpected": "{path}：ここには置けません。置けるもの：{allowed}",
+    "lesson_file_unknown": "{path}：course/data/curriculum.yaml のどのレッスンIDとも一致しません。",
+    "language_bar": "{path}：フロントマターの次の行は、言語切り替えバーにしてください：{expected}",
+    "diagrams_differ": "{path}：{lang} の図は [{actual}] ですが、{other} は [{expected}] です。",
+    "diagram_unknown": "{path}：画像 {target} は course/data/diagrams/ にある図ではありません。",
+    "image_alt_missing": "{path}：画像 {target} に代替テキスト（画像が見えない人に伝える説明）がありません。",
+    "link_broken": "{path}：リンク {target} の先のファイルがありません。",
+    "build_stale": "{path}：course/data/ やレッスンの内容と一致していません。次を実行してください：python -m src.main build"
   },
   "validate": {
     "ok": "コンテンツに問題はありません。チェックしたレッスンファイル：{files}件。警告：{warnings}件。",
@@ -68,16 +73,6 @@
     "structure": "モジュール：{modules}・ユニット：{units}・レッスン：{lessons}・合計時間：{minutes}分",
     "progress_heading": "言語ごとの執筆状況：",
     "progress_line": "{language}：完成 {done}・レビュー中 {review}・下書き {draft}・枠のみ {todo}・未着手 {missing}（完成率 {percent}%）"
-  },
-  "outline": {
-    "title": "コース概要",
-    "totals": "{modules}モジュール・{units}ユニット・{lessons}レッスン・{minutes}分",
-    "version": "ロードマップ版",
-    "number": "#",
-    "type": "種類",
-    "minutes": "分",
-    "written": "{path} を書き出しました。",
-    "up_to_date": "{path} は最新です。"
   },
   "scaffold": {
     "created": "{path} を作成しました",
@@ -93,5 +88,41 @@
     "not_ready": "{path} のステータスは「{status}」です。投稿にできるのは review か done のレッスンだけです。",
     "review_warning": "注意：{path} はまだレビュー中です。投稿する前にもう一度読み直してください。",
     "written": "{path} を書き出しました。"
+  },
+  "build": {
+    "written": "生成ファイル：{files}件。書き出し：{written}件。削除：{removed}件。",
+    "up_to_date": "生成ファイルはすべて最新です（{files}件）。"
+  },
+  "home": {
+    "totals": "{modules}モジュール・{units}ユニット・{lessons}レッスン・{minutes}分",
+    "audience": "対象：",
+    "glossary": "3か国語の用語集",
+    "legend": "リンクのあるレッスンは読めます。そのほかは執筆中です。",
+    "lesson": "レッスン",
+    "type": "種類",
+    "time": "時間",
+    "minutes": "{minutes}分"
+  },
+  "lesson_types": {
+    "concept": "解説",
+    "demo": "デモ",
+    "hands-on": "実習",
+    "project": "プロジェクト"
+  },
+  "glossary": {
+    "title": "3か国語の用語集",
+    "intro": "それぞれの用語を日本語で説明し、ベトナム語と英語での言い方も載せています。",
+    "term": "用語",
+    "definition": "意味"
+  },
+  "roadmap": {
+    "title": "学習ロードマップ",
+    "start": "スタート",
+    "finish": "修了",
+    "meta": "{lessons}レッスン・{minutes}分"
+  },
+  "chooser": {
+    "title": "言語を選ぶ",
+    "open": "講座を開く"
   }
 }

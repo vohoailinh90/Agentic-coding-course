@@ -32,11 +32,16 @@ an AI subscription until they see value.
 
 - **Format.** Self-paced lessons of 7–12 minutes (projects longer) that can each be cut into three
   Facebook posts a week ([docs/facebook-plan.md](../docs/facebook-plan.md)); a website later.
-- **Three languages.** Vietnamese is the source; English and Japanese are localized, one file per
-  language with identical section structure ([docs/data-model.md](../docs/data-model.md)), and one
-  trilingual glossary ([course/glossary.yaml](../course/glossary.yaml)).
-- **Lesson template.** Eleven sections in a fixed order ([course/sections.yaml](../course/sections.yaml));
-  the pilot lesson shows the intended tone ([course/lessons/chatbot-to-agent/](../course/lessons/chatbot-to-agent/)).
+- **Three languages, never mixed.** One folder per language (`course/vi|en|ja/`), every learner page
+  in one language with a 🌐 bar to switch; Vietnamese is the source, English and Japanese are
+  localized with identical section structure ([docs/data-model.md](../docs/data-model.md)), and one
+  trilingual glossary ([course/data/glossary.yaml](../course/data/glossary.yaml)).
+- **Infographics first.** Lessons explain with colourful diagrams "you understand at a glance":
+  generated SVGs from one spec per diagram, in four templates — compare, equation, cycle, flow
+  ([docs/content-guide.md](../docs/content-guide.md#infographics)). The pilot lesson has four.
+- **Lesson template.** Eleven sections in a fixed order ([course/data/sections.yaml](../course/data/sections.yaml));
+  the pilot lesson shows the intended tone ([course/en/lessons/chatbot-to-agent.md](../course/en/lessons/chatbot-to-agent.md),
+  also in [vi](../course/vi/lessons/chatbot-to-agent.md) and [ja](../course/ja/lessons/chatbot-to-agent.md)).
 - **Production capacity.** One part-time author (Linh) with AI help. The roadmap must be
   producible, which is why a minimum path matters.
 - **Tools change monthly; concepts do not.** Tool-specific steps must be easy to replace.
@@ -58,8 +63,9 @@ an AI subscription until they see value.
 
 ## 5. Roadmap v0 at a glance
 
-The full tree with titles in all three languages is [course/OUTLINE.md](../course/OUTLINE.md)
-(generated from [course/curriculum.yaml](../course/curriculum.yaml)).
+The full tree is on each language's course home — [English](../course/en/README.md),
+[Vietnamese](../course/vi/README.md), [Japanese](../course/ja/README.md) — generated from
+[course/data/curriculum.yaml](../course/data/curriculum.yaml).
 
 | # | Module | Lessons | Minutes |
 |---|---|---:|---:|
@@ -113,13 +119,16 @@ verification).
 7. **Trilingual strategy.** Vietnamese as the source language: how should examples be localized
    for Japan and for Vietnam, and how should the glossary teach English and Japanese vocabulary?
    What are the risks?
-8. **The pilot lesson.** Review `course/lessons/chatbot-to-agent/*.md` and `course/sections.yaml`:
-   tone, length, template, analogies. What should change before fifty more lessons are written?
+8. **The pilot lesson.** Review `course/{vi,en,ja}/lessons/chatbot-to-agent.md` and
+   `course/data/sections.yaml`: tone, length, template, analogies, infographics. What should change
+   before fifty more lessons are written?
 9. **Staying current.** How should evergreen concepts be separated from tool-specific steps, and
    how often should lessons be reviewed?
 10. **Data model gaps.** What does the website or the Facebook series need that the schema lacks —
     for example prerequisites, difficulty, learning outcomes, estimated effort, or a minimum-path
     flag?
+11. **Infographics.** For the lessons of the minimum path, which idea deserves a diagram, with which
+    template (compare, equation, cycle, flow — or a new one), and what should it show?
 
 ## 7. What to deliver
 
@@ -129,6 +138,6 @@ verification).
    against v0 with **KEEP / MOVE / MERGE / SPLIT / NEW / CUT**, using the v0 lesson ids; every v0
    id must appear exactly once.
 3. **The minimum path:** an ordered list of lesson ids.
-4. **Answers to questions 1–10.**
+4. **Answers to questions 1–11.**
 5. **Top risks and open questions** for the course owner.
 6. **A five-line summary in Vietnamese** at the end (Tóm tắt).

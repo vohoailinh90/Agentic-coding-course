@@ -1,0 +1,75 @@
+# Used in: chatbot-to-agent (concept). Template reference: docs/content-guide.md#infographics
+template: compare
+title:
+  vi: "Ba cấp độ AI: ai là người làm các bước?"
+  en: "Three Levels of AI: Who Does the Steps?"
+  ja: "AIの3つのレベル：手順を実行するのは誰？"
+rows:
+  - vi: Bạn đưa cho nó
+    en: You give it
+    ja: あなたが渡すもの
+  - vi: Nó làm gì
+    en: What it does
+    ja: AIがすること
+  - vi: Ai làm các bước?
+    en: Who does the steps?
+    ja: 手順を実行するのは？
+emphasis_row: 3
+columns:
+  - icon: "💬"
+    color: blue
+    name:
+      vi: Chatbot
+      en: Chatbot
+      ja: チャットボット
+    values:
+      - vi: Một câu hỏi
+        en: A question
+        ja: 質問
+      - vi: Trả lời bằng chữ
+        en: Answers in text
+        ja: 文章で答える
+      - vi: Bạn
+        en: You
+        ja: あなた
+  - icon: "🤝"
+    color: violet
+    name:
+      vi: Trợ lý AI (copilot)
+      en: AI assistant (copilot)
+      ja: AIアシスタント
+    values:
+      - vi: Việc bạn đang làm dở
+        en: Your work in progress
+        ja: 作業中の仕事
+      - vi: Gợi ý ngay trong công cụ
+        en: Suggests inside your tools
+        ja: ツールの中で提案する
+      - vi: Bạn (có gợi ý)
+        en: You, with suggestions
+        ja: あなた（提案つき）
+  - icon: "🤖"
+    color: green
+    highlight: true
+    badge:
+      vi: Chủ đề khóa học
+      en: This course
+      ja: この講座のテーマ
+    name:
+      vi: AI agent
+      en: AI agent
+      ja: AIエージェント
+    values:
+      - vi: Một mục tiêu
+        en: A goal
+        ja: 目標
+      - vi: Lập kế hoạch, tự làm, tự kiểm tra
+        en: Plans, acts, checks its own work
+        ja: 計画し、実行し、確認する
+      - vi: AI — bạn giám sát
+        en: The AI — you supervise
+        ja: AI（あなたは監督）
+takeaway:
+  vi: Chatbot trả lời — agent hành động.
+  en: A chatbot answers — an agent acts.
+  ja: チャットボットは答え、エージェントは行動する。

@@ -9,22 +9,30 @@
   [brainstorm/README.md](brainstorm/README.md).
 - **Đã xong:**
   - Repo tạo từ `claude-agent-routing-template` (harness Claude Code, giao thức Codex).
-  - Kho dữ liệu `course/`: thông tin khóa học, lộ trình v0 (7 chương · 17 chủ đề · 57 bài),
-    43 thuật ngữ 3 thứ tiếng, cấu trúc 11 phần của một bài học.
-  - Bài mẫu `chatbot-to-agent` đủ 3 thứ tiếng, trạng thái `review` (chờ Linh duyệt).
-  - Chương trình `python -m src.main`: `validate`, `stats`, `outline`, `scaffold`, `fb-draft`
+  - **Mỗi ngôn ngữ một thư mục** (`course/vi`, `course/en`, `course/ja`): mọi trang chỉ dùng một
+    ngôn ngữ và có thanh 🌐 để chuyển ngôn ngữ; dữ liệu dùng chung nằm ở `course/data/`
+    ([ADR 005](docs/decisions/005-language-folders-and-language-bar.md)).
+  - Lộ trình v0 (7 chương · 17 chủ đề · 57 bài), 43 thuật ngữ 3 thứ tiếng, cấu trúc 11 phần của
+    một bài học; trang chủ khóa học, trang thuật ngữ và bản đồ lộ trình được sinh tự động cho mỗi
+    ngôn ngữ.
+  - **Infographic:** bộ vẽ SVG từ một file nội dung cho cả 3 ngôn ngữ, 4 mẫu (compare, equation,
+    cycle, flow) + bản đồ lộ trình ([ADR 006](docs/decisions/006-infographics-as-generated-svg.md)).
+  - Bài mẫu `chatbot-to-agent` đủ 3 thứ tiếng, có 4 infographic, trạng thái `review` (chờ Linh duyệt).
+  - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`
     (thông báo bằng vi/en/ja), có test, mutation check và bước kiểm tra trong CI.
-  - Tài liệu: hướng dẫn viết bài, mô hình dữ liệu, kế hoạch Facebook, 4 ADR.
 - **Chưa xong / đang vướng:**
-  - Chờ Codex trả lời vòng brainstorm 1, rồi Claude kiểm chứng câu trả lời theo
-    `docs/claude-to-codex.md` §14.
-  - Linh duyệt bài mẫu (giọng văn, độ dài, ví dụ) → đổi trạng thái `review` → `done`.
+  - Brainstorm với Codex: mở issue và gọi Codex trên commit đã tái cấu trúc; Claude kiểm chứng câu
+    trả lời theo `docs/claude-to-codex.md` §14.
+  - Linh duyệt bài mẫu (giọng văn, độ dài, ví dụ, infographic) → đổi trạng thái `review` → `done`.
   - 56 bài còn lại chưa viết — chờ chốt lộ trình v1 và "lộ trình tối thiểu".
-- **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 001–004.
+  - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
+- **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 005 (thư mục theo ngôn ngữ) và 006
+  (infographic SVG).
 
 ## Bước tiếp theo
 
 1. Đọc câu trả lời của Codex trong issue brainstorm; ghi kết luận vào `brainstorm/round-1.md`.
-2. Cập nhật `course/curriculum.yaml` thành v1, rồi chạy `python -m src.main outline --write`.
-3. Viết các bài của lộ trình tối thiểu: `python -m src.main scaffold <lesson-id>`.
+2. Cập nhật `course/data/curriculum.yaml` thành v1, rồi chạy `python -m src.main build`.
+3. Viết các bài của lộ trình tối thiểu: `python -m src.main scaffold <lesson-id>`, vẽ infographic
+   cho từng ý chính (`course/data/diagrams/`).
 4. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`.

@@ -82,6 +82,28 @@ class ParseTests(unittest.TestCase):
         doc = parse_lesson("---\nlesson: [a\n---\n# T\n")
         self.assertIsNotNone(doc.front_error)
 
+    def test_the_language_bar_before_the_title_is_captured(self) -> None:
+        text = ("---\nlesson: a\n---\n\n🌐 **Tiếng Việt** · [English](../../en/lessons/a.md)\n\n"
+                "# T\n\n<!-- section: hook -->\n## H\n")
+        doc = parse_lesson(text)
+        self.assertEqual(doc.language_bar, "🌐 **Tiếng Việt** · [English](../../en/lessons/a.md)")
+        self.assertEqual(doc.title, "T")
+        self.assertEqual(doc.problems, [])
+
+    def test_other_text_before_the_title_is_outside_every_section(self) -> None:
+        doc = parse_lesson("---\nlesson: a\n---\nHello\n# T\n<!-- section: hook -->\n## H\n")
+        self.assertEqual([code for code, _ in doc.problems], ["content_outside_section"])
+
+    def test_images_and_links_are_collected_per_section_outside_code(self) -> None:
+        text = ("---\nlesson: a\n---\n# T\n<!-- section: concept -->\n## C\n"
+                "![Sơ đồ](../diagrams/a.svg) and [a link](../glossary.md)\n"
+                "```\n![not an image](x.svg) [not a link](y.md)\n```\n"
+                "<!-- section: analogy -->\n## A\n![B](../diagrams/b.svg)\n")
+        doc = parse_lesson(text)
+        self.assertEqual(doc.section("concept").images, [("Sơ đồ", "../diagrams/a.svg")])
+        self.assertEqual(doc.section("concept").links, ["../glossary.md"])
+        self.assertEqual(doc.diagram_layout, [("concept", ("../diagrams/a.svg",)), ("analogy", ("../diagrams/b.svg",))])
+
     def test_an_empty_or_comment_only_section_counts_as_empty(self) -> None:
         doc = parse_lesson("---\nx: 1\n---\n# T\n<!-- section: hook -->\n## Hook\n\n<!-- TODO: write -->\n")
         section = doc.section("hook")

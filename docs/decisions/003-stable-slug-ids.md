@@ -6,7 +6,7 @@
 
 Modules, units and lessons are identified by kebab-case slugs (`chatbot-to-agent`), unique across
 the whole tree. Their order and display numbers (`1.1.1`) come only from their position in
-`course/curriculum.yaml`.
+`course/data/curriculum.yaml`.
 
 ## Why
 

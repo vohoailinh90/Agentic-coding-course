@@ -24,7 +24,7 @@ def progress(course: Course, docs: dict) -> dict[str, dict[str, int]]:
 
 
 def run(root, tr: Translator) -> int:
-    report = validate(root, check_outline=False)
+    report = validate(root, check_generated=False)
     if report.course is None:
         print_findings(report.errors, tr, sys.stderr)
         print(tr.t("cli.fix_errors_first"), file=sys.stderr)

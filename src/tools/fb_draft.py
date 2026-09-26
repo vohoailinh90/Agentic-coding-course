@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 from src.core.lessonfile import COMMENT, LessonDoc
-from src.core.model import LESSONS_DIR, Course, Lesson, Term, lesson_path
+from src.core.model import Course, Lesson, Term, lesson_path
 from src.core.validate import COMPLETE, validate
 from src.utils.catalogs import translator_for
 from src.utils.console import print_findings
@@ -85,14 +85,12 @@ def build_post(course: Course, lesson: Lesson, doc: LessonDoc, language: str) ->
     return "\n\n".join(parts) + "\n"
 
 
-def _belongs_to(finding, lesson_id: str) -> bool:
-    path = str(finding.params.get("path", ""))
-    folder = f"{LESSONS_DIR}/{lesson_id}"
-    return path == folder or path.startswith(folder + "/")
+def _belongs_to(finding, course: Course, lesson_id: str) -> bool:
+    return finding.params.get("path") in {lesson_path(lesson_id, language) for language in course.languages}
 
 
 def run(root, tr: Translator, lesson_id: str, post_language: str | None = None, out: Path | None = None) -> int:
-    report = validate(root, check_outline=False)
+    report = validate(root, check_generated=False)
     if report.course is None:
         print_findings(report.errors, tr, sys.stderr)
         print(tr.t("cli.fix_errors_first"), file=sys.stderr)
@@ -109,7 +107,7 @@ def run(root, tr: Translator, lesson_id: str, post_language: str | None = None, 
             value=language, allowed=", ".join(course.languages),
         ), file=sys.stderr)
         return 1
-    problems = [finding for finding in report.errors if _belongs_to(finding, lesson.id)]
+    problems = [finding for finding in report.errors if _belongs_to(finding, course, lesson.id)]
     if problems:
         print_findings(problems, tr, sys.stderr)
         print(tr.t("cli.fix_errors_first"), file=sys.stderr)

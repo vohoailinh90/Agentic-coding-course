@@ -15,14 +15,23 @@ import yaml
 
 from src.core.model import ROOT
 from src.core.validate import validate
-from tests.course_fixtures import CURRICULUM, dump, make_store, write_lesson, write_outline
+from tests.course_fixtures import (
+    CURRICULUM,
+    DIAGRAM,
+    DIAGRAM_ID,
+    dump,
+    language_bar,
+    make_store,
+    write_generated,
+    write_lesson,
+)
 
 
 def codes(report) -> list[str]:
     return [finding.code for finding in report.errors]
 
 
-class ValidateTests(unittest.TestCase):
+class StoreTest(unittest.TestCase):
     def setUp(self) -> None:
         self._tmp = tempfile.TemporaryDirectory()
         self.root = make_store(Path(self._tmp.name))
@@ -30,11 +39,20 @@ class ValidateTests(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-    def edit_curriculum(self, change) -> None:
-        data = yaml.safe_load((self.root / "course/curriculum.yaml").read_text(encoding="utf-8"))
+    def edit_yaml(self, relative: str, change) -> None:
+        path = self.root / relative
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
         change(data)
-        dump(self.root / "course/curriculum.yaml", data)
+        dump(path, data)
 
+    def edit_curriculum(self, change) -> None:
+        self.edit_yaml("course/data/curriculum.yaml", change)
+
+    def edit_diagram(self, change) -> None:
+        self.edit_yaml(f"course/data/diagrams/{DIAGRAM_ID}.yaml", change)
+
+
+class ValidateTests(StoreTest):
     # -- the baseline ---------------------------------------------------------
 
     def test_the_fixture_store_is_valid(self) -> None:
@@ -43,22 +61,23 @@ class ValidateTests(unittest.TestCase):
         self.assertIsNotNone(report.course)
         self.assertEqual([lesson.number for lesson in report.course.lessons], ["1.1.1", "1.1.2"])
         self.assertEqual(len(report.docs), 3)
+        self.assertEqual(report.started, {"alpha"})
 
     def test_the_committed_content_store_is_valid(self) -> None:
         report = validate(ROOT)
         self.assertEqual([(f.code, f.params) for f in report.errors], [])
 
-    # -- YAML files -----------------------------------------------------------
+    # -- data files -----------------------------------------------------------
 
     def test_a_duplicate_yaml_key_is_an_error(self) -> None:
-        path = self.root / "course/course.yaml"
+        path = self.root / "course/data/course.yaml"
         path.write_text(path.read_text(encoding="utf-8") + "id: again\n", encoding="utf-8")
         self.assertIn("yaml_invalid", codes(validate(self.root)))
 
     def test_a_value_split_by_a_flow_mapping_comma_is_reported(self) -> None:
         # In a flow mapping a comma ends the value, so this title parses as
         # vi="Cơ bản" plus a key "dễ hiểu" with no value — valid YAML, wrong data.
-        path = self.root / "course/curriculum.yaml"
+        path = self.root / "course/data/curriculum.yaml"
         block = "    title:\n      vi: Cơ bản\n      en: Basics\n      ja: 基本\n"
         text = path.read_text(encoding="utf-8")
         self.assertEqual(text.count(block), 1)
@@ -111,36 +130,80 @@ class ValidateTests(unittest.TestCase):
         def change(data):
             data["modules"][0]["units"][0]["lessons"][0]["terms"] = ["agent"]
         self.edit_curriculum(change)
-        write_outline(self.root)
+        write_generated(self.root)
         report = validate(self.root)
         self.assertEqual(report.errors, [])
         self.assertEqual([f.code for f in report.warnings], ["term_unused"])
 
-    # -- lesson folders and files ---------------------------------------------
+    def test_the_fixture_curriculum_is_not_shared_between_tests(self) -> None:
+        # edit_curriculum works on a copy read from disk, never on the module constant
+        self.assertEqual(CURRICULUM["modules"][0]["units"][0]["lessons"][1]["minutes"], 15)
+
+    # -- infographic specs ----------------------------------------------------
+
+    def test_an_unknown_template_is_an_error(self) -> None:
+        self.edit_diagram(lambda spec: spec.update(template="pie"))
+        self.assertIn("value_invalid", codes(validate(self.root)))
+
+    def test_a_comparison_needs_two_to_four_columns(self) -> None:
+        self.edit_diagram(lambda spec: spec["columns"].pop())
+        self.assertIn("field_count", codes(validate(self.root)))
+
+    def test_every_column_has_a_value_for_every_row(self) -> None:
+        self.edit_diagram(lambda spec: spec["rows"].append({"vi": "Thêm", "en": "More", "ja": "追加"}))
+        self.assertIn("field_count", codes(validate(self.root)))
+
+    def test_a_colour_outside_the_palette_is_an_error(self) -> None:
+        def change(spec):
+            spec["columns"][0]["color"] = "chartreuse"
+        self.edit_diagram(change)
+        self.assertIn("value_invalid", codes(validate(self.root)))
+
+    def test_versus_needs_exactly_two_columns(self) -> None:
+        def change(spec):
+            spec["columns"].append(deepcopy(spec["columns"][0]))
+        self.edit_diagram(change)
+        self.assertIn("value_invalid", codes(validate(self.root)))
+
+    def test_the_roadmap_id_is_reserved(self) -> None:
+        source = self.root / f"course/data/diagrams/{DIAGRAM_ID}.yaml"
+        source.rename(self.root / "course/data/diagrams/roadmap.yaml")
+        self.assertIn("id_invalid", codes(validate(self.root)))
+
+    def test_a_diagram_missing_a_language_is_an_error(self) -> None:
+        self.edit_diagram(lambda spec: spec["title"].pop("en"))
+        self.assertIn("field_missing", codes(validate(self.root)))
+
+    # -- course folders and lesson files ---------------------------------------
 
     def test_a_missing_language_file_is_an_error(self) -> None:
-        (self.root / "course/lessons/alpha/ja.md").unlink()
+        (self.root / "course/ja/lessons/alpha.md").unlink()
         self.assertIn("lesson_file_missing", codes(validate(self.root)))
 
-    def test_an_unknown_lesson_folder_is_an_error(self) -> None:
-        (self.root / "course/lessons/gamma").mkdir()
-        self.assertIn("lesson_dir_unknown", codes(validate(self.root)))
+    def test_an_unknown_lesson_file_is_an_error(self) -> None:
+        (self.root / "course/vi/lessons/gamma.md").write_text("x", encoding="utf-8")
+        self.assertIn("lesson_file_unknown", codes(validate(self.root)))
 
-    def test_an_unexpected_file_in_a_lesson_folder_is_an_error(self) -> None:
-        (self.root / "course/lessons/alpha/notes.txt").write_text("x", encoding="utf-8")
-        self.assertIn("lesson_file_unexpected", codes(validate(self.root)))
+    def test_unexpected_entries_in_the_course_folders_are_errors(self) -> None:
+        for relative in ("course/notes.md", "course/vi/notes.md", "course/data/extra.yaml",
+                         "course/vi/lessons/notes.txt"):
+            with self.subTest(path=relative):
+                (self.root / relative).write_text("x", encoding="utf-8")
+                self.assertIn(("entry_unexpected", relative),
+                              [(f.code, f.params.get("path")) for f in validate(self.root).errors])
+                (self.root / relative).unlink()
 
-    def test_an_assets_folder_is_allowed(self) -> None:
-        (self.root / "course/lessons/alpha/assets").mkdir()
+    def test_an_images_folder_is_allowed(self) -> None:
+        (self.root / "course/vi/images").mkdir()
         self.assertEqual(validate(self.root).errors, [])
 
     def test_front_matter_that_disagrees_with_the_path_is_an_error(self) -> None:
-        path = self.root / "course/lessons/alpha/ja.md"
+        path = self.root / "course/ja/lessons/alpha.md"
         path.write_text(path.read_text(encoding="utf-8").replace("lang: ja", "lang: en"), encoding="utf-8")
         self.assertIn("front_matter_mismatch", codes(validate(self.root)))
 
     def test_an_unknown_front_matter_field_is_an_error(self) -> None:
-        path = self.root / "course/lessons/alpha/en.md"
+        path = self.root / "course/en/lessons/alpha.md"
         path.write_text(path.read_text(encoding="utf-8").replace("status:", "tags: []\nstatus:"), encoding="utf-8")
         self.assertIn("field_unknown", codes(validate(self.root)))
 
@@ -148,13 +211,47 @@ class ValidateTests(unittest.TestCase):
         write_lesson(self.root, "alpha", "en", title="A different title")
         self.assertIn("title_mismatch", codes(validate(self.root)))
 
+    def test_a_wrong_or_missing_language_bar_is_an_error(self) -> None:
+        wrong = language_bar("alpha", "vi").replace("**Tiếng Việt**", "[Tiếng Việt](x.md)")
+        for bar in (wrong, "", language_bar("alpha", "en")):
+            with self.subTest(bar=bar):
+                write_lesson(self.root, "alpha", "vi", bar=bar)
+                self.assertIn("language_bar", codes(validate(self.root)))
+
     def test_a_file_saved_on_windows_is_read_the_same(self) -> None:
-        path = self.root / "course/lessons/alpha/vi.md"
+        path = self.root / "course/vi/lessons/alpha.md"
         text = path.read_text(encoding="utf-8")
         path.write_bytes(("﻿" + text.replace("\n", "\r\n")).encode("utf-8"))
         self.assertEqual(validate(self.root).errors, [])
 
-    # -- sections and status ----------------------------------------------------
+    # -- images and links --------------------------------------------------------
+
+    def test_an_image_that_is_no_diagram_is_an_error(self) -> None:
+        write_lesson(self.root, "alpha", "vi", bodies={"concept": "Text.\n\n![Sơ đồ](../diagrams/nope.svg)"})
+        self.assertIn("diagram_unknown", codes(validate(self.root)))
+
+    def test_an_image_needs_alt_text(self) -> None:
+        write_lesson(self.root, "alpha", "vi", bodies={"concept": f"Text.\n\n![](../diagrams/{DIAGRAM_ID}.svg)"})
+        self.assertIn("image_alt_missing", codes(validate(self.root)))
+
+    def test_a_broken_relative_link_is_an_error(self) -> None:
+        body = f"See [the glossary](../glossary.md) and [missing](../nowhere.md).\n\n![x](../diagrams/{DIAGRAM_ID}.svg)"
+        write_lesson(self.root, "alpha", "vi", bodies={"concept": body})
+        report = validate(self.root)
+        self.assertEqual([(f.code, f.params.get("target")) for f in report.errors],
+                         [("link_broken", "../nowhere.md")])
+
+    def test_a_missing_image_file_is_an_error(self) -> None:
+        body = f"![Ảnh](../images/photo.png)\n\n![x](../diagrams/{DIAGRAM_ID}.svg)"
+        write_lesson(self.root, "alpha", "vi", bodies={"concept": body})
+        self.assertIn("link_broken", codes(validate(self.root)))
+
+    def test_links_inside_code_blocks_are_not_checked(self) -> None:
+        body = f"```markdown\n[example](../nowhere.md)\n```\n\n![x](../diagrams/{DIAGRAM_ID}.svg)"
+        write_lesson(self.root, "alpha", "vi", bodies={"concept": body})
+        self.assertEqual(validate(self.root).errors, [])
+
+    # -- sections, status and parity -------------------------------------------
 
     def test_an_unknown_section_is_an_error(self) -> None:
         write_lesson(self.root, "alpha", "en", sections=("objective", "hook", "concept", "analogy",
@@ -208,31 +305,44 @@ class ValidateTests(unittest.TestCase):
         finding = next(f for f in report.errors if f.code == "sections_differ")
         self.assertEqual((finding.params["lang"], finding.params["other"]), ("ja", "vi"))
 
-    def test_a_skeleton_is_exempt_from_section_parity(self) -> None:
+    def test_diagrams_that_differ_between_languages_are_an_error(self) -> None:
+        write_lesson(self.root, "alpha", "en", bodies={"concept": "No picture here."})
+        self.assertIn("diagrams_differ", codes(validate(self.root)))
+
+    def test_a_skeleton_is_exempt_from_parity(self) -> None:
         write_lesson(self.root, "alpha", "ja", status="todo", sections=("objective", "hook"))
         self.assertEqual(validate(self.root).errors, [])
 
-    # -- OUTLINE.md --------------------------------------------------------------
+    # -- generated files ----------------------------------------------------------
 
-    def test_a_stale_outline_is_an_error(self) -> None:
+    def test_a_stale_generated_file_is_an_error(self) -> None:
         def change(data):
             data["modules"][0]["units"][0]["lessons"][1]["minutes"] = 20
         self.edit_curriculum(change)
-        self.assertIn("outline_stale", codes(validate(self.root)))
-        write_outline(self.root)
+        stale = {f.params["path"] for f in validate(self.root).errors if f.code == "build_stale"}
+        self.assertIn("course/vi/README.md", stale)
+        self.assertIn("course/ja/diagrams/roadmap.svg", stale)
+        write_generated(self.root)
         self.assertEqual(validate(self.root).errors, [])
 
-    def test_a_missing_outline_is_an_error(self) -> None:
-        (self.root / "course/OUTLINE.md").unlink()
-        self.assertIn("outline_stale", codes(validate(self.root)))
+    def test_a_missing_generated_file_is_an_error(self) -> None:
+        (self.root / "course/en/glossary.md").unlink()
+        self.assertIn("build_stale", codes(validate(self.root)))
 
-    def test_the_fixture_curriculum_is_not_shared_between_tests(self) -> None:
-        # edit_curriculum works on a copy read from disk, never on the module constant
-        self.assertEqual(CURRICULUM["modules"][0]["units"][0]["lessons"][1]["minutes"], 15)
+    def test_an_orphan_diagram_is_an_error_and_build_removes_it(self) -> None:
+        orphan = self.root / "course/vi/diagrams/old.svg"
+        orphan.write_text("<svg/>", encoding="utf-8")
+        self.assertIn(("build_stale", "course/vi/diagrams/old.svg"),
+                      [(f.code, f.params.get("path")) for f in validate(self.root).errors])
+        write_generated(self.root)
+        self.assertFalse(orphan.exists())
 
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_the_diagram_svg_follows_its_spec(self) -> None:
+        self.edit_diagram(lambda spec: spec["title"].update(vi="Tiêu đề mới"))
+        stale = {f.params["path"] for f in validate(self.root).errors if f.code == "build_stale"}
+        self.assertEqual(stale, {f"course/vi/diagrams/{DIAGRAM_ID}.svg"})
+        write_generated(self.root)
+        self.assertIn("Tiêu đề mới", (self.root / f"course/vi/diagrams/{DIAGRAM_ID}.svg").read_text(encoding="utf-8"))
 
 
 # One of each shape a hand edit produces: null, empty, number, boolean, the wrong
@@ -266,15 +376,8 @@ def _replaced(document, path, value):
     return copy
 
 
-class RobustnessTests(unittest.TestCase):
+class RobustnessTests(StoreTest):
     """Hand-edited files will hold wrong types; the validator must report them, never crash."""
-
-    def setUp(self) -> None:
-        self._tmp = tempfile.TemporaryDirectory()
-        self.root = make_store(Path(self._tmp.name))
-
-    def tearDown(self) -> None:
-        self._tmp.cleanup()
 
     def assert_never_crashes(self, path: Path, document, *, write=None) -> None:
         write = write or (lambda data: path.write_text(_fast_dump(data), encoding="utf-8"))
@@ -284,24 +387,31 @@ class RobustnessTests(unittest.TestCase):
                 for value in BAD_VALUES:
                     write(_replaced(document, key_path, value))
                     try:
-                        validate(self.root, check_outline=False)
+                        validate(self.root, check_generated=False)
                     except Exception as exc:  # noqa: BLE001 - any crash is the failure
                         self.fail(f"{path.name} {key_path!r} = {value!r}: {type(exc).__name__}: {exc}")
         finally:
             path.write_bytes(original)
 
     def test_wrong_types_in_the_yaml_files_are_reported_not_crashed_on(self) -> None:
-        for name in ("course.yaml", "curriculum.yaml", "glossary.yaml"):
+        for name in ("course.yaml", "curriculum.yaml", "glossary.yaml", f"diagrams/{DIAGRAM_ID}.yaml"):
             with self.subTest(file=name):
-                path = self.root / "course" / name
+                path = self.root / "course" / "data" / name
                 self.assert_never_crashes(path, yaml.safe_load(path.read_text(encoding="utf-8")))
         # One entry stands for every section: each has the same shape.
-        path = self.root / "course" / "sections.yaml"
+        path = self.root / "course" / "data" / "sections.yaml"
         document = yaml.safe_load(path.read_text(encoding="utf-8"))
         self.assert_never_crashes(path, {"sections": document["sections"][:1]})
 
+    def test_wrong_types_in_every_diagram_template_are_reported_not_crashed_on(self) -> None:
+        path = self.root / "course" / "data" / "diagrams" / f"{DIAGRAM_ID}.yaml"
+        for name in ("agent-formula", "agent-loop"):
+            with self.subTest(template=name):
+                spec = yaml.safe_load((ROOT / "course/data/diagrams" / f"{name}.yaml").read_text(encoding="utf-8"))
+                self.assert_never_crashes(path, spec)
+
     def test_wrong_types_in_lesson_front_matter_are_reported_not_crashed_on(self) -> None:
-        path = self.root / "course/lessons/alpha/vi.md"
+        path = self.root / "course/vi/lessons/alpha.md"
         text = path.read_text(encoding="utf-8")
         _, front, body = text.split("---\n", 2)
 
@@ -309,3 +419,10 @@ class RobustnessTests(unittest.TestCase):
             path.write_text("---\n" + _fast_dump(data) + "---\n" + body, encoding="utf-8")
 
         self.assert_never_crashes(path, yaml.safe_load(front), write=write)
+
+    def test_the_fixture_diagram_is_untouched(self) -> None:
+        self.assertEqual(DIAGRAM["columns"][0]["color"], "blue")
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,6 +1,7 @@
-"""Parse one lesson file: front matter, title and marked sections.
+"""Parse one lesson file: front matter, language bar, title and marked sections.
 
-A lesson file looks like this (docs/data-model.md has the full rules):
+A lesson file (`course/<lang>/lessons/<id>.md`) looks like this; docs/data-model.md
+has the full rules:
 
     ---
     lesson: chatbot-to-agent
@@ -10,6 +11,8 @@ A lesson file looks like this (docs/data-model.md has the full rules):
     social: {hook: ..., question: ...}
     ---
 
+    🌐 **Tiếng Việt** · [English](../../en/lessons/chatbot-to-agent.md) · [日本語](...)
+
     # <title, identical to curriculum.yaml>
 
     <!-- section: objective -->
@@ -17,12 +20,12 @@ A lesson file looks like this (docs/data-model.md has the full rules):
     ...
 
 Every `## ` heading must sit under a `<!-- section: key -->` marker. The marker
-carries the structure all three languages share; the heading text under it is
-free to be localized. Fenced code blocks are skipped, so a `# comment` inside a
-shell example is never mistaken for a heading.
+carries the structure all languages share; the heading text under it is free to
+be localized. Fenced code blocks are skipped, so a `# comment` inside a shell
+example is never mistaken for a heading, and a link inside one is not checked.
 
-This module only reports what it cannot parse. Whether the keys, order and
-statuses are right is the validator's business.
+This module only reports what it cannot parse. Whether the keys, order, links
+and statuses are right is the validator's business.
 """
 
 from __future__ import annotations
@@ -38,6 +41,9 @@ H2 = re.compile(r"^## (?P<text>\S.*?)\s*$")
 FENCE = re.compile(r"^ {0,3}(?P<fence>`{3,}|~{3,})")
 COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
 TODO = re.compile(r"<!--\s*TODO\b")
+IMAGE = re.compile(r"!\[(?P<alt>[^\]]*)\]\((?P<target>[^)\s]+)\)")
+LINK = re.compile(r"(?<!!)\[[^\]]*\]\((?P<target>[^)\s]+)\)")
+LANGUAGE_BAR = "🌐 "
 FRONT_MATTER_FENCE = "---"
 
 
@@ -47,6 +53,8 @@ class SectionBlock:
     heading: str
     line: int
     body_lines: list[str] = field(default_factory=list)
+    images: list[tuple[str, str]] = field(default_factory=list)  # (alt text, target)
+    links: list[str] = field(default_factory=list)  # link targets, images excluded
 
     @property
     def body(self) -> str:
@@ -67,6 +75,7 @@ class LessonDoc:
     has_front_matter: bool = False
     front: object = None
     front_error: str | None = None
+    language_bar: str | None = None
     title: str | None = None
     sections: list[SectionBlock] = field(default_factory=list)
     # (finding code, params) for lines that could not be placed in the structure
@@ -79,6 +88,11 @@ class LessonDoc:
 
     def section(self, key: str) -> SectionBlock | None:
         return next((section for section in self.sections if section.key == key), None)
+
+    @property
+    def diagram_layout(self) -> list[tuple[str, tuple[str, ...]]]:
+        """(section key, image targets in order): what every translation must agree on."""
+        return [(section.key, tuple(target for _, target in section.images)) for section in self.sections]
 
 
 def split_front_matter(text: str) -> tuple[str | None, str, int]:
@@ -111,10 +125,13 @@ def parse_lesson(text: str) -> LessonDoc:
     def orphan(marker: tuple[str, int]) -> None:
         doc.problems.append(("section_marker_orphan", {"line": marker[1]}))
 
-    def keep(line: str, number: int) -> None:
+    def keep(line: str, number: int, *, code: bool = False) -> None:
         nonlocal reported_outside
         if current is not None:
             current.body_lines.append(line)
+            if not code:
+                current.images.extend((match.group("alt"), match.group("target")) for match in IMAGE.finditer(line))
+                current.links.extend(match.group("target") for match in LINK.finditer(line))
         elif line.strip() and not COMMENT.fullmatch(line.strip()) and not reported_outside:
             doc.problems.append(("content_outside_section", {"line": number}))
             reported_outside = True
@@ -122,7 +139,7 @@ def parse_lesson(text: str) -> LessonDoc:
     for offset, line in enumerate(body.split("\n")):
         number = first_line + offset
         if fence is not None:
-            keep(line, number)
+            keep(line, number, code=True)
             if line.strip().startswith(fence):
                 fence = None
             continue
@@ -132,7 +149,7 @@ def parse_lesson(text: str) -> LessonDoc:
                 orphan(pending)
                 pending = None
             fence = opening.group("fence")
-            keep(line, number)
+            keep(line, number, code=True)
             continue
         marker = MARKER.match(line)
         if marker:
@@ -157,10 +174,14 @@ def parse_lesson(text: str) -> LessonDoc:
         if pending:
             orphan(pending)
             pending = None
-        title = H1.match(line)
-        if title and doc.title is None and current is None:
-            doc.title = title.group("text")
-            continue
+        if current is None and doc.title is None:
+            title = H1.match(line)
+            if title:
+                doc.title = title.group("text")
+                continue
+            if line.startswith(LANGUAGE_BAR) and doc.language_bar is None:
+                doc.language_bar = line.rstrip()
+                continue
         keep(line, number)
 
     if pending:

@@ -1,0 +1,48 @@
+# Used in: chatbot-to-agent (concept).
+template: equation
+title:
+  vi: Một AI agent gồm những gì?
+  en: What Is an AI Agent Made Of?
+  ja: AIエージェントは何でできている？
+terms:
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: "Bộ não: LLM"
+      en: "Brain: the LLM"
+      ja: 頭脳：LLM
+    caption:
+      vi: hiểu yêu cầu, quyết định bước tiếp theo
+      en: understands, decides the next step
+      ja: 依頼を理解し、次の一手を決める
+  - icon: "🔧"
+    color: amber
+    name:
+      vi: "Đôi tay: công cụ"
+      en: "Hands: tools"
+      ja: 手：ツール
+    caption:
+      vi: đọc/ghi file, chạy lệnh, tìm trên web
+      en: files, commands, web search
+      ja: ファイル・コマンド・Web検索
+  - icon: "🔁"
+    color: blue
+    name:
+      vi: Vòng lặp
+      en: The loop
+      ja: ループ
+    caption:
+      vi: làm → kiểm → sửa, đến khi xong
+      en: do → check → fix, until done
+      ja: やる→確かめる→直す、終わるまで
+result:
+  icon: "🤖"
+  color: green
+  name:
+    vi: AI agent
+    en: AI agent
+    ja: AIエージェント
+  caption:
+    vi: nhận mục tiêu và tự làm việc — bạn nghiệm thu
+    en: takes a goal and does the work — you approve it
+    ja: 目標を受け取り、仕事をこなす。検収はあなた

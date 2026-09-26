@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 544" width="800" height="544" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">AIの3つのレベル：手順を実行するのは誰？</title>
+<desc id="desc">チャットボット — あなたが渡すもの: 質問; AIがすること: 文章で答える; 手順を実行するのは？: あなた. AIアシスタント — あなたが渡すもの: 作業中の仕事; AIがすること: ツールの中で提案する; 手順を実行するのは？: あなた（提案つき）. AIエージェント — あなたが渡すもの: 目標; AIがすること: 計画し、実行し、確認する; 手順を実行するのは？: AI（あなたは監督）. チャットボットは答え、エージェントは行動する。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="542" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="514" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">AIの3つのレベル：手順を実行するのは誰？</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="355.1" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">チャットボット</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">あなたが渡すもの</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">質問</tspan></text>
+<line x1="44" y1="286.3" x2="248" y2="286.3" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">AIがすること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="339.1">文章で答える</tspan></text>
+<line x1="44" y1="358.5" x2="248" y2="358.5" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="386">手順を実行するのは？</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="413.3">あなた</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="355.1" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#7C3AED"/>
+<circle cx="400" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤝</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">AIアシスタント</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">あなたが渡すもの</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="266.8">作業中の仕事</tspan></text>
+<line x1="298" y1="286.3" x2="502" y2="286.3" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="313.8">AIがすること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="339.1">ツールの中で提案する</tspan></text>
+<line x1="298" y1="358.5" x2="502" y2="358.5" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="386">手順を実行するのは？</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="298" y="413.3">あなた（提案つき）</tspan></text>
+</g>
+<g class="pulse">
+<rect x="536" y="86.3" width="236" height="355.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
+<circle cx="654" cy="138.3" r="26" fill="#059669"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">AIエージェント</tspan></text>
+<rect x="586.8" y="73.7" width="134.3" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="90.7">この講座のテーマ</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">あなたが渡すもの</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">目標</tspan></text>
+<line x1="552" y1="286.3" x2="756" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="313.8">AIがすること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="339.1">計画し、実行し、確認する</tspan></text>
+<line x1="552" y1="358.5" x2="756" y2="358.5" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="386">手順を実行するのは？</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="552" y="413.3">AI（あなたは監督）</tspan></text>
+</g>
+<rect x="28" y="465.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="496.4">💡 チャットボットは答え、エージェントは行動する。</tspan></text>
+</svg>

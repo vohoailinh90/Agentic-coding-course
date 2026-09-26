@@ -1,0 +1,64 @@
+# Used in: chatbot-to-agent (concept).
+template: cycle
+title:
+  vi: Vòng lặp của một AI agent
+  en: The Agent Loop
+  ja: エージェントのループ
+subtitle:
+  vi: Lặp lại cho đến khi đạt mục tiêu — hoặc cần hỏi ý bạn
+  en: It repeats until the goal is met — or it needs to ask you
+  ja: 目標を達成するか、あなたへの確認が必要になるまで繰り返す
+center:
+  icon: "🤖"
+  color: indigo
+  name:
+    vi: AI agent
+    en: AI agent
+    ja: AIエージェント
+steps:
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: Suy nghĩ
+      en: Think
+      ja: 考える
+    caption:
+      vi: bước tiếp theo là gì?
+      en: what is the next step?
+      ja: 次の一手は？
+    arrow:
+      vi: chọn công cụ
+      en: picks a tool
+      ja: ツールを選ぶ
+  - icon: "🔧"
+    color: amber
+    name:
+      vi: Hành động
+      en: Act
+      ja: 行動する
+    caption:
+      vi: dùng một công cụ thật
+      en: uses a real tool
+      ja: 実際にツールを使う
+    arrow:
+      vi: nhận kết quả
+      en: gets a result
+      ja: 結果を受け取る
+  - icon: "👀"
+    color: teal
+    name:
+      vi: Quan sát
+      en: Observe
+      ja: 観察する
+    caption:
+      vi: kết quả đã đúng chưa?
+      en: did it work?
+      ja: うまくいった？
+    arrow:
+      vi: chưa xong → làm tiếp
+      en: not done → go again
+      ja: 未完了なら次へ
+takeaway:
+  vi: Bạn đặt mục tiêu và kiểm tra kết quả cuối cùng.
+  en: You set the goal and check the final result.
+  ja: 目標を決め、最後の結果を確かめるのはあなた。

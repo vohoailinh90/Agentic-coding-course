@@ -6,15 +6,14 @@
     "commands_title": "commands",
     "validate_help": "check the whole content store (CI runs this)",
     "stats_help": "show the size of the course and the writing progress per language",
-    "outline_help": "print course/OUTLINE.md, or write or check it",
-    "outline_write_help": "write course/OUTLINE.md",
-    "outline_check_help": "exit with status 1 when course/OUTLINE.md is out of date",
-    "scaffold_help": "create a lesson's language files from course/sections.yaml",
-    "lesson_help": "lesson id from course/curriculum.yaml",
+    "scaffold_help": "create a lesson's file in every language folder, from course/data/sections.yaml",
+    "lesson_help": "lesson id from course/data/curriculum.yaml",
     "fb_help": "draft a Facebook post from a lesson",
     "post_lang_help": "language of the post (default: the course's source language)",
     "out_help": "write the post to this file instead of printing it",
-    "fix_errors_first": "The content store has errors. Run \"python -m src.main validate\", fix them, then try again."
+    "fix_errors_first": "The content store has errors. Run \"python -m src.main validate\", fix them, then try again.",
+    "build_help": "write every generated file: course homes, glossary pages, infographics",
+    "build_check_help": "exit with status 1 when a generated file is out of date"
   },
   "levels": {
     "error": "error",
@@ -38,26 +37,32 @@
     "value_invalid": "{path}: \"{field}\" is \"{value}\"; allowed values: {allowed}.",
     "id_invalid": "{path}: the id \"{id}\" may only use lowercase letters, digits and hyphens (for example: chatbot-to-agent).",
     "id_duplicate": "{path}: \"{id}\" is used more than once.",
-    "term_unknown": "{path}: lesson \"{lesson}\" uses the glossary term \"{term}\", which course/glossary.yaml does not define.",
+    "term_unknown": "{path}: lesson \"{lesson}\" uses the glossary term \"{term}\", which course/data/glossary.yaml does not define.",
     "term_unused": "{path}: the glossary term \"{term}\" is not used by any lesson.",
-    "lesson_dir_unknown": "{path}: this folder matches no lesson id in course/curriculum.yaml.",
-    "lesson_file_missing": "{path}: missing. A started lesson needs one file per language (python -m src.main scaffold <lesson-id> creates them).",
-    "lesson_file_unexpected": "{path}: does not belong here. A lesson folder holds one <language>.md per language and, optionally, an assets/ folder.",
+    "lesson_file_missing": "{path}: missing. A started lesson needs a file in every language folder (python -m src.main scaffold <lesson-id> creates them).",
     "front_matter_missing": "{path}: the file must start with a front matter block between two \"---\" lines.",
     "front_matter_mismatch": "{path}: \"{field}\" is \"{actual}\", but the file's location says \"{expected}\".",
     "title_missing": "{path}: the lesson title (a line starting with \"# \") is missing.",
-    "title_mismatch": "{path}: the title \"{actual}\" differs from course/curriculum.yaml: \"{expected}\".",
+    "title_mismatch": "{path}: the title \"{actual}\" differs from course/data/curriculum.yaml: \"{expected}\".",
     "content_outside_section": "{path}:{line}: text outside any section. Move it under a <!-- section: ... --> marker.",
     "section_marker_orphan": "{path}:{line}: a section marker must be followed by a \"## \" heading.",
     "heading_without_marker": "{path}:{line}: the heading \"{heading}\" has no <!-- section: ... --> marker above it.",
-    "section_unknown": "{path}: unknown section \"{key}\" (the list is in course/sections.yaml).",
+    "section_unknown": "{path}: unknown section \"{key}\" (the list is in course/data/sections.yaml).",
     "section_duplicate": "{path}: the section \"{key}\" appears more than once.",
-    "section_order": "{path}: the section \"{key}\" is out of order (course/sections.yaml sets the order).",
+    "section_order": "{path}: the section \"{key}\" is out of order (course/data/sections.yaml sets the order).",
     "section_required": "{path}: the required section \"{key}\" is missing.",
     "section_empty": "{path}: the section \"{key}\" is empty.",
     "todo_left": "{path}: the section \"{key}\" still contains a TODO placeholder.",
-    "sections_differ": "{path}: {lang}.md has the sections [{actual}], but {other}.md has [{expected}].",
-    "outline_stale": "{path}: out of date with course/curriculum.yaml. Run: python -m src.main outline --write"
+    "sections_differ": "{path}: {lang} has the sections [{actual}], but {other} has [{expected}].",
+    "field_count": "{path}: \"{field}\" must have {min}–{max} items.",
+    "entry_unexpected": "{path}: does not belong here. Allowed: {allowed}.",
+    "lesson_file_unknown": "{path}: matches no lesson id in course/data/curriculum.yaml.",
+    "language_bar": "{path}: the line under the front matter must be the language bar: {expected}",
+    "diagrams_differ": "{path}: {lang} shows the diagrams [{actual}], but {other} shows [{expected}].",
+    "diagram_unknown": "{path}: the image {target} is not a diagram in course/data/diagrams/.",
+    "image_alt_missing": "{path}: the image {target} needs alt text (what a reader who cannot see it is told).",
+    "link_broken": "{path}: the link {target} points to a file that does not exist.",
+    "build_stale": "{path}: out of date with course/data/ and the lessons. Run: python -m src.main build"
   },
   "validate": {
     "ok": "Content store OK. Lesson files checked: {files}. Warnings: {warnings}.",
@@ -68,16 +73,6 @@
     "structure": "Modules: {modules} · Units: {units} · Lessons: {lessons} · Total time: {minutes} min",
     "progress_heading": "Writing progress by language:",
     "progress_line": "{language}: done {done} · in review {review} · draft {draft} · skeleton {todo} · not started {missing} ({percent}% done)"
-  },
-  "outline": {
-    "title": "Course Outline",
-    "totals": "Modules: {modules} · Units: {units} · Lessons: {lessons} · {minutes} min",
-    "version": "Roadmap version",
-    "number": "#",
-    "type": "Type",
-    "minutes": "Min",
-    "written": "Wrote {path}.",
-    "up_to_date": "{path} is up to date."
   },
   "scaffold": {
     "created": "Created {path}",
@@ -93,5 +88,41 @@
     "not_ready": "{path} has the status \"{status}\". Only lessons in review or done can become a post.",
     "review_warning": "Note: {path} is still in review — read it once more before posting.",
     "written": "Wrote {path}."
+  },
+  "build": {
+    "written": "Generated files: {files}. Written: {written}. Removed: {removed}.",
+    "up_to_date": "Generated files are up to date ({files})."
+  },
+  "home": {
+    "totals": "Modules: {modules} · Units: {units} · Lessons: {lessons} · {minutes} min",
+    "audience": "Who it is for:",
+    "glossary": "Glossary in three languages",
+    "legend": "Lessons with a link are ready to read; the others are being written.",
+    "lesson": "Lesson",
+    "type": "Type",
+    "time": "Time",
+    "minutes": "{minutes} min"
+  },
+  "lesson_types": {
+    "concept": "Concept",
+    "demo": "Demo",
+    "hands-on": "Hands-on",
+    "project": "Project"
+  },
+  "glossary": {
+    "title": "Glossary in Three Languages",
+    "intro": "Each term is explained in English, with what it is called in Vietnamese and in Japanese.",
+    "term": "Term",
+    "definition": "Meaning"
+  },
+  "roadmap": {
+    "title": "Your Learning Journey",
+    "start": "Start",
+    "finish": "Course complete",
+    "meta": "Lessons: {lessons} · {minutes} min"
+  },
+  "chooser": {
+    "title": "Choose a language",
+    "open": "Open the course"
   }
 }

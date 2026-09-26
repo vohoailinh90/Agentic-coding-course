@@ -1,4 +1,4 @@
-"""The course commands: scaffold, outline, stats, fb-draft and the CLI itself."""
+"""The course commands: scaffold, build, stats, fb-draft and the CLI itself."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from src.core.validate import validate
 from src.main import main
 from src.tools.fb_draft import plain
 from src.tools.stats import progress
-from tests.course_fixtures import make_store, write_lesson
+from tests.course_fixtures import language_bar, make_store, write_lesson
 
 
 def run_cli(*arguments: str) -> tuple[int, str, str]:
@@ -39,16 +39,19 @@ class CommandTests(unittest.TestCase):
         code, out, _ = run_cli("--root", str(self.root), "scaffold", "beta")
         self.assertEqual(code, 0)
         for language in ("vi", "en", "ja"):
-            text = (self.root / f"course/lessons/beta/{language}.md").read_text(encoding="utf-8")
+            text = (self.root / f"course/{language}/lessons/beta.md").read_text(encoding="utf-8")
             self.assertIn("status: todo", text)
             self.assertIn("<!-- section: try-it -->", text)
+            self.assertIn(language_bar("beta", language), text)
         report = validate(self.root)
-        self.assertEqual(report.errors, [])
+        self.assertEqual(report.errors, [])  # the course homes were rebuilt to link the lesson
         self.assertEqual(report.docs[("beta", "ja")].status, "todo")
-        self.assertIn("course/lessons/beta/vi.md", out)
+        self.assertIn("course/vi/lessons/beta.md", out)
+        home = (self.root / "course/en/README.md").read_text(encoding="utf-8")
+        self.assertIn("[Lesson beta](lessons/beta.md)", home)
 
     def test_scaffold_never_overwrites(self) -> None:
-        path = self.root / "course/lessons/alpha/en.md"
+        path = self.root / "course/en/lessons/alpha.md"
         before = path.read_text(encoding="utf-8")
         code, out, _ = run_cli("--root", str(self.root), "scaffold", "alpha")
         self.assertEqual(code, 0)
@@ -59,18 +62,39 @@ class CommandTests(unittest.TestCase):
         code, _, err = run_cli("--root", str(self.root), "scaffold", "gamma")
         self.assertEqual(code, 1)
         self.assertIn("gamma", err)
-        self.assertFalse((self.root / "course/lessons/gamma").exists())
+        self.assertFalse((self.root / "course/vi/lessons/gamma.md").exists())
 
-    # -- outline ----------------------------------------------------------------
+    # -- build ------------------------------------------------------------------
 
-    def test_outline_check_and_write(self) -> None:
-        self.assertEqual(run_cli("--root", str(self.root), "outline", "--check")[0], 0)
-        (self.root / "course/OUTLINE.md").write_text("stale\n", encoding="utf-8")
-        self.assertEqual(run_cli("--root", str(self.root), "outline", "--check")[0], 1)
-        self.assertEqual(run_cli("--root", str(self.root), "outline", "--write")[0], 0)
-        self.assertEqual(run_cli("--root", str(self.root), "outline", "--check")[0], 0)
-        text = (self.root / "course/OUTLINE.md").read_text(encoding="utf-8")
-        self.assertIn("| 1.1.2 | Bài beta | Lesson beta | レッスン・ベータ | 🛠️ hands-on | 15 |", text)
+    def test_build_check_and_write(self) -> None:
+        self.assertEqual(run_cli("--root", str(self.root), "build", "--check")[0], 0)
+        (self.root / "course/vi/README.md").write_text("stale\n", encoding="utf-8")
+        code, out, _ = run_cli("--root", str(self.root), "build", "--check")
+        self.assertEqual(code, 1)
+        self.assertIn("course/vi/README.md", out)
+        self.assertEqual(run_cli("--root", str(self.root), "build")[0], 0)
+        self.assertEqual(run_cli("--root", str(self.root), "build", "--check")[0], 0)
+
+    def test_each_course_home_is_in_one_language(self) -> None:
+        homes = {lang: (self.root / f"course/{lang}/README.md").read_text(encoding="utf-8")
+                 for lang in ("vi", "en", "ja")}
+        self.assertIn("| 1.1.2 | Bài beta | 🛠️ Thực hành | 15 phút |", homes["vi"])
+        self.assertIn("| 1.1.1 | [Lesson alpha](lessons/alpha.md) | 📖 Concept | 10 min |", homes["en"])
+        self.assertIn("| 1.1.2 | レッスン・ベータ | 🛠️ 実習 | 15分 |", homes["ja"])
+        self.assertNotIn("Lesson beta", homes["vi"] + homes["ja"])
+        self.assertTrue(homes["ja"].split("\n")[2].startswith("🌐 [Tiếng Việt](../vi/README.md) · [English](../en/README.md)"))
+        self.assertIn("![学習ロードマップ](diagrams/roadmap.svg)", homes["ja"])
+
+    def test_the_glossary_pages_define_terms_in_their_own_language(self) -> None:
+        vi = (self.root / "course/vi/glossary.md").read_text(encoding="utf-8")
+        self.assertIn("| **Mô hình** | Kết quả của huấn luyện. | Model | 学習モデル［がくしゅうモデル］ |", vi)
+        ja = (self.root / "course/ja/glossary.md").read_text(encoding="utf-8")
+        self.assertIn("| **学習モデル［がくしゅうモデル］** | 学習の結果。 | Mô hình | Model |", ja)
+
+    def test_the_chooser_links_every_language(self) -> None:
+        chooser = (self.root / "course/README.md").read_text(encoding="utf-8")
+        for language, name in (("vi", "Tiếng Việt"), ("en", "English"), ("ja", "日本語")):
+            self.assertIn(f"## [{name} →]({language}/README.md)", chooser)
 
     # -- stats ------------------------------------------------------------------
 
@@ -115,7 +139,7 @@ class CommandTests(unittest.TestCase):
         self.assertIn("Wrong title", err)
 
     def test_fb_draft_writes_to_a_file(self) -> None:
-        target = self.root / "outputs/facebook/alpha-vi.txt"
+        target = self.root / "outputs/facebook/alpha-vi.txt"  # outside course/, as documented
         code, _, _ = run_cli("--root", str(self.root), "fb-draft", "alpha", "--out", str(target))
         self.assertEqual(code, 0)
         self.assertIn("📘 Bài 1.1.1: Bài alpha", target.read_text(encoding="utf-8"))
@@ -139,10 +163,10 @@ class CommandTests(unittest.TestCase):
         self.assertIn("Kho nội dung hợp lệ", out)
 
     def test_validate_fails_with_a_readable_report(self) -> None:
-        (self.root / "course/lessons/alpha/en.md").unlink()
+        (self.root / "course/en/lessons/alpha.md").unlink()
         code, out, _ = run_cli("--root", str(self.root), "validate")
         self.assertEqual(code, 1)
-        self.assertIn("error: course/lessons/alpha/en.md: missing.", out)
+        self.assertIn("error: course/en/lessons/alpha.md: missing.", out)
         self.assertIn("Errors: 1.", out)
 
 

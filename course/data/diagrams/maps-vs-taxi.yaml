@@ -1,0 +1,56 @@
+# Used in: chatbot-to-agent (analogy).
+template: compare
+title:
+  vi: Chatbot như Google Maps, agent như tài xế taxi
+  en: A Chatbot Is Like Google Maps, an Agent Like a Taxi Driver
+  ja: チャットボットはGoogleマップ、エージェントはタクシー
+versus: true
+rows:
+  - vi: Bạn nói
+    en: You say
+    ja: あなたが伝えること
+  - vi: Ai cầm lái?
+    en: Who drives?
+    ja: 運転するのは？
+  - vi: Việc của bạn
+    en: Your job
+    ja: あなたの役目
+emphasis_row: 2
+columns:
+  - icon: "🧭"
+    color: blue
+    name:
+      vi: Chatbot ≈ Google Maps
+      en: Chatbot ≈ Google Maps
+      ja: チャットボット ≈ Googleマップ
+    values:
+      - vi: "“Đường ra sân bay thế nào?”"
+        en: "“How do I get to the airport?”"
+        ja: 「空港への行き方は？」
+      - vi: Bạn
+        en: You
+        ja: あなた
+      - vi: Lái xe, tìm đường, xử lý kẹt xe
+        en: Drive, navigate, handle the traffic
+        ja: 運転・道探し・渋滞への対応
+  - icon: "🚕"
+    color: green
+    highlight: true
+    name:
+      vi: AI agent ≈ tài xế taxi
+      en: AI agent ≈ taxi driver
+      ja: AIエージェント ≈ タクシー運転手
+    values:
+      - vi: "“Ra sân bay, trước 8 giờ.”"
+        en: "“The airport, before 8.”"
+        ja: 「空港まで、8時までに」
+      - vi: Tài xế
+        en: The driver
+        ja: 運転手
+      - vi: Nói đúng địa chỉ, kiểm tra điểm đến
+        en: Give the right address, check where you arrive
+        ja: 行き先を伝え、着いた場所を確かめる
+takeaway:
+  vi: Dù đi taxi, kiểm tra điểm đến vẫn là việc của bạn.
+  en: Even in a taxi, checking where you arrived is your job.
+  ja: タクシーでも、到着地を確かめるのはあなたの役目。
