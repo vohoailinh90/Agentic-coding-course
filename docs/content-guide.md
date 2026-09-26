@@ -91,6 +91,31 @@ it is).
   the text.
 - Examples from Japanese working life: 円, 稟議, 報連相, 定例会議, 日報.
 
+## Conventions every lesson shares
+
+Fifty lessons written in three languages stay one course only if they share a small world.
+
+- **The cast** comes from [brainstorm/BRIEF.md](../brainstorm/BRIEF.md): **Mai** (an accountant in
+  Ho Chi Minh City who lives in Excel), **Tuấn** (a mechanical engineer in Japan on a locked-down
+  company laptop), **Hana** (an office worker in Tokyo, new to AI) and **Huy** (a second-year student
+  who knows a little Python). Pick one main character per lesson. They keep their names in every
+  language (ja: マイ, トゥアン, ハナ, フイ); one-off examples are localized as usual.
+- **The practice folder** `ai-practice` is where every exercise happens. Start from a known-good copy,
+  and remember that a folder is a boundary for you, not a sandbox for the agent.
+- **Three kinds of action**, taught in `data-safety-and-permissions` and reused everywhere:
+  ✅ safe (made-up data, files inside `ai-practice`), ✋ ask first (installing, deleting, sending,
+  anything outside the folder), ⛔ never (real company or customer data, passwords and API keys,
+  getting around a company computer's rules).
+- **Evidence** closes every hands-on exercise and project, in three lines: *I can show… / I checked…
+  / I would not use this when…* (vi: *Tôi cho xem được… / Tôi đã kiểm tra… / Tôi sẽ không dùng cách
+  này khi…*; ja: *見せられるもの… / 確かめたこと… / 使わないほうがいい場面…*).
+- **Running artifacts** carry over: the one-file weekly task card from `first-agent-session`, the
+  personal page from `project-personal-page`, and Mai's monthly sales report from
+  `project-office-automation`.
+- **Tools** are named only as dated examples ("as of September 2026"), never with prices.
+- **Pictures:** usually one explanatory infographic plus the recap.
+- **Length:** 5–10 minutes of reading; short paragraphs and bullets, one idea per lesson.
+
 ## Infographics
 
 A good diagram lets a beginner understand the idea before reading a word of the lesson. Each one is

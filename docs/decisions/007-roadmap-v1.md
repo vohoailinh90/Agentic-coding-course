@@ -38,8 +38,7 @@ The course owner decided on 2026-09-26, as Claude suggested in round 1:
 ## Defaults until the owner says otherwise
 
 Codex's other open questions go ahead on Claude's suggestions: projects assume a personal computer
-with a watch-only route; publishing the personal page is an optional challenge; a native speaker
-reads the first Japanese lessons before more are written; every exercise forbids real company or
+with a watch-only route; publishing the personal page is an optional challenge; every exercise forbids real company or
 customer data, passwords and API keys, commands outside the practice folder, and working around a
 company PC's restrictions; the advanced track is written after the minimum path has learners;
 "agentic engineering" is named once, after the first project.
@@ -58,3 +57,9 @@ project right after `errors-and-debugging`, and led to two changes: `files-folde
 ahead of `reviewing-agent-changes` (learners need to find the files an agent changed before they
 review a diff), and `data-formats` joined the minimum path before the office project. The minimum
 path is now 19 lessons, 347 minutes.
+
+## Owner decision, 2026-09-27
+
+No native Japanese review is needed, and the whole course is written now, in all three languages,
+in the order of the minimum path and then the rest of the roadmap. This replaces point 2 above
+(Japanese after the Vietnamese pilot) and the native-review default.
