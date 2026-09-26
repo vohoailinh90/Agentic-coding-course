@@ -62,6 +62,7 @@ CURRICULUM = {
             "units": [
                 {
                     "id": "basics",
+                    "track": "core",
                     "title": {"vi": "Cơ bản", "en": "Basics", "ja": "基本"},
                     "lessons": [
                         {"id": "alpha", "title": TITLES["alpha"], "type": "concept", "minutes": 10,

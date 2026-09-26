@@ -240,6 +240,12 @@ class ValidateTests(StoreTest):
         write_lesson(self.root, "alpha", "vi", bodies={"recap": both})
         self.assertIn("recap_diagram", codes(validate(self.root)))
 
+    def test_a_recap_image_that_is_no_infographic_is_an_error(self) -> None:
+        for target in ("https://example.com/recap.png", "../images/recap.png"):
+            with self.subTest(target=target):
+                write_lesson(self.root, "alpha", "vi", bodies={"recap": f"![x]({target})"})
+                self.assertIn("recap_diagram", codes(validate(self.root)))
+
     def test_a_recap_that_repeats_a_diagram_of_the_lesson_is_an_error(self) -> None:
         for language in ("vi", "en", "ja"):
             write_lesson(self.root, "alpha", language, bodies={"recap": f"![x](../diagrams/{DIAGRAM_ID}.svg)"})

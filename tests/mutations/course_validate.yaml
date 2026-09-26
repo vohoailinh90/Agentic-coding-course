@@ -152,3 +152,7 @@ mutations:
   find: "            check.error(\"recap_reused\", target=block.images[0][1])\n"
   replace: "            pass\n"
   test: tests.test_course_validate.ValidateTests.test_a_recap_that_repeats_a_diagram_of_the_lesson_is_an_error
+- label: a recap may show a picture that is no infographic
+  find: "    if len(shown) != 1 or len(diagrams) != 1:\n"
+  replace: "    if len(shown) != 1:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_recap_image_that_is_no_infographic_is_an_error
