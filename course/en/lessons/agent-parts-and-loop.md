@@ -26,7 +26,7 @@ By the end of this lesson, you will be able to:
 <!-- section: hook -->
 ## Why It Matters
 
-You already know that [an agent does the steps for you](chatbot-to-agent.md). But a language model only produces text — so how can it **open a file** or **run a program**?
+You already know that [an agent does the steps for you](chatbot-to-agent.md). But on its own a language model only produces output — text, or a *request to use a tool* — so how can an agent **open a file** or **run a program**?
 
 The answer lies in how an agent is put together. Once you know its three parts, you can predict what an agent can do, what it cannot, and when it needs you.
 
@@ -37,8 +37,8 @@ The answer lies in how an agent is put together. Once you know its three parts, 
 
 ![What Is an AI Agent Made Of?](../diagrams/agent-formula.svg)
 
-- **Brain — the LLM (large language model):** understands the request, reasons and decides the next step. On its own, it only writes text.
-- **Hands — tools:** the real actions the agent is **allowed** to take: reading and writing files, running commands, searching the web, calling other services. The LLM chooses a tool; the software around it actually presses the button.
+- **Brain — the LLM (large language model):** understands the request, reasons and decides the next step. What it produces is output — text, or a request to use a tool — not the action itself.
+- **Hands — tools:** the real actions the agent is **allowed** to take: reading and writing files, running commands, searching the web, calling other services. The model may *request* one of the tools the agent's software makes available; that software decides whether the request is allowed, and it is what actually presses the button.
 - **Loop:** an agent does not act once and stop. It repeats until the goal is met.
 
 ### The think → act → observe loop
@@ -81,7 +81,7 @@ You check quickly: open a few photos and see whether the names match the dates t
 <!-- section: misconceptions -->
 ## Common Misconceptions
 
-- **"The LLM opens files by itself."** — No. The LLM only decides which tool to use; the agent's software carries it out, and only within what it is allowed to do.
+- **"The LLM opens files by itself."** — No. The LLM only *requests* a tool; the agent's software decides whether to allow it and carries it out, and only within what it is allowed to do.
 - **"Every agent notices and fixes its own errors."** — Only when it has tools to observe the result and permission to fix it. Even then, a fix can be wrong.
 
 <!-- section: recap -->
@@ -120,7 +120,7 @@ You check quickly: open a few photos and see whether the names match the dates t
 <details>
 <summary>Show answers</summary>
 
-1. **B** — the LLM chooses what to do; a tool is what actually creates the file.
+1. **B** — the LLM only makes a request; a tool is what actually creates the file.
 2. **B** — without observing the result, it cannot know it is wrong; fixing depends on tools and feedback.
 3. **B** — important or hard-to-undo decisions are yours.
 

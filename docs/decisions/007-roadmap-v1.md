@@ -1,6 +1,6 @@
 # 007 — Roadmap v1: hands-on first, a minimum path, optional depth
 
-**Date:** 2026-09-26 · **Status:** accepted (Codex round 2 may refine it)
+**Date:** 2026-09-26 · **Status:** accepted, amended after Codex round 2 (see the end)
 
 ## Decision
 
@@ -9,7 +9,7 @@
 
 - **Hands-on from the first sitting.** Learners see an agent work, choose a safe setup, and build a
   one-file page before any theory; software and AI concepts come when a task needs them.
-- **A minimum path** of 18 core lessons (337 minutes, two projects) ships first, in course order.
+- **A minimum path** of 19 core lessons (347 minutes, two projects) ships first, in course order.
 - **Tracks:** units are `core`, `optional` (AI foundations, model literacy) or `advanced` (deeper
   harness practice, advanced projects).
 - **Retired ids:** 8 v0 lessons were merged into others and 1 cut; `retired` records where their
@@ -50,3 +50,11 @@ company PC's restrictions; the advanced track is written after the minimum path 
 - The course homes list the minimum path first and mark optional and advanced units.
 - Lessons are written in the order of the minimum path; `en` and `ja` files are created by `scaffold`
   but the Japanese text waits for the Vietnamese pilot (point 2).
+
+## Amended after Codex round 2 (2026-09-26)
+
+Round 2 ([brainstorm/round-2.md](../../brainstorm/round-2.md)) agreed with keeping the personal-page
+project right after `errors-and-debugging`, and led to two changes: `files-folders-paths` moved
+ahead of `reviewing-agent-changes` (learners need to find the files an agent changed before they
+review a diff), and `data-formats` joined the minimum path before the office project. The minimum
+path is now 19 lessons, 347 minutes.

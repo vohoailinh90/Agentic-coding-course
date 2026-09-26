@@ -66,7 +66,7 @@ But notice: even in a taxi, **you still have to give the right address and check
 <!-- section: example -->
 ## Real Example
 
-The task: *build a birthday invitation web page for An, who is turning five — dinosaur theme, with an "RSVP" button.*
+The task: *build a birthday invitation web page for Alex, who is turning five — dinosaur theme, with an "RSVP" button.*
 
 **With a chatbot:**
 

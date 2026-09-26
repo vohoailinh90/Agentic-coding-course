@@ -16,7 +16,7 @@ _Lessons with a link are ready to read; the others are being written._
 
 ## ⭐ The minimum path
 
-Start here: 18 lessons · 337 min, enough to give an AI agent real work and check the result yourself. They carry a ⭐ in the tables below; take the other lessons when you need them.
+Start here: 19 lessons · 347 min, enough to give an AI agent real work and check the result yourself. They carry a ⭐ in the tables below; take the other lessons when you need them.
 
 1. [From Chatbot to AI Agent: AI That Does the Work, Not Just Answers](lessons/chatbot-to-agent.md) — 8 min
 2. [Brain, Tools and the Loop: What an AI Agent Is Made Of](lessons/agent-parts-and-loop.md) — 8 min
@@ -27,15 +27,16 @@ Start here: 18 lessons · 337 min, enough to give an AI agent real work and chec
 7. New Mindset: You Are the Lead, Not the Typist — 8 min
 8. Writing Good Specs: The Task and Its Definition of Done — 12 min
 9. The Four-Step Workflow: Explore → Plan → Build → Verify — 12 min
-10. Reading and Reviewing an Agent's Changes (Diffs) — 15 min
-11. Turn "Looks Right" into Checks — 12 min
-12. Reading Error Messages and Debugging Like a Detective — 12 min
-13. Project: Your Personal Web Page — 60 min
-14. Files, Folders and Paths: The Map Inside Your Computer — 10 min
-15. Git: A Magic Undo Button for Your Whole Project — 15 min
-16. Hallucination: Why AI Is Confidently Wrong — 10 min
-17. The Context Window: AI's Short-Term Memory — 10 min
-18. Project: Automate an Office Task (Spreadsheet → Report) — 90 min
+10. Files, Folders and Paths: The Map Inside Your Computer — 10 min
+11. Reading and Reviewing an Agent's Changes (Diffs) — 15 min
+12. Turn "Looks Right" into Checks — 12 min
+13. Reading Error Messages and Debugging Like a Detective — 12 min
+14. Project: Your Personal Web Page — 60 min
+15. What Data Looks Like: JSON, CSV and YAML — 10 min
+16. Git: A Magic Undo Button for Your Whole Project — 15 min
+17. Hallucination: Why AI Is Confidently Wrong — 10 min
+18. The Context Window: AI's Short-Term Memory — 10 min
+19. Project: Automate an Office Task (Spreadsheet → Report) — 90 min
 
 ## 1. 🚀 Start Safely and Get a First Win
 
@@ -79,9 +80,10 @@ Start here: 18 lessons · 337 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 2.2.1 | ⭐ Reading and Reviewing an Agent's Changes (Diffs) | 🛠️ Hands-on | 15 min |
-| 2.2.2 | ⭐ Turn "Looks Right" into Checks | 🛠️ Hands-on | 12 min |
-| 2.2.3 | ⭐ Reading Error Messages and Debugging Like a Detective | 🛠️ Hands-on | 12 min |
+| 2.2.1 | ⭐ Files, Folders and Paths: The Map Inside Your Computer | 🛠️ Hands-on | 10 min |
+| 2.2.2 | ⭐ Reading and Reviewing an Agent's Changes (Diffs) | 🛠️ Hands-on | 15 min |
+| 2.2.3 | ⭐ Turn "Looks Right" into Checks | 🛠️ Hands-on | 12 min |
+| 2.2.4 | ⭐ Reading Error Messages and Debugging Like a Detective | 🛠️ Hands-on | 12 min |
 
 ### 2.3 Your First Project
 
@@ -98,9 +100,8 @@ Start here: 18 lessons · 337 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 3.1.1 | What Is Software? A Program Is Like a Recipe | 📖 Concept | 8 min |
-| 3.1.2 | ⭐ Files, Folders and Paths: The Map Inside Your Computer | 🛠️ Hands-on | 10 min |
-| 3.1.3 | Anatomy of a Project: Frontend, Backend, Database, API | 📖 Concept | 10 min |
-| 3.1.4 | What Data Looks Like: JSON, CSV and YAML | 🛠️ Hands-on | 10 min |
+| 3.1.2 | Anatomy of a Project: Frontend, Backend, Database, API | 📖 Concept | 10 min |
+| 3.1.3 | ⭐ What Data Looks Like: JSON, CSV and YAML | 🛠️ Hands-on | 10 min |
 
 ### 3.2 Code and History
 

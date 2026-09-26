@@ -26,7 +26,7 @@ Sau bài này, bạn sẽ:
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
 
-Bạn đã biết [agent tự làm các bước thay bạn](chatbot-to-agent.md). Nhưng một mô hình ngôn ngữ chỉ sinh ra chữ — vậy làm sao nó **mở được file** hay **chạy được chương trình**?
+Bạn đã biết [agent tự làm các bước thay bạn](chatbot-to-agent.md). Nhưng tự một mô hình ngôn ngữ chỉ tạo ra đầu ra — một đoạn chữ, hay một *yêu cầu dùng công cụ* — vậy làm sao agent **mở được file** hay **chạy được chương trình**?
 
 Câu trả lời nằm ở cách agent được ghép lại. Hiểu ba bộ phận của nó, bạn sẽ đoán được agent làm được gì, không làm được gì, và khi nào nó cần bạn.
 
@@ -37,8 +37,8 @@ Câu trả lời nằm ở cách agent được ghép lại. Hiểu ba bộ ph�
 
 ![Một AI agent gồm những gì?](../diagrams/agent-formula.svg)
 
-- **Bộ não — LLM (mô hình ngôn ngữ lớn):** hiểu yêu cầu, suy luận và quyết định bước tiếp theo. Tự nó chỉ viết ra chữ.
-- **Đôi tay — công cụ (tool):** những việc agent **được phép** làm thật: đọc/ghi file, chạy lệnh, tìm kiếm web, gọi dịch vụ khác. LLM chọn công cụ; phần mềm bao quanh nó mới thực sự bấm nút.
+- **Bộ não — LLM (mô hình ngôn ngữ lớn):** hiểu yêu cầu, suy luận và quyết định bước tiếp theo. Thứ nó tạo ra là đầu ra — chữ, hoặc một yêu cầu dùng công cụ — chứ chưa phải hành động thật.
+- **Đôi tay — công cụ (tool):** những việc agent **được phép** làm thật: đọc/ghi file, chạy lệnh, tìm kiếm web, gọi dịch vụ khác. Mô hình có thể *yêu cầu* một trong những công cụ mà phần mềm của agent cho phép; phần mềm đó quyết định có chấp nhận yêu cầu không, và chính nó mới thực sự bấm nút.
 - **Vòng lặp:** agent không làm một lần là xong. Nó lặp lại cho đến khi đạt mục tiêu.
 
 ### Vòng lặp suy nghĩ → hành động → quan sát
@@ -81,7 +81,7 @@ Bạn kiểm tra nhanh: mở vài ảnh, xem tên có khớp ngày chụp không
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
-- **"LLM tự mở file được."** — Không. LLM chỉ quyết định dùng công cụ nào; phần mềm của agent mới thực hiện, và chỉ trong phạm vi được cho phép.
+- **"LLM tự mở file được."** — Không. LLM chỉ đưa ra *yêu cầu* dùng công cụ; phần mềm của agent quyết định có cho phép không rồi mới thực hiện, và chỉ trong phạm vi được cho phép.
 - **"Agent nào cũng tự thấy lỗi và tự sửa."** — Chỉ khi nó có công cụ để quan sát kết quả và được phép sửa. Kể cả khi đó, nó vẫn có thể sửa sai.
 
 <!-- section: recap -->
@@ -120,7 +120,7 @@ Bạn kiểm tra nhanh: mở vài ảnh, xem tên có khớp ngày chụp không
 <details>
 <summary>Xem đáp án</summary>
 
-1. **B** — LLM chọn việc cần làm; công cụ mới là thứ thực sự tạo file.
+1. **B** — LLM chỉ đưa ra yêu cầu; công cụ mới là thứ thực sự tạo file.
 2. **B** — không quan sát được thì không biết mình sai; tự sửa phụ thuộc vào công cụ và phản hồi.
 3. **B** — những quyết định quan trọng hoặc khó đảo ngược là của bạn.
 

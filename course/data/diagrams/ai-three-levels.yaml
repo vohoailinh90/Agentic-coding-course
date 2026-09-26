@@ -63,9 +63,9 @@ columns:
       - vi: Một mục tiêu
         en: A goal
         ja: 目標
-      - vi: Lập kế hoạch, tự làm, tự kiểm tra
-        en: Plans, acts, checks its own work
-        ja: 計画し、実行し、確認する
+      - vi: Lập kế hoạch và tự làm; tự kiểm tra khi công cụ cho phép
+        en: Plans and acts; checks its work when its tools allow
+        ja: 計画して実行し、ツールが許せば自分で確認する
       - vi: AI — bạn giám sát
         en: The AI — you supervise
         ja: AI（あなたは監督）

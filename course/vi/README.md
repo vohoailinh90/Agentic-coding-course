@@ -16,7 +16,7 @@ _Bài có liên kết là bài đã đọc được; các bài còn lại đang 
 
 ## ⭐ Lộ trình tối thiểu
 
-Bắt đầu từ đây: 18 bài · 337 phút, đủ để giao việc cho AI agent và tự kiểm tra kết quả. Các bài này có dấu ⭐ trong các bảng bên dưới; những bài còn lại học thêm khi cần.
+Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI agent và tự kiểm tra kết quả. Các bài này có dấu ⭐ trong các bảng bên dưới; những bài còn lại học thêm khi cần.
 
 1. [Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc](lessons/chatbot-to-agent.md) — 8 phút
 2. [Bộ não, đôi tay và vòng lặp: AI agent được ghép từ gì?](lessons/agent-parts-and-loop.md) — 8 phút
@@ -27,15 +27,16 @@ Bắt đầu từ đây: 18 bài · 337 phút, đủ để giao việc cho AI ag
 7. Tư duy mới: bạn là trưởng nhóm, không phải người gõ code — 8 phút
 8. Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành — 12 phút
 9. Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng — 12 phút
-10. Đọc và review thay đổi của agent (diff) — 15 phút
-11. Từ "trông có vẻ đúng" đến phép kiểm tra — 12 phút
-12. Đọc thông báo lỗi và gỡ lỗi như một thám tử — 12 phút
-13. Dự án: trang web cá nhân của bạn — 60 phút
-14. File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính — 10 phút
-15. Git: nút Undo thần kỳ cho cả dự án — 15 phút
-16. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
-17. Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI — 10 phút
-18. Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) — 90 phút
+10. File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính — 10 phút
+11. Đọc và review thay đổi của agent (diff) — 15 phút
+12. Từ "trông có vẻ đúng" đến phép kiểm tra — 12 phút
+13. Đọc thông báo lỗi và gỡ lỗi như một thám tử — 12 phút
+14. Dự án: trang web cá nhân của bạn — 60 phút
+15. Dữ liệu trông như thế nào: JSON, CSV, YAML — 10 phút
+16. Git: nút Undo thần kỳ cho cả dự án — 15 phút
+17. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
+18. Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI — 10 phút
+19. Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) — 90 phút
 
 ## 1. 🚀 Bắt đầu an toàn, làm được ngay buổi đầu
 
@@ -79,9 +80,10 @@ Bắt đầu từ đây: 18 bài · 337 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 2.2.1 | ⭐ Đọc và review thay đổi của agent (diff) | 🛠️ Thực hành | 15 phút |
-| 2.2.2 | ⭐ Từ "trông có vẻ đúng" đến phép kiểm tra | 🛠️ Thực hành | 12 phút |
-| 2.2.3 | ⭐ Đọc thông báo lỗi và gỡ lỗi như một thám tử | 🛠️ Thực hành | 12 phút |
+| 2.2.1 | ⭐ File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính | 🛠️ Thực hành | 10 phút |
+| 2.2.2 | ⭐ Đọc và review thay đổi của agent (diff) | 🛠️ Thực hành | 15 phút |
+| 2.2.3 | ⭐ Từ "trông có vẻ đúng" đến phép kiểm tra | 🛠️ Thực hành | 12 phút |
+| 2.2.4 | ⭐ Đọc thông báo lỗi và gỡ lỗi như một thám tử | 🛠️ Thực hành | 12 phút |
 
 ### 2.3 Dự án đầu tiên
 
@@ -98,9 +100,8 @@ Bắt đầu từ đây: 18 bài · 337 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 3.1.1 | Phần mềm là gì? Chương trình giống một công thức nấu ăn | 📖 Khái niệm | 8 phút |
-| 3.1.2 | ⭐ File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính | 🛠️ Thực hành | 10 phút |
-| 3.1.3 | Giải phẫu một dự án: frontend, backend, database, API | 📖 Khái niệm | 10 phút |
-| 3.1.4 | Dữ liệu trông như thế nào: JSON, CSV, YAML | 🛠️ Thực hành | 10 phút |
+| 3.1.2 | Giải phẫu một dự án: frontend, backend, database, API | 📖 Khái niệm | 10 phút |
+| 3.1.3 | ⭐ Dữ liệu trông như thế nào: JSON, CSV, YAML | 🛠️ Thực hành | 10 phút |
 
 ### 3.2 Mã và lịch sử thay đổi
 

@@ -145,6 +145,14 @@ modules:
           en: Inspect the Result
           ja: 結果を確かめる
         lessons:
+          - id: files-folders-paths
+            title:
+              vi: "File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính"
+              en: "Files, Folders and Paths: The Map Inside Your Computer"
+              ja: ファイル・フォルダ・パス：パソコンの中の地図
+            type: hands-on
+            minutes: 10
+            terms: [file-path]
           - id: reviewing-agent-changes
             title:
               vi: Đọc và review thay đổi của agent (diff)
@@ -208,14 +216,6 @@ modules:
             type: concept
             minutes: 8
             terms: [software, program, code]
-          - id: files-folders-paths
-            title:
-              vi: "File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính"
-              en: "Files, Folders and Paths: The Map Inside Your Computer"
-              ja: ファイル・フォルダ・パス：パソコンの中の地図
-            type: hands-on
-            minutes: 10
-            terms: [file-path]
           - id: project-anatomy
             title:
               vi: "Giải phẫu một dự án: frontend, backend, database, API"
@@ -612,11 +612,12 @@ minimum_path:
   - lead-not-typist
   - writing-good-specs
   - explore-plan-build-verify
+  - files-folders-paths
   - reviewing-agent-changes
   - testing-basics
   - errors-and-debugging
   - project-personal-page
-  - files-folders-paths
+  - data-formats
   - git-version-control
   - hallucination
   - context-window

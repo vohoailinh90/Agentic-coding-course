@@ -25,10 +25,10 @@ Giai đoạn 0 → 1 — lộ trình v1 đã chốt, bắt đầu viết lộ tr
 | | |
 |---|---|
 | Lộ trình v1 | 6 chương · 17 chủ đề · 52 bài · ~15 giờ — [xem bản đồ lộ trình](course/vi/README.md) |
-| ⭐ Lộ trình tối thiểu | 18 bài · 337 phút, gồm 2 dự án — học trước, đăng Facebook trước |
+| ⭐ Lộ trình tối thiểu | 19 bài · 347 phút, gồm 2 dự án — học trước, đăng Facebook trước |
 | Bài mẫu | [Từ chatbot đến AI agent](course/vi/lessons/chatbot-to-agent.md) và [Bộ não, đôi tay và vòng lặp](course/vi/lessons/agent-parts-and-loop.md) — mỗi bài có infographic và một hình tóm tắt cả bài |
 | Thuật ngữ 3 thứ tiếng | 43 thuật ngữ — [trang thuật ngữ](course/vi/glossary.md) |
-| Brainstorm với Codex | [brainstorm/](brainstorm/README.md) — vòng 1 xong, đã áp dụng thành lộ trình v1 |
+| Brainstorm với Codex | [brainstorm/](brainstorm/README.md) — xong cả 2 vòng, đã áp dụng thành lộ trình v1 |
 
 ## Repo này có gì
 

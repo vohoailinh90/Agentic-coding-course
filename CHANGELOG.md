@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.3.1 — 2026-09-26
+
+- Codex brainstorm round 2 ([brainstorm/round-2.md](brainstorm/round-2.md)), all five findings
+  applied: `files-folders-paths` moves ahead of `reviewing-agent-changes`; `data-formats` joins the
+  minimum path (now 19 lessons, 347 min); `agent-parts-and-loop` no longer says an LLM "only writes
+  text" or "chooses the tool" — it produces output, possibly a tool request, that the agent's software
+  allows and carries out; the agent column of `ai-three-levels` checks its work "when its tools
+  allow"; the English and Japanese birthday example uses a local name.
+
 ## v0.3.0 — 2026-09-26
 
 - **Roadmap v1** from Codex brainstorm round 1 and the owner's decisions (ADR 007): 6 modules,

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 825" width="800" height="825" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
 <title id="title">Lộ trình học</title>
-<desc id="desc">1. Bắt đầu an toàn, làm được ngay buổi đầu (7 bài · 79 phút · ⭐ 6 bài tối thiểu). 2. Giao việc, kiểm tra và sửa cùng agent (7 bài · 131 phút · ⭐ 7 bài tối thiểu). 3. Hiểu phần mềm vừa đủ, đúng lúc cần (8 bài · 92 phút · ⭐ 2 bài tối thiểu). 4. Những hiểu biết về AI bạn thật sự cần (12 bài · 118 phút · ⭐ 2 bài tối thiểu). 5. Làm việc với agent một cách đáng tin cậy (14 bài · 158 phút). 6. Làm ra thứ có ích (4 bài · 315 phút · ⭐ 1 bài tối thiểu)</desc>
+<desc id="desc">1. Bắt đầu an toàn, làm được ngay buổi đầu (7 bài · 79 phút · ⭐ 6 bài tối thiểu). 2. Giao việc, kiểm tra và sửa cùng agent (8 bài · 141 phút · ⭐ 8 bài tối thiểu). 3. Hiểu phần mềm vừa đủ, đúng lúc cần (7 bài · 82 phút · ⭐ 2 bài tối thiểu). 4. Những hiểu biết về AI bạn thật sự cần (12 bài · 118 phút · ⭐ 2 bài tối thiểu). 5. Làm việc với agent một cách đáng tin cậy (14 bài · 158 phút). 6. Làm ra thứ có ích (4 bài · 315 phút · ⭐ 1 bài tối thiểu)</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -31,14 +31,14 @@
 <text x="80" y="310" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text x="162" y="299.6" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧭</text>
 <text font-size="19" fill="#4C1D95" text-anchor="start" font-weight="700"><tspan x="190" y="296.6">Giao việc, kiểm tra và sửa cùng agent</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="323.7">7 bài · 131 phút · ⭐ 7 bài tối thiểu</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="323.7">8 bài · 141 phút · ⭐ 8 bài tối thiểu</tspan></text>
 <rect x="128" y="362.5" width="644" height="82.9" rx="18" fill="#ECFDF5" stroke="#D1FAE5" stroke-width="2"/>
 <rect x="128" y="362.5" width="8" height="82.9" rx="4" fill="#059669"/>
 <circle cx="80" cy="403.9" r="24" fill="#059669" stroke="#FFFFFF" stroke-width="4"/>
 <text x="80" y="410.9" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text x="162" y="400.5" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧱</text>
 <text font-size="19" fill="#064E3B" text-anchor="start" font-weight="700"><tspan x="190" y="397.5">Hiểu phần mềm vừa đủ, đúng lúc cần</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="424.6">8 bài · 92 phút · ⭐ 2 bài tối thiểu</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="424.6">7 bài · 82 phút · ⭐ 2 bài tối thiểu</tspan></text>
 <rect x="128" y="463.4" width="644" height="82.9" rx="18" fill="#FFFBEB" stroke="#FEF3C7" stroke-width="2"/>
 <rect x="128" y="463.4" width="8" height="82.9" rx="4" fill="#D97706"/>
 <circle cx="80" cy="504.8" r="24" fill="#D97706" stroke="#FFFFFF" stroke-width="4"/>
