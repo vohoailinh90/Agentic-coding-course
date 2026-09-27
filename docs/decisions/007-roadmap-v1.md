@@ -62,4 +62,5 @@ path is now 19 lessons, 347 minutes.
 
 No native Japanese review is needed, and the whole course is written now, in all three languages,
 in the order of the minimum path and then the rest of the roadmap. This replaces point 2 above
-(Japanese after the Vietnamese pilot) and the native-review default.
+(Japanese after the Vietnamese pilot), the native-review default, and the default that the advanced
+track waits until the minimum path has learners.

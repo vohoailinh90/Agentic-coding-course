@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.5.0 — 2026-09-27
+
+- **The minimum path is written:** all 19 lessons in vi, en and ja (status `review`), each with an
+  explanatory infographic and a recap — from watching an agent build a page and choosing a safe setup,
+  through specs, the explore → plan → build → verify workflow, paths, diffs, checks and debugging, to
+  two projects (a personal web page; an automated monthly sales report whose right answers are given
+  in advance). Tool facts are dated September 2026 and cite Anthropic's documentation.
+- `validate` reports `diagram_word_split` when a word is wider than its box and the drawing has to cut
+  it in two (Latin and katakana words; kanji may break anywhere), with messages in vi, en and ja.
+
 ## v0.4.0 — 2026-09-27
 
 - **`python -m src.main export`**: the course as self-contained HTML files to share without GitHub

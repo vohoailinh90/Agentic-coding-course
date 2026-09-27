@@ -100,6 +100,6 @@ duyệt". Xem [ADR 009](docs/decisions/009-offline-html-export.md).
 | Giai đoạn | Nội dung | Trạng thái |
 |---|---|---|
 | 0 | Kho dữ liệu, lộ trình v0, bài mẫu, infographic, brainstorm lộ trình với Codex | xong |
-| 1 | Chốt lộ trình v1 (xong); viết cả khóa học bằng 3 thứ tiếng, "lộ trình tối thiểu" trước; xuất HTML để chia sẻ (xong) | đang làm |
+| 1 | Chốt lộ trình v1 (xong); lộ trình tối thiểu 19 bài × 3 thứ tiếng (xong, chờ duyệt); xuất HTML để chia sẻ (xong); 33 bài còn lại | đang làm |
 | 2 | Đăng Facebook đều đặn từ kho dữ liệu (xuất infographic thành ảnh) | sắp tới |
 | 3 | Website khóa học: nút chuyển ngôn ngữ, cây khóa học, tiến độ, mục lục từng bài | sau này |

@@ -22,27 +22,32 @@
     Không ô nào bị vẽ đè lên ô khác; sơ đồ quá nhiều chữ bị `validate` báo lỗi `diagram_crowded`.
   - **Bài nào cũng có hình tóm tắt cả bài** (phần "Tóm tắt bằng hình", mẫu `summary`) — `validate`
     bắt buộc từ trạng thái `review` ([ADR 008](docs/decisions/008-a-recap-infographic-in-every-lesson.md)).
-  - Hai bài mẫu đủ 3 thứ tiếng, trạng thái `review` (chờ Linh duyệt): `chatbot-to-agent` và
-    `agent-parts-and-loop` (tách từ bài mẫu cũ theo góp ý của Codex).
+  - **Lộ trình tối thiểu viết xong: 19 bài** (347 phút), đủ 3 thứ tiếng, trạng thái `review` (chờ Linh
+    duyệt), mỗi bài một infographic giải thích và một hình tóm tắt; hai dự án có dữ liệu mẫu và kết quả
+    đúng biết trước. Dữ kiện về công cụ ghi rõ "tính đến tháng 9/2026" và dẫn tài liệu chính thức.
+  - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`).
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
     (thông báo bằng vi/en/ja), có test, mutation check và bước kiểm tra trong CI.
   - **Chia sẻ không cần GitHub:** `export` ghi file HTML tự chứa vào `outputs/html/` — một file đủ
     3 thứ tiếng và một file cho mỗi ngôn ngữ; in ra PDF được
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
-  - Linh duyệt các bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 17 bài còn lại của lộ trình tối thiểu, rồi 33 bài còn lại của lộ trình, chưa viết. Khi thử thật
+  - Linh duyệt 19 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
+  - 33 bài còn lại của lộ trình (phần core còn lại, nhánh tùy chọn, nâng cao) chưa viết. Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
+  - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,
+    docs.github.com, docs.python.org…), nên nguồn tham khảo hiện chỉ lấy từ tài liệu của Anthropic và
+    Google Cloud. Mở thêm trong cài đặt Network access của môi trường nếu muốn nguồn đa dạng hơn.
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
 - **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 007 (lộ trình v1, và quyết định viết cả
   khóa học ngay), 008 (hình tóm tắt trong mọi bài), 009 (file HTML xem offline).
 
 ## Bước tiếp theo
 
-1. Viết các bài của lộ trình tối thiểu theo thứ tự, bắt đầu từ `watch-an-agent-build`
-   (`python -m src.main scaffold <lesson-id>`), cả 3 thứ tiếng, mỗi bài một hình tóm tắt, theo các quy
-   ước chung trong [docs/content-guide.md](docs/content-guide.md); thử 6 bài đầu với vài người học thật.
-2. Sau mỗi đợt bài mới: `python -m src.main export` để có bản HTML mới gửi đồng nghiệp.
+1. Linh đọc duyệt lộ trình tối thiểu (bản HTML: `python -m src.main export`), thử 6 bài đầu với vài
+   người học thật, rồi đổi các bài đạt sang `done`.
+2. Viết 33 bài còn lại theo thứ tự lộ trình, cùng các quy ước trong
+   [docs/content-guide.md](docs/content-guide.md); sau mỗi đợt, xuất lại HTML.
 3. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`, ảnh đăng kèm là
    hình tóm tắt của bài.
