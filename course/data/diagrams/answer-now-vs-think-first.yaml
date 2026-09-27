@@ -1,0 +1,64 @@
+# Used in: reasoning-models (concept). Answering at once vs. thinking first.
+template: compare
+title:
+  vi: Trả lời ngay hay nghĩ trước?
+  en: Answer at Once or Think First?
+  ja: すぐ答える？先に考える？
+versus: true
+rows:
+  - vi: Cách làm
+    en: How it works
+    ja: やり方
+  - vi: Thời gian
+    en: Time
+    ja: 時間
+  - vi: Token
+    en: Tokens
+    ja: トークン
+  - vi: Hợp với
+    en: Good for
+    ja: 向いていること
+emphasis_row: 4
+columns:
+  - icon: "⚡"
+    color: blue
+    name:
+      vi: Trả lời ngay
+      en: Answer at once
+      ja: すぐ答える
+    values:
+      - vi: Viết thẳng câu trả lời
+        en: Writes the answer directly
+        ja: そのまま答えを書く
+      - vi: Nhanh
+        en: Fast
+        ja: 速い
+      - vi: Chỉ phần trả lời
+        en: The answer only
+        ja: 答えの分だけ
+      - vi: "Câu hỏi ngắn,\nviết lại một câu"
+        en: "Short questions,\nrewording a sentence"
+        ja: 短い質問・言い換え
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: Nghĩ trước
+      en: Think first
+      ja: 先に考える
+    values:
+      - vi: "Nháp các bước,\nrồi mới trả lời"
+        en: "Drafts the steps,\nthen answers"
+        ja: 手順を下書きしてから答える
+      - vi: Lâu hơn
+        en: Slower
+        ja: 時間がかかる
+      - vi: Thêm phần suy nghĩ
+        en: Plus the thinking
+        ja: 考える分も加わる
+      - vi: "Bài nhiều bước,\ncode, kế hoạch"
+        en: "Multi-step problems,\ncode, planning"
+        ja: 何段階もある問題・コード・計画
+takeaway:
+  vi: Nghĩ trước giúp bài nhiều bước, nhưng tốn thời gian và token.
+  en: "Thinking first helps with multi-step work,\nbut it costs time and tokens."
+  ja: "先に考えると、複雑な問題に強くなります。\nただし、時間とトークンがかかります。"

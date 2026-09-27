@@ -385,6 +385,18 @@ terms:
       term: トークン
       definition: LLMが読み書きする文章の小さな単位（単語・単語の一部・記号）。利用量や上限はトークン数で数えます。
 
+  - id: reasoning-model
+    vi:
+      term: Mô hình suy luận (reasoning model)
+      definition: Mô hình, hoặc một chế độ của mô hình, viết ra các bước suy nghĩ trước khi trả lời; giúp với việc nhiều bước nhưng tốn thêm thời gian và token.
+    en:
+      term: Reasoning model
+      definition: A model, or a mode of one, that works through a problem in written steps before it answers; it helps with multi-step work but costs extra time and tokens.
+    ja:
+      term: 推論モデル（reasoning model）
+      reading: すいろんモデル
+      definition: 答える前に、考える手順を文章として書き出すモデル（またはモデルの動作モード）。何段階もある作業に役立ちますが、時間とトークンが余分にかかります。
+
   - id: context-window
     vi:
       term: Cửa sổ ngữ cảnh (context window)
