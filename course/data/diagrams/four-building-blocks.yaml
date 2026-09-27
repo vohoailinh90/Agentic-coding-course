@@ -42,9 +42,9 @@ terms:
       en: Loop
       ja: ループ
     caption:
-      vi: hoạt động như kéo công thức xuống
-      en: works like filling a formula down
-      ja: 数式のコピーのように働く
+      vi: như kéo công thức xuống
+      en: like filling a formula down
+      ja: 数式を全行にコピーするように
 result:
   icon: "📜"
   color: green
