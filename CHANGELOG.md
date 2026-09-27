@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `tokens` (one sentence in three
+  languages cut into tokens; every count made with the open-source tiktoken tokenizer and dated) and
+  `reasoning-models` (thinking first helps multi-step work, costs time and tokens, and the visible
+  reasoning is no guarantee). New glossary term `reasoning-model`. The course now has 34 of 52 lessons.
 - Thirteen more lessons in vi, en and ja (status `review`): `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro` and `prompt-rag-finetune-compare` by Claude; `security-basics`, `prompting-basics`,
