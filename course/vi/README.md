@@ -99,8 +99,8 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 3.1.1 | Phần mềm là gì? Chương trình giống một công thức nấu ăn | 📖 Khái niệm | 8 phút |
-| 3.1.2 | Giải phẫu một dự án: frontend, backend, database, API | 📖 Khái niệm | 10 phút |
+| 3.1.1 | [Phần mềm là gì? Chương trình giống một công thức nấu ăn](lessons/what-is-software.md) | 📖 Khái niệm | 8 phút |
+| 3.1.2 | [Giải phẫu một dự án: frontend, backend, database, API](lessons/project-anatomy.md) | 📖 Khái niệm | 10 phút |
 | 3.1.3 | ⭐ [Dữ liệu trông như thế nào: JSON, CSV, YAML](lessons/data-formats.md) | 🛠️ Thực hành | 10 phút |
 
 ### 3.2 Mã và lịch sử thay đổi

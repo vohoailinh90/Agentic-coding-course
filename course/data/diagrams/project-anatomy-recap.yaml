@@ -1,0 +1,33 @@
+template: summary
+title:
+  vi: "Tóm tắt: giải phẫu một dự án"
+  en: "Recap: Anatomy of a Project"
+  ja: まとめ：プロジェクトの解剖
+points:
+  - icon: "🖥️"
+    color: blue
+    name: {vi: Frontend, en: Frontend, ja: フロントエンド}
+    caption: {vi: "Người dùng nhìn\nvà tương tác", en: Users see and interact, ja: 利用者が見て操作する}
+  - icon: "🔧"
+    color: violet
+    name: {vi: Backend, en: Backend, ja: バックエンド}
+    caption: {vi: Xử lý yêu cầu và quy tắc, en: Handles requests and rules, ja: リクエストとルールを処理}
+  - icon: "🗄️"
+    color: teal
+    name: {vi: Database, en: Database, ja: データベース}
+    caption: {vi: Giữ dữ liệu để dùng lại, en: Keeps data for later, ja: 後で使うデータを保つ}
+  - icon: "📖"
+    color: amber
+    name: {vi: API như thực đơn, en: API as a menu, ja: APIはメニュー}
+    caption: {vi: Cách các phần yêu cầu nhau, en: How parts make requests, ja: 部分同士が依頼する方法}
+  - icon: "🔎"
+    color: green
+    name: {vi: Giao đúng phạm vi, en: Lead with scope, ja: 範囲で指揮する}
+    caption:
+      vi: "Chỉ đúng phần,\nkiểm tra diff"
+      en: "Name the part;\ninspect the diff"
+      ja: 部分を指定しdiffを確認
+takeaway:
+  vi: Biết vai trò và đường đi giúp bạn giao đúng phần cho agent.
+  en: Knowing the roles and request path helps you direct the agent.
+  ja: 役割と経路が分かれば、エージェントへ正しく指示できる。
