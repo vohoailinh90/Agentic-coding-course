@@ -24,7 +24,7 @@ Sau bài này, bạn sẽ:
 - So sánh hai câu trả lời bằng tiêu chí bạn kiểm tra được.
 
 <!-- section: hook -->
-## Mở đầu: "Viết giúp tôi cho hay"
+## Mở đầu: vì sao nên quan tâm?
 
 Mai dán ba dòng ghi chú về một cuộc họp vào chatbot và gõ: *"Viết giúp tôi cho hay."* AI trả lại một email dài, trang trọng, tự thêm ngày họp và gọi người nhận là "quý khách". Không cái nào đúng ý Mai.
 

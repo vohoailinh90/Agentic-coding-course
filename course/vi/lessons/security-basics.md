@@ -24,7 +24,7 @@ Sau bài này, bạn sẽ:
 - Biết cách xử lý ngay nếu một bí mật đã bị lộ.
 
 <!-- section: hook -->
-## Mở đầu: một dòng suýt thành công khai
+## Mở đầu: vì sao nên quan tâm?
 
 Huy viết một chương trình nhỏ trong thư mục `ai-practice`. Dịch vụ yêu cầu một **API key**, nên cậu dán thẳng vào file Python:
 

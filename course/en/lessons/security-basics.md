@@ -24,7 +24,7 @@ By the end of this lesson, you will be able to:
 - Respond immediately if a secret has been exposed.
 
 <!-- section: hook -->
-## Why This Matters: One Line Nearly Went Public
+## Why It Matters
 
 Huy writes a small program in `ai-practice`. The service asks for an **API key**, so he pastes it into his Python file:
 
@@ -37,7 +37,7 @@ The program works. Huy is about to publish the project in a public Git repositor
 A secret is not safe because it is surrounded by code. When the file is shared, the secret is shared too.
 
 <!-- section: concept -->
-## The Core Idea
+## Core Idea
 
 ### An API key is a program's password
 
@@ -66,14 +66,14 @@ Do not merely delete the line. Git history or someone else's copy may still cont
 [Data Safety and Permissions](data-safety-and-permissions.md) applies ✅ / ✋ / ⛔ to every action. [Git: A Magic Undo Button for Your Whole Project](git-version-control.md) explains why deleting something from the current version may not remove it from history.
 
 <!-- section: analogy -->
-## An Everyday Analogy
+## Simple Analogy
 
 An API key is like an access badge with your name on it. Whoever holds it may open the doors it permits, and the system records the entry under your name. You would not post a clear photo of its code on a noticeboard; you protect it and cancel it as soon as it is lost.
 
 The analogy has a limit: you can notice that a physical badge is missing. A digital secret can be copied without your knowledge, and both copies still work. When you suspect exposure, revoke it rather than just move its file.
 
 <!-- section: example -->
-## A Worked Example
+## Real Example
 
 Huy fixes the project before sharing it:
 
@@ -85,12 +85,12 @@ Huy fixes the project before sharing it:
 If a real key had ever been committed, Huy would revoke it first. A new commit that deletes the old line does not make the old key safe again.
 
 <!-- section: recap -->
-## Visual Recap
+## The Lesson in One Picture
 
 ![Recap: Keep Secrets Out of Public Places](../diagrams/security-basics-recap.svg)
 
 <!-- section: takeaways -->
-## Takeaways
+## Key Takeaways
 
 - An API key is a program's password; its holder may use access under your name.
 - Keep secrets in environment variables or local Git-ignored files, not in code.
@@ -98,7 +98,7 @@ If a real key had ever been committed, Huy would revoke it first. A new commit t
 - If a secret leaks, revoke, replace and inspect; deleting the line is not enough.
 
 <!-- section: quiz -->
-## Check Your Understanding
+## Quick Check
 
 **Question 1.** What is the best place for an API key used on your computer?
 

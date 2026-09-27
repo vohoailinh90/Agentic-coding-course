@@ -24,14 +24,14 @@ By the end of this lesson, you will be able to:
 - Compare two answers with criteria you can check.
 
 <!-- section: hook -->
-## Why This Matters: “Make It Sound Good”
+## Why It Matters
 
 Mai pastes three meeting notes into a chatbot and types, “Make this sound good.” The AI returns a long, formal email, invents a meeting date and calls the readers “valued customers.” None of these choices fit Mai's need.
 
 AI cannot read your mind. When a request leaves gaps, it must guess. A fluent answer can still answer the wrong task.
 
 <!-- section: concept -->
-## The Core Idea
+## Core Idea
 
 A **prompt** is the content you give AI to ask for an answer or an action. A good prompt does not need to be long or use magic words. It gives enough information to reduce guessing and is clear enough for you to check the result.
 
@@ -97,12 +97,12 @@ Finish with three lines of evidence:
 - *I would not use this when…* the data contains company secrets, real personal data, passwords or API keys.
 
 <!-- section: recap -->
-## Visual Recap
+## The Lesson in One Picture
 
 ![Recap: A Clear Prompt Makes Results Checkable](../diagrams/prompting-basics-recap.svg)
 
 <!-- section: takeaways -->
-## Takeaways
+## Key Takeaways
 
 - A prompt is content you give AI; clarity matters more than length.
 - State the context, task, format and an example when useful.
@@ -111,7 +111,7 @@ Finish with three lines of evidence:
 - Practise only with invented data inside `ai-practice`.
 
 <!-- section: quiz -->
-## Check Your Understanding
+## Quick Check
 
 **Question 1.** Which prompt produces the easiest result to check?
 
