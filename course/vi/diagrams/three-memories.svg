@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 637" width="800" height="637" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Agent &quot;nhớ&quot; ở đâu?</title>
+<desc id="desc">Kiến thức đã học — Chứa gì: Những gì học lúc huấn luyện; Kéo dài bao lâu: Dừng ở một thời điểm, có thể cũ; Bạn làm gì: Đưa thông tin mới vào khi cần. Cửa sổ ngữ cảnh — Chứa gì: Tin nhắn, file đã đọc, kết quả lệnh; Kéo dài bao lâu: Chỉ trong phiên này; đầy thì kém đi; Bạn làm gì: Mỗi việc một phiên, gọn gàng. File bạn lưu — Chứa gì: Spec, ghi chú, quy ước; Kéo dài bao lâu: Còn mãi, qua nhiều phiên; Bạn làm gì: Ghi điều quan trọng ra file. Điều gì phải được nhớ lâu, hãy ghi ra file — đừng chỉ nói trong cuộc trò chuyện.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="635" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="607" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Agent &quot;nhớ&quot; ở đâu?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="425.1" rx="20" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#475569"/>
+<circle cx="146" cy="138.3" r="26" fill="#475569"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎓</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Kiến thức đã học</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Chứa gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">Những gì học lúc huấn</tspan><tspan x="44" y="289.3">luyện</tspan></text>
+<line x1="44" y1="308.7" x2="248" y2="308.7" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">Kéo dài bao lâu</tspan></text>
+<text font-size="19" fill="#475569" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">Dừng ở một thời</tspan><tspan x="44" y="388.6">điểm, có thể cũ</tspan></text>
+<line x1="44" y1="408.7" x2="248" y2="408.7" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">Bạn làm gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="461.5">Đưa thông tin mới vào</tspan><tspan x="44" y="483.9">khi cần</tspan></text>
+</g>
+<g class="pulse">
+<rect x="282" y="86.3" width="236" height="425.1" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="3.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🪟</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">Cửa sổ ngữ cảnh</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">Chứa gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="266.8">Tin nhắn, file đã đọc,</tspan><tspan x="298" y="289.3">kết quả lệnh</tspan></text>
+<line x1="298" y1="308.7" x2="502" y2="308.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="336.2">Kéo dài bao lâu</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="363.5">Chỉ trong phiên</tspan><tspan x="298" y="388.6">này; đầy thì kém đi</tspan></text>
+<line x1="298" y1="408.7" x2="502" y2="408.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="436.2">Bạn làm gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="461.5">Mỗi việc một phiên, gọn</tspan><tspan x="298" y="483.9">gàng</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="425.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
+<circle cx="654" cy="138.3" r="26" fill="#059669"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📝</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">File bạn lưu</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">Chứa gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">Spec, ghi chú, quy ước</tspan></text>
+<line x1="552" y1="308.7" x2="756" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="336.2">Kéo dài bao lâu</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="552" y="363.5">Còn mãi, qua nhiều</tspan><tspan x="552" y="388.6">phiên</tspan></text>
+<line x1="552" y1="408.7" x2="756" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="436.2">Bạn làm gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="461.5">Ghi điều quan trọng ra</tspan><tspan x="552" y="483.9">file</tspan></text>
+</g>
+<rect x="28" y="535.4" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="566.4">💡 Điều gì phải được nhớ lâu, hãy ghi ra file — đừng chỉ nói trong cuộc</tspan><tspan x="400" y="590.1">trò chuyện.</tspan></text>
+</svg>

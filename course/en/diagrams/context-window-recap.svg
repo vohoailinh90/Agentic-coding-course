@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 571" width="800" height="571" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Recap: The Context Window</title>
+<desc id="desc">1. Working memory — Everything the agent can see right now; 2. Everything takes space — Messages, files read, command output; 3. Too full, worse results — Forgets early instructions, more mistakes; 4. One task per session — New, unrelated task? New session; 5. Write what matters to a file — The agent can read it next session. A little of the right context beats a lot of clutter.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="569" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="541" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Recap: The Context Window</tspan></text>
+<rect x="28" y="86.3" width="236" height="192.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="146" cy="122.3" r="22" fill="#2563EB"/>
+<circle cx="146" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🪟</text>
+<circle cx="46" cy="104.3" r="12" fill="#1E3A8A"/>
+<text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="146" y="170.8">Working memory</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="195.7">Everything the agent can</tspan><tspan x="146" y="215.5">see right now</tspan></text>
+<rect x="282" y="86.3" width="236" height="192.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="400" cy="122.3" r="22" fill="#7C3AED"/>
+<circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📦</text>
+<circle cx="300" cy="104.3" r="12" fill="#4C1D95"/>
+<text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">Everything takes</tspan><tspan x="400" y="195.2">space</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="220.1">Messages, files read,</tspan><tspan x="400" y="239.9">command output</tspan></text>
+<rect x="536" y="86.3" width="236" height="192.2" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
+<circle cx="654" cy="122.3" r="22" fill="#E11D48"/>
+<circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📉</text>
+<circle cx="554" cy="104.3" r="12" fill="#881337"/>
+<text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Too full, worse</tspan><tspan x="654" y="195.2">results</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">Forgets early</tspan><tspan x="654" y="239.9">instructions, more</tspan><tspan x="654" y="259.7">mistakes</tspan></text>
+<rect x="155" y="296.5" width="236" height="172.4" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="273" cy="332.5" r="22" fill="#D97706"/>
+<circle cx="273" cy="332.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="273" y="340.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧹</text>
+<circle cx="173" cy="314.5" r="12" fill="#78350F"/>
+<text x="173" y="319.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="273" y="381">One task per</tspan><tspan x="273" y="405.4">session</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="430.4">New, unrelated task? New</tspan><tspan x="273" y="450.2">session</tspan></text>
+<rect x="409" y="296.5" width="236" height="172.4" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="527" cy="332.5" r="22" fill="#059669"/>
+<circle cx="527" cy="332.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="527" y="340.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📝</text>
+<circle cx="427" cy="314.5" r="12" fill="#064E3B"/>
+<text x="427" y="319.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="527" y="381">Write what</tspan><tspan x="527" y="405.4">matters to a file</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="430.4">The agent can read it next</tspan><tspan x="527" y="450.2">session</tspan></text>
+<rect x="28" y="493" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="524">💡 A little of the right context beats a lot of clutter.</tspan></text>
+</svg>

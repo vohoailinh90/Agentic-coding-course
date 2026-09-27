@@ -1,0 +1,61 @@
+# Recap of context-window: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: cửa sổ ngữ cảnh"
+  en: "Recap: The Context Window"
+  ja: まとめ：コンテキストウィンドウ
+points:
+  - icon: "🪟"
+    color: blue
+    name:
+      vi: Trí nhớ làm việc
+      en: Working memory
+      ja: 作業の記憶
+    caption:
+      vi: Mọi thứ agent xem được lúc này
+      en: Everything the agent can see right now
+      ja: 今エージェントが見られるすべて
+  - icon: "📦"
+    color: violet
+    name:
+      vi: Cái gì cũng chiếm chỗ
+      en: Everything takes space
+      ja: 何でも場所を取る
+    caption:
+      vi: Tin nhắn, file đã đọc, kết quả lệnh
+      en: Messages, files read, command output
+      ja: メッセージ・ファイル・実行結果
+  - icon: "📉"
+    color: rose
+    name:
+      vi: Đầy quá thì kém đi
+      en: Too full, worse results
+      ja: 満杯になると質が落ちる
+    caption:
+      vi: Quên dặn dò cũ, sai nhiều hơn
+      en: Forgets early instructions, more mistakes
+      ja: 最初の指示を忘れ、ミスが増える
+  - icon: "🧹"
+    color: amber
+    name:
+      vi: Mỗi việc một phiên
+      en: One task per session
+      ja: 1つの作業に1セッション
+    caption:
+      vi: Việc mới không liên quan? Phiên mới
+      en: New, unrelated task? New session
+      ja: 関係ない作業なら新しいセッション
+  - icon: "📝"
+    color: green
+    name:
+      vi: Ghi điều quan trọng ra file
+      en: Write what matters to a file
+      ja: 大事なことはファイルに
+    caption:
+      vi: Agent đọc lại được ở phiên sau
+      en: The agent can read it next session
+      ja: 次のセッションでも読める
+takeaway:
+  vi: Ngữ cảnh ít mà đúng tốt hơn nhiều mà lộn xộn.
+  en: A little of the right context beats a lot of clutter.
+  ja: 少なくて的確な文脈は、多くて雑多な文脈にまさる。

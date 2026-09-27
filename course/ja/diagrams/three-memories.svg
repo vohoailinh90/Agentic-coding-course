@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 639" width="800" height="639" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">エージェントはどこで「覚えている」？</title>
+<desc id="desc">学習した知識 — 中身: 学習で身につけたこと; どれだけ続く: ある時点で止まり、古いことも; あなたがすること: 新しい情報は渡す. コンテキスト — 中身: メッセージ・読んだファイル・実行結果; どれだけ続く: このセッションだけ。満杯で質が落ちる; あなたがすること: 1つの作業に1セッション. 保存したファイル — 中身: 指示書・メモ・決まりごと; どれだけ続く: セッションをまたいで残る; あなたがすること: 大事なことはファイルに書く. 長く覚えておくべきことは、会話だけでなくファイルに書く。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="637" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="609" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">エージェントはどこで「覚えている」？</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="450.2" rx="20" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#475569"/>
+<circle cx="146" cy="138.3" r="26" fill="#475569"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎓</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">学習した知識</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">中身</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">学習で身につけたこと</tspan></text>
+<line x1="44" y1="308.7" x2="248" y2="308.7" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">どれだけ続く</tspan></text>
+<text font-size="19" fill="#475569" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">ある時点で止まり、</tspan><tspan x="44" y="388.6">古いことも</tspan></text>
+<line x1="44" y1="433.8" x2="248" y2="433.8" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="461.3">あなたがすること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="486.6">新しい情報は渡す</tspan></text>
+</g>
+<g class="pulse">
+<rect x="282" y="86.3" width="236" height="450.2" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="3.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🪟</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">コンテキスト</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">中身</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="266.8">メッセージ・読んだ</tspan><tspan x="298" y="289.3">ファイル・実行結果</tspan></text>
+<line x1="298" y1="308.7" x2="502" y2="308.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="336.2">どれだけ続く</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="363.5">このセッションだ</tspan><tspan x="298" y="388.6">け。満杯で質が落ち</tspan><tspan x="298" y="413.7">る</tspan></text>
+<line x1="298" y1="433.8" x2="502" y2="433.8" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="461.3">あなたがすること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="486.6">1つの作業に1セッション</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="450.2" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
+<circle cx="654" cy="138.3" r="26" fill="#059669"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📝</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">保存したファイル</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">中身</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">指示書・メモ・決まりごと</tspan></text>
+<line x1="552" y1="308.7" x2="756" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="336.2">どれだけ続く</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="552" y="363.5">セッションをまたい</tspan><tspan x="552" y="388.6">で残る</tspan></text>
+<line x1="552" y1="433.8" x2="756" y2="433.8" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="461.3">あなたがすること</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="486.6">大事なことはファイルに書</tspan><tspan x="552" y="509">く</tspan></text>
+</g>
+<rect x="28" y="560.5" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="591.5">💡 長く覚えておくべきことは、会話だけでなくファイルに書く。</tspan></text>
+</svg>

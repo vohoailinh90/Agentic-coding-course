@@ -1,0 +1,71 @@
+# Used in: context-window (concept). Where an agent "remembers" things, and what each kind of memory is good for.
+template: compare
+title:
+  vi: Agent "nhớ" ở đâu?
+  en: Where Does an Agent "Remember"?
+  ja: エージェントはどこで「覚えている」？
+rows:
+  - vi: Chứa gì
+    en: What it holds
+    ja: 中身
+  - vi: Kéo dài bao lâu
+    en: How long it lasts
+    ja: どれだけ続く
+  - vi: Bạn làm gì
+    en: What you do
+    ja: あなたがすること
+emphasis_row: 2
+columns:
+  - icon: "🎓"
+    color: slate
+    name:
+      vi: Kiến thức đã học
+      en: What it learned
+      ja: 学習した知識
+    values:
+      - vi: Những gì học lúc huấn luyện
+        en: What it learned in training
+        ja: 学習で身につけたこと
+      - vi: Dừng ở một thời điểm, có thể cũ
+        en: Frozen at a date, may be outdated
+        ja: ある時点で止まり、古いことも
+      - vi: Đưa thông tin mới vào khi cần
+        en: Bring in new facts when needed
+        ja: 新しい情報は渡す
+  - icon: "🪟"
+    color: blue
+    highlight: true
+    name:
+      vi: Cửa sổ ngữ cảnh
+      en: The context window
+      ja: コンテキスト
+    values:
+      - vi: Tin nhắn, file đã đọc, kết quả lệnh
+        en: Messages, files read, command output
+        ja: メッセージ・読んだファイル・実行結果
+      - vi: Chỉ trong phiên này; đầy thì kém đi
+        en: This session only; worse when full
+        ja: このセッションだけ。満杯で質が落ちる
+      - vi: Mỗi việc một phiên, gọn gàng
+        en: One task per session, kept lean
+        ja: 1つの作業に1セッション
+  - icon: "📝"
+    color: green
+    name:
+      vi: File bạn lưu
+      en: Files you keep
+      ja: 保存したファイル
+    values:
+      - vi: Spec, ghi chú, quy ước
+        en: Specs, notes, conventions
+        ja: 指示書・メモ・決まりごと
+      - vi: Còn mãi, qua nhiều phiên
+        en: Lasting, across sessions
+        ja: セッションをまたいで残る
+      - vi: Ghi điều quan trọng ra file
+        en: Write what matters to a file
+        ja: 大事なことはファイルに書く
+takeaway:
+  vi: Điều gì phải được nhớ lâu, hãy ghi ra file — đừng chỉ nói trong cuộc trò chuyện.
+  en: Anything that must be remembered goes in a file — not only in the chat.
+  ja: 長く覚えておくべきことは、会話だけでなくファイルに書く。

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 665" width="800" height="665" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Where Does an Agent &quot;Remember&quot;?</title>
+<desc id="desc">What it learned — What it holds: What it learned in training; How long it lasts: Frozen at a date, may be outdated; What you do: Bring in new facts when needed. The context window — What it holds: Messages, files read, command output; How long it lasts: This session only; worse when full; What you do: One task per session, kept lean. Files you keep — What it holds: Specs, notes, conventions; How long it lasts: Lasting, across sessions; What you do: Write what matters to a file. Anything that must be remembered goes in a file — not only in the chat.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="663" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="635" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Where Does an Agent &quot;Remember&quot;?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="452.8" rx="20" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#475569"/>
+<circle cx="146" cy="138.3" r="26" fill="#475569"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎓</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">What it learned</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">What it holds</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">What it learned in</tspan><tspan x="44" y="317">training</tspan></text>
+<line x1="44" y1="336.4" x2="248" y2="336.4" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="363.9">How long it lasts</tspan></text>
+<text font-size="19" fill="#475569" text-anchor="start" font-weight="700"><tspan x="44" y="391.2">Frozen at a date,</tspan><tspan x="44" y="416.3">may be outdated</tspan></text>
+<line x1="44" y1="436.4" x2="248" y2="436.4" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="463.9">What you do</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="489.2">Bring in new facts</tspan><tspan x="44" y="511.7">when needed</tspan></text>
+</g>
+<g class="pulse">
+<rect x="282" y="86.3" width="236" height="452.8" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="3.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🪟</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">The context</tspan><tspan x="400" y="219">window</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="269.2">What it holds</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="294.5">Messages, files read,</tspan><tspan x="298" y="317">command output</tspan></text>
+<line x1="298" y1="336.4" x2="502" y2="336.4" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="363.9">How long it lasts</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="391.2">This session only;</tspan><tspan x="298" y="416.3">worse when full</tspan></text>
+<line x1="298" y1="436.4" x2="502" y2="436.4" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="463.9">What you do</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="489.2">One task per session,</tspan><tspan x="298" y="511.7">kept lean</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="452.8" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#059669"/>
+<circle cx="654" cy="138.3" r="26" fill="#059669"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📝</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Files you keep</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="269.2">What it holds</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="294.5">Specs, notes,</tspan><tspan x="552" y="317">conventions</tspan></text>
+<line x1="552" y1="336.4" x2="756" y2="336.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="363.9">How long it lasts</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="552" y="391.2">Lasting, across</tspan><tspan x="552" y="416.3">sessions</tspan></text>
+<line x1="552" y1="436.4" x2="756" y2="436.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="463.9">What you do</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="489.2">Write what matters</tspan><tspan x="552" y="511.7">to a file</tspan></text>
+</g>
+<rect x="28" y="563.1" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="594.1">💡 Anything that must be remembered goes in a file — not only in</tspan><tspan x="400" y="617.9">the chat.</tspan></text>
+</svg>
