@@ -1,0 +1,61 @@
+# Recap of rag-intro: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: RAG"
+  en: "Recap: RAG"
+  ja: まとめ：RAG
+points:
+  - icon: "🔍"
+    color: amber
+    name:
+      vi: Tìm
+      en: Retrieve
+      ja: 検索する
+    caption:
+      vi: Đoạn tài liệu khớp câu hỏi
+      en: "Passages that match\nthe question"
+      ja: 質問に合う箇所を探す
+  - icon: "🧩"
+    color: violet
+    name:
+      vi: Bổ sung
+      en: Augment
+      ja: 追加する
+    caption:
+      vi: Đưa đoạn trích vào prompt
+      en: Put them into the prompt
+      ja: 抜粋をプロンプトに入れる
+  - icon: "💬"
+    color: green
+    name:
+      vi: Trả lời
+      en: Generate
+      ja: 回答する
+    caption:
+      vi: "Dựa trên đoạn trích;\nghi nguồn nếu được dặn"
+      en: "From the passages;\ncites them when asked"
+      ja: "抜粋にもとづき、\n指示があれば出典も"
+  - icon: "🧠"
+    color: slate
+    name:
+      vi: Không học thêm
+      en: Nothing is learned
+      ja: モデルは覚えない
+    caption:
+      vi: "Nằm trong ngữ cảnh,\nkhông vào mô hình"
+      en: "In the context,\nnot in the model"
+      ja: コンテキストに入るだけ
+  - icon: "👀"
+    color: rose
+    name:
+      vi: Mở nguồn kiểm tra
+      en: Check the source
+      ja: 出典を確かめる
+    caption:
+      vi: "Tài liệu cũ, tìm nhầm\n→ sai mà vẫn tự tin"
+      en: "Old or wrong passages\nmislead with confidence"
+      ja: "古い資料や検索ミスで\n自信満々に間違う"
+takeaway:
+  vi: Hỏi về tài liệu riêng? Cho AI tra cứu, rồi tự mở nguồn đối chiếu.
+  en: Asking about your own documents? Let AI look them up, then check the source.
+  ja: 自分の資料について聞くなら、AIに調べさせ、出典は自分で確かめる。

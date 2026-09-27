@@ -7,15 +7,14 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-27
 
-- **28 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
-  (waiting for the owner's read): the 19-lesson minimum path, `how-to-learn-this-course`,
-  `programming-building-blocks`, `command-line-basics`, `ai-ml-dl` and `how-machines-learn`, and —
-  written by Codex — `security-basics`, `prompting-basics`, `next-token-prediction` and
-  `tool-calling`. `python -m src.main stats` shows the counts; each course home
+- **32 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+  (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
+  `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
+  `rag-intro` and `prompt-rag-finetune-compare`, written by Claude; and `security-basics`,
+  `prompting-basics`, `next-token-prediction`, `tool-calling`, `what-is-software` and
+  `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **Waiting for the owner's merge:** `what-is-software` and `project-anatomy`, written by Codex and
-  reviewed by Claude ([pull request #9](https://github.com/vohoailinh90/Agentic-coding-course/pull/9)).
-- **22 lessons remain** after those (table below). The owner decided on 2026-09-27 to write the whole
+- **20 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -45,8 +44,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `rag-intro` | ai-foundations (optional) | demo | 10 | rag |
-| `prompt-rag-finetune-compare` | ai-foundations (optional) | concept | 10 | prompt, rag, fine-tuning |
 | `tokens` | model-literacy (optional) | demo | 8 | token |
 | `reasoning-models` | model-literacy (optional) | concept | 10 | llm |
 | `choosing-models` | model-literacy (optional) | hands-on | 10 | token, model |
@@ -72,20 +69,17 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`rag-intro`** (demo) — retrieval-augmented generation: before answering, the system looks up the
-  passages of your documents that match the question and puts them into the prompt, so the model
-  answers from them and can point to its source. Watch one question about a made-up handbook in
-  `ai-practice` answered without and then with the document, and check the answer against the quoted
-  passage. Link [`hallucination`](../course/en/lessons/hallucination.md),
-  [`context-window`](../course/en/lessons/context-window.md) and
-  [`next-token-prediction`](../course/en/lessons/next-token-prediction.md) rather than re-teaching
-  them. A `flow` infographic fits (question → search the documents → add the passages → answer with
-  sources).
-- **`prompt-rag-finetune-compare`** — three ways to fit a model to a job: a better prompt (instant,
-  changes one conversation), RAG (brings the right documents at answer time; suits knowledge that
-  changes) and fine-tuning (further training on examples; changes habits and style, costs time and
-  data, and is slow to update). What each changes, and which to try first. A `compare` infographic
-  fits.
+- **`tokens`** (demo) — a model reads and writes in tokens, small pieces of text (a word, part of a
+  word, a punctuation mark), and the context window, limits and usage are counted in them. Watch one
+  sentence split into tokens, in more than one language, and count; link
+  [`next-token-prediction`](../course/en/lessons/next-token-prediction.md) and
+  [`context-window`](../course/en/lessons/context-window.md) rather than re-teaching them. Cite only
+  counts you produced yourself or found in a source you opened; name no prices.
+- **`reasoning-models`** — some models can work through a problem in steps before they answer
+  ("thinking"), which helps with multi-step tasks and costs time and tokens. When it is worth it,
+  and why the steps you can see are not a guarantee of a right answer. Anthropic's thinking
+  documentation (platform.claude.com, *thinking* and *extended thinking*) is reachable; date what
+  you cite, since it changes fast. A `compare` infographic fits (answer at once vs. think first).
 
 ## How to write one lesson
 
@@ -135,6 +129,8 @@ only by `export`).
   `build`; never edit them by hand. Do not change lesson ids or the order in `curriculum.yaml`.
 - Keep the section headings `scaffold` writes: they come from `course/data/sections.yaml`, in every
   language. The hook's heading is not the place for the lesson's own title.
+- When a fix changes what a lesson claims, change its front-matter `summary` and `social` lines too:
+  exports and Facebook drafts reuse them, and a review will find the old claim there.
 - A content task does not change `src/`, `tests/` or `scripts/`. If a check blocks correct content,
   report it instead of working around it.
 

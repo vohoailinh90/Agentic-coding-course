@@ -1,0 +1,87 @@
+# Used in: prompt-rag-finetune-compare (concept). Three ways to fit AI to a job, by what each one changes.
+template: compare
+title:
+  vi: "Prompt, RAG, fine-tuning: đổi chỗ nào?"
+  en: "Prompt, RAG, Fine-Tuning: What Changes?"
+  ja: 3つの方法は、何を変える？
+rows:
+  - vi: Thay đổi gì?
+    en: What changes
+    ja: 変えるもの
+  - vi: Hợp khi
+    en: Good for
+    ja: 向いていること
+  - vi: Công sức
+    en: Effort
+    ja: 手間
+  - vi: Khi thông tin đổi
+    en: When facts change
+    ja: 情報が変わったら
+emphasis_row: 1
+columns:
+  - icon: "💬"
+    color: blue
+    highlight: true
+    badge:
+      vi: Thử trước
+      en: Try first
+      ja: まず試す
+    name:
+      vi: Prompt
+      en: Prompt
+      ja: プロンプト
+    values:
+      - vi: Lời bạn dặn
+        en: What you tell it
+        ja: 伝える指示
+      - vi: Cách làm, định dạng, giọng văn
+        en: Task, format, tone
+        ja: 手順・形式・口調
+      - vi: Ít nhất
+        en: Least
+        ja: いちばん少ない
+      - vi: Sửa prompt
+        en: Edit the prompt
+        ja: プロンプトを直す
+  - icon: "📚"
+    color: amber
+    name:
+      vi: RAG
+      en: RAG
+      ja: RAG
+    values:
+      - vi: Tài liệu AI được đọc
+        en: What it reads
+        ja: 読ませる資料
+      - vi: Kiến thức riêng, hay đổi
+        en: "Your own,\nchanging facts"
+        ja: 社内の・変わる情報
+      - vi: "Vừa: tài liệu\nvà tìm kiếm"
+        en: "Medium: documents and search"
+        ja: 中くらい：資料と検索
+      - vi: Cập nhật tài liệu
+        en: Update the documents
+        ja: 資料を更新する
+  - icon: "🎓"
+    color: violet
+    name:
+      vi: Fine-tuning
+      en: Fine-tuning
+      ja: "ファイン\nチューニング"
+    values:
+      - vi: Chính mô hình
+        en: The model itself
+        ja: モデルそのもの
+      - vi: "Văn phong,\nkỹ năng ổn định"
+        en: A steady style or skill
+        ja: 決まった文体や技能
+      - vi: "Nhiều nhất: dữ liệu và huấn luyện"
+        en: "Most: data and training"
+        ja: "いちばん多い：\nデータと学習"
+      - vi: Huấn luyện lại
+        en: Retrain
+        ja: 学習し直す
+takeaway:
+  vi: Thử lần lượt prompt → RAG → fine-tuning; đủ tốt thì dừng.
+  en: Try prompting, then RAG, then fine-tuning — and stop when it is good enough.
+  ja: "プロンプト→RAG→ファインチューニングの順に試し、\n十分ならそこで止める。"

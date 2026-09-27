@@ -2,10 +2,11 @@
 
 ## Unreleased
 
-- Nine more lessons in vi, en and ja (status `review`): `how-to-learn-this-course`,
-  `programming-building-blocks`, `command-line-basics`, `ai-ml-dl` and `how-machines-learn` by
-  Claude; `security-basics`, `prompting-basics`, `next-token-prediction` and `tool-calling` by Codex.
-  From now on Claude writes each batch and Codex reviews its pull request (ADR 010).
+- Thirteen more lessons in vi, en and ja (status `review`): `how-to-learn-this-course`,
+  `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
+  `rag-intro` and `prompt-rag-finetune-compare` by Claude; `security-basics`, `prompting-basics`,
+  `next-token-prediction`, `tool-calling`, `what-is-software` and `project-anatomy` by Codex. From
+  now on Claude writes each batch and Codex reviews its pull request (ADR 010).
 - `validate` checks each finished lesson's quiz: three questions with options A–C and an answer key,
   the same key in every language (`quiz_key_differs`), and a warning when all three answers are one
   letter; and it reports a lesson pointed at by its number or position (`lesson_by_position`: *lesson

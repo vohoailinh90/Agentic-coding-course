@@ -1,0 +1,68 @@
+# Used in: rag-intro (demo). RAG in the three steps its name spells: retrieve, augment, generate.
+template: flow
+direction: vertical
+title:
+  vi: "RAG: tìm trước, trả lời sau"
+  en: "RAG: Look It Up, Then Answer"
+  ja: RAG：まず調べて、それから答える
+subtitle:
+  vi: Retrieval (tìm) · Augmented (bổ sung) · Generation (tạo câu trả lời)
+  en: Retrieval · Augmented · Generation
+  ja: Retrieval（検索）・Augmented（追加）・Generation（生成）
+steps:
+  - icon: "❓"
+    color: blue
+    name:
+      vi: Câu hỏi
+      en: The question
+      ja: 質問
+    caption:
+      vi: Xin nghỉ phép phải báo trước mấy ngày?
+      en: How much notice for a day off?
+      ja: 休暇は何日前に申請する？
+    arrow:
+      vi: tìm trong tài liệu
+      en: search the documents
+      ja: 資料を検索
+  - icon: "🔍"
+    color: amber
+    name:
+      vi: Tìm đoạn liên quan
+      en: Retrieve passages
+      ja: 関連する箇所を探す
+    caption:
+      vi: "Sổ tay: mục 2.2 và 2.1"
+      en: "Handbook: sections 2.2 and 2.1"
+      ja: ハンドブックの2.2と2.1
+    arrow:
+      vi: ghép vào prompt
+      en: add to the prompt
+      ja: プロンプトに追加
+  - icon: "🧩"
+    color: violet
+    name:
+      vi: Bổ sung vào prompt
+      en: Augment the prompt
+      ja: プロンプトに加える
+    caption:
+      vi: Đoạn trích + câu hỏi + lời dặn
+      en: Passages + question + instructions
+      ja: 抜粋＋質問＋指示
+    arrow:
+      vi: mô hình trả lời
+      en: the model answers
+      ja: モデルが回答
+  - icon: "💬"
+    color: green
+    name:
+      vi: Trả lời kèm nguồn
+      en: Answer with sources
+      ja: 出典つきで答える
+    caption:
+      vi: 3 ngày làm việc (mục 2.2)
+      en: 3 working days (section 2.2)
+      ja: 3営業日前まで（2.2）
+takeaway:
+  vi: "Mô hình không học thêm gì —\ntài liệu nằm trong ngữ cảnh, không vào mô hình."
+  en: The model learns nothing new — the passages go into the context, not into the model.
+  ja: "モデルは何も覚えない。\n資料はコンテキストに入るだけで、モデルには入らない。"

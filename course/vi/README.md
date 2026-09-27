@@ -137,8 +137,8 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 |---|---|---|---|
 | 4.2.1 | [Gia phả của AI trong một hình: từ machine learning đến LLM](lessons/ai-ml-dl.md) | 📖 Khái niệm | 8 phút |
 | 4.2.2 | [Máy "học" như thế nào? Dữ liệu, huấn luyện và mô hình](lessons/how-machines-learn.md) | 📖 Khái niệm | 10 phút |
-| 4.2.3 | RAG: cho AI mở tài liệu ra tra cứu | 🎬 Minh họa | 10 phút |
-| 4.2.4 | Prompt, RAG hay fine-tuning: chọn cách nào? | 📖 Khái niệm | 10 phút |
+| 4.2.3 | [RAG: cho AI mở tài liệu ra tra cứu](lessons/rag-intro.md) | 🎬 Minh họa | 10 phút |
+| 4.2.4 | [Prompt, RAG hay fine-tuning: chọn cách nào?](lessons/prompt-rag-finetune-compare.md) | 📖 Khái niệm | 10 phút |
 
 ### 4.3 Hiểu về mô hình · _tùy chọn_
 

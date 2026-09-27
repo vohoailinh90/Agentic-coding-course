@@ -1,0 +1,61 @@
+# Recap of prompt-rag-finetune-compare: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: prompt, RAG hay fine-tuning"
+  en: "Recap: Prompting, RAG or Fine-Tuning"
+  ja: まとめ：プロンプト・RAG・ファインチューニング
+points:
+  - icon: "💬"
+    color: blue
+    name:
+      vi: "Prompt: đổi lời dặn"
+      en: "Prompting: change the instructions"
+      ja: "プロンプト＝\n指示を変える"
+    caption:
+      vi: "Nhanh, rẻ:\nthử đầu tiên"
+      en: "Fast and cheap:\ntry it first"
+      ja: 速くて手軽。まず試す
+  - icon: "📚"
+    color: amber
+    name:
+      vi: "RAG: đổi tài liệu"
+      en: "RAG: change\nwhat it reads"
+      ja: RAG＝読ませる資料を変える
+    caption:
+      vi: "Cho kiến thức riêng,\nhay thay đổi"
+      en: "For your own,\nchanging facts"
+      ja: 社内の・変わる情報に
+  - icon: "🎓"
+    color: violet
+    name:
+      vi: "Fine-tuning:\nđổi mô hình"
+      en: "Fine-tuning: change the model"
+      ja: "ファインチューニング\n＝モデルを変える"
+    caption:
+      vi: Tốn dữ liệu và công sức
+      en: Needs data and effort
+      ja: データと手間がかかる
+  - icon: "🔄"
+    color: teal
+    name:
+      vi: Khi thông tin đổi
+      en: When facts change
+      ja: 情報が変わったら
+    caption:
+      vi: "Sửa tài liệu,\nkhỏi huấn luyện lại"
+      en: "Update the documents,\nno retraining"
+      ja: 再学習せず資料を更新
+  - icon: "🧩"
+    color: green
+    name:
+      vi: Kết hợp được
+      en: They combine
+      ja: 組み合わせられる
+    caption:
+      vi: "Prompt + RAG\nđủ cho nhiều việc"
+      en: "Prompt + RAG\nfits many jobs"
+      ja: "プロンプト＋RAGで\n足りることが多い"
+takeaway:
+  vi: Đổi lời dặn trước, đổi tài liệu sau, đổi mô hình sau cùng.
+  en: Instructions first, documents next, the model last.
+  ja: まず指示、次に資料。モデルを変えるのは最後。
