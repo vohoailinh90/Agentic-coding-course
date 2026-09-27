@@ -128,8 +128,8 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | 4.1.1 | [Prompting Basics: Talking So AI Understands](lessons/prompting-basics.md) | 🛠️ Hands-on | 12 min |
 | 4.1.2 | ⭐ [Hallucination: Why AI Is Confidently Wrong](lessons/hallucination.md) | 📖 Concept | 10 min |
 | 4.1.3 | ⭐ [The Context Window: AI's Short-Term Memory](lessons/context-window.md) | 📖 Concept | 10 min |
-| 4.1.4 | Next-Token Prediction: The Simple Secret Behind LLMs | 📖 Concept | 10 min |
-| 4.1.5 | Tool Calling: How an LLM Presses Real Buttons | 🎬 Demo | 10 min |
+| 4.1.4 | [Next-Token Prediction: The Simple Secret Behind LLMs](lessons/next-token-prediction.md) | 📖 Concept | 10 min |
+| 4.1.5 | [Tool Calling: How an LLM Presses Real Buttons](lessons/tool-calling.md) | 🎬 Demo | 10 min |
 
 ### 4.2 AI Foundations · _optional_
 

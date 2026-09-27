@@ -1,0 +1,26 @@
+template: summary
+title:
+  vi: "Tóm tắt: gọi công cụ"
+  en: "Recap: Tool Calling"
+  ja: まとめ：ツール呼び出し
+points:
+  - icon: "🧠"
+    color: green
+    name: {vi: Mô hình đề nghị, en: Model proposes, ja: モデルが提案}
+    caption: {vi: Tên công cụ và đối số, en: Tool name and arguments, ja: ツール名と引数}
+  - icon: "🛡️"
+    color: blue
+    name: {vi: Chương trình kiểm tra, en: Program checks, ja: プログラムが確認}
+    caption: {vi: Quyền và phạm vi, en: Permission and scope, ja: 権限と範囲}
+  - icon: "🧰"
+    color: amber
+    name: {vi: Công cụ thực thi, en: Tool executes, ja: ツールが実行}
+    caption: {vi: Trả kết quả hoặc lỗi, en: Returns a result or error, ja: 結果やエラーを返す}
+  - icon: "🔎"
+    color: violet
+    name: {vi: Con người kiểm tra, en: Person verifies, ja: 人が確認}
+    caption: {vi: Đối chiếu kết quả gốc, en: Compare with the original result, ja: 元の結果と照合する}
+takeaway:
+  vi: "Lời gọi không phải quyền: giới hạn trước, kiểm tra sau."
+  en: "A call is not permission: limit first, verify afterward."
+  ja: 呼び出しは許可ではありません。先に制限し、後で確認します。
