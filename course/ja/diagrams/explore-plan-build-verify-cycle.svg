@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 661" width="800" height="661" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">調べる→計画する→作る→検証する</title>
+<desc id="desc">調べる → 計画する → 作る → 検証する</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-cycle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F46E5"/></marker></defs>
+<rect x="1" y="1" width="798" height="659" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="631" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">調べる→計画する→作る→検証する</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">変える前に理解し、受け取る前に検証する</tspan></text>
+<path d="M509,217.2 A190,190 0 0 1 569.3,286.6" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="531.5" y="214.3" width="72" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="567.5" y="231.8">理解した</tspan></text>
+<path d="M569.3,459.1 A190,190 0 0 1 509,528.5" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="524.8" y="505.6" width="85.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="567.5" y="523.1">計画を承認</tspan></text>
+<path d="M291,528.5 A190,190 0 0 1 225.1,447.1" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="184.7" y="499.6" width="85.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="227.5" y="517.1">一部が完成</tspan></text>
+<path d="M225.1,298.6 A190,190 0 0 1 291,217.2" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="128.7" y="198.7" width="166.5" height="43.6" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="211.9" y="216.2">新しい発見があれば、ま</tspan><tspan x="211.9" y="234">た調べる</tspan></text>
+<g class="pulse">
+<circle cx="400" cy="372.8" r="78" fill="#4F46E5"/>
+<circle cx="400" cy="372.8" r="70" fill="#FFFFFF" fill-opacity="0.14"/>
+<text x="400" y="364.8" font-size="34" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">👤</text>
+<text font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="394.8">あなたが承認</tspan></text>
+</g>
+<rect x="302" y="118.7" width="196" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="154.7" r="22" fill="#2563EB"/>
+<circle cx="400" cy="154.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="163" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔍</text>
+<circle cx="320" cy="136.7" r="12" fill="#1E3A8A"/>
+<text x="320" y="141.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="203.2">調べる</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="228.1">読むだけ、まだ変えない</tspan></text>
+<rect x="492" y="298.8" width="196" height="148" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="590" cy="334.8" r="22" fill="#7C3AED"/>
+<circle cx="590" cy="334.8" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590" y="343.1" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗺️</text>
+<circle cx="510" cy="316.8" r="12" fill="#4C1D95"/>
+<text x="510" y="321.8" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="590" y="383.3">計画する</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590" y="408.2">何を・どこで・どう確か</tspan><tspan x="590" y="428">める</tspan></text>
+<rect x="302" y="498.7" width="196" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="400" cy="534.7" r="22" fill="#D97706"/>
+<circle cx="400" cy="534.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="543" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🛠️</text>
+<circle cx="320" cy="516.7" r="12" fill="#78350F"/>
+<text x="320" y="521.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="583.2">作る</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="608.1">計画どおりに作る</tspan></text>
+<rect x="112" y="308.7" width="196" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="210" cy="344.7" r="22" fill="#059669"/>
+<circle cx="210" cy="344.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="210" y="353" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="130" cy="326.7" r="12" fill="#064E3B"/>
+<text x="130" y="331.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="210" y="393.2">検証する</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="210" y="418.1">完了条件と比べる</tspan></text>
+</svg>

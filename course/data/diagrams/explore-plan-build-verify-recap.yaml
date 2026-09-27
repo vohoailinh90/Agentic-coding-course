@@ -1,0 +1,61 @@
+# Recap of explore-plan-build-verify: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: quy trình 4 bước"
+  en: "Recap: The Four-Step Workflow"
+  ja: まとめ：4ステップのワークフロー
+points:
+  - icon: "🔍"
+    color: blue
+    name:
+      vi: Tìm hiểu trước
+      en: Explore first
+      ja: まず調べる
+    caption:
+      vi: Agent đọc và giải thích, chưa sửa gì
+      en: The agent reads and explains, changes nothing
+      ja: 読んで説明するだけ、まだ変えない
+  - icon: "🗺️"
+    color: violet
+    name:
+      vi: Đọc kỹ kế hoạch
+      en: Read the plan closely
+      ja: 計画をよく読む
+    caption:
+      vi: File nào đổi, quyết định nào là của bạn
+      en: Which files change, which calls are yours
+      ja: 変わるファイルと、あなたが決めること
+  - icon: "🛠️"
+    color: amber
+    name:
+      vi: Làm theo kế hoạch
+      en: Build to the plan
+      ja: 計画どおりに作る
+    caption:
+      vi: Lệch kế hoạch thì dừng lại hỏi
+      en: Off the plan? Stop and ask
+      ja: 計画から外れたら、止まって確認
+  - icon: "✅"
+    color: green
+    name:
+      vi: Kiểm chứng rồi mới nhận
+      en: Verify, then accept
+      ja: 検証してから受け取る
+    caption:
+      vi: So với tiêu chí, từng điều một
+      en: Against the criteria, one by one
+      ja: 完了条件と一つずつ比べる
+  - icon: "✂️"
+    color: teal
+    name:
+      vi: Việc nhỏ thì bỏ qua kế hoạch
+      en: Small change? Skip the plan
+      ja: 小さな変更なら計画は省く
+    caption:
+      vi: Tả được thay đổi trong một câu
+      en: If one sentence describes the change
+      ja: 変更を一文で言えるなら
+takeaway:
+  vi: Vài phút tìm hiểu và lên kế hoạch tránh được cả buổi làm sai hướng.
+  en: A few minutes of exploring and planning can save a session spent going the wrong way.
+  ja: 数分の調査と計画が、間違った方向の作業を防ぐ。

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 694" width="800" height="694" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Explore → Plan → Build → Verify</title>
+<desc id="desc">Explore → Plan → Build → Verify</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-cycle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F46E5"/></marker></defs>
+<rect x="1" y="1" width="798" height="692" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="664" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Explore → Plan → Build → Verify</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Understand the problem before changing anything, and verify before you</tspan><tspan x="400" y="107.7">accept</tspan></text>
+<path d="M509,249.5 A190,190 0 0 1 569.3,318.9" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="519.4" y="246.6" width="96.3" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="567.5" y="264.1">understood</tspan></text>
+<path d="M569.3,491.4 A190,190 0 0 1 509,560.8" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="505.8" y="553.7" width="159.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="585.7" y="571.2">you approve the plan</tspan></text>
+<path d="M291,560.8 A190,190 0 0 1 225.1,479.4" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="171.1" y="532" width="112.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="227.5" y="549.5">a part is done</tspan></text>
+<path d="M225.1,330.9 A190,190 0 0 1 291,249.5" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="162.7" y="243.6" width="129.5" height="43.6" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="227.5" y="261.1">something new?</tspan><tspan x="227.5" y="279">explore again</tspan></text>
+<g class="pulse">
+<circle cx="400" cy="405.2" r="78" fill="#4F46E5"/>
+<circle cx="400" cy="405.2" r="70" fill="#FFFFFF" fill-opacity="0.14"/>
+<text x="400" y="397.2" font-size="34" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">👤</text>
+<text font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="427.2">You approve</tspan></text>
+</g>
+<rect x="302" y="141.2" width="196" height="148" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="177.2" r="22" fill="#2563EB"/>
+<circle cx="400" cy="177.2" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="185.5" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔍</text>
+<circle cx="320" cy="159.2" r="12" fill="#1E3A8A"/>
+<text x="320" y="164.2" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="225.7">Explore</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="250.6">the agent reads,</tspan><tspan x="400" y="270.4">changes nothing</tspan></text>
+<rect x="492" y="331.2" width="196" height="148" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="590" cy="367.2" r="22" fill="#7C3AED"/>
+<circle cx="590" cy="367.2" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590" y="375.5" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗺️</text>
+<circle cx="510" cy="349.2" r="12" fill="#4C1D95"/>
+<text x="510" y="354.2" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="590" y="415.7">Plan</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590" y="440.6">what changes, where,</tspan><tspan x="590" y="460.4">how to check</tspan></text>
+<rect x="302" y="531.1" width="196" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="400" cy="567.1" r="22" fill="#D97706"/>
+<circle cx="400" cy="567.1" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="575.4" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🛠️</text>
+<circle cx="320" cy="549.1" r="12" fill="#78350F"/>
+<text x="320" y="554.1" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="615.6">Build</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="640.5">follow the plan</tspan></text>
+<rect x="112" y="341.1" width="196" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="210" cy="377.1" r="22" fill="#059669"/>
+<circle cx="210" cy="377.1" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="210" y="385.4" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="130" cy="359.1" r="12" fill="#064E3B"/>
+<text x="130" y="364.1" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="210" y="425.6">Verify</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="210" y="450.5">against the criteria</tspan></text>
+</svg>

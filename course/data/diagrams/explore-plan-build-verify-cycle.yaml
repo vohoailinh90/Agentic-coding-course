@@ -1,0 +1,74 @@
+# Used in: explore-plan-build-verify (concept). The four-step workflow, with you approving at its centre.
+template: cycle
+title:
+  vi: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng
+  en: Explore → Plan → Build → Verify
+  ja: 調べる→計画する→作る→検証する
+subtitle:
+  vi: Hiểu đúng vấn đề trước khi sửa, và kiểm chứng trước khi nhận
+  en: Understand the problem before changing anything, and verify before you accept
+  ja: 変える前に理解し、受け取る前に検証する
+center:
+  icon: "👤"
+  color: indigo
+  name:
+    vi: Bạn duyệt
+    en: You approve
+    ja: あなたが承認
+steps:
+  - icon: "🔍"
+    color: blue
+    name:
+      vi: Tìm hiểu
+      en: Explore
+      ja: 調べる
+    caption:
+      vi: agent đọc, chưa sửa gì
+      en: the agent reads, changes nothing
+      ja: 読むだけ、まだ変えない
+    arrow:
+      vi: đã hiểu
+      en: understood
+      ja: 理解した
+  - icon: "🗺️"
+    color: violet
+    name:
+      vi: Lập kế hoạch
+      en: Plan
+      ja: 計画する
+    caption:
+      vi: đổi gì, ở đâu, kiểm tra ra sao
+      en: what changes, where, how to check
+      ja: 何を・どこで・どう確かめる
+    arrow:
+      vi: bạn duyệt kế hoạch
+      en: you approve the plan
+      ja: 計画を承認
+  - icon: "🛠️"
+    color: amber
+    name:
+      vi: Thực hiện
+      en: Build
+      ja: 作る
+    caption:
+      vi: làm đúng theo kế hoạch
+      en: follow the plan
+      ja: 計画どおりに作る
+    arrow:
+      vi: xong một phần
+      en: a part is done
+      ja: 一部が完成
+  - icon: "✅"
+    color: green
+    name:
+      vi: Kiểm chứng
+      en: Verify
+      ja: 検証する
+    caption:
+      vi: so với tiêu chí
+      en: against the criteria
+      ja: 完了条件と比べる
+    arrow:
+      vi: có điều mới? tìm hiểu lại
+      en: something new? explore again
+      ja: 新しい発見があれば、また調べる
