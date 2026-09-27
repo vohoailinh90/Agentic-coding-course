@@ -1,0 +1,51 @@
+# Recap of data-formats: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: dữ liệu trông như thế nào"
+  en: "Recap: What Data Looks Like"
+  ja: まとめ：データの形
+points:
+  - icon: "📊"
+    color: green
+    name:
+      vi: CSV là bảng
+      en: CSV is a table
+      ja: CSV は表
+    caption:
+      vi: Mỗi dòng một bản ghi, cột ngăn bằng dấu phẩy
+      en: One record per line, commas between columns
+      ja: 1行に1件、列はカンマ区切り
+  - icon: "🧩"
+    color: blue
+    name:
+      vi: JSON cho chương trình
+      en: JSON is for programs
+      ja: JSON はプログラム向け
+    caption:
+      vi: Tên và giá trị, lồng nhau được
+      en: Names and values, nestable
+      ja: 名前と値、入れ子にできる
+  - icon: "📝"
+    color: violet
+    name:
+      vi: YAML cho người viết
+      en: YAML is for people to write
+      ja: YAML は人が書くため
+    caption:
+      vi: Thụt lề chính là cấu trúc
+      en: The indentation is the structure
+      ja: インデントが構造になる
+  - icon: "🔍"
+    color: amber
+    name:
+      vi: Nói rõ định dạng trong spec
+      en: Name the format in the spec
+      ja: 形式を指示書に書く
+    caption:
+      vi: Tên cột, mã hóa UTF-8, cách kiểm tra
+      en: Columns, UTF-8, how to check
+      ja: 列名・UTF-8・確かめ方
+takeaway:
+  vi: Đổi định dạng xong, so số bản ghi và vài giá trị.
+  en: After converting, compare the record count and a few values.
+  ja: 形式を変えたら、件数といくつかの値を比べる。

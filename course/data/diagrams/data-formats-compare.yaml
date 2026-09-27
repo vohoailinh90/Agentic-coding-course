@@ -1,0 +1,70 @@
+# Used in: data-formats (concept). The same data in three text formats, and what each is good for.
+template: compare
+title:
+  vi: "Ba cách viết cùng một dữ liệu"
+  en: "Three Ways to Write the Same Data"
+  ja: 同じデータの3つの書き方
+rows:
+  - vi: Trông như
+    en: Looks like
+    ja: 見た目
+  - vi: Hợp để
+    en: Good for
+    ja: 向いている用途
+  - vi: Hay vấp
+    en: Watch out for
+    ja: つまずきやすい点
+emphasis_row: 2
+columns:
+  - icon: "📊"
+    color: green
+    name:
+      vi: CSV
+      en: CSV
+      ja: CSV
+    values:
+      - vi: Bảng, cột ngăn bằng dấu phẩy
+        en: A table, commas between columns
+        ja: 表。列はカンマ区切り
+      - vi: Bảng tính, Excel
+        en: Spreadsheets, Excel
+        ja: 表計算、Excel
+      - vi: Dấu phẩy trong một ô
+        en: A comma inside a cell
+        ja: セルの中のカンマ
+  - icon: "🧩"
+    color: blue
+    name:
+      vi: JSON
+      en: JSON
+      ja: JSON
+    values:
+      - vi: Tên và giá trị trong ngoặc nhọn
+        en: Names and values in braces
+        ja: 波かっこの中に名前と値
+      - vi: Chương trình trao đổi với nhau
+        en: Programs talking to each other
+        ja: プログラム同士のやり取り
+      - vi: Thiếu một dấu là hỏng
+        en: One missing mark breaks it
+        ja: 記号が1つ欠けると壊れる
+  - icon: "📝"
+    color: violet
+    name:
+      vi: YAML
+      en: YAML
+      ja: YAML
+    values:
+      - vi: Thụt lề và dấu hai chấm
+        en: Indentation and colons
+        ja: インデントとコロン
+      - vi: File cấu hình người viết tay
+        en: Settings files people write
+        ja: 人が書く設定ファイル
+      - vi: Thụt lề lệch là hỏng
+        en: Wrong indentation breaks it
+        ja: インデントがずれると壊れる
+takeaway:
+  vi: Chọn định dạng theo ai sẽ đọc nó — người, bảng tính hay chương trình.
+  en: Choose the format by who reads it — a person, a spreadsheet or a program.
+  ja: 読むのは人か、表計算か、プログラムか。それで形式を選ぶ。

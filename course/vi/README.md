@@ -32,7 +32,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 12. [Từ "trông có vẻ đúng" đến phép kiểm tra](lessons/testing-basics.md) — 12 phút
 13. [Đọc thông báo lỗi và gỡ lỗi như một thám tử](lessons/errors-and-debugging.md) — 12 phút
 14. [Dự án: trang web cá nhân của bạn](lessons/project-personal-page.md) — 60 phút
-15. Dữ liệu trông như thế nào: JSON, CSV, YAML — 10 phút
+15. [Dữ liệu trông như thế nào: JSON, CSV, YAML](lessons/data-formats.md) — 10 phút
 16. Git: nút Undo thần kỳ cho cả dự án — 15 phút
 17. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
 18. Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI — 10 phút
@@ -101,7 +101,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 |---|---|---|---|
 | 3.1.1 | Phần mềm là gì? Chương trình giống một công thức nấu ăn | 📖 Khái niệm | 8 phút |
 | 3.1.2 | Giải phẫu một dự án: frontend, backend, database, API | 📖 Khái niệm | 10 phút |
-| 3.1.3 | ⭐ Dữ liệu trông như thế nào: JSON, CSV, YAML | 🛠️ Thực hành | 10 phút |
+| 3.1.3 | ⭐ [Dữ liệu trông như thế nào: JSON, CSV, YAML](lessons/data-formats.md) | 🛠️ Thực hành | 10 phút |
 
 ### 3.2 Mã và lịch sử thay đổi
 

@@ -32,7 +32,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 12. [Turn "Looks Right" into Checks](lessons/testing-basics.md) — 12 min
 13. [Reading Error Messages and Debugging Like a Detective](lessons/errors-and-debugging.md) — 12 min
 14. [Project: Your Personal Web Page](lessons/project-personal-page.md) — 60 min
-15. What Data Looks Like: JSON, CSV and YAML — 10 min
+15. [What Data Looks Like: JSON, CSV and YAML](lessons/data-formats.md) — 10 min
 16. Git: A Magic Undo Button for Your Whole Project — 15 min
 17. Hallucination: Why AI Is Confidently Wrong — 10 min
 18. The Context Window: AI's Short-Term Memory — 10 min
@@ -101,7 +101,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 |---|---|---|---|
 | 3.1.1 | What Is Software? A Program Is Like a Recipe | 📖 Concept | 8 min |
 | 3.1.2 | Anatomy of a Project: Frontend, Backend, Database, API | 📖 Concept | 10 min |
-| 3.1.3 | ⭐ What Data Looks Like: JSON, CSV and YAML | 🛠️ Hands-on | 10 min |
+| 3.1.3 | ⭐ [What Data Looks Like: JSON, CSV and YAML](lessons/data-formats.md) | 🛠️ Hands-on | 10 min |
 
 ### 3.2 Code and History
 
