@@ -6,22 +6,22 @@ title:
 steps:
   - icon: "🙋"
     color: blue
-    name: {vi: Người dùng nêu mục tiêu, en: User gives a goal, ja: 利用者が目標を伝える}
+    name: {vi: Nêu mục tiêu, en: You set a goal, ja: "目標を\n伝える"}
     arrow: {vi: gửi yêu cầu, en: sends request, ja: 依頼する}
   - icon: "🧠"
     color: green
-    name: {vi: Mô hình tạo lời gọi, en: Model makes a call, ja: モデルが呼び出す}
+    name: {vi: "Mô hình\nđề nghị", en: Model proposes, ja: "モデルが\n提案"}
     caption: {vi: Tên công cụ + đối số, en: Tool name + arguments, ja: ツール名＋引数}
     arrow: {vi: đề nghị chạy, en: proposes a call, ja: 実行を提案}
   - icon: "🧰"
     color: amber
-    name: {vi: Chương trình chạy công cụ, en: Program runs the tool, ja: プログラムが実行}
+    name: {vi: Chương trình chạy, en: Program runs it, ja: プログラムが実行}
     caption: {vi: Kiểm tra quyền trước, en: Checks permission first, ja: 先に権限を確認}
     arrow: {vi: trả kết quả, en: returns result, ja: 結果を返す}
   - icon: "💬"
     color: violet
-    name: {vi: Mô hình trả lời, en: Model answers, ja: モデルが回答する}
-    caption: {vi: Dùng kết quả công cụ, en: Uses the tool result, ja: ツール結果を使う}
+    name: {vi: Mô hình trả lời, en: Model answers, ja: "モデルが\n回答"}
+    caption: {vi: Dùng kết quả công cụ, en: Uses the tool result, ja: 結果を使う}
 takeaway:
   vi: Mô hình đề nghị; chương trình kiểm tra và thực thi.
   en: The model proposes; the program checks and executes.

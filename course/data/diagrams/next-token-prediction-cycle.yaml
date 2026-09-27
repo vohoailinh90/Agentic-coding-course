@@ -6,7 +6,7 @@ title:
 steps:
   - icon: "👀"
     color: blue
-    name: {vi: Đọc phần chữ đã có, en: Read the text so far, ja: 今までの文章を読む}
+    name: {vi: Đọc chữ đã có, en: Read the text so far, ja: "今までの\n文章を読む"}
     arrow: {vi: tìm phần tiếp, en: find a continuation, ja: 続きを探す}
   - icon: "🧩"
     color: violet
@@ -19,7 +19,7 @@ steps:
 center:
   icon: "🔁"
   color: amber
-  name: {vi: Lặp để tạo câu, en: Repeat to make text, ja: 繰り返して文章に}
+  name: {vi: Lặp để tạo câu, en: Repeat to make text, ja: "繰り返して\n文章に"}
 takeaway:
   vi: Mỗi token mới trở thành ngữ cảnh cho lần đoán kế tiếp.
   en: Each new token becomes context for the next prediction.
