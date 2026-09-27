@@ -45,7 +45,7 @@ points:
       vi: Dòng bị xóa, file mới, mật khẩu
       en: Deleted lines, new files, passwords
       ja: 消えた行・新しいファイル・パスワード
-  - icon: "⚖️"
+  - icon: "🚦"
     color: amber
     name:
       vi: Giữ, hỏi hay từ chối

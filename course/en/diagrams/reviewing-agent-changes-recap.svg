@@ -41,7 +41,7 @@
 <rect x="409" y="256.9" width="236" height="148" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
 <circle cx="527" cy="292.9" r="22" fill="#D97706"/>
 <circle cx="527" cy="292.9" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
-<text x="527" y="301.2" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚖️</text>
+<text x="527" y="301.2" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚦</text>
 <circle cx="427" cy="274.9" r="12" fill="#78350F"/>
 <text x="427" y="279.9" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="527" y="341.4">Keep, ask or reject</tspan></text>

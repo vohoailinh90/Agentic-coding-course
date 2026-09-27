@@ -1,0 +1,70 @@
+# Used in: testing-basics (concept). How a criterion becomes a check that can fail.
+template: flow
+direction: vertical
+title:
+  vi: Từ tiêu chí đến phép kiểm tra
+  en: From a Criterion to a Check
+  ja: 完了条件からチェックへ
+subtitle:
+  vi: Một phép kiểm tra phải chạy lại được — và phải biết thất bại
+  en: A check can be run again — and it must be able to fail
+  ja: チェックは何度でも実行でき、失敗もできなければならない
+steps:
+  - icon: "📋"
+    color: blue
+    name:
+      vi: Tiêu chí
+      en: The criterion
+      ja: 完了条件
+    caption:
+      vi: Tổng cộng bằng tổng cột so_tien
+      en: The total equals the amount column's sum
+      ja: 合計が amount 列の合計と等しい
+  - icon: "🧪"
+    color: violet
+    name:
+      vi: Một ví dụ cụ thể
+      en: A concrete example
+      ja: 具体的な例
+    caption:
+      vi: Ba dòng 100, 200, 300
+      en: Three rows of 100, 200, 300
+      ja: 100・200・300 の3行
+  - icon: "🎯"
+    color: teal
+    name:
+      vi: Kết quả mong đợi
+      en: The expected result
+      ja: 期待する結果
+    caption:
+      vi: Tổng cộng phải là 600
+      en: The total must be 600
+      ja: 合計は600になるはず
+  - icon: "🔁"
+    color: green
+    name:
+      vi: So sánh tự động
+      en: Compare automatically
+      ja: 自動で比べる
+    caption:
+      vi: Chạy lại bao nhiêu lần cũng được
+      en: Run it as often as you like
+      ja: 何度でも実行できる
+    arrow:
+      vi: rồi thử
+      en: then try
+      ja: そして試す
+  - icon: "💥"
+    color: rose
+    name:
+      vi: Làm hỏng thử
+      en: Break it on purpose
+      ja: わざと壊す
+    caption:
+      vi: Phép kiểm tra phải báo lỗi
+      en: The check must report the failure
+      ja: チェックが失敗を知らせるか
+takeaway:
+  vi: Phép kiểm tra chưa từng thất bại thì chưa chứng minh được gì.
+  en: A check that has never failed has not proved anything yet.
+  ja: 一度も失敗したことのないチェックは、まだ何も証明していない。

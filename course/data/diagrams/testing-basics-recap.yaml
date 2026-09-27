@@ -1,0 +1,51 @@
+# Recap of testing-basics: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: từ 'trông đúng' đến phép kiểm tra"
+  en: "Recap: From Looks Right to Checks"
+  ja: まとめ：「たぶん合っている」からチェックへ
+points:
+  - icon: "👀"
+    color: slate
+    name:
+      vi: Trông đúng chưa đủ
+      en: Looking is not enough
+      ja: 見ただけでは足りない
+    caption:
+      vi: Nhìn một lần, dễ sót
+      en: One look misses things
+      ja: 一度見るだけでは見落とす
+  - icon: "🧪"
+    color: violet
+    name:
+      vi: Ví dụ + kết quả + so sánh
+      en: Example + result + compare
+      ja: 例＋期待結果＋比較
+    caption:
+      vi: Đó là một phép kiểm tra
+      en: That is a check
+      ja: それがチェック
+  - icon: "🧱"
+    color: amber
+    name:
+      vi: Thử trường hợp biên
+      en: Try the edge cases
+      ja: 境界のケースも試す
+    caption:
+      vi: Trống, số 0, rất lớn, sai kiểu
+      en: Empty, zero, huge, wrong type
+      ja: 空・0・巨大・型違い
+  - icon: "💥"
+    color: rose
+    name:
+      vi: Làm hỏng thử
+      en: Break it on purpose
+      ja: わざと壊してみる
+    caption:
+      vi: Phép kiểm tra phải báo lỗi
+      en: The check must fail
+      ja: チェックが失敗すること
+takeaway:
+  vi: Cho agent một phép kiểm tra để tự chạy — bạn khỏi phải tự phát hiện mọi lỗi.
+  en: Give the agent a check it can run, so you are not the one catching every mistake.
+  ja: エージェントに実行できるチェックを渡せば、すべてのミスをあなたが見つけなくてよい。
