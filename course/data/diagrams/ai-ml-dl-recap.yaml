@@ -12,9 +12,9 @@ points:
       en: Five words, one family
       ja: 5つの言葉は1つの系統
     caption:
-      vi: Tầng dưới nằm trong tầng trên
-      en: Each level sits inside the one above
-      ja: 下の段は上の段の一部
+      vi: Từ rộng đến hẹp
+      en: From the broadest to the narrowest
+      ja: 広い言葉から狭い言葉へ
   - icon: "📏"
     color: slate
     name:
@@ -24,7 +24,7 @@ points:
     caption:
       vi: Luật do người viết, hay học từ ví dụ?
       en: Rules someone wrote, or learned from examples?
-      ja: 人が書いたルールか、例から学んだか
+      ja: "人が書いたルールか、\n例から学んだか"
   - icon: "🧠"
     color: violet
     name:
@@ -32,7 +32,7 @@ points:
       en: Deep learning uses many layers
       ja: 深層学習は多層のネットワーク
     caption:
-      vi: Nền của AI về hình, giọng nói, chữ
+      vi: "Nền của AI về hình,\ngiọng nói, chữ"
       en: Behind modern image, speech and text AI
       ja: 画像・音声・文章のAIの土台
   - icon: "🎨"
@@ -52,7 +52,7 @@ points:
       en: An agent's brain is an LLM
       ja: エージェントの頭脳はLLM
     caption:
-      vi: Viết trôi chảy, vẫn có thể sai
+      vi: "Viết trôi chảy,\nvẫn có thể sai"
       en: Fluent, and still fallible
       ja: 流暢でも間違えることがある
 takeaway:

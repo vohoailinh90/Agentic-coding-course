@@ -6,9 +6,9 @@ title:
   en: The AI Family Tree, Broad to Narrow
   ja: AIの系統図：広いものから狭いものへ
 subtitle:
-  vi: Mỗi tầng là một nhánh của tầng ngay trên nó
-  en: Each level is one branch of the level above it
-  ja: 下の段は、すぐ上の段の一部
+  vi: Đọc từ trên xuống, từ rộng đến hẹp
+  en: Read from the top, broadest to narrowest
+  ja: 上から下へ、広い言葉から狭い言葉へ
 steps:
   - icon: "🤖"
     color: slate
@@ -49,9 +49,9 @@ steps:
       en: Neural networks with many layers
       ja: 何層ものニューラルネットワーク
     arrow:
-      vi: dùng nó để
-      en: used for
-      ja: それを使って
+      vi: nền của phần lớn
+      en: the basis of most
+      ja: 今の大半の土台
   - icon: "🎨"
     color: pink
     name:

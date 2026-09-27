@@ -8,22 +8,22 @@ points:
   - icon: "📚"
     color: blue
     name:
-      vi: Dữ liệu có đáp án
-      en: "Data: examples with answers"
-      ja: データ＝答えつきの例
+      vi: "Có giám sát: ví dụ + đáp án"
+      en: "Supervised: examples + answers"
+      ja: 教師あり＝例＋答え
     caption:
-      vi: Đúng và đa dạng thì mới tốt
-      en: They need to be right and varied
+      vi: "Đúng và đa dạng\nthì mới tốt"
+      en: "They need to be\nright and varied"
       ja: 正確で多様であることが大事
   - icon: "🔁"
     color: indigo
     name:
-      vi: "Huấn luyện: đoán, so, chỉnh"
+      vi: "Huấn luyện:\nđoán, so, chỉnh"
       en: "Training: guess, compare, adjust"
       ja: "学習＝\n予測・比較・調整"
     caption:
       vi: Lặp lại rất nhiều lần
-      en: Repeated many, many times
+      en: "Repeated many,\nmany times"
       ja: 何度も繰り返す
   - icon: "🧮"
     color: violet
@@ -32,7 +32,7 @@ points:
       en: "The model: learned numbers"
       ja: モデル＝学んだ数値
     caption:
-      vi: Dùng để đoán trường hợp mới
+      vi: "Dùng để đoán\ntrường hợp mới"
       en: Used to predict new cases
       ja: 新しいケースを予測する
   - icon: "🧪"
@@ -40,7 +40,7 @@ points:
     name:
       vi: Thử trên dữ liệu chưa gặp
       en: Test on data it has not seen
-      ja: 見たことのないデータで試す
+      ja: "見たことのない\nデータで試す"
     caption:
       vi: Học thuộc không phải là học
       en: Memorizing is not learning
@@ -48,9 +48,9 @@ points:
   - icon: "💬"
     color: green
     name:
-      vi: "LLM: cùng ý, cỡ khổng lồ"
-      en: "LLMs: same idea, huge scale"
-      ja: "LLM＝同じ考えを\n巨大な規模で"
+      vi: "LLM: đoán token tiếp theo"
+      en: "LLMs: guess the next token"
+      ja: "LLM＝\n次のトークンを予測"
     caption:
       vi: Không học thêm khi bạn đang chat
       en: It does not learn while you chat

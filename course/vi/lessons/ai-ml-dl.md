@@ -20,7 +20,7 @@ social:
 
 Sau bài này, bạn sẽ:
 
-- Xếp đúng năm từ **AI, học máy, học sâu, AI tạo sinh, LLM** vào một gia phả: nhánh nào nằm trong nhánh nào.
+- Xếp đúng năm từ **AI, học máy, học sâu, AI tạo sinh, LLM** vào một gia phả, từ rộng đến hẹp.
 - Phân biệt phần mềm làm theo luật viết sẵn với phần mềm học từ dữ liệu.
 - Biết agent trong khóa học thuộc nhánh nào, và điều đó nói gì về điểm mạnh, điểm yếu của nó.
 
@@ -38,12 +38,12 @@ Hana gật đầu, nhưng không chắc ba thứ đó khác nhau thế nào — 
 
 ![Gia phả của AI, từ rộng đến hẹp](../diagrams/ai-family-tree.svg)
 
-Đọc hình từ trên xuống. Mỗi tầng là **một nhánh** của tầng ngay trên nó:
+Đọc hình từ trên xuống, từ rộng đến hẹp:
 
 1. **AI (trí tuệ nhân tạo)** — tên chung cho các công nghệ giúp máy làm những việc trước đây cần trí óc con người: hiểu ngôn ngữ, phân tích dữ liệu, đưa ra gợi ý. Có những phần mềm "AI" chỉ làm theo luật do người viết sẵn (*nếu… thì…*) và không học gì cả.
 2. **Học máy (machine learning)** — một nhánh của AI. Thay vì viết luật, người ta cho máy xem thật nhiều ví dụ để nó tự tìm ra quy luật. Bài [Máy "học" như thế nào?](how-machines-learn.md) kể kỹ phần này.
 3. **Học sâu (deep learning)** — một nhánh của học máy, dùng mạng nơ-ron nhiều lớp. Đây là nền của phần lớn AI hiện đại về hình ảnh, giọng nói và ngôn ngữ.
-4. **AI tạo sinh (generative AI)** — AI tạo ra nội dung mới: chữ, hình, âm thanh, code, thay vì chỉ phân loại hay chấm điểm. Ngày nay nó hầu hết được xây bằng học sâu.
+4. **AI tạo sinh (generative AI)** — AI tạo ra nội dung mới: chữ, hình, âm thanh, code, thay vì chỉ phân loại hay chấm điểm. Cái tên nói nó *làm gì*, không nói nó được *làm bằng gì*: ngày nay hầu hết AI tạo sinh được xây bằng học sâu, nhưng đó là con đường phổ biến, không phải quy tắc.
 5. **LLM (mô hình ngôn ngữ lớn)** — AI tạo sinh dành cho chữ viết: được huấn luyện trên lượng văn bản khổng lồ để viết tiếp phần chữ hợp lý nhất.
 
 ### Mô hình nền tảng (foundation model)
@@ -90,7 +90,7 @@ Từ nay, mỗi lần nghe *"cái này có AI"*, Hana hỏi thêm hai câu: **"N
 <!-- section: takeaways -->
 ## Ghi nhớ
 
-- AI → học máy → học sâu → AI tạo sinh → LLM: mỗi tầng là một nhánh của tầng trên.
+- AI → học máy → học sâu → AI tạo sinh → LLM: từ rộng đến hẹp; ngày nay AI tạo sinh hầu hết được xây bằng học sâu.
 - Làm theo luật viết sẵn khác với học từ dữ liệu, dù cả hai đều có thể được gọi là "AI".
 - Học sâu dùng mạng nơ-ron nhiều lớp; AI tạo sinh làm ra nội dung mới; LLM làm việc đó với chữ viết.
 - Agent trong khóa học dùng một LLM làm bộ não: viết trôi chảy, nhưng vẫn cần bạn kiểm tra.

@@ -5,9 +5,9 @@ title:
   en: The Training Loop
   ja: 学習のループ
 subtitle:
-  vi: Lặp lại với rất nhiều ví dụ có đáp án
-  en: Repeated over many examples that come with answers
-  ja: 答えつきのたくさんの例で繰り返す
+  vi: "Học có giám sát: lặp lại với rất nhiều ví dụ có đáp án"
+  en: "Supervised learning: repeated over many examples with answers"
+  ja: 教師あり学習：答えつきのたくさんの例で繰り返す
 center:
   icon: "🔁"
   color: indigo

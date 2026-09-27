@@ -13,7 +13,7 @@
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="722" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">学習のループ</tspan></text>
-<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">答えつきのたくさんの例で繰り返す</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">教師あり学習：答えつきのたくさんの例で繰り返す</tspan></text>
 <path d="M508.2,212.8 A210,210 0 0 1 608,422.1" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
 <rect x="582.4" y="275.7" width="72" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="618.4" y="293.2">確かめる</tspan></text>

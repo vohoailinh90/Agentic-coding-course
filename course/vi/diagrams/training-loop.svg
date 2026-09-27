@@ -13,7 +13,7 @@
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="756" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Vòng huấn luyện</tspan></text>
-<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Lặp lại với rất nhiều ví dụ có đáp án</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Học có giám sát: lặp lại với rất nhiều ví dụ có đáp án</tspan></text>
 <path d="M510.7,213.5 A215,215 0 0 1 612.9,427.8" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
 <rect x="590" y="278.6" width="65.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="622.9" y="296.1">đem so</tspan></text>
