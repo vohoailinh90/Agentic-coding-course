@@ -1,0 +1,74 @@
+# Used in: tokens (example). One sentence in three languages, counted with tiktoken's o200k_base table (September 2026).
+template: compare
+title:
+  vi: Cùng một câu, ba thứ tiếng
+  en: One Sentence, Three Languages
+  ja: 同じ文を3つの言語で
+subtitle:
+  vi: "Đếm bằng tiktoken, bảng o200k_base (9/2026)"
+  en: "Counted with tiktoken, o200k_base table (Sep 2026)"
+  ja: tiktoken・o200k_base で数えた結果（2026年9月）
+rows:
+  - vi: Số ký tự
+    en: Characters
+    ja: 文字数
+  - vi: Số token
+    en: Tokens
+    ja: トークン数
+  - vi: Cách cắt
+    en: How it splits
+    ja: 切れ方
+emphasis_row: 2
+columns:
+  - icon: "🛵"
+    color: rose
+    name:
+      vi: Tiếng Việt
+      en: Vietnamese
+      ja: ベトナム語
+    values:
+      - vi: "41"
+        en: "41"
+        ja: "41"
+      - vi: "13"
+        en: "13"
+        ja: "13"
+      - vi: "“sếp” → s + ếp"
+        en: "“sếp” → s + ếp"
+        ja: 「sếp」→ s + ếp
+  - icon: "🌍"
+    color: blue
+    name:
+      vi: Tiếng Anh
+      en: English
+      ja: 英語
+    values:
+      - vi: "44"
+        en: "44"
+        ja: "44"
+      - vi: "10"
+        en: "10"
+        ja: "10"
+      - vi: Mỗi từ một token
+        en: One token per word
+        ja: 1単語で1トークン
+  - icon: "🗾"
+    color: violet
+    name:
+      vi: Tiếng Nhật
+      en: Japanese
+      ja: 日本語
+    values:
+      - vi: "19"
+        en: "19"
+        ja: "19"
+      - vi: "17"
+        en: "17"
+        ja: "17"
+      - vi: "Gần như mỗi chữ\nmột token"
+        en: "Nearly one token\nper character"
+        ja: ほぼ1文字で1トークン
+takeaway:
+  vi: Cùng một ý, số token khác nhau theo ngôn ngữ và theo bộ tách.
+  en: "Same idea, different token count:\nit depends on the language and the tokenizer."
+  ja: 同じ内容でも、トークン数は言語と分け方で変わります。
