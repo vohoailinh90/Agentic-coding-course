@@ -50,10 +50,10 @@
 
 1. Linh đọc duyệt lộ trình tối thiểu (bản HTML: `python -m src.main export`), thử 6 bài đầu với vài
    người học thật, rồi đổi các bài đạt sang `done`.
-2. **Cách làm từ 27/9/2026 (Linh quyết định): Codex viết bài, Claude điều phối.** Mỗi đợt khoảng 2 bài
-   là một issue GitHub có hợp đồng công việc cho Codex; Codex viết trên nhánh riêng; **Linh bấm Create
-   PR** trong task của Codex (môi trường Codex không tự push được); Claude kiểm tra PR (test, đọc bài
-   3 thứ tiếng, mở nguồn, xem hình) rồi merge hoặc yêu cầu sửa. Bản bàn giao cho Codex:
-   [docs/handoff.md](docs/handoff.md). Sau mỗi đợt, xuất lại HTML.
+2. **Cách làm (Linh quyết định 27/9/2026, [ADR 010](docs/decisions/010-claude-writes-codex-reviews.md)):
+   Claude viết bài, Codex review.** Mỗi đợt khoảng 2 bài × 3 thứ tiếng nằm trên một nhánh `claude/…`
+   và một PR; Claude gọi Codex review ngay trên PR (không cần bấm Create PR), sửa các lỗi đã kiểm
+   chứng; **Linh bấm Merge** khi CI xanh. Bản bàn giao: [docs/handoff.md](docs/handoff.md). Sau mỗi
+   đợt, xuất lại HTML.
 3. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`, ảnh đăng kèm là
    hình tóm tắt của bài.

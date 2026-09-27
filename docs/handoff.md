@@ -25,19 +25,19 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## Working model
 
-Since 2026-09-27 (the owner's call) **Codex writes the lessons and Claude coordinates**:
+Since 2026-09-27 ([ADR 010](decisions/010-claude-writes-codex-reviews.md)) **Claude writes the
+lessons and Codex reviews them**:
 
-1. Claude opens one GitHub issue per batch of about two lessons and posts an IMPLEMENT task contract
-   ([claude-to-codex.md](claude-to-codex.md)): the lessons, this page as the brief, the checks that
-   must pass. The issue title starts with the task id (`ACC-0006: …`), because Codex names its task
-   after the issue and the owner finds it by searching that name.
-2. Codex writes the batch on a feature branch and prepares a pull request. Its environment cannot
-   push, so **the owner presses Create PR** in the Codex task to publish it (at chatgpt.com/codex; the
-   "View task" link in Codex's GitHub comment is a read-only share page).
-3. Claude validates the pull request: every acceptance criterion, the diff's scope, `validate`,
-   `build --check` and the tests on its head, the lessons read in all three languages, every cited
-   link opened, and every new SVG viewed in all three languages (Codex's environment has no Japanese
-   or emoji fonts). Then it asks for corrections, at most two rounds, or merges.
+1. Claude writes a batch of about two lessons, in all three languages, on a `claude/<batch>` branch,
+   runs every check below, and opens a pull request.
+2. Claude asks Codex for a review on the pull request (the built-in review command of
+   [claude-to-codex.md](claude-to-codex.md)); Codex posts its findings there.
+3. Claude checks each finding against the repository, fixes the confirmed ones and pushes (at most
+   two review rounds). The owner merges once CI is green: `main` has no branch protection, so Claude
+   does not merge.
+
+Codex wrote four batches before this (issues 2, 3, 4 and 6); what the trial taught is kept in the
+rules below — the task id at the start of an issue title, and the standard section headings.
 
 ## What to write next
 
