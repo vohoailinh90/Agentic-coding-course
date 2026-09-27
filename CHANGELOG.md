@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- `validate` checks each finished lesson's quiz: three questions with options A–C and an answer key,
+  the same key in every language (`quiz_key_differs`), and a warning when all three answers are one
+  letter; and it reports a lesson pointed at by its number or position (`lesson_by_position`: *lesson
+  3*, *ở bài trước*, *次のレッスン*), outside code blocks.
+
 ## v0.5.0 — 2026-09-27
 
 - **The minimum path is written:** all 19 lessons in vi, en and ja (status `review`), each with an

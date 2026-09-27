@@ -160,3 +160,27 @@ mutations:
   find: "    if len(shown) != 1 or len(diagrams) != 1:\n"
   replace: "    if len(shown) != 1:\n"
   test: tests.test_course_validate.ValidateTests.test_a_recap_image_that_is_no_infographic_is_an_error
+- label: a translation may answer its quiz with a different key
+  find: "        if None not in (doc.quiz_key, reference.quiz_key) and doc.quiz_key != reference.quiz_key:\n"
+  replace: "        if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_answered_differently_in_another_language_is_an_error
+- label: a quiz missing an option or an answer passes review
+  find: "    if not quiz.well_formed:\n"
+  replace: "    if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_missing_an_option_or_an_answer_is_an_error
+- label: a quiz is checked only in some lessons, never its key
+  find: "    doc.quiz_key = quiz.key\n"
+  replace: "    pass\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_answered_differently_in_another_language_is_an_error
+- label: a quiz whose answers are all one letter goes unnoticed
+  find: "    if len(set(quiz.key)) == 1:\n"
+  replace: "    if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_whose_answers_are_all_one_letter_is_a_warning
+- label: a lesson may be pointed at by its number or position
+  find: "            if match:\n                check.error(\"lesson_by_position\", line=number, text=match.group(0))\n"
+  replace: "            if False:\n                check.error(\"lesson_by_position\", line=number, text=match.group(0))\n"
+  test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
+- label: a positional reference is looked for in code blocks too
+  find: "        for number, line in block.prose:\n            match = pattern.search(line)\n"
+  replace: "        for number, line in enumerate(block.body_lines):\n            match = pattern.search(line)\n"
+  test: tests.test_course_validate.ValidateTests.test_later_lessons_steps_and_code_blocks_point_at_no_lesson

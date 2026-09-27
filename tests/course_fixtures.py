@@ -108,6 +108,19 @@ RECAP = {
     ],
 }
 ALPHA_SECTIONS = ("objective", "hook", "concept", "analogy", "example", "recap", "takeaways", "quiz")
+QUIZ_KEY = "BCA"  # the fixture quiz's answers, the same in every language
+
+
+def quiz_body(key: str = QUIZ_KEY, letters: str = "ABC") -> str:
+    """A quiz section: one question per answer in `key`, each with the options in `letters`."""
+    lines: list[str] = []
+    for number, _ in enumerate(key, 1):
+        lines += [f"**Q{number}.** Question {number}?", ""]
+        lines += [f"- {letter}) Option {letter}" for letter in letters] + [""]
+    lines += ["<details>", "<summary>Answers</summary>", ""]
+    lines += [f"{number}. **{answer}** — why." for number, answer in enumerate(key, 1)]
+    lines += ["", "</details>"]
+    return "\n".join(lines)
 
 
 def dump(path: Path, data: object) -> None:
@@ -152,6 +165,8 @@ def lesson_text(
             default += f"\n\n![{DIAGRAM['title'][language]}](../diagrams/{DIAGRAM_ID}.svg)"
         if key == "recap":
             default = f"![{RECAP['title'][language]}](../diagrams/{RECAP_ID}.svg)"
+        if key == "quiz":
+            default = quiz_body()
         body = bodies.get(key, default)
         lines += [f"<!-- section: {key} -->", f"## Heading {key}", "", body, ""]
     return "\n".join(lines)

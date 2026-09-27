@@ -164,8 +164,9 @@ build` draws it into every language folder ([data-model.md](data-model.md) has e
 - No invented statistics or quotes. If a number matters, cite it; if you cannot, leave it out.
 - Tool-specific steps (menus, commands, prices, plan names) change monthly. Keep them in
   `try-it` or a clearly marked paragraph with *as of YYYY-MM*, never inside the core concept.
-- Never refer to another lesson or module by its number ("see Module 6"): numbers change when
-  the roadmap is reordered. Refer to it by name.
+- Never refer to another lesson or module by its number ("see Module 6") or its position ("the
+  previous lesson"): both change when the roadmap is reordered. Refer to it by name, with a link, or
+  say "later lessons"; `validate` catches the common forms in all three languages.
 
 ## Safety in lessons
 
@@ -192,7 +193,8 @@ build` draws it into every language folder ([data-model.md](data-model.md) has e
 ```
 
 Three questions, three options each, one correct answer. Wrong options should be tempting
-misunderstandings, not jokes.
+misunderstandings, not jokes. Vary the right letter across the questions, and keep the options in the
+same order in every language: `validate` compares the answer keys.
 
 ## Front matter and Facebook fields
 

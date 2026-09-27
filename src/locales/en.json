@@ -73,7 +73,11 @@
     "diagram_unknown": "{path}: the image {target} is not a diagram in course/data/diagrams/.",
     "image_alt_missing": "{path}: the image {target} needs alt text (what a reader who cannot see it is told).",
     "link_broken": "{path}: the link {target} points to a file that does not exist.",
-    "build_stale": "{path}: out of date with course/data/ and the lessons. Run: python -m src.main build"
+    "build_stale": "{path}: out of date with course/data/ and the lessons. Run: python -m src.main build",
+    "quiz_shape": "{path}: the quiz needs 3 questions with the options A) B) C), and an answer key 1–3 such as \"1. **B** — …\". Found the options {options} and the answers {answers}.",
+    "quiz_key_differs": "{path}: the quiz answers are {actual} in {lang} but {expected} in {other}. Keep the options in the same order in every language.",
+    "quiz_one_letter": "{path}: every quiz answer is {letter}. Move the right option in some questions, in every language, so the answers cannot be guessed from a pattern.",
+    "lesson_by_position": "{path}, line {line}: \"{text}\" points at a lesson by its number or position, which breaks when the roadmap is reordered. Name the lesson (link to it), or say \"later lessons\"."
   },
   "validate": {
     "ok": "Content store OK. Lesson files checked: {files}. Warnings: {warnings}.",

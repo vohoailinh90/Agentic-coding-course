@@ -24,6 +24,7 @@ from tests.course_fixtures import (
     dump,
     language_bar,
     make_store,
+    quiz_body,
     write_generated,
     write_lesson,
 )
@@ -406,6 +407,62 @@ class ValidateTests(StoreTest):
 
     def test_a_skeleton_is_exempt_from_parity(self) -> None:
         write_lesson(self.root, "alpha", "ja", status="todo", sections=("objective", "hook"))
+        self.assertEqual(validate(self.root).errors, [])
+
+    # -- quizzes, and pointing at other lessons -------------------------------------
+
+    def test_a_quiz_answered_differently_in_another_language_is_an_error(self) -> None:
+        write_lesson(self.root, "alpha", "ja", bodies={"quiz": quiz_body("BAC")})
+        report = validate(self.root)
+        self.assertEqual(codes(report), ["quiz_key_differs"])
+        params = report.errors[0].params
+        self.assertEqual((params["lang"], params["other"], params["actual"], params["expected"]),
+                         ("ja", "vi", "BAC", "BCA"))
+
+    def test_a_quiz_missing_an_option_or_an_answer_is_an_error(self) -> None:
+        no_third_answer = quiz_body().replace("\n3. **A** — why.", "")
+        for body in (quiz_body(letters="AB"), quiz_body("BC"), quiz_body("BCD"), no_third_answer):
+            with self.subTest(body=body):
+                write_lesson(self.root, "alpha", "en", bodies={"quiz": body})
+                self.assertEqual(codes(validate(self.root)), ["quiz_shape"])
+
+    def test_a_quiz_whose_answers_are_all_one_letter_is_a_warning(self) -> None:
+        for language in ("vi", "en", "ja"):
+            write_lesson(self.root, "alpha", language, bodies={"quiz": quiz_body("BBB")})
+        report = validate(self.root)
+        self.assertEqual(report.errors, [])
+        letters = [f.params["letter"] for f in report.warnings if f.code == "quiz_one_letter"]
+        self.assertEqual(letters, ["B"] * 3)
+
+    def test_a_draft_may_leave_its_quiz_unfinished(self) -> None:
+        for language in ("vi", "en", "ja"):
+            write_lesson(self.root, "alpha", language, status="draft", bodies={"quiz": quiz_body(letters="AB")})
+        self.assertEqual(validate(self.root).errors, [])
+
+    def test_a_lesson_pointed_at_by_number_or_position_is_an_error(self) -> None:
+        cases = {
+            "vi": ("Như đã thấy ở bài trước, agent đọc file.", "ở bài trước"),
+            "en": ("As in Lesson 4, the agent reads files.", "Lesson 4"),
+            "ja": ("次のレッスンで詳しく見ます。", "次のレッスン"),
+        }
+        for language, (sentence, text) in cases.items():
+            with self.subTest(language=language):
+                path = write_lesson(self.root, "alpha", language, bodies={"hook": sentence})
+                line = path.read_text(encoding="utf-8").split("\n").index(sentence) + 1
+                report = validate(self.root)
+                self.assertEqual(codes(report), ["lesson_by_position"])
+                self.assertEqual((report.errors[0].params["text"], report.errors[0].params["line"]), (text, line))
+                write_lesson(self.root, "alpha", language)
+
+    def test_later_lessons_steps_and_code_blocks_point_at_no_lesson(self) -> None:
+        bodies = {
+            "vi": "Thẻ này đi cùng bạn ở các bài sau. Bước 1: mở thư mục. Làm bài trước khi xem đáp án."
+                  "\n\n```text\nXem bài 3\n```",
+            "en": "You will use it in later lessons. Step 1: open the folder.\n\n```text\nsee lesson 3\n```",
+            "ja": "この先のレッスンでも使います。手順1：フォルダを開く。\n\n```text\nレッスン3\n```",
+        }
+        for language, body in bodies.items():
+            write_lesson(self.root, "alpha", language, bodies={"hook": body})
         self.assertEqual(validate(self.root).errors, [])
 
     # -- generated files ----------------------------------------------------------

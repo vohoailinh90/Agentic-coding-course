@@ -73,7 +73,11 @@
     "diagram_unknown": "{path}：画像 {target} は course/data/diagrams/ にある図ではありません。",
     "image_alt_missing": "{path}：画像 {target} に代替テキスト（画像が見えない人に伝える説明）がありません。",
     "link_broken": "{path}：リンク {target} の先のファイルがありません。",
-    "build_stale": "{path}：course/data/ やレッスンの内容と一致していません。次を実行してください：python -m src.main build"
+    "build_stale": "{path}：course/data/ やレッスンの内容と一致していません。次を実行してください：python -m src.main build",
+    "quiz_shape": "{path}：確認クイズには、選択肢 A) B) C) のある問題が3つと、「1. **B** — …」の形の答え1〜3が必要です。見つかった選択肢は {options}、答えは {answers} です。",
+    "quiz_key_differs": "{path}：クイズの答えが {lang} では {actual}、{other} では {expected} です。選択肢の順番をすべての言語でそろえてください。",
+    "quiz_one_letter": "{path}：クイズの答えがすべて {letter} です。いくつかの問題で正解の位置を変えて（すべての言語で）、パターンから答えを推測できないようにしてください。",
+    "lesson_by_position": "{path}、{line}行目：「{text}」は番号や位置でレッスンを指しています。ロードマップの順番が変わると合わなくなります。レッスン名（リンク付き）で書くか、「この先のレッスン」と書いてください。"
   },
   "validate": {
     "ok": "コンテンツに問題はありません。チェックしたレッスンファイル：{files}件。警告：{warnings}件。",

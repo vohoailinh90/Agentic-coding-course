@@ -73,7 +73,11 @@
     "diagram_unknown": "{path}: hình {target} không phải là sơ đồ trong course/data/diagrams/.",
     "image_alt_missing": "{path}: hình {target} cần có chữ mô tả (alt) cho người không xem được hình.",
     "link_broken": "{path}: liên kết {target} trỏ tới file không tồn tại.",
-    "build_stale": "{path}: chưa khớp với course/data/ và các bài học. Hãy chạy: python -m src.main build"
+    "build_stale": "{path}: chưa khớp với course/data/ và các bài học. Hãy chạy: python -m src.main build",
+    "quiz_shape": "{path}: phần tự kiểm tra cần 3 câu hỏi, mỗi câu có các lựa chọn A) B) C), và đáp án 1–3 dạng \"1. **B** — …\". Đang thấy các lựa chọn {options} và đáp án {answers}.",
+    "quiz_key_differs": "{path}: đáp án là {actual} ở bản {lang} nhưng là {expected} ở bản {other}. Giữ thứ tự các lựa chọn giống nhau ở mọi ngôn ngữ.",
+    "quiz_one_letter": "{path}: mọi câu hỏi đều có đáp án {letter}. Hãy đổi chỗ lựa chọn đúng ở vài câu (ở mọi ngôn ngữ) để người học không đoán theo quy luật.",
+    "lesson_by_position": "{path}, dòng {line}: \"{text}\" nhắc tới một bài bằng số thứ tự hoặc vị trí, sẽ sai khi lộ trình đổi thứ tự. Hãy gọi tên bài (kèm liên kết), hoặc nói \"các bài sau\"."
   },
   "validate": {
     "ok": "Kho nội dung hợp lệ. Số file bài học đã kiểm tra: {files}. Cảnh báo: {warnings}.",

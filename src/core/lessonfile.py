@@ -55,6 +55,7 @@ class SectionBlock:
     body_lines: list[str] = field(default_factory=list)
     images: list[tuple[str, str]] = field(default_factory=list)  # (alt text, target)
     links: list[str] = field(default_factory=list)  # link targets, images excluded
+    prose: list[tuple[int, str]] = field(default_factory=list)  # (line number, line) outside code blocks
 
     @property
     def body(self) -> str:
@@ -81,6 +82,7 @@ class LessonDoc:
     # (finding code, params) for lines that could not be placed in the structure
     problems: list[tuple[str, dict]] = field(default_factory=list)
     status: str | None = None  # set by the validator once the front matter checks out
+    quiz_key: str | None = None  # set by the validator when the quiz is well formed, e.g. "BCA"
 
     @property
     def keys(self) -> list[str]:
@@ -130,6 +132,7 @@ def parse_lesson(text: str) -> LessonDoc:
         if current is not None:
             current.body_lines.append(line)
             if not code:
+                current.prose.append((number, line))
                 current.images.extend((match.group("alt"), match.group("target")) for match in IMAGE.finditer(line))
                 current.links.extend(match.group("target") for match in LINK.finditer(line))
         elif line.strip() and not COMMENT.fullmatch(line.strip()) and not reported_outside:

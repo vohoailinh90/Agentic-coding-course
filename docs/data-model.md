@@ -167,6 +167,12 @@ social:
   the lesson: the recap sums up the whole lesson in a picture of its own (usually a `summary`).
 - All language files of a lesson whose status is not `todo` have the same section keys in the same
   order and show the same diagrams in the same sections; the source language file is the reference.
+- From status `review`, a `quiz` section has three questions with the options `A)`, `B)`, `C)` and an
+  answer key `1. **B** — …` for each (`quiz_shape`). Every language has the same key, because the
+  options are in the same order (`quiz_key_differs`); a key that is one letter three times is a
+  warning (`quiz_one_letter`).
+- Outside code blocks, no lesson is pointed at by its number or position — *lesson 3*, *ở bài trước*,
+  *次のレッスン* (`lesson_by_position`); a reordered roadmap would make it wrong.
 
 ### Status
 

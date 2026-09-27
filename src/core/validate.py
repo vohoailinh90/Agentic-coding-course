@@ -13,6 +13,9 @@ a review step (CLAUDE.md, "Deterministic work is not agent work"):
 - all non-todo translations of a lesson share the same sections and show the
   same diagrams in the same places, so no translation drops or adds a part;
 - every image and relative link in a lesson points at something that exists;
+- a finished lesson's quiz has three questions of options A–C and an answer key,
+  the same key in every language; no lesson is pointed at by its number or its
+  position ("lesson 3", "the previous lesson"), which a reordered roadmap breaks;
 - every generated file (course homes, glossary pages, infographics) is exactly
   what `python -m src.main build` renders now.
 
@@ -23,6 +26,7 @@ same report reads in Vietnamese, English or Japanese.
 from __future__ import annotations
 
 import posixpath
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -55,11 +59,31 @@ from src.core.model import (
     lesson_path,
     lessons_dir,
 )
+from src.core.quiz import read_quiz
 
 COMPLETE = ("review", "done")  # statuses that promise a finished text
 DATA_ENTRIES = ("course.yaml", "curriculum.yaml", "sections.yaml", "glossary.yaml", "diagrams")
 EXTERNAL = ("http://", "https://", "mailto:", "#")
 RECAP = "recap"  # the section that sums up a lesson in one infographic
+QUIZ = "quiz"
+# How a lesson might point at another by its number or its position. Such a reference
+# breaks when the roadmap is reordered: name the lesson instead, or say "later lessons".
+POSITIONAL = {
+    "vi": re.compile(
+        r"\b(?:bài(?: học)?|module|mô-đun)\s+(?:số\s+)?\d+\b"
+        r"|\b(?:ở|trong|như|từ|theo|của|sang)\s+bài(?: học)?\s+(?:trước|sau|tới|kế tiếp|tiếp theo|vừa rồi)\b",
+        re.IGNORECASE,
+    ),
+    "en": re.compile(
+        r"\b(?:lesson|module|chapter)\s+\d+\b"
+        r"|\b(?:the|this|that)\s+(?:previous|next|last|following)\s+(?:lesson|module)\b",
+        re.IGNORECASE,
+    ),
+    "ja": re.compile(
+        r"(?:レッスン|モジュール)\s*[0-9０-９]+|第\s*[0-9０-９]+\s*(?:章|課|レッスン|モジュール)"
+        r"|(?:前|次)の(?:レッスン|モジュール)"
+    ),
+}
 
 
 @dataclass(frozen=True)
@@ -123,6 +147,9 @@ class _Checker:
 
     def error(self, code: str, **params: object) -> None:
         self.report.error(code, path=self.path, **params)
+
+    def warning(self, code: str, **params: object) -> None:
+        self.report.warning(code, path=self.path, **params)
 
     def mapping(self, value: object, where: str) -> dict | None:
         if isinstance(value, dict):
@@ -749,6 +776,32 @@ def _recap(check: _Checker, relative: str, doc: LessonDoc) -> None:
             return
 
 
+def _positional(check: _Checker, language: str, doc: LessonDoc) -> None:
+    """No lesson is pointed at by its number or position, which a reordered roadmap would break."""
+    pattern = POSITIONAL.get(language)
+    if pattern is None:
+        return
+    for block in doc.sections:
+        for number, line in block.prose:
+            match = pattern.search(line)
+            if match:
+                check.error("lesson_by_position", line=number, text=match.group(0))
+
+
+def _quiz(check: _Checker, doc: LessonDoc) -> None:
+    """Three questions of options A–C with an answer key; its key is what translations must share."""
+    block = doc.section(QUIZ)
+    if block is None:
+        return  # optional for some lesson types; a missing required one is section_required's business
+    quiz = read_quiz(line for _, line in block.prose)
+    if not quiz.well_formed:
+        check.error("quiz_shape", options=quiz.options or "–", answers=quiz.key or "–")
+        return
+    doc.quiz_key = quiz.key
+    if len(set(quiz.key)) == 1:
+        check.warning("quiz_one_letter", letter=quiz.key[0])
+
+
 def _lesson_file(
     report: Report, root: Path, course: Course, lesson: Lesson, language: str, relative: str
 ) -> LessonDoc | None:
@@ -818,6 +871,7 @@ def _lesson_file(
         for section in course.sections:
             if lesson.type in section.required_for and section.key not in seen:
                 check.error("section_required", section=section.key)
+        _positional(check, language, doc)
     if status in COMPLETE:
         for block in doc.sections:
             if block.is_empty:
@@ -827,6 +881,7 @@ def _lesson_file(
         if summary == "":
             check.error("field_empty", field="summary")
         _recap(check, relative, doc)
+        _quiz(check, doc)
     if status == "done":
         if hook == "":
             check.error("field_empty", field="social.hook")
@@ -857,6 +912,11 @@ def _parity(report: Report, course: Course, lesson: Lesson, docs: dict[str, Less
             report.error(
                 "diagrams_differ", path=path, lang=language, other=reference_language,
                 actual=_shown(doc.diagram_layout), expected=_shown(reference.diagram_layout),
+            )
+        if None not in (doc.quiz_key, reference.quiz_key) and doc.quiz_key != reference.quiz_key:
+            report.error(
+                "quiz_key_differs", path=path, lang=language, other=reference_language,
+                actual=doc.quiz_key, expected=reference.quiz_key,
             )
 
 

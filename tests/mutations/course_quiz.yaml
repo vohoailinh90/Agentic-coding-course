@@ -1,0 +1,26 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: src/core/quiz.py
+note: Reads a lesson's quiz, whose answer key every translation must share. Each entry loosens one rule of a
+  well-formed quiz and names the test that must notice.
+mutations:
+- label: a question may have other options than A, B and C
+  find: "            self.options == LETTERS * QUESTIONS\n"
+  replace: "            True\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_missing_an_option_or_an_answer_is_an_error
+- label: an answer may be missing from the key
+  find: "            and [number for number, _ in self.answers] == list(range(1, QUESTIONS + 1))\n"
+  replace: "            and True\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_missing_an_option_or_an_answer_is_an_error
+- label: an answer may name a letter no option has
+  find: "            and all(letter in LETTERS for _, letter in self.answers)\n"
+  replace: "            and True\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_missing_an_option_or_an_answer_is_an_error
+- label: the answer key is read in the wrong order
+  find: "        return \"\".join(letter for _, letter in self.answers)\n"
+  replace: "        return \"\".join(sorted(letter for _, letter in self.answers))\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_answered_differently_in_another_language_is_an_error

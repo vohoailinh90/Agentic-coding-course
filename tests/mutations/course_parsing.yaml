@@ -24,3 +24,7 @@ mutations:
   find: "            if not code:\n"
   replace: "            if True:\n"
   test: tests.test_course_lessonfile.ParseTests.test_images_and_links_are_collected_per_section_outside_code
+- label: lines inside code blocks count as prose
+  find: "            if not code:\n                current.prose.append((number, line))\n"
+  replace: "            current.prose.append((number, line))\n            if not code:\n"
+  test: tests.test_course_validate.ValidateTests.test_later_lessons_steps_and_code_blocks_point_at_no_lesson
