@@ -25,8 +25,9 @@
   - **Lộ trình tối thiểu viết xong: 19 bài** (347 phút), đủ 3 thứ tiếng, trạng thái `review` (chờ Linh
     duyệt), mỗi bài một infographic giải thích và một hình tóm tắt; hai dự án có dữ liệu mẫu và kết quả
     đúng biết trước. Dữ kiện về công cụ ghi rõ "tính đến tháng 9/2026" và dẫn tài liệu chính thức.
-  - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`;
-    Codex viết `security-basics`, `prompting-basics` (PR #5) — **24/52 bài**.
+  - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`,
+    `ai-ml-dl`, `how-machines-learn`; Codex viết `security-basics`, `prompting-basics` (PR #5),
+    `next-token-prediction`, `tool-calling` (PR #8) — **28/52 bài**.
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
@@ -35,8 +36,9 @@
     3 thứ tiếng và một file cho mỗi ngôn ngữ; in ra PDF được
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
-  - Linh duyệt 19 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 28 bài còn lại (2 bài Codex đã viết xong, chờ tạo PR: issue #2). Khi thử thật
+  - Linh duyệt 28 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
+  - 24 bài còn lại; 2 trong số đó (`what-is-software`, `project-anatomy`, Codex viết, Claude đã soát
+    và sửa) nằm ở PR #9, chờ Linh merge. Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
   - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,
@@ -44,7 +46,8 @@
     Google Cloud. Mở thêm trong cài đặt Network access của môi trường nếu muốn nguồn đa dạng hơn.
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
 - **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 007 (lộ trình v1, và quyết định viết cả
-  khóa học ngay), 008 (hình tóm tắt trong mọi bài), 009 (file HTML xem offline).
+  khóa học ngay), 008 (hình tóm tắt trong mọi bài), 009 (file HTML xem offline), 010 (Claude viết bài,
+  Codex review).
 
 ## Bước tiếp theo
 

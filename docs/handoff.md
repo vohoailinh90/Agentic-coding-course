@@ -7,16 +7,15 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-27
 
-- **24 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **28 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path, `how-to-learn-this-course`,
-  `programming-building-blocks`, `command-line-basics`, and — the first batch Codex wrote —
-  `security-basics` and `prompting-basics`. `python -m src.main stats` shows the counts; each course
-  home (`course/<lang>/README.md`) lists every lesson in order.
-- **Written by Codex, waiting to be published:** `what-is-software` and `project-anatomy`
-  ([issue #2](https://github.com/vohoailinh90/Agentic-coding-course/issues/2)), and the fixes from
-  the review of the last batch Claude wrote
-  ([issue #4](https://github.com/vohoailinh90/Agentic-coding-course/issues/4)).
-- **26 lessons remain** after those (table below). The owner decided on 2026-09-27 to write the whole
+  `programming-building-blocks`, `command-line-basics`, `ai-ml-dl` and `how-machines-learn`, and —
+  written by Codex — `security-basics`, `prompting-basics`, `next-token-prediction` and
+  `tool-calling`. `python -m src.main stats` shows the counts; each course home
+  (`course/<lang>/README.md`) lists every lesson in order.
+- **Waiting for the owner's merge:** `what-is-software` and `project-anatomy`, written by Codex and
+  reviewed by Claude ([pull request #9](https://github.com/vohoailinh90/Agentic-coding-course/pull/9)).
+- **22 lessons remain** after those (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -46,10 +45,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `next-token-prediction` | asking-and-grounding (core) | concept | 10 | llm, token |
-| `tool-calling` | asking-and-grounding (core) | demo | 10 | function-calling, tool |
-| `ai-ml-dl` | ai-foundations (optional) | concept | 8 | machine-learning, deep-learning, generative-ai, foundation-model |
-| `how-machines-learn` | ai-foundations (optional) | concept | 10 | model, training |
 | `rag-intro` | ai-foundations (optional) | demo | 10 | rag |
 | `prompt-rag-finetune-compare` | ai-foundations (optional) | concept | 10 | prompt, rag, fine-tuning |
 | `tokens` | model-literacy (optional) | demo | 8 | token |
@@ -77,17 +72,20 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`next-token-prediction`** — an LLM writes by repeatedly predicting a likely next token, one at a
-  time, from everything before it; that is why it sounds fluent even when it is wrong, and why the
-  same question can get different answers. Link
-  [`hallucination`](../course/en/lessons/hallucination.md) and
-  [`context-window`](../course/en/lessons/context-window.md) rather than re-teaching them. A `cycle`
-  infographic fits (read the text so far → predict one token → add it → repeat).
-- **`tool-calling`** (demo) — a model cannot press buttons itself: it asks for a tool by name with
-  arguments, the program around it runs the tool, and the result goes back into the conversation.
-  Watch one real exchange step by step (for example, reading a file in `ai-practice`), and connect it
-  to the agent loop in [`agent-parts-and-loop`](../course/en/lessons/agent-parts-and-loop.md). A
-  `flow` infographic fits.
+- **`rag-intro`** (demo) — retrieval-augmented generation: before answering, the system looks up the
+  passages of your documents that match the question and puts them into the prompt, so the model
+  answers from them and can point to its source. Watch one question about a made-up handbook in
+  `ai-practice` answered without and then with the document, and check the answer against the quoted
+  passage. Link [`hallucination`](../course/en/lessons/hallucination.md),
+  [`context-window`](../course/en/lessons/context-window.md) and
+  [`next-token-prediction`](../course/en/lessons/next-token-prediction.md) rather than re-teaching
+  them. A `flow` infographic fits (question → search the documents → add the passages → answer with
+  sources).
+- **`prompt-rag-finetune-compare`** — three ways to fit a model to a job: a better prompt (instant,
+  changes one conversation), RAG (brings the right documents at answer time; suits knowledge that
+  changes) and fine-tuning (further training on examples; changes habits and style, costs time and
+  data, and is slow to update). What each changes, and which to try first. A `compare` infographic
+  fits.
 
 ## How to write one lesson
 
