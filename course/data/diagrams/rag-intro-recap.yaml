@@ -32,9 +32,9 @@ points:
       en: Generate
       ja: 回答する
     caption:
-      vi: "Dựa trên đoạn trích,\nghi nguồn"
-      en: "From the passages,\nwith sources"
-      ja: 抜粋にもとづき出典つきで
+      vi: "Dựa trên đoạn trích;\nghi nguồn nếu được dặn"
+      en: "From the passages;\ncites them when asked"
+      ja: "抜粋にもとづき、\n指示があれば出典も"
   - icon: "🧠"
     color: slate
     name:

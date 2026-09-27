@@ -4,8 +4,8 @@ lang: en
 status: review
 summary: >-
   RAG lets an AI "open the book and look things up": before answering, the system finds the relevant passages
-  in your documents, puts them into the prompt with the question, and the model answers from those passages and
-  names its source. The model learns nothing new, and the answer is only right when the documents are right and
+  in your documents, puts them into the prompt with the question, and the model answers from those passages —
+  naming its source when asked to. The model learns nothing new, and the answer is only right when the documents are right and
   the system finds the right passages.
 social:
   hook: "Ask an AI about your company's rules and it answers fluently — without ever having read them. How does RAG fix that? 📚"
@@ -28,9 +28,9 @@ By the end of this lesson, you will be able to:
 <!-- section: hook -->
 ## Why It Matters
 
-Tuan asks a chatbot: *"At my company, how much notice do I need to give before taking a day off?"* The answer comes at once, full of confidence: *"Typically, you should give one to two weeks' notice…"*
+Tuấn asks a chatbot: *"At my company, how much notice do I need to give before taking a day off?"* The answer comes at once, full of confidence: *"Typically, you should give one to two weeks' notice…"*
 
-It sounds reasonable, but the chatbot has never read Tuan's employee handbook. It only wrote down what is *usual* somewhere. To get the right answer for his own company, the AI needs to be handed the right page — the way you would open the handbook and look it up instead of guessing.
+It sounds reasonable, but the chatbot has never read Tuấn's employee handbook. It only wrote down what is *usual* somewhere. To get the right answer for his own company, the AI needs to be handed the right page — the way you would open the handbook and look it up instead of guessing.
 
 <!-- section: concept -->
 ## Core Idea
@@ -47,7 +47,7 @@ A model carries only what it learned in training ([How Do Machines "Learn"?](how
 
 1. **Retrieval:** the system searches the documents for the passages closest to the question.
 2. **Augmented:** the passages it found are added to the prompt, together with the question and instructions on how to answer.
-3. **Generation:** the model writes an answer from those passages and says which one each part came from.
+3. **Generation:** the model writes an answer from those passages. If the system sends each passage with its source and asks for citations, the model can say which passage each part came from; without that, it may not.
 
 Those passages sit in the [context window](context-window.md) and serve that one answer. The numbers inside the model do not change: the model does not "memorize" your documents.
 
@@ -87,7 +87,7 @@ Let us watch one question answered with RAG, using entirely made-up data. The do
 3.1. Train and bus tickets for business trips are booked by the admin team.
 ```
 
-**Step 1 — Tuan asks:** *"How much notice do I need to give before a day off?"*
+**Step 1 — Tuấn asks:** *"How much notice do I need to give before a day off?"*
 
 **Step 2 — the system searches.** It returns the two passages closest to the question: **2.2** and **2.1**. Sections 1 and 3 are left out, because they say nothing about leave.
 
@@ -105,11 +105,11 @@ Question: How much notice do I need to give before a day off?
 
 **Step 4 — the model answers:** *"At least 3 working days before the day off, requested in the attendance system (section 2.2)."*
 
-**Step 5 — Tuan checks.** He opens section 2.2 of the handbook: it matches. An answer with a source can be checked in moments; an answer without one can only be believed — or not.
+**Step 5 — Tuấn checks.** He opens section 2.2 of the handbook: it matches. An answer with a source can be checked in moments; an answer without one can only be believed — or not.
 
 Now two harder cases:
 
-- **A question the documents do not cover.** Tuan asks: *"Does the company allow remote work?"* No passage mentions it. The right answer is *"The handbook does not say."* If the AI still produces a "rule", that is a sign it is making things up — the instruction in Step 3 is there to prevent it.
+- **A question the documents do not cover.** Tuấn asks: *"Does the company allow remote work?"* No passage mentions it. The right answer is *"The handbook does not say."* If the AI still produces a "rule", that is a sign it is making things up — the instruction in Step 3 is there to prevent it.
 - **An outdated document.** Suppose last year's handbook is still in the collection, saying *"give 5 working days' notice"*. If the system picks up that old passage, the answer names its source properly — and is still wrong. RAG is only as good as the documents in the collection and the search that finds them.
 
 <!-- section: try-it -->

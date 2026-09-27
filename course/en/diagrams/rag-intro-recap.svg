@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 526" width="800" height="526" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
 <title id="title">Recap: RAG</title>
 <desc id="desc">1. Retrieve — Passages that match
-the question; 2. Augment — Put them into the prompt; 3. Generate — From the passages,
-with sources; 4. Nothing is learned — Used for this answer only; 5. Check the source — Old or wrong passages
+the question; 2. Augment — Put them into the prompt; 3. Generate — From the passages;
+cites them when asked; 4. Nothing is learned — Used for this answer only; 5. Check the source — Old or wrong passages
 mislead with confidence. Asking about your own documents? Let AI look them up, then check the source.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="524" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
@@ -32,7 +32,7 @@ mislead with confidence. Asking about your own documents? Let AI look them up, t
 <circle cx="554" cy="104.3" r="12" fill="#064E3B"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Generate</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="195.7">From the passages,</tspan><tspan x="654" y="215.5">with sources</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="195.7">From the passages;</tspan><tspan x="654" y="215.5">cites them when asked</tspan></text>
 <rect x="155" y="252.3" width="236" height="148" rx="18" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
 <circle cx="273" cy="288.3" r="22" fill="#475569"/>
 <circle cx="273" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

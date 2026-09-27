@@ -7,7 +7,7 @@ summary: >-
   đổi chính mô hình (fine-tuning). Hãy thử theo đúng thứ tự đó và dừng khi đã đủ tốt; thông tin riêng và hay
   thay đổi thì hợp với RAG hơn là fine-tuning.
 social:
-  hook: "Muốn AI trả lời đúng quy định công ty: viết prompt hay hơn, cho nó đọc tài liệu, hay \"huấn luyện riêng\"? Ba cách, ba cái giá rất khác nhau. 🧩"
+  hook: "Viết prompt hay hơn, cho AI đọc tài liệu, hay \"huấn luyện riêng\"? Ba cách, ba cái giá rất khác nhau. 🧩"
   question: Việc nào ở chỗ làm của bạn chỉ cần một prompt tốt hơn — và việc nào thật sự cần AI đọc tài liệu riêng?
 ---
 

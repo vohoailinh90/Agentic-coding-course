@@ -4,10 +4,10 @@ lang: vi
 status: review
 summary: >-
   RAG là cách cho AI "mở tài liệu ra tra cứu": trước khi trả lời, hệ thống tìm những đoạn liên quan trong tài
-  liệu của bạn, đưa chúng vào prompt cùng câu hỏi, rồi mô hình trả lời dựa trên chính các đoạn đó và ghi nguồn.
+  liệu của bạn, đưa chúng vào prompt cùng câu hỏi, rồi mô hình trả lời dựa trên chính các đoạn đó — và ghi nguồn, nếu được dặn.
   Mô hình không học thêm gì; và câu trả lời chỉ đúng khi tài liệu đúng và hệ thống tìm đúng đoạn.
 social:
-  hook: "Hỏi AI về quy định của công ty bạn, nó vẫn trả lời trôi chảy — dù chưa từng đọc quy định đó. RAG sửa chuyện này thế nào? 📚"
+  hook: "Hỏi AI về quy định công ty, nó vẫn trả lời trôi chảy — dù chưa từng đọc quy định đó. RAG sửa chuyện này thế nào? 📚"
   question: Tài liệu nào ở chỗ làm mà bạn muốn AI tra cứu giúp — và bạn sẽ kiểm tra câu trả lời của nó ra sao?
 ---
 
@@ -46,7 +46,7 @@ Một mô hình chỉ mang theo những gì nó học được khi huấn luyệ
 
 1. **Tìm (Retrieval):** hệ thống tìm trong kho tài liệu những đoạn gần với câu hỏi nhất.
 2. **Bổ sung (Augmented):** các đoạn tìm được được ghép vào prompt, cùng câu hỏi và lời dặn cách trả lời.
-3. **Tạo câu trả lời (Generation):** mô hình viết câu trả lời dựa trên các đoạn đó, và ghi rõ lấy từ đoạn nào.
+3. **Tạo câu trả lời (Generation):** mô hình viết câu trả lời dựa trên các đoạn đó. Nếu hệ thống gửi kèm nguồn của từng đoạn và dặn ghi nguồn, mô hình có thể chỉ ra ý nào lấy từ đoạn nào; không được dặn thì chưa chắc nó sẽ làm.
 
 Những đoạn tài liệu này nằm trong [cửa sổ ngữ cảnh](context-window.md) và chỉ phục vụ lần trả lời đó. Các con số bên trong mô hình không thay đổi: mô hình không "học thuộc" tài liệu của bạn.
 

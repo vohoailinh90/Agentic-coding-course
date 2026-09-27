@@ -7,7 +7,7 @@ summary: >-
   (RAG), or change the model itself (fine-tuning). Try them in that order and stop when the result is good
   enough; information that is your own and keeps changing suits RAG better than fine-tuning.
 social:
-  hook: "You want AI to answer by your company's rules: write a better prompt, let it read the documents, or \"train our own\"? Three ways, three very different price tags. 🧩"
+  hook: "A better prompt, letting AI read your documents, or \"training our own\"? Three ways, three very different costs. 🧩"
   question: Which task at your work only needs a better prompt — and which one really needs the AI to read your own documents?
 ---
 
