@@ -483,6 +483,7 @@ class ValidateTests(StoreTest):
     def test_later_lessons_steps_and_code_blocks_point_at_no_lesson(self) -> None:
         bodies = {
             "vi": "Thẻ này đi cùng bạn ở các bài sau. Bước 1: mở thư mục. Làm bài trước khi xem đáp án."
+                  " Tối nay Mai ôn bài kế toán."
                   "\n\n```text\nXem bài 3\n```",
             "en": "You will use it in later lessons. Step 1: open the folder. Read the answer later."
                   "\n\n```text\nsee previous lesson and lesson 3\n```",

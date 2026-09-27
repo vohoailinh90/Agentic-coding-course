@@ -7,7 +7,7 @@ summary: >-
   bạn đi lại và xem file mà không làm hỏng gì. Quan trọng hơn: khi agent xin chạy một lệnh, bạn đọc được nó chỉ
   xem hay sẽ thay đổi gì, ở đâu, rồi mới cho phép.
 social:
-  hook: "Agent xin xóa `build`: `rm -rf build` (Terminal Mac hoặc Git Bash), hay `Remove-Item build -Recurse -Force` (PowerShell). Bạn cho phép không? 💻"
+  hook: "Agent xin chạy một lệnh xóa thư mục. Bạn bấm Có hay Không? 💻"
   question: Bạn đã từng mở Terminal hay PowerShell chưa? Lần đầu thấy thế nào?
 ---
 
@@ -27,7 +27,7 @@ Sau bài này, bạn sẽ:
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
 
-Tuấn giao việc cho agent trên máy cá nhân, ở chế độ agent hỏi trước mỗi thay đổi. Giữa chừng, agent hỏi: *"Cho phép chạy `rm -rf build` (Terminal Mac hoặc Git Bash), hay `Remove-Item build -Recurse -Force` (PowerShell)?"* Tuấn không biết lệnh đó làm gì. Bấm Không thì sợ agent kẹt; bấm Có thì sợ mất file. Anh bấm Có cho nhanh.
+Tuấn giao việc cho agent trên máy cá nhân, ở chế độ agent hỏi trước mỗi thay đổi. Giữa chừng, agent hỏi: *"Cho phép chạy lệnh `rm -rf build`?"* (Trên PowerShell, cùng việc đó là `Remove-Item build -Recurse -Force`.) Tuấn không biết lệnh đó làm gì. Bấm Không thì sợ agent kẹt; bấm Có thì sợ mất file. Anh bấm Có cho nhanh.
 
 Lần này may: `build` chỉ là thư mục agent vừa tạo ra. Nhưng "may" không phải là cách giao việc. Mười lăm phút với terminal sẽ giúp bạn đọc được những câu hỏi như thế.
 

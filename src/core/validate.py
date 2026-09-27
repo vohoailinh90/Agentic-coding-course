@@ -71,8 +71,8 @@ QUIZ = "quiz"
 POSITIONAL = {
     "vi": re.compile(
         r"\b(?:bài(?: học)?|module|mô-đun)\s+(?:số\s+)?\d+\b"
-        r"|\b(?:ở|trong|như|từ|theo|của|sang)\s+bài(?: học)?\s+(?:trước|sau|tới|kế|kế tiếp|tiếp|tiếp theo|vừa rồi|vừa qua)\b"
-        r"|\bbài(?: học)?\s+(?:tiếp|kế|kế tiếp|tiếp theo|vừa qua)\b",
+        r"|\b(?:ở|trong|như|từ|theo|của|sang)\s+bài(?: học)?\s+(?:trước|sau|tới|kế tiếp|kế(?!\s*toán)|tiếp|tiếp theo|vừa rồi|vừa qua)\b"
+        r"|\bbài(?: học)?\s+(?:tiếp|kế tiếp|kế(?!\s*toán)|tiếp theo|vừa qua)\b",
         re.IGNORECASE,
     ),
     "en": re.compile(

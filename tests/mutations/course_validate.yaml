@@ -181,7 +181,7 @@ mutations:
   replace: "            if False:\n                check.error(\"lesson_by_position\", line=number, text=match.group(0))\n"
   test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
 - label: bare Vietnamese positional lesson forms go unnoticed
-  find: '        r"|\bbài(?: học)?\s+(?:tiếp|kế|kế tiếp|tiếp theo|vừa qua)\b",'
+  find: '        r"|\bbài(?: học)?\s+(?:tiếp|kế tiếp|kế(?!\s*toán)|tiếp theo|vừa qua)\b",'
   replace: '        r"",'
   test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
 - label: English positional lesson forms require a determiner
@@ -195,4 +195,8 @@ mutations:
 - label: a positional reference is looked for in code blocks too
   find: "        for number, line in block.prose:\n            match = pattern.search(line)\n"
   replace: "        for number, line in enumerate(block.body_lines):\n            match = pattern.search(line)\n"
+  test: tests.test_course_validate.ValidateTests.test_later_lessons_steps_and_code_blocks_point_at_no_lesson
+- label: an accounting lesson ("bài kế toán") is taken for a positional reference
+  find: '(?:tiếp|kế tiếp|kế(?!\s*toán)|tiếp theo|vừa qua)'
+  replace: '(?:tiếp|kế tiếp|kế|tiếp theo|vừa qua)'
   test: tests.test_course_validate.ValidateTests.test_later_lessons_steps_and_code_blocks_point_at_no_lesson

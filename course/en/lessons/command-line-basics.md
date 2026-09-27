@@ -8,7 +8,7 @@ summary: >-
   agent asks to run a command, you can tell whether it only looks or changes something, and where, before you
   allow it.
 social:
-  hook: "The agent asks to delete `build`: `rm -rf build` (Mac Terminal or Git Bash), or `Remove-Item build -Recurse -Force` (PowerShell). Do you allow it? 💻"
+  hook: "The agent asks to run a command that deletes a folder. Do you click Yes or No? 💻"
   question: Have you ever opened Terminal or PowerShell? How did it feel the first time?
 ---
 
@@ -28,7 +28,7 @@ By the end of this lesson, you will be able to:
 <!-- section: hook -->
 ## Why It Matters
 
-Tuấn is working with an agent on his own computer, in the mode where it asks before each change. Halfway through, the agent asks: *"Allow `rm -rf build` (Mac Terminal or Git Bash), or `Remove-Item build -Recurse -Force` (PowerShell)?"* Tuấn has no idea what it does. Click No, and the agent might get stuck; click Yes, and he might lose files. He clicks Yes to keep things moving.
+Tuấn is working with an agent on his own computer, in the mode where it asks before each change. Halfway through, the agent asks: *"Allow the command `rm -rf build`?"* (In PowerShell, the same job is `Remove-Item build -Recurse -Force`.) Tuấn has no idea what it does. Click No, and the agent might get stuck; click Yes, and he might lose files. He clicks Yes to keep things moving.
 
 This time he was lucky: `build` was just a folder the agent had created. But luck is not a way to manage work. Fifteen minutes with the terminal will let you read questions like this one.
 
