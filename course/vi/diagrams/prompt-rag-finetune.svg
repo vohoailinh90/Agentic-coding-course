@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 661" width="800" height="661" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Prompt, RAG, fine-tuning: đổi chỗ nào?</title>
+<desc id="desc">Prompt — Thay đổi gì?: Lời bạn dặn; Hợp khi: Cách làm, định dạng, giọng văn; Công sức: Ít nhất; Khi thông tin đổi: Sửa prompt. RAG — Thay đổi gì?: Tài liệu AI được đọc; Hợp khi: Kiến thức riêng, hay đổi; Công sức: Vừa: tài liệu
+và tìm kiếm; Khi thông tin đổi: Cập nhật tài liệu. Fine-tuning — Thay đổi gì?: Chính mô hình; Hợp khi: Văn phong,
+kỹ năng ổn định; Công sức: Nhiều nhất: dữ liệu và huấn luyện; Khi thông tin đổi: Huấn luyện lại. Thử lần lượt prompt → RAG → fine-tuning; đủ tốt thì dừng.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="659" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="631" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Prompt, RAG, fine-tuning: đổi chỗ nào?</tspan></text>
+<g class="pulse">
+<rect x="28" y="86.3" width="236" height="472.3" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="3.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Prompt</tspan></text>
+<rect x="99.5" y="73.7" width="93" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="90.7">Thử trước</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Thay đổi gì?</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="268.8">Lời bạn dặn</tspan></text>
+<line x1="44" y1="288.9" x2="248" y2="288.9" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="316.4">Hợp khi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="341.7">Cách làm, định dạng,</tspan><tspan x="44" y="364.2">giọng văn</tspan></text>
+<line x1="44" y1="383.6" x2="248" y2="383.6" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="411.1">Công sức</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="436.4">Ít nhất</tspan></text>
+<line x1="44" y1="478.3" x2="248" y2="478.3" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="505.8">Khi thông tin đổi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="531.1">Sửa prompt</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="472.3" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📚</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">RAG</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">Thay đổi gì?</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="298" y="268.8">Tài liệu AI được đọc</tspan></text>
+<line x1="298" y1="288.9" x2="502" y2="288.9" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="316.4">Hợp khi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="341.7">Kiến thức riêng, hay đổi</tspan></text>
+<line x1="298" y1="383.6" x2="502" y2="383.6" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="411.1">Công sức</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="436.4">Vừa: tài liệu</tspan><tspan x="298" y="458.9">và tìm kiếm</tspan></text>
+<line x1="298" y1="478.3" x2="502" y2="478.3" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="505.8">Khi thông tin đổi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="531.1">Cập nhật tài liệu</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="472.3" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#7C3AED"/>
+<circle cx="654" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎓</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Fine-tuning</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">Thay đổi gì?</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="552" y="268.8">Chính mô hình</tspan></text>
+<line x1="552" y1="288.9" x2="756" y2="288.9" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="316.4">Hợp khi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="341.7">Văn phong,</tspan><tspan x="552" y="364.2">kỹ năng ổn định</tspan></text>
+<line x1="552" y1="383.6" x2="756" y2="383.6" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="411.1">Công sức</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="436.4">Nhiều nhất: dữ liệu và</tspan><tspan x="552" y="458.9">huấn luyện</tspan></text>
+<line x1="552" y1="478.3" x2="756" y2="478.3" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="505.8">Khi thông tin đổi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="531.1">Huấn luyện lại</tspan></text>
+</g>
+<rect x="28" y="582.6" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="613.6">💡 Thử lần lượt prompt → RAG → fine-tuning; đủ tốt thì dừng.</tspan></text>
+</svg>

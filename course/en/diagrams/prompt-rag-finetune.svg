@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 685" width="800" height="685" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Prompt, RAG, Fine-Tuning: What Changes?</title>
+<desc id="desc">Prompt — What changes: What you tell it; Good for: Task, format, tone; Effort: Least; When facts change: Edit the prompt. RAG — What changes: What it reads; Good for: Your own,
+changing facts; Effort: Medium: documents and search; When facts change: Update the documents. Fine-tuning — What changes: The model itself; Good for: A steady style or skill; Effort: Most: data and training; When facts change: Retrain. Try prompting, then RAG, then fine-tuning — and stop when it is good enough.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="683" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="655" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Prompt, RAG, Fine-Tuning: What Changes?</tspan></text>
+<g class="pulse">
+<rect x="28" y="86.3" width="236" height="472.3" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="3.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Prompt</tspan></text>
+<rect x="101.3" y="73.7" width="89.4" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="90.7">Try first</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">What changes</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="268.8">What you tell it</tspan></text>
+<line x1="44" y1="288.9" x2="248" y2="288.9" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="316.4">Good for</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="341.7">Task, format, tone</tspan></text>
+<line x1="44" y1="383.6" x2="248" y2="383.6" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="411.1">Effort</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="436.4">Least</tspan></text>
+<line x1="44" y1="478.3" x2="248" y2="478.3" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="505.8">When facts change</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="531.1">Edit the prompt</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="472.3" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📚</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">RAG</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">What changes</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="298" y="268.8">What it reads</tspan></text>
+<line x1="298" y1="288.9" x2="502" y2="288.9" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="316.4">Good for</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="341.7">Your own,</tspan><tspan x="298" y="364.2">changing facts</tspan></text>
+<line x1="298" y1="383.6" x2="502" y2="383.6" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="411.1">Effort</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="436.4">Medium: documents</tspan><tspan x="298" y="458.9">and search</tspan></text>
+<line x1="298" y1="478.3" x2="502" y2="478.3" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="505.8">When facts change</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="531.1">Update the documents</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="472.3" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#7C3AED"/>
+<circle cx="654" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎓</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Fine-tuning</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">What changes</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="552" y="268.8">The model itself</tspan></text>
+<line x1="552" y1="288.9" x2="756" y2="288.9" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="316.4">Good for</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="341.7">A steady style or skill</tspan></text>
+<line x1="552" y1="383.6" x2="756" y2="383.6" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="411.1">Effort</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="436.4">Most: data and</tspan><tspan x="552" y="458.9">training</tspan></text>
+<line x1="552" y1="478.3" x2="756" y2="478.3" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="505.8">When facts change</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="531.1">Retrain</tspan></text>
+</g>
+<rect x="28" y="582.6" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="613.6">💡 Try prompting, then RAG, then fine-tuning — and stop when it is</tspan><tspan x="400" y="637.3">good enough.</tspan></text>
+</svg>
