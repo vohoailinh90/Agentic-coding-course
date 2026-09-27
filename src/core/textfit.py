@@ -15,6 +15,11 @@ Line breaking follows the scripts in the course:
   (kinsoku shori). A run of katakana and Latin letters is one word — a
   loanword such as エージェント or Googleマップ is never split — unless it is
   wider than the whole line.
+
+A word split by characters is legal output, but it reads badly ("Constraint|s"),
+so `wrap` returns `Lines`, which remember the words they had to split; the
+renderer collects them from the lines it actually draws, and the validator
+reports them.
 """
 
 from __future__ import annotations
@@ -110,9 +115,16 @@ def tokenize(text: str) -> list[str]:
     return tokens
 
 
-def wrap(text: str, max_width: float, size: float, *, bold: bool = False) -> list[str]:
+class Lines(list):
+    """The lines `wrap` returns, and the words it had to split to make them fit."""
+
+    split: tuple[str, ...] = ()
+
+
+def wrap(text: str, max_width: float, size: float, *, bold: bool = False) -> Lines:
     """Lines of `text` that each fit `max_width` px; `\\n` forces a break."""
-    lines: list[str] = []
+    lines = Lines()
+    split: list[str] = []
     for paragraph in text.split("\n"):
         line = ""
         for token in tokenize(paragraph.strip()):
@@ -127,12 +139,15 @@ def wrap(text: str, max_width: float, size: float, *, bold: bool = False) -> lis
             if text_width(token.rstrip(), size, bold=bold) <= max_width:
                 line = token
                 continue
+            if len(token.strip()) > 1:
+                split.append(token.strip())
             for char in token:  # a single piece wider than the line: split it by characters
                 if line and text_width((line + char).rstrip(), size, bold=bold) > max_width:
                     lines.append(line.rstrip())
                     line = ""
                 line += char
         lines.append(line.rstrip())
+    lines.split = tuple(split)
     return lines
 
 

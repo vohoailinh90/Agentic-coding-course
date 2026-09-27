@@ -104,6 +104,10 @@ mutations:
   find: "            if crowded(spec, language):\n"
   replace: "            if False:\n"
   test: tests.test_course_validate.ValidateTests.test_a_diagram_with_more_text_than_its_template_can_draw_is_an_error
+- label: a diagram that cuts a word in two is published anyway
+  find: "            if words:\n"
+  replace: "            if False:\n"
+  test: tests.test_course_validate.ValidateTests.test_a_diagram_that_cuts_a_word_in_two_is_an_error
 - label: a unit track outside core, optional and advanced is accepted
   find: "            if not isinstance(track, str) or track not in TRACKS:\n"
   replace: "            if False:\n"

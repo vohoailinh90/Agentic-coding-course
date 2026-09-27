@@ -69,3 +69,12 @@ mutations:
   find: "        height = max(_step_height(point, lang, width - 24) for point in row)"
   replace: "        height = min(_step_height(point, lang, width - 24) for point in row)"
   test: tests.test_course_infographics.RenderTests.test_nothing_overlaps_in_any_diagram
+- label: words cut in two are not collected from the drawn text
+  find: "        self.split_words.extend(getattr(lines, \"split\", ()))\n"
+  replace: ""
+  test: tests.test_course_infographics.RenderTests.test_a_word_too_long_for_its_box_is_reported
+- label: wrap does not remember the words it split
+  file: src/core/textfit.py
+  find: "                split.append(token.strip())\n"
+  replace: "                pass\n"
+  test: tests.test_course_infographics.WrapTests.test_the_lines_remember_the_words_they_had_to_split

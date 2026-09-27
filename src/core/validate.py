@@ -28,7 +28,7 @@ from pathlib import Path
 
 from src.core import yamlio
 from src.core.build import generated_files, lesson_language_bar
-from src.core.infographics import PALETTE, TEMPLATES, crowded
+from src.core.infographics import PALETTE, TEMPLATES, crowded, split_words
 from src.core.lessonfile import LessonDoc, parse_lesson
 from src.core.model import (
     COURSE_DIR,
@@ -634,6 +634,10 @@ def _diagrams(report: Report, root: Path, languages: tuple[str, ...]) -> dict[st
         for language in languages:
             if crowded(spec, language):
                 report.error("diagram_crowded", path=f"{DIAGRAMS_DIR}/{diagram_id}.yaml", language=language)
+            words = split_words(spec, language)
+            if words:
+                report.error("diagram_word_split", path=f"{DIAGRAMS_DIR}/{diagram_id}.yaml",
+                             language=language, words=", ".join(words))
     return specs
 
 

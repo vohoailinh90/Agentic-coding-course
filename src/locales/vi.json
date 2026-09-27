@@ -69,6 +69,7 @@
     "recap_diagram": "{path}: phần tóm tắt bằng hình phải có đúng một infographic trong course/data/diagrams/ — hiện có {images} hình, trong đó {diagrams} là infographic.",
     "recap_reused": "{path}: infographic tóm tắt {target} đã xuất hiện ở một phần khác của bài. Hình tóm tắt phải là một hình riêng, gói cả bài.",
     "diagram_crowded": "{path}: quá nhiều chữ nên bản {language} của sơ đồ bị chồng chéo. Hãy rút gọn chú thích hoặc nhãn mũi tên, hoặc bớt số bước.",
+    "diagram_word_split": "{path}: trong bản {language} của sơ đồ, có từ dài hơn ô chứa nó nên bị cắt làm đôi: {words}. Hãy dùng từ ngắn hơn, hoặc bớt số ô trên hàng đó.",
     "diagram_unknown": "{path}: hình {target} không phải là sơ đồ trong course/data/diagrams/.",
     "image_alt_missing": "{path}: hình {target} cần có chữ mô tả (alt) cho người không xem được hình.",
     "link_broken": "{path}: liên kết {target} trỏ tới file không tồn tại.",

@@ -93,6 +93,7 @@ class Canvas:
         self.defs: list[str] = []
         self.motion = False
         self.crowded = False  # set when the text cannot be laid out without overlaps
+        self.split_words: list[str] = []  # words cut in two to fit their box, in drawn text only
 
     def add(self, markup: str) -> None:
         self.parts.append(markup)
@@ -102,6 +103,7 @@ class Canvas:
         """Draw lines of text whose first line box starts at `top`; return the block height."""
         if not lines:
             return 0.0
+        self.split_words.extend(getattr(lines, "split", ()))
         weight = ' font-weight="700"' if bold else ""
         klass = f' class="{css}"' if css else ""
         spans = []
@@ -626,6 +628,11 @@ def render(spec: dict, lang: str) -> str:
 def crowded(spec: dict, lang: str) -> bool:
     """Whether the spec has too much text to draw in `lang` without boxes overlapping."""
     return _draw(spec, lang)[0].crowded
+
+
+def split_words(spec: dict, lang: str) -> list[str]:
+    """The words too long for their box in `lang`, which the drawing cuts in two, once each."""
+    return list(dict.fromkeys(_draw(spec, lang)[0].split_words))
 
 
 # ---------------------------------------------------------------------------

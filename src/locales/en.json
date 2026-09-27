@@ -69,6 +69,7 @@
     "recap_diagram": "{path}: the recap must show exactly one infographic from course/data/diagrams/ — it shows {images} image(s), {diagrams} of them infographics.",
     "recap_reused": "{path}: the recap infographic {target} is also shown in another section. The recap sums up the whole lesson in a picture of its own.",
     "diagram_crowded": "{path}: too much text to draw the {language} diagram without boxes overlapping. Shorten its captions or arrow labels, or use fewer steps.",
+    "diagram_word_split": "{path}: in the {language} diagram, a word is longer than its box and gets cut in two: {words}. Use a shorter word, or fewer boxes in that row.",
     "diagram_unknown": "{path}: the image {target} is not a diagram in course/data/diagrams/.",
     "image_alt_missing": "{path}: the image {target} needs alt text (what a reader who cannot see it is told).",
     "link_broken": "{path}: the link {target} points to a file that does not exist.",

@@ -189,6 +189,14 @@ class ValidateTests(StoreTest):
         for language in ("vi", "en", "ja"):
             self.assertIn(("diagram_crowded", "course/data/diagrams/crowded.yaml", language), found)
 
+    def test_a_diagram_that_cuts_a_word_in_two_is_an_error(self) -> None:
+        self.edit_diagram(lambda spec: spec["columns"][0]["values"][0].update(
+            {"en": "Supercalifragilisticexpialidocious-and-then-some"}))
+        errors = validate(self.root).errors
+        found = [f for f in errors if f.code == "diagram_word_split"]
+        self.assertEqual([(f.params["language"], f.params["words"]) for f in found],
+                         [("en", "Supercalifragilisticexpialidocious-and-then-some")])
+
     # -- tracks, the minimum path and retired ids --------------------------------
 
     def test_the_roadmap_fields_reach_the_course(self) -> None:

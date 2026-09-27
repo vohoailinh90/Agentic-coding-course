@@ -22,7 +22,7 @@ from pathlib import Path
 
 from src.core import yamlio
 from src.core.build import roadmap_svg
-from src.core.infographics import INK, INNER, WIDTH, crowded, render
+from src.core.infographics import INK, INNER, WIDTH, crowded, render, split_words
 from src.core.model import ROOT
 from src.core.textfit import NO_LINE_END, NO_LINE_START, text_width, tokenize, wrap
 from src.core.validate import Report, _diagram, validate
@@ -254,6 +254,12 @@ class WrapTests(unittest.TestCase):
         for line in lines:
             self.assertLessEqual(text_width(line, 17), 80)
 
+    def test_the_lines_remember_the_words_they_had_to_split(self) -> None:
+        self.assertEqual(wrap("A Supercalifragilisticexpialidocious day", 80, 17).split,
+                         ("Supercalifragilisticexpialidocious",))
+        self.assertEqual(wrap("Lập kế hoạch, tự làm, tự kiểm tra", 150, 17).split, ())
+        self.assertEqual(wrap("目標を決め、結果を確かめるのはあなた。", 60, 18).split, ())  # kanji may break anywhere
+
     def test_a_newline_forces_a_break(self) -> None:
         self.assertEqual(wrap("one\ntwo", 500, 17), ["one", "two"])
 
@@ -280,6 +286,21 @@ class RenderTests(unittest.TestCase):
                     self.assertEqual(into_the_hub(root), [])
                     self.assertEqual(text_outside_its_box(root), [])
                     self.assertFalse(crowded(spec, language))
+
+    def test_a_word_too_long_for_its_box_is_reported(self) -> None:
+        term = {"icon": "🚧", "color": "amber", "name": {"vi": "Ràng buộc", "en": "Constraints", "ja": "制約"}}
+        spec = {"template": "equation", "title": {"vi": "Công thức", "en": "Recipe", "ja": "レシピ"},
+                "terms": [term] * 4, "result": {**term, "name": {"vi": "Kết quả", "en": "Result", "ja": "結果"}}}
+        self.assertEqual(split_words(spec, "en"), ["Constraints"])
+        self.assertEqual(split_words(spec, "vi"), [])
+        self.assertEqual(split_words({**spec, "terms": [term] * 2}, "en"), [])  # wide enough with two terms
+
+    def test_no_committed_diagram_cuts_a_word(self) -> None:
+        report = validate(ROOT, check_generated=False)
+        for diagram_id, spec in report.course.diagrams.items():
+            for language in report.course.languages:
+                with self.subTest(diagram=diagram_id, language=language):
+                    self.assertEqual(split_words(spec, language), [])
 
     def test_too_much_text_is_reported_rather_than_drawn_over(self) -> None:
         report = Report()

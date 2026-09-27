@@ -69,6 +69,7 @@
     "recap_diagram": "{path}：「1枚でわかるこのレッスン」には course/data/diagrams/ の図をちょうど1枚入れてください（現在の画像は{images}枚、そのうち図は{diagrams}枚）。",
     "recap_reused": "{path}：まとめの図 {target} がほかのセクションでも使われています。まとめにはレッスン全体をまとめた専用の図を使ってください。",
     "diagram_crowded": "{path}：文字が多すぎて、{language}版の図で枠が重なります。説明や矢印のラベルを短くするか、ステップを減らしてください。",
+    "diagram_word_split": "{path}：{language}版の図で、枠より長く途中で分割される語があります：{words}。短い語にするか、その行の枠を減らしてください。",
     "diagram_unknown": "{path}：画像 {target} は course/data/diagrams/ にある図ではありません。",
     "image_alt_missing": "{path}：画像 {target} に代替テキスト（画像が見えない人に伝える説明）がありません。",
     "link_broken": "{path}：リンク {target} の先のファイルがありません。",
