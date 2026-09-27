@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: prompt rõ, kết quả dễ kiểm tra"
+  en: "Recap: A Clear Prompt Makes Results Checkable"
+  ja: まとめ：明確なプロンプトは確認しやすい
+points:
+  - icon: "🧭"
+    color: blue
+    name: {vi: Cho đủ bối cảnh, en: Give context, ja: 背景を伝える}
+    caption: {vi: "Tình huống, người đọc, dữ liệu", en: "Situation, audience, data", ja: 状況・読み手・データ}
+  - icon: "📝"
+    color: violet
+    name: {vi: Nói việc và dạng, en: State task and format, ja: 作業と形式を示す}
+    caption: {vi: "Động từ, độ dài, ví dụ", en: "Verb, length, example", ja: 動詞・長さ・例}
+  - icon: "❓"
+    color: amber
+    name: {vi: Thiếu thì ghi chưa rõ, en: Mark unknowns, ja: 不明と示す}
+    caption: {vi: Đừng tự đoán dữ kiện, en: Do not invent facts, ja: 事実を推測しない}
+  - icon: "🔍"
+    color: green
+    name: {vi: Tự kiểm tra, en: Check it yourself, ja: 自分で確認}
+    caption: {vi: So với nguồn và tiêu chí, en: Compare with source and criteria, ja: 元データと基準で照合}
+  - icon: "🧪"
+    color: teal
+    name: {vi: Chỉ dùng dữ liệu bịa, en: Use invented data, ja: 架空データだけ}
+    caption: {vi: Bên trong ai-practice, en: Inside ai-practice, ja: ai-practiceの中で}
+takeaway:
+  vi: Prompt tốt giảm phỏng đoán; người dùng vẫn phải kiểm tra.
+  en: A good prompt reduces guessing; the user still checks.
+  ja: 良いプロンプトは推測を減らします。それでも人が確認します。

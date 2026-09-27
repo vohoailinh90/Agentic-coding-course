@@ -115,7 +115,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 3.3.1 | An toàn cơ bản: API key, mật khẩu và dữ liệu cá nhân | 📖 Khái niệm | 12 phút |
+| 3.3.1 | [An toàn cơ bản: API key, mật khẩu và dữ liệu cá nhân](lessons/security-basics.md) | 📖 Khái niệm | 12 phút |
 
 ## 4. 🧠 Những hiểu biết về AI bạn thật sự cần
 
@@ -125,7 +125,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 4.1.1 | Prompt căn bản: nói sao cho AI hiểu | 🛠️ Thực hành | 12 phút |
+| 4.1.1 | [Prompt căn bản: nói sao cho AI hiểu](lessons/prompting-basics.md) | 🛠️ Thực hành | 12 phút |
 | 4.1.2 | ⭐ [Ảo giác AI: vì sao AI tự tin nói sai](lessons/hallucination.md) | 📖 Khái niệm | 10 phút |
 | 4.1.3 | ⭐ [Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI](lessons/context-window.md) | 📖 Khái niệm | 10 phút |
 | 4.1.4 | Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM | 📖 Khái niệm | 10 phút |
