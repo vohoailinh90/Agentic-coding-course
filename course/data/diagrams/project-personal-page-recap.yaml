@@ -1,0 +1,61 @@
+# Recap of project-personal-page: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: dự án trang web cá nhân"
+  en: "Recap: Your Personal Web Page"
+  ja: まとめ：自分のWebページ
+points:
+  - icon: "✍️"
+    color: violet
+    name:
+      vi: Nội dung là của bạn
+      en: The words are yours
+      ja: 言葉はあなたのもの
+    caption:
+      vi: Agent trình bày, không bịa thêm
+      en: The agent lays out, never invents
+      ja: エージェントは形にするだけ、足さない
+  - icon: "🔐"
+    color: rose
+    name:
+      vi: Chỉ những gì muốn công khai
+      en: Only what you would publish
+      ja: 公開してよいことだけ
+    caption:
+      vi: Không điện thoại, địa chỉ, email riêng
+      en: No phone, address or private e-mail
+      ja: 電話・住所・個人メールは載せない
+  - icon: "🗺️"
+    color: blue
+    name:
+      vi: Spec và kế hoạch trước
+      en: Spec and plan first
+      ja: 先に指示書と計画
+    caption:
+      vi: Rồi mới làm
+      en: Then build
+      ja: それから作る
+  - icon: "🧪"
+    color: teal
+    name:
+      vi: Kiểm tra được
+      en: Checkable
+      ja: 確かめられる
+    caption:
+      vi: Có phép kiểm tra đã từng thất bại
+      en: With a check you have seen fail
+      ja: 失敗するところを見たチェックで
+  - icon: "🏁"
+    color: green
+    name:
+      vi: Sản phẩm đầu tiên
+      en: Your first product
+      ja: はじめての成果物
+    caption:
+      vi: Kèm ba dòng bằng chứng
+      en: With three lines of evidence
+      ja: 3行の証拠つき
+takeaway:
+  vi: Bạn vừa làm agentic coding trọn vẹn, từ đầu đến cuối.
+  en: You have just done agentic coding from start to finish.
+  ja: エージェント型コーディングを、最初から最後までやり遂げた。

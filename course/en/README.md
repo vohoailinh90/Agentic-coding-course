@@ -31,7 +31,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 11. [Reading and Reviewing an Agent's Changes (Diffs)](lessons/reviewing-agent-changes.md) — 15 min
 12. [Turn "Looks Right" into Checks](lessons/testing-basics.md) — 12 min
 13. [Reading Error Messages and Debugging Like a Detective](lessons/errors-and-debugging.md) — 12 min
-14. Project: Your Personal Web Page — 60 min
+14. [Project: Your Personal Web Page](lessons/project-personal-page.md) — 60 min
 15. What Data Looks Like: JSON, CSV and YAML — 10 min
 16. Git: A Magic Undo Button for Your Whole Project — 15 min
 17. Hallucination: Why AI Is Confidently Wrong — 10 min
@@ -89,7 +89,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 2.3.1 | ⭐ Project: Your Personal Web Page | 🚀 Project | 60 min |
+| 2.3.1 | ⭐ [Project: Your Personal Web Page](lessons/project-personal-page.md) | 🚀 Project | 60 min |
 
 ## 3. 🧱 Software Literacy, Just in Time
 

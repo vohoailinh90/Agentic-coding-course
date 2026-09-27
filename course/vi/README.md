@@ -31,7 +31,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 11. [Đọc và review thay đổi của agent (diff)](lessons/reviewing-agent-changes.md) — 15 phút
 12. [Từ "trông có vẻ đúng" đến phép kiểm tra](lessons/testing-basics.md) — 12 phút
 13. [Đọc thông báo lỗi và gỡ lỗi như một thám tử](lessons/errors-and-debugging.md) — 12 phút
-14. Dự án: trang web cá nhân của bạn — 60 phút
+14. [Dự án: trang web cá nhân của bạn](lessons/project-personal-page.md) — 60 phút
 15. Dữ liệu trông như thế nào: JSON, CSV, YAML — 10 phút
 16. Git: nút Undo thần kỳ cho cả dự án — 15 phút
 17. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
@@ -89,7 +89,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 2.3.1 | ⭐ Dự án: trang web cá nhân của bạn | 🚀 Dự án | 60 phút |
+| 2.3.1 | ⭐ [Dự án: trang web cá nhân của bạn](lessons/project-personal-page.md) | 🚀 Dự án | 60 phút |
 
 ## 3. 🧱 Hiểu phần mềm vừa đủ, đúng lúc cần
 

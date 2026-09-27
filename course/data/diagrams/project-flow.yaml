@@ -1,0 +1,76 @@
+# Used in: project-personal-page (concept). The first project, step by step: every step is a skill learned so far.
+template: flow
+direction: vertical
+title:
+  vi: Dự án đầu tiên, từ đầu đến cuối
+  en: Your First Project, End to End
+  ja: はじめてのプロジェクト、最初から最後まで
+subtitle:
+  vi: Mỗi bước là một kỹ năng bạn đã học
+  en: Every step is a skill you have already learned
+  ja: どのステップも、もう学んだスキル
+steps:
+  - icon: "✍️"
+    color: violet
+    name:
+      vi: Nội dung của bạn
+      en: Your own content
+      ja: 自分で書く内容
+    caption:
+      vi: Bạn tự viết — agent không bịa
+      en: You write it — the agent invents nothing
+      ja: 書くのはあなた。エージェントは作り話をしない
+  - icon: "📋"
+    color: blue
+    name:
+      vi: Spec
+      en: The spec
+      ja: 指示書
+    caption:
+      vi: Mục tiêu, bối cảnh, ràng buộc, tiêu chí
+      en: Goal, context, limits, criteria
+      ja: 目標・背景・制約・完了条件
+  - icon: "🗺️"
+    color: indigo
+    name:
+      vi: Kế hoạch
+      en: The plan
+      ja: 計画
+    caption:
+      vi: Đọc với ba câu hỏi rồi mới duyệt
+      en: Read with three questions, then approve
+      ja: 3つの問いで読んでから承認
+  - icon: "🛠️"
+    color: amber
+    name:
+      vi: Làm và đọc diff
+      en: Build and read the diffs
+      ja: 作って差分を読む
+    caption:
+      vi: Giữ, hỏi hay từ chối
+      en: Keep, ask or reject
+      ja: 承認・質問・却下
+  - icon: "🧪"
+    color: teal
+    name:
+      vi: Phép kiểm tra
+      en: Checks
+      ja: チェック
+    caption:
+      vi: Chạy được, và đã làm hỏng thử
+      en: They run, and you have seen them fail
+      ja: 実行でき、失敗も確かめた
+  - icon: "📝"
+    color: green
+    name:
+      vi: Bằng chứng
+      en: Evidence
+      ja: 証拠
+    caption:
+      vi: Ba dòng, rồi cho một người khác xem
+      en: Three lines, then show someone
+      ja: 3行書いて、誰かに見せる
+takeaway:
+  vi: Hôm nay bạn ghép các kỹ năng lại thành một sản phẩm thật.
+  en: Today you put the skills together into a real product.
+  ja: 今日は、スキルを組み合わせて本物の成果物を作る。
