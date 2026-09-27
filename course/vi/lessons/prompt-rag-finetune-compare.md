@@ -128,7 +128,7 @@ Nhóm chọn prompt + RAG. Fine-tuning để dành cho khi nào cần một ki�
 <summary>Xem đáp án</summary>
 
 1. **C** — thông tin hay đổi thì để trong tài liệu và cập nhật tài liệu; prompt một mình không biết quy định, còn fine-tune lại mỗi lần thì tốn kém.
-2. **A** — fine-tuning huấn luyện thêm nên đổi mô hình; RAG và prompt chỉ đổi những gì mô hình đọc trong một lần trả lời.
+2. **A** — fine-tuning huấn luyện thêm nên đổi mô hình; RAG và prompt chỉ đổi những gì mô hình được đọc, không đổi mô hình.
 3. **B** — định dạng là việc của lời dặn; một prompt rõ kèm ví dụ mẫu thường là đủ.
 
 </details>

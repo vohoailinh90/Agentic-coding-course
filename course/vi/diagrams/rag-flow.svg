@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 920" width="800" height="920" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
 <title id="title">RAG: tìm trước, trả lời sau</title>
-<desc id="desc">Câu hỏi → Tìm đoạn liên quan → Bổ sung vào prompt → Trả lời kèm nguồn. Mô hình không học thêm gì — tài liệu chỉ được đưa vào cho lần trả lời này.</desc>
+<desc id="desc">Câu hỏi → Tìm đoạn liên quan → Bổ sung vào prompt → Trả lời kèm nguồn. Mô hình không học thêm gì —
+tài liệu nằm trong ngữ cảnh, không vào mô hình.</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -56,5 +57,5 @@
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="749.9">Trả lời kèm nguồn</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="774.8">3 ngày làm việc (mục 2.2)</tspan></text>
 <rect x="28" y="817.6" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
-<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="848.6">💡 Mô hình không học thêm gì — tài liệu chỉ được đưa vào cho lần trả</tspan><tspan x="400" y="872.4">lời này.</tspan></text>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="848.6">💡 Mô hình không học thêm gì —</tspan><tspan x="400" y="872.4">tài liệu nằm trong ngữ cảnh, không vào mô hình.</tspan></text>
 </svg>

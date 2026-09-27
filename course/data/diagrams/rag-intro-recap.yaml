@@ -42,9 +42,9 @@ points:
       en: Nothing is learned
       ja: モデルは覚えない
     caption:
-      vi: Chỉ dùng cho lần trả lời này
-      en: Used for this answer only
-      ja: この回答だけに使う
+      vi: "Nằm trong ngữ cảnh,\nkhông vào mô hình"
+      en: "In the context,\nnot in the model"
+      ja: コンテキストに入るだけ
   - icon: "👀"
     color: rose
     name:

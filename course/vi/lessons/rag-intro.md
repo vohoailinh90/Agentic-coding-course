@@ -48,7 +48,7 @@ Một mô hình chỉ mang theo những gì nó học được khi huấn luyệ
 2. **Bổ sung (Augmented):** các đoạn tìm được được ghép vào prompt, cùng câu hỏi và lời dặn cách trả lời.
 3. **Tạo câu trả lời (Generation):** mô hình viết câu trả lời dựa trên các đoạn đó. Nếu hệ thống gửi kèm nguồn của từng đoạn và dặn ghi nguồn, mô hình có thể chỉ ra ý nào lấy từ đoạn nào; không được dặn thì chưa chắc nó sẽ làm.
 
-Những đoạn tài liệu này nằm trong [cửa sổ ngữ cảnh](context-window.md) và chỉ phục vụ lần trả lời đó. Các con số bên trong mô hình không thay đổi: mô hình không "học thuộc" tài liệu của bạn.
+Những đoạn tài liệu này nằm trong [cửa sổ ngữ cảnh](context-window.md): mô hình dùng được chúng chừng nào chúng còn trong cuộc trò chuyện. Nhưng các con số bên trong mô hình không thay đổi: mô hình không "học thuộc" tài liệu của bạn, và một cuộc trò chuyện mới sẽ không có chúng.
 
 ### Vì sao phải tìm, sao không đưa hết?
 
@@ -126,7 +126,7 @@ Tự kiểm tra: ở lần hỏi thứ hai, câu trả lời phải là 3 ngày 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
-- **"RAG giúp AI học thuộc tài liệu của mình."** — Không. Các đoạn tài liệu chỉ nằm trong ngữ cảnh của lần trả lời đó; mô hình không thay đổi gì.
+- **"RAG giúp AI học thuộc tài liệu của mình."** — Không. Các đoạn tài liệu chỉ nằm trong ngữ cảnh của cuộc trò chuyện, chừng nào còn vừa cửa sổ ngữ cảnh; mô hình không thay đổi gì.
 - **"Có ghi nguồn là chắc chắn đúng."** — Nguồn giúp bạn kiểm tra được, chứ không tự làm câu trả lời đúng. Hệ thống có thể lấy nhầm đoạn, lấy bản cũ, hoặc mô hình đọc sai. Việc quan trọng thì mở nguồn ra đối chiếu.
 - **"Có RAG thì không cần viết prompt cẩn thận."** — Vẫn cần: dặn AI chỉ dựa vào đoạn trích, ghi số mục, và nói "không có" khi tài liệu không ghi.
 
@@ -139,7 +139,7 @@ Tự kiểm tra: ở lần hỏi thứ hai, câu trả lời phải là 3 ngày 
 ## Ghi nhớ
 
 - RAG = tìm đoạn tài liệu liên quan → đưa vào prompt → trả lời dựa trên các đoạn đó.
-- Mô hình không học thêm: tài liệu chỉ nằm trong ngữ cảnh của lần trả lời.
+- Mô hình không học thêm: tài liệu nằm trong ngữ cảnh, không vào mô hình.
 - Câu trả lời tốt ghi nguồn, và dám nói "tài liệu không ghi".
 - Tài liệu cũ hay tìm nhầm đoạn thì câu trả lời vẫn tự tin — mà sai.
 - Việc quan trọng: mở đúng mục được trích ra đối chiếu.
@@ -168,7 +168,7 @@ Tự kiểm tra: ở lần hỏi thứ hai, câu trả lời phải là 3 ngày 
 <details>
 <summary>Xem đáp án</summary>
 
-1. **B** — RAG không đổi mô hình; nó tìm đúng đoạn và đưa vào ngữ cảnh của lần trả lời đó.
+1. **B** — RAG không đổi mô hình; nó tìm đúng đoạn và đưa vào ngữ cảnh.
 2. **C** — nguồn chỉ tốt bằng tài liệu được lấy; tài liệu cũ cho ra câu trả lời "có nguồn" mà vẫn sai.
 3. **A** — nói "không có" tốt hơn một câu trả lời bịa nghe hợp lý.
 

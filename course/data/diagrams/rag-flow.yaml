@@ -63,6 +63,6 @@ steps:
       en: 3 working days (section 2.2)
       ja: 3営業日前まで（2.2）
 takeaway:
-  vi: Mô hình không học thêm gì — tài liệu chỉ được đưa vào cho lần trả lời này.
-  en: The model learns nothing new — the passages are added for this answer only.
-  ja: モデルは何も覚えない。資料はこの回答のためだけに渡される。
+  vi: "Mô hình không học thêm gì —\ntài liệu nằm trong ngữ cảnh, không vào mô hình."
+  en: The model learns nothing new — the passages go into the context, not into the model.
+  ja: "モデルは何も覚えない。\n資料はコンテキストに入るだけで、モデルには入らない。"

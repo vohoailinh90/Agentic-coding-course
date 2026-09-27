@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 896" width="800" height="896" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 920" width="800" height="920" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
 <title id="title">RAG：まず調べて、それから答える</title>
-<desc id="desc">質問 → 関連する箇所を探す → プロンプトに加える → 出典つきで答える. モデルは何も覚えない。資料はこの回答のためだけに渡される。</desc>
+<desc id="desc">質問 → 関連する箇所を探す → プロンプトに加える → 出典つきで答える. モデルは何も覚えない。
+資料はコンテキストに入るだけで、モデルには入らない。</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -9,9 +10,9 @@
 @media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
 </style>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
-<rect x="1" y="1" width="798" height="894" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<rect x="1" y="1" width="798" height="918" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
-<circle cx="46" cy="866" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<circle cx="46" cy="890" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">RAG：まず調べて、それから答える</tspan></text>
 <text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Retrieval（検索）・Augmented（追加）・Generation（生成）</tspan></text>
 <rect x="88" y="112.7" width="624" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
@@ -55,6 +56,6 @@
 <text x="106" y="688.4" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="749.9">出典つきで答える</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="774.8">3営業日前まで（2.2）</tspan></text>
-<rect x="28" y="817.6" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
-<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="848.6">💡 モデルは何も覚えない。資料はこの回答のためだけに渡される。</tspan></text>
+<rect x="28" y="817.6" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="848.6">💡 モデルは何も覚えない。</tspan><tspan x="400" y="872.4">資料はコンテキストに入るだけで、モデルには入らない。</tspan></text>
 </svg>

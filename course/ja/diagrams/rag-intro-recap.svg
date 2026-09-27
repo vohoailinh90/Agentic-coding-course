@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 503" width="800" height="503" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
 <title id="title">まとめ：RAG</title>
 <desc id="desc">1. 検索する — 質問に合う箇所を探す; 2. 追加する — 抜粋をプロンプトに入れる; 3. 回答する — 抜粋にもとづき、
-指示があれば出典も; 4. モデルは覚えない — この回答だけに使う; 5. 出典を確かめる — 古い資料や検索ミスで
+指示があれば出典も; 4. モデルは覚えない — コンテキストに入るだけ; 5. 出典を確かめる — 古い資料や検索ミスで
 自信満々に間違う. 自分の資料について聞くなら、AIに調べさせ、出典は自分で確かめる。</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="501" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
@@ -39,7 +39,7 @@
 <circle cx="173" cy="270.3" r="12" fill="#0F172A"/>
 <text x="173" y="275.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text font-size="18.5" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="273" y="336.8">モデルは覚えない</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="361.7">この回答だけに使う</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="361.7">コンテキストに入るだけ</tspan></text>
 <rect x="409" y="252.3" width="236" height="148" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
 <circle cx="527" cy="288.3" r="22" fill="#E11D48"/>
 <circle cx="527" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

@@ -49,7 +49,7 @@ A model carries only what it learned in training ([How Do Machines "Learn"?](how
 2. **Augmented:** the passages it found are added to the prompt, together with the question and instructions on how to answer.
 3. **Generation:** the model writes an answer from those passages. If the system sends each passage with its source and asks for citations, the model can say which passage each part came from; without that, it may not.
 
-Those passages sit in the [context window](context-window.md) and serve that one answer. The numbers inside the model do not change: the model does not "memorize" your documents.
+Those passages sit in the [context window](context-window.md): the model can use them for as long as they stay in the conversation. But the numbers inside the model do not change: the model does not "memorize" your documents, and a new conversation starts without them.
 
 ### Why search? Why not hand over everything?
 
@@ -127,7 +127,7 @@ Check yourself: the second time, the answer should be 3 working days and name se
 <!-- section: misconceptions -->
 ## Common Misconceptions
 
-- **"RAG makes the AI memorize my documents."** — No. The passages sit in the context of that one answer; nothing in the model changes.
+- **"RAG makes the AI memorize my documents."** — No. The passages sit in the conversation's context, for as long as they fit in the context window; nothing in the model changes.
 - **"If it cites a source, it must be right."** — A source lets you check; it does not make the answer right. The system can pick the wrong passage or an old version, or the model can misread it. For anything that matters, open the source and compare.
 - **"With RAG, careful prompts are no longer needed."** — They still are: tell the AI to answer only from the passages, to name the section, and to say so when the documents do not cover the question.
 
@@ -140,7 +140,7 @@ Check yourself: the second time, the answer should be 3 working days and name se
 ## Key Takeaways
 
 - RAG = find the relevant passages → add them to the prompt → answer from them.
-- The model learns nothing new: the documents sit in the context of one answer.
+- The model learns nothing new: the documents sit in the context, not in the model.
 - A good answer names its source, and dares to say "the documents do not say".
 - Outdated documents or the wrong passage give answers that are confident — and wrong.
 - For anything important: open the cited section and compare.
@@ -169,7 +169,7 @@ Check yourself: the second time, the answer should be 3 working days and name se
 <details>
 <summary>Show answers</summary>
 
-1. **B** — RAG does not change the model; it finds the right passages and puts them into the context of that answer.
+1. **B** — RAG does not change the model; it finds the right passages and puts them into the context.
 2. **C** — a source is only as good as the passage retrieved; an old document gives a "sourced" answer that is still wrong.
 3. **A** — saying "not covered" is better than a made-up answer that sounds right.
 

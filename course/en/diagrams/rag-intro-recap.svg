@@ -2,7 +2,8 @@
 <title id="title">Recap: RAG</title>
 <desc id="desc">1. Retrieve — Passages that match
 the question; 2. Augment — Put them into the prompt; 3. Generate — From the passages;
-cites them when asked; 4. Nothing is learned — Used for this answer only; 5. Check the source — Old or wrong passages
+cites them when asked; 4. Nothing is learned — In the context,
+not in the model; 5. Check the source — Old or wrong passages
 mislead with confidence. Asking about your own documents? Let AI look them up, then check the source.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="524" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
@@ -40,7 +41,7 @@ mislead with confidence. Asking about your own documents? Let AI look them up, t
 <circle cx="173" cy="270.3" r="12" fill="#0F172A"/>
 <text x="173" y="275.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text font-size="18.5" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="273" y="336.8">Nothing is learned</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="361.7">Used for this answer only</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="361.7">In the context,</tspan><tspan x="273" y="381.5">not in the model</tspan></text>
 <rect x="409" y="252.3" width="236" height="148" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
 <circle cx="527" cy="288.3" r="22" fill="#E11D48"/>
 <circle cx="527" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

@@ -128,7 +128,7 @@ The team chooses prompting + RAG. Fine-tuning is kept for the day they need one 
 <summary>Show answers</summary>
 
 1. **C** — information that changes belongs in documents that you update; a prompt alone does not know the rules, and fine-tuning again each time is costly.
-2. **A** — fine-tuning trains the model further, so the model changes; RAG and prompting only change what the model reads for one answer.
+2. **A** — fine-tuning trains the model further, so the model changes; RAG and prompting only change what the model reads, not the model.
 3. **B** — a format is a matter of instructions; a clear prompt with a sample is usually enough.
 
 </details>
