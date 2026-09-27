@@ -1,0 +1,26 @@
+template: summary
+title:
+  vi: "Tóm tắt: giữ bí mật ngoài nơi công khai"
+  en: "Recap: Keep Secrets Out of Public Places"
+  ja: まとめ：秘密を公開場所に置かない
+points:
+  - icon: "🔑"
+    color: blue
+    name: {vi: Key là mật khẩu, en: A key is a password, ja: キーはパスワード}
+    caption: {vi: Có thể mở quyền dưới tên bạn, en: It may grant access as you, ja: あなたの権限を使える}
+  - icon: "📦"
+    color: green
+    name: {vi: Cất ngoài code, en: Store outside code, ja: コードの外に保管}
+    caption: {vi: Biến môi trường hoặc file bỏ qua, en: Environment or ignored file, ja: 環境変数・無視ファイル}
+  - icon: "⛔"
+    color: rose
+    name: {vi: Không chia sẻ, en: Never share, ja: 共有しない}
+    caption: {vi: "Không chat, ảnh chụp, kho công khai", en: "No chat, screenshot or public repo", ja: チャット・画面写真・公開場所は禁止}
+  - icon: "♻️"
+    color: amber
+    name: {vi: Lộ thì thu hồi, en: Revoke after a leak, ja: 漏れたら失効}
+    caption: {vi: Tạo lại và kiểm tra lượt dùng, en: Replace and inspect usage, ja: 再発行して利用を確認}
+takeaway:
+  vi: Xóa một dòng không vô hiệu hóa bí mật đã bị sao chép.
+  en: Deleting one line does not disable a secret that was copied.
+  ja: 1行消しても、コピーされた秘密は無効になりません。

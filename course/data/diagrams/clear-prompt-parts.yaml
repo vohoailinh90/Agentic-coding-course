@@ -1,0 +1,28 @@
+# Used in prompting-basics: the parts of a checkable chat prompt.
+template: equation
+title:
+  vi: Bốn mảnh của một prompt rõ ràng
+  en: Four Parts of a Clear Prompt
+  ja: 明確なプロンプトの4要素
+terms:
+  - icon: "🗺️"
+    color: blue
+    name: {vi: Bối cảnh, en: Context, ja: 背景}
+    caption: {vi: "tình huống, người đọc", en: "situation, audience", ja: 状況・読み手}
+  - icon: "🎯"
+    color: violet
+    name: {vi: Nhiệm vụ, en: Task, ja: 作業}
+    caption: {vi: động từ rõ ràng, en: one clear verb, ja: 明確な動詞}
+  - icon: "📐"
+    color: amber
+    name: {vi: Định dạng, en: Format, ja: 形式}
+    caption: {vi: "dạng, độ dài, ngôn ngữ", en: "shape, length, language", ja: 形・長さ・言語}
+  - icon: "🧩"
+    color: teal
+    name: {vi: Ví dụ, en: Example, ja: 例}
+    caption: {vi: một mẫu nhỏ, en: one small sample, ja: 小さな見本}
+result:
+  icon: "✅"
+  color: green
+  name: {vi: Kết quả dễ kiểm tra, en: Checkable result, ja: 確認しやすい結果}
+  caption: {vi: ít phải đoán hơn, en: less guessing, ja: 推測が減る}

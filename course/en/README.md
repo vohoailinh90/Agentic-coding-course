@@ -115,7 +115,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 3.3.1 | Safety Basics: API Keys, Passwords and Personal Data | 📖 Concept | 12 min |
+| 3.3.1 | [Safety Basics: API Keys, Passwords and Personal Data](lessons/security-basics.md) | 📖 Concept | 12 min |
 
 ## 4. 🧠 The AI Mental Models You Actually Need
 
@@ -125,7 +125,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 4.1.1 | Prompting Basics: Talking So AI Understands | 🛠️ Hands-on | 12 min |
+| 4.1.1 | [Prompting Basics: Talking So AI Understands](lessons/prompting-basics.md) | 🛠️ Hands-on | 12 min |
 | 4.1.2 | ⭐ [Hallucination: Why AI Is Confidently Wrong](lessons/hallucination.md) | 📖 Concept | 10 min |
 | 4.1.3 | ⭐ [The Context Window: AI's Short-Term Memory](lessons/context-window.md) | 📖 Concept | 10 min |
 | 4.1.4 | Next-Token Prediction: The Simple Secret Behind LLMs | 📖 Concept | 10 min |

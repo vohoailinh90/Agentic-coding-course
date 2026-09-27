@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 463" width="800" height="463" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Tóm tắt: giữ bí mật ngoài nơi công khai</title>
+<desc id="desc">1. Key là mật khẩu — Có thể mở quyền dưới tên bạn; 2. Cất ngoài code — Biến môi trường hoặc file bỏ qua; 3. Không chia sẻ — Không chat, ảnh chụp, kho công khai; 4. Lộ thì thu hồi — Tạo lại và kiểm tra lượt dùng. Xóa một dòng không vô hiệu hóa bí mật đã bị sao chép.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="461" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="433" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Tóm tắt: giữ bí mật ngoài nơi công khai</tspan></text>
+<rect x="28" y="86.3" width="363" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="209.5" cy="122.3" r="22" fill="#2563EB"/>
+<circle cx="209.5" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="209.5" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔑</text>
+<circle cx="46" cy="104.3" r="12" fill="#1E3A8A"/>
+<text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="209.5" y="170.8">Key là mật khẩu</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="209.5" y="195.7">Có thể mở quyền dưới tên bạn</tspan></text>
+<rect x="409" y="86.3" width="363" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="590.5" cy="122.3" r="22" fill="#059669"/>
+<circle cx="590.5" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590.5" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📦</text>
+<circle cx="427" cy="104.3" r="12" fill="#064E3B"/>
+<text x="427" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="590.5" y="170.8">Cất ngoài code</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590.5" y="195.7">Biến môi trường hoặc file bỏ qua</tspan></text>
+<rect x="28" y="232.5" width="363" height="128.2" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
+<circle cx="209.5" cy="268.5" r="22" fill="#E11D48"/>
+<circle cx="209.5" cy="268.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="209.5" y="276.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⛔</text>
+<circle cx="46" cy="250.5" r="12" fill="#881337"/>
+<text x="46" y="255.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="209.5" y="317">Không chia sẻ</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="209.5" y="341.9">Không chat, ảnh chụp, kho công khai</tspan></text>
+<rect x="409" y="232.5" width="363" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="590.5" cy="268.5" r="22" fill="#D97706"/>
+<circle cx="590.5" cy="268.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590.5" y="276.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">♻️</text>
+<circle cx="427" cy="250.5" r="12" fill="#78350F"/>
+<text x="427" y="255.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="590.5" y="317">Lộ thì thu hồi</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590.5" y="341.9">Tạo lại và kiểm tra lượt dùng</tspan></text>
+<rect x="28" y="384.7" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="415.7">💡 Xóa một dòng không vô hiệu hóa bí mật đã bị sao chép.</tspan></text>
+</svg>
