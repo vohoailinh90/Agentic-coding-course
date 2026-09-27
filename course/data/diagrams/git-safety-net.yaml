@@ -1,0 +1,67 @@
+# Used in: git-version-control (concept). A commit before every task is a way back.
+template: flow
+title:
+  vi: Git là lưới an toàn khi giao việc cho agent
+  en: Git Is Your Safety Net When an Agent Works
+  ja: エージェントに任せるときの安全ネット、Git
+subtitle:
+  vi: Chụp ảnh trước, xem khác biệt sau, rồi quyết định
+  en: Snapshot first, look at the difference, then decide
+  ja: 先に記録、あとで差分を見て、それから決める
+steps:
+  - icon: "📸"
+    color: blue
+    name:
+      vi: Commit trước
+      en: Commit first
+      ja: 先にコミット
+    caption:
+      vi: Ảnh chụp cả dự án, kèm lời nhắn
+      en: A snapshot of the whole project, with a message
+      ja: プロジェクト全体の記録とメッセージ
+    arrow:
+      vi: điểm an toàn
+      en: a safe point
+      ja: 安全な地点
+  - icon: "🤖"
+    color: violet
+    name:
+      vi: Agent làm việc
+      en: The agent works
+      ja: 作業を任せる
+    caption:
+      vi: Sửa bao nhiêu file cũng được
+      en: However many files it changes
+      ja: 何ファイル変えても大丈夫
+    arrow:
+      vi: thay đổi
+      en: changes
+      ja: 変更
+  - icon: "🔍"
+    color: teal
+    name:
+      vi: Xem git diff
+      en: Look at git diff
+      ja: git diff を見る
+    caption:
+      vi: Đã đổi gì từ lần commit trước
+      en: What changed since the last commit
+      ja: 前のコミットから何が変わったか
+    arrow:
+      vi: quyết định
+      en: decide
+      ja: 判断
+  - icon: "🛟"
+    color: green
+    name:
+      vi: Giữ hoặc quay lại
+      en: Keep or go back
+      ja: 残すか、戻すか
+    caption:
+      vi: Commit mới, hoặc trở về ảnh cũ
+      en: A new commit, or back to the snapshot
+      ja: 新しくコミットか、記録に戻す
+takeaway:
+  vi: Commit trước mỗi việc lớn là luôn có đường lui.
+  en: A commit before every big task means there is always a way back.
+  ja: 大きな作業の前にコミットすれば、いつでも戻れる。

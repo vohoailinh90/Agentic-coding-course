@@ -33,7 +33,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 13. [Reading Error Messages and Debugging Like a Detective](lessons/errors-and-debugging.md) — 12 min
 14. [Project: Your Personal Web Page](lessons/project-personal-page.md) — 60 min
 15. [What Data Looks Like: JSON, CSV and YAML](lessons/data-formats.md) — 10 min
-16. Git: A Magic Undo Button for Your Whole Project — 15 min
+16. [Git: A Magic Undo Button for Your Whole Project](lessons/git-version-control.md) — 15 min
 17. Hallucination: Why AI Is Confidently Wrong — 10 min
 18. The Context Window: AI's Short-Term Memory — 10 min
 19. Project: Automate an Office Task (Spreadsheet → Report) — 90 min
@@ -108,7 +108,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 3.2.1 | Variables, Functions, Conditions, Loops: The Four Building Blocks | 📖 Concept | 12 min |
-| 3.2.2 | ⭐ Git: A Magic Undo Button for Your Whole Project | 🛠️ Hands-on | 15 min |
+| 3.2.2 | ⭐ [Git: A Magic Undo Button for Your Whole Project](lessons/git-version-control.md) | 🛠️ Hands-on | 15 min |
 | 3.2.3 | The Terminal Is Not Scary: Your First Five Safe Commands | 🛠️ Hands-on | 15 min |
 
 ### 3.3 Security Essentials

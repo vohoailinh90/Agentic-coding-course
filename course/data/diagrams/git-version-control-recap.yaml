@@ -1,0 +1,51 @@
+# Recap of git-version-control: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: Git, nút Undo cho cả dự án"
+  en: "Recap: Git, an Undo for the Whole Project"
+  ja: まとめ：Git、プロジェクト全体の「元に戻す」
+points:
+  - icon: "📸"
+    color: blue
+    name:
+      vi: Commit là ảnh chụp
+      en: A commit is a snapshot
+      ja: コミットは記録
+    caption:
+      vi: Cả dự án, kèm một câu mô tả
+      en: The whole project, with a message
+      ja: プロジェクト全体とメッセージ
+  - icon: "🛟"
+    color: green
+    name:
+      vi: Commit trước khi giao việc
+      en: Commit before a task
+      ja: 任せる前にコミット
+    caption:
+      vi: Điểm an toàn để quay về
+      en: A safe point to return to
+      ja: 戻れる安全な地点
+  - icon: "🔍"
+    color: teal
+    name:
+      vi: git diff
+      en: git diff
+      ja: git diff
+    caption:
+      vi: Xem đã đổi gì từ lần commit trước
+      en: See what changed since the last commit
+      ja: 前のコミットからの変更を見る
+  - icon: "⏪"
+    color: amber
+    name:
+      vi: Quay lại được
+      en: You can go back
+      ja: 戻せる
+    caption:
+      vi: Nhưng bỏ thay đổi chưa commit là mất hẳn
+      en: But dropping uncommitted changes is final
+      ja: ただし未コミットの変更を捨てると戻らない
+takeaway:
+  vi: Có Git, thử nghiệm cùng agent không còn đáng sợ.
+  en: With Git, experimenting with an agent is no longer scary.
+  ja: Git があれば、エージェントとの試行錯誤はこわくない。

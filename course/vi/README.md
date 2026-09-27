@@ -33,7 +33,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 13. [Đọc thông báo lỗi và gỡ lỗi như một thám tử](lessons/errors-and-debugging.md) — 12 phút
 14. [Dự án: trang web cá nhân của bạn](lessons/project-personal-page.md) — 60 phút
 15. [Dữ liệu trông như thế nào: JSON, CSV, YAML](lessons/data-formats.md) — 10 phút
-16. Git: nút Undo thần kỳ cho cả dự án — 15 phút
+16. [Git: nút Undo thần kỳ cho cả dự án](lessons/git-version-control.md) — 15 phút
 17. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
 18. Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI — 10 phút
 19. Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) — 90 phút
@@ -108,7 +108,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 3.2.1 | Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình | 📖 Khái niệm | 12 phút |
-| 3.2.2 | ⭐ Git: nút Undo thần kỳ cho cả dự án | 🛠️ Thực hành | 15 phút |
+| 3.2.2 | ⭐ [Git: nút Undo thần kỳ cho cả dự án](lessons/git-version-control.md) | 🛠️ Thực hành | 15 phút |
 | 3.2.3 | Terminal không đáng sợ: 5 lệnh an toàn đầu tiên | 🛠️ Thực hành | 15 phút |
 
 ### 3.3 An toàn là trên hết
