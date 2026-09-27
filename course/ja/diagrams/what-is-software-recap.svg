@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 503" width="800" height="503" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
 <title id="title">まとめ：ソフトウェアとは？</title>
-<desc id="desc">1. ソフトウェア — プログラム＋データ、ハードウェアで動く; 2. プログラム — コンピュータが実行できる正確な手順; 3. コード — 指示を記録しファイルに保存した文章; 4. 意図を推測しない — 「塩少々」では正確さが足りない; 5. もう作っている — 週間タスクカードもソフトウェア. 入力データ、処理手順、確認する結果を明確にしよう。</desc>
+<desc id="desc">1. ソフトウェア — プログラム＋データ、ハードウェアで動く; 2. プログラム — コンピュータが実行できる
+正確な手順; 3. コード — 指示を記録した文章、
+ファイルに保存する; 4. 意図を推測しない — 「塩少々」では
+正確さが足りない; 5. もう作っている — 週間タスクカードもソフトウェア. 入力データ、処理手順、確認する結果を明確にしよう。</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="501" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -21,7 +24,7 @@
 <circle cx="300" cy="104.3" r="12" fill="#1E3A8A"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">プログラム</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">コンピュータが実行できる正確</tspan><tspan x="400" y="215.5">な手順</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">コンピュータが実行できる</tspan><tspan x="400" y="215.5">正確な手順</tspan></text>
 <rect x="536" y="86.3" width="236" height="148" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
 <circle cx="654" cy="122.3" r="22" fill="#7C3AED"/>
 <circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -29,7 +32,7 @@
 <circle cx="554" cy="104.3" r="12" fill="#4C1D95"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">コード</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="195.7">指示を記録しファイルに保存し</tspan><tspan x="654" y="215.5">た文章</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="195.7">指示を記録した文章、</tspan><tspan x="654" y="215.5">ファイルに保存する</tspan></text>
 <rect x="155" y="252.3" width="236" height="148" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
 <circle cx="273" cy="288.3" r="22" fill="#D97706"/>
 <circle cx="273" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -37,7 +40,7 @@
 <circle cx="173" cy="270.3" r="12" fill="#78350F"/>
 <text x="173" y="275.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="273" y="336.8">意図を推測しない</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="361.7">「塩少々」では正確さが足りな</tspan><tspan x="273" y="381.5">い</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="361.7">「塩少々」では</tspan><tspan x="273" y="381.5">正確さが足りない</tspan></text>
 <rect x="409" y="252.3" width="236" height="148" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
 <circle cx="527" cy="288.3" r="22" fill="#0D9488"/>
 <circle cx="527" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

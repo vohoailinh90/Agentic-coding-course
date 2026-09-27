@@ -13,7 +13,7 @@ steps:
       en: Receives text and the Save click
       ja: 入力文字と保存クリックを受け取る
     arrow: {vi: Gửi yêu cầu qua API, en: Send an API request, ja: APIリクエストを送る}
-  - icon: "⚙️"
+  - icon: "🔧"
     color: violet
     name: {vi: Backend, en: Backend, ja: バックエンド}
     caption:

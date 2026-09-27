@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 483" width="800" height="483" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
 <title id="title">Recap: Anatomy of a Project</title>
-<desc id="desc">1. Frontend — Users see and interact; 2. Backend — Handles requests and rules; 3. Database — Keeps data for later; 4. API as a menu — How parts make requests; 5. Lead with scope — Name the part; inspect the diff. Knowing the roles and request path helps you direct the agent.</desc>
+<desc id="desc">1. Frontend — Users see and interact; 2. Backend — Handles requests and rules; 3. Database — Keeps data for later; 4. API as a menu — How parts make requests; 5. Lead with scope — Name the part;
+inspect the diff. Knowing the roles and request path helps you direct the agent.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="481" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -17,7 +18,7 @@
 <rect x="282" y="86.3" width="236" height="128.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
 <circle cx="400" cy="122.3" r="22" fill="#7C3AED"/>
 <circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
-<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚙️</text>
+<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
 <circle cx="300" cy="104.3" r="12" fill="#4C1D95"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">Backend</tspan></text>
@@ -45,7 +46,7 @@
 <circle cx="427" cy="250.5" r="12" fill="#064E3B"/>
 <text x="427" y="255.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="527" y="317">Lead with scope</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="341.9">Name the part; inspect the</tspan><tspan x="527" y="361.7">diff</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="341.9">Name the part;</tspan><tspan x="527" y="361.7">inspect the diff</tspan></text>
 <rect x="28" y="404.5" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="435.5">💡 Knowing the roles and request path helps you direct the agent.</tspan></text>
 </svg>

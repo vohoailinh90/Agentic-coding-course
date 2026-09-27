@@ -51,7 +51,7 @@ A computer follows described steps quickly and repeatedly. It does not automatic
 
 **Code** is text that expresses those steps in a programming language. Code is usually kept in project **files**, where people and agents can read it, edit it and inspect changes. When the code runs, the computer carries out the program and produces a result on screen or in a file.
 
-You do not need to write every line yourself yet. Variables, conditions, loops and functions appear in [Programming Building Blocks: Variables, Conditions, Loops, Functions](programming-building-blocks.md). For now, remember: a program is the instructions; code is the text that records them.
+You do not need to write every line yourself yet. Variables, conditions, loops and functions appear in [Variables, Functions, Conditions, Loops: Four Common Building Blocks](programming-building-blocks.md). For now, remember: a program is the instructions; code is the text that records them.
 
 <!-- section: analogy -->
 ## Simple Analogy

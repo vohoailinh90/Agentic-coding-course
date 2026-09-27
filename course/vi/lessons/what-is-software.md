@@ -51,7 +51,7 @@ Máy tính làm đúng những bước được mô tả, rất nhanh và lặp 
 
 **Code** là văn bản diễn tả các bước ấy bằng một ngôn ngữ lập trình. Code thường được giữ trong các **file** của dự án, để con người và agent có thể đọc, sửa và kiểm tra thay đổi. Khi chạy code, máy tính thực hiện chương trình và tạo ra kết quả trên màn hình hoặc trong file.
 
-Bạn chưa cần học cách tự viết từng dòng code. Các khái niệm như biến, điều kiện, vòng lặp và hàm sẽ có trong [Những viên gạch lập trình: biến, điều kiện, vòng lặp, hàm](programming-building-blocks.md). Ở đây, chỉ cần nhớ: chương trình là chỉ dẫn; code là phần chữ ghi lại chỉ dẫn đó.
+Bạn chưa cần học cách tự viết từng dòng code. Các khái niệm như biến, điều kiện, vòng lặp và hàm sẽ có trong [Biến, hàm, điều kiện, vòng lặp: 4 viên gạch thường gặp](programming-building-blocks.md). Ở đây, chỉ cần nhớ: chương trình là chỉ dẫn; code là phần chữ ghi lại chỉ dẫn đó.
 
 <!-- section: analogy -->
 ## Ví dụ đời thường

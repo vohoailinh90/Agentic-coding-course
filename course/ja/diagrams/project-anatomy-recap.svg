@@ -17,7 +17,7 @@
 <rect x="282" y="86.3" width="236" height="128.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
 <circle cx="400" cy="122.3" r="22" fill="#7C3AED"/>
 <circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
-<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚙️</text>
+<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
 <circle cx="300" cy="104.3" r="12" fill="#4C1D95"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">バックエンド</tspan></text>

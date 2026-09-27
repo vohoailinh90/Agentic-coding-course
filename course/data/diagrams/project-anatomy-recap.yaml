@@ -7,8 +7,8 @@ points:
   - icon: "🖥️"
     color: blue
     name: {vi: Frontend, en: Frontend, ja: フロントエンド}
-    caption: {vi: Người dùng nhìn và tương tác, en: Users see and interact, ja: 利用者が見て操作する}
-  - icon: "⚙️"
+    caption: {vi: "Người dùng nhìn\nvà tương tác", en: Users see and interact, ja: 利用者が見て操作する}
+  - icon: "🔧"
     color: violet
     name: {vi: Backend, en: Backend, ja: バックエンド}
     caption: {vi: Xử lý yêu cầu và quy tắc, en: Handles requests and rules, ja: リクエストとルールを処理}
@@ -22,10 +22,10 @@ points:
     caption: {vi: Cách các phần yêu cầu nhau, en: How parts make requests, ja: 部分同士が依頼する方法}
   - icon: "🔎"
     color: green
-    name: {vi: Dẫn dắt bằng phạm vi, en: Lead with scope, ja: 範囲で指揮する}
+    name: {vi: Giao đúng phạm vi, en: Lead with scope, ja: 範囲で指揮する}
     caption:
-      vi: Chỉ đúng phần, kiểm tra diff
-      en: Name the part; inspect the diff
+      vi: "Chỉ đúng phần,\nkiểm tra diff"
+      en: "Name the part;\ninspect the diff"
       ja: 部分を指定しdiffを確認
 takeaway:
   vi: Biết vai trò và đường đi giúp bạn giao đúng phần cho agent.

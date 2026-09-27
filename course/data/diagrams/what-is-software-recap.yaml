@@ -9,35 +9,35 @@ points:
     name: {vi: Phần mềm, en: Software, ja: ソフトウェア}
     caption:
       vi: Chương trình + dữ liệu, chạy trên phần cứng
-      en: Program + data, running on hardware
+      en: "Program + data,\nrunning on hardware"
       ja: プログラム＋データ、ハードウェアで動く
   - icon: "📋"
     color: blue
     name: {vi: Chương trình, en: Program, ja: プログラム}
     caption:
-      vi: Các bước chính xác máy có thể làm
+      vi: "Các bước chính xác\ncho máy làm theo"
       en: Exact steps a computer can carry out
-      ja: コンピュータが実行できる正確な手順
+      ja: "コンピュータが実行できる\n正確な手順"
   - icon: "📝"
     color: violet
     name: {vi: Code, en: Code, ja: コード}
     caption:
-      vi: Văn bản ghi chỉ dẫn, lưu trong file
-      en: Instruction text stored in files
-      ja: 指示を記録しファイルに保存した文章
+      vi: "Văn bản ghi chỉ dẫn,\nlưu trong file"
+      en: "Instruction text,\nstored in files"
+      ja: "指示を記録した文章、\nファイルに保存する"
   - icon: "🍲"
     color: amber
     name: {vi: Không đoán ý, en: No guessing, ja: 意図を推測しない}
     caption:
       vi: “Nêm vừa ăn” chưa đủ chính xác
       en: “Salt to taste” is not exact enough
-      ja: 「塩少々」では正確さが足りない
+      ja: "「塩少々」では\n正確さが足りない"
   - icon: "✅"
     color: teal
     name: {vi: Bạn đã làm rồi, en: You made it already, ja: もう作っている}
     caption:
-      vi: Thẻ việc tuần cũng là phần mềm
-      en: Your weekly task card is software
+      vi: "Thẻ việc tuần\ncũng là phần mềm"
+      en: "Your weekly task card\nis software"
       ja: 週間タスクカードもソフトウェア
 takeaway:
   vi: Nói rõ dữ liệu vào, các bước xử lý và kết quả cần kiểm tra.
