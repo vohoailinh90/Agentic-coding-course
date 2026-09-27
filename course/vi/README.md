@@ -30,7 +30,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 10. [File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính](lessons/files-folders-paths.md) — 10 phút
 11. [Đọc và review thay đổi của agent (diff)](lessons/reviewing-agent-changes.md) — 15 phút
 12. [Từ "trông có vẻ đúng" đến phép kiểm tra](lessons/testing-basics.md) — 12 phút
-13. Đọc thông báo lỗi và gỡ lỗi như một thám tử — 12 phút
+13. [Đọc thông báo lỗi và gỡ lỗi như một thám tử](lessons/errors-and-debugging.md) — 12 phút
 14. Dự án: trang web cá nhân của bạn — 60 phút
 15. Dữ liệu trông như thế nào: JSON, CSV, YAML — 10 phút
 16. Git: nút Undo thần kỳ cho cả dự án — 15 phút
@@ -83,7 +83,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | 2.2.1 | ⭐ [File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính](lessons/files-folders-paths.md) | 🛠️ Thực hành | 10 phút |
 | 2.2.2 | ⭐ [Đọc và review thay đổi của agent (diff)](lessons/reviewing-agent-changes.md) | 🛠️ Thực hành | 15 phút |
 | 2.2.3 | ⭐ [Từ "trông có vẻ đúng" đến phép kiểm tra](lessons/testing-basics.md) | 🛠️ Thực hành | 12 phút |
-| 2.2.4 | ⭐ Đọc thông báo lỗi và gỡ lỗi như một thám tử | 🛠️ Thực hành | 12 phút |
+| 2.2.4 | ⭐ [Đọc thông báo lỗi và gỡ lỗi như một thám tử](lessons/errors-and-debugging.md) | 🛠️ Thực hành | 12 phút |
 
 ### 2.3 Dự án đầu tiên
 

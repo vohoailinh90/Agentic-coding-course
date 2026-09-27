@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 710" width="800" height="710" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Gỡ lỗi như một thám tử</title>
+<desc id="desc">Tái hiện lỗi → Đọc thông báo → Đoán nguyên nhân → Sửa một chỗ → Kiểm chứng</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-cycle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F46E5"/></marker></defs>
+<rect x="1" y="1" width="798" height="708" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="680" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Gỡ lỗi như một thám tử</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Mỗi vòng một manh mối, mỗi lần một thay đổi</tspan></text>
+<path d="M496.2,216.7 A205,205 0 0 1 549.9,257.9" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="509.4" y="196.8" width="69.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="544.3" y="214.3">thấy lỗi</tspan></text>
+<path d="M604.5,412 A205,205 0 0 1 590.1,474.5" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="579.8" y="438.1" width="102.2" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="630.9" y="455.6">có manh mối</tspan></text>
+<path d="M425,601.2 A205,205 0 0 1 375,601.2" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="369.4" y="649.8" width="61.2" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="400" y="667.3">thử nó</tspan></text>
+<path d="M211.3,477.8 A205,205 0 0 1 196.1,419.2" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="135.6" y="444.2" width="69.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="170.5" y="461.7">chạy lại</tspan></text>
+<path d="M257.6,250.3 A205,205 0 0 1 303.8,216.7" fill="none" stroke="#4F46E5" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="181.4" y="170.4" width="125.7" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="244.2" y="187.9">còn lỗi? quay lại</tspan></text>
+<g class="pulse">
+<circle cx="400" cy="397.7" r="78" fill="#4F46E5"/>
+<circle cx="400" cy="397.7" r="70" fill="#FFFFFF" fill-opacity="0.14"/>
+<text x="400" y="389.7" font-size="34" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔎</text>
+<text font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="419.7">Bạn và agent</tspan></text>
+</g>
+<rect x="315" y="118.7" width="170" height="148" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="154.7" r="22" fill="#2563EB"/>
+<circle cx="400" cy="154.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="163" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔁</text>
+<circle cx="333" cy="136.7" r="12" fill="#1E3A8A"/>
+<text x="333" y="141.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="203.2">Tái hiện lỗi</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="228.1">làm lỗi xảy ra lại,</tspan><tspan x="400" y="247.9">có chủ ý</tspan></text>
+<rect x="510" y="270.3" width="170" height="128.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="595" cy="306.3" r="22" fill="#7C3AED"/>
+<circle cx="595" cy="306.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="595" y="314.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📜</text>
+<circle cx="528" cy="288.3" r="12" fill="#4C1D95"/>
+<text x="528" y="293.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="595" y="354.8">Đọc thông báo</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="595" y="379.7">lỗi gì, ở đâu</tspan></text>
+<rect x="435.5" y="487.3" width="170" height="152.6" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="520.5" cy="523.3" r="22" fill="#D97706"/>
+<circle cx="520.5" cy="523.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="520.5" y="531.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💡</text>
+<circle cx="453.5" cy="505.3" r="12" fill="#78350F"/>
+<text x="453.5" y="510.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="520.5" y="571.8">Đoán nguyên</tspan><tspan x="520.5" y="596.2">nhân</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="520.5" y="621.1">một giả thuyết</tspan></text>
+<rect x="194.5" y="489.6" width="170" height="148" rx="18" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+<circle cx="279.5" cy="525.6" r="22" fill="#EA580C"/>
+<circle cx="279.5" cy="525.6" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="279.5" y="533.9" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
+<circle cx="212.5" cy="507.6" r="12" fill="#7C2D12"/>
+<text x="212.5" y="512.6" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#7C2D12" text-anchor="middle" font-weight="700"><tspan x="279.5" y="574.1">Sửa một chỗ</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="279.5" y="599">mỗi lần một thay</tspan><tspan x="279.5" y="618.8">đổi</tspan></text>
+<rect x="120" y="260.4" width="170" height="148" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="205" cy="296.4" r="22" fill="#059669"/>
+<circle cx="205" cy="296.4" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="205" y="304.7" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="138" cy="278.4" r="12" fill="#064E3B"/>
+<text x="138" y="283.4" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="205" y="344.9">Kiểm chứng</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="205" y="369.8">hết lỗi thì thêm</tspan><tspan x="205" y="389.6">phép kiểm tra</tspan></text>
+</svg>

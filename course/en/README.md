@@ -30,7 +30,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 10. [Files, Folders and Paths: The Map Inside Your Computer](lessons/files-folders-paths.md) — 10 min
 11. [Reading and Reviewing an Agent's Changes (Diffs)](lessons/reviewing-agent-changes.md) — 15 min
 12. [Turn "Looks Right" into Checks](lessons/testing-basics.md) — 12 min
-13. Reading Error Messages and Debugging Like a Detective — 12 min
+13. [Reading Error Messages and Debugging Like a Detective](lessons/errors-and-debugging.md) — 12 min
 14. Project: Your Personal Web Page — 60 min
 15. What Data Looks Like: JSON, CSV and YAML — 10 min
 16. Git: A Magic Undo Button for Your Whole Project — 15 min
@@ -83,7 +83,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | 2.2.1 | ⭐ [Files, Folders and Paths: The Map Inside Your Computer](lessons/files-folders-paths.md) | 🛠️ Hands-on | 10 min |
 | 2.2.2 | ⭐ [Reading and Reviewing an Agent's Changes (Diffs)](lessons/reviewing-agent-changes.md) | 🛠️ Hands-on | 15 min |
 | 2.2.3 | ⭐ [Turn "Looks Right" into Checks](lessons/testing-basics.md) | 🛠️ Hands-on | 12 min |
-| 2.2.4 | ⭐ Reading Error Messages and Debugging Like a Detective | 🛠️ Hands-on | 12 min |
+| 2.2.4 | ⭐ [Reading Error Messages and Debugging Like a Detective](lessons/errors-and-debugging.md) | 🛠️ Hands-on | 12 min |
 
 ### 2.3 Your First Project
 

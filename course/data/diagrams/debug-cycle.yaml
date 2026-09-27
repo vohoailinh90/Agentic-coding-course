@@ -1,0 +1,88 @@
+# Used in: errors-and-debugging (concept). Debugging as a detective's loop, one clue and one change at a time.
+template: cycle
+title:
+  vi: Gỡ lỗi như một thám tử
+  en: Debugging Like a Detective
+  ja: 探偵のようにデバッグする
+subtitle:
+  vi: Mỗi vòng một manh mối, mỗi lần một thay đổi
+  en: One clue per round, one change at a time
+  ja: 一周に手がかり1つ、変更は一度に1つ
+center:
+  icon: "🔎"
+  color: indigo
+  name:
+    vi: Bạn và agent
+    en: You and the agent
+    ja: あなたとエージェント
+steps:
+  - icon: "🔁"
+    color: blue
+    name:
+      vi: Tái hiện lỗi
+      en: Reproduce
+      ja: 再現する
+    caption:
+      vi: làm lỗi xảy ra lại, có chủ ý
+      en: make it happen again, on purpose
+      ja: わざともう一度起こす
+    arrow:
+      vi: thấy lỗi
+      en: see it
+      ja: 見える
+  - icon: "📜"
+    color: violet
+    name:
+      vi: Đọc thông báo
+      en: Read the message
+      ja: メッセージを読む
+    caption:
+      vi: lỗi gì, ở đâu
+      en: what went wrong, where
+      ja: 何が、どこで
+    arrow:
+      vi: có manh mối
+      en: a clue
+      ja: 手がかり
+  - icon: "💡"
+    color: amber
+    name:
+      vi: Đoán nguyên nhân
+      en: Guess the cause
+      ja: 原因を推理する
+    caption:
+      vi: một giả thuyết
+      en: one hypothesis
+      ja: 仮説を1つ
+    arrow:
+      vi: thử nó
+      en: test it
+      ja: 試す
+  - icon: "🔧"
+    color: orange
+    name:
+      vi: Sửa một chỗ
+      en: Change one thing
+      ja: 1か所だけ直す
+    caption:
+      vi: mỗi lần một thay đổi
+      en: one change at a time
+      ja: 変更は一度に1つ
+    arrow:
+      vi: chạy lại
+      en: run again
+      ja: もう一度動かす
+  - icon: "✅"
+    color: green
+    name:
+      vi: Kiểm chứng
+      en: Verify
+      ja: 検証する
+    caption:
+      vi: hết lỗi thì thêm phép kiểm tra
+      en: fixed? add a check
+      ja: 直ったらチェックを追加
+    arrow:
+      vi: còn lỗi? quay lại
+      en: still broken? go round
+      ja: 直らなければもう一周

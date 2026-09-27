@@ -1,0 +1,61 @@
+# Recap of errors-and-debugging: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: gỡ lỗi như một thám tử"
+  en: "Recap: Debugging Like a Detective"
+  ja: まとめ：探偵のようにデバッグする
+points:
+  - icon: "🔁"
+    color: blue
+    name:
+      vi: Tái hiện trước
+      en: Reproduce first
+      ja: まず再現する
+    caption:
+      vi: Biết cách làm lỗi xảy ra lại
+      en: Know how to make it happen again
+      ja: もう一度起こす方法を知る
+  - icon: "📜"
+    color: violet
+    name:
+      vi: Đọc dòng cuối trước
+      en: Read the last line first
+      ja: 最後の行から読む
+    caption:
+      vi: Lỗi gì, ở file nào, dòng nào
+      en: What, in which file, on which line
+      ja: 何が、どのファイルの何行目で
+  - icon: "📋"
+    color: teal
+    name:
+      vi: Dán nguyên văn
+      en: Paste it word for word
+      ja: そのまま貼る
+    caption:
+      vi: Kèm việc đã làm và điều mong đợi
+      en: With what you did and expected
+      ja: したことと期待したことも添える
+  - icon: "🔧"
+    color: orange
+    name:
+      vi: Mỗi lần một thay đổi
+      en: One change at a time
+      ja: 変更は一度に1つ
+    caption:
+      vi: Để biết cái gì đã sửa được lỗi
+      en: So you know what fixed it
+      ja: 何で直ったかがわかるように
+  - icon: "🧹"
+    color: rose
+    name:
+      vi: Hai lần hỏng thì làm lại
+      en: Two failed fixes? Restart
+      ja: 2回失敗したら出直す
+    caption:
+      vi: Bắt đầu lại với yêu cầu tốt hơn
+      en: Start over with a better request
+      ja: よりよい依頼で最初から
+takeaway:
+  vi: Sửa xong, thêm một phép kiểm tra để lỗi không quay lại.
+  en: Once it is fixed, add a check so the bug cannot come back.
+  ja: 直したら、バグが戻らないようにチェックを追加する。
