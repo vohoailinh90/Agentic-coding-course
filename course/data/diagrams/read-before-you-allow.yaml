@@ -1,0 +1,70 @@
+# Used in: command-line-basics (hands-on). Sorting the commands an agent asks to run into the course's three kinds of action.
+template: compare
+title:
+  vi: Agent xin chạy lệnh? Đọc rồi mới quyết
+  en: Before You Allow a Command
+  ja: コマンドを許可する前に
+rows:
+  - vi: Ví dụ
+    en: Examples
+    ja: 例
+  - vi: Nó làm gì
+    en: What it does
+    ja: 何をする？
+  - vi: Bạn làm gì
+    en: What you do
+    ja: あなたは？
+emphasis_row: 3
+columns:
+  - icon: "✅"
+    color: green
+    name:
+      vi: Chỉ xem
+      en: Only looks
+      ja: 見るだけ
+    values:
+      - vi: pwd, ls, cat, git status
+        en: pwd, ls, cat, git status
+        ja: pwd, ls, cat, git status
+      - vi: Đọc, không đổi gì
+        en: Reads, changes nothing
+        ja: 読むだけで何も変えない
+      - vi: Thường là cho phép
+        en: Usually allow
+        ja: たいてい許可
+  - icon: "✋"
+    color: amber
+    name:
+      vi: Thay đổi
+      en: Changes things
+      ja: 何かを変える
+    values:
+      - vi: mkdir, mv, rm, pip install
+        en: mkdir, mv, rm, pip install
+        ja: mkdir, mv, rm, pip install
+      - vi: Tạo, chuyển, xóa, cài
+        en: Creates, moves, deletes, installs
+        ja: 作る・移す・消す・入れる
+      - vi: Hỏi vì sao; có trong ai-practice?
+        en: Ask why; inside ai-practice?
+        ja: 理由を聞く。ai-practice の中？
+  - icon: "⛔"
+    color: rose
+    name:
+      vi: Vượt rào
+      en: Crosses a line
+      ja: 一線を越える
+    values:
+      - vi: Đổi luật máy công ty
+        en: Changes a work PC's rules
+        ja: 会社PCのルールを変える
+      - vi: Lách luật, lộ dữ liệu thật
+        en: Breaks rules, leaks real data
+        ja: ルール違反・本物のデータ流出
+      - vi: Từ chối
+        en: Refuse
+        ja: 断る
+takeaway:
+  vi: Lệnh nào chưa hiểu, đừng cho phép — hãy hỏi agent nó làm gì trước.
+  en: Never allow a command you do not understand — ask the agent what it does first.
+  ja: "わからないコマンドは許可しない。\nまず何をするのか、エージェントに聞く。"

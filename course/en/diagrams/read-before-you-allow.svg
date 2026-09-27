@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 637" width="800" height="637" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Before You Allow a Command</title>
+<desc id="desc">Only looks — Examples: pwd, ls, cat, git status; What it does: Reads, changes nothing; What you do: Usually allow. Changes things — Examples: mkdir, mv, rm, pip install; What it does: Creates, moves, deletes, installs; What you do: Ask why; inside ai-practice?. Crosses a line — Examples: Changes a work PC&#x27;s rules; What it does: Breaks rules, leaks real data; What you do: Refuse. Never allow a command you do not understand — ask the agent what it does first.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="635" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="607" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Before You Allow a Command</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="425.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
+<circle cx="146" cy="138.3" r="26" fill="#059669"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Only looks</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Examples</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">pwd, ls, cat, git status</tspan></text>
+<line x1="44" y1="308.7" x2="248" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">What it does</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="361.5">Reads, changes nothing</tspan></text>
+<line x1="44" y1="403.4" x2="248" y2="403.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="430.9">What you do</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="44" y="458.2">Usually allow</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="425.1" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✋</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">Changes things</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">Examples</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="266.8">mkdir, mv, rm, pip</tspan><tspan x="298" y="289.3">install</tspan></text>
+<line x1="298" y1="308.7" x2="502" y2="308.7" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="336.2">What it does</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="361.5">Creates, moves,</tspan><tspan x="298" y="384">deletes, installs</tspan></text>
+<line x1="298" y1="403.4" x2="502" y2="403.4" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="430.9">What you do</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="298" y="458.2">Ask why; inside</tspan><tspan x="298" y="483.3">ai-practice?</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="425.1" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#E11D48"/>
+<circle cx="654" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⛔</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Crosses a line</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">Examples</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">Changes a work PC&#x27;s</tspan><tspan x="552" y="289.3">rules</tspan></text>
+<line x1="552" y1="308.7" x2="756" y2="308.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="336.2">What it does</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="361.5">Breaks rules, leaks</tspan><tspan x="552" y="384">real data</tspan></text>
+<line x1="552" y1="403.4" x2="756" y2="403.4" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="430.9">What you do</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="552" y="458.2">Refuse</tspan></text>
+</g>
+<rect x="28" y="535.4" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="566.4">💡 Never allow a command you do not understand — ask the agent</tspan><tspan x="400" y="590.1">what it does first.</tspan></text>
+</svg>

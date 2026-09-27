@@ -1,0 +1,61 @@
+# Recap of command-line-basics: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: terminal không đáng sợ"
+  en: "Recap: The Terminal Is Not Scary"
+  ja: まとめ：ターミナルはこわくない
+points:
+  - icon: "💻"
+    color: blue
+    name:
+      vi: "Terminal: nơi gõ lệnh"
+      en: A window for typed commands
+      ja: コマンドを打つ画面
+    caption:
+      vi: Agent cũng làm việc ở đây
+      en: Where the agent works too
+      ja: エージェントもここで働く
+  - icon: "📍"
+    color: violet
+    name:
+      vi: Luôn ở trong một thư mục
+      en: Always in one folder
+      ja: いつもどこかのフォルダにいる
+    caption:
+      vi: pwd cho biết đang ở đâu
+      en: pwd tells you which one
+      ja: pwd で今いる場所がわかる
+  - icon: "🧰"
+    color: amber
+    name:
+      vi: 5 lệnh an toàn
+      en: Five safe commands
+      ja: 安全な5つのコマンド
+    caption:
+      vi: pwd, ls, cd, cat, mkdir
+      en: pwd, ls, cd, cat, mkdir
+      ja: pwd, ls, cd, cat, mkdir
+  - icon: "🔍"
+    color: teal
+    name:
+      vi: Đọc lệnh trước khi cho phép
+      en: Read before you allow
+      ja: 許可する前に読む
+    caption:
+      vi: Chỉ xem hay thay đổi? Ở đâu?
+      en: Looks or changes? Where?
+      ja: 見るだけ？変える？どこで？
+  - icon: "❓"
+    color: green
+    name:
+      vi: Chưa hiểu thì hỏi
+      en: Not sure? Ask
+      ja: わからなければ聞く
+    caption:
+      vi: Nhờ agent giải thích lệnh
+      en: Have the agent explain it
+      ja: エージェントに説明してもらう
+takeaway:
+  vi: Gõ sai một lệnh chỉ xem thì không hỏng gì; cho phép một lệnh xóa mà không đọc mới đáng sợ.
+  en: A mistyped look-only command breaks nothing; allowing a delete you did not read is what is scary.
+  ja: "見るだけのコマンドの打ち間違いでは壊れない。\nこわいのは、読まずに削除を許可すること。"

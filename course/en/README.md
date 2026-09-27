@@ -109,7 +109,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 |---|---|---|---|
 | 3.2.1 | [Variables, Functions, Conditions, Loops: The Four Building Blocks](lessons/programming-building-blocks.md) | 📖 Concept | 12 min |
 | 3.2.2 | ⭐ [Git: A Magic Undo Button for Your Whole Project](lessons/git-version-control.md) | 🛠️ Hands-on | 15 min |
-| 3.2.3 | The Terminal Is Not Scary: Your First Five Safe Commands | 🛠️ Hands-on | 15 min |
+| 3.2.3 | [The Terminal Is Not Scary: Your First Five Safe Commands](lessons/command-line-basics.md) | 🛠️ Hands-on | 15 min |
 
 ### 3.3 Security Essentials
 
