@@ -1,0 +1,42 @@
+template: flow
+direction: vertical
+title:
+  vi: Một yêu cầu đi đến dữ liệu rồi quay lại
+  en: One Request Goes to the Data and Back
+  ja: 一つのリクエストがデータへ行き、戻る
+steps:
+  - icon: "🖥️"
+    color: blue
+    name: {vi: Frontend, en: Frontend, ja: フロントエンド}
+    caption:
+      vi: Nhận chữ nhập và cú bấm Lưu
+      en: Receives text and the Save click
+      ja: 入力文字と保存クリックを受け取る
+    arrow: {vi: Gửi yêu cầu qua API, en: Send an API request, ja: APIリクエストを送る}
+  - icon: "🔧"
+    color: violet
+    name: {vi: Backend, en: Backend, ja: バックエンド}
+    caption:
+      vi: Kiểm tra và áp dụng quy tắc
+      en: Checks and applies rules
+      ja: 確認してルールを適用する
+    arrow: {vi: Ghi và đọc, en: Write and read, ja: 保存して読み出す}
+  - icon: "🗄️"
+    color: teal
+    name: {vi: Database, en: Database, ja: データベース}
+    caption:
+      vi: Lưu dữ liệu để dùng lại
+      en: Stores data for later
+      ja: 後で使うデータを保存する
+    arrow: {vi: Trả dữ liệu đã lưu, en: Return saved data, ja: 保存したデータを返す}
+  - icon: "✅"
+    color: green
+    name: {vi: Kết quả trên frontend, en: Result on the frontend, ja: フロントエンドに結果}
+    caption:
+      vi: Hiện việc mới hoặc thông báo lỗi
+      en: Shows the task or an error
+      ja: タスクまたはエラーを表示する
+takeaway:
+  vi: API là ranh giới giao tiếp cho yêu cầu đi và câu trả lời quay lại.
+  en: The API is the communication boundary for the request and response.
+  ja: APIはリクエストと返事が通る通信の境界。

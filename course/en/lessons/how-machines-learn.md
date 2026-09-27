@@ -3,8 +3,9 @@ lesson: how-machines-learn
 lang: en
 status: review
 summary: >-
-  A machine "learns" by making a guess, comparing it with the answer, and nudging the numbers inside it —
-  over and over again. The result is a model: a set of learned numbers used to predict new cases. Once you see
+  In supervised learning, the easiest kind to picture, a machine "learns" by making a guess, comparing it with
+  the answer, and nudging the numbers inside it — over and over again; other kinds take their signal from the
+  data itself or from rewards. The result is a model: a set of learned numbers used to predict new cases. Once you see
   this loop, you know why the data decides the quality, and why an AI does not learn anything new while you are
   chatting with it.
 social:

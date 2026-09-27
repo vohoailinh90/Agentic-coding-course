@@ -99,8 +99,8 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 3.1.1 | What Is Software? A Program Is Like a Recipe | 📖 Concept | 8 min |
-| 3.1.2 | Anatomy of a Project: Frontend, Backend, Database, API | 📖 Concept | 10 min |
+| 3.1.1 | [What Is Software? A Program Is Like a Recipe](lessons/what-is-software.md) | 📖 Concept | 8 min |
+| 3.1.2 | [Anatomy of a Project: Frontend, Backend, Database, API](lessons/project-anatomy.md) | 📖 Concept | 10 min |
 | 3.1.3 | ⭐ [What Data Looks Like: JSON, CSV and YAML](lessons/data-formats.md) | 🛠️ Hands-on | 10 min |
 
 ### 3.2 Code and History

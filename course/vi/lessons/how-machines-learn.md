@@ -3,7 +3,8 @@ lesson: how-machines-learn
 lang: vi
 status: review
 summary: >-
-  Máy "học" bằng cách đoán thử, so với đáp án, rồi chỉnh những con số bên trong — lặp lại rất nhiều lần. Kết quả
+  Trong kiểu học dễ hình dung nhất (học có giám sát), máy "học" bằng cách đoán thử, so với đáp án, rồi chỉnh những
+  con số bên trong — lặp lại rất nhiều lần; các kiểu khác lấy tín hiệu từ chính dữ liệu hay từ điểm thưởng. Kết quả
   là một mô hình: một bộ số đã học, dùng để đoán những trường hợp mới. Hiểu vòng này, bạn biết vì sao dữ liệu
   quyết định chất lượng, và vì sao AI không tự học thêm trong lúc bạn đang trò chuyện với nó.
 social:
