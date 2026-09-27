@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">What Makes Software?</title>
+<desc id="desc">Program + Data = Software. Code records the program in files; hardware runs it with data.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-result" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="1" width="798" height="558" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="530" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">What Makes Software?</tspan></text>
+<rect x="28" y="86.3" width="350" height="150.9" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="203" cy="130.3" r="28" fill="#2563EB"/>
+<circle cx="203" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="203" y="140.9" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📋</text>
+<text font-size="20" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="203" y="188.3">Program</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="203" y="214.2">Exact steps</tspan></text>
+<rect x="422" y="86.3" width="350" height="150.9" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="597" cy="130.3" r="28" fill="#7C3AED"/>
+<circle cx="597" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="597" y="140.9" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗂️</text>
+<text font-size="20" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="597" y="188.3">Data</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="597" y="214.2">What the program handles</tspan></text>
+<circle cx="400" cy="161.7" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="400" y="169.7" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">+</text>
+<line x1="400.0" y1="249.1" x2="400.0" y2="295.1" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-result)"/>
+<circle cx="440" cy="273.1" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="440" y="281.1" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">=</text>
+<g class="pulse">
+<rect x="120" y="307.1" width="560" height="150.9" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<circle cx="400" cy="351.1" r="28" fill="#059669"/>
+<circle cx="400" cy="351.1" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="361.7" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💻</text>
+<text font-size="20" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="409.1">Software</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="400" y="435">Runs on hardware</tspan></text>
+</g>
+<rect x="28" y="482" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="513">💡 Code records the program in files; hardware runs it with data.</tspan></text>
+</svg>

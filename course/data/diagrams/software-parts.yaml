@@ -1,0 +1,32 @@
+template: equation
+title:
+  vi: Phần mềm được tạo từ gì?
+  en: What Makes Software?
+  ja: ソフトウェアは何からできる？
+terms:
+  - icon: "📋"
+    color: blue
+    name: {vi: Chương trình, en: Program, ja: プログラム}
+    caption:
+      vi: Các bước chính xác
+      en: Exact steps
+      ja: 正確な手順
+  - icon: "🗂️"
+    color: violet
+    name: {vi: Dữ liệu, en: Data, ja: データ}
+    caption:
+      vi: Thứ chương trình xử lý
+      en: What the program handles
+      ja: プログラムが扱うもの
+result:
+  icon: "💻"
+  color: green
+  name: {vi: Phần mềm, en: Software, ja: ソフトウェア}
+  caption:
+    vi: Chạy trên phần cứng
+    en: Runs on hardware
+    ja: ハードウェア上で動く
+takeaway:
+  vi: Code ghi lại chương trình trong file; phần cứng chạy chương trình với dữ liệu.
+  en: Code records the program in files; hardware runs it with data.
+  ja: コードはプログラムをファイルに記録し、ハードウェアがデータとともに動かす。
