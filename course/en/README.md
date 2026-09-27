@@ -137,7 +137,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 |---|---|---|---|
 | 4.2.1 | [The AI Family Tree in One Picture: From Machine Learning to LLMs](lessons/ai-ml-dl.md) | 📖 Concept | 8 min |
 | 4.2.2 | [How Do Machines "Learn"? Data, Training and Models](lessons/how-machines-learn.md) | 📖 Concept | 10 min |
-| 4.2.3 | RAG: Letting AI Look Things Up | 🎬 Demo | 10 min |
+| 4.2.3 | [RAG: Letting AI Look Things Up](lessons/rag-intro.md) | 🎬 Demo | 10 min |
 | 4.2.4 | Prompting, RAG or Fine-Tuning: Which One When? | 📖 Concept | 10 min |
 
 ### 4.3 Model Literacy · _optional_
