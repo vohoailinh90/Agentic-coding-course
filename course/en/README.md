@@ -28,7 +28,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 8. [Writing Good Specs: The Task and Its Definition of Done](lessons/writing-good-specs.md) — 12 min
 9. [The Four-Step Workflow: Explore → Plan → Build → Verify](lessons/explore-plan-build-verify.md) — 12 min
 10. [Files, Folders and Paths: The Map Inside Your Computer](lessons/files-folders-paths.md) — 10 min
-11. Reading and Reviewing an Agent's Changes (Diffs) — 15 min
+11. [Reading and Reviewing an Agent's Changes (Diffs)](lessons/reviewing-agent-changes.md) — 15 min
 12. Turn "Looks Right" into Checks — 12 min
 13. Reading Error Messages and Debugging Like a Detective — 12 min
 14. Project: Your Personal Web Page — 60 min
@@ -81,7 +81,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 2.2.1 | ⭐ [Files, Folders and Paths: The Map Inside Your Computer](lessons/files-folders-paths.md) | 🛠️ Hands-on | 10 min |
-| 2.2.2 | ⭐ Reading and Reviewing an Agent's Changes (Diffs) | 🛠️ Hands-on | 15 min |
+| 2.2.2 | ⭐ [Reading and Reviewing an Agent's Changes (Diffs)](lessons/reviewing-agent-changes.md) | 🛠️ Hands-on | 15 min |
 | 2.2.3 | ⭐ Turn "Looks Right" into Checks | 🛠️ Hands-on | 12 min |
 | 2.2.4 | ⭐ Reading Error Messages and Debugging Like a Detective | 🛠️ Hands-on | 12 min |
 

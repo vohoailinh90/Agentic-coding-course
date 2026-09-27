@@ -1,0 +1,70 @@
+# Used in: reviewing-agent-changes (concept). The three decisions after reading a diff.
+template: compare
+title:
+  vi: "Đọc diff xong: giữ, hỏi hay từ chối?"
+  en: "After the Diff: Keep, Ask or Reject?"
+  ja: 差分を読んだら：承認・質問・却下
+rows:
+  - vi: Khi
+    en: When
+    ja: どんなとき
+  - vi: Ví dụ
+    en: For example
+    ja: 例
+  - vi: Bạn nói
+    en: You say
+    ja: あなたの返事
+emphasis_row: 1
+columns:
+  - icon: "✅"
+    color: green
+    name:
+      vi: Giữ
+      en: Keep
+      ja: 承認
+    values:
+      - vi: Đúng việc, đúng chỗ, đủ nhỏ
+        en: Right task, right place, small
+        ja: 正しい作業・場所・大きさ
+      - vi: Chỉ đổi đúng dòng tiêu đề
+        en: Only the title line changed
+        ja: タイトルの行だけ変更
+      - vi: Chấp nhận
+        en: Accept
+        ja: 承認する
+  - icon: "💬"
+    color: amber
+    name:
+      vi: Hỏi
+      en: Ask
+      ja: 質問
+    values:
+      - vi: Có chỗ bạn chưa hiểu
+        en: Something you do not understand
+        ja: わからない部分がある
+      - vi: Một file mới lạ xuất hiện
+        en: An unexpected new file
+        ja: 見覚えのない新しいファイル
+      - vi: "“Dòng này để làm gì?”"
+        en: "“What is this line for?”"
+        ja: 「この行は何のため？」
+  - icon: "❌"
+    color: rose
+    name:
+      vi: Từ chối
+      en: Reject
+      ja: 却下
+    values:
+      - vi: Đụng thứ bạn không yêu cầu
+        en: It touches what you did not ask for
+        ja: 頼んでいない所を変えた
+      - vi: Xóa mất một việc trong danh sách
+        en: A task deleted from the list
+        ja: やることが1つ消えた
+      - vi: Từ chối, nói rõ vì sao
+        en: Reject and say why
+        ja: 理由をつけて却下
+takeaway:
+  vi: Việc nhỏ mà thay đổi to là dấu hiệu nên đọc kỹ.
+  en: A small request with a big diff is a sign to read closely.
+  ja: 小さな依頼なのに差分が大きいなら、じっくり読むサイン。

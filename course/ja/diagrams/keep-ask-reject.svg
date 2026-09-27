@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 591" width="800" height="591" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">差分を読んだら：承認・質問・却下</title>
+<desc id="desc">承認 — どんなとき: 正しい作業・場所・大きさ; 例: タイトルの行だけ変更; あなたの返事: 承認する. 質問 — どんなとき: わからない部分がある; 例: 見覚えのない新しいファイル; あなたの返事: 「この行は何のため？」. 却下 — どんなとき: 頼んでいない所を変えた; 例: やることが1つ消えた; あなたの返事: 理由をつけて却下. 小さな依頼なのに差分が大きいなら、じっくり読むサイン。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="589" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="561" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">差分を読んだら：承認・質問・却下</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="402.7" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
+<circle cx="146" cy="138.3" r="26" fill="#059669"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">承認</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">どんなとき</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="44" y="268.8">正しい作業・場所・</tspan><tspan x="44" y="293.9">大きさ</tspan></text>
+<line x1="44" y1="314" x2="248" y2="314" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="341.5">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="366.8">タイトルの行だけ変更</tspan></text>
+<line x1="44" y1="408.7" x2="248" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">あなたの返事</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="461.5">承認する</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="402.7" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">質問</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">どんなとき</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="298" y="268.8">わからない部分があ</tspan><tspan x="298" y="293.9">る</tspan></text>
+<line x1="298" y1="314" x2="502" y2="314" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="341.5">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="366.8">見覚えのない新しい</tspan><tspan x="298" y="389.2">ファイル</tspan></text>
+<line x1="298" y1="408.7" x2="502" y2="408.7" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="436.2">あなたの返事</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="461.5">「この行は何のため？」</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="402.7" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#E11D48"/>
+<circle cx="654" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">❌</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">却下</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">どんなとき</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="552" y="268.8">頼んでいない所を変</tspan><tspan x="552" y="293.9">えた</tspan></text>
+<line x1="552" y1="314" x2="756" y2="314" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="341.5">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="366.8">やることが1つ消えた</tspan></text>
+<line x1="552" y1="408.7" x2="756" y2="408.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="436.2">あなたの返事</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="461.5">理由をつけて却下</tspan></text>
+</g>
+<rect x="28" y="512.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="543.9">💡 小さな依頼なのに差分が大きいなら、じっくり読むサイン。</tspan></text>
+</svg>

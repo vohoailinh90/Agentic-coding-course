@@ -1,0 +1,61 @@
+# Recap of reviewing-agent-changes: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: đọc một diff"
+  en: "Recap: Reading a Diff"
+  ja: まとめ：差分の読み方
+points:
+  - icon: "📂"
+    color: blue
+    name:
+      vi: File nào đổi?
+      en: Which files changed?
+      ja: どのファイルが変わった？
+    caption:
+      vi: Có đúng file bạn nghĩ không
+      en: Are they the ones you expected
+      ja: 予想どおりのファイルか
+  - icon: "📏"
+    color: violet
+    name:
+      vi: To hay nhỏ?
+      en: Big or small?
+      ja: 大きい？小さい？
+    caption:
+      vi: Việc nhỏ mà diff to là lạ
+      en: A small task with a big diff is odd
+      ja: 小さな依頼で大きな差分は要注意
+  - icon: "🔎"
+    color: teal
+    name:
+      vi: Đọc phần bạn hiểu
+      en: Read what you understand
+      ja: わかる部分を読む
+    caption:
+      vi: Chữ, số, tên hiển thị
+      en: Text, numbers, labels
+      ja: 文字・数字・表示名
+  - icon: "🚩"
+    color: rose
+    name:
+      vi: Tìm dấu hiệu lạ
+      en: Look for red flags
+      ja: 危ないサインを探す
+    caption:
+      vi: Dòng bị xóa, file mới, mật khẩu
+      en: Deleted lines, new files, passwords
+      ja: 消えた行・新しいファイル・パスワード
+  - icon: "⚖️"
+    color: amber
+    name:
+      vi: Giữ, hỏi hay từ chối
+      en: Keep, ask or reject
+      ja: 承認・質問・却下
+    caption:
+      vi: Và nói rõ vì sao
+      en: And say why
+      ja: 理由も伝える
+takeaway:
+  vi: Không cần hiểu từng dòng code mới review được — cần biết nhìn vào đâu.
+  en: You do not need to understand every line to review — you need to know where to look.
+  ja: 全行がわからなくてもレビューはできる。見る場所を知っていればいい。
