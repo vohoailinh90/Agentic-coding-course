@@ -1,0 +1,26 @@
+template: cycle
+title:
+  vi: Vòng lặp đoán token tiếp theo
+  en: The Next-Token Prediction Cycle
+  ja: 次のトークンを予測するサイクル
+steps:
+  - icon: "👀"
+    color: blue
+    name: {vi: Đọc chữ đã có, en: Read the text so far, ja: "今までの\n文章を読む"}
+    arrow: {vi: tìm phần tiếp, en: find a continuation, ja: 続きを探す}
+  - icon: "🧩"
+    color: violet
+    name: {vi: Đoán một token, en: Predict one token, ja: 一つ予測する}
+    arrow: {vi: chọn, en: select, ja: 選ぶ}
+  - icon: "➕"
+    color: green
+    name: {vi: Thêm token đó, en: Add that token, ja: トークンを加える}
+    arrow: {vi: đọc lại, en: read again, ja: もう一度読む}
+center:
+  icon: "🔁"
+  color: amber
+  name: {vi: Lặp để tạo câu, en: Repeat to make text, ja: "繰り返して\n文章に"}
+takeaway:
+  vi: Mỗi token mới trở thành ngữ cảnh cho lần đoán kế tiếp.
+  en: Each new token becomes context for the next prediction.
+  ja: 新しいトークンが、次の予測の文脈になります。
