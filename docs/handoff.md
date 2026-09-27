@@ -7,13 +7,16 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-27
 
-- **22 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **24 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path, `how-to-learn-this-course`,
-  `programming-building-blocks` and `command-line-basics`. `python -m src.main stats` shows the
-  counts; each course home (`course/<lang>/README.md`) lists every lesson in order.
-- **Codex is writing** `what-is-software` and `project-anatomy`
-  ([issue #2](https://github.com/vohoailinh90/Agentic-coding-course/issues/2)).
-- **28 lessons remain** after those (table below). The owner decided on 2026-09-27 to write the whole
+  `programming-building-blocks`, `command-line-basics`, and — the first batch Codex wrote —
+  `security-basics` and `prompting-basics`. `python -m src.main stats` shows the counts; each course
+  home (`course/<lang>/README.md`) lists every lesson in order.
+- **Written by Codex, waiting to be published:** `what-is-software` and `project-anatomy`
+  ([issue #2](https://github.com/vohoailinh90/Agentic-coding-course/issues/2)), and the fixes from
+  the review of the last batch Claude wrote
+  ([issue #4](https://github.com/vohoailinh90/Agentic-coding-course/issues/4)).
+- **26 lessons remain** after those (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -26,9 +29,11 @@ Since 2026-09-27 (the owner's call) **Codex writes the lessons and Claude coordi
 
 1. Claude opens one GitHub issue per batch of about two lessons and posts an IMPLEMENT task contract
    ([claude-to-codex.md](claude-to-codex.md)): the lessons, this page as the brief, the checks that
-   must pass.
+   must pass. The issue title starts with the task id (`ACC-0006: …`), because Codex names its task
+   after the issue and the owner finds it by searching that name.
 2. Codex writes the batch on a feature branch and prepares a pull request. Its environment cannot
-   push, so **the owner presses Create PR** in the Codex task to publish it.
+   push, so **the owner presses Create PR** in the Codex task to publish it (at chatgpt.com/codex; the
+   "View task" link in Codex's GitHub comment is a read-only share page).
 3. Claude validates the pull request: every acceptance criterion, the diff's scope, `validate`,
    `build --check` and the tests on its head, the lessons read in all three languages, every cited
    link opened, and every new SVG viewed in all three languages (Codex's environment has no Japanese
@@ -41,8 +46,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `security-basics` | security-essentials (core) | concept | 12 | api-key |
-| `prompting-basics` | asking-and-grounding (core) | hands-on | 12 | prompt |
 | `next-token-prediction` | asking-and-grounding (core) | concept | 10 | llm, token |
 | `tool-calling` | asking-and-grounding (core) | demo | 10 | function-calling, tool |
 | `ai-ml-dl` | ai-foundations (optional) | concept | 8 | machine-learning, deep-learning, generative-ai, foundation-model |
@@ -74,19 +77,17 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`security-basics`** — an API key is a password for a program: it identifies you to a service
-  and can be billed. Main character Huy (the student who knows a little Python), who pastes a key
-  into his code and nearly pushes it to a public repository. Where a secret may live, as the
-  course's ✅ / ✋ / ⛔: in an environment variable or a file that Git ignores; never in code, in a
-  chat with an AI, in a screenshot or in a public repository — and if one leaks, revoke it and make a
-  new one. Passwords and other people's personal data follow the same rule. Link
-  [`data-safety-and-permissions`](../course/en/lessons/data-safety-and-permissions.md), which
-  introduced the three kinds of action, and
-  [`git-version-control`](../course/en/lessons/git-version-control.md).
-- **`prompting-basics`** — hands-on: the same question asked vaguely and then with context, the
-  task, the format wanted and an example, compared side by side; asking the model to say when it
-  does not know. It is about talking to a chat model; the four-part spec for an agent is
-  [`writing-good-specs`](../course/en/lessons/writing-good-specs.md) — link it rather than repeat it.
+- **`next-token-prediction`** — an LLM writes by repeatedly predicting a likely next token, one at a
+  time, from everything before it; that is why it sounds fluent even when it is wrong, and why the
+  same question can get different answers. Link
+  [`hallucination`](../course/en/lessons/hallucination.md) and
+  [`context-window`](../course/en/lessons/context-window.md) rather than re-teaching them. A `cycle`
+  infographic fits (read the text so far → predict one token → add it → repeat).
+- **`tool-calling`** (demo) — a model cannot press buttons itself: it asks for a tool by name with
+  arguments, the program around it runs the tool, and the result goes back into the conversation.
+  Watch one real exchange step by step (for example, reading a file in `ai-practice`), and connect it
+  to the agent loop in [`agent-parts-and-loop`](../course/en/lessons/agent-parts-and-loop.md). A
+  `flow` infographic fits.
 
 ## How to write one lesson
 
@@ -134,6 +135,8 @@ only by `export`).
 - **Public repository:** no personal information about the owner or anyone real.
 - **Generated files** — course homes, glossary pages, `course/<lang>/diagrams/*.svg` — are written by
   `build`; never edit them by hand. Do not change lesson ids or the order in `curriculum.yaml`.
+- Keep the section headings `scaffold` writes: they come from `course/data/sections.yaml`, in every
+  language. The hook's heading is not the place for the lesson's own title.
 - A content task does not change `src/`, `tests/` or `scripts/`. If a check blocks correct content,
   report it instead of working around it.
 
