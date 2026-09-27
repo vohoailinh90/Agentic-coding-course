@@ -3,8 +3,9 @@ lesson: ai-ml-dl
 lang: vi
 status: review
 summary: >-
-  AI, học máy, học sâu, AI tạo sinh, LLM — năm từ nghe như năm thứ khác nhau, thật ra lồng vào nhau như một
-  gia phả: tầng dưới là một nhánh của tầng trên. Biết nhánh nào nằm trong nhánh nào, bạn đọc tin tức và lời quảng
+  AI, học máy, học sâu, AI tạo sinh, LLM — năm từ nghe như năm thứ khác nhau, thật ra xếp được thành một
+  gia phả, từ rộng đến hẹp: học máy là một nhánh của AI, học sâu là một nhánh của học máy, và LLM là một loại
+  AI tạo sinh — thứ ngày nay hầu hết được xây bằng học sâu. Biết chúng liên quan với nhau thế nào, bạn đọc tin tức và lời quảng
   cáo về AI tỉnh táo hơn, và hiểu agent của mình mạnh ở đâu, yếu ở đâu.
 social:
   hook: "AI, machine learning, deep learning, LLM… nghe như 4 thứ khác nhau. Thật ra chúng lồng vào nhau như búp bê Nga. 🪆"

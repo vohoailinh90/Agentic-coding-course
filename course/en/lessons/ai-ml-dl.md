@@ -4,8 +4,9 @@ lang: en
 status: review
 summary: >-
   AI, machine learning, deep learning, generative AI, LLM — five words that sound like five different things,
-  but they nest like a family tree: each level is a branch of the one above. Once you know which sits inside
-  which, you read AI news and sales pitches with a clearer head, and you know where your agent is strong and
+  but they fit on one family tree, from broadest to narrowest: machine learning is a branch of AI, deep learning
+  a branch of machine learning, and an LLM a kind of generative AI — which today is mostly built with deep
+  learning. Once you know how they relate, you read AI news and sales pitches with a clearer head, and you know where your agent is strong and
   where it is weak.
 social:
   hook: "AI, machine learning, deep learning, LLM… they sound like four different things. They nest like Russian dolls. 🪆"
