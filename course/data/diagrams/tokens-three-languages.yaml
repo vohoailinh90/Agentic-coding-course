@@ -49,9 +49,9 @@ columns:
       - vi: "10"
         en: "10"
         ja: "10"
-      - vi: Mỗi từ một token
-        en: One token per word
-        ja: 1単語で1トークン
+      - vi: "Mỗi từ một token,\ndấu chấm cũng vậy"
+        en: "One token per word,\nplus the period"
+        ja: "1単語で1トークン、\n句点も1トークン"
   - icon: "🗾"
     color: violet
     name:

@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 616" width="800" height="616" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
 <title id="title">One Sentence, Three Languages</title>
-<desc id="desc">Vietnamese — Characters: 41; Tokens: 13; How it splits: “sếp” → s + ếp. English — Characters: 44; Tokens: 10; How it splits: One token per word. Japanese — Characters: 19; Tokens: 17; How it splits: Nearly one token
+<desc id="desc">Vietnamese — Characters: 41; Tokens: 13; How it splits: “sếp” → s + ếp. English — Characters: 44; Tokens: 10; How it splits: One token per word,
+plus the period. Japanese — Characters: 19; Tokens: 17; How it splits: Nearly one token
 per character. Same idea, different token count:
 it depends on the language and the tokenizer.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
@@ -39,7 +40,7 @@ it depends on the language and the tokenizer.</desc>
 <text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="367.5">10</tspan></text>
 <line x1="298" y1="387.6" x2="502" y2="387.6" stroke="#DBEAFE" stroke-width="2"/>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="415.1">How it splits</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="440.4">One token per word</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="440.4">One token per word,</tspan><tspan x="298" y="462.9">plus the period</tspan></text>
 </g>
 <g>
 <rect x="536" y="112.7" width="236" height="377.6" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>

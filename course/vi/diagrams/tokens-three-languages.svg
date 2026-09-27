@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 593" width="800" height="593" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
 <title id="title">Cùng một câu, ba thứ tiếng</title>
-<desc id="desc">Tiếng Việt — Số ký tự: 41; Số token: 13; Cách cắt: “sếp” → s + ếp. Tiếng Anh — Số ký tự: 44; Số token: 10; Cách cắt: Mỗi từ một token. Tiếng Nhật — Số ký tự: 19; Số token: 17; Cách cắt: Gần như mỗi chữ
+<desc id="desc">Tiếng Việt — Số ký tự: 41; Số token: 13; Cách cắt: “sếp” → s + ếp. Tiếng Anh — Số ký tự: 44; Số token: 10; Cách cắt: Mỗi từ một token,
+dấu chấm cũng vậy. Tiếng Nhật — Số ký tự: 19; Số token: 17; Cách cắt: Gần như mỗi chữ
 một token. Cùng một ý, số token khác nhau theo ngôn ngữ và theo bộ tách.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="591" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
@@ -38,7 +39,7 @@ một token. Cùng một ý, số token khác nhau theo ngôn ngữ và theo b�
 <text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="367.5">10</tspan></text>
 <line x1="298" y1="387.6" x2="502" y2="387.6" stroke="#DBEAFE" stroke-width="2"/>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="415.1">Cách cắt</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="440.4">Mỗi từ một token</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="440.4">Mỗi từ một token,</tspan><tspan x="298" y="462.9">dấu chấm cũng vậy</tspan></text>
 </g>
 <g>
 <rect x="536" y="112.7" width="236" height="377.6" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>

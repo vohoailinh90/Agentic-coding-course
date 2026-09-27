@@ -74,7 +74,7 @@ Tiếng Nhật: [マ][イ][は][6][月][の][売][上][報][告][を][上][司][
 
 Tuấn rút ra ba điều:
 
-1. **Một token không phải một từ.** *"sếp"* bị cắt làm hai: `[ s]` và `[ếp]`. Con số `6` và dấu cách trước nó là hai token riêng.
+1. **Một token không phải một từ.** *"sếp"* bị cắt làm hai: `[ s]` và `[ếp]`. Con số `6`, dấu cách trước nó và dấu chấm cuối câu đều là token riêng: câu tiếng Anh có 9 từ nhưng 10 token.
 2. **Cùng ý, khác số token.** Câu tiếng Anh cần 10 token, tiếng Việt 13, tiếng Nhật 17 — dù câu tiếng Nhật chỉ có 19 ký tự. Ở bảng này, chữ Hán gần như mỗi chữ là một token.
 3. **Đổi bộ tách, đổi con số.** Cũng câu tiếng Việt đó, cắt bằng bảng cũ hơn `cl100k_base` của cùng thư viện, ra **22** token thay vì 13: nhiều âm tiết có dấu bị cắt vụn, như `[ g][ử][i]`.
 

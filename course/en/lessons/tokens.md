@@ -75,7 +75,7 @@ Japanese:   [マ][イ][は][6][月][の][売][上][報][告][を][上][司][に]
 
 Tuấn draws three conclusions:
 
-1. **A token is not a word.** *"sếp"* (boss) is cut in two: `[ s]` and `[ếp]`. The digit `6` and the space before it are two separate tokens.
+1. **A token is not a word.** *"sếp"* (boss) is cut in two: `[ s]` and `[ếp]`. The digit `6`, the space before it and the final period are all tokens of their own: the English sentence has 9 words but 10 tokens.
 2. **Same idea, different count.** The English sentence needs 10 tokens, the Vietnamese 13, the Japanese 17 — even though the Japanese sentence has only 19 characters. In this table, nearly every kanji is a token of its own.
 3. **Change the tokenizer, change the count.** The same Vietnamese sentence, cut with the older `cl100k_base` table of the same library, gives **22** tokens instead of 13: many syllables with diacritics are cut into bits, like `[ g][ử][i]`.
 
