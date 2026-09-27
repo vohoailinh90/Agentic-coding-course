@@ -62,7 +62,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 1.3.1 | ⭐ [Your First Agent Session: Build a One-File Task Card](lessons/first-agent-session.md) | 🛠️ Hands-on | 25 min |
-| 1.3.2 | Choose Your Path and Keep a Learning Log | 🛠️ Hands-on | 8 min |
+| 1.3.2 | [Choose Your Path and Keep a Learning Log](lessons/how-to-learn-this-course.md) | 🛠️ Hands-on | 8 min |
 
 ## 2. 🧭 Direct, Check and Improve an Agent
 

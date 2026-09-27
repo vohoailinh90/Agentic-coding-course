@@ -62,7 +62,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 1.3.1 | ⭐ [Buổi đầu với agent: làm một trang "Việc của tôi trong tuần"](lessons/first-agent-session.md) | 🛠️ Thực hành | 25 phút |
-| 1.3.2 | Chọn lộ trình và ghi nhật ký học | 🛠️ Thực hành | 8 phút |
+| 1.3.2 | [Chọn lộ trình và ghi nhật ký học](lessons/how-to-learn-this-course.md) | 🛠️ Thực hành | 8 phút |
 
 ## 2. 🧭 Giao việc, kiểm tra và sửa cùng agent
 

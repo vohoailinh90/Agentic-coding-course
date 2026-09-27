@@ -1,0 +1,75 @@
+# Used in: how-to-learn-this-course (concept). The ways through the course; the course home lists what each contains.
+template: compare
+title:
+  vi: Chọn cách đi qua khóa học
+  en: Choose Your Way Through the Course
+  ja: 講座の進み方を選ぶ
+rows:
+  - vi: Gồm
+    en: Covers
+    ja: 内容
+  - vi: Hợp khi
+    en: Good when
+    ja: 向いているとき
+  - vi: Bạn làm ra
+    en: You make
+    ja: 作るもの
+emphasis_row: 2
+columns:
+  - icon: "⭐"
+    color: amber
+    highlight: true
+    badge:
+      vi: Bắt đầu ở đây
+      en: Start here
+      ja: ここから
+    name:
+      vi: Lộ trình tối thiểu
+      en: The minimum path
+      ja: 最短ルート
+    values:
+      - vi: Các bài có dấu ⭐
+        en: The lessons marked ⭐
+        ja: ⭐ のついたレッスン
+      - vi: Muốn sớm làm được việc thật
+        en: You want real results soon
+        ja: 早く本物の成果がほしい
+      - vi: Trang cá nhân, báo cáo tự động
+        en: A personal page, an automated report
+        ja: 自分のページ、自動レポート
+  - icon: "🧭"
+    color: blue
+    name:
+      vi: Cả khóa học
+      en: The whole course
+      ja: 講座全体
+    values:
+      - vi: Mọi bài chính, theo thứ tự
+        en: Every core lesson, in order
+        ja: すべての基本レッスンを順に
+      - vi: Muốn hiểu vững, làm chắc
+        en: You want a solid understanding
+        ja: しっかり理解したい
+      - vi: Thêm quy trình và phép kiểm tra tự động
+        en: Also workflows and automatic checks
+        ja: ワークフローと自動チェックも
+  - icon: "🌱"
+    color: green
+    name:
+      vi: Học thêm khi cần
+      en: Extra, when you need it
+      ja: 必要なときに追加
+    values:
+      - vi: Chủ đề tùy chọn và nâng cao
+        en: Optional and advanced units
+        ja: 任意と応用のユニット
+      - vi: Tò mò hay gặp việc cụ thể
+        en: You are curious or have a need
+        ja: 興味や必要が出てきた
+      - vi: Theo dự án của riêng bạn
+        en: Whatever your project needs
+        ja: 自分のプロジェクトしだい
+takeaway:
+  vi: Đi chậm cũng được — miễn là mỗi buổi đều có sản phẩm và bằng chứng.
+  en: Going slowly is fine — as long as every session ends with a product and evidence.
+  ja: ゆっくりでいい。毎回、成果物と証拠があれば。

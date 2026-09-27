@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 665" width="800" height="665" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Choose Your Way Through the Course</title>
+<desc id="desc">The minimum path — Covers: The lessons marked ⭐; Good when: You want real results soon; You make: A personal page, an automated report. The whole course — Covers: Every core lesson, in order; Good when: You want a solid understanding; You make: Also workflows and automatic checks. Extra, when you need it — Covers: Optional and advanced units; Good when: You are curious or have a need; You make: Whatever your project needs. Going slowly is fine — as long as every session ends with a product and evidence.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="663" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="635" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Choose Your Way Through the Course</tspan></text>
+<g class="pulse">
+<rect x="28" y="86.3" width="236" height="452.8" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="3.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#D97706"/>
+<circle cx="146" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⭐</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">The minimum</tspan><tspan x="146" y="219">path</tspan></text>
+<rect x="95.4" y="73.7" width="101.2" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="90.7">Start here</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">Covers</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">The lessons marked ⭐</tspan></text>
+<line x1="44" y1="336.4" x2="248" y2="336.4" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="363.9">Good when</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="44" y="391.2">You want real</tspan><tspan x="44" y="416.3">results soon</tspan></text>
+<line x1="44" y1="436.4" x2="248" y2="436.4" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="463.9">You make</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="489.2">A personal page, an</tspan><tspan x="44" y="511.7">automated report</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="452.8" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧭</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">The whole course</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="269.2">Covers</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="294.5">Every core lesson, in</tspan><tspan x="298" y="317">order</tspan></text>
+<line x1="298" y1="336.4" x2="502" y2="336.4" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="363.9">Good when</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="391.2">You want a solid</tspan><tspan x="298" y="416.3">understanding</tspan></text>
+<line x1="298" y1="436.4" x2="502" y2="436.4" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="463.9">You make</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="489.2">Also workflows and</tspan><tspan x="298" y="511.7">automatic checks</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="452.8" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#059669"/>
+<circle cx="654" cy="138.3" r="26" fill="#059669"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🌱</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Extra, when you</tspan><tspan x="654" y="219">need it</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="269.2">Covers</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="294.5">Optional and advanced</tspan><tspan x="552" y="317">units</tspan></text>
+<line x1="552" y1="336.4" x2="756" y2="336.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="363.9">Good when</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="552" y="391.2">You are curious or</tspan><tspan x="552" y="416.3">have a need</tspan></text>
+<line x1="552" y1="436.4" x2="756" y2="436.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="463.9">You make</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="489.2">Whatever your project</tspan><tspan x="552" y="511.7">needs</tspan></text>
+</g>
+<rect x="28" y="563.1" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="594.1">💡 Going slowly is fine — as long as every session ends with a</tspan><tspan x="400" y="617.9">product and evidence.</tspan></text>
+</svg>

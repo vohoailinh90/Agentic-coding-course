@@ -1,0 +1,51 @@
+# Recap of how-to-learn-this-course: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: học khóa này thế nào"
+  en: "Recap: How to Learn This Course"
+  ja: まとめ：この講座の学び方
+points:
+  - icon: "⭐"
+    color: amber
+    name:
+      vi: Bắt đầu từ lộ trình tối thiểu
+      en: Start with the minimum path
+      ja: 最短ルートから始める
+    caption:
+      vi: Các bài có dấu ⭐ trên trang chính
+      en: The ⭐ lessons on the course home
+      ja: ホームの ⭐ のレッスン
+  - icon: "📓"
+    color: blue
+    name:
+      vi: Ghi nhật ký mỗi buổi
+      en: Log every session
+      ja: 毎回ログをつける
+    caption:
+      vi: Sản phẩm, bằng chứng, một câu hỏi
+      en: Product, evidence, one question
+      ja: 成果物・証拠・質問1つ
+  - icon: "❓"
+    color: violet
+    name:
+      vi: Giữ một câu hỏi còn mở
+      en: Keep one open question
+      ja: 未解決の質問を1つ残す
+    caption:
+      vi: Mang theo sang buổi sau
+      en: Take it to the next session
+      ja: 次の回に持ち越す
+  - icon: "🌱"
+    color: green
+    name:
+      vi: Lỡ một tuần không sao
+      en: Missing a week is fine
+      ja: 1週休んでも大丈夫
+    caption:
+      vi: Mở nhật ký, học tiếp từ đó
+      en: Open the log and carry on
+      ja: ログを開いて、そこから再開
+takeaway:
+  vi: Nhật ký học là bằng chứng rằng bạn đang tiến bộ.
+  en: Your learning log is the evidence that you are making progress.
+  ja: 学習ログは、前に進んでいる証拠。
