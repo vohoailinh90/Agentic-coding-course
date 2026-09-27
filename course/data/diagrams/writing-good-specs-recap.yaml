@@ -1,0 +1,61 @@
+# Recap of writing-good-specs: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: viết yêu cầu tốt"
+  en: "Recap: Writing Good Specs"
+  ja: まとめ：良い指示書の書き方
+points:
+  - icon: "🎯"
+    color: blue
+    name:
+      vi: Mục tiêu và lý do
+      en: Goal and reason
+      ja: 目標と理由
+    caption:
+      vi: Làm gì, cho ai, để làm gì
+      en: What, for whom, what for
+      ja: 何を・誰に・何のために
+  - icon: "🗂️"
+    color: violet
+    name:
+      vi: Chỉ đúng chỗ
+      en: Point to the right place
+      ja: 場所を正確に示す
+    caption:
+      vi: Tên file, dữ liệu, ví dụ mẫu
+      en: File names, data, examples
+      ja: ファイル名・データ・見本
+  - icon: "🚧"
+    color: amber
+    name:
+      vi: Nói điều không được làm
+      en: Say what not to do
+      ja: してはいけないことを書く
+    caption:
+      vi: Không sửa file gốc, không cài thêm
+      en: Keep the original, install nothing
+      ja: 元のファイルは変えない、何も入れない
+  - icon: "✅"
+    color: green
+    name:
+      vi: Tiêu chí đo được
+      en: Measurable criteria
+      ja: 測れる完了条件
+    caption:
+      vi: Con số, hành vi — không "đẹp" chung chung
+      en: Numbers and behaviour, not just "nice"
+      ja: 数字と動き。「きれい」だけにしない
+  - icon: "🔁"
+    color: teal
+    name:
+      vi: Nhờ agent nhắc lại
+      en: Ask the agent to restate
+      ja: エージェントに言い直してもらう
+    caption:
+      vi: Và hỏi trước nếu chưa rõ
+      en: And to ask first if unclear
+      ja: 不明点は先に質問してもらう
+takeaway:
+  vi: Yêu cầu càng rõ, bạn càng ít phải sửa.
+  en: The clearer the request, the fewer corrections you need.
+  ja: 依頼がはっきりしているほど、直す手間は減る。

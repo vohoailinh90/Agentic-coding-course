@@ -1,0 +1,58 @@
+# Used in: writing-good-specs (concept). The four parts of a request an agent can act on and you can check.
+template: equation
+title:
+  vi: Công thức một yêu cầu tốt
+  en: The Recipe for a Good Spec
+  ja: 良い指示書のレシピ
+terms:
+  - icon: "🎯"
+    color: blue
+    name:
+      vi: Mục tiêu
+      en: Goal
+      ja: 目標
+    caption:
+      vi: làm gì, cho ai, để làm gì
+      en: what, for whom, what for
+      ja: 何を・誰に・何のために
+  - icon: "🗂️"
+    color: violet
+    name:
+      vi: Bối cảnh
+      en: Context
+      ja: 背景
+    caption:
+      vi: file nào, dữ liệu nào
+      en: which files, which data
+      ja: どのファイル・どのデータ
+  - icon: "🚧"
+    color: amber
+    name:
+      vi: Ràng buộc
+      en: Limits
+      ja: 制約
+    caption:
+      vi: điều không được làm
+      en: what not to do
+      ja: してはいけないこと
+  - icon: "✅"
+    color: green
+    name:
+      vi: Tiêu chí nghiệm thu
+      en: Done when
+      ja: 完了条件
+    caption:
+      vi: "kiểm tra được: xong khi…"
+      en: checkable criteria
+      ja: 確かめられる受け入れ基準
+result:
+  icon: "📋"
+  color: teal
+  name:
+    vi: Yêu cầu tốt (spec)
+    en: A good spec
+    ja: 良い指示書（仕様）
+  caption:
+    vi: agent ít phải đoán, bạn dễ nghiệm thu
+    en: less guessing for the agent, easy checking for you
+    ja: エージェントの推測が減り、確かめやすい

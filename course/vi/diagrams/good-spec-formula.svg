@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 537" width="800" height="537" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Công thức một yêu cầu tốt</title>
+<desc id="desc">Mục tiêu + Bối cảnh + Ràng buộc + Tiêu chí nghiệm thu = Yêu cầu tốt (spec)</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-result" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="1" width="798" height="535" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="507" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Công thức một yêu cầu tốt</tspan></text>
+<rect x="28" y="86.3" width="153" height="197.7" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="104.5" cy="130.3" r="28" fill="#2563EB"/>
+<circle cx="104.5" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="104.5" y="140.9" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎯</text>
+<text font-size="20" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="104.5" y="188.3">Mục tiêu</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="104.5" y="214.2">làm gì, cho ai,</tspan><tspan x="104.5" y="234.6">để làm gì</tspan></text>
+<rect x="225" y="86.3" width="153" height="197.7" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="301.5" cy="130.3" r="28" fill="#7C3AED"/>
+<circle cx="301.5" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="301.5" y="140.9" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗂️</text>
+<text font-size="20" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="301.5" y="188.3">Bối cảnh</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="301.5" y="214.2">file nào, dữ liệu</tspan><tspan x="301.5" y="234.6">nào</tspan></text>
+<circle cx="203" cy="185.1" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="203" y="193.1" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">+</text>
+<rect x="422" y="86.3" width="153" height="197.7" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="498.5" cy="130.3" r="28" fill="#D97706"/>
+<circle cx="498.5" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="498.5" y="140.9" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚧</text>
+<text font-size="20" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="498.5" y="188.3">Ràng buộc</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="498.5" y="214.2">điều không được</tspan><tspan x="498.5" y="234.6">làm</tspan></text>
+<circle cx="400" cy="185.1" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="400" y="193.1" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">+</text>
+<rect x="619" y="86.3" width="153" height="197.7" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="695.5" cy="130.3" r="28" fill="#059669"/>
+<circle cx="695.5" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="695.5" y="140.9" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<text font-size="20" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="695.5" y="188.3">Tiêu chí</tspan><tspan x="695.5" y="214.7">nghiệm thu</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="695.5" y="240.6">kiểm tra được:</tspan><tspan x="695.5" y="261">xong khi…</tspan></text>
+<circle cx="597" cy="185.1" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="597" y="193.1" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">+</text>
+<line x1="400.0" y1="296" x2="400.0" y2="342" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-result)"/>
+<circle cx="440" cy="320" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="440" y="328" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">=</text>
+<g class="pulse">
+<rect x="220" y="354" width="360" height="150.9" rx="20" fill="#F0FDFA" stroke="#0D9488" stroke-width="3.5"/>
+<circle cx="400" cy="398" r="28" fill="#0D9488"/>
+<circle cx="400" cy="398" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="408.6" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📋</text>
+<text font-size="20" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="400" y="456">Yêu cầu tốt (spec)</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="400" y="481.9">agent ít phải đoán, bạn dễ nghiệm thu</tspan></text>
+</g>
+</svg>

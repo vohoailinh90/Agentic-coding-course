@@ -25,7 +25,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 5. [Before You Let an Agent Act: Safe, Ask First, Never](lessons/data-safety-and-permissions.md) — 10 min
 6. [Your First Agent Session: Build a One-File Task Card](lessons/first-agent-session.md) — 25 min
 7. [New Mindset: You Are the Lead, Not the Typist](lessons/lead-not-typist.md) — 8 min
-8. Writing Good Specs: The Task and Its Definition of Done — 12 min
+8. [Writing Good Specs: The Task and Its Definition of Done](lessons/writing-good-specs.md) — 12 min
 9. The Four-Step Workflow: Explore → Plan → Build → Verify — 12 min
 10. Files, Folders and Paths: The Map Inside Your Computer — 10 min
 11. Reading and Reviewing an Agent's Changes (Diffs) — 15 min
@@ -73,7 +73,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 2.1.1 | ⭐ [New Mindset: You Are the Lead, Not the Typist](lessons/lead-not-typist.md) | 📖 Concept | 8 min |
-| 2.1.2 | ⭐ Writing Good Specs: The Task and Its Definition of Done | 🛠️ Hands-on | 12 min |
+| 2.1.2 | ⭐ [Writing Good Specs: The Task and Its Definition of Done](lessons/writing-good-specs.md) | 🛠️ Hands-on | 12 min |
 | 2.1.3 | ⭐ The Four-Step Workflow: Explore → Plan → Build → Verify | 🛠️ Hands-on | 12 min |
 
 ### 2.2 Inspect the Result
