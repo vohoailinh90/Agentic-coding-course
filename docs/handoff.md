@@ -7,16 +7,32 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-27
 
-- **20 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
-  (waiting for the owner's read): the 19-lesson minimum path, plus `how-to-learn-this-course`.
-  `python -m src.main stats` shows the counts; each course home (`course/<lang>/README.md`) lists
-  every lesson in order.
-- **32 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole course now,
-  in all three languages, with no native Japanese review
+- **22 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+  (waiting for the owner's read): the 19-lesson minimum path, `how-to-learn-this-course`,
+  `programming-building-blocks` and `command-line-basics`. `python -m src.main stats` shows the
+  counts; each course home (`course/<lang>/README.md`) lists every lesson in order.
+- **Codex is writing** `what-is-software` and `project-anatomy`
+  ([issue #2](https://github.com/vohoailinh90/Agentic-coding-course/issues/2)).
+- **28 lessons remain** after those (table below). The owner decided on 2026-09-27 to write the whole
+  course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
   options A–C, the same answer key in every language) and rejects a lesson named by its number or
   position ("lesson 3", "ở bài trước", "次のレッスン").
+
+## Working model
+
+Since 2026-09-27 (the owner's call) **Codex writes the lessons and Claude coordinates**:
+
+1. Claude opens one GitHub issue per batch of about two lessons and posts an IMPLEMENT task contract
+   ([claude-to-codex.md](claude-to-codex.md)): the lessons, this page as the brief, the checks that
+   must pass.
+2. Codex writes the batch on a feature branch and prepares a pull request. Its environment cannot
+   push, so **the owner presses Create PR** in the Codex task to publish it.
+3. Claude validates the pull request: every acceptance criterion, the diff's scope, `validate`,
+   `build --check` and the tests on its head, the lessons read in all three languages, every cited
+   link opened, and every new SVG viewed in all three languages (Codex's environment has no Japanese
+   or emoji fonts). Then it asks for corrections, at most two rounds, or merges.
 
 ## What to write next
 
@@ -25,10 +41,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `what-is-software` | files-and-projects (core) | concept | 8 | software, program, code |
-| `project-anatomy` | files-and-projects (core) | concept | 10 | api |
-| `programming-building-blocks` | code-and-history (core) | concept | 12 | program, code |
-| `command-line-basics` | code-and-history (core) | hands-on | 15 | terminal |
 | `security-basics` | security-essentials (core) | concept | 12 | api-key |
 | `prompting-basics` | asking-and-grounding (core) | hands-on | 12 | prompt |
 | `next-token-prediction` | asking-and-grounding (core) | concept | 10 | llm, token |
@@ -62,21 +74,19 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`what-is-software`** — main character Mai (the accountant who lives in Excel). A program is a
-  recipe: exact steps, carried out literally. A cook can follow "salt to taste" (vi *nêm vừa ăn*,
-  ja *塩少々*); a computer cannot guess, so every step must be exact. Explanatory infographic: a
-  `compare` of recipe and program over shared rows — written in, what goes in, who follows it
-  (the `emphasis_row`: a cook guesses, a computer does exactly what is written), what comes out.
-  Example: Mai's `=SUM(...)` is already a one-line program; the same job as a few commented lines
-  of Python; and the tip that she never has to write it — she can ask the agent to explain code
-  line by line in plain words. The weekly task card from
-  [`first-agent-session`](../course/en/lessons/first-agent-session.md) is software the learner
-  already made (open it in a text editor to see its code).
-- **`project-anatomy`** — frontend, backend, database and API as the parts of one app, with the
-  glossary's own analogy for an API (the menu a restaurant hands its customers). Explanatory
-  infographic: a `flow` of one request, from the screen to the data and back, with labelled
-  arrows. Why a beginner needs it: to tell an agent which part to change ("only the page, not the
-  data") and to recognise the parts in a diff by their folders.
+- **`security-basics`** — an API key is a password for a program: it identifies you to a service
+  and can be billed. Main character Huy (the student who knows a little Python), who pastes a key
+  into his code and nearly pushes it to a public repository. Where a secret may live, as the
+  course's ✅ / ✋ / ⛔: in an environment variable or a file that Git ignores; never in code, in a
+  chat with an AI, in a screenshot or in a public repository — and if one leaks, revoke it and make a
+  new one. Passwords and other people's personal data follow the same rule. Link
+  [`data-safety-and-permissions`](../course/en/lessons/data-safety-and-permissions.md), which
+  introduced the three kinds of action, and
+  [`git-version-control`](../course/en/lessons/git-version-control.md).
+- **`prompting-basics`** — hands-on: the same question asked vaguely and then with context, the
+  task, the format wanted and an example, compared side by side; asking the model to say when it
+  does not know. It is about talking to a chat model; the four-part spec for an agent is
+  [`writing-good-specs`](../course/en/lessons/writing-good-specs.md) — link it rather than repeat it.
 
 ## How to write one lesson
 

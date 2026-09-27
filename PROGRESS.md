@@ -25,7 +25,8 @@
   - **Lộ trình tối thiểu viết xong: 19 bài** (347 phút), đủ 3 thứ tiếng, trạng thái `review` (chờ Linh
     duyệt), mỗi bài một infographic giải thích và một hình tóm tắt; hai dự án có dữ liệu mẫu và kết quả
     đúng biết trước. Dữ kiện về công cụ ghi rõ "tính đến tháng 9/2026" và dẫn tài liệu chính thức.
-  - Đã viết thêm `how-to-learn-this-course` (20/52 bài).
+  - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`
+    (22/52 bài).
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
@@ -35,7 +36,7 @@
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
   - Linh duyệt 19 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 32 bài còn lại của lộ trình (phần core còn lại, nhánh tùy chọn, nâng cao) chưa viết. Khi thử thật
+  - 30 bài còn lại (2 bài Codex đang viết, issue #2). Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
   - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,
@@ -49,9 +50,10 @@
 
 1. Linh đọc duyệt lộ trình tối thiểu (bản HTML: `python -m src.main export`), thử 6 bài đầu với vài
    người học thật, rồi đổi các bài đạt sang `done`.
-2. Viết 32 bài còn lại theo thứ tự lộ trình. **Bản bàn giao:** [docs/handoff.md](docs/handoff.md)
-   (tiếng Anh, cho Codex, Claude hay bất kỳ ai): tình trạng, danh sách bài, cách viết và kiểm tra.
-   Đang thử: Codex viết `what-is-software` và `project-anatomy` trên nhánh riêng rồi mở PR; Claude
-   kiểm tra PR trước khi viết tiếp. Sau mỗi đợt, xuất lại HTML.
+2. **Cách làm từ 27/9/2026 (Linh quyết định): Codex viết bài, Claude điều phối.** Mỗi đợt khoảng 2 bài
+   là một issue GitHub có hợp đồng công việc cho Codex; Codex viết trên nhánh riêng; **Linh bấm Create
+   PR** trong task của Codex (môi trường Codex không tự push được); Claude kiểm tra PR (test, đọc bài
+   3 thứ tiếng, mở nguồn, xem hình) rồi merge hoặc yêu cầu sửa. Bản bàn giao cho Codex:
+   [docs/handoff.md](docs/handoff.md). Sau mỗi đợt, xuất lại HTML.
 3. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`, ảnh đăng kèm là
    hình tóm tắt của bài.
