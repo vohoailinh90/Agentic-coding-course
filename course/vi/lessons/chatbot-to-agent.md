@@ -128,8 +128,8 @@ Giữ lại mục tiêu và tiêu chí này — bạn sẽ dùng lại chúng kh
 **Câu 1.** Điểm khác biệt lớn nhất giữa chatbot và AI agent là gì?
 
 - A) Agent dùng mô hình AI lớn hơn
-- B) Agent tự thực hiện các bước để đạt mục tiêu, còn chatbot chỉ trả lời
-- C) Agent không bao giờ mắc lỗi
+- B) Agent không bao giờ mắc lỗi
+- C) Agent tự thực hiện các bước để đạt mục tiêu, còn chatbot chỉ trả lời
 
 **Câu 2.** Việc nào dưới đây cần một AI agent thay vì chatbot?
 
@@ -139,16 +139,16 @@ Giữ lại mục tiêu và tiêu chí này — bạn sẽ dùng lại chúng kh
 
 **Câu 3.** Agent báo "đã xong". Bạn nên làm gì tiếp theo?
 
-- A) Tin tưởng hoàn toàn và dùng ngay
-- B) Kiểm tra kết quả theo tiêu chí bạn đã đặt ra
+- A) Kiểm tra kết quả theo tiêu chí bạn đã đặt ra
+- B) Tin tưởng hoàn toàn và dùng ngay
 - C) Bắt agent làm lại từ đầu cho chắc
 
 <details>
 <summary>Xem đáp án</summary>
 
-1. **B** — agent làm thay các bước; mô hình lớn hay nhỏ không phải là điểm khác biệt, và agent vẫn có thể sai.
+1. **C** — agent làm thay các bước; mô hình lớn hay nhỏ không phải là điểm khác biệt, và agent vẫn có thể sai.
 2. **B** — việc này cần nhiều bước hành động thật (tạo file, chạy, sửa), không chỉ một câu trả lời.
-3. **B** — giao việc và nghiệm thu luôn là trách nhiệm của bạn.
+3. **A** — giao việc và nghiệm thu luôn là trách nhiệm của bạn.
 
 </details>
 

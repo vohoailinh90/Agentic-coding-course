@@ -107,22 +107,22 @@ You check quickly: open a few photos and see whether the names match the dates t
 
 **Question 2.** An agent is fixing a web page but is not allowed to open the page to try it. What is most likely to happen?
 
-- A) It still finds every error for certain
-- B) It may miss errors because it cannot observe the result
+- A) It may miss errors because it cannot observe the result
+- B) It still finds every error for certain
 - C) It gives itself more permissions
 
 **Question 3.** When should an agent stop its loop and ask you?
 
 - A) After every line of code it writes
-- B) When it needs a decision only you are entitled to make, such as deleting data
-- C) Never
+- B) Never
+- C) When it needs a decision only you are entitled to make, such as deleting data
 
 <details>
 <summary>Show answers</summary>
 
 1. **B** — the LLM only makes a request; a tool is what actually creates the file.
-2. **B** — without observing the result, it cannot know it is wrong; fixing depends on tools and feedback.
-3. **B** — important or hard-to-undo decisions are yours.
+2. **A** — without observing the result, it cannot know it is wrong; fixing depends on tools and feedback.
+3. **C** — important or hard-to-undo decisions are yours.
 
 </details>
 

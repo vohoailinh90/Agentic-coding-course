@@ -48,7 +48,7 @@ Chưa chắc một việc thuộc loại nào? Xếp nó vào ✋ **hỏi trư�
 
 Thư mục `ai-practice` là ranh giới bạn vẽ ra. Thứ giữ ranh giới đó là **quyền hạn (permission)**: những gì phần mềm agent cho phép nó tự làm mà không cần hỏi bạn.
 
-Ví dụ, tính đến tháng 9/2026, Claude Code ở chế độ mặc định chỉ tự **đọc**; muốn sửa file hay chạy lệnh, nó phải hỏi bạn trước. Ở chế độ này, nó chỉ ghi được trong thư mục bạn mở, và hỏi trước khi đọc bên ngoài. Các chế độ tự động hơn thì hỏi ít hơn — và ranh giới cũng lỏng hơn.
+Ví dụ, tính đến tháng 9/2026, Claude Code ở chế độ mặc định chỉ tự **đọc**; muốn sửa file hay chạy lệnh có thể thay đổi gì đó, nó phải hỏi bạn trước. Ở chế độ này, nó chỉ ghi được trong thư mục bạn mở, và hỏi trước khi đọc bên ngoài. Các chế độ tự động hơn thì hỏi ít hơn — và ranh giới cũng lỏng hơn.
 
 Vì vậy, khi mới học: **chọn chế độ mà agent hỏi trước**, và đọc kỹ từng yêu cầu.
 
@@ -116,21 +116,21 @@ Mai là kế toán ở TP.HCM, ngày nào cũng làm việc với Excel. Cô mu�
 **Câu 2.** Bạn muốn luyện làm báo cáo với agent. Nên dùng dữ liệu nào?
 
 - A) File doanh thu thật của công ty, cho sát thực tế
-- B) File giả có cùng các cột, với số liệu bịa
-- C) Ảnh chụp màn hình báo cáo thật
+- B) Ảnh chụp màn hình báo cáo thật
+- C) File giả có cùng các cột, với số liệu bịa
 
 **Câu 3.** Vì sao chỉ có thư mục riêng thì chưa đủ an toàn?
 
-- A) Vì thư mục riêng làm agent chạy chậm
-- B) Vì agent được làm gì là do quyền hạn quyết định; tùy chế độ, nó vẫn có thể đọc hay làm việc bên ngoài
+- A) Vì agent được làm gì là do quyền hạn quyết định; tùy chế độ, nó vẫn có thể đọc hay làm việc bên ngoài
+- B) Vì thư mục riêng làm agent chạy chậm
 - C) Vì agent không dùng được thư mục riêng
 
 <details>
 <summary>Xem đáp án</summary>
 
 1. **B** — cài đặt thay đổi máy của bạn, nên agent phải hỏi và bạn quyết định.
-2. **B** — dữ liệu giả cùng cấu trúc đủ để luyện; dữ liệu thật, kể cả ảnh chụp, không bao giờ đưa vào bài tập.
-3. **B** — thư mục là ranh giới bạn vẽ; quyền hạn mới là thứ giữ nó.
+2. **C** — dữ liệu giả cùng cấu trúc đủ để luyện; dữ liệu thật, kể cả ảnh chụp, không bao giờ đưa vào bài tập.
+3. **A** — thư mục là ranh giới bạn vẽ; quyền hạn mới là thứ giữ nó.
 
 </details>
 

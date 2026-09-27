@@ -45,7 +45,7 @@ Chọn sai chỗ thực hành có thể làm bạn mất cả buổi để cài 
 ### Trước khi chọn: ba điều cần biết
 
 - **Tài khoản:** nhiều công cụ agent cần tài khoản trả phí. Ví dụ, tính đến tháng 9/2026, Claude Code cần gói Pro, Max, Team, Enterprise hoặc tài khoản Console; gói miễn phí không có Claude Code. Hãy xem trang của công cụ bạn chọn.
-- **Máy:** mô hình AI không chạy trên máy bạn mà trên máy chủ của nhà cung cấp. Máy bạn chỉ cần đủ mới và có Internet — với Claude Code là macOS 13 hoặc Windows 10 trở lên, RAM từ 4 GB.
+- **Máy:** mô hình AI không chạy trên máy bạn mà trên máy chủ của nhà cung cấp. Máy bạn chỉ cần đủ mới và có Internet — với Claude Code là macOS 13 hoặc Windows 10 trở lên (một số bản Linux cũng được), RAM từ 4 GB.
 - **Chưa sẵn sàng?** Vẫn học được theo **đường chỉ xem**: đọc nhật ký phiên làm việc trong bài, đoán bước tiếp theo, làm các câu hỏi — rồi cài đặt sau.
 
 ### Một thư mục cho mọi bài tập

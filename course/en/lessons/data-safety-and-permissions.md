@@ -49,7 +49,7 @@ Not sure which kind it is? Treat it as ✋ **ask first**.
 
 The `ai-practice` folder is a line you draw. What holds that line is **permissions**: what the agent's software lets it do on its own, without asking you.
 
-For example, as of September 2026, Claude Code in its default mode only **reads** on its own; to edit a file or run a command, it must ask you first. In this mode it can only write inside the folder you opened, and it asks before reading outside it. More automatic modes ask less — and the line gets looser.
+For example, as of September 2026, Claude Code in its default mode only **reads** on its own; to edit a file or run a command that can change something, it must ask you first. In this mode it can only write inside the folder you opened, and it asks before reading outside it. More automatic modes ask less — and the line gets looser.
 
 So while you are learning: **choose the mode in which the agent asks first**, and read every request.
 
@@ -117,21 +117,21 @@ Mai is an accountant in Ho Chi Minh City who lives in Excel. She wants an agent 
 **Question 2.** You want to practise making a report with an agent. Which data should you use?
 
 - A) The company's real sales file, to keep it realistic
-- B) A made-up file with the same columns and invented numbers
-- C) A screenshot of a real report
+- B) A screenshot of a real report
+- C) A made-up file with the same columns and invented numbers
 
 **Question 3.** Why is a separate folder alone not enough to be safe?
 
-- A) Because a separate folder makes the agent slower
-- B) Because what an agent may do is decided by its permissions; depending on the mode, it can still read or act outside
+- A) Because what an agent may do is decided by its permissions; depending on the mode, it can still read or act outside
+- B) Because a separate folder makes the agent slower
 - C) Because agents cannot use separate folders
 
 <details>
 <summary>Show answers</summary>
 
 1. **B** — installing changes your computer, so the agent must ask and you decide.
-2. **B** — made-up data with the same structure is enough to practise; real data, screenshots included, never goes into an exercise.
-3. **B** — the folder is a line you draw; permissions are what hold it.
+2. **C** — made-up data with the same structure is enough to practise; real data, screenshots included, never goes into an exercise.
+3. **A** — the folder is a line you draw; permissions are what hold it.
 
 </details>
 

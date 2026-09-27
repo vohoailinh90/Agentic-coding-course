@@ -129,8 +129,8 @@ Keep your goal and criterion — you will use them again when you learn to write
 **Question 1.** What is the biggest difference between a chatbot and an AI agent?
 
 - A) An agent uses a bigger AI model
-- B) An agent carries out the steps to reach a goal, while a chatbot only answers
-- C) An agent never makes mistakes
+- B) An agent never makes mistakes
+- C) An agent carries out the steps to reach a goal, while a chatbot only answers
 
 **Question 2.** Which of these tasks needs an AI agent rather than a chatbot?
 
@@ -140,16 +140,16 @@ Keep your goal and criterion — you will use them again when you learn to write
 
 **Question 3.** An agent says "done." What should you do next?
 
-- A) Trust it completely and use it right away
-- B) Check the result against the criteria you set
+- A) Check the result against the criteria you set
+- B) Trust it completely and use it right away
 - C) Make the agent redo everything, just to be safe
 
 <details>
 <summary>Show answers</summary>
 
-1. **B** — the agent does the steps; model size is not the difference, and agents can still be wrong.
+1. **C** — the agent does the steps; model size is not the difference, and agents can still be wrong.
 2. **B** — it takes several real actions (creating files, running, fixing), not just an answer.
-3. **B** — assigning the work and approving it is always your responsibility.
+3. **A** — assigning the work and approving it is always your responsibility.
 
 </details>
 

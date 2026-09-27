@@ -45,7 +45,7 @@ Practising in the wrong place can cost you an afternoon of setup or, worse, brea
 ### Before you choose: three things to know
 
 - **Accounts:** many agent tools need a paid account. For example, as of September 2026, Claude Code needs a Pro, Max, Team or Enterprise plan or a Console account; the free plan does not include it. Check the page of the tool you choose.
-- **Your computer:** the AI model does not run on your computer but on the provider's servers. Your computer only needs to be recent enough and online — for Claude Code, macOS 13 or Windows 10 or later with at least 4 GB of RAM.
+- **Your computer:** the AI model does not run on your computer but on the provider's servers. Your computer only needs to be recent enough and online — for Claude Code, macOS 13 or Windows 10 or later (some Linux versions work too) with at least 4 GB of RAM.
 - **Not ready yet?** You can still learn on the **watch-only route**: read the session logs in the lessons, predict the next step, do the quizzes — and set up later.
 
 ### One folder for every exercise

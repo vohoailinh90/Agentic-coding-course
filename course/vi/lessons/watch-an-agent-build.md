@@ -122,15 +122,15 @@ Không cần cài gì, khoảng 3 phút. Tuấn giao cho agent: *"Tạo trang `c
 
 **Câu 1.** Vì sao agent nên xem thư mục trước khi tạo file?
 
-- A) Để làm chậm lại cho cẩn thận
-- B) Để biết đã có gì, tránh ghi đè file có sẵn
+- A) Để biết đã có gì, tránh ghi đè file có sẵn
+- B) Để làm chậm lại cho cẩn thận
 - C) Vì máy tính bắt buộc phải thế
 
 **Câu 2.** Trong ví dụ, vì sao agent không tự phát hiện lỗi ô mẹo bị trống?
 
 - A) Vì agent không biết đọc code
-- B) Vì nó chỉ bấm thử vài lần, chưa đủ để lỗi lộ ra
-- C) Vì Hana không cho agent bấm nút
+- B) Vì Hana không cho agent bấm nút
+- C) Vì nó chỉ bấm thử vài lần, chưa đủ để lỗi lộ ra
 
 **Câu 3.** Agent báo: *"Đã tạo file. Chưa kiểm tra trên điện thoại thật."* Bạn nên làm gì?
 
@@ -141,8 +141,8 @@ Không cần cài gì, khoảng 3 phút. Tuấn giao cho agent: *"Tạo trang `c
 <details>
 <summary>Xem đáp án</summary>
 
-1. **B** — xem trước khi viết giúp agent không ghi đè thứ đang có.
-2. **B** — agent chỉ kiểm tra được những gì nó thấy; tiêu chí "bấm liên tục vẫn luôn có mẹo" sẽ giúp nó tìm ra.
+1. **A** — xem trước khi viết giúp agent không ghi đè thứ đang có.
+2. **C** — agent chỉ kiểm tra được những gì nó thấy; tiêu chí "bấm liên tục vẫn luôn có mẹo" sẽ giúp nó tìm ra.
 3. **B** — phần *chưa kiểm tra* trong báo cáo là việc của bạn: tự kiểm tra, hoặc giao thêm.
 
 </details>

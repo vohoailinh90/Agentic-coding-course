@@ -123,15 +123,15 @@ Nothing to install; about 3 minutes. Tuấn gives an agent this task: *"Create `
 
 **Question 1.** Why should an agent look at the folder before creating a file?
 
-- A) To slow down and be careful
-- B) To know what is already there and avoid overwriting an existing file
+- A) To know what is already there and avoid overwriting an existing file
+- B) To slow down and be careful
 - C) Because the computer requires it
 
 **Question 2.** In the example, why did the agent not find the empty-tip bug itself?
 
 - A) Because the agent cannot read code
-- B) Because it only clicked a few times, not enough for the bug to show
-- C) Because Hana did not let the agent click the button
+- B) Because Hana did not let the agent click the button
+- C) Because it only clicked a few times, not enough for the bug to show
 
 **Question 3.** The agent reports: *"Created the file. Not checked on a real phone."* What should you do?
 
@@ -142,8 +142,8 @@ Nothing to install; about 3 minutes. Tuấn gives an agent this task: *"Create `
 <details>
 <summary>Show answers</summary>
 
-1. **B** — looking before writing keeps the agent from overwriting what is there.
-2. **B** — an agent can only check what it sees; a criterion like "after many clicks there is always a tip" would have helped it find the bug.
+1. **A** — looking before writing keeps the agent from overwriting what is there.
+2. **C** — an agent can only check what it sees; a criterion like "after many clicks there is always a tip" would have helped it find the bug.
 3. **B** — the *not checked* part of a report is yours: check it yourself, or ask for more.
 
 </details>

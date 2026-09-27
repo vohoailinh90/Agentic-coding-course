@@ -107,22 +107,22 @@ Bạn kiểm tra nhanh: mở vài ảnh, xem tên có khớp ngày chụp không
 
 **Câu 2.** Agent đang sửa một trang web nhưng không được phép chạy thử trang. Điều gì dễ xảy ra nhất?
 
-- A) Agent vẫn chắc chắn tìm ra mọi lỗi
-- B) Agent có thể bỏ sót lỗi vì không quan sát được kết quả
+- A) Agent có thể bỏ sót lỗi vì không quan sát được kết quả
+- B) Agent vẫn chắc chắn tìm ra mọi lỗi
 - C) Agent tự cấp thêm quyền cho mình
 
 **Câu 3.** Khi nào agent nên dừng vòng lặp để hỏi bạn?
 
 - A) Sau mỗi dòng code nó viết
-- B) Khi cần một quyết định chỉ bạn mới có quyền đưa ra, như xóa dữ liệu
-- C) Không bao giờ
+- B) Không bao giờ
+- C) Khi cần một quyết định chỉ bạn mới có quyền đưa ra, như xóa dữ liệu
 
 <details>
 <summary>Xem đáp án</summary>
 
 1. **B** — LLM chỉ đưa ra yêu cầu; công cụ mới là thứ thực sự tạo file.
-2. **B** — không quan sát được thì không biết mình sai; tự sửa phụ thuộc vào công cụ và phản hồi.
-3. **B** — những quyết định quan trọng hoặc khó đảo ngược là của bạn.
+2. **A** — không quan sát được thì không biết mình sai; tự sửa phụ thuộc vào công cụ và phản hồi.
+3. **C** — những quyết định quan trọng hoặc khó đảo ngược là của bạn.
 
 </details>
 
