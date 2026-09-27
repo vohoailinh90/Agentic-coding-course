@@ -1,0 +1,26 @@
+template: summary
+title:
+  vi: "Tóm tắt: đoán token tiếp theo"
+  en: "Recap: Next-Token Prediction"
+  ja: まとめ：次のトークンの予測
+points:
+  - icon: "🧩"
+    color: violet
+    name: {vi: Token là mẩu chữ, en: Tokens are text pieces, ja: トークンは文章の部品}
+    caption: {vi: "Từ, phần của từ hoặc ký hiệu", en: "Words, word parts, or symbols", ja: 単語の一部や記号も含む}
+  - icon: "🔁"
+    color: blue
+    name: {vi: Mỗi lần một token, en: One token at a time, ja: 一度に一つずつ}
+    caption: {vi: Đọc → đoán → thêm → lặp, en: Read → predict → add → repeat, ja: 読む→予測→追加→繰り返す}
+  - icon: "🎭"
+    color: rose
+    name: {vi: Trôi chảy chưa chắc đúng, en: Fluent is not always true, ja: 自然でも正しいとは限らない}
+    caption: {vi: Kiểm tra dữ kiện với nguồn, en: Check facts against a source, ja: 資料と事実を照合する}
+  - icon: "🌿"
+    color: green
+    name: {vi: Câu trả lời có thể đổi, en: Answers can vary, ja: 回答は変わることがある}
+    caption: {vi: Nhiều token đều có thể phù hợp, en: Several tokens may fit, ja: 複数の候補があり得る}
+takeaway:
+  vi: LLM tạo phần tiếp theo hợp lý; bạn vẫn phải kiểm tra điều gì là thật.
+  en: An LLM makes a likely continuation; you still check what is true.
+  ja: LLMは自然な続きを作ります。事実は自分で確認します。

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 463" width="800" height="463" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Recap: Tool Calling</title>
+<desc id="desc">1. Model proposes — Tool name and arguments; 2. Program checks — Permission and scope; 3. Tool executes — Returns a result or error; 4. Person verifies — Compare with the original result. A call is not permission: limit first, verify afterward.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="461" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="433" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Recap: Tool Calling</tspan></text>
+<rect x="28" y="86.3" width="363" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="209.5" cy="122.3" r="22" fill="#059669"/>
+<circle cx="209.5" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="209.5" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧠</text>
+<circle cx="46" cy="104.3" r="12" fill="#064E3B"/>
+<text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="209.5" y="170.8">Model proposes</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="209.5" y="195.7">Tool name and arguments</tspan></text>
+<rect x="409" y="86.3" width="363" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="590.5" cy="122.3" r="22" fill="#2563EB"/>
+<circle cx="590.5" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590.5" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🛡️</text>
+<circle cx="427" cy="104.3" r="12" fill="#1E3A8A"/>
+<text x="427" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="590.5" y="170.8">Program checks</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590.5" y="195.7">Permission and scope</tspan></text>
+<rect x="28" y="232.5" width="363" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="209.5" cy="268.5" r="22" fill="#D97706"/>
+<circle cx="209.5" cy="268.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="209.5" y="276.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧰</text>
+<circle cx="46" cy="250.5" r="12" fill="#78350F"/>
+<text x="46" y="255.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="209.5" y="317">Tool executes</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="209.5" y="341.9">Returns a result or error</tspan></text>
+<rect x="409" y="232.5" width="363" height="128.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="590.5" cy="268.5" r="22" fill="#7C3AED"/>
+<circle cx="590.5" cy="268.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590.5" y="276.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔎</text>
+<circle cx="427" cy="250.5" r="12" fill="#4C1D95"/>
+<text x="427" y="255.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="590.5" y="317">Person verifies</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590.5" y="341.9">Compare with the original result</tspan></text>
+<rect x="28" y="384.7" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="415.7">💡 A call is not permission: limit first, verify afterward.</tspan></text>
+</svg>

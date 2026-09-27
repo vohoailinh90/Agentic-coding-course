@@ -128,8 +128,8 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | 4.1.1 | [Prompt căn bản: nói sao cho AI hiểu](lessons/prompting-basics.md) | 🛠️ Thực hành | 12 phút |
 | 4.1.2 | ⭐ [Ảo giác AI: vì sao AI tự tin nói sai](lessons/hallucination.md) | 📖 Khái niệm | 10 phút |
 | 4.1.3 | ⭐ [Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI](lessons/context-window.md) | 📖 Khái niệm | 10 phút |
-| 4.1.4 | Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM | 📖 Khái niệm | 10 phút |
-| 4.1.5 | Gọi công cụ: cách LLM "bấm nút" ngoài đời thật | 🎬 Minh họa | 10 phút |
+| 4.1.4 | [Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM](lessons/next-token-prediction.md) | 📖 Khái niệm | 10 phút |
+| 4.1.5 | [Gọi công cụ: cách LLM "bấm nút" ngoài đời thật](lessons/tool-calling.md) | 🎬 Minh họa | 10 phút |
 
 ### 4.2 Nền tảng AI · _tùy chọn_
 
