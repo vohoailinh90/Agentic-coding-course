@@ -13,7 +13,7 @@
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="1050" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">The AI Family Tree, Broad to Narrow</tspan></text>
-<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Each level is one branch of the level above it</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Read from the top, broadest to narrowest</tspan></text>
 <rect x="88" y="112.7" width="624" height="128.2" rx="18" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
 <circle cx="400" cy="148.7" r="22" fill="#475569"/>
 <circle cx="400" cy="148.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -45,8 +45,8 @@
 <text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="400" y="565.7">Deep learning</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="590.6">Neural networks with many layers</tspan></text>
 <line x1="400.0" y1="613.4" x2="400.0" y2="659.4" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
-<rect x="471.6" y="624.5" width="76.9" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
-<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="642">used for</tspan></text>
+<rect x="439.6" y="624.5" width="140.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="642">the basis of most</tspan></text>
 <rect x="88" y="665.4" width="624" height="128.2" rx="18" fill="#FDF2F8" stroke="#DB2777" stroke-width="2"/>
 <circle cx="400" cy="701.4" r="22" fill="#DB2777"/>
 <circle cx="400" cy="701.4" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

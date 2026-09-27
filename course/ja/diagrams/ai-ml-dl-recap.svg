@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 536" width="800" height="536" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
 <title id="title">まとめ：AIの系統図</title>
-<desc id="desc">1. 5つの言葉は1つの系統 — 下の段は上の段の一部; 2. ルールは学習ではない — 人が書いたルールか、例から学んだか; 3. 深層学習は多層のネットワーク — 画像・音声・文章のAIの土台; 4. 生成AIは新しく作る — LLMは文章の生成AI; 5. エージェントの頭脳はLLM — 流暢でも間違えることがある. 「AI」と聞いたら問う：決めたルールか、データから学んだか。分類か、新しく作るか。</desc>
+<desc id="desc">1. 5つの言葉は1つの系統 — 広い言葉から狭い言葉へ; 2. ルールは学習ではない — 人が書いたルールか、
+例から学んだか; 3. 深層学習は多層のネットワーク — 画像・音声・文章のAIの土台; 4. 生成AIは新しく作る — LLMは文章の生成AI; 5. エージェントの頭脳はLLM — 流暢でも間違えることがある. 「AI」と聞いたら問う：決めたルールか、データから学んだか。分類か、新しく作るか。</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="534" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -13,7 +14,7 @@
 <circle cx="46" cy="104.3" r="12" fill="#064E3B"/>
 <text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="146" y="170.8">5つの言葉は1つの系統</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="195.7">下の段は上の段の一部</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="195.7">広い言葉から狭い言葉へ</tspan></text>
 <rect x="282" y="86.3" width="236" height="152.6" rx="18" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
 <circle cx="400" cy="122.3" r="22" fill="#475569"/>
 <circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -21,7 +22,7 @@
 <circle cx="300" cy="104.3" r="12" fill="#0F172A"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">ルールは学習ではない</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">人が書いたルールか、例から学</tspan><tspan x="400" y="215.5">んだか</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">人が書いたルールか、</tspan><tspan x="400" y="215.5">例から学んだか</tspan></text>
 <rect x="536" y="86.3" width="236" height="152.6" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
 <circle cx="654" cy="122.3" r="22" fill="#7C3AED"/>
 <circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

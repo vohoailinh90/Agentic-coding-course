@@ -22,7 +22,7 @@ social:
 By the end of this lesson, you will be able to:
 
 - Explain **data, training and model** with an example of your own.
-- Describe the training loop: guess, compare with the answer, adjust — and repeat.
+- Describe the training loop of supervised learning — guess, compare with the answer, adjust, repeat — and name the other kinds of learning.
 - Say why poor data makes a poor model, and why a model does not learn anything new while you chat with it.
 
 <!-- section: hook -->
@@ -37,7 +37,7 @@ A colleague suggests: *"Why not let the machine learn from the expenses you sort
 
 ### Three things: data, training and the model
 
-- **Training data:** examples that come with answers. For Mai, each example is one line describing an expense, together with the category she chose. To teach a machine to recognize apples, you show it many pictures labelled "apple".
+- **Training data:** the examples a machine learns from. This lesson follows the easiest kind to picture, **supervised learning**, where each example comes with its answer. For Mai, each example is one line describing an expense, together with the category she chose. To teach a machine to recognize apples, you show it many pictures labelled "apple".
 - **Model:** a very large set of numbers that turns an input (an expense description) into an output (a category). At first the numbers are close to random, so the model guesses wildly.
 - **Training:** the process of adjusting those numbers until the model gets most examples right.
 
@@ -55,9 +55,17 @@ Repeat over a great many examples, in several passes. Nobody writes the rule *"G
 
 A model can "memorize" the old examples and still get new ones wrong. So part of the data is kept aside, never used for training, only for testing — like an exam whose questions did not leak.
 
+### Not every kind of learning comes with answers
+
+The loop above is supervised learning. Other kinds differ in where the machine's signal of "right or wrong" comes from:
+
+- **Unsupervised learning:** no answers at all; the machine groups similar things by itself — customers who buy alike, for example.
+- **Answers taken from the data itself:** hide the next piece of a sentence and let the machine guess it; the real text is the answer, and nobody has to label anything. This is how LLMs start (next section).
+- **Reinforcement learning:** no answer for each example, only a reward or a penalty for what the machine just did — learning by trial and error.
+
 ### How does an LLM learn?
 
-The same idea, at a huge scale. According to Anthropic, in the first stage (*pretraining*) a language model is trained on a very large body of text to predict the next word from the text before it. Then it is trained further — *fine-tuning*, and learning from human ratings (*RLHF*) — so it follows instructions and converses like an assistant. [The AI Family Tree](ai-ml-dl.md) shows where LLMs sit in the AI family.
+Still guess, compare, adjust — at a huge scale, with the answers taken from the text itself. According to Anthropic, in the first stage (*pretraining*) a language model is trained on a very large body of unlabelled text: it guesses the [next token](next-token-prediction.md) — a piece of text, a word or part of one — from the text before it, and the real next token is the answer. Then it is trained further — *fine-tuning*, and *RLHF*, where people rank answers and the model is steered toward the higher-ranked ones — so it follows instructions and converses like an assistant. [The AI Family Tree](ai-ml-dl.md) shows where LLMs sit in the AI family.
 
 ### While you chat, the model is not learning
 
@@ -96,10 +104,10 @@ Mai takes two lessons from this. To make the model better, she has to **fix the 
 <!-- section: takeaways -->
 ## Key Takeaways
 
-- Training data is examples with answers; the model is a set of numbers; training adjusts those numbers.
+- In supervised learning, training data is examples with answers; the model is a set of numbers; training adjusts those numbers.
 - The training loop: guess, compare with the answer, adjust a little — repeated many, many times.
 - Test a model on data it has not seen; memorizing is not learning.
-- LLMs learn with the same idea at a huge scale, then get further training to act as assistants.
+- LLMs learn by guessing the next token, with the answer taken from the text itself, then get further training to act as assistants.
 - A model does not learn while you chat with it; write down what must be remembered.
 
 <!-- section: quiz -->
@@ -135,5 +143,5 @@ Mai takes two lessons from this. To make the model better, she has to **fix the 
 <!-- section: sources -->
 ## Recommended Sources
 
-- Google Cloud — [What is Machine Learning?](https://cloud.google.com/learn/what-is-machine-learning): supervised learning uses labelled data (for example pictures labelled "apple"); training optimizes the model to predict the correct response from the training samples; more samples help when the data is of high quality.
-- Anthropic — [Glossary](https://platform.claude.com/docs/en/about-claude/glossary), entries *Pretraining*, *Fine-tuning* and *RLHF*: language models are first trained to predict the next word, then fine-tuned and trained on human feedback to follow instructions.
+- Google Cloud — [What is Machine Learning?](https://cloud.google.com/learn/what-is-machine-learning): supervised learning uses labelled data (for example pictures labelled "apple"); training optimizes the model to predict the correct response from the training samples; more samples help when the data is of high quality; unsupervised learning uses unlabelled data and sorts it into groups; reinforcement learning learns by trial and error, with rewards and penalties.
+- Anthropic — [Glossary](https://platform.claude.com/docs/en/about-claude/glossary), entries *Pretraining*, *Fine-tuning* and *RLHF*: language models are first trained on unlabelled text to predict what comes next, then fine-tuned and trained on people's rankings of their answers to follow instructions.

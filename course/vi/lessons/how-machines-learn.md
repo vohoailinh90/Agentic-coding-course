@@ -21,7 +21,7 @@ social:
 Sau bài này, bạn sẽ:
 
 - Giải thích ba từ **dữ liệu, huấn luyện, mô hình** bằng một ví dụ của chính bạn.
-- Mô tả vòng huấn luyện: đoán thử, so với đáp án, chỉnh — rồi lặp lại.
+- Mô tả vòng huấn luyện của học có giám sát — đoán thử, so với đáp án, chỉnh, lặp lại — và kể tên các kiểu học khác.
 - Biết vì sao dữ liệu kém cho mô hình kém, và vì sao mô hình không tự học thêm khi bạn trò chuyện với nó.
 
 <!-- section: hook -->
@@ -36,7 +36,7 @@ Một đồng nghiệp gợi ý: *"Sao không để máy tự học từ những
 
 ### Ba thứ: dữ liệu, huấn luyện, mô hình
 
-- **Dữ liệu huấn luyện:** các ví dụ kèm đáp án. Với Mai, mỗi ví dụ là một dòng mô tả khoản chi cùng hạng mục cô đã chọn. Muốn máy nhận ra quả táo, người ta cho nó xem thật nhiều ảnh có ghi "táo".
+- **Dữ liệu huấn luyện:** các ví dụ để máy học. Bài này đi theo kiểu dễ hình dung nhất, **học có giám sát** (supervised learning): mỗi ví dụ kèm sẵn đáp án. Với Mai, mỗi ví dụ là một dòng mô tả khoản chi cùng hạng mục cô đã chọn. Muốn máy nhận ra quả táo, người ta cho nó xem thật nhiều ảnh có ghi "táo".
 - **Mô hình (model):** một bộ rất nhiều con số, biến đầu vào (mô tả khoản chi) thành đầu ra (hạng mục). Lúc đầu các con số gần như ngẫu nhiên, nên mô hình đoán bừa.
 - **Huấn luyện (training):** quá trình chỉnh các con số đó cho đến khi mô hình đoán đúng phần lớn ví dụ.
 
@@ -54,9 +54,17 @@ Lặp lại với rất nhiều ví dụ, qua nhiều lượt. Không ai viết 
 
 Mô hình có thể "học thuộc" ví dụ cũ mà vẫn đoán sai khoản mới. Vì vậy người ta giữ riêng một phần dữ liệu, không dùng để huấn luyện, chỉ để kiểm tra — giống đề thi không bị lộ trước.
 
+### Không phải kiểu học nào cũng có đáp án sẵn
+
+Vòng lặp ở trên là của học có giám sát. Các kiểu khác khác nhau ở chỗ máy lấy tín hiệu "đúng hay sai" từ đâu:
+
+- **Học không giám sát (unsupervised learning):** không có đáp án nào; máy tự gom những thứ giống nhau thành nhóm, chẳng hạn những khách hàng có thói quen mua giống nhau.
+- **Đáp án lấy từ chính dữ liệu:** che phần tiếp theo của một câu và để máy đoán; chữ thật trong văn bản là đáp án, không ai phải ghi nhãn. LLM bắt đầu học theo cách này (phần kế tiếp).
+- **Học tăng cường (reinforcement learning):** không có đáp án cho từng ví dụ, chỉ có thưởng hay phạt cho điều máy vừa làm — học bằng thử và sai.
+
 ### LLM học thế nào?
 
-Cùng ý tưởng ấy, nhưng ở quy mô khổng lồ. Theo Anthropic, ở giai đoạn đầu (*pretraining*), mô hình ngôn ngữ được huấn luyện trên một kho văn bản rất lớn để đoán từ tiếp theo dựa trên phần chữ phía trước. Sau đó nó được huấn luyện tiếp — *fine-tuning*, và học từ đánh giá của con người (*RLHF*) — để biết làm theo chỉ dẫn và trò chuyện như một trợ lý. Bài [Gia phả của AI](ai-ml-dl.md) cho thấy LLM nằm ở đâu trong gia đình AI.
+Vẫn là đoán – so – chỉnh, ở quy mô khổng lồ, nhưng đáp án lấy từ chính văn bản. Theo Anthropic, ở giai đoạn đầu (*pretraining*), mô hình ngôn ngữ được huấn luyện trên một kho văn bản rất lớn không gắn nhãn: nó đoán [token tiếp theo](next-token-prediction.md) — một mẩu chữ, có thể là một từ hay một phần của từ — dựa trên phần chữ phía trước, và token thật trong văn bản chính là đáp án. Sau đó nó được huấn luyện tiếp — *fine-tuning*, và *RLHF*: con người xếp hạng các câu trả lời, mô hình được chỉnh để nghiêng về những câu xếp cao — để biết làm theo chỉ dẫn và trò chuyện như một trợ lý. Bài [Gia phả của AI](ai-ml-dl.md) cho thấy LLM nằm ở đâu trong gia đình AI.
 
 ### Khi bạn trò chuyện, mô hình không học thêm
 
@@ -95,10 +103,10 @@ Mai rút ra hai điều. Muốn mô hình tốt hơn, phải **sửa dữ liệu
 <!-- section: takeaways -->
 ## Ghi nhớ
 
-- Dữ liệu huấn luyện là ví dụ có đáp án; mô hình là một bộ con số; huấn luyện là chỉnh các con số ấy.
+- Trong học có giám sát, dữ liệu huấn luyện là ví dụ có đáp án; mô hình là một bộ con số; huấn luyện là chỉnh các con số ấy.
 - Vòng huấn luyện: đoán thử, so với đáp án, chỉnh một chút — lặp lại rất nhiều lần.
 - Kiểm tra mô hình bằng dữ liệu nó chưa gặp; học thuộc không phải là học.
-- LLM học theo cùng ý tưởng, ở quy mô khổng lồ, rồi được huấn luyện thêm để làm trợ lý.
+- LLM học bằng cách đoán token tiếp theo, với đáp án lấy từ chính văn bản, rồi được huấn luyện thêm để làm trợ lý.
 - Mô hình không học thêm trong lúc bạn trò chuyện; điều cần nhớ lâu thì ghi ra file.
 
 <!-- section: quiz -->
@@ -134,5 +142,5 @@ Mai rút ra hai điều. Muốn mô hình tốt hơn, phải **sửa dữ liệu
 <!-- section: sources -->
 ## Nguồn tham khảo
 
-- Google Cloud — [What is Machine Learning?](https://cloud.google.com/learn/what-is-machine-learning) (tiếng Anh): học có giám sát dùng dữ liệu đã gắn nhãn (ví dụ ảnh có ghi "táo"); huấn luyện là tối ưu mô hình để đoán đúng dựa trên các mẫu dữ liệu; nhiều dữ liệu chỉ giúp khi dữ liệu có chất lượng.
-- Anthropic — [Glossary](https://platform.claude.com/docs/en/about-claude/glossary) (tiếng Anh), các mục *Pretraining*, *Fine-tuning* và *RLHF*: mô hình ngôn ngữ được huấn luyện trước để đoán từ tiếp theo, rồi được tinh chỉnh và học từ đánh giá của con người để làm theo chỉ dẫn.
+- Google Cloud — [What is Machine Learning?](https://cloud.google.com/learn/what-is-machine-learning) (tiếng Anh): học có giám sát dùng dữ liệu đã gắn nhãn (ví dụ ảnh có ghi "táo"); huấn luyện là tối ưu mô hình để đoán đúng dựa trên các mẫu dữ liệu; nhiều dữ liệu chỉ giúp khi dữ liệu có chất lượng; học không giám sát dùng dữ liệu không gắn nhãn và tự chia nhóm; học tăng cường học bằng thử và sai, với thưởng và phạt.
+- Anthropic — [Glossary](https://platform.claude.com/docs/en/about-claude/glossary) (tiếng Anh), các mục *Pretraining*, *Fine-tuning* và *RLHF*: mô hình ngôn ngữ được huấn luyện trước trên văn bản không gắn nhãn để đoán phần chữ tiếp theo, rồi được tinh chỉnh và học từ việc con người xếp hạng câu trả lời để làm theo chỉ dẫn.

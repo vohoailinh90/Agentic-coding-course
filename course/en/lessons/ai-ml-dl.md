@@ -21,7 +21,7 @@ social:
 
 By the end of this lesson, you will be able to:
 
-- Place five words — **AI, machine learning, deep learning, generative AI, LLM** — in one family tree: which branch sits inside which.
+- Place five words — **AI, machine learning, deep learning, generative AI, LLM** — on one family tree, from the broadest to the narrowest.
 - Tell software that follows written rules from software that learns from data.
 - Say which branch the agent in this course belongs to, and what that means for its strengths and weaknesses.
 
@@ -39,12 +39,12 @@ Hana nods, but she is not sure how these three differ — or whether they are on
 
 ![The AI Family Tree, Broad to Narrow](../diagrams/ai-family-tree.svg)
 
-Read the picture from the top. Each level is **one branch** of the level just above it:
+Read the picture from the top, from the broadest word to the narrowest:
 
 1. **AI (artificial intelligence)** — the umbrella term for technologies that let machines do work that used to need a human mind: understanding language, analysing data, making suggestions. Some "AI" software only follows rules a person wrote (*if… then…*) and learns nothing at all.
 2. **Machine learning** — a branch of AI. Instead of writing the rules, people show the machine many examples so it finds the patterns itself. [How Do Machines "Learn"?](how-machines-learn.md) goes into this.
 3. **Deep learning** — a branch of machine learning that uses neural networks with many layers. It is behind most modern AI for images, speech and language.
-4. **Generative AI** — AI that makes new content: text, images, sound, code, rather than only sorting or scoring things. Today it is mostly built with deep learning.
+4. **Generative AI** — AI that makes new content: text, images, sound, code, rather than only sorting or scoring things. The name says what it *does*, not what it is *built with*: today most generative AI is built with deep learning, but that is the usual path, not a rule.
 5. **LLM (large language model)** — generative AI for text: trained on huge amounts of writing to continue a piece of text in the most plausible way.
 
 ### Foundation models
@@ -91,7 +91,7 @@ From now on, whenever she hears *"it has AI"*, Hana asks two more questions: **"
 <!-- section: takeaways -->
 ## Key Takeaways
 
-- AI → machine learning → deep learning → generative AI → LLM: each level is a branch of the one above.
+- AI → machine learning → deep learning → generative AI → LLM: from the broadest word to the narrowest; today most generative AI is built with deep learning.
 - Following written rules is not learning from data, even though both can be called "AI".
 - Deep learning uses many-layered neural networks; generative AI makes new content; an LLM does it for text.
 - The agent in this course has an LLM for a brain: fluent, and still in need of your checks.

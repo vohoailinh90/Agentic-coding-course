@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 555" width="800" height="555" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
 <title id="title">Recap: The AI Family Tree</title>
-<desc id="desc">1. Five words, one family — Each level sits inside the one above; 2. Written rules are not learning — Rules someone wrote, or learned from examples?; 3. Deep learning uses many layers — Behind modern image, speech and text AI; 4. Generative AI makes new things — An LLM does it for text; 5. An agent&#x27;s brain is an LLM — Fluent, and still fallible. When you hear &quot;AI&quot;, ask: written rules or learned from data? Sorting things, or making new ones?</desc>
+<desc id="desc">1. Five words, one family — From the broadest to the narrowest; 2. Written rules are not learning — Rules someone wrote, or learned from examples?; 3. Deep learning uses many layers — Behind modern image, speech and text AI; 4. Generative AI makes new things — An LLM does it for text; 5. An agent&#x27;s brain is an LLM — Fluent, and still fallible. When you hear &quot;AI&quot;, ask: written rules or learned from data? Sorting things, or making new ones?</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="553" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -13,7 +13,7 @@
 <circle cx="46" cy="104.3" r="12" fill="#064E3B"/>
 <text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="146" y="170.8">Five words, one</tspan><tspan x="146" y="195.2">family</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="220.1">Each level sits inside the</tspan><tspan x="146" y="239.9">one above</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="220.1">From the broadest to the</tspan><tspan x="146" y="239.9">narrowest</tspan></text>
 <rect x="282" y="86.3" width="236" height="172.4" rx="18" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
 <circle cx="400" cy="122.3" r="22" fill="#475569"/>
 <circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
