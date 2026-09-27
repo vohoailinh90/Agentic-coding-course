@@ -180,7 +180,23 @@ mutations:
   find: "            if match:\n                check.error(\"lesson_by_position\", line=number, text=match.group(0))\n"
   replace: "            if False:\n                check.error(\"lesson_by_position\", line=number, text=match.group(0))\n"
   test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
+- label: bare Vietnamese positional lesson forms go unnoticed
+  find: '        r"|\bbài(?: học)?\s+(?:tiếp|kế tiếp|kế(?!\s*toán)|tiếp theo|vừa qua)\b",'
+  replace: '        r"",'
+  test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
+- label: English positional lesson forms require a determiner
+  find: 'r"|\b(?:(?:the|this|that)\s+)?(?:previous|next|last|following)\s+(?:lesson|module)\b",'
+  replace: 'r"|\b(?:the|this|that)\s+(?:previous|next|last|following)\s+(?:lesson|module)\b",'
+  test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
+- label: Japanese previous and next occurrence forms go unnoticed
+  find: 'r"|(?:前|次)の(?:レッスン|モジュール)|(?:前回|次回)の(?:レッスン|モジュール)"'
+  replace: 'r"|(?:前|次)の(?:レッスン|モジュール)"'
+  test: tests.test_course_validate.ValidateTests.test_a_lesson_pointed_at_by_number_or_position_is_an_error
 - label: a positional reference is looked for in code blocks too
   find: "        for number, line in block.prose:\n            match = pattern.search(line)\n"
   replace: "        for number, line in enumerate(block.body_lines):\n            match = pattern.search(line)\n"
+  test: tests.test_course_validate.ValidateTests.test_later_lessons_steps_and_code_blocks_point_at_no_lesson
+- label: an accounting lesson ("bài kế toán") is taken for a positional reference
+  find: '(?:tiếp|kế tiếp|kế(?!\s*toán)|tiếp theo|vừa qua)'
+  replace: '(?:tiếp|kế tiếp|kế|tiếp theo|vừa qua)'
   test: tests.test_course_validate.ValidateTests.test_later_lessons_steps_and_code_blocks_point_at_no_lesson

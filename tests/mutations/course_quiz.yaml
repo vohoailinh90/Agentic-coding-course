@@ -8,9 +8,17 @@ target: src/core/quiz.py
 note: Reads a lesson's quiz, whose answer key every translation must share. Each entry loosens one rule of a
   well-formed quiz and names the test that must notice.
 mutations:
-- label: a question may have other options than A, B and C
-  find: "            self.options == LETTERS * QUESTIONS\n"
+- label: a quiz may omit or misnumber all question headings
+  find: "            [number for number, _ in self.questions] == list(range(1, QUESTIONS + 1))\n"
   replace: "            True\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_needs_three_numbered_questions_with_their_own_options
+- label: all nine options may sit under one question
+  find: "            and all(options == LETTERS for _, options in self.questions)\n"
+  replace: "            and self.options == LETTERS * QUESTIONS\n"
+  test: tests.test_course_validate.ValidateTests.test_a_quiz_needs_three_numbered_questions_with_their_own_options
+- label: a question may have other options than A, B and C
+  find: "            and all(options == LETTERS for _, options in self.questions)\n"
+  replace: "            and True\n"
   test: tests.test_course_validate.ValidateTests.test_a_quiz_missing_an_option_or_an_answer_is_an_error
 - label: an answer may be missing from the key
   find: "            and [number for number, _ in self.answers] == list(range(1, QUESTIONS + 1))\n"

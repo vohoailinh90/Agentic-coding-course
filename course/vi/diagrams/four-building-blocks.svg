@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 511" width="800" height="511" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
-<title id="title">Bốn viên gạch của mọi chương trình</title>
+<title id="title">Bốn viên gạch thường gặp</title>
 <desc id="desc">Biến + Hàm + Điều kiện + Vòng lặp = Chương trình</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
@@ -12,7 +12,7 @@
 <rect x="1" y="1" width="798" height="509" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="481" r="110" fill="#2563EB" fill-opacity="0.05"/>
-<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Bốn viên gạch của mọi chương trình</tspan></text>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Bốn viên gạch thường gặp</tspan></text>
 <rect x="28" y="86.3" width="153" height="171.3" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
 <circle cx="104.5" cy="130.3" r="28" fill="#2563EB"/>
 <circle cx="104.5" cy="130.3" r="25" fill="#FFFFFF" fill-opacity="0.2"/>

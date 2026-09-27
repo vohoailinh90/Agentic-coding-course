@@ -240,9 +240,9 @@ modules:
         lessons:
           - id: programming-building-blocks
             title:
-              vi: "Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình"
-              en: "Variables, Functions, Conditions, Loops: The Four Building Blocks"
-              ja: 変数・関数・条件分岐・ループ：プログラムの4つの部品
+              vi: "Biến, hàm, điều kiện, vòng lặp: 4 viên gạch thường gặp"
+              en: "Variables, Functions, Conditions, Loops: Four Common Building Blocks"
+              ja: 変数・関数・条件分岐・ループ：よく使う4つの部品
             type: concept
             minutes: 12
             terms: [program, code]

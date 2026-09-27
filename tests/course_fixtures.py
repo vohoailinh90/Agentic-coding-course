@@ -115,7 +115,7 @@ def quiz_body(key: str = QUIZ_KEY, letters: str = "ABC") -> str:
     """A quiz section: one question per answer in `key`, each with the options in `letters`."""
     lines: list[str] = []
     for number, _ in enumerate(key, 1):
-        lines += [f"**Q{number}.** Question {number}?", ""]
+        lines += [f"**Question {number}.** Question {number}?", ""]
         lines += [f"- {letter}) Option {letter}" for letter in letters] + [""]
     lines += ["<details>", "<summary>Answers</summary>", ""]
     lines += [f"{number}. **{answer}** — why." for number, answer in enumerate(key, 1)]

@@ -1,9 +1,9 @@
-# Used in: programming-building-blocks (concept). The four blocks every program is built from, and where Excel already has them.
+# Used in: programming-building-blocks (concept). Four common blocks that most programs combine, with Excel analogies.
 template: equation
 title:
-  vi: Bốn viên gạch của mọi chương trình
-  en: The Four Building Blocks of Every Program
-  ja: どんなプログラムもできている4つの部品
+  vi: Bốn viên gạch thường gặp
+  en: Four Common Building Blocks
+  ja: プログラムでよく使う4つの部品
 terms:
   - icon: "📦"
     color: blue

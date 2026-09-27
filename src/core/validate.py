@@ -71,17 +71,18 @@ QUIZ = "quiz"
 POSITIONAL = {
     "vi": re.compile(
         r"\b(?:bài(?: học)?|module|mô-đun)\s+(?:số\s+)?\d+\b"
-        r"|\b(?:ở|trong|như|từ|theo|của|sang)\s+bài(?: học)?\s+(?:trước|sau|tới|kế tiếp|tiếp theo|vừa rồi)\b",
+        r"|\b(?:ở|trong|như|từ|theo|của|sang)\s+bài(?: học)?\s+(?:trước|sau|tới|kế tiếp|kế(?!\s*toán)|tiếp|tiếp theo|vừa rồi|vừa qua)\b"
+        r"|\bbài(?: học)?\s+(?:tiếp|kế tiếp|kế(?!\s*toán)|tiếp theo|vừa qua)\b",
         re.IGNORECASE,
     ),
     "en": re.compile(
         r"\b(?:lesson|module|chapter)\s+\d+\b"
-        r"|\b(?:the|this|that)\s+(?:previous|next|last|following)\s+(?:lesson|module)\b",
+        r"|\b(?:(?:the|this|that)\s+)?(?:previous|next|last|following)\s+(?:lesson|module)\b",
         re.IGNORECASE,
     ),
     "ja": re.compile(
         r"(?:レッスン|モジュール)\s*[0-9０-９]+|第\s*[0-9０-９]+\s*(?:章|課|レッスン|モジュール)"
-        r"|(?:前|次)の(?:レッスン|モジュール)"
+        r"|(?:前|次)の(?:レッスン|モジュール)|(?:前回|次回)の(?:レッスン|モジュール)"
     ),
 }
 

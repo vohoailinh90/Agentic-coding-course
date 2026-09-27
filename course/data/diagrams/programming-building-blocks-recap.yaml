@@ -1,9 +1,9 @@
 # Recap of programming-building-blocks: the whole lesson in one picture.
 template: summary
 title:
-  vi: "Tóm tắt: 4 viên gạch của mọi chương trình"
+  vi: "Tóm tắt: 4 viên gạch thường gặp"
   en: "Recap: The Four Building Blocks"
-  ja: まとめ：プログラムの4つの部品
+  ja: まとめ：よく使う4つの部品
 points:
   - icon: "📦"
     color: blue
