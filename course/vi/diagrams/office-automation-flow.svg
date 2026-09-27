@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 425" width="800" height="425" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Từ bảng bán hàng đến báo cáo, mỗi tháng</title>
+<desc id="desc">Dữ liệu tháng → Chương trình → Báo cáo → So với kết quả đúng. Tháng sau: đổi file dữ liệu, chạy lại, kiểm tra lại.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="1" width="798" height="423" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="395" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Từ bảng bán hàng đến báo cáo, mỗi tháng</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Một lần làm cẩn thận, những tháng sau chỉ cần chạy lại</tspan></text>
+<rect x="28" y="112.7" width="142.5" height="172.4" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="99.2" cy="148.7" r="22" fill="#2563EB"/>
+<circle cx="99.2" cy="148.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="99.2" y="157" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📥</text>
+<circle cx="46" cy="130.7" r="12" fill="#1E3A8A"/>
+<text x="46" y="135.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="99.2" y="197.2">Dữ liệu</tspan><tspan x="99.2" y="221.6">tháng</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="99.2" y="246.6">File CSV bán</tspan><tspan x="99.2" y="266.4">hàng</tspan></text>
+<line x1="176.5" y1="198.9" x2="222.5" y2="198.9" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="228.5" y="112.7" width="142.5" height="172.4" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="299.8" cy="148.7" r="22" fill="#7C3AED"/>
+<circle cx="299.8" cy="148.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="299.8" y="157" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💻</text>
+<circle cx="246.5" cy="130.7" r="12" fill="#4C1D95"/>
+<text x="246.5" y="135.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="299.8" y="197.2">Chương</tspan><tspan x="299.8" y="221.6">trình</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="299.8" y="246.6">Agent viết, bạn</tspan><tspan x="299.8" y="266.4">chạy</tspan></text>
+<line x1="377" y1="198.9" x2="423" y2="198.9" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="429" y="112.7" width="142.5" height="172.4" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="500.2" cy="148.7" r="22" fill="#D97706"/>
+<circle cx="500.2" cy="148.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="500.2" y="157" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📄</text>
+<circle cx="447" cy="130.7" r="12" fill="#78350F"/>
+<text x="447" y="135.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="500.2" y="197.2">Báo cáo</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="500.2" y="222.1">Tổng theo sản</tspan><tspan x="500.2" y="241.9">phẩm, chi</tspan><tspan x="500.2" y="261.7">nhánh</tspan></text>
+<line x1="577.5" y1="198.9" x2="623.5" y2="198.9" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="629.5" y="112.7" width="142.5" height="172.4" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="700.8" cy="148.7" r="22" fill="#059669"/>
+<circle cx="700.8" cy="148.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="700.8" y="157" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="647.5" cy="130.7" r="12" fill="#064E3B"/>
+<text x="647.5" y="135.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="700.8" y="197.2">So với kết</tspan><tspan x="700.8" y="221.6">quả đúng</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="700.8" y="246.6">Con số bạn đã</tspan><tspan x="700.8" y="266.4">biết trước</tspan></text>
+<rect x="178.8" y="297.2" width="41.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="199.5" y="314.7">đọc</tspan></text>
+<rect x="369.4" y="297.2" width="61.2" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="400" y="314.7">tạo ra</tspan></text>
+<rect x="561.5" y="297.2" width="77.9" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="600.5" y="314.7">kiểm tra</tspan></text>
+<rect x="28" y="347" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="378">💡 Tháng sau: đổi file dữ liệu, chạy lại, kiểm tra lại.</tspan></text>
+</svg>

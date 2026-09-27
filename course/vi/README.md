@@ -36,7 +36,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 16. [Git: nút Undo thần kỳ cho cả dự án](lessons/git-version-control.md) — 15 phút
 17. [Ảo giác AI: vì sao AI tự tin nói sai](lessons/hallucination.md) — 10 phút
 18. [Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI](lessons/context-window.md) — 10 phút
-19. Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) — 90 phút
+19. [Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo)](lessons/project-office-automation.md) — 90 phút
 
 ## 1. 🚀 Bắt đầu an toàn, làm được ngay buổi đầu
 
@@ -189,7 +189,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 6.1.1 | ⭐ Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) | 🚀 Dự án | 90 phút |
+| 6.1.1 | ⭐ [Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo)](lessons/project-office-automation.md) | 🚀 Dự án | 90 phút |
 | 6.1.2 | Nhìn lại dự án và gói bằng chứng | 🛠️ Thực hành | 15 phút |
 
 ### 6.2 Dự án nâng cao · _nâng cao_

@@ -1,0 +1,61 @@
+# Recap of project-office-automation: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: tự động hóa báo cáo tháng"
+  en: "Recap: Automating a Monthly Report"
+  ja: まとめ：月次レポートの自動化
+points:
+  - icon: "🧮"
+    color: blue
+    name:
+      vi: Biết trước kết quả đúng
+      en: Know the right answer first
+      ja: 先に正解を知る
+    caption:
+      vi: Tự tính ít nhất một con số
+      en: Work out at least one number yourself
+      ja: 少なくとも1つは自分で計算
+  - icon: "📋"
+    color: violet
+    name:
+      vi: Spec có số để so
+      en: A spec with numbers to match
+      ja: 比べる数字つきの指示書
+    caption:
+      vi: Tổng theo sản phẩm và chi nhánh
+      en: Totals by product and branch
+      ja: 商品別・支店別の合計
+  - icon: "🔁"
+    color: teal
+    name:
+      vi: Chạy lại được
+      en: Runs again
+      ja: 何度でも実行できる
+    caption:
+      vi: Tháng sau chỉ đổi file dữ liệu
+      en: Next month, just swap the data file
+      ja: 翌月はデータを替えるだけ
+  - icon: "🧪"
+    color: amber
+    name:
+      vi: Phép kiểm tra đã từng thất bại
+      en: A check you have seen fail
+      ja: 失敗を確かめたチェック
+    caption:
+      vi: So với kết quả đúng, và làm hỏng thử
+      en: Against the answers, broken on purpose
+      ja: 正解と比べ、わざと壊してみる
+  - icon: "🔒"
+    color: rose
+    name:
+      vi: Luyện bằng dữ liệu giả
+      en: Practise on made-up data
+      ja: 練習は架空のデータで
+    caption:
+      vi: Dữ liệu thật chỉ khi công ty cho phép
+      en: Real data only where your company allows
+      ja: 実データは会社が認めた場合だけ
+takeaway:
+  vi: Tự động hóa đáng tin khi bạn biết trước kết quả đúng.
+  en: Automation earns trust when you know the right answer in advance.
+  ja: 自動化を信頼できるのは、正解を先に知っているとき。

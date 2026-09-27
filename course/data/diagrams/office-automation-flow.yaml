@@ -1,0 +1,67 @@
+# Used in: project-office-automation (concept). A monthly report that runs again next month and is checked against known answers.
+template: flow
+title:
+  vi: Từ bảng bán hàng đến báo cáo, mỗi tháng
+  en: From Sales Sheet to Report, Every Month
+  ja: 売上表からレポートへ、毎月
+subtitle:
+  vi: Một lần làm cẩn thận, những tháng sau chỉ cần chạy lại
+  en: Built carefully once, then simply run again next month
+  ja: 一度ていねいに作れば、翌月からは実行するだけ
+steps:
+  - icon: "📥"
+    color: blue
+    name:
+      vi: Dữ liệu tháng
+      en: This month's data
+      ja: 今月のデータ
+    caption:
+      vi: File CSV bán hàng
+      en: The sales CSV
+      ja: 売上のCSV
+    arrow:
+      vi: đọc
+      en: read
+      ja: 読む
+  - icon: "💻"
+    color: violet
+    name:
+      vi: Chương trình
+      en: The program
+      ja: プログラム
+    caption:
+      vi: Agent viết, bạn chạy
+      en: The agent writes it, you run it
+      ja: 書くのはエージェント、動かすのはあなた
+    arrow:
+      vi: tạo ra
+      en: produces
+      ja: 作る
+  - icon: "📄"
+    color: amber
+    name:
+      vi: Báo cáo
+      en: The report
+      ja: レポート
+    caption:
+      vi: Tổng theo sản phẩm, chi nhánh
+      en: Totals by product and branch
+      ja: 商品別・支店別の合計
+    arrow:
+      vi: kiểm tra
+      en: check
+      ja: 確かめる
+  - icon: "✅"
+    color: green
+    name:
+      vi: So với kết quả đúng
+      en: Compare with known answers
+      ja: 正解と比べる
+    caption:
+      vi: Con số bạn đã biết trước
+      en: Numbers you knew in advance
+      ja: 先にわかっている数字
+takeaway:
+  vi: "Tháng sau: đổi file dữ liệu, chạy lại, kiểm tra lại."
+  en: "Next month: swap the data file, run it again, check again."
+  ja: 翌月は、データを入れ替えて、実行し、また確かめる。

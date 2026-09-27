@@ -36,7 +36,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 16. [Git: A Magic Undo Button for Your Whole Project](lessons/git-version-control.md) — 15 min
 17. [Hallucination: Why AI Is Confidently Wrong](lessons/hallucination.md) — 10 min
 18. [The Context Window: AI's Short-Term Memory](lessons/context-window.md) — 10 min
-19. Project: Automate an Office Task (Spreadsheet → Report) — 90 min
+19. [Project: Automate an Office Task (Spreadsheet → Report)](lessons/project-office-automation.md) — 90 min
 
 ## 1. 🚀 Start Safely and Get a First Win
 
@@ -189,7 +189,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 6.1.1 | ⭐ Project: Automate an Office Task (Spreadsheet → Report) | 🚀 Project | 90 min |
+| 6.1.1 | ⭐ [Project: Automate an Office Task (Spreadsheet → Report)](lessons/project-office-automation.md) | 🚀 Project | 90 min |
 | 6.1.2 | Project Retrospective and Evidence Pack | 🛠️ Hands-on | 15 min |
 
 ### 6.2 Advanced Projects · _advanced_
