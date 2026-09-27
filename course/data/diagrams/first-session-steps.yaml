@@ -1,0 +1,69 @@
+# Used in: first-agent-session (concept). The five steps of a learner's first agent session.
+template: flow
+title:
+  vi: Năm bước của buổi đầu
+  en: Your First Session in Five Steps
+  ja: はじめての作業、5つのステップ
+subtitle:
+  vi: Một file, một yêu cầu, và bạn là người nghiệm thu
+  en: One file, one request, and you do the final check
+  ja: ファイル1つ、依頼1つ。最後の確認はあなた
+steps:
+  - icon: "📁"
+    color: teal
+    name:
+      vi: Mở đúng chỗ
+      en: Open the right place
+      ja: 正しい場所で開く
+    caption:
+      vi: Trên máy, thư mục ai-practice, chế độ hỏi trước
+      en: Local, the ai-practice folder, a mode that asks
+      ja: 自分のPC・ai-practice・確認するモード
+  - icon: "📋"
+    color: blue
+    name:
+      vi: Dán yêu cầu
+      en: Paste the request
+      ja: 依頼を貼る
+    caption:
+      vi: Việc cần làm và tiêu chí hoàn thành
+      en: The task and when it is done
+      ja: やることと完了条件
+  - icon: "👀"
+    color: violet
+    name:
+      vi: Theo dõi và duyệt
+      en: Watch and approve
+      ja: 見て、承認する
+    caption:
+      vi: Đoán trước, đọc từng thay đổi
+      en: Predict, read every change
+      ja: 予想して、変更を一つずつ読む
+  - icon: "✅"
+    color: green
+    name:
+      vi: Tự nghiệm thu
+      en: Check it yourself
+      ja: 自分で確かめる
+    caption:
+      vi: Mở, bấm thử, so với tiêu chí
+      en: Open it, click, compare with the criteria
+      ja: 開いて、押して、完了条件と比べる
+    arrow:
+      vi: đạt hết tiêu chí
+      en: every criterion met
+      ja: すべて満たしたら
+  - icon: "📝"
+    color: amber
+    name:
+      vi: Ghi bằng chứng
+      en: Write the evidence
+      ja: 証拠を書く
+    caption:
+      vi: Cho xem · đã kiểm tra · không dùng khi
+      en: I can show · I checked · not when
+      ja: 見せられる・確かめた・使わない場面
+takeaway:
+  vi: Chưa đạt? Nói rõ bạn thấy gì và mong đợi gì, rồi kiểm tra lại.
+  en: Not there yet? Say what you see and what you expected, then check again.
+  ja: うまくいかなければ、見えたことと期待したことを伝えて再確認。

@@ -1,0 +1,51 @@
+# Recap of first-agent-session: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: buổi đầu với agent"
+  en: "Recap: Your First Agent Session"
+  ja: まとめ：はじめてのエージェント体験
+points:
+  - icon: "📋"
+    color: blue
+    name:
+      vi: Yêu cầu có tiêu chí
+      en: A request with criteria
+      ja: 完了条件つきの依頼
+    caption:
+      vi: Việc cần làm và thế nào là xong
+      en: The task and what done means
+      ja: やることと「完了」の意味
+  - icon: "🔐"
+    color: teal
+    name:
+      vi: Chế độ hỏi trước
+      en: A mode that asks first
+      ja: 先に確認するモード
+    caption:
+      vi: Đọc từng thay đổi rồi mới chấp nhận
+      en: Read each change before you accept it
+      ja: 変更を読んでから承認する
+  - icon: "🗣️"
+    color: violet
+    name:
+      vi: Nói rõ chỗ sai
+      en: Say exactly what is wrong
+      ja: 違いをはっきり伝える
+    caption:
+      vi: Mình làm gì, thấy gì, mong đợi gì
+      en: What you did, saw and expected
+      ja: したこと・見えたこと・期待したこと
+  - icon: "✅"
+    color: green
+    name:
+      vi: Tự nghiệm thu, ghi bằng chứng
+      en: Check it, then write the evidence
+      ja: 自分で確かめ、証拠を書く
+    caption:
+      vi: Ba dòng cho sản phẩm đầu tiên
+      en: Three lines for your first product
+      ja: はじめての成果物に3行
+takeaway:
+  vi: Thẻ "Việc của tôi trong tuần" sẽ còn đi cùng bạn ở các bài sau.
+  en: Your "My Week" card will come with you into later lessons.
+  ja: 「今週のやること」カードは、この先の授業でも使います。
