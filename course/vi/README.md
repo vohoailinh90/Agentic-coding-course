@@ -24,7 +24,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 4. [Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty](lessons/choose-your-learning-setup.md) — 10 phút
 5. [Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm](lessons/data-safety-and-permissions.md) — 10 phút
 6. [Buổi đầu với agent: làm một trang "Việc của tôi trong tuần"](lessons/first-agent-session.md) — 25 phút
-7. Tư duy mới: bạn là trưởng nhóm, không phải người gõ code — 8 phút
+7. [Tư duy mới: bạn là trưởng nhóm, không phải người gõ code](lessons/lead-not-typist.md) — 8 phút
 8. Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành — 12 phút
 9. Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng — 12 phút
 10. File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính — 10 phút
@@ -72,7 +72,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 2.1.1 | ⭐ Tư duy mới: bạn là trưởng nhóm, không phải người gõ code | 📖 Khái niệm | 8 phút |
+| 2.1.1 | ⭐ [Tư duy mới: bạn là trưởng nhóm, không phải người gõ code](lessons/lead-not-typist.md) | 📖 Khái niệm | 8 phút |
 | 2.1.2 | ⭐ Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành | 🛠️ Thực hành | 12 phút |
 | 2.1.3 | ⭐ Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng | 🛠️ Thực hành | 12 phút |
 

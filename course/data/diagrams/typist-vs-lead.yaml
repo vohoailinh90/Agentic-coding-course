@@ -1,0 +1,65 @@
+# Used in: lead-not-typist (concept). What changes when you stop typing and start leading.
+template: compare
+title:
+  vi: Người gõ code và trưởng nhóm
+  en: Typist and Lead
+  ja: タイピストとリーダー
+versus: true
+rows:
+  - vi: Thời gian dành cho
+    en: Time goes to
+    ja: 時間を使うのは
+  - vi: Câu hỏi của bạn
+    en: Your question
+    ja: あなたの問い
+  - vi: Khi có lỗi
+    en: When it breaks
+    ja: バグが出たら
+  - vi: Bạn chịu trách nhiệm về
+    en: You answer for
+    ja: 責任を持つのは
+emphasis_row: 4
+columns:
+  - icon: "⌨️"
+    color: slate
+    name:
+      vi: Người gõ code
+      en: The typist
+      ja: タイピスト
+    values:
+      - vi: Gõ từng dòng
+        en: Typing every line
+        ja: 1行ずつ入力する
+      - vi: Viết lệnh này thế nào?
+        en: How do I write this?
+        ja: どう書けばいい？
+      - vi: Tự dò từng dòng
+        en: Hunt line by line
+        ja: 1行ずつ探す
+      - vi: Code chạy được
+        en: Code that runs
+        ja: 動くコード
+  - icon: "🧭"
+    color: green
+    highlight: true
+    name:
+      vi: Trưởng nhóm
+      en: The lead
+      ja: リーダー
+    values:
+      - vi: Làm rõ mục tiêu, kiểm tra
+        en: Clear goals and checking
+        ja: 目標を明確にし、確かめる
+      - vi: Thế nào là xong?
+        en: What does done mean?
+        ja: 何をもって完了？
+      - vi: Mô tả lỗi, giao sửa, kiểm lại
+        en: Describe, delegate, re-check
+        ja: 説明し、任せ、確かめ直す
+      - vi: Kết quả đúng và an toàn
+        en: A result that is right and safe
+        ja: 正しく安全な結果
+takeaway:
+  vi: Agent gõ thay bạn; quyết định và nghiệm thu vẫn là của bạn.
+  en: The agent types for you; deciding and checking stay with you.
+  ja: 入力はエージェントに。決めることと確かめることはあなたに。

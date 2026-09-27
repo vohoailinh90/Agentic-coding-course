@@ -1,0 +1,61 @@
+# Recap of lead-not-typist: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: năm việc của trưởng nhóm"
+  en: "Recap: Five Jobs of a Lead"
+  ja: まとめ：リーダーの5つの仕事
+points:
+  - icon: "🎯"
+    color: blue
+    name:
+      vi: Mục tiêu và lý do
+      en: The goal and why
+      ja: 目標と理由
+    caption:
+      vi: Làm gì, cho ai, để làm gì
+      en: What, for whom, what for
+      ja: 何を、誰のために、何のために
+  - icon: "✅"
+    color: green
+    name:
+      vi: Thế nào là xong
+      en: What done means
+      ja: 完了の条件
+    caption:
+      vi: Tiêu chí kiểm tra được
+      en: Criteria you can check
+      ja: 確かめられる条件
+  - icon: "🚧"
+    color: amber
+    name:
+      vi: Ranh giới
+      en: Boundaries
+      ja: 境界線
+    caption:
+      vi: An toàn, hỏi trước, không bao giờ
+      en: Safe, ask first, never
+      ja: 安全・要確認・禁止
+  - icon: "🔍"
+    color: violet
+    name:
+      vi: Kiểm tra ở điểm then chốt
+      en: Check at key moments
+      ja: 要所で確かめる
+    caption:
+      vi: Mục tiêu, thay đổi, kết quả
+      en: The goal, the changes, the result
+      ja: 目標・変更・結果
+  - icon: "🙋"
+    color: rose
+    name:
+      vi: Chịu trách nhiệm kết quả
+      en: Own the result
+      ja: 結果に責任を持つ
+    caption:
+      vi: Agent làm, bạn ký tên
+      en: The agent works; you sign off
+      ja: 作業はエージェント、承認はあなた
+takeaway:
+  vi: Càng ít gõ, bạn càng cần nghĩ rõ và kiểm tra kỹ.
+  en: The less you type, the more clearly you must think and check.
+  ja: 入力が減るほど、はっきり考え、しっかり確かめる。
