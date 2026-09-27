@@ -27,7 +27,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 7. [Tư duy mới: bạn là trưởng nhóm, không phải người gõ code](lessons/lead-not-typist.md) — 8 phút
 8. [Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành](lessons/writing-good-specs.md) — 12 phút
 9. [Quy trình 4 bước: Tìm hiểu → Lập kế hoạch → Thực hiện → Kiểm chứng](lessons/explore-plan-build-verify.md) — 12 phút
-10. File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính — 10 phút
+10. [File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính](lessons/files-folders-paths.md) — 10 phút
 11. Đọc và review thay đổi của agent (diff) — 15 phút
 12. Từ "trông có vẻ đúng" đến phép kiểm tra — 12 phút
 13. Đọc thông báo lỗi và gỡ lỗi như một thám tử — 12 phút
@@ -80,7 +80,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 2.2.1 | ⭐ File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính | 🛠️ Thực hành | 10 phút |
+| 2.2.1 | ⭐ [File, thư mục và đường dẫn: tấm bản đồ bên trong máy tính](lessons/files-folders-paths.md) | 🛠️ Thực hành | 10 phút |
 | 2.2.2 | ⭐ Đọc và review thay đổi của agent (diff) | 🛠️ Thực hành | 15 phút |
 | 2.2.3 | ⭐ Từ "trông có vẻ đúng" đến phép kiểm tra | 🛠️ Thực hành | 12 phút |
 | 2.2.4 | ⭐ Đọc thông báo lỗi và gỡ lỗi như một thám tử | 🛠️ Thực hành | 12 phút |

@@ -1,0 +1,66 @@
+# Used in: files-folders-paths (concept). A path read from the root down to the file.
+template: flow
+direction: vertical
+title:
+  vi: Đọc một đường dẫn, từ gốc đến file
+  en: Reading a Path, from the Root to the File
+  ja: パスを読む：ルートからファイルまで
+subtitle:
+  vi: Mỗi dấu \ (Windows) hoặc / (Mac) là một bước vào sâu hơn
+  en: Each \ (Windows) or / (Mac) is one step deeper
+  ja: \（Windows）や /（Mac）ごとに一段深く入る
+steps:
+  - icon: "💽"
+    color: slate
+    name:
+      vi: Gốc (ổ đĩa)
+      en: The root (drive)
+      ja: ルート（ドライブ）
+    caption:
+      vi: 'C:\ trên Windows, / trên Mac'
+      en: 'C:\ on Windows, / on a Mac'
+      ja: 'Windows は C:\、Mac は /'
+  - icon: "👤"
+    color: blue
+    name:
+      vi: Thư mục của bạn
+      en: Your user folder
+      ja: ユーザーのフォルダ
+    caption:
+      vi: 'Users\Mai'
+      en: 'Users\Mai'
+      ja: 'Users\Mai'
+  - icon: "📂"
+    color: violet
+    name:
+      vi: Documents
+      en: Documents
+      ja: Documents（書類）
+    caption:
+      vi: Nơi để tài liệu
+      en: Where your documents live
+      ja: 書類を置く場所
+  - icon: "📁"
+    color: teal
+    name:
+      vi: ai-practice
+      en: ai-practice
+      ja: ai-practice
+    caption:
+      vi: Thư mục thực hành — ranh giới của bạn
+      en: The practice folder — your boundary
+      ja: 練習用フォルダ――あなたの境界線
+  - icon: "📄"
+    color: green
+    name:
+      vi: my-week.html
+      en: my-week.html
+      ja: my-week.html
+    caption:
+      vi: Tên file + đuôi (.html)
+      en: The file name + extension (.html)
+      ja: ファイル名＋拡張子（.html）
+takeaway:
+  vi: Đường dẫn là địa chỉ; đọc được nó, bạn biết file nằm trong hay ngoài ranh giới.
+  en: A path is an address; read it, and you know if a file is inside the boundary.
+  ja: パスは住所。読めれば、ファイルが境界の内か外かがわかる。

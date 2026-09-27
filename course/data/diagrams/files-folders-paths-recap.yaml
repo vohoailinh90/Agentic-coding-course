@@ -1,0 +1,61 @@
+# Recap of files-folders-paths: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: file, thư mục, đường dẫn"
+  en: "Recap: Files, Folders, Paths"
+  ja: まとめ：ファイル・フォルダ・パス
+points:
+  - icon: "📄"
+    color: green
+    name:
+      vi: File có tên và đuôi
+      en: A file has a name and an extension
+      ja: ファイルには名前と拡張子
+    caption:
+      vi: .html, .csv, .txt cho biết mở bằng gì
+      en: .html, .csv, .txt say what opens it
+      ja: .html・.csv・.txt で開くアプリが決まる
+  - icon: "📁"
+    color: teal
+    name:
+      vi: Thư mục lồng nhau
+      en: Folders nest
+      ja: フォルダは入れ子
+    caption:
+      vi: Như một cái cây
+      en: Like a tree
+      ja: 木のような形
+  - icon: "🧭"
+    color: blue
+    name:
+      vi: Đường dẫn là địa chỉ
+      en: A path is an address
+      ja: パスは住所
+    caption:
+      vi: Từ gốc đến file
+      en: From the root to the file
+      ja: ルートからファイルまで
+  - icon: "🔗"
+    color: violet
+    name:
+      vi: Đường dẫn tương đối
+      en: Relative paths
+      ja: 相対パス
+    caption:
+      vi: Tính từ nơi đang đứng; .. là lên một cấp
+      en: From where you are; .. goes up one level
+      ja: 今いる場所から。.. は一つ上
+  - icon: "🚧"
+    color: amber
+    name:
+      vi: Nhìn đường dẫn trước khi cho phép
+      en: Check the path before you allow
+      ja: 許可の前にパスを見る
+    caption:
+      vi: Ra ngoài ai-practice thì hỏi lại
+      en: Outside ai-practice? Ask why
+      ja: ai-practiceの外なら理由を聞く
+takeaway:
+  vi: Agent nói chuyện bằng đường dẫn — giờ bạn đọc được chúng.
+  en: Agents talk in paths — now you can read them.
+  ja: エージェントはパスで話す。これであなたも読める。
