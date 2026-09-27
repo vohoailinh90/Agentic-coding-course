@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 737" width="800" height="737" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Three Ways to Practise with an Agent</title>
+<desc id="desc">Personal computer — Install: One agent app; Where the files live: On your computer; Good when: You have your own computer; Watch out: Work only in ai-practice. Browser (cloud) — Install: Nothing to install; Where the files live: An online code repository; Good when: You cannot install software; Watch out: Needs a GitHub account. Work computer — Install: Approved tools only; Where the files live: As company rules say; Good when: Your company allows it; Watch out: Exercises use made-up data. Not sure it is allowed? Ask first — or learn on your own computer.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="735" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="707" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Three Ways to Practise with an Agent</tspan></text>
+<g class="pulse">
+<rect x="28" y="86.3" width="236" height="525.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#059669"/>
+<circle cx="146" cy="138.3" r="26" fill="#059669"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💻</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Personal</tspan><tspan x="146" y="219">computer</tspan></text>
+<rect x="95.7" y="73.7" width="100.6" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="90.7">Main route</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">Install</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">One agent app</tspan></text>
+<line x1="44" y1="314" x2="248" y2="314" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="341.5">Where the files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="366.8">On your computer</tspan></text>
+<line x1="44" y1="408.7" x2="248" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">Good when</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="44" y="463.5">You have your own</tspan><tspan x="44" y="488.6">computer</tspan></text>
+<line x1="44" y1="508.7" x2="248" y2="508.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="536.2">Watch out</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="561.5">Work only in</tspan><tspan x="44" y="583.9">ai-practice</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="525.1" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">☁️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">Browser (cloud)</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="269.2">Install</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="294.5">Nothing to install</tspan></text>
+<line x1="298" y1="314" x2="502" y2="314" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="341.5">Where the files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="366.8">An online code</tspan><tspan x="298" y="389.2">repository</tspan></text>
+<line x1="298" y1="408.7" x2="502" y2="408.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="436.2">Good when</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="463.5">You cannot install</tspan><tspan x="298" y="488.6">software</tspan></text>
+<line x1="298" y1="508.7" x2="502" y2="508.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="536.2">Watch out</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="561.5">Needs a GitHub</tspan><tspan x="298" y="583.9">account</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="525.1" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#D97706"/>
+<circle cx="654" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🏢</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Work computer</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="269.2">Install</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="294.5">Approved tools only</tspan></text>
+<line x1="552" y1="314" x2="756" y2="314" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="341.5">Where the files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="366.8">As company rules say</tspan></text>
+<line x1="552" y1="408.7" x2="756" y2="408.7" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="436.2">Good when</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="552" y="463.5">Your company</tspan><tspan x="552" y="488.6">allows it</tspan></text>
+<line x1="552" y1="508.7" x2="756" y2="508.7" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="536.2">Watch out</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="561.5">Exercises use made-up</tspan><tspan x="552" y="583.9">data</tspan></text>
+</g>
+<rect x="28" y="635.4" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="666.4">💡 Not sure it is allowed? Ask first — or learn on your own</tspan><tspan x="400" y="690.1">computer.</tspan></text>
+</svg>

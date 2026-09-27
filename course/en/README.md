@@ -20,9 +20,9 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 1. [From Chatbot to AI Agent: AI That Does the Work, Not Just Answers](lessons/chatbot-to-agent.md) — 8 min
 2. [Brain, Tools and the Loop: What an AI Agent Is Made Of](lessons/agent-parts-and-loop.md) — 8 min
-3. Watch an AI Agent Build and Check a Tiny Web Page — 10 min
-4. Choose Your Setup: Browser, Personal PC or Work PC — 10 min
-5. Before You Let an Agent Act: Safe, Ask First, Never — 10 min
+3. [Watch an AI Agent Build and Check a Tiny Web Page](lessons/watch-an-agent-build.md) — 10 min
+4. [Choose Your Setup: Browser, Personal PC or Work PC](lessons/choose-your-learning-setup.md) — 10 min
+5. [Before You Let an Agent Act: Safe, Ask First, Never](lessons/data-safety-and-permissions.md) — 10 min
 6. Your First Agent Session: Build a One-File Task Card — 25 min
 7. New Mindset: You Are the Lead, Not the Typist — 8 min
 8. Writing Good Specs: The Task and Its Definition of Done — 12 min
@@ -48,14 +48,14 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 |---|---|---|---|
 | 1.1.1 | ⭐ [From Chatbot to AI Agent: AI That Does the Work, Not Just Answers](lessons/chatbot-to-agent.md) | 📖 Concept | 8 min |
 | 1.1.2 | ⭐ [Brain, Tools and the Loop: What an AI Agent Is Made Of](lessons/agent-parts-and-loop.md) | 📖 Concept | 8 min |
-| 1.1.3 | ⭐ Watch an AI Agent Build and Check a Tiny Web Page | 🎬 Demo | 10 min |
+| 1.1.3 | ⭐ [Watch an AI Agent Build and Check a Tiny Web Page](lessons/watch-an-agent-build.md) | 🎬 Demo | 10 min |
 
 ### 1.2 Choose a Safe Route
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 1.2.1 | ⭐ Choose Your Setup: Browser, Personal PC or Work PC | 🛠️ Hands-on | 10 min |
-| 1.2.2 | ⭐ Before You Let an Agent Act: Safe, Ask First, Never | 📖 Concept | 10 min |
+| 1.2.1 | ⭐ [Choose Your Setup: Browser, Personal PC or Work PC](lessons/choose-your-learning-setup.md) | 🛠️ Hands-on | 10 min |
+| 1.2.2 | ⭐ [Before You Let an Agent Act: Safe, Ask First, Never](lessons/data-safety-and-permissions.md) | 📖 Concept | 10 min |
 
 ### 1.3 Your First Build
 

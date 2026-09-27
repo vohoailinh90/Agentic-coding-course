@@ -1,0 +1,61 @@
+# Recap of choose-your-learning-setup: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: chọn cách thực hành"
+  en: "Recap: Choosing Your Setup"
+  ja: まとめ：練習環境を選ぶ
+points:
+  - icon: "💻"
+    color: green
+    name:
+      vi: Máy cá nhân là đường chính
+      en: Your own computer first
+      ja: 基本は個人のPC
+    caption:
+      vi: Ứng dụng agent + thư mục ai-practice
+      en: An agent app and the ai-practice folder
+      ja: エージェントのアプリとai-practice
+  - icon: "☁️"
+    color: blue
+    name:
+      vi: "Trình duyệt: không cần cài"
+      en: "Browser: nothing to install"
+      ja: ブラウザ：インストール不要
+    caption:
+      vi: File nằm trong kho code trên mạng
+      en: Files live in an online repository
+      ja: ファイルはネット上のリポジトリに
+  - icon: "🏢"
+    color: amber
+    name:
+      vi: "Máy công ty: hỏi trước"
+      en: "Work computer: ask first"
+      ja: 会社のPC：まず確認
+    caption:
+      vi: Không cài lén, không lách quy định
+      en: No secret installs, no workarounds
+      ja: 勝手に入れない、ルールを回避しない
+  - icon: "📁"
+    color: teal
+    name:
+      vi: Một thư mục ai-practice
+      en: One ai-practice folder
+      ja: ai-practiceフォルダを1つ
+    caption:
+      vi: Cho mọi bài tập, chỉ dữ liệu giả
+      en: For every exercise, made-up data only
+      ja: すべての練習を架空のデータで
+  - icon: "👀"
+    color: violet
+    name:
+      vi: Chưa sẵn sàng? Xem trước
+      en: Not ready? Watch first
+      ja: 準備がまだなら、まず見る
+    caption:
+      vi: Đọc nhật ký phiên làm việc và đoán
+      en: Read session logs and predict
+      ja: 作業ログを読んで予想する
+takeaway:
+  vi: Chọn đường hợp với máy và quy định của bạn — rồi bắt đầu.
+  en: Pick the route that fits your computer and your rules — then start.
+  ja: 自分のPCとルールに合う方法を選んで、始めよう。

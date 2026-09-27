@@ -1,0 +1,79 @@
+# watch-an-agent-build: one agent session, step by step.
+template: flow
+title:
+  vi: Một phiên làm việc của agent
+  en: One Agent Session, Step by Step
+  ja: エージェントの作業の流れ
+subtitle:
+  vi: Trước mỗi bước, hãy đoán xem agent sẽ làm gì
+  en: Before each step, guess what the agent will do
+  ja: 各ステップの前に、エージェントが何をするか予想してみよう
+steps:
+  - icon: "🎯"
+    color: blue
+    name:
+      vi: Đọc mục tiêu
+      en: Read the goal
+      ja: 目標を読む
+    caption:
+      vi: Hiểu việc cần làm và tiêu chí hoàn thành
+      en: Understand the task and when it is done
+      ja: やることと完了条件を理解する
+  - icon: "📂"
+    color: violet
+    name:
+      vi: Xem thư mục
+      en: Look at the folder
+      ja: フォルダを見る
+    caption:
+      vi: Có sẵn file nào trong ai-practice?
+      en: What is already in ai-practice?
+      ja: ai-practice に何があるか
+  - icon: "✍️"
+    color: amber
+    name:
+      vi: Tạo file
+      en: Create the file
+      ja: ファイルを作る
+    caption:
+      vi: Viết code cho trang web
+      en: Write the page's code
+      ja: ページのコードを書く
+  - icon: "▶️"
+    color: teal
+    name:
+      vi: Chạy và kiểm tra
+      en: Run it and check
+      ja: 動かして確かめる
+    caption:
+      vi: So với từng tiêu chí
+      en: Against each criterion
+      ja: 完了条件と一つずつ照らし合わせる
+    arrow:
+      vi: có lỗi thì sửa
+      en: a problem? fix it
+      ja: 問題があれば直す
+  - icon: "🔧"
+    color: orange
+    name:
+      vi: Sửa
+      en: Fix
+      ja: 直す
+    caption:
+      vi: Rồi chạy lại
+      en: Then run it again
+      ja: そしてもう一度動かす
+  - icon: "📝"
+    color: green
+    name:
+      vi: Báo cáo
+      en: Report
+      ja: 報告する
+    caption:
+      vi: Đã làm gì, đã kiểm tra gì
+      en: What it did and what it checked
+      ja: 何をして、何を確かめたか
+takeaway:
+  vi: Agent nói "xong" chưa phải là xong — bạn mở ra và tự kiểm tra.
+  en: An agent saying "done" is not the end — you open it and check.
+  ja: 「完了」の報告で終わりにせず、自分で開いて確かめます。

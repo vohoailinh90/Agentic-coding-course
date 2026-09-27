@@ -1,0 +1,51 @@
+# Recap of data-safety-and-permissions: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: an toàn trước khi giao việc"
+  en: "Recap: Safety Before You Delegate"
+  ja: まとめ：任せる前の安全確認
+points:
+  - icon: "✅"
+    color: green
+    name:
+      vi: Việc an toàn
+      en: Safe
+      ja: 安全
+    caption:
+      vi: Trong ai-practice, với dữ liệu giả
+      en: Inside ai-practice, with made-up data
+      ja: ai-practiceの中で、架空のデータで
+  - icon: "✋"
+    color: amber
+    name:
+      vi: Việc phải hỏi
+      en: Ask first
+      ja: 要確認
+    caption:
+      vi: Cài, xóa, gửi, ra ngoài thư mục
+      en: Install, delete, send, leave the folder
+      ja: インストール・削除・送信・フォルダの外
+  - icon: "⛔"
+    color: rose
+    name:
+      vi: Không bao giờ
+      en: Never
+      ja: 禁止
+    caption:
+      vi: Dữ liệu thật, mật khẩu, lách quy định
+      en: Real data, passwords, workarounds
+      ja: 実データ、パスワード、ルール回避
+  - icon: "🔐"
+    color: blue
+    name:
+      vi: Đọc rồi mới cho phép
+      en: Read before you allow
+      ja: 読んでから許可する
+    caption:
+      vi: Bắt đầu ở chế độ agent hỏi trước
+      en: Start in the mode where the agent asks
+      ja: エージェントが確認するモードから始める
+takeaway:
+  vi: Thư mục là ranh giới bạn vẽ; quyền hạn và sự chú ý của bạn mới giữ được nó.
+  en: The folder is a line you draw; permissions and your attention are what hold it.
+  ja: フォルダはあなたが引く境界線。それを守るのは権限とあなたの確認です。

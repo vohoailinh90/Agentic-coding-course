@@ -1,0 +1,87 @@
+# Used in: choose-your-learning-setup (concept). Template reference: docs/content-guide.md#infographics
+template: compare
+title:
+  vi: Ba cách thực hành với agent
+  en: Three Ways to Practise with an Agent
+  ja: エージェントで練習する3つの方法
+rows:
+  - vi: Cài đặt
+    en: Install
+    ja: インストール
+  - vi: File nằm ở đâu?
+    en: Where the files live
+    ja: ファイルの置き場所
+  - vi: Hợp khi
+    en: Good when
+    ja: 向いているとき
+  - vi: Lưu ý
+    en: Watch out
+    ja: 注意
+emphasis_row: 3
+columns:
+  - icon: "💻"
+    color: green
+    highlight: true
+    badge:
+      vi: Đường chính
+      en: Main route
+      ja: 基本ルート
+    name:
+      vi: Máy cá nhân
+      en: Personal computer
+      ja: 個人のPC
+    values:
+      - vi: Một ứng dụng agent
+        en: One agent app
+        ja: エージェントのアプリ
+      - vi: Trên máy của bạn
+        en: On your computer
+        ja: 自分のPCの中
+      - vi: Bạn có máy riêng
+        en: You have your own computer
+        ja: 自分のPCがある
+      - vi: Chỉ làm trong ai-practice
+        en: Work only in ai-practice
+        ja: ai-practiceの中だけで作業
+  - icon: "☁️"
+    color: blue
+    name:
+      vi: Trình duyệt (đám mây)
+      en: Browser (cloud)
+      ja: ブラウザ（クラウド）
+    values:
+      - vi: Không cần cài
+        en: Nothing to install
+        ja: 不要
+      - vi: Kho code trên mạng
+        en: An online code repository
+        ja: ネット上のリポジトリ
+      - vi: Không cài được phần mềm
+        en: You cannot install software
+        ja: ソフトを入れられない
+      - vi: Cần tài khoản GitHub
+        en: Needs a GitHub account
+        ja: GitHubアカウントが必要
+  - icon: "🏢"
+    color: amber
+    name:
+      vi: Máy công ty
+      en: Work computer
+      ja: 会社のPC
+    values:
+      - vi: Chỉ công cụ được duyệt
+        en: Approved tools only
+        ja: 許可されたツールだけ
+      - vi: Theo quy định công ty
+        en: As company rules say
+        ja: 会社のルールどおり
+      - vi: Công ty đã cho phép
+        en: Your company allows it
+        ja: 会社が許可している
+      - vi: Bài tập chỉ dùng dữ liệu giả
+        en: Exercises use made-up data
+        ja: 練習は架空のデータで
+takeaway:
+  vi: Chưa chắc được phép? Hỏi trước — hoặc học trên máy cá nhân.
+  en: Not sure it is allowed? Ask first — or learn on your own computer.
+  ja: 許可があるか分からないなら、まず確認。または個人のPCで学ぶ。

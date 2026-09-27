@@ -1,0 +1,51 @@
+# Recap of watch-an-agent-build: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: xem agent làm việc"
+  en: "Recap: Watching an Agent Work"
+  ja: まとめ：エージェントの仕事を見る
+points:
+  - icon: "🔮"
+    color: violet
+    name:
+      vi: Đoán trước từng bước
+      en: Predict each step
+      ja: 各ステップを予想する
+    caption:
+      vi: Đoán sai là dấu hiệu cần hỏi lại
+      en: A wrong guess is a sign to ask
+      ja: 予想が外れたら、確かめるサイン
+  - icon: "🔁"
+    color: blue
+    name:
+      vi: Làm – chạy – xem – sửa
+      en: Make, run, look, fix
+      ja: 作る・動かす・見る・直す
+    caption:
+      vi: Vòng lặp agent trong thực tế
+      en: The agent loop in real life
+      ja: 実際のエージェントループ
+  - icon: "📋"
+    color: amber
+    name:
+      vi: Tiêu chí rõ ràng
+      en: Clear criteria
+      ja: はっきりした完了条件
+    caption:
+      vi: Agent kiểm tra được vì bạn đã nói "thế nào là xong"
+      en: The agent can check because you said what done means
+      ja: 「何をもって完了か」を伝えたから確かめられる
+  - icon: "✅"
+    color: teal
+    name:
+      vi: Bạn nghiệm thu
+      en: You approve it
+      ja: 検収するのはあなた
+    caption:
+      vi: Tự mở, tự bấm, tự so với tiêu chí
+      en: Open it, click it, compare with the criteria
+      ja: 自分で開き、押して、完了条件と比べる
+takeaway:
+  vi: Xem agent làm việc là cách học giám sát nhanh nhất.
+  en: Watching an agent work is the fastest way to learn to supervise one.
+  ja: エージェントの仕事を見ることが、監督を学ぶいちばんの近道です。

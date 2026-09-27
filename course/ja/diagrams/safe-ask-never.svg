@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 589" width="800" height="589" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">3種類の作業：安全・要確認・禁止</title>
+<desc id="desc">安全 — 例: ai-practice内のファイルを作る・直す; ほかの例: 架空のデータ、試しに動かす; エージェントは: 進めてから報告. 要確認 — 例: インストール、ファイル削除; ほかの例: 外部への送信、フォルダの外; エージェントは: 止まって確認する. 禁止 — 例: 会社・顧客の実データ; ほかの例: パスワード、APIキー、ルール回避; エージェントは: 頼まれてもやらない. どれか迷ったら「要確認」として扱う。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="587" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="559" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">3種類の作業：安全・要確認・禁止</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="400" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
+<circle cx="146" cy="138.3" r="26" fill="#059669"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">安全</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">ai-practice内のファイル</tspan><tspan x="44" y="289.3">を作る・直す</tspan></text>
+<line x1="44" y1="308.7" x2="248" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">ほかの例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="361.5">架空のデータ、試しに動か</tspan><tspan x="44" y="384">す</tspan></text>
+<line x1="44" y1="403.4" x2="248" y2="403.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="430.9">エージェントは</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="44" y="458.2">進めてから報告</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="400" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✋</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">要確認</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="266.8">インストール、ファイル削</tspan><tspan x="298" y="289.3">除</tspan></text>
+<line x1="298" y1="308.7" x2="502" y2="308.7" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="336.2">ほかの例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="361.5">外部への送信、フォルダの</tspan><tspan x="298" y="384">外</tspan></text>
+<line x1="298" y1="403.4" x2="502" y2="403.4" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="430.9">エージェントは</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="298" y="458.2">止まって確認する</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="400" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#E11D48"/>
+<circle cx="654" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⛔</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">禁止</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">会社・顧客の実データ</tspan></text>
+<line x1="552" y1="308.7" x2="756" y2="308.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="336.2">ほかの例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="361.5">パスワード、APIキー、</tspan><tspan x="552" y="384">ルール回避</tspan></text>
+<line x1="552" y1="403.4" x2="756" y2="403.4" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="430.9">エージェントは</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="552" y="458.2">頼まれてもやらない</tspan></text>
+</g>
+<rect x="28" y="510.3" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="541.3">💡 どれか迷ったら「要確認」として扱う。</tspan></text>
+</svg>

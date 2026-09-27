@@ -1,0 +1,71 @@
+# Used in: data-safety-and-permissions (concept). The three kinds of action every lesson reuses
+# (docs/content-guide.md, "Conventions every lesson shares").
+template: compare
+title:
+  vi: Ba loại việc khi giao cho agent
+  en: Three Kinds of Action
+  ja: 3種類の作業：安全・要確認・禁止
+rows:
+  - vi: Ví dụ
+    en: For example
+    ja: 例
+  - vi: Ví dụ khác
+    en: Also
+    ja: ほかの例
+  - vi: Agent nên
+    en: The agent should
+    ja: エージェントは
+emphasis_row: 3
+columns:
+  - icon: "✅"
+    color: green
+    name:
+      vi: An toàn
+      en: Safe
+      ja: 安全
+    values:
+      - vi: Tạo, sửa file trong ai-practice
+        en: Create and edit files in ai-practice
+        ja: ai-practice内のファイルを作る・直す
+      - vi: Dữ liệu giả, chạy thử trang
+        en: Made-up data, test runs
+        ja: 架空のデータ、試しに動かす
+      - vi: Cứ làm, rồi báo cáo
+        en: Go ahead, then report
+        ja: 進めてから報告
+  - icon: "✋"
+    color: amber
+    name:
+      vi: Hỏi trước
+      en: Ask first
+      ja: 要確認
+    values:
+      - vi: Cài đặt, xóa file
+        en: Installing, deleting files
+        ja: インストール、ファイル削除
+      - vi: Gửi ra ngoài, ra khỏi thư mục
+        en: Sending out, leaving the folder
+        ja: 外部への送信、フォルダの外
+      - vi: Dừng lại và hỏi bạn
+        en: Stop and ask you
+        ja: 止まって確認する
+  - icon: "⛔"
+    color: rose
+    name:
+      vi: Không bao giờ
+      en: Never
+      ja: 禁止
+    values:
+      - vi: Dữ liệu thật của công ty, khách hàng
+        en: Real company or customer data
+        ja: 会社・顧客の実データ
+      - vi: Mật khẩu, API key, lách quy định
+        en: Passwords, API keys, workarounds
+        ja: パスワード、APIキー、ルール回避
+      - vi: Không làm, dù được bảo
+        en: Refuse, even when told to
+        ja: 頼まれてもやらない
+takeaway:
+  vi: Chưa chắc việc thuộc loại nào? Xếp nó vào "hỏi trước".
+  en: Not sure which kind it is? Treat it as "ask first".
+  ja: どれか迷ったら「要確認」として扱う。

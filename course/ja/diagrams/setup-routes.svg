@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 691" width="800" height="691" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">エージェントで練習する3つの方法</title>
+<desc id="desc">個人のPC — インストール: エージェントのアプリ; ファイルの置き場所: 自分のPCの中; 向いているとき: 自分のPCがある; 注意: ai-practiceの中だけで作業. ブラウザ（クラウド） — インストール: 不要; ファイルの置き場所: ネット上のリポジトリ; 向いているとき: ソフトを入れられない; 注意: GitHubアカウントが必要. 会社のPC — インストール: 許可されたツールだけ; ファイルの置き場所: 会社のルールどおり; 向いているとき: 会社が許可している; 注意: 練習は架空のデータで. 許可があるか分からないなら、まず確認。または個人のPCで学ぶ。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="689" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="661" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">エージェントで練習する3つの方法</tspan></text>
+<g class="pulse">
+<rect x="28" y="86.3" width="236" height="502.6" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#059669"/>
+<circle cx="146" cy="138.3" r="26" fill="#059669"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💻</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">個人のPC</tspan></text>
+<rect x="99.9" y="73.7" width="92.2" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="90.7">基本ルート</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">インストール</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">エージェントのアプリ</tspan></text>
+<line x1="44" y1="314" x2="248" y2="314" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="341.5">ファイルの置き場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="366.8">自分のPCの中</tspan></text>
+<line x1="44" y1="386.2" x2="248" y2="386.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="413.7">向いているとき</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="44" y="441.1">自分のPCがある</tspan></text>
+<line x1="44" y1="486.2" x2="248" y2="486.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="513.7">注意</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="539">ai-practiceの中だけで作</tspan><tspan x="44" y="561.5">業</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="502.6" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">☁️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">ブラウザ</tspan><tspan x="400" y="219">（クラウド）</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="269.2">インストール</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="294.5">不要</tspan></text>
+<line x1="298" y1="314" x2="502" y2="314" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="341.5">ファイルの置き場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="366.8">ネット上のリポジトリ</tspan></text>
+<line x1="298" y1="386.2" x2="502" y2="386.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="413.7">向いているとき</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="441.1">ソフトを入れられな</tspan><tspan x="298" y="466.1">い</tspan></text>
+<line x1="298" y1="486.2" x2="502" y2="486.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="513.7">注意</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="539">GitHubアカウントが必要</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="502.6" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#D97706"/>
+<circle cx="654" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🏢</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">会社のPC</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="269.2">インストール</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="294.5">許可されたツールだけ</tspan></text>
+<line x1="552" y1="314" x2="756" y2="314" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="341.5">ファイルの置き場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="366.8">会社のルールどおり</tspan></text>
+<line x1="552" y1="386.2" x2="756" y2="386.2" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="413.7">向いているとき</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="552" y="441.1">会社が許可している</tspan></text>
+<line x1="552" y1="486.2" x2="756" y2="486.2" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="513.7">注意</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="539">練習は架空のデータで</tspan></text>
+</g>
+<rect x="28" y="612.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="643.9">💡 許可があるか分からないなら、まず確認。または個人のPCで学ぶ。</tspan></text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 691" width="800" height="691" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Ba cách thực hành với agent</title>
+<desc id="desc">Máy cá nhân — Cài đặt: Một ứng dụng agent; File nằm ở đâu?: Trên máy của bạn; Hợp khi: Bạn có máy riêng; Lưu ý: Chỉ làm trong ai-practice. Trình duyệt (đám mây) — Cài đặt: Không cần cài; File nằm ở đâu?: Kho code trên mạng; Hợp khi: Không cài được phần mềm; Lưu ý: Cần tài khoản GitHub. Máy công ty — Cài đặt: Chỉ công cụ được duyệt; File nằm ở đâu?: Theo quy định công ty; Hợp khi: Công ty đã cho phép; Lưu ý: Bài tập chỉ dùng dữ liệu giả. Chưa chắc được phép? Hỏi trước — hoặc học trên máy cá nhân.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="689" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="661" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Ba cách thực hành với agent</tspan></text>
+<g class="pulse">
+<rect x="28" y="86.3" width="236" height="502.6" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#059669"/>
+<circle cx="146" cy="138.3" r="26" fill="#059669"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💻</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Máy cá nhân</tspan></text>
+<rect x="91.3" y="73.7" width="109.3" height="25.2" rx="12.6" fill="#0F172A"/>
+<text font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="90.7">Đường chính</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">Cài đặt</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">Một ứng dụng agent</tspan></text>
+<line x1="44" y1="314" x2="248" y2="314" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="341.5">File nằm ở đâu?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="366.8">Trên máy của bạn</tspan></text>
+<line x1="44" y1="386.2" x2="248" y2="386.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="413.7">Hợp khi</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="44" y="441.1">Bạn có máy riêng</tspan></text>
+<line x1="44" y1="486.2" x2="248" y2="486.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="513.7">Lưu ý</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="539">Chỉ làm trong</tspan><tspan x="44" y="561.5">ai-practice</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="502.6" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">☁️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">Trình duyệt</tspan><tspan x="400" y="219">(đám mây)</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="269.2">Cài đặt</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="294.5">Không cần cài</tspan></text>
+<line x1="298" y1="314" x2="502" y2="314" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="341.5">File nằm ở đâu?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="366.8">Kho code trên mạng</tspan></text>
+<line x1="298" y1="386.2" x2="502" y2="386.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="413.7">Hợp khi</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="441.1">Không cài được</tspan><tspan x="298" y="466.1">phần mềm</tspan></text>
+<line x1="298" y1="486.2" x2="502" y2="486.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="513.7">Lưu ý</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="539">Cần tài khoản GitHub</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="502.6" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v135.4 h-236 z" fill="#D97706"/>
+<circle cx="654" cy="138.3" r="26" fill="#D97706"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🏢</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Máy công ty</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="269.2">Cài đặt</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="294.5">Chỉ công cụ được duyệt</tspan></text>
+<line x1="552" y1="314" x2="756" y2="314" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="341.5">File nằm ở đâu?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="366.8">Theo quy định công ty</tspan></text>
+<line x1="552" y1="386.2" x2="756" y2="386.2" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="413.7">Hợp khi</tspan></text>
+<text font-size="19" fill="#D97706" text-anchor="start" font-weight="700"><tspan x="552" y="441.1">Công ty đã cho</tspan><tspan x="552" y="466.1">phép</tspan></text>
+<line x1="552" y1="486.2" x2="756" y2="486.2" stroke="#FEF3C7" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="513.7">Lưu ý</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="539">Bài tập chỉ dùng dữ liệu</tspan><tspan x="552" y="561.5">giả</tspan></text>
+</g>
+<rect x="28" y="612.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="643.9">💡 Chưa chắc được phép? Hỏi trước — hoặc học trên máy cá nhân.</tspan></text>
+</svg>

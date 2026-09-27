@@ -20,9 +20,9 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 1. [Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc](lessons/chatbot-to-agent.md) — 8 phút
 2. [Bộ não, đôi tay và vòng lặp: AI agent được ghép từ gì?](lessons/agent-parts-and-loop.md) — 8 phút
-3. Xem AI agent làm và tự kiểm tra một trang web nhỏ — 10 phút
-4. Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty — 10 phút
-5. Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm — 10 phút
+3. [Xem AI agent làm và tự kiểm tra một trang web nhỏ](lessons/watch-an-agent-build.md) — 10 phút
+4. [Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty](lessons/choose-your-learning-setup.md) — 10 phút
+5. [Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm](lessons/data-safety-and-permissions.md) — 10 phút
 6. Buổi đầu với agent: làm một trang "Việc của tôi trong tuần" — 25 phút
 7. Tư duy mới: bạn là trưởng nhóm, không phải người gõ code — 8 phút
 8. Viết yêu cầu tốt: mô tả việc và tiêu chí hoàn thành — 12 phút
@@ -48,14 +48,14 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 |---|---|---|---|
 | 1.1.1 | ⭐ [Từ chatbot đến AI agent: AI không chỉ trả lời mà còn làm việc](lessons/chatbot-to-agent.md) | 📖 Khái niệm | 8 phút |
 | 1.1.2 | ⭐ [Bộ não, đôi tay và vòng lặp: AI agent được ghép từ gì?](lessons/agent-parts-and-loop.md) | 📖 Khái niệm | 8 phút |
-| 1.1.3 | ⭐ Xem AI agent làm và tự kiểm tra một trang web nhỏ | 🎬 Minh họa | 10 phút |
+| 1.1.3 | ⭐ [Xem AI agent làm và tự kiểm tra một trang web nhỏ](lessons/watch-an-agent-build.md) | 🎬 Minh họa | 10 phút |
 
 ### 1.2 Chọn cách học an toàn
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 1.2.1 | ⭐ Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty | 🛠️ Thực hành | 10 phút |
-| 1.2.2 | ⭐ Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm | 📖 Khái niệm | 10 phút |
+| 1.2.1 | ⭐ [Chọn cách thực hành: trình duyệt, máy cá nhân hay máy công ty](lessons/choose-your-learning-setup.md) | 🛠️ Thực hành | 10 phút |
+| 1.2.2 | ⭐ [Trước khi để agent làm việc: việc an toàn, việc phải hỏi, việc bị cấm](lessons/data-safety-and-permissions.md) | 📖 Khái niệm | 10 phút |
 
 ### 1.3 Sản phẩm đầu tiên
 
