@@ -1,0 +1,64 @@
+# Used in: how-machines-learn (concept). Training as a loop: guess, compare with the answer, nudge the numbers, repeat.
+template: cycle
+title:
+  vi: Vòng huấn luyện
+  en: The Training Loop
+  ja: 学習のループ
+subtitle:
+  vi: Lặp lại với rất nhiều ví dụ có đáp án
+  en: Repeated over many examples that come with answers
+  ja: 答えつきのたくさんの例で繰り返す
+center:
+  icon: "🔁"
+  color: indigo
+  name:
+    vi: Lặp thật nhiều lần
+    en: Repeat many times
+    ja: 何度も繰り返す
+steps:
+  - icon: "🎯"
+    color: blue
+    name:
+      vi: Đoán thử
+      en: Make a guess
+      ja: 予測してみる
+    caption:
+      vi: với các con số hiện có
+      en: with its current numbers
+      ja: 今の数値で
+    arrow:
+      vi: đem so
+      en: check it
+      ja: 確かめる
+  - icon: "✅"
+    color: green
+    name:
+      vi: So với đáp án
+      en: Compare with the answer
+      ja: 正解と比べる
+    caption:
+      vi: sai bao xa?
+      en: how far off?
+      ja: どれだけ外れた？
+    arrow:
+      vi: sửa
+      en: correct it
+      ja: 直す
+  - icon: "🔧"
+    color: amber
+    name:
+      vi: Chỉnh các con số
+      en: Nudge the numbers
+      ja: 数値を少し直す
+    caption:
+      vi: để lần sau gần đúng hơn
+      en: so the next guess is closer
+      ja: 次はもっと近づくように
+    arrow:
+      vi: lần tiếp
+      en: next time
+      ja: 次へ
+takeaway:
+  vi: Không ai viết luật cho mô hình; quy luật nằm trong các con số sau huấn luyện.
+  en: Nobody writes the model's rules; the patterns end up in its numbers.
+  ja: モデルのルールは誰も書かない。規則は学習後の数値の中にある。

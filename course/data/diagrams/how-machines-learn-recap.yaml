@@ -1,0 +1,61 @@
+# Recap of how-machines-learn: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: máy \"học\" như thế nào"
+  en: "Recap: How Machines \"Learn\""
+  ja: まとめ：機械はどうやって「学ぶ」？
+points:
+  - icon: "📚"
+    color: blue
+    name:
+      vi: Dữ liệu có đáp án
+      en: "Data: examples with answers"
+      ja: データ＝答えつきの例
+    caption:
+      vi: Đúng và đa dạng thì mới tốt
+      en: They need to be right and varied
+      ja: 正確で多様であることが大事
+  - icon: "🔁"
+    color: indigo
+    name:
+      vi: "Huấn luyện: đoán, so, chỉnh"
+      en: "Training: guess, compare, adjust"
+      ja: "学習＝\n予測・比較・調整"
+    caption:
+      vi: Lặp lại rất nhiều lần
+      en: Repeated many, many times
+      ja: 何度も繰り返す
+  - icon: "🧮"
+    color: violet
+    name:
+      vi: "Mô hình: các con số đã học"
+      en: "The model: learned numbers"
+      ja: モデル＝学んだ数値
+    caption:
+      vi: Dùng để đoán trường hợp mới
+      en: Used to predict new cases
+      ja: 新しいケースを予測する
+  - icon: "🧪"
+    color: teal
+    name:
+      vi: Thử trên dữ liệu chưa gặp
+      en: Test on data it has not seen
+      ja: 見たことのないデータで試す
+    caption:
+      vi: Học thuộc không phải là học
+      en: Memorizing is not learning
+      ja: 丸暗記は学習ではない
+  - icon: "💬"
+    color: green
+    name:
+      vi: "LLM: cùng ý, cỡ khổng lồ"
+      en: "LLMs: same idea, huge scale"
+      ja: "LLM＝同じ考えを\n巨大な規模で"
+    caption:
+      vi: Không học thêm khi bạn đang chat
+      en: It does not learn while you chat
+      ja: 会話中にモデルは変わらない
+takeaway:
+  vi: Mô hình chỉ giỏi bằng dữ liệu nó đã học — và nó không đổi trong lúc bạn trò chuyện với nó.
+  en: A model is only as good as its data — and it does not change while you chat with it.
+  ja: "モデルの力は学んだデータしだい。\n会話の途中でモデルが変わることはない。"
