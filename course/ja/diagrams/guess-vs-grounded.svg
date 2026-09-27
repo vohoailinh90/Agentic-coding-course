@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 544" width="800" height="544" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">もっともらしい推測か、根拠のある答えか</title>
+<desc id="desc">もっともらしい推測 — よりどころ: モデルが学習したパターン; 口調: 自信たっぷり; 確かめられる？: できない――根拠がない. 根拠のある答え — よりどころ: 渡した資料、実際の実行結果; 口調: 自信たっぷり; 確かめられる？: できる――引用、再実行. 口調は同じ。見分けられるのは根拠だけ。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="542" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="514" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">もっともらしい推測か、根拠のある答えか</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="355.1" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">もっともらしい推測</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">よりどころ</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">モデルが学習したパターン</tspan></text>
+<line x1="44" y1="286.3" x2="352" y2="286.3" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">口調</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="339.1">自信たっぷり</tspan></text>
+<line x1="44" y1="358.5" x2="352" y2="358.5" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="386">確かめられる？</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="44" y="413.3">できない――根拠がない</tspan></text>
+</g>
+<g class="pulse">
+<rect x="432" y="86.3" width="340" height="355.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📚</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">根拠のある答え</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">よりどころ</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">渡した資料、実際の実行結果</tspan></text>
+<line x1="448" y1="286.3" x2="756" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="313.8">口調</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="339.1">自信たっぷり</tspan></text>
+<line x1="448" y1="358.5" x2="756" y2="358.5" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="386">確かめられる？</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="413.3">できる――引用、再実行</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="465.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="496.4">💡 口調は同じ。見分けられるのは根拠だけ。</tspan></text>
+</svg>

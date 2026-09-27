@@ -1,0 +1,56 @@
+# Used in: hallucination (concept). The tone is the same; only the grounding differs.
+template: compare
+title:
+  vi: Đoán cho hợp lý hay có căn cứ?
+  en: A Plausible Guess or a Grounded Answer?
+  ja: もっともらしい推測か、根拠のある答えか
+versus: true
+rows:
+  - vi: Dựa vào
+    en: Based on
+    ja: よりどころ
+  - vi: Giọng điệu
+    en: Tone
+    ja: 口調
+  - vi: Kiểm tra được?
+    en: Can you check it?
+    ja: 確かめられる？
+emphasis_row: 3
+columns:
+  - icon: "🎲"
+    color: rose
+    name:
+      vi: Đoán cho hợp lý
+      en: A plausible guess
+      ja: もっともらしい推測
+    values:
+      - vi: Mẫu hình mô hình đã học
+        en: Patterns the model learned
+        ja: モデルが学習したパターン
+      - vi: Rất tự tin
+        en: Very confident
+        ja: 自信たっぷり
+      - vi: Không — không có nguồn
+        en: No — there is no source
+        ja: できない――根拠がない
+  - icon: "📚"
+    color: green
+    highlight: true
+    name:
+      vi: Có căn cứ
+      en: A grounded answer
+      ja: 根拠のある答え
+    values:
+      - vi: Tài liệu bạn đưa, kết quả chạy thật
+        en: Your documents, real results
+        ja: 渡した資料、実際の実行結果
+      - vi: Rất tự tin
+        en: Very confident
+        ja: 自信たっぷり
+      - vi: Có — trích dẫn, chạy lại
+        en: Yes — quotes, re-runs
+        ja: できる――引用、再実行
+takeaway:
+  vi: Giọng điệu giống hệt nhau — chỉ căn cứ mới phân biệt được.
+  en: The tone is identical — only the grounding tells them apart.
+  ja: 口調は同じ。見分けられるのは根拠だけ。

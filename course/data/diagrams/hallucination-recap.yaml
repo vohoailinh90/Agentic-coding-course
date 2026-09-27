@@ -1,0 +1,61 @@
+# Recap of hallucination: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: ảo giác AI"
+  en: "Recap: Hallucination"
+  ja: まとめ：ハルシネーション
+points:
+  - icon: "🎲"
+    color: rose
+    name:
+      vi: Nghe hợp lý chưa chắc đúng
+      en: Plausible is not true
+      ja: もっともらしい ≠ 正しい
+    caption:
+      vi: AI tạo câu hợp lý nhất, không tra sự thật
+      en: AI writes the likeliest text, not looked-up facts
+      ja: AIは事実を調べず、ありそうな文を作る
+  - icon: "🗣️"
+    color: violet
+    name:
+      vi: Tự tin không phải bằng chứng
+      en: Confidence is not evidence
+      ja: 自信は証拠ではない
+    caption:
+      vi: Đúng hay sai đều cùng một giọng
+      en: Right or wrong, the same tone
+      ja: 正しくても誤りでも同じ口調
+  - icon: "🚩"
+    color: amber
+    name:
+      vi: Nghi khi thấy
+      en: Be suspicious of
+      ja: 疑うべきもの
+    caption:
+      vi: Số liệu, tên, link không có nguồn
+      en: Numbers, names, links without a source
+      ja: 出典のない数字・名前・リンク
+  - icon: "📚"
+    color: blue
+    name:
+      vi: Cho nguồn, đòi trích dẫn
+      en: Give sources, ask for quotes
+      ja: 資料を渡し、引用を求める
+    caption:
+      vi: Và cho phép nói "không biết"
+      en: And allow "I don't know"
+      ja: 「わからない」と言ってよいと伝える
+  - icon: "🔍"
+    color: green
+    name:
+      vi: Kiểm chứng bằng thực tế
+      en: Verify against reality
+      ja: 現実で確かめる
+    caption:
+      vi: Chạy thử, mở link, đối chiếu
+      en: Run it, open the link, compare
+      ja: 動かす・リンクを開く・照らし合わせる
+takeaway:
+  vi: Thông tin quan trọng thì luôn tự kiểm tra.
+  en: Always check important information yourself.
+  ja: 大事な情報は、必ず自分で確かめる。

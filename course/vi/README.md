@@ -34,7 +34,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 14. [Dự án: trang web cá nhân của bạn](lessons/project-personal-page.md) — 60 phút
 15. [Dữ liệu trông như thế nào: JSON, CSV, YAML](lessons/data-formats.md) — 10 phút
 16. [Git: nút Undo thần kỳ cho cả dự án](lessons/git-version-control.md) — 15 phút
-17. Ảo giác AI: vì sao AI tự tin nói sai — 10 phút
+17. [Ảo giác AI: vì sao AI tự tin nói sai](lessons/hallucination.md) — 10 phút
 18. Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI — 10 phút
 19. Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo) — 90 phút
 
@@ -126,7 +126,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 4.1.1 | Prompt căn bản: nói sao cho AI hiểu | 🛠️ Thực hành | 12 phút |
-| 4.1.2 | ⭐ Ảo giác AI: vì sao AI tự tin nói sai | 📖 Khái niệm | 10 phút |
+| 4.1.2 | ⭐ [Ảo giác AI: vì sao AI tự tin nói sai](lessons/hallucination.md) | 📖 Khái niệm | 10 phút |
 | 4.1.3 | ⭐ Cửa sổ ngữ cảnh: trí nhớ ngắn hạn của AI | 📖 Khái niệm | 10 phút |
 | 4.1.4 | Đoán chữ tiếp theo: bí mật đơn giản đằng sau LLM | 📖 Khái niệm | 10 phút |
 | 4.1.5 | Gọi công cụ: cách LLM "bấm nút" ngoài đời thật | 🎬 Minh họa | 10 phút |
