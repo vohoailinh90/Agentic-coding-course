@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 551" width="800" height="551" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
-<title id="title">Tóm tắt: 4 viên gạch của mọi chương trình</title>
+<title id="title">Tóm tắt: 4 viên gạch thường gặp</title>
 <desc id="desc">1. Biến giữ một giá trị có tên — Đổi một chỗ, mọi nơi đổi theo; 2. Hàm là việc có tên — Nhận đầu vào, trả kết quả, dùng lại; 3. Điều kiện rẽ nhánh — Chỗ lỗi hay nấp: &gt; hay &gt;= ?; 4. Vòng lặp: từng dòng — Hết danh sách thì dừng; 5. Giao việc đúng tên — Đổi một biến, thêm một điều kiện. Không cần tự viết code — cần đọc ra được bốn viên gạch và nói đúng tên.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="549" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="521" r="110" fill="#2563EB" fill-opacity="0.05"/>
-<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Tóm tắt: 4 viên gạch của mọi chương trình</tspan></text>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Tóm tắt: 4 viên gạch thường gặp</tspan></text>
 <rect x="28" y="86.3" width="236" height="172.4" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
 <circle cx="146" cy="122.3" r="22" fill="#2563EB"/>
 <circle cx="146" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

@@ -8,7 +8,7 @@ summary: >-
   agent asks to run a command, you can tell whether it only looks or changes something, and where, before you
   allow it.
 social:
-  hook: "The agent asks: \"Allow rm -rf build?\" Do you click Yes or No? 💻"
+  hook: "The agent asks to delete `build`: `rm -rf build` (Mac Terminal or Git Bash), or `Remove-Item build -Recurse -Force` (PowerShell). Do you allow it? 💻"
   question: Have you ever opened Terminal or PowerShell? How did it feel the first time?
 ---
 
@@ -28,7 +28,7 @@ By the end of this lesson, you will be able to:
 <!-- section: hook -->
 ## Why It Matters
 
-Tuấn is working with an agent on his own computer, in the mode where it asks before each change. Halfway through, the agent asks: *"Allow the command `rm -rf build`?"* Tuấn has no idea what it does. Click No, and the agent might get stuck; click Yes, and he might lose files. He clicks Yes to keep things moving.
+Tuấn is working with an agent on his own computer, in the mode where it asks before each change. Halfway through, the agent asks: *"Allow `rm -rf build` (Mac Terminal or Git Bash), or `Remove-Item build -Recurse -Force` (PowerShell)?"* Tuấn has no idea what it does. Click No, and the agent might get stuck; click Yes, and he might lose files. He clicks Yes to keep things moving.
 
 This time he was lucky: `build` was just a folder the agent had created. But luck is not a way to manage work. Fifteen minutes with the terminal will let you read questions like this one.
 
@@ -63,7 +63,7 @@ Before you click allow, answer three questions:
 
 1. **What command?** Does it only look — or create, move, delete, install, send?
 2. **Where?** Is the path in the command inside `ai-practice`? Does a `..`, `~`, `C:\` or `/` lead outside it?
-3. **Can it be undone?** `rm -rf` deletes a whole folder and everything in it, **without going to the Recycle Bin or Trash**.
+3. **Can it be undone?** `rm -rf <folder>` (Mac Terminal or Git Bash) and `Remove-Item <folder> -Recurse -Force` (PowerShell) delete a whole folder and everything in it, **without going to the Recycle Bin or Trash**. Read these commands; do not run them.
 
 If you cannot answer, do not allow it yet: ask the agent *"What does this command do, and which files does it change?"*. Commands can look a little different from one computer to another — on Windows, Claude Code uses PowerShell, or Mac-style commands if Git for Windows is installed — but the three questions stay the same.
 
@@ -74,7 +74,7 @@ About 12 minutes, on your own computer, in `ai-practice`. On a work computer, do
 
 **1. Open a terminal right in `ai-practice` (2 minutes)**
 
-- **Windows:** open the `ai-practice` folder in File Explorer, click the address bar, type `powershell` and press Enter — PowerShell opens in that folder. Or: `Win + X` → *Windows PowerShell* (or *Terminal*), then type `cd Documents`, Enter, `cd ai-practice`, Enter.
+- **Windows:** open the `ai-practice` folder in File Explorer, click the address bar, type `powershell` and press Enter — PowerShell opens in that folder. Use this File Explorer method first. If you instead open PowerShell elsewhere, the displayed name may be translated and Documents may have been moved into OneDrive; use the folder’s actual path rather than assuming `cd Documents`.
 - **Mac:** `Cmd + Space`, type `Terminal`, Enter. Type `cd ` (with one space), drag the `ai-practice` folder from Finder onto the Terminal window, then press Enter.
 
 **2. Five commands (5 minutes)** — type one line at a time, press Enter after each, and guess the result first:
@@ -96,10 +96,10 @@ On Windows, if accented or non-English letters show up as strange symbols, type 
 
 ```text
 Create a folder called reports in this folder, then list the files.
-Then explain what the command rm -rf test-folder would do. Do not run it.
+Then explain both delete commands without running them: rm -rf test-folder (Mac Terminal or Git Bash), and Remove-Item test-folder -Recurse -Force (PowerShell).
 ```
 
-When the agent asks to run a command, answer the three questions before you allow it. Then read its explanation of `rm -rf` and compare it with the table above.
+When the agent asks to run a command, answer the three questions before you allow it. Then read its explanation of `rm -rf <folder>` (Mac Terminal or Git Bash) and `Remove-Item <folder> -Recurse -Force` (PowerShell), and compare it with the table above. Read them; do not run them.
 
 Want to get rid of `test-folder`? Delete it in File Explorer or Finder as usual — it goes to the Recycle Bin or Trash, so you can get it back.
 
@@ -139,7 +139,7 @@ Write your evidence:
 - B) `mkdir`
 - C) `pwd`
 
-**Question 2.** The agent asks to run `rm -rf build`. What does it do?
+**Question 2.** The agent shows `rm -rf build` (Mac Terminal or Git Bash) and `Remove-Item build -Recurse -Force` (PowerShell). You are reading them, not running them. What would either command do?
 
 - A) Lists the files in the `build` folder
 - B) Deletes the `build` folder and everything in it, without going to the Recycle Bin or Trash
@@ -155,7 +155,7 @@ Write your evidence:
 <summary>Show answers</summary>
 
 1. **C** — `pwd` prints the current folder; `ls` lists what is inside it.
-2. **B** — `rm` deletes, and `-rf` deletes a folder with everything in it without asking again: an ✋ ask-first action.
+2. **B** — both shell-specific forms delete the folder with everything in it without asking again: an ✋ ask-first action.
 3. **A** — do not allow what you do not understand; asking is the fastest way to understand it.
 
 </details>

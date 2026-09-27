@@ -426,6 +426,24 @@ class ValidateTests(StoreTest):
                 write_lesson(self.root, "alpha", "en", bodies={"quiz": body})
                 self.assertEqual(codes(validate(self.root)), ["quiz_shape"])
 
+    def test_a_quiz_needs_three_numbered_questions_with_their_own_options(self) -> None:
+        valid = quiz_body()
+        all_options_under_one = "\n".join(
+            line for line in valid.splitlines()
+            if not line.startswith("**Question 2.") and not line.startswith("**Question 3.")
+        ).replace("<details>", "**Question 2.** Question 2?\n\n**Question 3.** Question 3?\n\n<details>")
+        cases = (
+            "\n".join(line for line in valid.splitlines() if not line.startswith("**Question")),
+            all_options_under_one,
+            valid.replace("**Question 2.** Question 2?", "**Question 1.** Question 2?"),
+            valid.replace("**Question 2.** Question 2?", "**Question 3.** Question 2?")
+                 .replace("**Question 3.** Question 3?", "**Question 2.** Question 3?"),
+        )
+        for body in cases:
+            with self.subTest(body=body):
+                write_lesson(self.root, "alpha", "en", bodies={"quiz": body})
+                self.assertEqual(codes(validate(self.root)), ["quiz_shape"])
+
     def test_a_quiz_whose_answers_are_all_one_letter_is_a_warning(self) -> None:
         for language in ("vi", "en", "ja"):
             write_lesson(self.root, "alpha", language, bodies={"quiz": quiz_body("BBB")})
@@ -441,25 +459,35 @@ class ValidateTests(StoreTest):
 
     def test_a_lesson_pointed_at_by_number_or_position_is_an_error(self) -> None:
         cases = {
-            "vi": ("Như đã thấy ở bài trước, agent đọc file.", "ở bài trước"),
-            "en": ("As in Lesson 4, the agent reads files.", "Lesson 4"),
-            "ja": ("次のレッスンで詳しく見ます。", "次のレッスン"),
+            "vi": (("Như đã thấy ở bài trước, agent đọc file.", "ở bài trước"),
+                   ("Xem bài tiếp để biết thêm.", "bài tiếp"),
+                   ("Bài vừa qua đã giải thích agent.", "Bài vừa qua")),
+            "en": (("As in Lesson 4, the agent reads files.", "Lesson 4"),
+                   ("See previous lesson for details.", "previous lesson"),
+                   ("The following module explains agents.", "The following module")),
+            "ja": (("次のレッスンで詳しく見ます。", "次のレッスン"),
+                   ("前回のレッスンを見てください。", "前回のレッスン"),
+                   ("次回のモジュールで説明します。", "次回のモジュール")),
         }
-        for language, (sentence, text) in cases.items():
-            with self.subTest(language=language):
-                path = write_lesson(self.root, "alpha", language, bodies={"hook": sentence})
-                line = path.read_text(encoding="utf-8").split("\n").index(sentence) + 1
-                report = validate(self.root)
-                self.assertEqual(codes(report), ["lesson_by_position"])
-                self.assertEqual((report.errors[0].params["text"], report.errors[0].params["line"]), (text, line))
-                write_lesson(self.root, "alpha", language)
+        for language, sentences in cases.items():
+            for sentence, text in sentences:
+                with self.subTest(language=language, sentence=sentence):
+                    path = write_lesson(self.root, "alpha", language, bodies={"hook": sentence})
+                    line = path.read_text(encoding="utf-8").split("\n").index(sentence) + 1
+                    report = validate(self.root)
+                    self.assertEqual(codes(report), ["lesson_by_position"])
+                    finding = report.errors[0]
+                    self.assertEqual((finding.params["text"], finding.params["line"]), (text, line))
+                    write_lesson(self.root, "alpha", language)
 
     def test_later_lessons_steps_and_code_blocks_point_at_no_lesson(self) -> None:
         bodies = {
             "vi": "Thẻ này đi cùng bạn ở các bài sau. Bước 1: mở thư mục. Làm bài trước khi xem đáp án."
                   "\n\n```text\nXem bài 3\n```",
-            "en": "You will use it in later lessons. Step 1: open the folder.\n\n```text\nsee lesson 3\n```",
-            "ja": "この先のレッスンでも使います。手順1：フォルダを開く。\n\n```text\nレッスン3\n```",
+            "en": "You will use it in later lessons. Step 1: open the folder. Read the answer later."
+                  "\n\n```text\nsee previous lesson and lesson 3\n```",
+            "ja": "この先のレッスンでも使います。手順1：フォルダを開く。あとで答えを読みます。"
+                  "\n\n```text\n前回のレッスンとレッスン3\n```",
         }
         for language, body in bodies.items():
             write_lesson(self.root, "alpha", language, bodies={"hook": body})

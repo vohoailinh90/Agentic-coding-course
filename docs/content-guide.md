@@ -38,7 +38,7 @@ in that order. `required` depends on the lesson type in `curriculum.yaml`.
 | `misconceptions` | 2–4 beginner misunderstandings, corrected | optional |
 | `recap` | The whole lesson in one infographic of its own (see *Infographics*) | every type |
 | `takeaways` | 3–5 short bullets that say the recap's points in words — reused in Facebook posts | every type |
-| `quiz` | 3 questions × 3 options, answers with reasons in `<details>` | concept, demo, hands-on |
+| `quiz` | 3 bold question headings numbered 1–3 × 3 options, answers with reasons in `<details>` | concept, demo, hands-on |
 | `sources` | Verified sources: organization, language, date if fast-moving | optional |
 
 Each section starts with an invisible marker, then its heading. The heading text is yours to

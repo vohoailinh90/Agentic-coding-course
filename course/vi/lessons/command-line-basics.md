@@ -7,7 +7,7 @@ summary: >-
   bạn đi lại và xem file mà không làm hỏng gì. Quan trọng hơn: khi agent xin chạy một lệnh, bạn đọc được nó chỉ
   xem hay sẽ thay đổi gì, ở đâu, rồi mới cho phép.
 social:
-  hook: "Agent hỏi: \"Cho phép chạy rm -rf build?\" Bạn bấm Có hay Không? 💻"
+  hook: "Agent xin xóa `build`: `rm -rf build` (Terminal Mac hoặc Git Bash), hay `Remove-Item build -Recurse -Force` (PowerShell). Bạn cho phép không? 💻"
   question: Bạn đã từng mở Terminal hay PowerShell chưa? Lần đầu thấy thế nào?
 ---
 
@@ -27,7 +27,7 @@ Sau bài này, bạn sẽ:
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
 
-Tuấn giao việc cho agent trên máy cá nhân, ở chế độ agent hỏi trước mỗi thay đổi. Giữa chừng, agent hỏi: *"Cho phép chạy lệnh `rm -rf build`?"* Tuấn không biết lệnh đó làm gì. Bấm Không thì sợ agent kẹt; bấm Có thì sợ mất file. Anh bấm Có cho nhanh.
+Tuấn giao việc cho agent trên máy cá nhân, ở chế độ agent hỏi trước mỗi thay đổi. Giữa chừng, agent hỏi: *"Cho phép chạy `rm -rf build` (Terminal Mac hoặc Git Bash), hay `Remove-Item build -Recurse -Force` (PowerShell)?"* Tuấn không biết lệnh đó làm gì. Bấm Không thì sợ agent kẹt; bấm Có thì sợ mất file. Anh bấm Có cho nhanh.
 
 Lần này may: `build` chỉ là thư mục agent vừa tạo ra. Nhưng "may" không phải là cách giao việc. Mười lăm phút với terminal sẽ giúp bạn đọc được những câu hỏi như thế.
 
@@ -62,7 +62,7 @@ Trước khi bấm cho phép, hỏi ba câu:
 
 1. **Lệnh gì?** Chỉ xem, hay tạo, chuyển, xóa, cài, gửi đi?
 2. **Ở đâu?** Đường dẫn trong lệnh có nằm trong `ai-practice` không? Có `..`, `~`, `C:\` hay `/` dẫn ra ngoài không?
-3. **Lấy lại được không?** `rm -rf` xóa hẳn cả thư mục và mọi thứ bên trong, **không qua Thùng rác**.
+3. **Lấy lại được không?** `rm -rf <folder>` (Terminal Mac hoặc Git Bash) và `Remove-Item <folder> -Recurse -Force` (PowerShell) xóa hẳn cả thư mục và mọi thứ bên trong, **không qua Thùng rác**. Chỉ đọc hai lệnh này, đừng chạy.
 
 Chưa trả lời được thì chưa cho phép: hỏi agent *"Lệnh này làm gì, thay đổi những file nào?"*. Lệnh có thể trông khác một chút tùy máy — trên Windows, Claude Code dùng PowerShell, hoặc lệnh kiểu Mac nếu máy có cài Git for Windows — nhưng ba câu hỏi thì như nhau.
 
@@ -73,7 +73,7 @@ Khoảng 12 phút, trên máy cá nhân, trong `ai-practice`. Máy công ty: ch�
 
 **1. Mở terminal ngay trong `ai-practice` (2 phút)**
 
-- **Windows:** mở thư mục `ai-practice` trong File Explorer, bấm vào thanh địa chỉ, gõ `powershell` rồi Enter — PowerShell mở ra ngay trong thư mục đó. Cách khác: `Win + X` → *Windows PowerShell* (hoặc *Terminal*), rồi gõ `cd Documents`, Enter, `cd ai-practice`, Enter.
+- **Windows:** mở thư mục `ai-practice` trong File Explorer, bấm vào thanh địa chỉ, gõ `powershell` rồi Enter — PowerShell mở ra ngay trong thư mục đó. Hãy ưu tiên cách mở từ File Explorer này. Nếu bạn mở PowerShell ở nơi khác, tên hiển thị có thể đã được dịch và thư mục Documents có thể nằm trong OneDrive; hãy dùng đường dẫn thật của thư mục thay vì mặc định gõ `cd Documents`.
 - **Mac:** `Cmd + Space`, gõ `Terminal`, Enter. Gõ `cd ` (có một dấu cách), kéo thư mục `ai-practice` từ Finder thả vào cửa sổ Terminal, rồi Enter.
 
 **2. Năm lệnh (5 phút)** — gõ từng dòng, mỗi dòng nhấn Enter, và đoán trước kết quả:
@@ -95,10 +95,10 @@ Trên Windows, nếu chữ có dấu hiện thành ký tự lạ, gõ `cat READM
 
 ```text
 Tạo thư mục bao-cao trong thư mục này, rồi liệt kê các file.
-Sau đó giải thích lệnh rm -rf thu-nghiem sẽ làm gì. Đừng chạy lệnh đó.
+Sau đó giải thích cả hai lệnh xóa mà không chạy: rm -rf thu-nghiem (Terminal Mac hoặc Git Bash), và Remove-Item thu-nghiem -Recurse -Force (PowerShell).
 ```
 
-Khi agent xin chạy lệnh, trả lời ba câu hỏi trước khi cho phép. Rồi đọc lời giải thích về `rm -rf` và so với bảng ở trên.
+Khi agent xin chạy lệnh, trả lời ba câu hỏi trước khi cho phép. Rồi đọc lời giải thích về `rm -rf <folder>` (Terminal Mac hoặc Git Bash) và `Remove-Item <folder> -Recurse -Force` (PowerShell), rồi so với bảng ở trên. Chỉ đọc, đừng chạy.
 
 Muốn bỏ `thu-nghiem`? Xóa bằng File Explorer hoặc Finder như bình thường — nó vào Thùng rác, lấy lại được.
 
@@ -138,7 +138,7 @@ Ghi bằng chứng:
 - B) `mkdir`
 - C) `pwd`
 
-**Câu 2.** Agent xin chạy `rm -rf build`. Lệnh này làm gì?
+**Câu 2.** Agent hiện `rm -rf build` (Terminal Mac hoặc Git Bash) và `Remove-Item build -Recurse -Force` (PowerShell). Bạn chỉ đọc, không chạy. Mỗi lệnh sẽ làm gì?
 
 - A) Liệt kê các file trong thư mục `build`
 - B) Xóa hẳn thư mục `build` và mọi thứ bên trong, không qua Thùng rác
@@ -154,7 +154,7 @@ Ghi bằng chứng:
 <summary>Xem đáp án</summary>
 
 1. **C** — `pwd` in ra thư mục hiện tại; `ls` liệt kê những gì bên trong nó.
-2. **B** — `rm` là xóa, `-rf` là xóa cả thư mục và mọi thứ trong đó mà không hỏi lại: đây là việc ✋ phải hỏi trước.
+2. **B** — cả hai dạng dành cho từng shell đều xóa thư mục và mọi thứ bên trong mà không hỏi lại: đây là việc ✋ phải hỏi trước.
 3. **A** — không cho phép điều mình chưa hiểu; hỏi là cách nhanh nhất để hiểu.
 
 </details>

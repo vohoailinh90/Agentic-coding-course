@@ -3,24 +3,24 @@ lesson: programming-building-blocks
 lang: en
 status: review
 summary: >-
-  Every program, small or large, is built from four blocks: variables, functions, conditions and loops. Mai
-  already uses all four in Excel without knowing their names. Once you can spot them in the code an agent
+  Most programs combine four common blocks: variables, functions, conditions and loops. A small program may
+  use only one or two. Mai has met all four ideas in Excel without knowing their names. Once you can spot them in the code an agent
   writes, you can read that code in plain words and give more precise instructions.
 social:
-  hook: "Do you use Excel? Then you already know the four building blocks of every program — just not their names. 🧱"
+  hook: "Do you use Excel? Then you already know the four common building blocks that most programs combine — just not their names. 🧱"
   question: Which Excel function do you use most — SUM, IF or VLOOKUP?
 ---
 
 🌐 [Tiếng Việt](../../vi/lessons/programming-building-blocks.md) · **English** · [日本語](../../ja/lessons/programming-building-blocks.md)
 
-# Variables, Functions, Conditions, Loops: The Four Building Blocks
+# Variables, Functions, Conditions, Loops: Four Common Building Blocks
 
 <!-- section: objective -->
 ## Lesson Objective
 
 By the end of this lesson, you will be able to:
 
-- Name the four building blocks of every program — **variables, functions, conditions and loops** — and see that Excel already has them.
+- Name the four common building blocks that most programs combine — **variables, functions, conditions and loops** — and see that Excel already has them.
 - Read a short piece of code an agent wrote and say in plain words what it does.
 - Use these four words to give instructions and check changes more precisely.
 
@@ -31,21 +31,21 @@ Mai asks an agent for a small program: read `expenses.csv` (made-up data, as in 
 
 *"I'm an accountant, not a programmer. How am I supposed to read this?"*
 
-The good news: Mai can read it. Every program is built from the same four blocks, and Mai uses all four every day — in Excel.
+The good news: Mai can read it. Most programs combine these four blocks; a small program may use only one or two. Mai meets all four ideas every day — in Excel.
 
 <!-- section: concept -->
 ## Core Idea
 
 ### The four blocks
 
-![The Four Building Blocks of Every Program](../diagrams/four-building-blocks.svg)
+![Four Common Building Blocks](../diagrams/four-building-blocks.svg)
 
 1. **Variable** — a box with a name that holds a value. In Excel: a cell you have named, such as a cell `exchange_rate` holding 25,000. In code: `THRESHOLD = 500000`. Change the value in one place, and everything that uses the name changes with it.
 2. **Function** — a named job: it takes an input, returns a result and can be used again and again. In Excel: `SUM`, `VLOOKUP`. In code, the agent names its own functions, such as `is_large(amount)`: give it an amount, get back "yes" or "no".
 3. **Condition** — *if… then…, otherwise…*. In Excel: `IF`. In code: `if amount >= THRESHOLD:`. This is where a program takes one branch or another — and where bugs like to hide: `>` or `>=`? Does an amount exactly at the threshold count as large?
-4. **Loop** — the same steps repeated for each item: each row, each file, each customer. In Excel: filling a formula down every row. In code: `for row in ...:`.
+4. **Loop** — the same steps repeated for each item: each row, each file, each customer. In Excel: filling a formula down every row **works like a loop**, although filling is not itself a loop in the code. In code: `for row in ...:`.
 
-Programming languages write them a little differently, but they all have these four blocks.
+Programming languages can express these ideas differently. Most programs combine some of the blocks; a small program may use only one or two.
 
 ### Why the person giving the work needs them
 
@@ -112,20 +112,20 @@ Tip: when a piece of code is hard to follow, ask the agent: *"Explain it line by
 ## Common Misconceptions
 
 - **"You have to know the syntax to work with an agent."** — You need to recognize the four blocks and say what they do. Getting every colon right is the agent's job — and the job of your checks.
-- **"Excel formulas are not programming."** — `=IF(C2>=500000,"Large","")` filled down a whole column already uses all four blocks: a cell (a variable), the `IF` function, a condition, and filling down (a loop).
+- **"Excel formulas are not programming."** — `=IF(C2>=500000,"Large","")` shows three blocks in the formula: a cell (a variable), the `IF` function and a condition. Filling it down **works like** a loop; the formula itself does not contain a loop.
 - **"Loops run forever."** — A loop over a list stops when the list ends. A loop that never stops is a bug: if a program the agent wrote never finishes, that is the first place to look.
 
 <!-- section: recap -->
 ## The Lesson in One Picture
 
-![Recap: The Four Building Blocks](../diagrams/programming-building-blocks-recap.svg)
+![Recap: Four Common Building Blocks](../diagrams/programming-building-blocks-recap.svg)
 
 <!-- section: takeaways -->
 ## Key Takeaways
 
-- Every program is built from four blocks: variables, functions, conditions and loops.
+- Most programs combine variables, functions, conditions and loops; a small program may use only one or two.
 - A variable holds a named value; a function is a named, reusable job; a condition picks a branch; a loop repeats the steps for each item.
-- You already use all four in Excel: named cells, `SUM`, `IF`, and filling a formula down.
+- You have met all four ideas in Excel: named cells, `SUM` and `IF`; filling a formula down works like a loop.
 - Read the code an agent writes by finding the four blocks, then saying it back in plain words.
 - Give instructions by name — change a variable, add a condition — then check that the change touches only that spot.
 

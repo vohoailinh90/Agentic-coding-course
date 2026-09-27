@@ -3,24 +3,24 @@ lesson: programming-building-blocks
 lang: vi
 status: review
 summary: >-
-  Mọi chương trình, nhỏ hay lớn, đều ghép từ bốn viên gạch: biến, hàm, điều kiện và vòng lặp. Mai đã dùng cả
-  bốn trong Excel mà không biết tên. Nhận ra chúng trong code agent viết, bạn đọc được code bằng lời thường và
+  Phần lớn chương trình kết hợp bốn viên gạch thường gặp: biến, hàm, điều kiện và vòng lặp. Chương trình nhỏ
+  có thể chỉ dùng một hoặc hai. Mai đã gặp cả bốn trong Excel mà không biết tên. Nhận ra chúng trong code agent viết, bạn đọc được code bằng lời thường và
   giao việc chính xác hơn.
 social:
-  hook: "Bạn dùng Excel? Vậy bạn đã biết 4 viên gạch của mọi chương trình — chỉ là chưa biết tên của chúng. 🧱"
+  hook: "Bạn dùng Excel? Vậy bạn đã gặp 4 viên gạch mà phần lớn chương trình kết hợp — chỉ là chưa biết tên. 🧱"
   question: Trong Excel, bạn hay dùng hàm nào nhất — SUM, IF hay VLOOKUP?
 ---
 
 🌐 **Tiếng Việt** · [English](../../en/lessons/programming-building-blocks.md) · [日本語](../../ja/lessons/programming-building-blocks.md)
 
-# Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình
+# Biến, hàm, điều kiện, vòng lặp: 4 viên gạch thường gặp
 
 <!-- section: objective -->
 ## Mục tiêu bài học
 
 Sau bài này, bạn sẽ:
 
-- Gọi đúng tên bốn viên gạch của mọi chương trình: **biến, hàm, điều kiện, vòng lặp** — và thấy chúng đã có sẵn trong Excel.
+- Gọi đúng tên bốn viên gạch mà phần lớn chương trình kết hợp: **biến, hàm, điều kiện, vòng lặp** — và thấy chúng đã có sẵn trong Excel.
 - Đọc một đoạn code ngắn do agent viết và nói lại bằng lời thường nó làm gì.
 - Dùng bốn từ này để giao việc và kiểm tra thay đổi chính xác hơn.
 
@@ -31,21 +31,21 @@ Mai nhờ agent viết một chương trình nhỏ: đọc file `chi_phi.csv` (d
 
 *"Mình làm kế toán, đâu phải lập trình viên. Đọc sao nổi?"*
 
-Tin tốt: Mai đọc được. Chương trình nào cũng ghép từ bốn viên gạch giống nhau, và ngày nào Mai cũng dùng cả bốn — trong Excel.
+Tin tốt: Mai đọc được. Phần lớn chương trình kết hợp bốn viên gạch này; chương trình nhỏ có thể chỉ dùng một hoặc hai. Mai gặp cả bốn ý tưởng mỗi ngày — trong Excel.
 
 <!-- section: concept -->
 ## Nội dung chính
 
 ### Bốn viên gạch
 
-![Bốn viên gạch của mọi chương trình](../diagrams/four-building-blocks.svg)
+![Bốn viên gạch thường gặp](../diagrams/four-building-blocks.svg)
 
 1. **Biến (variable)** — một cái hộp có tên, giữ một giá trị. Trong Excel: một ô bạn đặt tên, như ô `ty_gia` chứa 25.000. Trong code: `NGUONG = 500000`. Đổi giá trị ở một chỗ, mọi nơi dùng tên đó đổi theo.
 2. **Hàm (function)** — một việc có tên: nhận đầu vào, trả kết quả, dùng lại được nhiều lần. Trong Excel: `SUM`, `VLOOKUP`. Trong code, agent tự đặt tên cho hàm, như `la_khoan_lon(so_tien)`: đưa vào một số tiền, nhận lại "có" hoặc "không".
 3. **Điều kiện (condition)** — *nếu… thì…, không thì…*. Trong Excel: `IF`. Trong code: `if so_tien >= NGUONG:`. Đây là chỗ chương trình rẽ nhánh — và là chỗ lỗi hay nấp nhất: dùng `>` hay `>=`? Khoản đúng bằng ngưỡng có tính là lớn không?
-4. **Vòng lặp (loop)** — làm lại cùng các bước cho từng phần tử: từng dòng, từng file, từng khách hàng. Trong Excel: kéo công thức xuống cho mọi dòng. Trong code: `for dong in ...:`.
+4. **Vòng lặp (loop)** — làm lại cùng các bước cho từng phần tử: từng dòng, từng file, từng khách hàng. Trong Excel: kéo công thức xuống cho mọi dòng **hoạt động giống một vòng lặp**, dù thao tác điền công thức không tự nó là vòng lặp trong code. Trong code: `for dong in ...:`.
 
-Các ngôn ngữ lập trình viết khác nhau một chút, nhưng đều có đủ bốn viên gạch này.
+Các ngôn ngữ lập trình có thể diễn đạt những ý tưởng này khác nhau. Phần lớn chương trình kết hợp vài viên gạch; một chương trình nhỏ có thể chỉ dùng một hoặc hai.
 
 ### Vì sao người giao việc cần biết?
 
@@ -112,20 +112,20 @@ Mẹo: gặp đoạn code khó, nhờ agent: *"Giải thích từng dòng bằng
 ## Hiểu lầm thường gặp
 
 - **"Phải thuộc cú pháp mới làm việc được với agent."** — Bạn cần nhận ra bốn viên gạch và nói được chúng làm gì. Viết đúng từng dấu hai chấm là việc của agent — và của các phép kiểm tra.
-- **"Công thức Excel không phải lập trình."** — `=IF(C2>=500000;"Lớn";"")` kéo xuống cả cột đã có đủ bốn viên gạch: ô (biến), hàm `IF`, điều kiện, và kéo xuống (vòng lặp).
+- **"Công thức Excel không phải lập trình."** — `=IF(C2>=500000;"Lớn";"")` cho thấy ba viên gạch trong công thức: ô (biến), hàm `IF` và điều kiện. Kéo công thức xuống **hoạt động giống** vòng lặp, chứ không phải bản thân công thức chứa một vòng lặp.
 - **"Vòng lặp thì chạy mãi."** — Vòng lặp qua một danh sách sẽ dừng khi hết danh sách. Vòng lặp không bao giờ dừng là một lỗi: chương trình chạy mãi không xong thì đó là chỗ đầu tiên nên nghi.
 
 <!-- section: recap -->
 ## Tóm tắt bằng hình
 
-![Tóm tắt: 4 viên gạch của mọi chương trình](../diagrams/programming-building-blocks-recap.svg)
+![Tóm tắt: 4 viên gạch thường gặp trong chương trình](../diagrams/programming-building-blocks-recap.svg)
 
 <!-- section: takeaways -->
 ## Ghi nhớ
 
-- Mọi chương trình đều ghép từ bốn viên gạch: biến, hàm, điều kiện, vòng lặp.
+- Phần lớn chương trình kết hợp biến, hàm, điều kiện và vòng lặp; chương trình nhỏ có thể chỉ dùng một hoặc hai.
 - Biến giữ một giá trị có tên; hàm là một việc có tên, dùng lại được; điều kiện rẽ nhánh; vòng lặp làm lại cho từng phần tử.
-- Bạn đã dùng cả bốn trong Excel: ô có tên, `SUM`, `IF`, kéo công thức xuống.
+- Bạn đã gặp cả bốn ý tưởng trong Excel: ô có tên, `SUM`, `IF`; kéo công thức xuống hoạt động giống vòng lặp.
 - Đọc code agent viết bằng cách tìm bốn viên gạch rồi nói lại bằng lời thường.
 - Giao việc bằng đúng tên — đổi một biến, thêm một điều kiện — rồi xem thay đổi có chỉ ở đúng chỗ đó không.
 

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 511" width="800" height="511" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
-<title id="title">まとめ：プログラムの4つの部品</title>
+<title id="title">まとめ：よく使う4つの部品</title>
 <desc id="desc">1. 変数は名前の付いた値 — 1か所変えれば全部に反映; 2. 関数は名前付きの仕事 — 入力を受け取り、結果を返す; 3. 条件分岐は分かれ道 — バグが隠れやすい：&gt; か &gt;= か; 4. ループは
 1件ずつ繰り返す — リストが終われば止まる; 5. 部品の名前で指示する — 変数を変える、条件を足す. コードは書けなくていい。
 4つの部品を見分けて、名前で伝えよう。</desc>
@@ -7,7 +7,7 @@
 <rect x="1" y="1" width="798" height="509" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="481" r="110" fill="#2563EB" fill-opacity="0.05"/>
-<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">まとめ：プログラムの4つの部品</tspan></text>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">まとめ：よく使う4つの部品</tspan></text>
 <rect x="28" y="86.3" width="236" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
 <circle cx="146" cy="122.3" r="22" fill="#2563EB"/>
 <circle cx="146" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

@@ -107,7 +107,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 3.2.1 | [Biến, hàm, điều kiện, vòng lặp: 4 viên gạch của mọi chương trình](lessons/programming-building-blocks.md) | 📖 Khái niệm | 12 phút |
+| 3.2.1 | [Biến, hàm, điều kiện, vòng lặp: 4 viên gạch thường gặp](lessons/programming-building-blocks.md) | 📖 Khái niệm | 12 phút |
 | 3.2.2 | ⭐ [Git: nút Undo thần kỳ cho cả dự án](lessons/git-version-control.md) | 🛠️ Thực hành | 15 phút |
 | 3.2.3 | [Terminal không đáng sợ: 5 lệnh an toàn đầu tiên](lessons/command-line-basics.md) | 🛠️ Thực hành | 15 phút |
 
