@@ -25,8 +25,8 @@
   - **Lộ trình tối thiểu viết xong: 19 bài** (347 phút), đủ 3 thứ tiếng, trạng thái `review` (chờ Linh
     duyệt), mỗi bài một infographic giải thích và một hình tóm tắt; hai dự án có dữ liệu mẫu và kết quả
     đúng biết trước. Dữ kiện về công cụ ghi rõ "tính đến tháng 9/2026" và dẫn tài liệu chính thức.
-  - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`
-    (22/52 bài).
+  - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`;
+    Codex viết `security-basics`, `prompting-basics` (PR #5) — **24/52 bài**.
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
@@ -36,7 +36,7 @@
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
   - Linh duyệt 19 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 30 bài còn lại (2 bài Codex đang viết, issue #2). Khi thử thật
+  - 28 bài còn lại (2 bài Codex đã viết xong, chờ tạo PR: issue #2). Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
   - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,
