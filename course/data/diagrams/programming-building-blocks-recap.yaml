@@ -1,0 +1,61 @@
+# Recap of programming-building-blocks: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: 4 viên gạch của mọi chương trình"
+  en: "Recap: The Four Building Blocks"
+  ja: まとめ：プログラムの4つの部品
+points:
+  - icon: "📦"
+    color: blue
+    name:
+      vi: Biến giữ một giá trị có tên
+      en: A variable holds a named value
+      ja: 変数は名前の付いた値
+    caption:
+      vi: Đổi một chỗ, mọi nơi đổi theo
+      en: Change it once, it changes everywhere
+      ja: 1か所変えれば全部に反映
+  - icon: "🧩"
+    color: violet
+    name:
+      vi: Hàm là việc có tên
+      en: A function is a named job
+      ja: 関数は名前付きの仕事
+    caption:
+      vi: Nhận đầu vào, trả kết quả, dùng lại
+      en: Takes input, returns a result, reusable
+      ja: 入力を受け取り、結果を返す
+  - icon: "🔀"
+    color: amber
+    name:
+      vi: Điều kiện rẽ nhánh
+      en: A condition picks a branch
+      ja: 条件分岐は分かれ道
+    caption:
+      vi: "Chỗ lỗi hay nấp: > hay >= ?"
+      en: "Where bugs hide: > or >= ?"
+      ja: バグが隠れやすい：> か >= か
+  - icon: "🔁"
+    color: rose
+    name:
+      vi: "Vòng lặp: từng dòng"
+      en: A loop repeats for each item
+      ja: "ループは\n1件ずつ繰り返す"
+    caption:
+      vi: Hết danh sách thì dừng
+      en: It stops when the list ends
+      ja: リストが終われば止まる
+  - icon: "🎯"
+    color: green
+    name:
+      vi: Giao việc đúng tên
+      en: Direct by name
+      ja: 部品の名前で指示する
+    caption:
+      vi: Đổi một biến, thêm một điều kiện
+      en: Change a variable, add a condition
+      ja: 変数を変える、条件を足す
+takeaway:
+  vi: Không cần tự viết code — cần đọc ra được bốn viên gạch và nói đúng tên.
+  en: You do not need to write code — you need to spot the four blocks and name them.
+  ja: "コードは書けなくていい。\n4つの部品を見分けて、名前で伝えよう。"

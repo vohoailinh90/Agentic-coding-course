@@ -1,0 +1,58 @@
+# Used in: programming-building-blocks (concept). The four blocks every program is built from, and where Excel already has them.
+template: equation
+title:
+  vi: Bốn viên gạch của mọi chương trình
+  en: The Four Building Blocks of Every Program
+  ja: どんなプログラムもできている4つの部品
+terms:
+  - icon: "📦"
+    color: blue
+    name:
+      vi: Biến
+      en: Variable
+      ja: 変数
+    caption:
+      vi: như một ô Excel có tên
+      en: like a named cell in Excel
+      ja: 名前を付けたExcelのセル
+  - icon: "🧩"
+    color: violet
+    name:
+      vi: Hàm
+      en: Function
+      ja: 関数
+    caption:
+      vi: như SUM — một việc có tên
+      en: like SUM — a named job
+      ja: "SUMのような\n名前付きの仕事"
+  - icon: "🔀"
+    color: amber
+    name:
+      vi: Điều kiện
+      en: Condition
+      ja: 条件分岐
+    caption:
+      vi: "như IF: nếu… thì…"
+      en: "like IF: if… then…"
+      ja: "IFのように\n「もし…なら」"
+  - icon: "🔁"
+    color: rose
+    name:
+      vi: Vòng lặp
+      en: Loop
+      ja: ループ
+    caption:
+      vi: như kéo công thức xuống
+      en: like filling a formula down
+      ja: 数式を全行にコピーするように
+result:
+  icon: "📜"
+  color: green
+  name:
+    vi: Chương trình
+    en: A program
+    ja: プログラム
+  caption:
+    vi: các bước máy làm đúng từng chữ
+    en: steps a computer follows exactly
+    ja: コンピュータが書かれたとおりに実行する手順
