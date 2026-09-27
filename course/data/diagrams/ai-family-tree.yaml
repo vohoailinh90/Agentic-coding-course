@@ -1,0 +1,82 @@
+# Used in: ai-ml-dl (concept). Five words for AI on one family tree, broadest to narrowest; deep learning is the basis of most generative AI, not its parent.
+template: flow
+direction: vertical
+title:
+  vi: Gia phả của AI, từ rộng đến hẹp
+  en: The AI Family Tree, Broad to Narrow
+  ja: AIの系統図：広いものから狭いものへ
+subtitle:
+  vi: Đọc từ trên xuống, từ rộng đến hẹp
+  en: Read from the top, broadest to narrowest
+  ja: 上から下へ、広い言葉から狭い言葉へ
+steps:
+  - icon: "🤖"
+    color: slate
+    name:
+      vi: AI (trí tuệ nhân tạo)
+      en: AI (artificial intelligence)
+      ja: AI（人工知能）
+    caption:
+      vi: Máy làm việc từng cần trí óc người
+      en: Machines doing work that needed human minds
+      ja: 人の知能が必要だった仕事をする機械
+    arrow:
+      vi: một nhánh là
+      en: one branch is
+      ja: その一部が
+  - icon: "📊"
+    color: blue
+    name:
+      vi: Học máy (machine learning)
+      en: Machine learning
+      ja: 機械学習
+    caption:
+      vi: Tự tìm quy luật từ ví dụ
+      en: Finds patterns in examples
+      ja: 例から規則を見つける
+    arrow:
+      vi: một nhánh là
+      en: one branch is
+      ja: その一部が
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: Học sâu (deep learning)
+      en: Deep learning
+      ja: ディープラーニング
+    caption:
+      vi: Mạng nơ-ron nhiều lớp
+      en: Neural networks with many layers
+      ja: 何層ものニューラルネットワーク
+    arrow:
+      vi: nền của phần lớn
+      en: the basis of most
+      ja: 今の大半の土台
+  - icon: "🎨"
+    color: pink
+    name:
+      vi: AI tạo sinh
+      en: Generative AI
+      ja: 生成AI
+    caption:
+      vi: Tạo chữ, hình, âm thanh, code mới
+      en: Makes new text, images, sound and code
+      ja: 文章・画像・音声・コードを新しく作る
+    arrow:
+      vi: cho chữ viết là
+      en: for text, it is
+      ja: 文章なら
+  - icon: "💬"
+    color: teal
+    name:
+      vi: LLM (mô hình ngôn ngữ lớn)
+      en: LLM (large language model)
+      ja: LLM（大規模言語モデル）
+    caption:
+      vi: Bộ não của chatbot và agent
+      en: The brain of chatbots and agents
+      ja: チャットボットとエージェントの頭脳
+takeaway:
+  vi: Mọi LLM đều là AI, nhưng không phải AI nào cũng là LLM.
+  en: Every LLM is AI, but not all AI is an LLM.
+  ja: LLMはすべてAIだが、AIがすべてLLMなのではない。

@@ -1,0 +1,61 @@
+# Recap of ai-ml-dl: the whole lesson in one picture.
+template: summary
+title:
+  vi: "Tóm tắt: gia phả của AI"
+  en: "Recap: The AI Family Tree"
+  ja: まとめ：AIの系統図
+points:
+  - icon: "🌳"
+    color: green
+    name:
+      vi: Năm từ, một gia phả
+      en: Five words, one family
+      ja: 5つの言葉は1つの系統
+    caption:
+      vi: Từ rộng đến hẹp
+      en: From the broadest to the narrowest
+      ja: 広い言葉から狭い言葉へ
+  - icon: "📏"
+    color: slate
+    name:
+      vi: Luật viết sẵn khác học máy
+      en: Written rules are not learning
+      ja: ルールは学習ではない
+    caption:
+      vi: Luật do người viết, hay học từ ví dụ?
+      en: Rules someone wrote, or learned from examples?
+      ja: "人が書いたルールか、\n例から学んだか"
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: Học sâu là mạng nhiều lớp
+      en: Deep learning uses many layers
+      ja: 深層学習は多層のネットワーク
+    caption:
+      vi: "Nền của AI về hình,\ngiọng nói, chữ"
+      en: Behind modern image, speech and text AI
+      ja: 画像・音声・文章のAIの土台
+  - icon: "🎨"
+    color: pink
+    name:
+      vi: AI tạo sinh làm ra cái mới
+      en: Generative AI makes new things
+      ja: 生成AIは新しく作る
+    caption:
+      vi: LLM là AI tạo sinh cho chữ
+      en: An LLM does it for text
+      ja: LLMは文章の生成AI
+  - icon: "🤖"
+    color: teal
+    name:
+      vi: Agent dùng LLM làm bộ não
+      en: An agent's brain is an LLM
+      ja: エージェントの頭脳はLLM
+    caption:
+      vi: "Viết trôi chảy,\nvẫn có thể sai"
+      en: Fluent, and still fallible
+      ja: 流暢でも間違えることがある
+takeaway:
+  vi: "Nghe chữ \"AI\", hãy hỏi: làm theo luật hay học từ dữ liệu? Phân loại hay tạo ra cái mới?"
+  en: "When you hear \"AI\", ask: written rules or learned from data? Sorting things, or making new ones?"
+  ja: "「AI」と聞いたら問う：決めたルールか、データから学んだか。分類か、新しく作るか。"
