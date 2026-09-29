@@ -98,7 +98,7 @@ Done when:
 When you are done, tell me how you checked each point.
 ```
 
-The agent finishes and reports how it checked. Huy does not stop at the report. He reads the changes, then tries all three points himself: pressing -10 when a team has 0 points (still 0), adding points a few times and reloading the page (the scores are still there), pressing "New game" (the page asks before clearing). The evidence he writes down:
+The agent finishes and reports how it checked. Huy does not stop at the report. He reads the changes, then tries all three points himself: pressing -10 when a team has 0 points (still 0), adding points a few times and reloading the page (the scores are still there), pressing "New game" (the page asks before clearing; after confirming, all four scores are 0). The evidence he writes down:
 
 - *I can show…* the file `scoreboard.html` running on my computer, with the scores still there after a reload.
 - *I checked…* all three criteria, by hand, after reading the changes.

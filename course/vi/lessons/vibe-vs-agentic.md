@@ -97,7 +97,7 @@ Xong khi:
 Làm xong, cho mình biết bạn đã kiểm tra từng điều thế nào.
 ```
 
-Agent làm xong và báo cách đã kiểm tra. Huy không dừng ở lời báo cáo. Cậu đọc phần thay đổi, rồi tự thử cả ba điều: bấm -10 khi đội đang 0 điểm (vẫn 0), cộng vài lần rồi tải lại trang (điểm còn), bấm "Ván mới" (trang hỏi lại trước khi xóa). Bằng chứng cậu ghi lại:
+Agent làm xong và báo cách đã kiểm tra. Huy không dừng ở lời báo cáo. Cậu đọc phần thay đổi, rồi tự thử cả ba điều: bấm -10 khi đội đang 0 điểm (vẫn 0), cộng vài lần rồi tải lại trang (điểm còn), bấm "Ván mới" (trang hỏi lại trước khi xóa; bấm đồng ý thì cả bốn đội về 0). Bằng chứng cậu ghi lại:
 
 - *Tôi cho xem được…* file `cham_diem.html` chạy trên máy, điểm còn sau khi tải lại.
 - *Tôi đã kiểm tra…* cả ba tiêu chí, tự tay, sau khi đọc phần thay đổi.
