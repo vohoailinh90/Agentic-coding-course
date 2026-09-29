@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 710" width="800" height="710" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Vibe Coding or Agentic Coding?</title>
+<desc id="desc">Vibe coding — Do you read the changes?: No; You know it is done when: It seems
+to work; When there is an error: Paste it to the AI,
+take the fix; Good for: Throwaway
+experiments. Agentic coding — Do you read the changes?: Yes; You know it is done when: Criteria written first
+all pass; When there is an error: Find the cause,
+check again; Good for: Work someone
+relies on. The difference is what you do with the result,
+not the tool.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="708" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="680" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Vibe Coding or Agentic Coding?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="497.4" rx="20" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#EA580C"/>
+<circle cx="198" cy="138.3" r="26" fill="#EA580C"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">Vibe coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Do you read the changes?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">No</tspan></text>
+<line x1="44" y1="286.3" x2="352" y2="286.3" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">You know it is done when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="339.1">It seems</tspan><tspan x="44" y="361.5">to work</tspan></text>
+<line x1="44" y1="381" x2="352" y2="381" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="408.5">When there is an error</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="433.8">Paste it to the AI,</tspan><tspan x="44" y="456.2">take the fix</tspan></text>
+<line x1="44" y1="475.7" x2="352" y2="475.7" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="503.2">Good for</tspan></text>
+<text font-size="19" fill="#EA580C" text-anchor="start" font-weight="700"><tspan x="44" y="530.5">Throwaway</tspan><tspan x="44" y="555.6">experiments</tspan></text>
+</g>
+<g>
+<rect x="432" y="86.3" width="340" height="497.4" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">Agentic coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">Do you read the changes?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">Yes</tspan></text>
+<line x1="448" y1="286.3" x2="756" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="313.8">You know it is done when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="339.1">Criteria written first</tspan><tspan x="448" y="361.5">all pass</tspan></text>
+<line x1="448" y1="381" x2="756" y2="381" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="408.5">When there is an error</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="433.8">Find the cause,</tspan><tspan x="448" y="456.2">check again</tspan></text>
+<line x1="448" y1="475.7" x2="756" y2="475.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="503.2">Good for</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="530.5">Work someone</tspan><tspan x="448" y="555.6">relies on</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="607.6" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="638.6">💡 The difference is what you do with the result,</tspan><tspan x="400" y="662.4">not the tool.</tspan></text>
+</svg>

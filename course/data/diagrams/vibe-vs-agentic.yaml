@@ -1,0 +1,64 @@
+# Used in: vibe-vs-agentic (concept). What you do with the AI's output.
+template: compare
+title:
+  vi: Vibe coding hay agentic coding?
+  en: Vibe Coding or Agentic Coding?
+  ja: バイブ型？エージェント型？
+versus: true
+rows:
+  - vi: Bạn đọc thay đổi?
+    en: Do you read the changes?
+    ja: 変更を読む？
+  - vi: Biết xong khi
+    en: You know it is done when
+    ja: 完了の判断
+  - vi: Khi có lỗi
+    en: When there is an error
+    ja: エラーが出たら
+  - vi: Hợp với
+    en: Good for
+    ja: 向いていること
+emphasis_row: 4
+columns:
+  - icon: "🎲"
+    color: orange
+    name:
+      vi: Vibe coding
+      en: Vibe coding
+      ja: バイブコーディング
+    values:
+      - vi: Không
+        en: "No"
+        ja: 読まない
+      - vi: "Trông có vẻ\nchạy được"
+        en: "It seems\nto work"
+        ja: 動いているように見える
+      - vi: "Dán lỗi cho AI,\nnhận bản sửa"
+        en: "Paste it to the AI,\ntake the fix"
+        ja: AIに貼って直してもらう
+      - vi: "Thử nghiệm\nbỏ đi được"
+        en: "Throwaway\nexperiments"
+        ja: 捨ててよい試作
+  - icon: "🤖"
+    color: green
+    name:
+      vi: Agentic coding
+      en: Agentic coding
+      ja: エージェント型
+    values:
+      - vi: Có
+        en: "Yes"
+        ja: 読む
+      - vi: "Tiêu chí viết trước\nđều đạt"
+        en: "Criteria written first\nall pass"
+        ja: 先に決めた基準をすべて満たす
+      - vi: "Tìm nguyên nhân,\nkiểm tra lại"
+        en: "Find the cause,\ncheck again"
+        ja: 原因を探し、確かめ直す
+      - vi: "Việc có người\ndựa vào"
+        en: "Work someone\nrelies on"
+        ja: だれかが頼りにする仕事
+takeaway:
+  vi: Khác nhau ở việc bạn làm với kết quả, không phải ở công cụ.
+  en: "The difference is what you do with the result,\nnot the tool."
+  ja: 違いは道具ではなく、結果をどう扱うかです。

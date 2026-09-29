@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 686" width="800" height="686" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Vibe coding hay agentic coding?</title>
+<desc id="desc">Vibe coding — Bạn đọc thay đổi?: Không; Biết xong khi: Trông có vẻ
+chạy được; Khi có lỗi: Dán lỗi cho AI,
+nhận bản sửa; Hợp với: Thử nghiệm
+bỏ đi được. Agentic coding — Bạn đọc thay đổi?: Có; Biết xong khi: Tiêu chí viết trước
+đều đạt; Khi có lỗi: Tìm nguyên nhân,
+kiểm tra lại; Hợp với: Việc có người
+dựa vào. Khác nhau ở việc bạn làm với kết quả, không phải ở công cụ.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="684" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="656" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Vibe coding hay agentic coding?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="497.4" rx="20" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#EA580C"/>
+<circle cx="198" cy="138.3" r="26" fill="#EA580C"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">Vibe coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Bạn đọc thay đổi?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">Không</tspan></text>
+<line x1="44" y1="286.3" x2="352" y2="286.3" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">Biết xong khi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="339.1">Trông có vẻ</tspan><tspan x="44" y="361.5">chạy được</tspan></text>
+<line x1="44" y1="381" x2="352" y2="381" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="408.5">Khi có lỗi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="433.8">Dán lỗi cho AI,</tspan><tspan x="44" y="456.2">nhận bản sửa</tspan></text>
+<line x1="44" y1="475.7" x2="352" y2="475.7" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="503.2">Hợp với</tspan></text>
+<text font-size="19" fill="#EA580C" text-anchor="start" font-weight="700"><tspan x="44" y="530.5">Thử nghiệm</tspan><tspan x="44" y="555.6">bỏ đi được</tspan></text>
+</g>
+<g>
+<rect x="432" y="86.3" width="340" height="497.4" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">Agentic coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">Bạn đọc thay đổi?</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">Có</tspan></text>
+<line x1="448" y1="286.3" x2="756" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="313.8">Biết xong khi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="339.1">Tiêu chí viết trước</tspan><tspan x="448" y="361.5">đều đạt</tspan></text>
+<line x1="448" y1="381" x2="756" y2="381" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="408.5">Khi có lỗi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="433.8">Tìm nguyên nhân,</tspan><tspan x="448" y="456.2">kiểm tra lại</tspan></text>
+<line x1="448" y1="475.7" x2="756" y2="475.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="503.2">Hợp với</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="530.5">Việc có người</tspan><tspan x="448" y="555.6">dựa vào</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="607.6" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="638.6">💡 Khác nhau ở việc bạn làm với kết quả, không phải ở công cụ.</tspan></text>
+</svg>

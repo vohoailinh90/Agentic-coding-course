@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 616" width="800" height="616" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">バイブ型？エージェント型？</title>
+<desc id="desc">バイブコーディング — 変更を読む？: 読まない; 完了の判断: 動いているように見える; エラーが出たら: AIに貼って直してもらう; 向いていること: 捨ててよい試作. エージェント型 — 変更を読む？: 読む; 完了の判断: 先に決めた基準をすべて満たす; エラーが出たら: 原因を探し、確かめ直す; 向いていること: だれかが頼りにする仕事. 違いは道具ではなく、結果をどう扱うかです。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="614" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="586" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">バイブ型？エージェント型？</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="427.4" rx="20" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#EA580C"/>
+<circle cx="198" cy="138.3" r="26" fill="#EA580C"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">バイブコーディング</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">変更を読む？</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">読まない</tspan></text>
+<line x1="44" y1="286.3" x2="352" y2="286.3" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">完了の判断</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="339.1">動いているように見える</tspan></text>
+<line x1="44" y1="358.5" x2="352" y2="358.5" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="386">エラーが出たら</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="411.3">AIに貼って直してもらう</tspan></text>
+<line x1="44" y1="430.8" x2="352" y2="430.8" stroke="#FFEDD5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="458.3">向いていること</tspan></text>
+<text font-size="19" fill="#EA580C" text-anchor="start" font-weight="700"><tspan x="44" y="485.6">捨ててよい試作</tspan></text>
+</g>
+<g>
+<rect x="432" y="86.3" width="340" height="427.4" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">エージェント型</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">変更を読む？</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">読む</tspan></text>
+<line x1="448" y1="286.3" x2="756" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="313.8">完了の判断</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="339.1">先に決めた基準をすべて満たす</tspan></text>
+<line x1="448" y1="358.5" x2="756" y2="358.5" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="386">エラーが出たら</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="411.3">原因を探し、確かめ直す</tspan></text>
+<line x1="448" y1="430.8" x2="756" y2="430.8" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="458.3">向いていること</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="485.6">だれかが頼りにする仕事</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="537.7" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="568.7">💡 違いは道具ではなく、結果をどう扱うかです。</tspan></text>
+</svg>

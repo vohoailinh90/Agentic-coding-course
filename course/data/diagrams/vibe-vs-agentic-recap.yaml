@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: vibe coding và agentic coding"
+  en: "Recap: Vibe vs Agentic Coding"
+  ja: まとめ：バイブ型とエージェント型
+points:
+  - icon: "🎲"
+    color: orange
+    name: {vi: "Vibe coding:\nthấy chạy là nhận", en: "Vibe coding:\naccept if it runs", ja: "バイブ型：\n動けば受け入れる"}
+    caption: {vi: "Không đọc,\nkhông kiểm tra", en: "No reading,\nno checking", ja: 読まない・確かめない}
+  - icon: "🤖"
+    color: green
+    name: {vi: "Agentic:\ncó kiểm tra và duyệt", en: "Agentic:\nchecks and reviews", ja: "エージェント型：\n確認とレビュー"}
+    caption: {vi: "Bạn chịu trách nhiệm\nkết quả", en: "You own\nthe result", ja: 結果の責任はあなた}
+  - icon: "🧰"
+    color: amber
+    name: {vi: "Không phải\ndo công cụ", en: "Not about\nthe tool", ja: 道具の違いではない}
+    caption: {vi: "Cùng công cụ,\nhai cách dùng", en: "Same tool,\ntwo ways to use it", ja: 同じ道具、2つの使い方}
+  - icon: "🧪"
+    color: teal
+    name: {vi: "Vibe ổn\ncho thử nghiệm", en: "Vibe is fine\nfor experiments", ja: 試作ならバイブでよい}
+    caption: {vi: "ai-practice,\ndữ liệu giả, bỏ đi được", en: "ai-practice, made-up data,\nthrowaway", ja: "ai-practice・架空データ・\n捨ててよい"}
+  - icon: "❓"
+    color: indigo
+    name: {vi: "Nếu sai,\nai chịu thiệt?", en: "If it is wrong,\nwho is affected?", ja: "間違っていたら\nだれが困る？"}
+    caption: {vi: "Có người khác:\nchuyển sang agentic", en: "Someone else:\ngo agentic", ja: ほかの人ならエージェント型へ}
+takeaway:
+  vi: Thử thì cứ vibe; có người dựa vào thì làm agentic.
+  en: "Vibe to try things out;\ngo agentic when someone relies on it."
+  ja: 試すならバイブ型、だれかが頼るならエージェント型で。

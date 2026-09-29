@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 512" width="800" height="512" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">まとめ：バイブ型とエージェント型</title>
+<desc id="desc">1. バイブ型：
+動けば受け入れる — 読まない・確かめない; 2. エージェント型：
+確認とレビュー — 結果の責任はあなた; 3. 道具の違いではない — 同じ道具、2つの使い方; 4. 試作ならバイブでよい — ai-practice・架空データ・
+捨ててよい; 5. 間違っていたら
+だれが困る？ — ほかの人ならエージェント型へ. 試すならバイブ型、だれかが頼るならエージェント型で。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="510" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="482" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">まとめ：バイブ型とエージェント型</tspan></text>
+<rect x="28" y="86.3" width="236" height="152.6" rx="18" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+<circle cx="146" cy="122.3" r="22" fill="#EA580C"/>
+<circle cx="146" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<circle cx="46" cy="104.3" r="12" fill="#7C2D12"/>
+<text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#7C2D12" text-anchor="middle" font-weight="700"><tspan x="146" y="170.8">バイブ型：</tspan><tspan x="146" y="195.2">動けば受け入れる</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="220.1">読まない・確かめない</tspan></text>
+<rect x="282" y="86.3" width="236" height="152.6" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="400" cy="122.3" r="22" fill="#059669"/>
+<circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<circle cx="300" cy="104.3" r="12" fill="#064E3B"/>
+<text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">エージェント型：</tspan><tspan x="400" y="195.2">確認とレビュー</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="220.1">結果の責任はあなた</tspan></text>
+<rect x="536" y="86.3" width="236" height="152.6" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="654" cy="122.3" r="22" fill="#D97706"/>
+<circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧰</text>
+<circle cx="554" cy="104.3" r="12" fill="#78350F"/>
+<text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">道具の違いではない</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="195.7">同じ道具、2つの使い方</tspan></text>
+<rect x="155" y="256.9" width="236" height="152.6" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
+<circle cx="273" cy="292.9" r="22" fill="#0D9488"/>
+<circle cx="273" cy="292.9" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="273" y="301.2" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧪</text>
+<circle cx="173" cy="274.9" r="12" fill="#134E4A"/>
+<text x="173" y="279.9" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="273" y="341.4">試作ならバイブでよい</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="366.3">ai-practice・架空データ・</tspan><tspan x="273" y="386.1">捨ててよい</tspan></text>
+<rect x="409" y="256.9" width="236" height="152.6" rx="18" fill="#EEF2FF" stroke="#4F46E5" stroke-width="2"/>
+<circle cx="527" cy="292.9" r="22" fill="#4F46E5"/>
+<circle cx="527" cy="292.9" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="527" y="301.2" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">❓</text>
+<circle cx="427" cy="274.9" r="12" fill="#312E81"/>
+<text x="427" y="279.9" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text font-size="18.5" fill="#312E81" text-anchor="middle" font-weight="700"><tspan x="527" y="341.4">間違っていたら</tspan><tspan x="527" y="365.8">だれが困る？</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="390.8">ほかの人ならエージェント型へ</tspan></text>
+<rect x="28" y="433.6" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="464.6">💡 試すならバイブ型、だれかが頼るならエージェント型で。</tspan></text>
+</svg>
