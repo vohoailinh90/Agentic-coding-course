@@ -79,7 +79,7 @@ Where the comparison breaks down: a washing machine runs one fixed programme. An
 
 Mai's task: combine 12 files `month_01.csv` … `month_12.csv` (made-up data, columns `date, product, revenue`) into `year.csv`, with one total line per month.
 
-**The traditional way — her attempt two years ago.** Mai taught herself how to read files in Python, wrote a loop and ran it. The first error was a message about the encoding of accented characters in the file — she spent an afternoon finding out what it meant. Once that was fixed, the program ran, but January's total was far too large: it turned out each file's header row had been mixed into the data. Every write – run – read – fix round was hers.
+**The traditional way — her attempt two years ago.** Mai taught herself how to read files in Python, wrote a loop and ran it. The first error was a message about the encoding of accented characters in the file — she spent an afternoon finding out what it meant. Once that was fixed, the program ran, but January's total was far too large: it turned out an old copy, `month_01 (1).csv`, was still in the folder, and the program had quietly added up both files. Every write – run – read – fix round was hers.
 
 **The agentic way — this week.** Mai writes a request, and the most important part is the check:
 

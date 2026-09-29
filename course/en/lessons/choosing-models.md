@@ -103,7 +103,7 @@ Taxi $18; Pens $5; Coffee with a client $19; Bus $3.
 *Task C — a schedule with several constraints:*
 
 ```text
-Put 4 tasks into 4 Monday time slots: 9:00, 10:00, 11:00, 14:00 (each task takes 1 hour).
+Put 4 tasks into 4 Monday time slots: 9:00, 10:00, 11:00, 14:00 (each task takes 1 hour; the lunch break is from 12:00 to 14:00).
 Tasks: Write report, Send report, Team meeting, Call client.
 - Write report and Team meeting must both be done before Send report.
 - Send report must happen before the lunch break.

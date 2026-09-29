@@ -78,7 +78,7 @@ Phép so sánh sai ở chỗ: máy giặt chạy đúng một chương trình c�
 
 Việc của Mai: gộp 12 file `thang_01.csv` … `thang_12.csv` (dữ liệu giả, cột `ngay, san_pham, doanh_thu`) thành `ca_nam.csv`, mỗi tháng một dòng tổng.
 
-**Cách truyền thống — lần thử hai năm trước.** Mai tự học cách đọc file bằng Python, viết vòng lặp, chạy. Lỗi đầu tiên là thông báo về mã hóa chữ tiếng Việt — cô mất một buổi tìm hiểu nó nghĩa là gì. Sửa xong, chạy được, nhưng tổng tháng Một lớn bất thường: hóa ra dòng tiêu đề của mỗi file bị lẫn vào dữ liệu. Mỗi vòng viết – chạy – đọc lỗi – sửa đều do cô làm.
+**Cách truyền thống — lần thử hai năm trước.** Mai tự học cách đọc file bằng Python, viết vòng lặp, chạy. Lỗi đầu tiên là thông báo về mã hóa chữ tiếng Việt — cô mất một buổi tìm hiểu nó nghĩa là gì. Sửa xong, chạy được, nhưng tổng tháng Một lớn bất thường: hóa ra trong thư mục còn một bản sao cũ `thang_01 (1).csv`, và chương trình đã lặng lẽ cộng cả hai file. Mỗi vòng viết – chạy – đọc lỗi – sửa đều do cô làm.
 
 **Cách agentic — tuần này.** Mai viết yêu cầu, phần quan trọng nhất là cách kiểm tra:
 

@@ -102,7 +102,7 @@ Taxi 95.000 đ; Bút 30.000 đ; Cà phê tiếp khách 110.000 đ; Xe buýt 7.00
 *Việc C — xếp lịch nhiều ràng buộc:*
 
 ```text
-Xếp 4 việc vào 4 khung giờ thứ Hai: 9:00, 10:00, 11:00, 14:00 (mỗi việc 1 giờ).
+Xếp 4 việc vào 4 khung giờ thứ Hai: 9:00, 10:00, 11:00, 14:00 (mỗi việc 1 giờ; nghỉ trưa từ 12:00 đến 14:00).
 Việc: Viết báo cáo, Gửi báo cáo, Họp nhóm, Gọi khách hàng.
 - Viết báo cáo và Họp nhóm đều phải xong trước Gửi báo cáo.
 - Gửi báo cáo phải trước giờ nghỉ trưa.
