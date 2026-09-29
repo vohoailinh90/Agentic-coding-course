@@ -87,11 +87,12 @@ Gộp 12 file thang_01.csv ... thang_12.csv thành ca_nam.csv, mỗi tháng mộ
 Không sửa các file gốc. Dữ liệu là giả.
 Xong khi:
 1. ca_nam.csv có đúng 12 dòng tháng và một dòng Tong cong.
-2. Tong cong bằng tổng cột doanh_thu của cả 12 file, tính riêng bằng một cách khác.
-Chạy phép kiểm tra đó và cho mình xem kết quả.
+2. Mỗi dòng tháng bằng tổng cột doanh_thu của đúng file tháng đó.
+3. Tong cong bằng tổng cột doanh_thu của cả 12 file, tính riêng bằng một cách khác.
+Chạy các phép kiểm tra đó và cho mình xem kết quả.
 ```
 
-Agent viết code, chạy, tự gặp đúng lỗi mã hóa chữ mà Mai từng gặp, tự sửa, chạy lại, rồi chạy phép kiểm tra và cho Mai xem: 12 dòng tháng, hai con số tổng khớp nhau. Mai không dừng ở đó: cô mở `thang_03.csv`, tự cộng cột doanh thu và so với dòng tháng Ba. Khớp. Nửa tiếng của cô dành cho việc viết yêu cầu và kiểm tra — không phải cho việc tìm nghĩa của thông báo lỗi.
+Agent viết code, chạy, tự gặp đúng lỗi mã hóa chữ mà Mai từng gặp, tự sửa, chạy lại, rồi chạy phép kiểm tra và cho Mai xem: 12 dòng tháng, mỗi dòng khớp với file của tháng đó, và tổng cả năm khớp. Mai không dừng ở đó: cô chọn ngẫu nhiên một tháng, mở `thang_03.csv`, tự cộng cột doanh thu và so với dòng tháng Ba. Khớp. Nửa tiếng của cô dành cho việc viết yêu cầu và kiểm tra — không phải cho việc tìm nghĩa của thông báo lỗi.
 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp

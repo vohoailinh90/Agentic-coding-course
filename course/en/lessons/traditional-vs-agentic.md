@@ -88,11 +88,12 @@ Combine the 12 files month_01.csv ... month_12.csv into year.csv, one line per m
 Do not change the original files. The data is made up.
 Done when:
 1. year.csv has exactly 12 month lines and one Grand total line.
-2. Grand total equals the sum of the revenue column in all 12 files, calculated separately in a different way.
-Run that check and show me the result.
+2. Each month line equals the sum of the revenue column in that month's own file.
+3. Grand total equals the sum of the revenue column in all 12 files, calculated separately in a different way.
+Run those checks and show me the results.
 ```
 
-The agent writes the code, runs it, hits the very same encoding error Mai once hit, fixes it itself, runs again, then runs the check and shows Mai: 12 month lines, and the two totals match. Mai does not stop there: she opens `month_03.csv`, adds up the revenue column herself and compares it with the March line. It matches. Her half hour went on writing the request and checking — not on finding out what an error message meant.
+The agent writes the code, runs it, hits the very same encoding error Mai once hit, fixes it itself, runs again, then runs the check and shows Mai: 12 month lines, each matching its month's file, and the yearly total matches. Mai does not stop there: she picks a month at random, opens `month_03.csv`, adds up the revenue column herself and compares it with the March line. It matches. Her half hour went on writing the request and checking — not on finding out what an error message meant.
 
 <!-- section: misconceptions -->
 ## Common Misconceptions
