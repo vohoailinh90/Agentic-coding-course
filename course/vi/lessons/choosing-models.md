@@ -84,7 +84,7 @@ Khoảng 8 phút, trong `ai-practice`, chỉ với dữ liệu giả. Bạn cầ
 
 **1. Chạy ba việc trên hai thiết lập (6 phút).** Dán đúng cùng một yêu cầu cho thiết lập nhỏ (mô hình nhỏ hoặc mức thấp) và cho thiết lập lớn (mô hình lớn hoặc mức cao). Mỗi lần chạy — mỗi việc, mỗi thiết lập — dùng một cuộc trò chuyện mới (trong Claude Code: gõ `/clear`), để thiết lập sau không nhìn thấy câu trả lời của thiết lập trước.
 
-*Việc A — viết lại (không có một đáp án duy nhất):*
+*Việc A — việc của bạn:* chọn một việc ngắn bạn hay làm, dùng dữ liệu giả, và **viết tiêu chí đạt trước khi chạy**. Chưa nghĩ ra thì dùng việc mẫu dưới đây, với tiêu chí: lịch sự (không ra lệnh, có lời cảm ơn hoặc xin lỗi), giữ đủ ý (file trễ 2 ngày, cần gấp cho buổi họp ngày mai), tối đa 3 câu.
 
 ```text
 Viết lại tin nhắn sau cho lịch sự, tối đa 3 câu:
@@ -116,7 +116,7 @@ Cho biết lịch và kiểm tra lại từng điều kiện.
 **3. Viết quy tắc của bạn (1 phút)** theo mẫu của Hana, vào cùng file đó, rồi ghi bằng chứng:
 
 - *Tôi cho xem được…* file `so_sanh_mo_hinh.md`: bảng so sánh ba việc trên hai thiết lập và quy tắc của tôi.
-- *Tôi đã kiểm tra…* tổng tiền việc B và lịch việc C khớp với đáp án; lời nhắn việc A đủ ý và không quá 3 câu.
+- *Tôi đã kiểm tra…* tổng tiền việc B và lịch việc C khớp với đáp án; kết quả việc A đạt đủ tiêu chí tôi viết trước.
 - *Tôi sẽ không dùng cách này khi…* ví dụ: chỉ thử mỗi việc một lần rồi kết luận cho cả loại việc lớn và quan trọng.
 
 <details>

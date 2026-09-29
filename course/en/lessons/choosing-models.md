@@ -85,7 +85,7 @@ About 8 minutes, in `ai-practice`, with made-up data only. You need a tool that 
 
 **1. Run three tasks on two setups (6 minutes).** Paste exactly the same request to the small setup (small model or low effort) and to the large one (large model or high effort). Use a new conversation for every run — each task, each setup (in Claude Code: type `/clear`) — so the second setup cannot see the first one's answer.
 
-*Task A — rewriting (there is no single right answer):*
+*Task A — your own task:* pick a short task you often do, use made-up data, and **write your pass criterion before you run it**. If nothing comes to mind, use the sample below, with this criterion: polite (no orders, includes a thank-you or an apology), keeps the points (the file is 2 days late and is needed for tomorrow's meeting), 3 sentences at most.
 
 ```text
 Rewrite this message so it is polite, in 3 sentences at most:
@@ -117,7 +117,7 @@ Give the schedule and check each condition again.
 **3. Write your own rule (1 minute)** on the model of Hana's, in the same file, then write down your evidence:
 
 - *I can show…* the file `model-comparison.md`: the table comparing three tasks on two setups, and my rule.
-- *I checked…* the totals in task B and the schedule in task C match the answers; the message in task A keeps its points and is no longer than 3 sentences.
+- *I checked…* the totals in task B and the schedule in task C match the answers; the result of task A meets every criterion I wrote in advance.
 - *I would not use this when…* for example: I have tried each task only once and would draw a conclusion for a whole kind of large, important work.
 
 <details>
