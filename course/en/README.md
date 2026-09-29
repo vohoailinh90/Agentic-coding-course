@@ -146,7 +146,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 |---|---|---|---|
 | 4.3.1 | [Tokens: How AI Reads Text in Pieces](lessons/tokens.md) | 🎬 Demo | 8 min |
 | 4.3.2 | [Models That "Think": What Is Reasoning?](lessons/reasoning-models.md) | 📖 Concept | 10 min |
-| 4.3.3 | Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly | 🛠️ Hands-on | 10 min |
+| 4.3.3 | [Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly](lessons/choosing-models.md) | 🛠️ Hands-on | 10 min |
 
 ## 5. 🧰 Reliable Agent Work
 

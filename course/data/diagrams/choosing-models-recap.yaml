@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: chọn mô hình"
+  en: "Recap: Choosing a Model"
+  ja: まとめ：モデルの選び方
+points:
+  - icon: "🎯"
+    color: indigo
+    name: {vi: Ba thứ đánh đổi, en: Three trade-offs, ja: 3つのトレードオフ}
+    caption: {vi: "Năng lực, tốc độ,\nchi phí", en: "Capability, speed,\ncost", ja: 能力・速さ・費用}
+  - icon: "⚡"
+    color: blue
+    name: {vi: "Việc đơn giản:\nmô hình nhỏ", en: "Simple work:\na small model", ja: "簡単な仕事は\n小さいモデル"}
+    caption: {vi: "Ngắn, lặp lại,\ndễ kiểm tra", en: "Short, repeated,\neasy to check", ja: 短い・くり返し・確かめやすい}
+  - icon: "🧠"
+    color: violet
+    name: {vi: "Việc khó:\nmô hình lớn", en: "Hard work:\na large model", ja: "難しい仕事は\n大きいモデル"}
+    caption: {vi: "Nhiều bước,\nsai thì tốn kém", en: "Many steps,\ncostly mistakes", ja: "何段階もあり、\n間違いが高くつく"}
+  - icon: "💪"
+    color: teal
+    name: {vi: "Chỉnh mức nỗ lực\ntrước", en: "Adjust effort\nfirst", ja: 先に努力レベルを調整}
+    caption: {vi: Trước khi đổi mô hình, en: Before switching models, ja: モデルを変える前に}
+  - icon: "🧪"
+    color: green
+    name: {vi: Thử trên việc thật, en: Test on real tasks, ja: 実際の仕事で試す}
+    caption: {vi: "Hai mô hình,\nmột tiêu chí", en: "Two models,\none criterion", ja: 2つのモデル、同じ基準}
+takeaway:
+  vi: Chọn theo việc, rồi kiểm tra bằng kết quả thật.
+  en: Choose by the task, then check with real results.
+  ja: 仕事に合わせて選び、実際の結果で確かめましょう。

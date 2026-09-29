@@ -146,7 +146,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 |---|---|---|---|
 | 4.3.1 | [Token: AI đọc chữ theo từng mảnh](lessons/tokens.md) | 🎬 Minh họa | 8 phút |
 | 4.3.2 | [Mô hình biết "suy nghĩ": reasoning là gì?](lessons/reasoning-models.md) | 📖 Khái niệm | 10 phút |
-| 4.3.3 | Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt | 🛠️ Thực hành | 10 phút |
+| 4.3.3 | [Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt](lessons/choosing-models.md) | 🛠️ Thực hành | 10 phút |
 
 ## 5. 🧰 Làm việc với agent một cách đáng tin cậy
 

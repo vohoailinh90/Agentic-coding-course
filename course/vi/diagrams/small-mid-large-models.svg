@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 641" width="800" height="641" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Mô hình nhỏ, vừa hay lớn?</title>
+<desc id="desc">Nhỏ — Hợp với: Việc ngắn,
+lặp lại; Tốc độ: Nhanh nhất; Chi phí mỗi token: Thấp; Ví dụ Claude (9/2026): Haiku. Vừa — Hợp với: Phần lớn
+việc hằng ngày; Tốc độ: Nhanh; Chi phí mỗi token: Vừa; Ví dụ Claude (9/2026): Sonnet. Lớn — Hợp với: Việc khó,
+nhiều bước; Tốc độ: Chậm hơn; Chi phí mỗi token: Cao; Ví dụ Claude (9/2026): Opus, Fable. Chọn mô hình đủ tốt cho việc, không phải mô hình mạnh nhất.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="639" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="611" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Mô hình nhỏ, vừa hay lớn?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="236" height="452.5" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚡</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">Nhỏ</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Hợp với</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="268.8">Việc ngắn,</tspan><tspan x="44" y="293.9">lặp lại</tspan></text>
+<line x1="44" y1="314" x2="248" y2="314" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="341.5">Tốc độ</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="366.8">Nhanh nhất</tspan></text>
+<line x1="44" y1="386.2" x2="248" y2="386.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="413.7">Chi phí mỗi token</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="439.1">Thấp</tspan></text>
+<line x1="44" y1="458.5" x2="248" y2="458.5" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="486">Ví dụ Claude (9/2026)</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="511.3">Haiku</tspan></text>
+</g>
+<g>
+<rect x="282" y="86.3" width="236" height="452.5" rx="20" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+<path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#0D9488"/>
+<circle cx="400" cy="138.3" r="26" fill="#0D9488"/>
+<circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧩</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">Vừa</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">Hợp với</tspan></text>
+<text font-size="19" fill="#0D9488" text-anchor="start" font-weight="700"><tspan x="298" y="268.8">Phần lớn</tspan><tspan x="298" y="293.9">việc hằng ngày</tspan></text>
+<line x1="298" y1="314" x2="502" y2="314" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="341.5">Tốc độ</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="366.8">Nhanh</tspan></text>
+<line x1="298" y1="386.2" x2="502" y2="386.2" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="413.7">Chi phí mỗi token</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="439.1">Vừa</tspan></text>
+<line x1="298" y1="458.5" x2="502" y2="458.5" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="486">Ví dụ Claude (9/2026)</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="511.3">Sonnet</tspan></text>
+</g>
+<g>
+<rect x="536" y="86.3" width="236" height="452.5" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#7C3AED"/>
+<circle cx="654" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧠</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Lớn</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">Hợp với</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="552" y="268.8">Việc khó,</tspan><tspan x="552" y="293.9">nhiều bước</tspan></text>
+<line x1="552" y1="314" x2="756" y2="314" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="341.5">Tốc độ</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="366.8">Chậm hơn</tspan></text>
+<line x1="552" y1="386.2" x2="756" y2="386.2" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="413.7">Chi phí mỗi token</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="439.1">Cao</tspan></text>
+<line x1="552" y1="458.5" x2="756" y2="458.5" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="486">Ví dụ Claude (9/2026)</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="511.3">Opus, Fable</tspan></text>
+</g>
+<rect x="28" y="562.8" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="593.8">💡 Chọn mô hình đủ tốt cho việc, không phải mô hình mạnh nhất.</tspan></text>
+</svg>

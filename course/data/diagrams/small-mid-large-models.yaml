@@ -1,0 +1,82 @@
+# Used in: choosing-models (hands-on). Three sizes of model and what each trades.
+template: compare
+title:
+  vi: Mô hình nhỏ, vừa hay lớn?
+  en: A Small, Mid-Size or Large Model?
+  ja: 小さい・中くらい・大きいモデル
+rows:
+  - vi: Hợp với
+    en: Good for
+    ja: 向いていること
+  - vi: Tốc độ
+    en: Speed
+    ja: 速さ
+  - vi: Chi phí mỗi token
+    en: Cost per token
+    ja: トークンあたりの費用
+  - vi: "Ví dụ Claude (9/2026)"
+    en: "Claude example (9/2026)"
+    ja: "Claudeの例（2026年9月）"
+emphasis_row: 1
+columns:
+  - icon: "⚡"
+    color: blue
+    name:
+      vi: Nhỏ
+      en: Small
+      ja: 小さい
+    values:
+      - vi: "Việc ngắn,\nlặp lại"
+        en: "Short, repeated\ntasks"
+        ja: 短くくり返す作業
+      - vi: Nhanh nhất
+        en: Fastest
+        ja: 最も速い
+      - vi: Thấp
+        en: Low
+        ja: 低い
+      - vi: Haiku
+        en: Haiku
+        ja: Haiku
+  - icon: "🧩"
+    color: teal
+    name:
+      vi: Vừa
+      en: Mid-size
+      ja: 中くらい
+    values:
+      - vi: "Phần lớn\nviệc hằng ngày"
+        en: "Most everyday\nwork"
+        ja: 日々の仕事の大半
+      - vi: Nhanh
+        en: Fast
+        ja: 速い
+      - vi: Vừa
+        en: Medium
+        ja: 中くらい
+      - vi: Sonnet
+        en: Sonnet
+        ja: Sonnet
+  - icon: "🧠"
+    color: violet
+    name:
+      vi: Lớn
+      en: Large
+      ja: 大きい
+    values:
+      - vi: "Việc khó,\nnhiều bước"
+        en: "Hard,\nmulti-step work"
+        ja: 難しく何段階もある仕事
+      - vi: Chậm hơn
+        en: Slower
+        ja: 遅め
+      - vi: Cao
+        en: High
+        ja: 高い
+      - vi: "Opus, Fable"
+        en: "Opus, Fable"
+        ja: "Opus、Fable"
+takeaway:
+  vi: Chọn mô hình đủ tốt cho việc, không phải mô hình mạnh nhất.
+  en: "Pick the model that is good enough for the task,\nnot the strongest one."
+  ja: 一番強いモデルではなく、その仕事に十分なモデルを選びましょう。
