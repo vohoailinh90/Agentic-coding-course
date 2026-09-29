@@ -28,10 +28,11 @@
   - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`,
     `ai-ml-dl`, `how-machines-learn` (PR #10), `rag-intro`, `prompt-rag-finetune-compare` (PR #11),
     `tokens`, `reasoning-models` (PR #12), `choosing-models`,
-    `traditional-vs-agentic`; Codex viết `security-basics`, `prompting-basics` (PR #5),
+    `traditional-vs-agentic` (PR #13), `vibe-vs-agentic`, `the-agent-loop`; Codex viết `security-basics`, `prompting-basics` (PR #5),
     `next-token-prediction`, `tool-calling` (PR #8), `what-is-software`, `project-anatomy` (PR #9) —
-    **36/52 bài**. Từ PR #10, mỗi đợt Claude viết đều
-    qua Codex review (tối đa 2 vòng) trước khi Linh merge.
+    **38/52 bài**. Từ PR #10, mỗi đợt Claude viết đều
+    qua Codex review; từ 29/9/2026 Claude tự merge khi Codex báo hết lỗi và CI xanh
+    ([ADR 011](docs/decisions/011-claude-merges-when-codex-is-clean.md)).
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
@@ -40,8 +41,8 @@
     3 thứ tiếng và một file cho mỗi ngôn ngữ; in ra PDF được
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
-  - Linh duyệt 36 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 16 bài còn lại (bảng trong [docs/handoff.md](docs/handoff.md)). Khi thử thật
+  - Linh duyệt 38 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
+  - 14 bài còn lại (bảng trong [docs/handoff.md](docs/handoff.md)). Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
   - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,
@@ -50,7 +51,7 @@
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
 - **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 007 (lộ trình v1, và quyết định viết cả
   khóa học ngay), 008 (hình tóm tắt trong mọi bài), 009 (file HTML xem offline), 010 (Claude viết bài,
-  Codex review).
+  Codex review), 011 (Claude tự merge khi Codex báo hết lỗi).
 
 ## Bước tiếp theo
 
@@ -59,7 +60,7 @@
 2. **Cách làm (Linh quyết định 27/9/2026, [ADR 010](docs/decisions/010-claude-writes-codex-reviews.md)):
    Claude viết bài, Codex review.** Mỗi đợt khoảng 2 bài × 3 thứ tiếng nằm trên một nhánh `claude/…`
    và một PR; Claude gọi Codex review ngay trên PR (không cần bấm Create PR), sửa các lỗi đã kiểm
-   chứng; **Linh bấm Merge** khi CI xanh. Bản bàn giao: [docs/handoff.md](docs/handoff.md). Sau mỗi
+   chứng; khi Codex báo hết lỗi và CI xanh, **Claude tự merge** rồi làm đợt tiếp theo (ADR 011). Bản bàn giao: [docs/handoff.md](docs/handoff.md). Sau mỗi
    đợt, xuất lại HTML.
 3. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`, ảnh đăng kèm là
    hình tóm tắt của bài.

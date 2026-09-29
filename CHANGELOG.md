@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `vibe-vs-agentic` (the
+  difference is what you do with the result, not the tool; vibe coding for throwaway experiments,
+  agentic when someone relies on it) and `the-agent-loop` (a real Claude Code session traced step by
+  step, with three questions per step). The course now has 38 of 52 lessons.
+- ADR 011: Claude merges a batch once Codex reports no findings on its current head and CI is green.
 - Two more lessons by Claude in vi, en and ja (status `review`): `choosing-models` (small,
   mid-size and large models trade capability, speed and cost; try effort before switching; an
   exercise that compares two setups — two models or two effort levels — on the learner's own task

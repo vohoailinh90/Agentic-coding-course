@@ -7,15 +7,15 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-29
 
-- **36 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **38 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
-  `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models` and
-  `traditional-vs-agentic`, written by Claude;
+  `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
+  `traditional-vs-agentic`, `vibe-vs-agentic` and `the-agent-loop`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **16 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **14 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -31,9 +31,10 @@ lessons and Codex reviews them**:
    runs every check below, and opens a pull request.
 2. Claude asks Codex for a review on the pull request (the built-in review command of
    [claude-to-codex.md](claude-to-codex.md)); Codex posts its findings there.
-3. Claude checks each finding against the repository, fixes the confirmed ones and pushes (at most
-   two review rounds). The owner merges once CI is green: `main` has no branch protection, so Claude
-   does not merge.
+3. Claude checks each finding against the repository, fixes the confirmed ones and pushes, asking for a new
+   review after each push. Once Codex reports no findings on the current head and CI is green,
+   Claude merges the pull request itself and starts the next batch
+   ([ADR 011](decisions/011-claude-merges-when-codex-is-clean.md)).
 
 Codex wrote four batches before this (issues 2, 3, 4 and 6); what the trial taught is kept in the
 rules below — the task id at the start of an issue title, and the standard section headings.
@@ -45,8 +46,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `vibe-vs-agentic` | agentic-work-as-a-system (core) | concept | 8 | vibe-coding, agentic-coding |
-| `the-agent-loop` | agentic-work-as-a-system (core) | demo | 10 | agent-loop, tool |
 | `tool-landscape` | agentic-work-as-a-system (core) | concept | 10 | – |
 | `workflow-frameworks` | agentic-work-as-a-system (core) | concept | 10 | test |
 | `model-plus-harness` | minimum-harness (core) | concept | 10 | harness, model |
@@ -66,19 +65,18 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`vibe-vs-agentic`** (concept) — vibe coding: describe, accept whatever comes back, keep what
-  seems to work, without reading or checking it; agentic coding: a goal, boundaries, a check and a
-  review. Vibe coding is fine for a throwaway experiment in `ai-practice`, not for anything someone
-  relies on. Build on [`traditional-vs-agentic`](../course/en/lessons/traditional-vs-agentic.md)
-  (the agent runs the loop, you give it a check) rather than repeating it. Check the glossary's
-  `vibe-coding` definition first and cite where the term comes from only from a source you opened.
-- **`the-agent-loop`** (demo) — trace one real session step by step: each turn the model reads the
-  context, picks a tool, the tool runs, the result comes back into the context, until the check
-  passes or the agent stops. Link [`agent-parts-and-loop`](../course/en/lessons/agent-parts-and-loop.md)
-  and [`tool-calling`](../course/en/lessons/tool-calling.md) instead of re-teaching them; Claude
-  Code's *how-claude-code-works* page is reachable (September 2026: gather context → take action
-  → verify results, repeated until the task is done; you can interrupt at any point). A `cycle`
-  infographic fits.
+- **`tool-landscape`** (concept) — choose a tool by where you work, not by hype: a chat app in the
+  browser, an agent in a desktop app or editor, an agent in the terminal, a cloud agent; what each
+  can reach (your files, commands, the network), and what a company computer allows. Name tools only
+  as dated examples with no prices; link
+  [`choose-your-learning-setup`](../course/en/lessons/choose-your-learning-setup.md) instead of
+  repeating it. A `compare` infographic fits (where it runs, what it can touch, who it suits).
+- **`workflow-frameworks`** (concept) — add structure only when the task needs it: a plan to approve
+  first, a test written before the code, a separate review. Match the structure to the risk; a
+  one-line fix needs none. Build on
+  [`explore-plan-build-verify`](../course/en/lessons/explore-plan-build-verify.md) and
+  [`the-agent-loop`](../course/en/lessons/the-agent-loop.md). Claude Code's *best-practices* page
+  (plan mode is overhead for small, clear tasks; give the agent a check) is reachable.
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.
