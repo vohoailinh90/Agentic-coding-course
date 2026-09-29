@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 708" width="800" height="708" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Ai chạy vòng lặp?</title>
+<desc id="desc">Truyền thống — Ai viết code: Bạn,
+từng dòng; Ai chạy, đọc lỗi, sửa: Bạn; Việc chính của bạn: Gõ code,
+dò lỗi; Chỗ dễ nghẽn: Tốc độ gõ,
+nhớ cú pháp. Agentic — Ai viết code: Agent; Ai chạy, đọc lỗi, sửa: Agent,
+trong vòng lặp; Việc chính của bạn: Nói rõ mục tiêu,
+duyệt bằng chứng; Chỗ dễ nghẽn: Yêu cầu mơ hồ,
+không có phép kiểm tra. Agent chạy vòng lặp; bạn đặt mục tiêu và kiểm tra.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="706" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="678" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Ai chạy vòng lặp?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="519.8" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#2563EB"/>
+<circle cx="198" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💻</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">Truyền thống</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Ai viết code</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">Bạn,</tspan><tspan x="44" y="289.3">từng dòng</tspan></text>
+<line x1="44" y1="308.7" x2="352" y2="308.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">Ai chạy, đọc lỗi, sửa</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">Bạn</tspan></text>
+<line x1="44" y1="408.7" x2="352" y2="408.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">Việc chính của bạn</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="461.5">Gõ code,</tspan><tspan x="44" y="483.9">dò lỗi</tspan></text>
+<line x1="44" y1="503.4" x2="352" y2="503.4" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="530.9">Chỗ dễ nghẽn</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="556.2">Tốc độ gõ,</tspan><tspan x="44" y="578.6">nhớ cú pháp</tspan></text>
+</g>
+<g>
+<rect x="432" y="86.3" width="340" height="519.8" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">Agentic</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">Ai viết code</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">Agent</tspan></text>
+<line x1="448" y1="308.7" x2="756" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="336.2">Ai chạy, đọc lỗi, sửa</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="363.5">Agent,</tspan><tspan x="448" y="388.6">trong vòng lặp</tspan></text>
+<line x1="448" y1="408.7" x2="756" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="436.2">Việc chính của bạn</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="461.5">Nói rõ mục tiêu,</tspan><tspan x="448" y="483.9">duyệt bằng chứng</tspan></text>
+<line x1="448" y1="503.4" x2="756" y2="503.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="530.9">Chỗ dễ nghẽn</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="556.2">Yêu cầu mơ hồ,</tspan><tspan x="448" y="578.6">không có phép kiểm tra</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="630.1" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="661.1">💡 Agent chạy vòng lặp; bạn đặt mục tiêu và kiểm tra.</tspan></text>
+</svg>

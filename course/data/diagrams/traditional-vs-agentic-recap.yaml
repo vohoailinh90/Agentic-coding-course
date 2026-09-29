@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: truyền thống và agentic"
+  en: "Recap: Traditional vs Agentic Coding"
+  ja: まとめ：従来型とエージェント型
+points:
+  - icon: "🔁"
+    color: indigo
+    name: {vi: Vòng lặp của nghề, en: The loop of the craft, ja: 開発のループ}
+    caption: {vi: "Viết, chạy,\nđọc lỗi, sửa", en: "Write, run,\nread errors, fix", ja: "書く・実行・\nエラーを読む・直す"}
+  - icon: "💻"
+    color: blue
+    name: {vi: "Truyền thống:\nbạn là vòng lặp", en: "Traditional:\nyou are the loop", ja: "従来型：\nあなたがループ"}
+    caption: {vi: Từng dòng một, en: Line by line, ja: 1行ずつ}
+  - icon: "🤖"
+    color: green
+    name: {vi: "Agentic:\nagent chạy vòng lặp", en: "Agentic:\nthe agent runs it", ja: "エージェント型：\nエージェントが回す"}
+    caption: {vi: "Bạn đặt mục tiêu,\nduyệt bằng chứng", en: "You set the goal,\nreview the evidence", ja: 目標を決め、証拠を確かめる}
+  - icon: "✅"
+    color: teal
+    name: {vi: "Có cách\nkiểm tra", en: Give it a check, ja: 確かめる方法を渡す}
+    caption: {vi: "Không thì bạn\nphải tự bắt lỗi", en: "Or you catch\nevery mistake", ja: "ないと、ミスは\n全部あなたが見つける"}
+  - icon: "🧱"
+    color: slate
+    name: {vi: Nền móng giữ nguyên, en: The foundations stay, ja: 土台は変わらない}
+    caption: {vi: "Test, Git, đọc thay đổi,\ntrách nhiệm", en: "Tests, Git, reviews,\nresponsibility", ja: テスト・Git・レビュー・責任}
+takeaway:
+  vi: Ít gõ hơn, nhưng phải nói rõ hơn và kiểm tra kỹ hơn.
+  en: Less typing, but clearer goals and closer checks.
+  ja: 入力は減っても、目標はより明確に、確認はより丁寧に。

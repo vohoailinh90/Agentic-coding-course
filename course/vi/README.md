@@ -146,7 +146,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 |---|---|---|---|
 | 4.3.1 | [Token: AI đọc chữ theo từng mảnh](lessons/tokens.md) | 🎬 Minh họa | 8 phút |
 | 4.3.2 | [Mô hình biết "suy nghĩ": reasoning là gì?](lessons/reasoning-models.md) | 📖 Khái niệm | 10 phút |
-| 4.3.3 | Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt | 🛠️ Thực hành | 10 phút |
+| 4.3.3 | [Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt](lessons/choosing-models.md) | 🛠️ Thực hành | 10 phút |
 
 ## 5. 🧰 Làm việc với agent một cách đáng tin cậy
 
@@ -156,7 +156,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 5.1.1 | Lập trình truyền thống và agentic coding | 📖 Khái niệm | 8 phút |
+| 5.1.1 | [Lập trình truyền thống và agentic coding](lessons/traditional-vs-agentic.md) | 📖 Khái niệm | 8 phút |
 | 5.1.2 | Vibe coding và agentic coding: khác nhau ở đâu? | 📖 Khái niệm | 8 phút |
 | 5.1.3 | Lần theo vòng lặp của agent qua một phiên làm việc thật | 🎬 Minh họa | 10 phút |
 | 5.1.4 | Chọn công cụ theo môi trường, không theo lời quảng cáo | 📖 Khái niệm | 10 phút |

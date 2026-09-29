@@ -146,7 +146,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 |---|---|---|---|
 | 4.3.1 | [Tokens: How AI Reads Text in Pieces](lessons/tokens.md) | 🎬 Demo | 8 min |
 | 4.3.2 | [Models That "Think": What Is Reasoning?](lessons/reasoning-models.md) | 📖 Concept | 10 min |
-| 4.3.3 | Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly | 🛠️ Hands-on | 10 min |
+| 4.3.3 | [Choosing a Model: Big or Small, Fast or Slow, Cheap or Costly](lessons/choosing-models.md) | 🛠️ Hands-on | 10 min |
 
 ## 5. 🧰 Reliable Agent Work
 
@@ -156,7 +156,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 5.1.1 | Traditional Coding vs Agentic Coding | 📖 Concept | 8 min |
+| 5.1.1 | [Traditional Coding vs Agentic Coding](lessons/traditional-vs-agentic.md) | 📖 Concept | 8 min |
 | 5.1.2 | Vibe Coding vs Agentic Coding: What Is the Difference? | 📖 Concept | 8 min |
 | 5.1.3 | Trace an Agent Loop Through a Real Session | 🎬 Demo | 10 min |
 | 5.1.4 | Choose a Tool by Environment, Not Hype | 📖 Concept | 10 min |
