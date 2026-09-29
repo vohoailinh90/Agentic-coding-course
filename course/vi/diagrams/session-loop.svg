@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 774" width="800" height="774" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Vòng lặp trong một phiên làm việc</title>
+<desc id="desc">Thu thập
+ngữ cảnh → Hành động → Kiểm chứng. Mỗi bước, hỏi: làm gì, thấy gì, bước sau có hợp lý không?</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-cycle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker></defs>
+<rect x="1" y="1" width="798" height="772" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="744" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Vòng lặp trong một phiên làm việc</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Lặp lại tới khi phép kiểm tra đạt — bạn ngắt được bất cứ lúc nào</tspan></text>
+<path d="M508.2,234.9 A210,210 0 0 1 608,444.2" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="556" y="297.8" width="124.9" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="618.4" y="315.3">biết phải sửa gì</tspan></text>
+<path d="M508.2,594.9 A210,210 0 0 1 291.8,594.9" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="353.5" y="644" width="93.1" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="400" y="661.5">đã thay đổi</tspan></text>
+<path d="M192,444.2 A210,210 0 0 1 291.8,234.9" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="104.1" y="297.8" width="154.9" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="181.6" y="315.3">chưa đạt → làm tiếp</tspan></text>
+<g class="pulse">
+<circle cx="400" cy="414.9" r="78" fill="#059669"/>
+<circle cx="400" cy="414.9" r="70" fill="#FFFFFF" fill-opacity="0.14"/>
+<text x="400" y="406.9" font-size="34" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="436.9">Agent</tspan></text>
+</g>
+<rect x="302" y="118.7" width="196" height="172.4" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="154.7" r="22" fill="#2563EB"/>
+<circle cx="400" cy="154.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="163" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔍</text>
+<circle cx="320" cy="136.7" r="12" fill="#1E3A8A"/>
+<text x="320" y="141.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="203.2">Thu thập</tspan><tspan x="400" y="227.6">ngữ cảnh</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="252.6">xem file, chạy thử,</tspan><tspan x="400" y="272.4">đọc code</tspan></text>
+<rect x="483.9" y="455.8" width="196" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="581.9" cy="491.8" r="22" fill="#D97706"/>
+<circle cx="581.9" cy="491.8" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="581.9" y="500.1" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
+<circle cx="501.9" cy="473.8" r="12" fill="#78350F"/>
+<text x="501.9" y="478.8" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="581.9" y="540.3">Hành động</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="581.9" y="565.2">sửa file, chạy lệnh</tspan></text>
+<rect x="120.1" y="455.8" width="196" height="128.2" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
+<circle cx="218.1" cy="491.8" r="22" fill="#0D9488"/>
+<circle cx="218.1" cy="491.8" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="218.1" y="500.1" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="138.1" cy="473.8" r="12" fill="#134E4A"/>
+<text x="138.1" y="478.8" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="218.1" y="540.3">Kiểm chứng</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="218.1" y="565.3">chạy lại test</tspan></text>
+<rect x="28" y="695.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="726.9">💡 Mỗi bước, hỏi: làm gì, thấy gì, bước sau có hợp lý không?</tspan></text>
+</svg>

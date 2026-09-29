@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 795" width="800" height="795" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">The Loop Inside One Session</title>
+<desc id="desc">Gather context → Take action → Verify. At each step, ask: what did it do, what did it see,
+does the next step make sense?</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-cycle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker></defs>
+<rect x="1" y="1" width="798" height="793" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="765" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">The Loop Inside One Session</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">It repeats until the check passes — you can interrupt at any time</tspan></text>
+<path d="M510.7,223.4 A215,215 0 0 1 613.8,430.2" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="564.4" y="284.6" width="113.3" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="621" y="302.1">knows the fix</tspan></text>
+<path d="M497.6,599.3 A215,215 0 0 1 286.1,590.1" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="330.8" y="641.6" width="116.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="389.2" y="659.1">made a change</tspan></text>
+<path d="M187.1,437.7 A215,215 0 0 1 289.3,223.4" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="123.4" y="288.5" width="107.4" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="177.1" y="306">fails → again</tspan></text>
+<g class="pulse">
+<circle cx="400" cy="407.7" r="78" fill="#059669"/>
+<circle cx="400" cy="407.7" r="70" fill="#FFFFFF" fill-opacity="0.14"/>
+<text x="400" y="399.7" font-size="34" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="429.7">Agent</tspan></text>
+</g>
+<rect x="302" y="118.7" width="196" height="148" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="154.7" r="22" fill="#2563EB"/>
+<circle cx="400" cy="154.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="163" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔍</text>
+<circle cx="320" cy="136.7" r="12" fill="#1E3A8A"/>
+<text x="320" y="141.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="203.2">Gather context</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="228.1">list files, run,</tspan><tspan x="400" y="247.9">read code</tspan></text>
+<rect x="488.2" y="441.2" width="196" height="148" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="586.2" cy="477.2" r="22" fill="#D97706"/>
+<circle cx="586.2" cy="477.2" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="586.2" y="485.5" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
+<circle cx="506.2" cy="459.2" r="12" fill="#78350F"/>
+<text x="506.2" y="464.2" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="586.2" y="525.7">Take action</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="586.2" y="550.6">edit files, run</tspan><tspan x="586.2" y="570.4">commands</tspan></text>
+<rect x="115.8" y="451.1" width="196" height="128.2" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
+<circle cx="213.8" cy="487.1" r="22" fill="#0D9488"/>
+<circle cx="213.8" cy="487.1" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="213.8" y="495.4" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="133.8" cy="469.1" r="12" fill="#134E4A"/>
+<text x="133.8" y="474.1" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="213.8" y="535.6">Verify</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="213.8" y="560.5">run the tests again</tspan></text>
+<rect x="28" y="693.4" width="744" height="73.5" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="724.4">💡 At each step, ask: what did it do, what did it see,</tspan><tspan x="400" y="748.2">does the next step make sense?</tspan></text>
+</svg>

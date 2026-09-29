@@ -1,0 +1,64 @@
+# Used in: the-agent-loop (demo). The three phases of a session, from Claude Code's documentation.
+template: cycle
+title:
+  vi: Vòng lặp trong một phiên làm việc
+  en: The Loop Inside One Session
+  ja: 1回のセッションの中のループ
+subtitle:
+  vi: Lặp lại tới khi phép kiểm tra đạt — bạn ngắt được bất cứ lúc nào
+  en: It repeats until the check passes — you can interrupt at any time
+  ja: チェックに合格するまでくり返す。いつでも止められる
+center:
+  icon: "🤖"
+  color: green
+  name:
+    vi: Agent
+    en: Agent
+    ja: エージェント
+steps:
+  - icon: "🔍"
+    color: blue
+    name:
+      vi: "Thu thập\nngữ cảnh"
+      en: Gather context
+      ja: 情報を集める
+    caption:
+      vi: xem file, chạy thử, đọc code
+      en: "list files, run,\nread code"
+      ja: "ファイル確認・\n実行・コードを読む"
+    arrow:
+      vi: biết phải sửa gì
+      en: knows the fix
+      ja: 直す所が分かる
+  - icon: "🔧"
+    color: amber
+    name:
+      vi: Hành động
+      en: Take action
+      ja: 行動する
+    caption:
+      vi: sửa file, chạy lệnh
+      en: edit files, run commands
+      ja: "ファイル編集・\nコマンド実行"
+    arrow:
+      vi: đã thay đổi
+      en: made a change
+      ja: 変更した
+  - icon: "✅"
+    color: teal
+    name:
+      vi: Kiểm chứng
+      en: Verify
+      ja: 検証する
+    caption:
+      vi: chạy lại test
+      en: run the tests again
+      ja: テストを再実行
+    arrow:
+      vi: chưa đạt → làm tiếp
+      en: fails → again
+      ja: 不合格ならもう一度
+takeaway:
+  vi: "Mỗi bước, hỏi: làm gì, thấy gì, bước sau có hợp lý không?"
+  en: "At each step, ask: what did it do, what did it see,\ndoes the next step make sense?"
+  ja: "各ステップで問う：何をした？\n何を見た？次の一手は筋が通る？"

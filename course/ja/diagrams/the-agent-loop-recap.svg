@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 507" width="800" height="507" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">まとめ：エージェントのループをたどる</title>
+<desc id="desc">1. 情報収集・行動・検証 — 合格するまでくり返す; 2. 結果が会話に戻る — 次の一手を決める; 3. 各ステップに3つの質問 — 何をした・何を見た・
+筋が通るか; 4. テスト1つの合格では
+足りない — 確かめた内容しか証明しない; 5. いつでも止められる — 最後の結果は自分で確かめる. セッションの記録を読むことが、エージェントを見守る方法です。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="505" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="477" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">まとめ：エージェントのループをたどる</tspan></text>
+<rect x="28" y="86.3" width="236" height="148" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="146" cy="122.3" r="22" fill="#059669"/>
+<circle cx="146" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔁</text>
+<circle cx="46" cy="104.3" r="12" fill="#064E3B"/>
+<text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="146" y="170.8">情報収集・行動・検証</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="195.7">合格するまでくり返す</tspan></text>
+<rect x="282" y="86.3" width="236" height="148" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="400" cy="122.3" r="22" fill="#D97706"/>
+<circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📥</text>
+<circle cx="300" cy="104.3" r="12" fill="#78350F"/>
+<text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">結果が会話に戻る</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">次の一手を決める</tspan></text>
+<rect x="536" y="86.3" width="236" height="148" rx="18" fill="#EEF2FF" stroke="#4F46E5" stroke-width="2"/>
+<circle cx="654" cy="122.3" r="22" fill="#4F46E5"/>
+<circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">❓</text>
+<circle cx="554" cy="104.3" r="12" fill="#312E81"/>
+<text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#312E81" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">各ステップに3つの質問</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="195.7">何をした・何を見た・</tspan><tspan x="654" y="215.5">筋が通るか</tspan></text>
+<rect x="155" y="252.3" width="236" height="152.6" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
+<circle cx="273" cy="288.3" r="22" fill="#0D9488"/>
+<circle cx="273" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="273" y="296.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧪</text>
+<circle cx="173" cy="270.3" r="12" fill="#134E4A"/>
+<text x="173" y="275.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="273" y="336.8">テスト1つの合格では</tspan><tspan x="273" y="361.2">足りない</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="386.1">確かめた内容しか証明しない</tspan></text>
+<rect x="409" y="252.3" width="236" height="152.6" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
+<circle cx="527" cy="288.3" r="22" fill="#E11D48"/>
+<circle cx="527" cy="288.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="527" y="296.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✋</text>
+<circle cx="427" cy="270.3" r="12" fill="#881337"/>
+<text x="427" y="275.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="527" y="336.8">いつでも止められる</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="361.7">最後の結果は自分で確かめる</tspan></text>
+<rect x="28" y="428.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="459.9">💡 セッションの記録を読むことが、エージェントを見守る方法です。</tspan></text>
+</svg>

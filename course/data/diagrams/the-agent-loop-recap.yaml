@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: lần theo vòng lặp của agent"
+  en: "Recap: Tracing the Agent Loop"
+  ja: まとめ：エージェントのループをたどる
+points:
+  - icon: "🔁"
+    color: green
+    name: {vi: "Ngữ cảnh, hành động,\nkiểm chứng", en: "Context, action,\nverification", ja: 情報収集・行動・検証}
+    caption: {vi: Lặp tới khi đạt, en: Repeats until it passes, ja: 合格するまでくり返す}
+  - icon: "📥"
+    color: amber
+    name: {vi: "Kết quả quay về\ncuộc trò chuyện", en: "Results come back\ninto the conversation", ja: 結果が会話に戻る}
+    caption: {vi: "Quyết định\nbước tiếp theo", en: "They decide\nthe next step", ja: 次の一手を決める}
+  - icon: "❓"
+    color: indigo
+    name: {vi: Ba câu hỏi mỗi bước, en: Three questions per step, ja: 各ステップに3つの質問}
+    caption: {vi: "Làm gì, thấy gì,\ncó hợp lý không", en: "What it did, what it saw,\ndoes it make sense", ja: "何をした・何を見た・\n筋が通るか"}
+  - icon: "🧪"
+    color: teal
+    name: {vi: "Một test đạt\nchưa đủ", en: "One passing test\nis not enough", ja: "テスト1つの合格では\n足りない"}
+    caption: {vi: "Nó chỉ chứng minh\nđiều nó kiểm tra", en: "It proves only\nwhat it checks", ja: 確かめた内容しか証明しない}
+  - icon: "✋"
+    color: rose
+    name: {vi: Bạn ngắt được, en: You can interrupt, ja: いつでも止められる}
+    caption: {vi: "Và tự kiểm tra\nkết quả cuối", en: "And check the\nfinal result yourself", ja: 最後の結果は自分で確かめる}
+takeaway:
+  vi: Đọc nhật ký phiên là cách bạn giám sát agent.
+  en: Reading the session log is how you supervise an agent.
+  ja: セッションの記録を読むことが、エージェントを見守る方法です。
