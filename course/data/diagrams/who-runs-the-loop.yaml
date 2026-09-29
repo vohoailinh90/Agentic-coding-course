@@ -1,0 +1,64 @@
+# Used in: traditional-vs-agentic (concept). Who runs the write–run–fix loop.
+template: compare
+title:
+  vi: Ai chạy vòng lặp?
+  en: Who Runs the Loop?
+  ja: ループを回すのはだれ？
+versus: true
+rows:
+  - vi: Ai viết code
+    en: Who writes the code
+    ja: コードを書く
+  - vi: "Ai chạy, đọc lỗi, sửa"
+    en: "Who runs, reads errors, fixes"
+    ja: 実行・エラー確認・修正
+  - vi: Việc chính của bạn
+    en: Your main job
+    ja: あなたの主な仕事
+  - vi: Chỗ dễ nghẽn
+    en: The bottleneck
+    ja: 詰まりやすいところ
+emphasis_row: 2
+columns:
+  - icon: "💻"
+    color: blue
+    name:
+      vi: Truyền thống
+      en: Traditional
+      ja: 従来型
+    values:
+      - vi: "Bạn,\ntừng dòng"
+        en: "You,\nline by line"
+        ja: あなたが1行ずつ
+      - vi: Bạn
+        en: You
+        ja: あなた
+      - vi: "Gõ code,\ndò lỗi"
+        en: "Typing,\nhunting errors"
+        ja: 入力とエラー探し
+      - vi: "Tốc độ gõ,\nnhớ cú pháp"
+        en: "Typing speed,\nsyntax memory"
+        ja: 入力の速さ・文法の記憶
+  - icon: "🤖"
+    color: green
+    name:
+      vi: Agentic
+      en: Agentic
+      ja: エージェント型
+    values:
+      - vi: Agent
+        en: The agent
+        ja: エージェント
+      - vi: "Agent,\ntrong vòng lặp"
+        en: "The agent,\nin its loop"
+        ja: エージェントがループで
+      - vi: "Nói rõ mục tiêu,\nduyệt bằng chứng"
+        en: "Stating the goal,\nreviewing evidence"
+        ja: 目標を伝え、証拠を確かめる
+      - vi: "Yêu cầu mơ hồ,\nkhông có phép kiểm tra"
+        en: "Vague requests,\nno check to run"
+        ja: あいまいな依頼・確かめる方法がない
+takeaway:
+  vi: Agent chạy vòng lặp; bạn đặt mục tiêu và kiểm tra.
+  en: "The agent runs the loop;\nyou set the goal and check the result."
+  ja: ループを回すのはエージェント。目標を決めて確かめるのはあなたです。
