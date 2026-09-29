@@ -7,14 +7,14 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-27
 
-- **32 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **34 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
-  `rag-intro` and `prompt-rag-finetune-compare`, written by Claude; and `security-basics`,
-  `prompting-basics`, `next-token-prediction`, `tool-calling`, `what-is-software` and
-  `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
+  `rag-intro`, `prompt-rag-finetune-compare`, `tokens` and `reasoning-models`, written by Claude;
+  and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
+  `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **20 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **18 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -44,8 +44,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `tokens` | model-literacy (optional) | demo | 8 | token |
-| `reasoning-models` | model-literacy (optional) | concept | 10 | llm |
 | `choosing-models` | model-literacy (optional) | hands-on | 10 | token, model |
 | `traditional-vs-agentic` | agentic-work-as-a-system (core) | concept | 8 | agentic-coding |
 | `vibe-vs-agentic` | agentic-work-as-a-system (core) | concept | 8 | vibe-coding, agentic-coding |
@@ -69,17 +67,22 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`tokens`** (demo) — a model reads and writes in tokens, small pieces of text (a word, part of a
-  word, a punctuation mark), and the context window, limits and usage are counted in them. Watch one
-  sentence split into tokens, in more than one language, and count; link
-  [`next-token-prediction`](../course/en/lessons/next-token-prediction.md) and
-  [`context-window`](../course/en/lessons/context-window.md) rather than re-teaching them. Cite only
-  counts you produced yourself or found in a source you opened; name no prices.
-- **`reasoning-models`** — some models can work through a problem in steps before they answer
-  ("thinking"), which helps with multi-step tasks and costs time and tokens. When it is worth it,
-  and why the steps you can see are not a guarantee of a right answer. Anthropic's thinking
-  documentation (platform.claude.com, *thinking* and *extended thinking*) is reachable; date what
-  you cite, since it changes fast. A `compare` infographic fits (answer at once vs. think first).
+- **`choosing-models`** (hands-on) — models differ in size, speed and cost, and a bigger one is not
+  always the right one: a small, fast model for simple or repeated work, a larger one (or more
+  thinking) for hard, multi-step work. Build on [`tokens`](../course/en/lessons/tokens.md) and
+  [`reasoning-models`](../course/en/lessons/reasoning-models.md) rather than re-teaching them. The
+  exercise: run the same small task in `ai-practice` on two models or effort levels, compare the
+  results against a criterion written in advance, and close with the three-line evidence. Name
+  models only as dated examples and never give prices; Anthropic's model overview
+  (platform.claude.com, *models/overview*) and Claude Code's *model-config* page are reachable.
+- **`traditional-vs-agentic`** (concept, first lesson of `agentic-work-as-a-system`) — in
+  traditional programming you write every step; in agentic coding you state the goal, the
+  boundaries and how to check, and the agent does the steps while you review. A `compare`
+  infographic fits (who writes the code, who decides the steps, what you check). Link
+  [`lead-not-typist`](../course/en/lessons/lead-not-typist.md) instead of repeating it.
+
+Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
+tables here); it is how every count in `tokens` was made. Name the table and the date with a count.
 
 ## How to write one lesson
 

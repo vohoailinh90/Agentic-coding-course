@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 663" width="800" height="663" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Trả lời ngay hay nghĩ trước?</title>
+<desc id="desc">Trả lời ngay — Cách làm: Viết thẳng câu trả lời; Thời gian: Nhanh; Token: Chỉ phần trả lời; Hợp với: Câu hỏi ngắn,
+viết lại một câu. Nghĩ trước — Cách làm: Nháp các bước,
+rồi mới trả lời; Thời gian: Lâu hơn; Token: Thêm phần suy nghĩ; Hợp với: Bài nhiều bước,
+code, kế hoạch. Nghĩ trước giúp bài nhiều bước, nhưng tốn thời gian và token.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="661" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="633" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Trả lời ngay hay nghĩ trước?</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="474.9" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#2563EB"/>
+<circle cx="198" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚡</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">Trả lời ngay</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Cách làm</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">Viết thẳng câu trả lời</tspan></text>
+<line x1="44" y1="308.7" x2="352" y2="308.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">Thời gian</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="361.5">Nhanh</tspan></text>
+<line x1="44" y1="381" x2="352" y2="381" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="408.5">Token</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="433.8">Chỉ phần trả lời</tspan></text>
+<line x1="44" y1="453.2" x2="352" y2="453.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="480.7">Hợp với</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="508">Câu hỏi ngắn,</tspan><tspan x="44" y="533.1">viết lại một câu</tspan></text>
+</g>
+<g>
+<rect x="432" y="86.3" width="340" height="474.9" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#7C3AED"/>
+<circle cx="602" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧠</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">Nghĩ trước</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">Cách làm</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">Nháp các bước,</tspan><tspan x="448" y="289.3">rồi mới trả lời</tspan></text>
+<line x1="448" y1="308.7" x2="756" y2="308.7" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="336.2">Thời gian</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="361.5">Lâu hơn</tspan></text>
+<line x1="448" y1="381" x2="756" y2="381" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="408.5">Token</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="433.8">Thêm phần suy nghĩ</tspan></text>
+<line x1="448" y1="453.2" x2="756" y2="453.2" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="480.7">Hợp với</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="448" y="508">Bài nhiều bước,</tspan><tspan x="448" y="533.1">code, kế hoạch</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="585.2" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="616.2">💡 Nghĩ trước giúp bài nhiều bước, nhưng tốn thời gian và token.</tspan></text>
+</svg>

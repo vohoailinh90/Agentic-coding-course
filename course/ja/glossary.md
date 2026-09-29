@@ -41,6 +41,7 @@
 | **仕様（スペック）［しよう］** | 何を作るかを書いた文書。目的・制約・完成の判断基準を含みます。 | Đặc tả (spec) | Spec (specification) |
 | **受け入れ基準［うけいれきじゅん］** | タスクを完了とみなすために満たすべき、具体的で確認できる条件。 | Tiêu chí nghiệm thu (acceptance criteria) | Acceptance criteria |
 | **トークン** | LLMが読み書きする文章の小さな単位（単語・単語の一部・記号）。利用量や上限はトークン数で数えます。 | Token | Token |
+| **推論モデル（reasoning model）［すいろんモデル］** | 答える前に、考える手順を文章として書き出すモデル（またはモデルの動作モード）。何段階もある作業に役立ちますが、時間とトークンが余分にかかります。 | Mô hình suy luận (reasoning model) | Reasoning model |
 | **コンテキストウィンドウ** | モデルが一度に考慮できる文章の最大量（トークン数）。いわば短期的な作業記憶です。 | Cửa sổ ngữ cảnh (context window) | Context window |
 | **ハルシネーション** | AIが事実でないことや作り話を、本当のことのように述べてしまう現象。 | Ảo giác AI (hallucination) | Hallucination |
 | **関数呼び出し（ツール呼び出し）［かんすうよびだし・ツールよびだし］** | モデルが「このツールをこの引数で実行して」という構造化された要求を返し、周りのプログラムがそれを実行するしくみ。 | Gọi công cụ (function calling / tool calling) | Function calling (tool calling) |

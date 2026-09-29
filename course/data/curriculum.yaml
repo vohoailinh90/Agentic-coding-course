@@ -395,7 +395,7 @@ modules:
               ja: 「考える」モデル：推論（リーズニング）とは？
             type: concept
             minutes: 10
-            terms: [llm]
+            terms: [llm, reasoning-model]
           - id: choosing-models
             title:
               vi: "Chọn mô hình: to hay nhỏ, nhanh hay chậm, rẻ hay đắt"

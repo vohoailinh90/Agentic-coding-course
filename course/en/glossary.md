@@ -41,6 +41,7 @@ Each term is explained in English, with what it is called in Vietnamese and in J
 | **Spec (specification)** | A written description of what to build — the goal, the constraints and how you will know it is done. | Đặc tả (spec) | 仕様（スペック）［しよう］ |
 | **Acceptance criteria** | Specific, checkable conditions that must be true for a task to count as finished. | Tiêu chí nghiệm thu (acceptance criteria) | 受け入れ基準［うけいれきじゅん］ |
 | **Token** | A small piece of text — a word, part of a word or a symbol — that an LLM reads and writes; usage and limits are counted in tokens. | Token | トークン |
+| **Reasoning model** | A model, or a mode of one, that works through a problem in written steps before it answers; it helps with multi-step work but costs extra time and tokens. | Mô hình suy luận (reasoning model) | 推論モデル（reasoning model）［すいろんモデル］ |
 | **Context window** | The maximum amount of text (counted in tokens) a model can consider at once — its short-term working memory. | Cửa sổ ngữ cảnh (context window) | コンテキストウィンドウ |
 | **Hallucination** | When an AI states something false or made up as if it were true. | Ảo giác AI (hallucination) | ハルシネーション |
 | **Function calling (tool calling)** | A model's ability to reply with a structured request to run a specific tool, which the surrounding program then executes. | Gọi công cụ (function calling / tool calling) | 関数呼び出し（ツール呼び出し）［かんすうよびだし・ツールよびだし］ |

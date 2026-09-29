@@ -41,6 +41,7 @@ Mỗi thuật ngữ được giải thích bằng tiếng Việt, kèm cách g�
 | **Đặc tả (spec)** | Bản mô tả bằng văn bản những gì cần làm — mục tiêu, ràng buộc và cách biết khi nào là xong. | Spec (specification) | 仕様（スペック）［しよう］ |
 | **Tiêu chí nghiệm thu (acceptance criteria)** | Các điều kiện cụ thể, kiểm tra được, phải đúng thì công việc mới được coi là xong. | Acceptance criteria | 受け入れ基準［うけいれきじゅん］ |
 | **Token** | Mẩu chữ nhỏ — một từ, một phần của từ hoặc một ký hiệu — mà LLM đọc và viết; chi phí và giới hạn được tính theo token. | Token | トークン |
+| **Mô hình suy luận (reasoning model)** | Mô hình, hoặc một chế độ của mô hình, viết ra các bước suy nghĩ trước khi trả lời; giúp với việc nhiều bước nhưng tốn thêm thời gian và token. | Reasoning model | 推論モデル（reasoning model）［すいろんモデル］ |
 | **Cửa sổ ngữ cảnh (context window)** | Lượng văn bản tối đa (tính bằng token) mà mô hình xem xét được cùng lúc — giống trí nhớ làm việc ngắn hạn. | Context window | コンテキストウィンドウ |
 | **Ảo giác AI (hallucination)** | Hiện tượng AI nói ra điều sai hoặc bịa đặt như thể đó là sự thật. | Hallucination | ハルシネーション |
 | **Gọi công cụ (function calling / tool calling)** | Khả năng mô hình trả lời bằng một yêu cầu có cấu trúc để chạy một công cụ cụ thể; chương trình bao quanh sẽ thực thi yêu cầu đó. | Function calling (tool calling) | 関数呼び出し（ツール呼び出し）［かんすうよびだし・ツールよびだし］ |

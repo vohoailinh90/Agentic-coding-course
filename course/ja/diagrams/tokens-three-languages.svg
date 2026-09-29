@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 593" width="800" height="593" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">同じ文を3つの言語で</title>
+<desc id="desc">ベトナム語 — 文字数: 41; トークン数: 13; 切れ方: 「sếp」→ s + ếp. 英語 — 文字数: 44; トークン数: 10; 切れ方: 1単語で1トークン、
+句点も1トークン. 日本語 — 文字数: 19; トークン数: 17; 切れ方: ほぼ1文字で1トークン. 同じ内容でも、トークン数は言語と分け方で変わります。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="591" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="563" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">同じ文を3つの言語で</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">tiktoken・o200k_base で数えた結果（2026年9月）</tspan></text>
+<g>
+<rect x="28" y="112.7" width="236" height="377.6" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M28,132.7 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#E11D48"/>
+<circle cx="146" cy="164.7" r="26" fill="#E11D48"/>
+<circle cx="146" cy="164.7" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="146" y="174.5" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🛵</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="217.7">ベトナム語</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="267.9">文字数</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="293.3">41</tspan></text>
+<line x1="44" y1="312.7" x2="248" y2="312.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="340.2">トークン数</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="44" y="367.5">13</tspan></text>
+<line x1="44" y1="387.6" x2="248" y2="387.6" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="415.1">切れ方</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="440.4">「sếp」→ s + ếp</tspan></text>
+</g>
+<g>
+<rect x="282" y="112.7" width="236" height="377.6" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M282,132.7 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
+<circle cx="400" cy="164.7" r="26" fill="#2563EB"/>
+<circle cx="400" cy="164.7" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="174.5" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🌍</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="217.7">英語</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="267.9">文字数</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="293.3">44</tspan></text>
+<line x1="298" y1="312.7" x2="502" y2="312.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="340.2">トークン数</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="298" y="367.5">10</tspan></text>
+<line x1="298" y1="387.6" x2="502" y2="387.6" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="415.1">切れ方</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="440.4">1単語で1トークン、</tspan><tspan x="298" y="462.9">句点も1トークン</tspan></text>
+</g>
+<g>
+<rect x="536" y="112.7" width="236" height="377.6" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M536,132.7 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#7C3AED"/>
+<circle cx="654" cy="164.7" r="26" fill="#7C3AED"/>
+<circle cx="654" cy="164.7" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="654" y="174.5" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗾</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="217.7">日本語</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="267.9">文字数</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="293.3">19</tspan></text>
+<line x1="552" y1="312.7" x2="756" y2="312.7" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="340.2">トークン数</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="552" y="367.5">17</tspan></text>
+<line x1="552" y1="387.6" x2="756" y2="387.6" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="415.1">切れ方</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="440.4">ほぼ1文字で1トークン</tspan></text>
+</g>
+<rect x="28" y="514.3" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="545.3">💡 同じ内容でも、トークン数は言語と分け方で変わります。</tspan></text>
+</svg>

@@ -26,9 +26,10 @@
     duyệt), mỗi bài một infographic giải thích và một hình tóm tắt; hai dự án có dữ liệu mẫu và kết quả
     đúng biết trước. Dữ kiện về công cụ ghi rõ "tính đến tháng 9/2026" và dẫn tài liệu chính thức.
   - Đã viết thêm `how-to-learn-this-course`, `programming-building-blocks`, `command-line-basics`,
-    `ai-ml-dl`, `how-machines-learn` (PR #10), `rag-intro`, `prompt-rag-finetune-compare`; Codex viết
-    `security-basics`, `prompting-basics` (PR #5), `next-token-prediction`, `tool-calling` (PR #8),
-    `what-is-software`, `project-anatomy` (PR #9) — **32/52 bài**. Từ PR #10, mỗi đợt Claude viết đều
+    `ai-ml-dl`, `how-machines-learn` (PR #10), `rag-intro`, `prompt-rag-finetune-compare` (PR #11),
+    `tokens`, `reasoning-models` (PR #12); Codex viết `security-basics`, `prompting-basics` (PR #5),
+    `next-token-prediction`, `tool-calling` (PR #8), `what-is-software`, `project-anatomy` (PR #9) —
+    **34/52 bài**. Từ PR #10, mỗi đợt Claude viết đều
     qua Codex review (tối đa 2 vòng) trước khi Linh merge.
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
@@ -38,8 +39,8 @@
     3 thứ tiếng và một file cho mỗi ngôn ngữ; in ra PDF được
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
-  - Linh duyệt 32 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 20 bài còn lại (bảng trong [docs/handoff.md](docs/handoff.md)). Khi thử thật
+  - Linh duyệt 34 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
+  - 18 bài còn lại (bảng trong [docs/handoff.md](docs/handoff.md)). Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
   - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,

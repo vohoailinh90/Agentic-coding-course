@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: mô hình suy luận"
+  en: "Recap: Reasoning Models"
+  ja: まとめ：推論モデル
+points:
+  - icon: "🧠"
+    color: violet
+    name: {vi: "Nghĩ trước\nkhi trả lời", en: Thinks before answering, ja: 答える前に考える}
+    caption: {vi: "Viết nháp các bước,\nrồi mới trả lời", en: "Drafts the steps,\nthen answers", ja: 手順を下書きしてから答える}
+  - icon: "📐"
+    color: green
+    name: {vi: Giúp bài nhiều bước, en: "Helps with\nmulti-step work", ja: 複雑な問題に強い}
+    caption: {vi: "Tính toán, code,\nphân tích, kế hoạch", en: "Math, code,\nanalysis, planning", ja: 計算・コード・分析・計画}
+  - icon: "⏳"
+    color: orange
+    name: {vi: "Tốn thời gian\nvà token", en: "Costs time\nand tokens", ja: "時間と\nトークンがかかる"}
+    caption: {vi: Kể cả khi phần nghĩ bị ẩn, en: "Even when the\nthinking is hidden", ja: 考えが見えなくても同じ}
+  - icon: "💪"
+    color: teal
+    name: {vi: Chỉnh mức suy nghĩ, en: "Adjust how hard\nit thinks", ja: 考える量を調整する}
+    caption: {vi: Mức nỗ lực hoặc lời dặn, en: "Effort level\nor your prompt", ja: 努力レベルや指示で}
+  - icon: "🔍"
+    color: rose
+    name: {vi: "Lý lẽ không phải\nlời bảo đảm", en: "Reasoning is\nno guarantee", ja: "考えの文は\n保証ではない"}
+    caption: {vi: Kiểm tra kết quả cuối, en: Check the final result, ja: 最終結果を確かめる}
+takeaway:
+  vi: Để mô hình nghĩ khi bài khó; kiểm tra kết quả, đừng chỉ đọc lý lẽ.
+  en: "Let the model think on hard problems;\ncheck the result, not just the reasoning."
+  ja: 難しい問題では考えさせ、理屈だけでなく結果を確かめましょう。

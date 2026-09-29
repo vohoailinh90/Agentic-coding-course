@@ -1,0 +1,26 @@
+template: summary
+title:
+  vi: "Tóm tắt: token"
+  en: "Recap: Tokens"
+  ja: まとめ：トークン
+points:
+  - icon: "🧩"
+    color: violet
+    name: {vi: Token là mảnh chữ, en: Tokens are text pieces, ja: トークンは文章の断片}
+    caption: {vi: "Từ, phần của từ, dấu câu, chữ số", en: "Words, word parts, punctuation, digits", ja: 単語・単語の一部・記号・数字}
+  - icon: "🔢"
+    color: amber
+    name: {vi: Mỗi bộ tách cắt một kiểu, en: "Each tokenizer\nsplits its own way", ja: 分け方はツールごとに違う}
+    caption: {vi: Đếm trên đúng mô hình bạn dùng, en: Count with the model you use, ja: 使うモデルで数える}
+  - icon: "🌏"
+    color: teal
+    name: {vi: "Cùng ý, khác số token", en: "Same idea, different count", ja: 同じ内容でも数は違う}
+    caption: {vi: Tùy ngôn ngữ và bộ tách, en: Depends on language and tokenizer, ja: 言語と分け方しだい}
+  - icon: "🎯"
+    color: green
+    name: {vi: Đưa vừa đủ, en: Give just enough, ja: 必要な分だけ渡す}
+    caption: {vi: "Ngữ cảnh, độ dài, mức dùng\nđều đếm bằng token", en: "Context, length and usage\nare all counted in tokens", ja: 文脈・長さ・利用量はトークンで数える}
+takeaway:
+  vi: "AI đọc bằng token:\nhãy đưa phần cần thiết, không phải cả tập tài liệu."
+  en: AI reads in tokens; give it the part it needs, not the whole pile.
+  ja: AIはトークンで読みます。資料は必要な部分だけ渡しましょう。
