@@ -6,8 +6,8 @@ a small model — Short, repeated,
 easy to check; 3. Hard work:
 a large model — Many steps,
 costly mistakes; 4. Adjust effort
-first — Before switching models; 5. Test on real tasks — Two models,
-one criterion. Choose by the task, then check with real results.</desc>
+first — Before switching models; 5. Test on real tasks — A criterion set first,
+e.g. two setups. Choose by the task, then check with real results.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="530" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -52,7 +52,7 @@ one criterion. Choose by the task, then check with real results.</desc>
 <circle cx="427" cy="294.7" r="12" fill="#064E3B"/>
 <text x="427" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="527" y="361.2">Test on real tasks</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Two models,</tspan><tspan x="527" y="405.9">one criterion</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">A criterion set first,</tspan><tspan x="527" y="405.9">e.g. two setups</tspan></text>
 <rect x="28" y="453.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="484.4">💡 Choose by the task, then check with real results.</tspan></text>
 </svg>

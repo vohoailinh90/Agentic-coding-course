@@ -6,8 +6,8 @@ mô hình nhỏ — Ngắn, lặp lại,
 dễ kiểm tra; 3. Việc khó:
 mô hình lớn — Nhiều bước,
 sai thì tốn kém; 4. Chỉnh mức nỗ lực
-trước — Trước khi đổi mô hình; 5. Thử trên việc thật — Hai mô hình,
-một tiêu chí. Chọn theo việc, rồi kiểm tra bằng kết quả thật.</desc>
+trước — Trước khi đổi mô hình; 5. Thử trên việc thật — Tiêu chí đặt trước,
+ví dụ hai thiết lập. Chọn theo việc, rồi kiểm tra bằng kết quả thật.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="530" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -52,7 +52,7 @@ một tiêu chí. Chọn theo việc, rồi kiểm tra bằng kết quả thật
 <circle cx="427" cy="294.7" r="12" fill="#064E3B"/>
 <text x="427" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="527" y="361.2">Thử trên việc thật</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Hai mô hình,</tspan><tspan x="527" y="405.9">một tiêu chí</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Tiêu chí đặt trước,</tspan><tspan x="527" y="405.9">ví dụ hai thiết lập</tspan></text>
 <rect x="28" y="453.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="484.4">💡 Chọn theo việc, rồi kiểm tra bằng kết quả thật.</tspan></text>
 </svg>

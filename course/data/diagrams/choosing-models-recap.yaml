@@ -23,7 +23,7 @@ points:
   - icon: "🧪"
     color: green
     name: {vi: Thử trên việc thật, en: Test on real tasks, ja: 実際の仕事で試す}
-    caption: {vi: "Hai mô hình,\nmột tiêu chí", en: "Two models,\none criterion", ja: 2つのモデル、同じ基準}
+    caption: {vi: "Tiêu chí đặt trước,\nví dụ hai thiết lập", en: "A criterion set first,\ne.g. two setups", ja: "先に決めた基準で、\nたとえば2つの設定を比べる"}
 takeaway:
   vi: Chọn theo việc, rồi kiểm tra bằng kết quả thật.
   en: Choose by the task, then check with real results.

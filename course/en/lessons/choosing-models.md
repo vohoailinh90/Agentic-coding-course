@@ -5,8 +5,9 @@ status: review
 summary: >-
   Each AI company offers models in several sizes: a small model is fast and costs less, a large model does
   hard multi-step work better but is slower and costs more. There is no model that is "best for
-  everything": choose by the task, try adjusting the effort level before switching models, and the only way
-  to know is to run the same real task on two models and check both against a criterion.
+  everything": choose by the task, try adjusting the effort level before switching models, and check your
+  choice on your own real work against a criterion set in advance — for example by comparing two setups
+  on the same task.
 social:
   hook: "Using the strongest AI model even to fix a typo? That is like renting a truck to buy a sandwich. 🚚"
   question: Do you know which model your AI tool runs on, and whether you can change it?
@@ -23,7 +24,7 @@ After this lesson, you will be able to:
 
 - Name the three things you trade off when you choose a **model**: capability, speed and cost.
 - Pick a sensible starting point for a task: a small model for simple, repeated work; a large model for hard, multi-step work.
-- Compare two models on the same real task yourself and decide from results you have checked.
+- Compare two setups (two models, or two effort levels) on the same real task yourself and decide from results you have checked.
 
 <!-- section: hook -->
 ## Why It Matters
@@ -60,27 +61,14 @@ No model wins all three. The "best" model is the one that is **good enough for t
 
 In [Models That "Think"](reasoning-models.md), you met the **effort level**. Anthropic's documentation (September 2026) says that adjusting it is often a better lever than switching models: with the same model, low effort is faster and more economical, and high effort thinks more carefully.
 
-### The only way to know: test on real tasks
+### Check it on real work
 
-Comparison tables and marketing do not know *your* work. The same documentation calls a few tests taken from your own work the most important step: run the same request on two models, then check the results against a criterion you set in advance — the same way you accept an agent's work.
-
-<!-- section: analogy -->
-## Simple Analogy
-
-Choosing a model is like choosing transport. To buy a sandwich at the corner shop, you walk or ride a bike; you rent a truck only when you move house. A truck carries more, but taking a truck to buy a sandwich is slow, burns fuel and is hard to park.
-
-Where the comparison breaks down: you can look at your furniture and see whether you need a big vehicle, but you cannot always see in advance how hard a task is for an AI. And when a small model cannot handle a task, it rarely says "this won't fit" — a wrong answer still sounds very confident. That is why you check instead of guessing.
+Comparison tables and marketing do not know *your* work. And when a small model cannot handle a task, it rarely says so — a wrong answer still sounds very confident. The same documentation calls a few tests taken from your own work, checked against a criterion set in advance, the most important step — the same way you accept an agent's work. The easiest way to see the difference is to run the same request on **two setups**: two models, or one model at two effort levels.
 
 <!-- section: example -->
 ## Real Example
 
-Hana picks three typical tasks from her week, uses made-up data, and runs each task twice — once on a small model, once on a strong model — in two new conversations, with the same request:
-
-1. **Rewrite an apology email to a customer about a late delivery** so it is more polite. Criterion: all the points kept, polite, no more than 5 sentences.
-2. **Sort 30 made-up customer comments** into 4 given groups. Criterion: the 10 comments she sorted herself beforehand must match.
-3. **Plan a reorganization of the team's shared folder**, with constraints: delete no files, keep file names, and each month's report goes into that month's folder. Criterion: the plan breaks none of the constraints.
-
-The results in Hana's test: on tasks 1 and 2, both models passed, and the small model was clearly faster. On task 3, the small model's plan had a step that deleted files with duplicate names — breaking a constraint; the strong model's plan did not. Hana writes down a rule for herself:
+Hana picks three tasks from her week, uses made-up data, and runs each on a small model and a strong one: rewriting an apology email to a customer, sorting 30 comments into 4 groups (compared with 10 she sorted herself beforehand), and planning a reorganization of the shared folder under the constraint "delete no files". On the first two, both models pass, and the small one is clearly faster. On the third, the small model's plan has a step that deletes files with duplicate names — breaking the constraint. Hana writes down a rule for herself:
 
 ```text
 Short, repeated, easy to check    → small model
@@ -88,7 +76,7 @@ Many steps, mistakes are costly   → strong model (or high effort)
 Not sure                          → try both, check against the criterion
 ```
 
-This rule is Hana's, for Hana's work. On your work, the results may differ — which is why you test it yourself.
+That rule fits Hana's work; on your work, the results may differ.
 
 <!-- section: try-it -->
 ## Try It Yourself
@@ -160,7 +148,7 @@ Give the schedule and check each condition again.
 - Short, repeated, easy-to-check work: start with a small model.
 - Hard, multi-step work where mistakes are costly: start with a strong model.
 - Try adjusting the effort level before switching models.
-- The only way to know: run the same real task on two models and check against a criterion.
+- Check it on real work against a criterion set in advance — for example, two setups on the same task.
 
 <!-- section: quiz -->
 ## Quick Check

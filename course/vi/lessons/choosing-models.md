@@ -5,8 +5,8 @@ status: review
 summary: >-
   Mỗi hãng AI có nhiều cỡ mô hình: mô hình nhỏ nhanh và tốn ít hơn, mô hình lớn làm tốt việc khó nhiều bước
   nhưng chậm và tốn hơn. Không có mô hình "tốt nhất cho mọi việc": chọn theo việc, thử chỉnh mức nỗ lực
-  trước khi đổi mô hình, và cách duy nhất để biết là thử cùng một việc thật trên hai mô hình rồi kiểm tra
-  theo tiêu chí.
+  trước khi đổi mô hình, và kiểm chứng lựa chọn trên việc thật của mình theo tiêu chí đặt trước — ví dụ so
+  hai thiết lập trên cùng một việc.
 social:
   hook: "Dùng mô hình AI mạnh nhất cho cả việc sửa lỗi chính tả? Giống thuê xe tải để đi mua ổ bánh mì. 🚚"
   question: Bạn có biết công cụ AI mình đang dùng chạy mô hình nào, và có đổi được không?
@@ -23,7 +23,7 @@ Sau bài này, bạn sẽ:
 
 - Kể được ba thứ phải đánh đổi khi chọn **mô hình (model)**: năng lực, tốc độ và chi phí.
 - Chọn được điểm bắt đầu hợp lý cho một việc: mô hình nhỏ cho việc đơn giản, lặp lại; mô hình lớn cho việc khó, nhiều bước.
-- Tự so sánh hai mô hình trên cùng một việc thật và quyết định dựa trên kết quả đã kiểm tra.
+- Tự so sánh hai thiết lập (hai mô hình, hoặc hai mức nỗ lực) trên cùng một việc thật và quyết định dựa trên kết quả đã kiểm tra.
 
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
@@ -60,27 +60,14 @@ Không có mô hình nào thắng cả ba. Mô hình "tốt nhất" là mô hìn
 
 Trong bài [Mô hình biết "suy nghĩ"](reasoning-models.md), bạn đã gặp **mức nỗ lực (effort)**. Tài liệu của Anthropic (9/2026) ghi rằng chỉnh mức này thường là cách tốt hơn đổi mô hình: cùng một mô hình, mức thấp nhanh và tiết kiệm hơn, mức cao nghĩ kỹ hơn.
 
-### Cách duy nhất để biết: thử trên việc thật
+### Kiểm chứng trên việc thật
 
-Bảng so sánh và lời quảng cáo không biết việc *của bạn*. Cũng theo tài liệu đó, bước quan trọng nhất là có vài bài thử từ chính việc của mình: chạy cùng một yêu cầu trên hai mô hình, rồi kiểm tra kết quả theo tiêu chí bạn đặt trước — giống cách bạn nghiệm thu việc của agent.
-
-<!-- section: analogy -->
-## Ví dụ đời thường
-
-Chọn mô hình giống chọn phương tiện. Ra đầu hẻm mua ổ bánh mì thì đi bộ hay chạy xe máy; chuyển nhà thì mới thuê xe tải. Xe tải chở được nhiều hơn, nhưng đi mua bánh mì bằng xe tải thì chậm, tốn xăng và khó tìm chỗ đậu.
-
-Phép so sánh sai ở chỗ: nhìn vào đồ đạc là biết cần xe to hay nhỏ, còn độ khó của một việc với AI thì không phải lúc nào cũng thấy trước. Và khi mô hình nhỏ làm không nổi, nó hiếm khi báo "tôi chở không hết" — câu trả lời sai vẫn nghe rất tự tin. Vì vậy phải kiểm tra, không chỉ đoán.
+Bảng so sánh và lời quảng cáo không biết việc *của bạn*. Và khi mô hình nhỏ làm không nổi, nó hiếm khi nói ra — câu trả lời sai vẫn nghe rất tự tin. Cũng theo tài liệu đó, bước quan trọng nhất là có vài bài thử từ chính việc của mình, kiểm tra theo tiêu chí đặt trước — giống cách bạn nghiệm thu việc của agent. Cách dễ nhất để thấy sự khác biệt là chạy cùng một yêu cầu trên **hai thiết lập**: hai mô hình, hoặc một mô hình ở hai mức nỗ lực.
 
 <!-- section: example -->
 ## Ví dụ thực tế
 
-Hana chọn ba việc tiêu biểu trong tuần, dùng dữ liệu giả, và chạy mỗi việc hai lần — một lần với mô hình nhỏ, một lần với mô hình mạnh — trong hai cuộc trò chuyện mới, cùng một yêu cầu:
-
-1. **Viết lại email xin lỗi khách vì giao hàng trễ** cho lịch sự hơn. Tiêu chí: đủ ý, lịch sự, không quá 5 câu.
-2. **Phân loại 30 câu góp ý giả của khách** vào 4 nhóm cho sẵn. Tiêu chí: 10 câu cô đã tự phân loại trước phải khớp.
-3. **Lập kế hoạch sắp xếp lại thư mục dùng chung của phòng**, có ràng buộc: không xóa file nào, giữ tên file, báo cáo tháng nào vào thư mục tháng đó. Tiêu chí: kế hoạch không vi phạm ràng buộc nào.
-
-Kết quả ở lần thử của Hana: việc 1 và 2, cả hai mô hình đều đạt, mô hình nhỏ trả lời nhanh hơn thấy rõ. Việc 3, kế hoạch của mô hình nhỏ có một bước xóa các file trùng tên — vi phạm ràng buộc; mô hình mạnh thì không. Hana ghi lại một quy tắc cho mình:
+Hana chọn ba việc trong tuần, dùng dữ liệu giả, và chạy mỗi việc trên mô hình nhỏ và mô hình mạnh: viết lại một email xin lỗi khách, phân loại 30 câu góp ý vào 4 nhóm (so với 10 câu cô tự phân loại trước), và lập kế hoạch sắp xếp thư mục chung với ràng buộc "không xóa file nào". Hai việc đầu, cả hai mô hình đều đạt, mô hình nhỏ nhanh hơn thấy rõ. Việc thứ ba, kế hoạch của mô hình nhỏ có một bước xóa file trùng tên — vi phạm ràng buộc. Hana ghi lại quy tắc cho mình:
 
 ```text
 Việc ngắn, lặp lại, dễ kiểm tra  → mô hình nhỏ
@@ -88,7 +75,7 @@ Việc nhiều bước, sai thì tốn kém → mô hình mạnh (hoặc mức n
 Chưa chắc                        → thử cả hai, kiểm tra theo tiêu chí
 ```
 
-Quy tắc này là của Hana, cho việc của Hana. Với việc của bạn, kết quả có thể khác — đó là lý do phải tự thử.
+Đó là quy tắc cho việc của Hana; với việc của bạn, kết quả có thể khác.
 
 <!-- section: try-it -->
 ## Thử ngay
@@ -160,7 +147,7 @@ Cho biết lịch và kiểm tra lại từng điều kiện.
 - Việc ngắn, lặp lại, dễ kiểm tra: bắt đầu với mô hình nhỏ.
 - Việc khó, nhiều bước, sai thì tốn kém: bắt đầu với mô hình mạnh.
 - Thử chỉnh mức nỗ lực trước khi đổi mô hình.
-- Cách duy nhất để biết: thử cùng một việc thật trên hai mô hình và kiểm tra theo tiêu chí.
+- Kiểm chứng trên việc thật, theo tiêu chí đặt trước — ví dụ so hai thiết lập trên cùng một việc.
 
 <!-- section: quiz -->
 ## Tự kiểm tra
