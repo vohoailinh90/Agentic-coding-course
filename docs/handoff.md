@@ -5,16 +5,17 @@ write next, and how to write and check a lesson. It points at the rules instead 
 [content-guide.md](content-guide.md) says how to write a lesson, [data-model.md](data-model.md) what
 `validate` enforces. When the two disagree with this page, they win; fix this page.
 
-## State on 2026-09-27
+## State on 2026-09-29
 
-- **34 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **36 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
-  `rag-intro`, `prompt-rag-finetune-compare`, `tokens` and `reasoning-models`, written by Claude;
+  `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models` and
+  `traditional-vs-agentic`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **18 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **16 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -44,8 +45,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `choosing-models` | model-literacy (optional) | hands-on | 10 | token, model |
-| `traditional-vs-agentic` | agentic-work-as-a-system (core) | concept | 8 | agentic-coding |
 | `vibe-vs-agentic` | agentic-work-as-a-system (core) | concept | 8 | vibe-coding, agentic-coding |
 | `the-agent-loop` | agentic-work-as-a-system (core) | demo | 10 | agent-loop, tool |
 | `tool-landscape` | agentic-work-as-a-system (core) | concept | 10 | – |
@@ -67,19 +66,19 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`choosing-models`** (hands-on) — models differ in size, speed and cost, and a bigger one is not
-  always the right one: a small, fast model for simple or repeated work, a larger one (or more
-  thinking) for hard, multi-step work. Build on [`tokens`](../course/en/lessons/tokens.md) and
-  [`reasoning-models`](../course/en/lessons/reasoning-models.md) rather than re-teaching them. The
-  exercise: run the same small task in `ai-practice` on two models or effort levels, compare the
-  results against a criterion written in advance, and close with the three-line evidence. Name
-  models only as dated examples and never give prices; Anthropic's model overview
-  (platform.claude.com, *models/overview*) and Claude Code's *model-config* page are reachable.
-- **`traditional-vs-agentic`** (concept, first lesson of `agentic-work-as-a-system`) — in
-  traditional programming you write every step; in agentic coding you state the goal, the
-  boundaries and how to check, and the agent does the steps while you review. A `compare`
-  infographic fits (who writes the code, who decides the steps, what you check). Link
-  [`lead-not-typist`](../course/en/lessons/lead-not-typist.md) instead of repeating it.
+- **`vibe-vs-agentic`** (concept) — vibe coding: describe, accept whatever comes back, keep what
+  seems to work, without reading or checking it; agentic coding: a goal, boundaries, a check and a
+  review. Vibe coding is fine for a throwaway experiment in `ai-practice`, not for anything someone
+  relies on. Build on [`traditional-vs-agentic`](../course/en/lessons/traditional-vs-agentic.md)
+  (the agent runs the loop, you give it a check) rather than repeating it. Check the glossary's
+  `vibe-coding` definition first and cite where the term comes from only from a source you opened.
+- **`the-agent-loop`** (demo) — trace one real session step by step: each turn the model reads the
+  context, picks a tool, the tool runs, the result comes back into the context, until the check
+  passes or the agent stops. Link [`agent-parts-and-loop`](../course/en/lessons/agent-parts-and-loop.md)
+  and [`tool-calling`](../course/en/lessons/tool-calling.md) instead of re-teaching them; Claude
+  Code's *how-claude-code-works* page is reachable (September 2026: gather context → take action
+  → verify results, repeated until the task is done; you can interrupt at any point). A `cycle`
+  infographic fits.
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.

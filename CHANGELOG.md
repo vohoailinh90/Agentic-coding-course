@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `choosing-models` (small,
+  mid-size and large models trade capability, speed and cost; try effort before switching; an
+  exercise that runs three made-up tasks with known answers on two models) and
+  `traditional-vs-agentic` (the agent runs the write–run–fix loop, you give it a goal and a check and
+  review the evidence). The course now has 36 of 52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `tokens` (one sentence in three
   languages cut into tokens; every count made with the open-source tiktoken tokenizer and dated) and
   `reasoning-models` (thinking first helps multi-step work, costs time and tokens, and the visible
