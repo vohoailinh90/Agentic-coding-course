@@ -93,9 +93,9 @@ Quy tắc này là của Hana, cho việc của Hana. Với việc của bạn, 
 <!-- section: try-it -->
 ## Thử ngay
 
-Khoảng 12 phút, chỉ với dữ liệu giả. Bạn cần một công cụ cho chọn mô hình. Ví dụ, tính đến 9/2026, trong Claude Code gõ `/model haiku`, `/model sonnet` hay `/model opus` để đổi mô hình; ứng dụng chat thường có ô chọn mô hình gần khung nhập. Nếu công cụ của bạn không cho chọn mô hình nhưng có mức nỗ lực, hãy so hai mức thấp và cao thay cho hai mô hình.
+Khoảng 12 phút, trong `ai-practice`, chỉ với dữ liệu giả. Bạn cần một công cụ cho chọn mô hình. Ví dụ, tính đến 9/2026, trong Claude Code gõ `/model haiku`, `/model sonnet` hay `/model opus` để đổi mô hình; ứng dụng chat thường có ô chọn mô hình gần khung nhập. Nếu công cụ của bạn không cho chọn mô hình nhưng có mức nỗ lực, hãy so hai mức thấp và cao. Bên dưới, **hai thiết lập** nghĩa là mô hình nhỏ và mô hình lớn, hoặc mức nỗ lực thấp và cao.
 
-**1. Chạy ba việc trên hai mô hình (8 phút).** Với mỗi việc, mở cuộc trò chuyện mới, dán đúng cùng một yêu cầu cho mô hình nhỏ rồi cho mô hình lớn.
+**1. Chạy ba việc trên hai thiết lập (8 phút).** Với mỗi việc, mở cuộc trò chuyện mới, dán đúng cùng một yêu cầu cho thiết lập nhỏ (mô hình nhỏ hoặc mức thấp), rồi cho thiết lập lớn (mô hình lớn hoặc mức cao).
 
 *Việc A — viết lại (không có một đáp án duy nhất):*
 
@@ -124,11 +124,11 @@ Việc: Viết báo cáo, Gửi báo cáo, Họp nhóm, Gọi khách hàng.
 Cho biết lịch và kiểm tra lại từng điều kiện.
 ```
 
-**2. Ghi kết quả (2 phút)** vào bảng nhỏ: với mỗi việc và mỗi mô hình, *nhanh hay chậm* và *đạt hay không đạt*. Việc B và C có đáp án đúng bên dưới — hãy so sau khi chạy xong.
+**2. Ghi kết quả (2 phút)** vào file `ai-practice/so_sanh_mo_hinh.md`, dưới dạng một bảng nhỏ: với mỗi việc và mỗi thiết lập, *nhanh hay chậm* và *đạt hay không đạt*. Việc B và C có đáp án đúng bên dưới — hãy so sau khi chạy xong.
 
-**3. Viết quy tắc của bạn (2 phút)** theo mẫu của Hana, rồi ghi bằng chứng:
+**3. Viết quy tắc của bạn (2 phút)** theo mẫu của Hana, vào cùng file đó, rồi ghi bằng chứng:
 
-- *Tôi cho xem được…* bảng so sánh ba việc trên hai mô hình.
+- *Tôi cho xem được…* file `so_sanh_mo_hinh.md`: bảng so sánh ba việc trên hai thiết lập và quy tắc của tôi.
 - *Tôi đã kiểm tra…* tổng tiền việc B và lịch việc C khớp với đáp án; lời nhắn việc A đủ ý và không quá 3 câu.
 - *Tôi sẽ không dùng cách này khi…* ví dụ: chỉ thử mỗi việc một lần rồi kết luận cho cả loại việc lớn và quan trọng.
 

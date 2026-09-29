@@ -93,9 +93,9 @@ This rule is Hana's, for Hana's work. On your work, the results may differ — w
 <!-- section: try-it -->
 ## Try It Yourself
 
-About 12 minutes, with made-up data only. You need a tool that lets you choose the model. For example, as of September 2026, in Claude Code you type `/model haiku`, `/model sonnet` or `/model opus` to switch models; chat apps usually have a model picker near the message box. If your tool does not let you choose the model but has an effort level, compare low and high effort instead of two models.
+About 12 minutes, in `ai-practice`, with made-up data only. You need a tool that lets you choose the model. For example, as of September 2026, in Claude Code you type `/model haiku`, `/model sonnet` or `/model opus` to switch models; chat apps usually have a model picker near the message box. If your tool does not let you choose the model but has an effort level, compare low and high effort. Below, **two setups** means a small and a large model, or low and high effort.
 
-**1. Run three tasks on two models (8 minutes).** For each task, open a new conversation and paste exactly the same request, first to the small model, then to the large one.
+**1. Run three tasks on two setups (8 minutes).** For each task, open a new conversation and paste exactly the same request, first to the small setup (small model or low effort), then to the large one (large model or high effort).
 
 *Task A — rewriting (there is no single right answer):*
 
@@ -124,11 +124,11 @@ Tasks: Write report, Send report, Team meeting, Call client.
 Give the schedule and check each condition again.
 ```
 
-**2. Record the results (2 minutes)** in a small table: for each task and each model, *fast or slow* and *passed or failed*. Tasks B and C have correct answers below — compare them after you have run everything.
+**2. Record the results (2 minutes)** in the file `ai-practice/model-comparison.md`, as a small table: for each task and each setup, *fast or slow* and *passed or failed*. Tasks B and C have correct answers below — compare them after you have run everything.
 
-**3. Write your own rule (2 minutes)** on the model of Hana's, then write down your evidence:
+**3. Write your own rule (2 minutes)** on the model of Hana's, in the same file, then write down your evidence:
 
-- *I can show…* the table comparing three tasks on two models.
+- *I can show…* the file `model-comparison.md`: the table comparing three tasks on two setups, and my rule.
 - *I checked…* the totals in task B and the schedule in task C match the answers; the message in task A keeps its points and is no longer than 3 sentences.
 - *I would not use this when…* for example: I have tried each task only once and would draw a conclusion for a whole kind of large, important work.
 
