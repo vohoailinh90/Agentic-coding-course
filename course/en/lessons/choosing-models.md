@@ -81,7 +81,7 @@ That rule fits Hana's work; on your work, the results may differ.
 <!-- section: try-it -->
 ## Try It Yourself
 
-About 8 minutes, in `ai-practice`, with made-up data only. You need a tool that lets you choose the model. For example, as of September 2026, in Claude Code you type `/model haiku`, `/model sonnet` or `/model opus` to switch models; chat apps usually have a model picker near the message box. If your tool does not let you choose the model but has an effort level, compare low and high effort. Below, **two setups** means a small and a large model, or low and high effort.
+About 8 minutes, in `ai-practice`, with made-up data only. You need a tool that lets you choose either the model or the effort level — one of the two is enough. For example, as of September 2026, in Claude Code you type `/model haiku`, `/model sonnet` or `/model opus` to switch models; chat apps usually have a model picker near the message box. If your tool offers only an effort level, compare low and high effort. Below, **two setups** means a small and a large model, or low and high effort.
 
 **1. Run three tasks on two setups (6 minutes).** Paste exactly the same request to the small setup (small model or low effort) and to the large one (large model or high effort). Use a new conversation for every run — each task, each setup (in Claude Code: type `/clear`) — so the second setup cannot see the first one's answer.
 

@@ -80,7 +80,7 @@ Chưa chắc                        → thử cả hai, kiểm tra theo tiêu ch
 <!-- section: try-it -->
 ## Thử ngay
 
-Khoảng 8 phút, trong `ai-practice`, chỉ với dữ liệu giả. Bạn cần một công cụ cho chọn mô hình. Ví dụ, tính đến 9/2026, trong Claude Code gõ `/model haiku`, `/model sonnet` hay `/model opus` để đổi mô hình; ứng dụng chat thường có ô chọn mô hình gần khung nhập. Nếu công cụ của bạn không cho chọn mô hình nhưng có mức nỗ lực, hãy so hai mức thấp và cao. Bên dưới, **hai thiết lập** nghĩa là mô hình nhỏ và mô hình lớn, hoặc mức nỗ lực thấp và cao.
+Khoảng 8 phút, trong `ai-practice`, chỉ với dữ liệu giả. Bạn cần một công cụ cho chọn mô hình hoặc chọn mức nỗ lực — có một trong hai là đủ. Ví dụ, tính đến 9/2026, trong Claude Code gõ `/model haiku`, `/model sonnet` hay `/model opus` để đổi mô hình; ứng dụng chat thường có ô chọn mô hình gần khung nhập. Nếu công cụ chỉ có mức nỗ lực, hãy so hai mức thấp và cao. Bên dưới, **hai thiết lập** nghĩa là mô hình nhỏ và mô hình lớn, hoặc mức nỗ lực thấp và cao.
 
 **1. Chạy ba việc trên hai thiết lập (6 phút).** Dán đúng cùng một yêu cầu cho thiết lập nhỏ (mô hình nhỏ hoặc mức thấp) và cho thiết lập lớn (mô hình lớn hoặc mức cao). Mỗi lần chạy — mỗi việc, mỗi thiết lập — dùng một cuộc trò chuyện mới (trong Claude Code: gõ `/clear`), để thiết lập sau không nhìn thấy câu trả lời của thiết lập trước.
 
