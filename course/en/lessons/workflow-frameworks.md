@@ -56,7 +56,7 @@ When you are unsure how to approach it, when the change touches many files, or w
 When you **already know the right answers** for a few cases — a bug to reproduce, numbers you worked out by hand — turn them into [tests](testing-basics.md) **before** any code exists:
 
 1. Write the cases and their right answers.
-2. Run the tests: they must **fail** (there is no code yet, or the old code still has the bug). Seeing them fail is evidence that the tests really check something.
+2. Run the tests against the old code that still has the bug, or against a temporary version that is wrong on purpose: they must **fail**, in exactly the cases you predicted, because a number is wrong. If they only fail because a file is missing, you have learned nothing about the tests. Seeing them fail in the right places is evidence that they really check what you want.
 3. Only then let the agent build, until the tests pass.
 
 The Claude Code guidance suggests exactly this for bug fixes: write a failing test that reproduces the issue, then fix it. Software people call this *test-driven development* (TDD).
@@ -94,10 +94,12 @@ Before writing any code, create check_overtime.py with these cases
 - 8:30 → 17:30: 0 hours of overtime
 - 9:00 → 22:00: 4 hours of overtime
 - 22:00 → 7:00 the next day (night shift): 0 hours of overtime
-Run it and show me that it FAILS (there is no code yet). Do not write the calculation yet.
+Then create a temporary overtime.py that is wrong on purpose: it always returns 0.
+Run the tests against that stub and show me which cases pass or FAIL, and why.
+Do not write the real calculation yet.
 ```
 
-The tests fail, as expected. Hana continues: *"Now write overtime.py until all four cases pass."* The agent writes it and runs the tests: three cases pass, the **night shift** fails — the code subtracted 22:00 from 7:00 and got a negative number. The agent fixes it so the end time can fall on the next day, runs the tests again: all four pass. This is exactly the bug that last week's "just do it" let through.
+The result is what Hana predicted: the two cases with overtime (1.5 hours and 4 hours) **fail** because the stub returns 0; the two 0-hour cases pass. The tests fail because a number is wrong — not because a file is missing — so she knows they really check overtime. Hana continues: *"Now write overtime.py until all four cases pass."* The agent writes it and runs the tests: three cases pass, the **night shift** fails — the code subtracted 22:00 from 7:00, got a negative number and stopped with the error "end time is before start time". The agent fixes it so the end time can fall on the next day, runs the tests again: all four pass. This is exactly the bug that last week's "just do it" let through.
 
 **Task 3 — share the overtime tool with the team.** From now on, a mistake affects many people. Hana opens **a new session** and asks for a **separate review**: *"Read overtime.py and check_overtime.py. Compare them with the rule: beyond 8 hours is overtime, 1-hour lunch break. Find missing cases. Do not change anything."* The review points out a case with no test: typing an end time of 7:30 instead of 17:30, with a start of 9:00, the code reads it as a 22.5-hour night shift and counts 13.5 hours of overtime — without any warning. Hana decides: a shift longer than 16 hours should show an error so the person can check what they typed. She adds that case to the tests, lets the agent fix the code until it passes, and only then shares it with the team.
 
@@ -133,7 +135,7 @@ Three tasks, three different doses. None of them used the full "standard process
 - B) Adding an export feature that touches four files you have never read
 - C) Rewriting the salary calculation for the whole department
 
-**Question 2.** Why run a test and see it **fail** before the code exists?
+**Question 2.** Why run a test and see it **fail** before writing the real code?
 
 - A) To get the agent used to failure
 - B) To be sure the test really checks something

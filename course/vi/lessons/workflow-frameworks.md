@@ -55,7 +55,7 @@ Khi bạn chưa chắc nên làm theo cách nào, khi thay đổi đụng nhiề
 Khi bạn **đã biết trước kết quả đúng** cho vài trường hợp — một lỗi cần tái hiện, những con số đã tính tay — hãy viết chúng thành [test](testing-basics.md) **trước khi** có code:
 
 1. Viết các trường hợp và kết quả đúng.
-2. Chạy test: nó phải **không đạt** (chưa có code, hoặc code cũ còn lỗi). Thấy nó không đạt là bằng chứng test thật sự kiểm tra được điều gì đó.
+2. Chạy test với code cũ còn lỗi, hoặc một bản tạm cố tình sai: nó phải **không đạt**, và không đạt ở đúng những trường hợp bạn đoán trước, vì so sai con số. Nếu nó chỉ báo lỗi vì thiếu file, bạn chưa biết gì về test. Thấy nó không đạt đúng chỗ là bằng chứng test thật sự kiểm tra được điều bạn muốn.
 3. Rồi mới để agent làm, cho tới khi test đạt.
 
 Hướng dẫn của Claude Code gợi ý đúng cách này khi sửa lỗi: viết một test không đạt để tái hiện lỗi, rồi mới sửa. Người làm phần mềm gọi nó là *phát triển hướng kiểm thử* (test-driven development, TDD).
@@ -93,10 +93,12 @@ Trước khi viết code, tạo file kiem_tra_lam_them.py với các trường h
 - 8:30 → 17:30: làm thêm 0 tiếng
 - 9:00 → 22:00: làm thêm 4 tiếng
 - 22:00 → 7:00 hôm sau (ca đêm): làm thêm 0 tiếng
-Chạy nó và cho mình xem nó KHÔNG ĐẠT (vì chưa có code). Chưa viết code tính toán.
+Rồi tạo một lam_them.py tạm, cố tình sai: luôn trả về 0.
+Chạy test với bản tạm đó và cho mình xem từng trường hợp đạt hay KHÔNG ĐẠT, vì sao.
+Chưa viết code tính toán thật.
 ```
 
-Test không đạt, đúng như mong đợi. Hana nói tiếp: *"Giờ viết lam_them.py cho tới khi cả bốn trường hợp đạt."* Agent viết, chạy test: ba trường hợp đạt, **ca đêm** không đạt — code lấy 7:00 trừ 22:00 ra số âm. Agent sửa để hiểu giờ ra có thể sang ngày hôm sau, chạy lại: bốn trường hợp đều đạt. Đây chính là lỗi mà lần giao thẳng tuần trước đã bỏ lọt.
+Kết quả đúng như Hana đoán trước: hai trường hợp có làm thêm (1,5 tiếng và 4 tiếng) **không đạt** vì bản tạm trả về 0; hai trường hợp 0 tiếng đạt. Test không đạt vì so sai con số — không phải vì thiếu file — nên cô biết nó thật sự kiểm tra giờ làm thêm. Hana nói tiếp: *"Giờ viết lam_them.py cho tới khi cả bốn trường hợp đạt."* Agent viết, chạy test: ba trường hợp đạt, **ca đêm** không đạt — code lấy 7:00 trừ 22:00 ra số âm và dừng với lỗi "giờ ra sớm hơn giờ vào". Agent sửa để hiểu giờ ra có thể sang ngày hôm sau, chạy lại: bốn trường hợp đều đạt. Đây chính là lỗi mà lần giao thẳng tuần trước đã bỏ lọt.
 
 **Việc 3 — chia sẻ công cụ tính giờ cho cả nhóm.** Từ lúc này, sai thì nhiều người bị ảnh hưởng. Hana mở **một phiên mới** và yêu cầu **review riêng**: *"Đọc lam_them.py và kiem_tra_lam_them.py. So với quy định: làm quá 8 tiếng là làm thêm, nghỉ trưa 1 tiếng. Tìm trường hợp còn thiếu. Chưa sửa gì."* Phiên review chỉ ra một trường hợp chưa có test: gõ nhầm giờ ra 17:30 thành 7:30 với giờ vào 9:00, code hiểu thành ca đêm dài 22,5 tiếng và tính 13,5 tiếng làm thêm — không báo gì. Hana quyết định: ca dài quá 16 tiếng thì báo lỗi để người nhập xem lại. Cô thêm trường hợp đó vào test, để agent sửa tới khi đạt, rồi mới gửi cho nhóm.
 
@@ -132,7 +134,7 @@ Ba việc, ba liều lượng khác nhau. Không việc nào dùng "quy trình c
 - B) Thêm tính năng xuất dữ liệu, đụng tới bốn file bạn chưa đọc bao giờ
 - C) Viết lại cách tính lương cho cả phòng
 
-**Câu 2.** Vì sao nên chạy test và thấy nó **không đạt** trước khi có code?
+**Câu 2.** Vì sao nên chạy test và thấy nó **không đạt** trước khi viết code thật?
 
 - A) Để agent quen với việc thất bại
 - B) Để chắc rằng test thật sự kiểm tra được điều gì đó
