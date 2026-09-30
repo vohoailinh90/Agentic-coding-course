@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `tool-landscape` (four shapes of AI
+  tool — web chat, editor assistant, local agent, cloud agent — chosen by four questions about your
+  environment, not by rankings) and `workflow-frameworks` (add a plan, tests first or a separate review
+  only when the task's risk calls for it). The course now has 40 of 52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `vibe-vs-agentic` (vibe coding keeps
   whatever seems to work; agentic coding adds a goal, boundaries, a check and a review — and the
   question "if it is wrong and nobody notices, who gets hurt?" decides which one a task needs) and

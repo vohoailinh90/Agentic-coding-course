@@ -7,15 +7,16 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-30
 
-- **38 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **40 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
-  `traditional-vs-agentic`, `vibe-vs-agentic` and `the-agent-loop`, written by Claude;
+  `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape` and
+  `workflow-frameworks`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **14 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **12 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -45,8 +46,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `tool-landscape` | agentic-work-as-a-system (core) | concept | 10 | – |
-| `workflow-frameworks` | agentic-work-as-a-system (core) | concept | 10 | test |
 | `model-plus-harness` | minimum-harness (core) | concept | 10 | harness, model |
 | `context-engineering` | minimum-harness (core) | hands-on | 12 | context-engineering, context-window |
 | `prompt-engineering-for-agents` | minimum-harness (core) | hands-on | 12 | prompt |
@@ -64,14 +63,15 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`tool-landscape`** (concept) — pick a tool by where you can run it (browser, personal PC, locked
-  company PC) and what data it may see, not by hype; build on
-  [`choose-your-learning-setup`](../course/en/lessons/choose-your-learning-setup.md). Name tools only
-  as dated examples, with no prices.
-- **`workflow-frameworks`** (concept) — add structure only when the task needs it: a plan first for
-  unclear or multi-file work, a test first when the right answer is known, a separate review when
-  mistakes are costly; small tasks just go. Build on
-  [`explore-plan-build-verify`](../course/en/lessons/explore-plan-build-verify.md).
+- **`model-plus-harness`** (concept) — agent = model + harness (tools, context and instructions,
+  guardrails, checks); diagnose a weak agent by symptom and fix the harness before changing the model.
+- **`context-engineering`** (hands-on) — three drawers: always (a short instruction file), when
+  needed (a path the agent opens), never; write a five-line instruction file and test it in a new
+  session.
+
+Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
+summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
+right in every language — check those before opening the pull request.
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.

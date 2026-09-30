@@ -1,0 +1,58 @@
+# Used in: tool-landscape (concept). Four shapes of AI tools, by environment.
+template: compare
+title:
+  vi: Bốn hình dạng của công cụ AI
+  en: Four Shapes of AI Tools
+  ja: AIツールの4つのかたち
+rows:
+  - vi: Chạy ở đâu
+    en: Where it runs
+    ja: 動く場所
+  - vi: File nằm ở đâu
+    en: Where files live
+    ja: ファイルの場所
+  - vi: Tự chạy lệnh?
+    en: Runs commands?
+    ja: 自分で実行？
+  - vi: Hợp khi
+    en: Good when
+    ja: 向く場面
+emphasis_row: 3
+columns:
+  - icon: "💬"
+    color: blue
+    name: {vi: Chat trên web, en: Web chat, ja: Webチャット}
+    values:
+      - {vi: Trình duyệt, en: Browser, ja: ブラウザ}
+      - {vi: "Bạn tự\nsao chép", en: "You copy\nit out", ja: 自分でコピー}
+      - {vi: Thường không, en: Usually not, ja: ふつうはしない}
+      - {vi: "Hỏi, giải thích,\nsoạn nháp", en: "Questions,\ndrafts", ja: 質問・下書き}
+  - icon: "✏️"
+    color: violet
+    name: {vi: "Trợ lý\ntrình soạn code", en: Editor assistant, ja: エディタ型}
+    values:
+      - {vi: "Trình soạn\ncode", en: Code editor, ja: エディタ}
+      - {vi: "File đang\nmở", en: "The open\nfile", ja: 開いているファイル}
+      - {vi: "Gợi ý;\nđôi khi có", en: "Suggests;\nsometimes", ja: "提案。\n実行も"}
+      - {vi: "Đang tự\nsửa code", en: "Editing code\nyourself", ja: 自分で編集中}
+  - icon: "🤖"
+    color: green
+    highlight: true
+    name: {vi: Agent trên máy, en: Local agent, ja: 手元のエージェント}
+    values:
+      - {vi: Máy bạn, en: Your computer, ja: 自分のPC}
+      - {vi: "Thư mục\ncủa bạn", en: Your folder, ja: 自分のフォルダ}
+      - {vi: "Có, theo\nquyền bạn cho", en: "Yes, within\nyour permissions", ja: 権限の範囲で実行}
+      - {vi: "Được cài,\nfile trên máy", en: "You can install,\nfiles are local", ja: "インストール可\n手元のファイル"}
+  - icon: "☁️"
+    color: teal
+    name: {vi: Agent đám mây, en: Cloud agent, ja: クラウドのエージェント}
+    values:
+      - {vi: "Máy chủ\nnhà cung cấp", en: "Provider's\nservers", ja: 提供元のサーバー}
+      - {vi: "Kho code\ntrên mạng", en: "An online\nrepository", ja: オンラインのリポジトリ}
+      - {vi: "Có, trên\nmáy chủ", en: "Yes, on\nthe server", ja: サーバー上で実行}
+      - {vi: "Không cài được,\ncó GitHub", en: "No installs,\nhave GitHub", ja: "インストール不可\nGitHubあり"}
+takeaway:
+  vi: Chọn hình dạng theo môi trường trước, rồi mới so tên hãng.
+  en: Pick the shape for your environment first, then compare brands.
+  ja: まず環境に合うかたちを選び、それから製品を比べます。

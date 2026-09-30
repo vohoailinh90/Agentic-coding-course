@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 614" width="800" height="614" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">リスクに合わせて型を足す</title>
+<desc id="desc">そのまま — 使う場面: ひとことで
+言える変更; 防ぐリスク: ムダな手順; 追加の手間: ほぼなし. 先に計画 — 使う場面: やり方が不明
+ファイル多数; 防ぐリスク: 問題を
+取りちがえる; 追加の手間: 数分の読む時間. テスト先行 — 使う場面: 正解が先にわかる; 防ぐリスク: 「たぶん
+合っている」; 追加の手間: ケースを
+いくつか書く. 別にレビュー — 使う場面: ミスが
+高くつく; 防ぐリスク: 作り手の
+見落とし; 追加の手間: 新しいセッション1つ. 「どこで失敗しうる？」と問い、必要なものだけを足します。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="612" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="584" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">リスクに合わせて型を足す</tspan></text>
+<g>
+<rect x="28" y="86.3" width="172.5" height="425.1" rx="20" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v107.7 h-172.5 z" fill="#475569"/>
+<circle cx="114.2" cy="138.3" r="26" fill="#475569"/>
+<circle cx="114.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="114.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚡</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="114.2" y="191.3">そのまま</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">使う場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">ひとことで</tspan><tspan x="44" y="289.3">言える変更</tspan></text>
+<line x1="44" y1="308.7" x2="184.5" y2="308.7" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">防ぐリスク</tspan></text>
+<text font-size="19" fill="#475569" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">ムダな手順</tspan></text>
+<line x1="44" y1="408.7" x2="184.5" y2="408.7" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">追加の手間</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="461.5">ほぼなし</tspan></text>
+</g>
+<g>
+<rect x="218.5" y="86.3" width="172.5" height="425.1" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M218.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v107.7 h-172.5 z" fill="#2563EB"/>
+<circle cx="304.8" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="304.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="304.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗺️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="304.8" y="191.3">先に計画</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="241.5">使う場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="266.8">やり方が不明</tspan><tspan x="234.5" y="289.3">ファイル多数</tspan></text>
+<line x1="234.5" y1="308.7" x2="375" y2="308.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="336.2">防ぐリスク</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="234.5" y="363.5">問題を</tspan><tspan x="234.5" y="388.6">取りちがえる</tspan></text>
+<line x1="234.5" y1="408.7" x2="375" y2="408.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="436.2">追加の手間</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="461.5">数分の読む時間</tspan></text>
+</g>
+<g>
+<rect x="409" y="86.3" width="172.5" height="425.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M409,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v107.7 h-172.5 z" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="26" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="495.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="495.2" y="191.3">テスト先行</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="241.5">使う場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="266.8">正解が先にわかる</tspan></text>
+<line x1="425" y1="308.7" x2="565.5" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="336.2">防ぐリスク</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="425" y="363.5">「たぶん</tspan><tspan x="425" y="388.6">合っている」</tspan></text>
+<line x1="425" y1="408.7" x2="565.5" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="436.2">追加の手間</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="461.5">ケースを</tspan><tspan x="425" y="483.9">いくつか書く</tspan></text>
+</g>
+<g>
+<rect x="599.5" y="86.3" width="172.5" height="425.1" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M599.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v107.7 h-172.5 z" fill="#7C3AED"/>
+<circle cx="685.8" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="685.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="685.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔍</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="685.8" y="191.3">別にレビュー</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="241.5">使う場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="266.8">ミスが</tspan><tspan x="615.5" y="289.3">高くつく</tspan></text>
+<line x1="615.5" y1="308.7" x2="756" y2="308.7" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="336.2">防ぐリスク</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="615.5" y="363.5">作り手の</tspan><tspan x="615.5" y="388.6">見落とし</tspan></text>
+<line x1="615.5" y1="408.7" x2="756" y2="408.7" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="436.2">追加の手間</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="461.5">新しい</tspan><tspan x="615.5" y="483.9">セッション1つ</tspan></text>
+</g>
+<rect x="28" y="535.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="566.4">💡 「どこで失敗しうる？」と問い、必要なものだけを足します。</tspan></text>
+</svg>

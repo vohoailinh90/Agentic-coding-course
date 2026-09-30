@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: chọn công cụ theo môi trường"
+  en: "Recap: Choose a Tool by Environment"
+  ja: まとめ：環境でツールを選ぶ
+points:
+  - icon: "🧩"
+    color: blue
+    name: {vi: Bốn hình dạng, en: Four shapes, ja: 4つのかたち}
+    caption: {vi: "Chat, trình soạn code,\nagent máy, agent mây", en: "Chat, editor,\nlocal and cloud agents", ja: "チャット・エディタ・\n手元・クラウド"}
+  - icon: "📂"
+    color: green
+    name: {vi: "File ở đâu?\nĐược cài gì?", en: "Where are the files?\nWhat can you install?", ja: "ファイルはどこ？\n何を入れられる？"}
+    caption: {vi: Công cụ phải tới được, en: The tool must reach them, ja: ツールが届く必要がある}
+  - icon: "🔒"
+    color: rose
+    name: {vi: "Dữ liệu nào\nđược phép?", en: "Which data\nis allowed?", ja: "どのデータなら\nよい？"}
+    caption: {vi: "Dữ liệu công ty:\nchỉ công cụ đã duyệt", en: "Company data:\napproved tools only", ja: "会社のデータは\n承認済みツールだけ"}
+  - icon: "📣"
+    color: amber
+    name: {vi: "Quảng cáo nói\nvề mô hình", en: "Hype talks\nabout models", ja: "宣伝はモデルの話"}
+    caption: {vi: "Thử bằng việc nhỏ\ncủa chính bạn", en: "Test on a small task\nof your own", ja: "自分の小さな作業で\n試す"}
+  - icon: "🎒"
+    color: violet
+    name: {vi: Kỹ năng mang theo, en: Skills travel, ja: スキルは持ち運べる}
+    caption: {vi: "Yêu cầu, kiểm tra,\nreview, Git", en: "Specs, checks,\nreviews, Git", ja: "指示書・確認・\nレビュー・Git"}
+takeaway:
+  vi: Môi trường chọn công cụ; kỹ năng đi theo bạn.
+  en: Your environment picks the tool; your skills go with you.
+  ja: ツールを決めるのは環境。スキルはあなたと一緒に移ります。
