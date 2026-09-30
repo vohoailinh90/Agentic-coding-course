@@ -104,8 +104,9 @@ Boundaries: work only in the ai-practice folder, one file, send no data anywhere
 Done when:
 1. The bill entered is always a whole-dollar amount; anything else shows an error.
 2. Each share is a whole-dollar amount, and the shares always add up to exactly the bill.
-3. It works for: $300 split 3 ways; $1,000 split 3 ways; $100 split 7 ways; $250 split 1 way.
-4. Entering 0 people shows a clear error, not a strange number.
+3. Split as evenly as possible: the largest and smallest shares differ by at most $1.
+4. It works for: $300 split 3 ways; $1,000 split 3 ways; $100 split 7 ways; $250 split 1 way.
+5. Entering 0 people shows a clear error, not a strange number.
 Write a check that runs all the cases above, run it and show me the result.
 ```
 

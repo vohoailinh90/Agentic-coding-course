@@ -103,8 +103,9 @@ Ranh giới: chỉ làm trong thư mục ai-practice, một file, không gửi d
 Xong khi:
 1. Số tiền hóa đơn nhập vào luôn là số chẵn nghìn đồng; số khác thì báo lỗi.
 2. Mỗi phần là số chẵn nghìn đồng, và tổng các phần luôn bằng đúng số tiền hóa đơn.
-3. Thử được với: 300.000 chia 3; 1.000.000 chia 3; 100.000 chia 7; 250.000 chia 1.
-4. Nhập 0 người thì báo lỗi dễ hiểu, không hiện số lạ.
+3. Chia đều nhất có thể: phần lớn nhất và phần nhỏ nhất chênh nhau không quá 1.000 đồng.
+4. Thử được với: 300.000 chia 3; 1.000.000 chia 3; 100.000 chia 7; 250.000 chia 1.
+5. Nhập 0 người thì báo lỗi dễ hiểu, không hiện số lạ.
 Viết một phép kiểm tra chạy tất cả các trường hợp trên, chạy nó và cho mình xem kết quả.
 ```
 

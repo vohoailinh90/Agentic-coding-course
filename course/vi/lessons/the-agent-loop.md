@@ -49,7 +49,7 @@ Bạn đã biết agent gồm [bộ não, đôi tay và vòng lặp](agent-parts
 
 Rồi lượt sau bắt đầu, với ngữ cảnh đã dài thêm một chút.
 
-Không phải lượt nào cũng dùng công cụ. Khi mô hình thấy việc đã xong, hoặc cần hỏi bạn, nó không chọn công cụ nào mà viết câu trả lời cho bạn — như lượt cuối trong ví dụ dưới đây. Đó là lúc vòng lặp dừng.
+Không phải lượt nào cũng dùng công cụ. Khi mô hình thấy việc đã xong — hoặc cần hỏi bạn một điều trước khi làm tiếp — nó không chọn công cụ nào mà viết câu trả lời cho bạn, như lượt cuối trong ví dụ dưới đây. Vòng lặp dừng ở đó, tới khi bạn nhắn lại. Khác với hộp **xin phép** ở lượt 5: ở đó mô hình đã chọn công cụ sửa file, còn phần mềm của agent tạm dừng để hỏi bạn trước khi chạy nó; bạn trả lời xong thì vòng lặp chạy tiếp.
 
 ### Ba giai đoạn hòa vào nhau
 

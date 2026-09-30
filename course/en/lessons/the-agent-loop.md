@@ -50,7 +50,7 @@ You already know an agent is made of [a brain, tools and a loop](agent-parts-and
 
 Then the next turn starts, with a slightly longer context.
 
-Not every turn uses a tool. When the model decides the work is done, or that it needs to ask you, it picks no tool and writes you a reply instead — like the last turn in the example below. That is when the loop stops.
+Not every turn uses a tool. When the model decides the work is done — or that it needs to ask you something before going on — it picks no tool and writes you a reply instead, like the last turn in the example below. The loop stops there until you write back. That is different from the **permission** prompt in turn 5: there, the model has already picked the edit tool, and the agent's software pauses to ask you before running it; once you answer, the loop carries on.
 
 ### Three phases that blend together
 

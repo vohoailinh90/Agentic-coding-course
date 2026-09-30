@@ -6,7 +6,7 @@
   whatever seems to work; agentic coding adds a goal, boundaries, a check and a review — and the
   question "if it is wrong and nobody notices, who gets hurt?" decides which one a task needs) and
   `the-agent-loop` (Mai's report fix traced turn by turn: read the context, pick a tool, the tool runs,
-  the result comes back; the three ways a loop stops and when to interrupt). The course now has 38 of
+  the result comes back; when a loop ends, when it only pauses for a decision, and when to interrupt). The course now has 38 of
   52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `choosing-models` (small,
   mid-size and large models trade capability, speed and cost; try effort before switching; an
