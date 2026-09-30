@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 634" width="800" height="634" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Model + Harness = Agent</title>
+<desc id="desc">Model + Tools
++ context + Guardrails
++ checks = Agent. You can&#x27;t change the model; you can tune the harness.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-result" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="1" width="798" height="632" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="604" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Model + Harness = Agent</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">The harness is everything around the model</tspan></text>
+<rect x="28" y="112.7" width="218.7" height="197.7" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="137.3" cy="156.7" r="28" fill="#7C3AED"/>
+<circle cx="137.3" cy="156.7" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="137.3" y="167.3" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧠</text>
+<text font-size="20" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="137.3" y="214.7">Model</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="137.3" y="240.6">reasons</tspan></text>
+<rect x="290.7" y="112.7" width="218.7" height="197.7" rx="20" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="400" cy="156.7" r="28" fill="#D97706"/>
+<circle cx="400" cy="156.7" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="167.3" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
+<text font-size="20" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="214.7">Tools</tspan><tspan x="400" y="241.1">+ context</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="400" y="267">acts for real,</tspan><tspan x="400" y="287.5">knows enough</tspan></text>
+<circle cx="268.7" cy="211.6" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="268.7" y="219.6" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">+</text>
+<rect x="553.3" y="112.7" width="218.7" height="197.7" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
+<circle cx="662.7" cy="156.7" r="28" fill="#E11D48"/>
+<circle cx="662.7" cy="156.7" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="662.7" y="167.3" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚧</text>
+<text font-size="20" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="662.7" y="214.7">Guardrails</tspan><tspan x="662.7" y="241.1">+ checks</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="662.7" y="267">stays in bounds,</tspan><tspan x="662.7" y="287.5">knows when right</tspan></text>
+<circle cx="531.3" cy="211.6" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="531.3" y="219.6" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">+</text>
+<line x1="400.0" y1="322.4" x2="400.0" y2="368.4" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-result)"/>
+<circle cx="440" cy="346.4" r="17" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<text x="440" y="354.4" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">=</text>
+<g class="pulse">
+<rect x="220" y="380.4" width="360" height="150.9" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<circle cx="400" cy="424.4" r="28" fill="#059669"/>
+<circle cx="400" cy="424.4" r="25" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="435" font-size="29.4" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="20" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="482.4">Agent</tspan></text>
+<text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="400" y="508.3">gets work done</tspan></text>
+</g>
+<rect x="28" y="555.3" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="586.3">💡 You can&#x27;t change the model; you can tune the harness.</tspan></text>
+</svg>

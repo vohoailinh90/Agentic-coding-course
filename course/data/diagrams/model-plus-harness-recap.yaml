@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: mô hình + harness = agent"
+  en: "Recap: Model + Harness = Agent"
+  ja: まとめ：モデル＋ハーネス＝エージェント
+points:
+  - icon: "🐎"
+    color: violet
+    name: {vi: "Mô hình:\ncon ngựa", en: "The model:\nthe horse", ja: "モデル：\n馬"}
+    caption: {vi: Sức mạnh suy luận, en: Reasoning power, ja: 考える力}
+  - icon: "🧰"
+    color: amber
+    name: {vi: "Harness:\nyên cương", en: "The harness:\nthe reins", ja: "ハーネス：\n手綱"}
+    caption: {vi: "Công cụ, ngữ cảnh,\nhàng rào, kiểm tra", en: "Tools, context,\nguardrails, checks", ja: "ツール・コンテキスト・\nガードレール・チェック"}
+  - icon: "🔀"
+    color: teal
+    name: {vi: "Cùng mô hình,\nkết quả khác", en: "Same model,\ndifferent results", ja: "同じモデル、\n違う結果"}
+    caption: {vi: Khác ở harness, en: Because of the harness, ja: 違いはハーネス}
+  - icon: "🩺"
+    color: rose
+    name: {vi: Chẩn đoán, en: Diagnose, ja: 診断する}
+    caption: {vi: "Triệu chứng →\nphần còn thiếu", en: "Symptom →\nmissing part", ja: "症状 →\n足りない部分"}
+  - icon: "🔩"
+    color: green
+    name: {vi: Sửa harness trước, en: Fix the harness first, ja: まずハーネスを直す}
+    caption: {vi: "Rồi mới tính\nđổi mô hình", en: "Before changing\nthe model", ja: モデルを変える前に}
+takeaway:
+  vi: Agent tốt = mô hình đủ tốt + harness được chăm chút.
+  en: A good agent = a good-enough model + a well-kept harness.
+  ja: よいエージェント＝十分なモデル＋手入れされたハーネス。

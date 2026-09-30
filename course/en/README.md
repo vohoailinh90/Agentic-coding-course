@@ -166,7 +166,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 5.2.1 | Model + Harness = Agent: The Horse and the Reins | 📖 Concept | 10 min |
+| 5.2.1 | [Model + Harness = Agent: The Horse and the Reins](lessons/model-plus-harness.md) | 📖 Concept | 10 min |
 | 5.2.2 | Context Engineering: The Right Information at the Right Time | 🛠️ Hands-on | 12 min |
 | 5.2.3 | Prompt Engineering for Agents: System Prompts and Instructions | 🛠️ Hands-on | 12 min |
 | 5.2.4 | Hooks and Permissions: Automatic Guardrails | 🛠️ Hands-on | 12 min |
