@@ -7,16 +7,16 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-30
 
-- **40 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **42 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape` and
-  `workflow-frameworks`, written by Claude;
+  `workflow-frameworks`,, `model-plus-harness`, `context-engineering`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **12 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **10 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -46,8 +46,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `model-plus-harness` | minimum-harness (core) | concept | 10 | harness, model |
-| `context-engineering` | minimum-harness (core) | hands-on | 12 | context-engineering, context-window |
 | `prompt-engineering-for-agents` | minimum-harness (core) | hands-on | 12 | prompt |
 | `hooks-and-permissions` | minimum-harness (core) | hands-on | 12 | hook |
 | `tests-and-ci-for-agents` | minimum-harness (core) | demo | 12 | test, ci |
@@ -63,11 +61,8 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`model-plus-harness`** (concept) — agent = model + harness (tools, context and instructions,
-  guardrails, checks); diagnose a weak agent by symptom and fix the harness before changing the model.
-- **`context-engineering`** (hands-on) — three drawers: always (a short instruction file), when
-  needed (a path the agent opens), never; write a five-line instruction file and test it in a new
-  session.
+- **`prompt-engineering-for-agents`** (hands-on) — three layers of instructions (system prompt, instruction file, task request); five ways to write instructions an agent can follow; test an instruction in a new session.
+- **`hooks-and-permissions`** (hands-on) — advice versus locks: permission rules (deny → ask → allow) and hooks are enforced by the tool; add a deny rule for a data folder and see the agent blocked.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `model-plus-harness` (agent = model +
+  harness — tools, context and instructions, guardrails, checks; diagnose a weak agent by symptom and fix
+  the harness first) and `context-engineering` (three drawers — always, when needed, never; a five-line
+  instruction file tested in a new session). The course now has 42 of 52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `tool-landscape` (four shapes of AI
   tool — web chat, editor assistant, local agent, cloud agent — chosen by four questions about your
   environment, not by rankings) and `workflow-frameworks` (add a plan, tests first or a separate review
