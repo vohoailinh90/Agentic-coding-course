@@ -14,7 +14,7 @@
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="713" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">エージェントのループの1ターン</tspan></text>
-<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">確認に合格するか、あなたが必要か、行き詰まるまで</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">合格するか行き詰まるまで。判断が必要なら待つ</tspan></text>
 <path d="M509,229.4 A190,190 0 0 1 574.9,310.8" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
 <rect x="543.3" y="232.4" width="58.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="572.5" y="249.9">決める</tspan></text>

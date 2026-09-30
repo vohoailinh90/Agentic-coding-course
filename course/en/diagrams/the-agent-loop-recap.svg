@@ -4,8 +4,9 @@
 run, get the result; 2. Gather, act,
 verify — Blend together
 and repeat; 3. The context grows — Keep sessions
-focused; 4. Three ways to stop — Passed, needs you,
-or stuck; 5. You are in
+focused; 4. Ends or
+just pauses? — Passed or stuck: ends.
+Needs you: waits; 5. You are in
 the loop — Interrupt early,
 steer clearly. Read turn by turn to know when to let it run and when to step in.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
@@ -43,8 +44,8 @@ steer clearly. Read turn by turn to know when to let it run and when to step in.
 <text x="273" y="321" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🛑</text>
 <circle cx="173" cy="294.7" r="12" fill="#881337"/>
 <text x="173" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
-<text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="273" y="361.2">Three ways to stop</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="386.1">Passed, needs you,</tspan><tspan x="273" y="405.9">or stuck</tspan></text>
+<text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="273" y="361.2">Ends or</tspan><tspan x="273" y="385.6">just pauses?</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="410.6">Passed or stuck: ends.</tspan><tspan x="273" y="430.4">Needs you: waits</tspan></text>
 <rect x="409" y="276.7" width="236" height="172.4" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
 <circle cx="527" cy="312.7" r="22" fill="#D97706"/>
 <circle cx="527" cy="312.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

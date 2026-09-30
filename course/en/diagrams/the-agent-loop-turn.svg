@@ -13,7 +13,7 @@
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="723" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">One Turn of the Agent Loop</tspan></text>
-<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Repeats until the check passes, it needs you, or it is stuck</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Repeats until the check passes or it is stuck; waits when it needs you</tspan></text>
 <path d="M509,239.3 A190,190 0 0 1 574.9,320.7" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
 <rect x="537.9" y="242.3" width="69.3" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="572.5" y="259.8">decides</tspan></text>

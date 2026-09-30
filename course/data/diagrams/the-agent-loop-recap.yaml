@@ -18,8 +18,8 @@ points:
     caption: {vi: "Phiên gọn,\nđúng việc", en: "Keep sessions\nfocused", ja: セッションは短く的確に}
   - icon: "🛑"
     color: rose
-    name: {vi: Ba cách dừng, en: Three ways to stop, ja: 止まり方は3つ}
-    caption: {vi: "Đạt, cần bạn,\nhoặc bị kẹt", en: "Passed, needs you,\nor stuck", ja: "合格・要確認・\n行き詰まり"}
+    name: {vi: "Kết thúc hay\ntạm dừng?", en: "Ends or\njust pauses?", ja: "終わり？\n一時停止？"}
+    caption: {vi: "Đạt hoặc kẹt: kết thúc.\nCần bạn: chờ", en: "Passed or stuck: ends.\nNeeds you: waits", ja: "合格か行き詰まりで終了。\n判断待ちは一時停止"}
   - icon: "✋"
     color: amber
     name: {vi: "Bạn ở trong\nvòng lặp", en: "You are in\nthe loop", ja: "あなたも\nループの中"}

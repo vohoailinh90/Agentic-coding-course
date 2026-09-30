@@ -3,9 +3,9 @@ lesson: the-agent-loop
 lang: vi
 status: review
 summary: >-
-  Lần theo từng lượt một phiên làm việc thật: mỗi lượt, mô hình đọc ngữ cảnh, chọn một công cụ, công cụ chạy,
-  và kết quả quay lại ngữ cảnh để quyết định bước tiếp theo — cho đến khi phép kiểm tra đạt, cần bạn quyết định,
-  hoặc bị kẹt. Biết đọc từng lượt, bạn nhận ra lúc nào agent đang đi đúng và lúc nào nên ngắt để chỉnh hướng.
+  Lần theo từng lượt một phiên làm việc thật: ở mỗi lượt dùng công cụ, mô hình đọc ngữ cảnh, chọn một công cụ,
+  công cụ chạy, và kết quả quay lại ngữ cảnh để quyết định bước tiếp theo. Vòng lặp tạm dừng khi cần bạn quyết định,
+  và kết thúc khi phép kiểm tra đạt và agent trả lời bạn — hoặc khi bị kẹt. Biết đọc từng lượt, bạn nhận ra lúc nào agent đang đi đúng và lúc nào nên ngắt để chỉnh hướng.
 social:
   hook: "Agent chạy 9 bước trong 2 phút, chữ chạy vèo vèo. Bạn có biết nó đang làm gì — và lúc nào nên bấm dừng? ⏸️"
   question: Khi xem agent làm việc, dấu hiệu nào khiến bạn muốn bấm dừng?
@@ -20,8 +20,8 @@ social:
 
 Sau bài này, bạn sẽ:
 
-- Đọc được một phiên làm việc theo từng **lượt**: mô hình đọc ngữ cảnh → chọn công cụ → công cụ chạy → kết quả quay lại ngữ cảnh.
-- Nhận ra ba cách một vòng lặp kết thúc: phép kiểm tra đạt, cần bạn quyết định, hoặc bị kẹt.
+- Đọc được một phiên làm việc theo từng **lượt**: ở lượt dùng công cụ, mô hình đọc ngữ cảnh → chọn công cụ → công cụ chạy → kết quả quay lại ngữ cảnh; lượt cuối là câu trả lời cho bạn.
+- Phân biệt được khi nào vòng lặp kết thúc (phép kiểm tra đạt, hoặc bị kẹt) và khi nào nó chỉ tạm dừng chờ bạn quyết định.
 - Biết lúc nào nên ngắt agent và nói gì để chỉnh hướng.
 
 <!-- section: hook -->
@@ -59,11 +59,11 @@ Tài liệu Claude Code (9/2026) mô tả vòng lặp của agent qua ba giai đ
 
 Kết quả của mỗi lượt được thêm vào ngữ cảnh. Một phiên dài, đọc nhiều file lớn, sẽ đầy dần [cửa sổ ngữ cảnh](context-window.md). Khi gần đầy, công cụ phải dọn bớt: tính đến tháng 9/2026, Claude Code xóa các kết quả công cụ cũ trước, rồi tóm tắt cuộc trò chuyện — và những chỉ dẫn chi tiết từ đầu phiên có thể bị mất. Đó là lý do một phiên gọn gàng, đúng việc, thường cho kết quả tốt hơn một phiên kéo dài với nhiều lần sửa đi sửa lại.
 
-### Vòng lặp dừng khi nào?
+### Vòng lặp kết thúc — hay chỉ tạm dừng?
 
-- **Phép kiểm tra đạt:** agent chạy phép kiểm tra bạn đưa, thấy đạt, và báo cáo.
-- **Cần bạn quyết định:** một việc nằm ngoài quyền của nó — xóa, cài đặt, sửa thứ bạn đã dặn không được sửa.
-- **Bị kẹt:** cùng một lệnh, cùng một lỗi, lặp lại. Agent có thể tự nhận ra và dừng — hoặc không. Đây là lúc bạn nên ngắt.
+- **Kết thúc vì phép kiểm tra đạt:** agent chạy phép kiểm tra bạn đưa, thấy đạt, và trả lời bạn bằng một báo cáo.
+- **Kết thúc vì bị kẹt:** cùng một lệnh, cùng một lỗi, lặp lại. Agent có thể tự nhận ra và dừng — hoặc không. Đây là lúc bạn nên ngắt.
+- **Tạm dừng vì cần bạn quyết định:** một việc nằm ngoài quyền của nó — xóa, cài đặt, sửa thứ bạn đã dặn không được sửa. Agent chờ; bạn trả lời xong thì vòng lặp chạy tiếp, như lượt 5 và 6 trong ví dụ dưới đây.
 
 ### Bạn cũng ở trong vòng lặp
 
@@ -106,7 +106,7 @@ Xong khi:
 
 Vòng lặp dừng vì phép kiểm tra đạt. Mai không dừng ở đó: cô đọc diff — đúng một dòng đổi — rồi tự cộng doanh thu chi nhánh Quận 1 trong file tháng 11 bằng máy tính và so với báo cáo. Khớp. Còn dòng "chưa kiểm tra", cô ghi lại để tháng sau hỏi thêm.
 
-Để ý **lượt 5**. Nếu Mai bấm đồng ý cho nhanh, lỗi tháng 11 cũng hết — nhưng file dữ liệu gốc đã bị sửa, và tháng 12 lỗi sẽ quay lại. Một câu trả lời của bạn giữa vòng lặp có thể quan trọng hơn cả chín lượt còn lại.
+Để ý **lượt 5**. Nếu Mai bấm đồng ý cho nhanh, lỗi tháng 11 cũng hết — nhưng file dữ liệu gốc đã bị sửa, và tháng 12 lỗi sẽ quay lại. Một câu trả lời của bạn giữa vòng lặp có thể quan trọng hơn cả tám lượt còn lại.
 
 <!-- section: try-it -->
 ## Thử ngay
@@ -138,7 +138,7 @@ Tự trả lời:
 
 - **"Agent làm một mạch từ đầu đến cuối."** — Nó làm từng lượt, và mỗi lượt dựa vào kết quả của lượt trước. Kết quả sai hay thiếu ở một lượt kéo theo những lượt sau.
 - **"Ngắt agent là làm hỏng việc của nó."** — Ngắt giữ nguyên ngữ cảnh; bạn chỉ thêm hướng mới. Chỉnh sớm rẻ hơn chờ nó đi hết một hướng sai.
-- **"Agent dừng tức là đã xong."** — Nó có thể dừng vì phép kiểm tra đạt, vì cần bạn, hoặc vì hết cách. Đọc báo cáo để biết là trường hợp nào.
+- **"Agent dừng tức là đã xong."** — Nó có thể dừng vì phép kiểm tra đạt, vì đang chờ bạn quyết định, hoặc vì hết cách. Đọc báo cáo để biết là trường hợp nào.
 
 <!-- section: recap -->
 ## Tóm tắt bằng hình
@@ -148,10 +148,10 @@ Tự trả lời:
 <!-- section: takeaways -->
 ## Ghi nhớ
 
-- Mỗi lượt: đọc ngữ cảnh → chọn công cụ → công cụ chạy → kết quả quay lại ngữ cảnh.
+- Mỗi lượt dùng công cụ: đọc ngữ cảnh → chọn công cụ → công cụ chạy → kết quả quay lại ngữ cảnh.
 - Tìm hiểu, hành động, kiểm chứng hòa vào nhau và có thể lặp lại nhiều lần.
 - Ngữ cảnh dài ra sau mỗi lượt; phiên gọn và đúng việc thường tốt hơn.
-- Vòng lặp dừng khi phép kiểm tra đạt, khi cần bạn quyết định, hoặc khi bị kẹt.
+- Vòng lặp kết thúc khi phép kiểm tra đạt hoặc khi bị kẹt; nó tạm dừng khi cần bạn quyết định, rồi chạy tiếp.
 - Bạn ở trong vòng lặp: ngắt sớm, nói rõ hướng mới, và vẫn tự kiểm tra kết quả cuối.
 
 <!-- section: quiz -->

@@ -3,9 +3,9 @@ lesson: the-agent-loop
 lang: en
 status: review
 summary: >-
-  Follow a real session turn by turn: each turn, the model reads the context, picks a tool, the tool runs,
-  and the result comes back into the context to decide the next step — until the check passes, it needs your
-  decision, or it gets stuck. Once you can read the turns, you can tell when the agent is on track and when
+  Follow a real session turn by turn: in each turn that uses a tool, the model reads the context, picks a tool,
+  the tool runs, and the result comes back into the context to decide the next step. The loop pauses when it
+  needs your decision, and ends when the check passes and the agent replies to you — or when it gets stuck. Once you can read the turns, you can tell when the agent is on track and when
   to interrupt and steer.
 social:
   hook: "The agent ran 9 steps in 2 minutes and the text flew by. Do you know what it was doing — and when to press stop? ⏸️"
@@ -21,8 +21,8 @@ social:
 
 By the end of this lesson, you will be able to:
 
-- Read a session **turn by turn**: the model reads the context → picks a tool → the tool runs → the result comes back into the context.
-- Recognize the three ways a loop ends: the check passes, it needs your decision, or it is stuck.
+- Read a session **turn by turn**: in a turn that uses a tool, the model reads the context → picks a tool → the tool runs → the result comes back into the context; the last turn is a reply to you.
+- Tell when the loop ends (the check passes, or it is stuck) and when it only pauses to wait for your decision.
 - Know when to interrupt the agent and what to say to steer it.
 
 <!-- section: hook -->
@@ -60,11 +60,11 @@ The Claude Code documentation (September 2026) describes the agent's loop in thr
 
 Each turn's result is added to the context. A long session that reads many large files gradually fills the [context window](context-window.md). When it is nearly full, the tool has to make room: as of September 2026, Claude Code clears older tool results first, then summarizes the conversation — and detailed instructions from early in the session can be lost. That is why a short, focused session usually does better than a long one full of corrections.
 
-### When does the loop stop?
+### Does the loop end — or just pause?
 
-- **The check passes:** the agent runs the check you gave it, sees it pass, and reports.
-- **It needs your decision:** something outside its permissions — deleting, installing, changing what you said not to change.
-- **It is stuck:** the same command, the same error, over and over. The agent may notice and stop — or it may not. This is when you should interrupt.
+- **It ends because the check passes:** the agent runs the check you gave it, sees it pass, and replies to you with a report.
+- **It ends because it is stuck:** the same command, the same error, over and over. The agent may notice and stop — or it may not. This is when you should interrupt.
+- **It pauses because it needs your decision:** something outside its permissions — deleting, installing, changing what you said not to change. The agent waits; once you answer, the loop carries on, as in turns 5 and 6 of the example below.
 
 ### You are in the loop too
 
@@ -139,7 +139,7 @@ Answer for yourself:
 
 - **"The agent works in one go from start to finish."** — It works turn by turn, and each turn builds on the last one's result. A wrong or missing result in one turn carries into the next ones.
 - **"Interrupting the agent ruins its work."** — Interrupting keeps the context; you only add a new direction. Correcting early is cheaper than waiting for it to finish a wrong path.
-- **"If the agent stopped, it is done."** — It can stop because the check passed, because it needs you, or because it ran out of ideas. Read the report to know which.
+- **"If the agent stopped, it is done."** — It can stop because the check passed, because it is waiting for your decision, or because it ran out of ideas. Read the report to know which.
 
 <!-- section: recap -->
 ## The Lesson in One Picture
@@ -149,10 +149,10 @@ Answer for yourself:
 <!-- section: takeaways -->
 ## Key Takeaways
 
-- Each turn: read the context → pick a tool → the tool runs → the result comes back into the context.
+- Each turn that uses a tool: read the context → pick a tool → the tool runs → the result comes back into the context.
 - Gathering context, taking action and verifying blend together and can repeat many times.
 - The context grows with every turn; short, focused sessions usually do better.
-- The loop stops when the check passes, when it needs your decision, or when it is stuck.
+- The loop ends when the check passes or when it is stuck; it pauses when it needs your decision, then carries on.
 - You are in the loop: interrupt early, give a clear new direction, and still check the final result yourself.
 
 <!-- section: quiz -->

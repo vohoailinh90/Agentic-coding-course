@@ -5,9 +5,9 @@ title:
   en: One Turn of the Agent Loop
   ja: エージェントのループの1ターン
 subtitle:
-  vi: Lặp lại tới khi kiểm tra đạt, cần bạn, hoặc bị kẹt
-  en: Repeats until the check passes, it needs you, or it is stuck
-  ja: 確認に合格するか、あなたが必要か、行き詰まるまで
+  vi: Lặp lại tới khi kiểm tra đạt hoặc bị kẹt; chờ khi cần bạn
+  en: Repeats until the check passes or it is stuck; waits when it needs you
+  ja: 合格するか行き詰まるまで。判断が必要なら待つ
 center:
   icon: "🤖"
   color: green
