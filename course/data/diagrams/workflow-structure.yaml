@@ -1,0 +1,50 @@
+# Used in: workflow-frameworks (concept). How much structure to add, by risk.
+template: compare
+title:
+  vi: Thêm cấu trúc theo rủi ro
+  en: Add Structure by Risk
+  ja: リスクに合わせて型を足す
+rows:
+  - vi: Dùng khi
+    en: Use it when
+    ja: 使う場面
+  - vi: Chống rủi ro
+    en: Guards against
+    ja: 防ぐリスク
+  - vi: Tốn thêm
+    en: Extra cost
+    ja: 追加の手間
+emphasis_row: 2
+columns:
+  - icon: "⚡"
+    color: slate
+    name: {vi: Giao thẳng, en: Just do it, ja: そのまま}
+    values:
+      - {vi: "Tả được\ntrong một câu", en: "One-sentence\nchange", ja: "ひとことで\n言える変更"}
+      - {vi: "Mất thời gian\nvô ích", en: "Wasted\nceremony", ja: ムダな手順}
+      - {vi: Gần như không, en: Almost none, ja: ほぼなし}
+  - icon: "🗺️"
+    color: blue
+    name: {vi: Kế hoạch trước, en: Plan first, ja: 先に計画}
+    values:
+      - {vi: "Chưa rõ cách,\nnhiều file", en: "Unclear approach,\nmany files", ja: "やり方が不明\nファイル多数"}
+      - {vi: "Giải đúng\nvấn đề sai", en: "Solving the\nwrong problem", ja: "問題を\n取りちがえる"}
+      - {vi: Vài phút đọc, en: A few minutes' reading, ja: 数分の読む時間}
+  - icon: "✅"
+    color: green
+    name: {vi: Test trước, en: Tests first, ja: テスト先行}
+    values:
+      - {vi: "Biết trước\nkết quả đúng", en: "Right answers\nknown ahead", ja: 正解が先にわかる}
+      - {vi: "\"Trông có vẻ\nđúng\"", en: "\"Looks right\"", ja: "「たぶん\n合っている」"}
+      - {vi: "Viết vài\ntrường hợp", en: "Writing a\nfew cases", ja: "ケースを\nいくつか書く"}
+  - icon: "🔍"
+    color: violet
+    name: {vi: Review riêng, en: Separate review, ja: 別にレビュー}
+    values:
+      - {vi: "Sai thì\ntốn kém", en: "Mistakes\nare costly", ja: "ミスが\n高くつく"}
+      - {vi: "Điểm mù của\nngười làm", en: "The author's\nblind spots", ja: "作り手の\n見落とし"}
+      - {vi: "Một phiên\nmới", en: "A fresh\nsession", ja: 新しいセッション1つ}
+takeaway:
+  vi: Hỏi "việc này có thể hỏng ở đâu?", rồi chỉ thêm đúng thứ cần.
+  en: Ask "where could this go wrong?", then add only what it needs.
+  ja: 「どこで失敗しうる？」と問い、必要なものだけを足します。

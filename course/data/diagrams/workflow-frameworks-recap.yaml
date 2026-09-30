@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: thêm quy trình khi việc cần"
+  en: "Recap: Add Structure When Needed"
+  ja: まとめ：必要なときに型を足す
+points:
+  - icon: "❓"
+    color: indigo
+    name: {vi: "Hỏng ở đâu?", en: "Where could\nit go wrong?", ja: どこで失敗しうる？}
+    caption: {vi: "Chỉ thêm thứ\nchống rủi ro đó", en: "Add only what\nguards against it", ja: "それを防ぐものだけ\n足す"}
+  - icon: "⚡"
+    color: slate
+    name: {vi: "Một câu:\ngiao thẳng", en: "One sentence:\njust do it", ja: "ひとこと：\nそのまま任せる"}
+    caption: {vi: "Xem diff,\nkiểm tra nhanh", en: "Read the diff,\nquick check", ja: 差分を読み、さっと確認}
+  - icon: "🗺️"
+    color: blue
+    name: {vi: "Chưa rõ:\nkế hoạch trước", en: "Unclear:\nplan first", ja: "不明確：\n先に計画"}
+    caption: {vi: "Nhiều file,\ncode lạ", en: "Many files,\nunfamiliar code", ja: "ファイル多数・\n見慣れないコード"}
+  - icon: "✅"
+    color: green
+    name: {vi: "Biết đáp án:\ntest trước", en: "Answers known:\ntests first", ja: "正解がわかる：\nテスト先行"}
+    caption: {vi: "Thấy không đạt,\nrồi mới làm", en: "See it fail,\nthen build", ja: "失敗を確かめてから\n作る"}
+  - icon: "🔍"
+    color: violet
+    name: {vi: "Tốn kém:\nreview riêng", en: "Costly:\nseparate review", ja: "高くつく：\n別にレビュー"}
+    caption: {vi: "Ngữ cảnh mới,\nbạn đọc lại", en: "Fresh context,\nyou read it", ja: "新しい文脈で、\nあなたも読む"}
+takeaway:
+  vi: Quy trình vừa với rủi ro, không nhiều hơn.
+  en: Structure that fits the risk, and no more.
+  ja: 型はリスクに合わせて、それ以上は足さない。

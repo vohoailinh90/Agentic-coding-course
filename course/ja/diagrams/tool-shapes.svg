@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 714" width="800" height="714" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">AIツールの4つのかたち</title>
+<desc id="desc">Webチャット — 動く場所: ブラウザ; ファイルの場所: 自分でコピー; 自分で実行？: ふつうはしない; 向く場面: 質問・下書き. エディタ型 — 動く場所: エディタ; ファイルの場所: 開いているファイル; 自分で実行？: 提案。
+実行も; 向く場面: 自分で編集中. 手元のエージェント — 動く場所: 自分のPC; ファイルの場所: 自分のフォルダ; 自分で実行？: 権限の範囲で実行; 向く場面: インストール可
+手元のファイル. クラウドのエージェント — 動く場所: 提供元のサーバー; ファイルの場所: オンラインのリポジトリ; 自分で実行？: サーバー上で実行; 向く場面: インストール不可
+GitHubあり. まず環境に合うかたちを選び、それから製品を比べます。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="712" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="684" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">AIツールの4つのかたち</tspan></text>
+<g>
+<rect x="28" y="86.3" width="172.5" height="525.1" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#2563EB"/>
+<circle cx="114.2" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="114.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="114.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="114.2" y="191.3">Webチャット</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">動く場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">ブラウザ</tspan></text>
+<line x1="44" y1="314" x2="184.5" y2="314" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="341.5">ファイルの場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="366.8">自分でコピー</tspan></text>
+<line x1="44" y1="408.7" x2="184.5" y2="408.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">自分で実行？</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="463.5">ふつうはしな</tspan><tspan x="44" y="488.6">い</tspan></text>
+<line x1="44" y1="508.7" x2="184.5" y2="508.7" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="536.2">向く場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="561.5">質問・下書き</tspan></text>
+</g>
+<g>
+<rect x="218.5" y="86.3" width="172.5" height="525.1" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M218.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#7C3AED"/>
+<circle cx="304.8" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="304.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="304.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✏️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="304.8" y="191.3">エディタ型</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="269.2">動く場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="294.5">エディタ</tspan></text>
+<line x1="234.5" y1="314" x2="375" y2="314" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="341.5">ファイルの場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="366.8">開いている</tspan><tspan x="234.5" y="389.2">ファイル</tspan></text>
+<line x1="234.5" y1="408.7" x2="375" y2="408.7" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="436.2">自分で実行？</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="234.5" y="463.5">提案。</tspan><tspan x="234.5" y="488.6">実行も</tspan></text>
+<line x1="234.5" y1="508.7" x2="375" y2="508.7" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="536.2">向く場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="561.5">自分で編集中</tspan></text>
+</g>
+<g class="pulse">
+<rect x="409" y="86.3" width="172.5" height="525.1" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M409,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="26" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="495.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="495.2" y="191.3">手元の</tspan><tspan x="495.2" y="219">エージェント</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="269.2">動く場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="294.5">自分のPC</tspan></text>
+<line x1="425" y1="314" x2="565.5" y2="314" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="341.5">ファイルの場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="366.8">自分のフォルダ</tspan></text>
+<line x1="425" y1="408.7" x2="565.5" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="436.2">自分で実行？</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="425" y="463.5">権限の範囲で</tspan><tspan x="425" y="488.6">実行</tspan></text>
+<line x1="425" y1="508.7" x2="565.5" y2="508.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="536.2">向く場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="561.5">インストール可</tspan><tspan x="425" y="583.9">手元のファイル</tspan></text>
+</g>
+<g>
+<rect x="599.5" y="86.3" width="172.5" height="525.1" rx="20" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+<path d="M599.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#0D9488"/>
+<circle cx="685.8" cy="138.3" r="26" fill="#0D9488"/>
+<circle cx="685.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="685.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">☁️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="685.8" y="191.3">クラウドの</tspan><tspan x="685.8" y="219">エージェント</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="269.2">動く場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="294.5">提供元のサーバー</tspan></text>
+<line x1="615.5" y1="314" x2="756" y2="314" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="341.5">ファイルの場所</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="366.8">オンラインの</tspan><tspan x="615.5" y="389.2">リポジトリ</tspan></text>
+<line x1="615.5" y1="408.7" x2="756" y2="408.7" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="436.2">自分で実行？</tspan></text>
+<text font-size="19" fill="#0D9488" text-anchor="start" font-weight="700"><tspan x="615.5" y="463.5">サーバー上で</tspan><tspan x="615.5" y="488.6">実行</tspan></text>
+<line x1="615.5" y1="508.7" x2="756" y2="508.7" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="536.2">向く場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="561.5">インストール不可</tspan><tspan x="615.5" y="583.9">GitHubあり</tspan></text>
+</g>
+<rect x="28" y="635.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="666.4">💡 まず環境に合うかたちを選び、それから製品を比べます。</tspan></text>
+</svg>

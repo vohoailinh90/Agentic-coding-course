@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 761" width="800" height="761" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Four Shapes of AI Tools</title>
+<desc id="desc">Web chat — Where it runs: Browser; Where files live: You copy
+it out; Runs commands?: Usually not; Good when: Questions,
+drafts. Editor assistant — Where it runs: Code editor; Where files live: The open
+file; Runs commands?: Suggests;
+sometimes; Good when: Editing code
+yourself. Local agent — Where it runs: Your computer; Where files live: Your folder; Runs commands?: Yes, within
+your permissions; Good when: You can install,
+files are local. Cloud agent — Where it runs: Provider&#x27;s
+servers; Where files live: An online
+repository; Runs commands?: Yes, on
+the server; Good when: No installs,
+have GitHub. Pick the shape for your environment first, then compare brands.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="759" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="731" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Four Shapes of AI Tools</tspan></text>
+<g>
+<rect x="28" y="86.3" width="172.5" height="572.6" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#2563EB"/>
+<circle cx="114.2" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="114.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="114.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="114.2" y="191.3">Web chat</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">Where it runs</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">Browser</tspan></text>
+<line x1="44" y1="336.4" x2="184.5" y2="336.4" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="363.9">Where files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="389.2">You copy</tspan><tspan x="44" y="411.7">it out</tspan></text>
+<line x1="44" y1="431.1" x2="184.5" y2="431.1" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="458.6">Runs commands?</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="485.9">Usually not</tspan></text>
+<line x1="44" y1="556.2" x2="184.5" y2="556.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="583.7">Good when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="609">Questions,</tspan><tspan x="44" y="631.4">drafts</tspan></text>
+</g>
+<g>
+<rect x="218.5" y="86.3" width="172.5" height="572.6" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M218.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#7C3AED"/>
+<circle cx="304.8" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="304.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="304.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✏️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="304.8" y="191.3">Editor</tspan><tspan x="304.8" y="219">assistant</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="269.2">Where it runs</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="294.5">Code editor</tspan></text>
+<line x1="234.5" y1="336.4" x2="375" y2="336.4" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="363.9">Where files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="389.2">The open</tspan><tspan x="234.5" y="411.7">file</tspan></text>
+<line x1="234.5" y1="431.1" x2="375" y2="431.1" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="458.6">Runs commands?</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="234.5" y="485.9">Suggests;</tspan><tspan x="234.5" y="511">sometimes</tspan></text>
+<line x1="234.5" y1="556.2" x2="375" y2="556.2" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="583.7">Good when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="609">Editing code</tspan><tspan x="234.5" y="631.4">yourself</tspan></text>
+</g>
+<g class="pulse">
+<rect x="409" y="86.3" width="172.5" height="572.6" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M409,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="26" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="495.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="495.2" y="191.3">Local agent</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="269.2">Where it runs</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="294.5">Your computer</tspan></text>
+<line x1="425" y1="336.4" x2="565.5" y2="336.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="363.9">Where files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="389.2">Your folder</tspan></text>
+<line x1="425" y1="431.1" x2="565.5" y2="431.1" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="458.6">Runs commands?</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="425" y="485.9">Yes, within</tspan><tspan x="425" y="511">your</tspan><tspan x="425" y="536.1">permissions</tspan></text>
+<line x1="425" y1="556.2" x2="565.5" y2="556.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="583.7">Good when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="609">You can install,</tspan><tspan x="425" y="631.4">files are local</tspan></text>
+</g>
+<g>
+<rect x="599.5" y="86.3" width="172.5" height="572.6" rx="20" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.5"/>
+<path d="M599.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#0D9488"/>
+<circle cx="685.8" cy="138.3" r="26" fill="#0D9488"/>
+<circle cx="685.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="685.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">☁️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="685.8" y="191.3">Cloud agent</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="269.2">Where it runs</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="294.5">Provider&#x27;s</tspan><tspan x="615.5" y="317">servers</tspan></text>
+<line x1="615.5" y1="336.4" x2="756" y2="336.4" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="363.9">Where files live</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="389.2">An online</tspan><tspan x="615.5" y="411.7">repository</tspan></text>
+<line x1="615.5" y1="431.1" x2="756" y2="431.1" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="458.6">Runs commands?</tspan></text>
+<text font-size="19" fill="#0D9488" text-anchor="start" font-weight="700"><tspan x="615.5" y="485.9">Yes, on</tspan><tspan x="615.5" y="511">the server</tspan></text>
+<line x1="615.5" y1="556.2" x2="756" y2="556.2" stroke="#CCFBF1" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="583.7">Good when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="609">No installs,</tspan><tspan x="615.5" y="631.4">have GitHub</tspan></text>
+</g>
+<rect x="28" y="682.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="713.9">💡 Pick the shape for your environment first, then compare brands.</tspan></text>
+</svg>
