@@ -167,7 +167,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 5.2.1 | [Model + Harness = Agent: con ngựa và bộ yên cương](lessons/model-plus-harness.md) | 📖 Khái niệm | 10 phút |
-| 5.2.2 | Context engineering: đưa đúng thông tin, đúng lúc | 🛠️ Thực hành | 12 phút |
+| 5.2.2 | [Context engineering: đưa đúng thông tin, đúng lúc](lessons/context-engineering.md) | 🛠️ Thực hành | 12 phút |
 | 5.2.3 | Prompt engineering cho agent: system prompt và chỉ dẫn | 🛠️ Thực hành | 12 phút |
 | 5.2.4 | Hooks và phân quyền: hàng rào an toàn tự động | 🛠️ Thực hành | 12 phút |
 | 5.2.5 | Test và CI: để máy kiểm tra máy | 🎬 Minh họa | 12 phút |
