@@ -2,7 +2,7 @@
 <title id="title">Mô hình + harness = agent</title>
 <desc id="desc">Mô hình + Công cụ
 + ngữ cảnh + Hàng rào
-+ kiểm tra = Agent. Mô hình không đổi được; harness thì bạn chỉnh được.</desc>
++ kiểm tra = Agent. Bên trong mô hình bạn không sửa được; harness thì chỉnh được.</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -50,5 +50,5 @@
 <text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="400" y="508.3">làm được việc</tspan></text>
 </g>
 <rect x="28" y="555.3" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
-<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="586.3">💡 Mô hình không đổi được; harness thì bạn chỉnh được.</tspan></text>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="586.3">💡 Bên trong mô hình bạn không sửa được; harness thì chỉnh được.</tspan></text>
 </svg>

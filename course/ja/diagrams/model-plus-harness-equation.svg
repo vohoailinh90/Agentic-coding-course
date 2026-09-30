@@ -2,7 +2,7 @@
 <title id="title">モデル＋ハーネス＝エージェント</title>
 <desc id="desc">モデル + ツール
 ＋コンテキスト + ガードレール
-＋チェック = エージェント. モデルは変えられなくても、ハーネスは調整できます。</desc>
+＋チェック = エージェント. モデルの中身は変えられなくても、ハーネスは調整できます。</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -50,5 +50,5 @@
 <text font-size="15.5" fill="#475569" text-anchor="middle"><tspan x="400" y="508.3">仕事ができる</tspan></text>
 </g>
 <rect x="28" y="555.3" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
-<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="586.3">💡 モデルは変えられなくても、ハーネスは調整できます。</tspan></text>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="586.3">💡 モデルの中身は変えられなくても、ハーネスは調整できます。</tspan></text>
 </svg>

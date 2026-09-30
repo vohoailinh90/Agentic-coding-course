@@ -63,12 +63,11 @@ Anthropic (September 2025) explains why extra hurts too: as the context gets lon
 <!-- section: try-it -->
 ## Try It Yourself
 
-About 15 minutes, in `ai-practice`, with made-up data. Use the task card `my-week.html` from [your first agent session](first-agent-session.md), or any file you have made in this folder. (On the watch-only route? Do steps 1 and 3 on paper.)
+About 8 minutes, in `ai-practice`, with made-up data. Use the task card `my-week.html` from [your first agent session](first-agent-session.md), or any file you have made in this folder. (On the watch-only route? Do steps 1 and 3 on paper.)
 
-**1. Write the instruction file (5 minutes).** Create the instruction file your tool reads at the start of a session (for Claude Code, `CLAUDE.md` in the `ai-practice` folder, as of September 2026; other tools use their own name — check their documentation). At most 5 lines, only things true for every session. For example:
+**1. Write the instruction file (3 minutes).** Create the instruction file your tool reads at the start of a session (for Claude Code, `CLAUDE.md` in the `ai-practice` folder, as of September 2026; other tools use their own name — check their documentation). At most 5 lines, only things true for every session. For example:
 
 ```text
-# ai-practice
 - Practice folder, made-up data only.
 - Do not delete any file; if something needs deleting, ask me first.
 - Write dates like 30 Sep 2026.
@@ -76,7 +75,7 @@ About 15 minutes, in `ai-practice`, with made-up data. Use the task card `my-wee
 - When done, open the page and list what you checked and what you did not.
 ```
 
-**2. Test without reminding (5 minutes).** Open a **new session**. Give a small task **without** repeating any convention:
+**2. Test without reminding (3 minutes).** Open a **new session**. Give a small task **without** repeating any convention:
 
 ```text
 Add a line to my-week.html that shows today's date.
@@ -84,7 +83,7 @@ Add a line to my-week.html that shows today's date.
 
 Read the result: is the date written like 30 Sep 2026? At the end of the session, did the agent list what it checked and what it did not? Did the agent do anything differently from a line in the file?
 
-**3. Prune (5 minutes).** Read each line again with the question *"Would removing this cause the agent to make mistakes?"*. If one line is only true for a single task — for example "this week, also add a notes section" — move it out of the file; next time, say it in that task's request. If the agent got a convention wrong, make the sentence clearer, then test again in a new session.
+**3. Prune (2 minutes).** Read each line again with the question *"Would removing this cause the agent to make mistakes?"*. If one line is only true for a single task — for example "this week, also add a notes section" — move it out of the file; next time, say it in that task's request. If the agent got a convention wrong, make the sentence clearer, then test again in a new session.
 
 **Evidence:**
 

@@ -27,6 +27,6 @@ result:
   name: {vi: Agent, en: Agent, ja: エージェント}
   caption: {vi: làm được việc, en: gets work done, ja: 仕事ができる}
 takeaway:
-  vi: Mô hình không đổi được; harness thì bạn chỉnh được.
-  en: You can't change the model; you can tune the harness.
-  ja: モデルは変えられなくても、ハーネスは調整できます。
+  vi: Bên trong mô hình bạn không sửa được; harness thì chỉnh được.
+  en: You can't change what's inside a model; you can tune the harness.
+  ja: モデルの中身は変えられなくても、ハーネスは調整できます。

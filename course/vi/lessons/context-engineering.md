@@ -62,12 +62,11 @@ Anthropic (9/2025) giải thích vì sao thừa cũng hại: khi ngữ cảnh c�
 <!-- section: try-it -->
 ## Thử ngay
 
-Khoảng 15 phút, trong `ai-practice`, dữ liệu giả. Dùng thẻ công việc `my-week.html` từ [buổi đầu với agent](first-agent-session.md), hoặc bất kỳ file nào bạn đã làm trong thư mục này. (Đi đường chỉ xem? Làm bước 1 và 3 trên giấy.)
+Khoảng 8 phút, trong `ai-practice`, dữ liệu giả. Dùng thẻ công việc `my-week.html` từ [buổi đầu với agent](first-agent-session.md), hoặc bất kỳ file nào bạn đã làm trong thư mục này. (Đi đường chỉ xem? Làm bước 1 và 3 trên giấy.)
 
-**1. Viết file chỉ dẫn (5 phút).** Tạo file chỉ dẫn mà công cụ của bạn đọc ở đầu phiên (với Claude Code là `CLAUDE.md` trong thư mục `ai-practice`, tính đến 9/2026; công cụ khác có tên riêng — xem tài liệu của nó). Tối đa 5 dòng, chỉ điều đúng với mọi phiên. Ví dụ:
+**1. Viết file chỉ dẫn (3 phút).** Tạo file chỉ dẫn mà công cụ của bạn đọc ở đầu phiên (với Claude Code là `CLAUDE.md` trong thư mục `ai-practice`, tính đến 9/2026; công cụ khác có tên riêng — xem tài liệu của nó). Tối đa 5 dòng, chỉ điều đúng với mọi phiên. Ví dụ:
 
 ```text
-# ai-practice
 - Thư mục thực hành, chỉ có dữ liệu giả.
 - Không xóa file nào; cần xóa thì hỏi mình trước.
 - Ngày viết theo kiểu 30/09/2026.
@@ -75,7 +74,7 @@ Khoảng 15 phút, trong `ai-practice`, dữ liệu giả. Dùng thẻ công vi�
 - Xong việc thì mở trang và liệt kê đã kiểm tra gì, chưa kiểm tra gì.
 ```
 
-**2. Thử mà không nhắc (5 phút).** Mở một **phiên mới**. Giao một việc nhỏ mà **không** nhắc lại quy ước nào:
+**2. Thử mà không nhắc (3 phút).** Mở một **phiên mới**. Giao một việc nhỏ mà **không** nhắc lại quy ước nào:
 
 ```text
 Thêm vào my-week.html một dòng hiện ngày hôm nay.
@@ -83,7 +82,7 @@ Thêm vào my-week.html một dòng hiện ngày hôm nay.
 
 Đọc kết quả: ngày có viết kiểu 30/09/2026 không? Cuối phiên agent có liệt kê đã kiểm tra gì, chưa kiểm tra gì không? Có dòng nào agent làm khác đi không?
 
-**3. Tỉa (5 phút).** Đọc lại từng dòng với câu hỏi *"Bỏ dòng này thì agent có làm sai không?"*. Nếu có một dòng chỉ đúng với một việc — ví dụ "tuần này làm thêm phần ghi chú" — chuyển nó ra khỏi file; lần sau nói trong yêu cầu của việc đó. Nếu agent làm sai một quy ước, sửa câu cho rõ hơn, rồi thử lại ở một phiên mới.
+**3. Tỉa (2 phút).** Đọc lại từng dòng với câu hỏi *"Bỏ dòng này thì agent có làm sai không?"*. Nếu có một dòng chỉ đúng với một việc — ví dụ "tuần này làm thêm phần ghi chú" — chuyển nó ra khỏi file; lần sau nói trong yêu cầu của việc đó. Nếu agent làm sai một quy ước, sửa câu cho rõ hơn, rồi thử lại ở một phiên mới.
 
 **Bằng chứng:**
 
