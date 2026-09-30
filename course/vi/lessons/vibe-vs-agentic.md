@@ -101,15 +101,16 @@ Làm cho mình một trang web chia tiền khi cả nhóm đi ăn.
 Mục tiêu: trang chia_tien.html chia một hóa đơn cho nhiều người, để câu lạc bộ dùng.
 Ranh giới: chỉ làm trong thư mục ai-practice, một file, không gửi dữ liệu đi đâu.
 Xong khi:
-1. Mỗi phần làm tròn tới nghìn đồng, nhưng tổng các phần luôn bằng đúng số tiền hóa đơn.
-2. Thử được với: 300.000 chia 3; 1.000.000 chia 3; 100.000 chia 7; 250.000 chia 1.
-3. Nhập 0 người thì báo lỗi dễ hiểu, không hiện số lạ.
+1. Số tiền hóa đơn nhập vào luôn là số chẵn nghìn đồng; số khác thì báo lỗi.
+2. Mỗi phần là số chẵn nghìn đồng, và tổng các phần luôn bằng đúng số tiền hóa đơn.
+3. Thử được với: 300.000 chia 3; 1.000.000 chia 3; 100.000 chia 7; 250.000 chia 1.
+4. Nhập 0 người thì báo lỗi dễ hiểu, không hiện số lạ.
 Viết một phép kiểm tra chạy tất cả các trường hợp trên, chạy nó và cho mình xem kết quả.
 ```
 
 Agent viết trang, rồi chạy phép kiểm tra. Trường hợp **1.000.000 chia 3** không đạt: mỗi người 333.000, tổng 999.000 — hụt 1.000 đồng. Trường hợp **100.000 chia 7** cũng hụt: 7 × 14.000 = 98.000. Đó chính là lỗi đã làm quỹ câu lạc bộ thiếu tiền: mỗi phần bị làm tròn xuống tới nghìn, và phần lẻ biến mất.
 
-Agent sửa: chia đều phần chẵn nghìn, phần lẻ còn lại cộng lần lượt cho vài người đầu tiên — 1.000.000 chia 3 thành 334.000, 333.000, 333.000. Chạy lại: mọi trường hợp đạt.
+Agent sửa: chia đều phần chẵn nghìn, rồi phần dư còn lại cộng thêm 1.000 đồng cho lần lượt vài người đầu tiên — 1.000.000 chia 3 thành 334.000, 333.000, 333.000. Chạy lại: mọi trường hợp đạt.
 
 Huy không dừng ở đó. Cậu đọc báo cáo của agent, rồi tự thử một hóa đơn không có trong danh sách — 470.000 chia 6 — và cộng các phần bằng máy tính: 79.000 + 79.000 + 4 × 78.000 = 470.000. Khớp. Lúc đó cậu mới gửi link mới cho câu lạc bộ.
 

@@ -102,9 +102,10 @@ Make me a web page that splits the bill when a group eats out.
 Goal: a page split_bill.html that splits one bill between several people, for my club to use.
 Boundaries: work only in the ai-practice folder, one file, send no data anywhere.
 Done when:
-1. Each share is rounded to whole dollars, but the shares always add up to exactly the bill.
-2. It works for: $300 split 3 ways; $1,000 split 3 ways; $100 split 7 ways; $250 split 1 way.
-3. Entering 0 people shows a clear error, not a strange number.
+1. The bill entered is always a whole-dollar amount; anything else shows an error.
+2. Each share is a whole-dollar amount, and the shares always add up to exactly the bill.
+3. It works for: $300 split 3 ways; $1,000 split 3 ways; $100 split 7 ways; $250 split 1 way.
+4. Entering 0 people shows a clear error, not a strange number.
 Write a check that runs all the cases above, run it and show me the result.
 ```
 

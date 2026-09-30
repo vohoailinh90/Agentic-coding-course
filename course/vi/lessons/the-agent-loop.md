@@ -38,7 +38,7 @@ Bài này đọc chậm lại đúng phiên đó, từng lượt một.
 
 ### Một lượt của vòng lặp
 
-Bạn đã biết agent gồm [bộ não, đôi tay và vòng lặp](agent-parts-and-loop.md), và mô hình chỉ [*yêu cầu* dùng công cụ](tool-calling.md), còn phần mềm bao quanh mới thực sự chạy nó. Khi lần theo một phiên thật, mỗi **lượt** gồm bốn bước:
+Bạn đã biết agent gồm [bộ não, đôi tay và vòng lặp](agent-parts-and-loop.md), và mô hình chỉ [*yêu cầu* dùng công cụ](tool-calling.md), còn phần mềm bao quanh mới thực sự chạy nó. Khi lần theo một phiên thật, mỗi **lượt** có dùng công cụ gồm bốn bước:
 
 ![Một lượt của vòng lặp agent](../diagrams/the-agent-loop-turn.svg)
 
@@ -49,13 +49,15 @@ Bạn đã biết agent gồm [bộ não, đôi tay và vòng lặp](agent-parts
 
 Rồi lượt sau bắt đầu, với ngữ cảnh đã dài thêm một chút.
 
+Không phải lượt nào cũng dùng công cụ. Khi mô hình thấy việc đã xong, hoặc cần hỏi bạn, nó không chọn công cụ nào mà viết câu trả lời cho bạn — như lượt cuối trong ví dụ dưới đây. Đó là lúc vòng lặp dừng.
+
 ### Ba giai đoạn hòa vào nhau
 
 Tài liệu Claude Code (9/2026) mô tả vòng lặp của agent qua ba giai đoạn: **thu thập ngữ cảnh**, **hành động**, và **kiểm chứng kết quả**. Chúng không tách bạch: một việc sửa lỗi có thể đi qua cả ba giai đoạn nhiều lần. Mỗi kết quả công cụ trả về là thông tin mới giúp chọn bước tiếp theo.
 
 ### Ngữ cảnh dài ra sau mỗi lượt
 
-Kết quả của mỗi lượt đều ở lại trong ngữ cảnh. Một phiên dài, đọc nhiều file lớn, sẽ đầy dần [cửa sổ ngữ cảnh](context-window.md). Đó là lý do một phiên gọn gàng, đúng việc, thường cho kết quả tốt hơn một phiên kéo dài với nhiều lần sửa đi sửa lại.
+Kết quả của mỗi lượt được thêm vào ngữ cảnh. Một phiên dài, đọc nhiều file lớn, sẽ đầy dần [cửa sổ ngữ cảnh](context-window.md). Khi gần đầy, công cụ phải dọn bớt: tính đến tháng 9/2026, Claude Code xóa các kết quả công cụ cũ trước, rồi tóm tắt cuộc trò chuyện — và những chỉ dẫn chi tiết từ đầu phiên có thể bị mất. Đó là lý do một phiên gọn gàng, đúng việc, thường cho kết quả tốt hơn một phiên kéo dài với nhiều lần sửa đi sửa lại.
 
 ### Vòng lặp dừng khi nào?
 

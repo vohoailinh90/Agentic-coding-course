@@ -39,7 +39,7 @@ This lesson slows that very session down, one turn at a time.
 
 ### One turn of the loop
 
-You already know an agent is made of [a brain, tools and a loop](agent-parts-and-loop.md), and that the model only [*asks* for a tool](tool-calling.md) while the software around it actually runs it. When you trace a real session, each **turn** has four steps:
+You already know an agent is made of [a brain, tools and a loop](agent-parts-and-loop.md), and that the model only [*asks* for a tool](tool-calling.md) while the software around it actually runs it. When you trace a real session, each **turn** that uses a tool has four steps:
 
 ![One turn of the agent loop](../diagrams/the-agent-loop-turn.svg)
 
@@ -50,13 +50,15 @@ You already know an agent is made of [a brain, tools and a loop](agent-parts-and
 
 Then the next turn starts, with a slightly longer context.
 
+Not every turn uses a tool. When the model decides the work is done, or that it needs to ask you, it picks no tool and writes you a reply instead — like the last turn in the example below. That is when the loop stops.
+
 ### Three phases that blend together
 
 The Claude Code documentation (September 2026) describes the agent's loop in three phases: **gather context**, **take action**, and **verify results**. They are not separate: fixing a bug may go through all three several times. Every tool result is new information for choosing the next step.
 
 ### The context grows with every turn
 
-Each turn's result stays in the context. A long session that reads many large files gradually fills the [context window](context-window.md). That is why a short, focused session usually does better than a long one full of corrections.
+Each turn's result is added to the context. A long session that reads many large files gradually fills the [context window](context-window.md). When it is nearly full, the tool has to make room: as of September 2026, Claude Code clears older tool results first, then summarizes the conversation — and detailed instructions from early in the session can be lost. That is why a short, focused session usually does better than a long one full of corrections.
 
 ### When does the loop stop?
 
