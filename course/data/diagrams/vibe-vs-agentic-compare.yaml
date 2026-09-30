@@ -1,0 +1,65 @@
+# Used in: vibe-vs-agentic (concept). Same tool, two ways of working.
+template: compare
+title:
+  vi: Vibe coding và agentic coding
+  en: Vibe Coding vs Agentic Coding
+  ja: バイブ型とエージェント型
+versus: true
+rows:
+  - vi: Bạn đưa gì
+    en: What you give
+    ja: 渡すもの
+  - vi: Ai kiểm tra kết quả
+    en: Who checks the result
+    ja: 結果を確かめるのは
+  - vi: Khi gặp lỗi
+    en: When it breaks
+    ja: エラーが出たら
+  - vi: Hợp với
+    en: Good for
+    ja: 向いている場面
+emphasis_row: 2
+columns:
+  - icon: "🎲"
+    color: rose
+    name:
+      vi: Vibe coding
+      en: Vibe coding
+      ja: バイブコーディング
+    values:
+      - vi: Một câu mong muốn
+        en: One wish
+        ja: ひとことの希望
+      - vi: "Không ai —\n\"trông có vẻ chạy\""
+        en: "No one —\n\"seems to work\""
+        ja: "だれも —\n「動いているっぽい」"
+      - vi: "Dán lỗi lại,\nmong lần sau đúng"
+        en: "Paste the error,\nhope it works"
+        ja: エラーを貼って祈る
+      - vi: "Thử nghiệm\nlàm xong là bỏ"
+        en: "Throwaway\nexperiments"
+        ja: 使い捨ての試作
+  - icon: "🤖"
+    color: green
+    highlight: true
+    name:
+      vi: Agentic coding
+      en: Agentic coding
+      ja: エージェント型
+    values:
+      - vi: "Mục tiêu, ranh giới,\nphép kiểm tra"
+        en: "Goal, boundaries,\na check"
+        ja: 目標・境界・確認方法
+      - vi: "Phép kiểm tra,\nrồi bạn review"
+        en: "The check,\nthen your review"
+        ja: 確認方法とあなたのレビュー
+      - vi: "Kiểm tra lại\ntới khi đạt"
+        en: "Re-check\nuntil it passes"
+        ja: 合格するまで確かめ直す
+      - vi: "Thứ có người\ndựa vào"
+        en: "Things people\nrely on"
+        ja: だれかが頼るもの
+takeaway:
+  vi: Cùng một công cụ; khác nhau ở chỗ có ai kiểm tra kết quả.
+  en: Same tool; the difference is whether anyone checks the result.
+  ja: 道具は同じ。違いは、結果をだれかが確かめるかどうかです。

@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: lần theo vòng lặp của agent"
+  en: "Recap: Tracing the Agent Loop"
+  ja: まとめ：エージェントのループをたどる
+points:
+  - icon: "🔁"
+    color: green
+    name: {vi: Từng lượt một, en: One turn at a time, ja: 1ターンずつ}
+    caption: {vi: "Đọc, chọn công cụ,\nchạy, nhận kết quả", en: "Read, pick a tool,\nrun, get the result", ja: "読む・選ぶ・\n動かす・受け取る"}
+  - icon: "🧭"
+    color: indigo
+    name: {vi: "Tìm hiểu, làm,\nkiểm chứng", en: "Gather, act,\nverify", ja: "集める・動く・\n確かめる"}
+    caption: {vi: Hòa vào nhau và lặp lại, en: "Blend together\nand repeat", ja: 混ざり合い、くり返す}
+  - icon: "📏"
+    color: teal
+    name: {vi: Ngữ cảnh dài ra, en: The context grows, ja: コンテキストは増える}
+    caption: {vi: "Phiên gọn,\nđúng việc", en: "Keep sessions\nfocused", ja: セッションは短く的確に}
+  - icon: "🛑"
+    color: rose
+    name: {vi: "Kết thúc hay\ntạm dừng?", en: "Ends or\njust pauses?", ja: "終わり？\n一時停止？"}
+    caption: {vi: "Đạt hoặc kẹt: kết thúc.\nCần bạn: chờ", en: "Passed or stuck: ends.\nNeeds you: waits", ja: "合格か行き詰まりで終了。\n判断待ちは一時停止"}
+  - icon: "✋"
+    color: amber
+    name: {vi: "Bạn ở trong\nvòng lặp", en: "You are in\nthe loop", ja: "あなたも\nループの中"}
+    caption: {vi: "Ngắt sớm,\nnói rõ hướng mới", en: "Interrupt early,\nsteer clearly", ja: "早めに止めて、\nはっきり導く"}
+takeaway:
+  vi: Đọc từng lượt để biết lúc nào nên để yên và lúc nào nên ngắt.
+  en: Read turn by turn to know when to let it run and when to step in.
+  ja: 1ターンずつ読めば、任せる時と止める時がわかります。
