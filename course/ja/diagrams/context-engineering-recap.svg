@@ -5,8 +5,8 @@
 短い指示ファイル — どのセッションにも
 当てはまることだけ; 3. 必要なとき：
 パスを渡す — 作業に必要なときに
-読ませる; 4. 入れない — 無関係・巨大・
-秘密・本物のデータ; 5. 削って試す — 消したら
+読ませる; 4. 入れない — 無関係・秘密・
+本物のデータ; 5. 削って試す — 消したら
 ミスが出る？. 少なく、正しく、よいタイミングで。</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="525" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
@@ -44,7 +44,7 @@
 <circle cx="173" cy="294.7" r="12" fill="#881337"/>
 <text x="173" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="273" y="361.2">入れない</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="386.1">無関係・巨大・</tspan><tspan x="273" y="405.9">秘密・本物のデータ</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="386.1">無関係・秘密・</tspan><tspan x="273" y="405.9">本物のデータ</tspan></text>
 <rect x="409" y="276.7" width="236" height="148" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
 <circle cx="527" cy="312.7" r="22" fill="#D97706"/>
 <circle cx="527" cy="312.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

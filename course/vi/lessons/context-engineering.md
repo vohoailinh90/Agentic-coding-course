@@ -5,7 +5,7 @@ status: review
 summary: >-
   Context engineering là quyết định thông tin nào vào ngữ cảnh của agent, và vào lúc nào. Chia làm ba ngăn: luôn có
   (một file chỉ dẫn ngắn, chỉ ghi điều đúng với mọi phiên), khi cần (chỉ cho agent đường dẫn để nó tự đọc lúc cần),
-  và không đưa vào (thứ không liên quan, file khổng lồ, bí mật, dữ liệu thật). Bài thực hành: viết một file chỉ dẫn
+  và không đưa vào (thứ không liên quan, cả file lớn khi vài dòng là đủ, bí mật, dữ liệu thật). Bài thực hành: viết một file chỉ dẫn
   năm dòng và kiểm tra agent có làm theo mà không cần nhắc.
 social:
   hook: "Dán cả 50 trang tài liệu cho AI \"cho chắc\" — và nó bắt đầu quên đúng điều quan trọng nhất. Vì sao? 📋"
@@ -70,8 +70,8 @@ Khoảng 8 phút, trong `ai-practice`, dữ liệu giả. Dùng thẻ công vi�
 - Thư mục thực hành, chỉ có dữ liệu giả.
 - Không xóa file nào; cần xóa thì hỏi mình trước.
 - Ngày viết theo kiểu 30/09/2026.
-- Thẻ công việc là my-week.html, chỉ một file, không dùng thư viện ngoài.
-- Xong việc thì mở trang và liệt kê đã kiểm tra gì, chưa kiểm tra gì.
+- Trang web thì mỗi trang một file HTML, không dùng thư viện ngoài.
+- Xong việc thì liệt kê đã kiểm tra gì, chưa kiểm tra gì.
 ```
 
 **2. Thử mà không nhắc (3 phút).** Mở một **phiên mới**. Giao một việc nhỏ mà **không** nhắc lại quy ước nào:
@@ -109,7 +109,7 @@ Thêm vào my-week.html một dòng hiện ngày hôm nay.
 - Ngữ cảnh là nguồn lực hữu hạn; thừa cũng hại như thiếu.
 - Luôn có: file chỉ dẫn ngắn, chỉ điều đúng với mọi phiên.
 - Khi cần: chỉ đường dẫn để agent tự đọc lúc cần.
-- Không đưa vào: thứ không liên quan, file khổng lồ, bí mật, dữ liệu thật.
+- Không đưa vào: thứ không liên quan (kể cả cả một file lớn khi vài dòng là đủ), bí mật, dữ liệu thật.
 
 <!-- section: quiz -->
 ## Tự kiểm tra

@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 589" width="800" height="589" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 566" width="800" height="566" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
 <title id="title">コンテキストの3つの引き出し</title>
 <desc id="desc">いつも — 中身: 短い指示ファイル; 入るタイミング: 毎セッションの最初; 例: 「ファイルを消さない」. 必要なとき — 中身: 資料へのパス; 入るタイミング: 作業に必要なとき; 例: レポートの型・
-架空のデータ. 入れない — 中身: 無関係・巨大・
-秘密; 入るタイミング: 入れない; 例: パスワード・
+架空のデータ. 入れない — 中身: 無関係・秘密; 入るタイミング: 入れない; 例: パスワード・
 本物のデータ. 多ければよいのではなく、必要な情報を必要なときに。</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
@@ -12,12 +11,12 @@
 @media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
 </style>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
-<rect x="1" y="1" width="798" height="587" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<rect x="1" y="1" width="798" height="564" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
-<circle cx="46" cy="559" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<circle cx="46" cy="536" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">コンテキストの3つの引き出し</tspan></text>
 <g>
-<rect x="28" y="86.3" width="236" height="400" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<rect x="28" y="86.3" width="236" height="377.6" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
 <path d="M28,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#2563EB"/>
 <circle cx="146" cy="138.3" r="26" fill="#2563EB"/>
 <circle cx="146" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -25,15 +24,15 @@
 <text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="146" y="191.3">いつも</tspan></text>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">中身</tspan></text>
 <text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">短い指示ファイル</tspan></text>
-<line x1="44" y1="308.7" x2="248" y2="308.7" stroke="#DBEAFE" stroke-width="2"/>
-<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">入るタイミング</tspan></text>
-<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">毎セッションの最初</tspan></text>
-<line x1="44" y1="383.6" x2="248" y2="383.6" stroke="#DBEAFE" stroke-width="2"/>
-<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="411.1">例</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="436.4">「ファイルを消さない」</tspan></text>
+<line x1="44" y1="286.3" x2="248" y2="286.3" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">入るタイミング</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="44" y="341.1">毎セッションの最初</tspan></text>
+<line x1="44" y1="361.2" x2="248" y2="361.2" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="388.7">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="414">「ファイルを消さない」</tspan></text>
 </g>
 <g class="pulse">
-<rect x="282" y="86.3" width="236" height="400" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<rect x="282" y="86.3" width="236" height="377.6" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
 <path d="M282,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#059669"/>
 <circle cx="400" cy="138.3" r="26" fill="#059669"/>
 <circle cx="400" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -41,29 +40,29 @@
 <text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="191.3">必要なとき</tspan></text>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="241.5">中身</tspan></text>
 <text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="266.8">資料へのパス</tspan></text>
-<line x1="298" y1="308.7" x2="502" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
-<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="336.2">入るタイミング</tspan></text>
-<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="298" y="363.5">作業に必要なとき</tspan></text>
-<line x1="298" y1="383.6" x2="502" y2="383.6" stroke="#D1FAE5" stroke-width="2"/>
-<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="411.1">例</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="436.4">レポートの型・</tspan><tspan x="298" y="458.9">架空のデータ</tspan></text>
+<line x1="298" y1="286.3" x2="502" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="313.8">入るタイミング</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="298" y="341.1">作業に必要なとき</tspan></text>
+<line x1="298" y1="361.2" x2="502" y2="361.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="298" y="388.7">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="298" y="414">レポートの型・</tspan><tspan x="298" y="436.4">架空のデータ</tspan></text>
 </g>
 <g>
-<rect x="536" y="86.3" width="236" height="400" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<rect x="536" y="86.3" width="236" height="377.6" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
 <path d="M536,106.3 a20,20 0 0 1 20,-20 h196 a20,20 0 0 1 20,20 v107.7 h-236 z" fill="#E11D48"/>
 <circle cx="654" cy="138.3" r="26" fill="#E11D48"/>
 <circle cx="654" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
 <text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚫</text>
 <text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">入れない</tspan></text>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">中身</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">無関係・巨大・</tspan><tspan x="552" y="289.3">秘密</tspan></text>
-<line x1="552" y1="308.7" x2="756" y2="308.7" stroke="#FFE4E6" stroke-width="2"/>
-<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="336.2">入るタイミング</tspan></text>
-<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="552" y="363.5">入れない</tspan></text>
-<line x1="552" y1="383.6" x2="756" y2="383.6" stroke="#FFE4E6" stroke-width="2"/>
-<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="411.1">例</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="436.4">パスワード・</tspan><tspan x="552" y="458.9">本物のデータ</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">無関係・秘密</tspan></text>
+<line x1="552" y1="286.3" x2="756" y2="286.3" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="313.8">入るタイミング</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="552" y="341.1">入れない</tspan></text>
+<line x1="552" y1="361.2" x2="756" y2="361.2" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="388.7">例</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="414">パスワード・</tspan><tspan x="552" y="436.4">本物のデータ</tspan></text>
 </g>
-<rect x="28" y="510.3" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
-<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="541.3">💡 多ければよいのではなく、必要な情報を必要なときに。</tspan></text>
+<rect x="28" y="487.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="518.9">💡 多ければよいのではなく、必要な情報を必要なときに。</tspan></text>
 </svg>

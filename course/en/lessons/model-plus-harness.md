@@ -21,7 +21,7 @@ social:
 
 By the end of this lesson, you will be able to:
 
-- Explain **agent = model + harness**, and name the four parts of the harness: tools, context, guardrails, checks.
+- Explain **agent = model + harness**, and name the four parts of the harness you can adjust: tools, context, guardrails, checks.
 - Diagnose an agent that does badly: which part of the harness is missing?
 - Know which parts of the harness you can fix yourself, and which lessons in the course teach each one.
 
@@ -44,7 +44,9 @@ You already know an agent is made of [a brain, tools and a loop](agent-parts-and
 
 ![Model + harness = agent](../diagrams/model-plus-harness-equation.svg)
 
-### The four parts of the harness
+### The four parts of the harness you adjust
+
+The loop — call the model, use a tool, look at the result, repeat — is part of the harness too, but it runs on its own. The four parts below are the ones you can adjust:
 
 - **🔧 Tools:** what the agent can really do — read files, run commands, search. Without tools, the model can only talk, not act.
 - **📋 Context and instructions:** what the agent knows — your request, the relevant files, the project's conventions written down in an instruction file. Without context, the agent guesses.
@@ -104,7 +106,7 @@ By the end of the month, Mai's report is much more trustworthy. The model is sti
 ## Key Takeaways
 
 - Agent = model + harness; the model reasons, the harness equips it.
-- The harness has four parts: tools, context and instructions, guardrails, checks.
+- The harness runs the loop for the model, and has four parts you can adjust: tools, context and instructions, guardrails, checks.
 - The same model with different harnesses gives very different results.
 - Agent doing badly? Diagnose from the symptom and fix the harness before changing the model.
 - You can adjust those four parts yourself.

@@ -6,7 +6,7 @@ every session; Example: &quot;Don&#x27;t delete
 files&quot;. When needed — What: Paths to
 documents; When it goes in: When the task
 needs it; Example: Report template,
-made-up data. Never — What: Irrelevant, huge,
+made-up data. Never — What: Irrelevant,
 secret; When it goes in: Not at all; Example: Passwords,
 real data. The right information at the right time, not the most.</desc>
 <style>
@@ -61,7 +61,7 @@ real data. The right information at the right time, not the most.</desc>
 <text x="654" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚫</text>
 <text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="654" y="191.3">Never</tspan></text>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="241.5">What</tspan></text>
-<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">Irrelevant, huge,</tspan><tspan x="552" y="289.3">secret</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="552" y="266.8">Irrelevant,</tspan><tspan x="552" y="289.3">secret</tspan></text>
 <line x1="552" y1="308.7" x2="756" y2="308.7" stroke="#FFE4E6" stroke-width="2"/>
 <text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="552" y="336.2">When it goes in</tspan></text>
 <text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="552" y="363.5">Not at all</tspan></text>

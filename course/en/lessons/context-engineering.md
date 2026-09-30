@@ -5,8 +5,8 @@ status: review
 summary: >-
   Context engineering is deciding which information goes into an agent's context, and when. Sort it into three
   drawers: always (a short instruction file with only what is true for every session), when needed (give the
-  agent a path so it reads the file when the task needs it), and never (anything irrelevant, huge files,
-  secrets, real data). The exercise: write a five-line instruction file and check that the agent follows it
+  agent a path so it reads the file when the task needs it), and never (anything irrelevant, a whole huge
+  file when a few lines are enough, secrets, real data). The exercise: write a five-line instruction file and check that the agent follows it
   without being reminded.
 social:
   hook: "Paste all 50 pages of the manual into the AI \"just in case\" — and it starts forgetting the one thing that matters most. Why? 📋"
@@ -71,8 +71,8 @@ About 8 minutes, in `ai-practice`, with made-up data. Use the task card `my-week
 - Practice folder, made-up data only.
 - Do not delete any file; if something needs deleting, ask me first.
 - Write dates like 30 Sep 2026.
-- The task card is my-week.html, a single file, no outside libraries.
-- When done, open the page and list what you checked and what you did not.
+- Each web page is a single HTML file, no outside libraries.
+- When done, list what you checked and what you did not.
 ```
 
 **2. Test without reminding (3 minutes).** Open a **new session**. Give a small task **without** repeating any convention:
@@ -110,7 +110,7 @@ Read the result: is the date written like 30 Sep 2026? At the end of the session
 - Context is a finite resource; too much hurts as much as too little.
 - Always: a short instruction file, only what is true for every session.
 - When needed: give a path so the agent reads it when the task needs it.
-- Never: anything irrelevant, huge files, secrets, real data.
+- Never: anything irrelevant (including a whole huge file when a few lines are enough), secrets, real data.
 
 <!-- section: quiz -->
 ## Quick Check

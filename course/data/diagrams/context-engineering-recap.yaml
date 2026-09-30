@@ -19,7 +19,7 @@ points:
   - icon: "🚫"
     color: rose
     name: {vi: Không đưa vào, en: Leave out, ja: 入れない}
-    caption: {vi: "Thừa, khổng lồ,\nbí mật, dữ liệu thật", en: "Irrelevant, huge,\nsecrets, real data", ja: "無関係・巨大・\n秘密・本物のデータ"}
+    caption: {vi: "Không liên quan,\nbí mật, dữ liệu thật", en: "Irrelevant,\nsecrets, real data", ja: "無関係・秘密・\n本物のデータ"}
   - icon: "✂️"
     color: amber
     name: {vi: Tỉa và thử lại, en: Prune and test, ja: 削って試す}

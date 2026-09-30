@@ -20,7 +20,7 @@ social:
 
 Sau bài này, bạn sẽ:
 
-- Giải thích được **agent = mô hình + harness**, và kể được bốn phần của harness: công cụ, ngữ cảnh, hàng rào, phép kiểm tra.
+- Giải thích được **agent = mô hình + harness**, và kể được bốn phần của harness mà bạn chỉnh được: công cụ, ngữ cảnh, hàng rào, phép kiểm tra.
 - Chẩn đoán được khi agent làm kém: thiếu phần nào của harness?
 - Biết phần nào của harness bạn tự sửa được, và bài nào trong khóa dạy từng phần.
 
@@ -43,7 +43,9 @@ Bạn đã biết agent gồm [bộ não, đôi tay và vòng lặp](agent-parts
 
 ![Mô hình + harness = agent](../diagrams/model-plus-harness-equation.svg)
 
-### Bốn phần của harness
+### Bốn phần của harness mà bạn chỉnh được
+
+Vòng lặp — gọi mô hình, dùng công cụ, xem kết quả, rồi lặp lại — cũng thuộc harness, nhưng nó chạy sẵn. Bốn phần dưới đây là những thứ bạn chỉnh được:
 
 - **🔧 Công cụ:** agent được làm gì thật — đọc file, chạy lệnh, tìm kiếm. Thiếu công cụ, mô hình chỉ nói được, không làm được.
 - **📋 Ngữ cảnh và chỉ dẫn:** agent biết gì — yêu cầu của bạn, file liên quan, quy ước của dự án được ghi sẵn trong một file chỉ dẫn. Thiếu ngữ cảnh, agent đoán.
@@ -103,7 +105,7 @@ Cuối tháng, báo cáo của Mai đáng tin hơn hẳn. Mô hình vẫn là m�
 ## Ghi nhớ
 
 - Agent = mô hình + harness; mô hình suy luận, harness trang bị cho nó.
-- Harness có bốn phần: công cụ, ngữ cảnh và chỉ dẫn, hàng rào, phép kiểm tra.
+- Harness chạy vòng lặp cho mô hình, và có bốn phần bạn chỉnh được: công cụ, ngữ cảnh và chỉ dẫn, hàng rào, phép kiểm tra.
 - Cùng mô hình, harness khác nhau cho kết quả rất khác nhau.
 - Agent làm kém? Chẩn đoán theo triệu chứng và sửa harness trước khi đổi mô hình.
 - Bốn phần đó bạn tự điều chỉnh được.

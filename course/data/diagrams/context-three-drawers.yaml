@@ -35,7 +35,7 @@ columns:
     color: rose
     name: {vi: Không đưa vào, en: Never, ja: 入れない}
     values:
-      - {vi: "Thừa, khổng lồ,\nbí mật", en: "Irrelevant, huge,\nsecret", ja: "無関係・巨大・\n秘密"}
+      - {vi: "Không liên quan,\nbí mật", en: "Irrelevant,\nsecret", ja: "無関係・秘密"}
       - {vi: Không bao giờ, en: Not at all, ja: 入れない}
       - {vi: "Mật khẩu,\ndữ liệu thật", en: "Passwords,\nreal data", ja: "パスワード・\n本物のデータ"}
 takeaway:
