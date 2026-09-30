@@ -1,0 +1,78 @@
+# Used in: the-agent-loop (demo). One turn of the loop, as you see it in a session.
+template: cycle
+title:
+  vi: Một lượt của vòng lặp agent
+  en: One Turn of the Agent Loop
+  ja: エージェントのループの1ターン
+subtitle:
+  vi: Lặp lại tới khi kiểm tra đạt, cần bạn, hoặc bị kẹt
+  en: Repeats until the check passes, it needs you, or it is stuck
+  ja: 確認に合格するか、あなたが必要か、行き詰まるまで
+center:
+  icon: "🤖"
+  color: green
+  name:
+    vi: Agent
+    en: Agent
+    ja: エージェント
+steps:
+  - icon: "📖"
+    color: indigo
+    name:
+      vi: Đọc ngữ cảnh
+      en: Read the context
+      ja: "コンテキスト\nを読む"
+    caption:
+      vi: yêu cầu, file, kết quả
+      en: request, files, results
+      ja: 依頼・ファイル・結果
+    arrow:
+      vi: quyết định
+      en: decides
+      ja: 決める
+  - icon: "👉"
+    color: violet
+    name:
+      vi: Chọn công cụ
+      en: Pick a tool
+      ja: ツールを選ぶ
+    caption:
+      vi: đọc, chạy, tìm, sửa
+      en: read, run, search, edit
+      ja: 読む・実行・検索・編集
+    arrow:
+      vi: yêu cầu
+      en: requests
+      ja: 依頼する
+  - icon: "🔧"
+    color: amber
+    name:
+      vi: Công cụ chạy
+      en: The tool runs
+      ja: ツールが動く
+    caption:
+      vi: hoặc hỏi bạn trước
+      en: or asks you first
+      ja: または先に確認
+    arrow:
+      vi: trả về
+      en: returns
+      ja: 返す
+  - icon: "📥"
+    color: teal
+    name:
+      vi: Kết quả quay lại
+      en: The result comes back
+      ja: 結果が戻る
+    caption:
+      vi: vào ngữ cảnh
+      en: into the context
+      ja: コンテキストに入る
+    arrow:
+      vi: lượt sau
+      en: next turn
+      ja: 次のターン
+takeaway:
+  vi: Mỗi kết quả quyết định bước tiếp theo.
+  en: Every result decides the next step.
+  ja: 結果のひとつひとつが次の一手を決めます。

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 753" width="800" height="753" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">One Turn of the Agent Loop</title>
+<desc id="desc">Read the context → Pick a tool → The tool runs → The result comes back. Every result decides the next step.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-cycle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker></defs>
+<rect x="1" y="1" width="798" height="751" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="723" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">One Turn of the Agent Loop</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Repeats until the check passes, it needs you, or it is stuck</tspan></text>
+<path d="M509,239.3 A190,190 0 0 1 574.9,320.7" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="537.9" y="242.3" width="69.3" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="572.5" y="259.8">decides</tspan></text>
+<path d="M574.9,469.2 A190,190 0 0 1 509,550.6" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="532.2" y="521.7" width="80.6" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="572.5" y="539.2">requests</tspan></text>
+<path d="M291,550.6 A190,190 0 0 1 232.2,484.1" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="197.3" y="529.1" width="72.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="233.7" y="546.6">returns</tspan></text>
+<path d="M232.2,305.7 A190,190 0 0 1 291,239.3" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-cycle)"/>
+<rect x="191.4" y="234.9" width="84.7" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="233.7" y="252.4">next turn</tspan></text>
+<g class="pulse">
+<circle cx="400" cy="394.9" r="78" fill="#059669"/>
+<circle cx="400" cy="394.9" r="70" fill="#FFFFFF" fill-opacity="0.14"/>
+<text x="400" y="386.9" font-size="34" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="400" y="416.9">Agent</tspan></text>
+</g>
+<rect x="302" y="118.7" width="196" height="172.4" rx="18" fill="#EEF2FF" stroke="#4F46E5" stroke-width="2"/>
+<circle cx="400" cy="154.7" r="22" fill="#4F46E5"/>
+<circle cx="400" cy="154.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="163" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📖</text>
+<circle cx="320" cy="136.7" r="12" fill="#312E81"/>
+<text x="320" y="141.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#312E81" text-anchor="middle" font-weight="700"><tspan x="400" y="203.2">Read the</tspan><tspan x="400" y="227.6">context</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="252.6">request, files,</tspan><tspan x="400" y="272.4">results</tspan></text>
+<rect x="492" y="330.8" width="196" height="128.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="590" cy="366.8" r="22" fill="#7C3AED"/>
+<circle cx="590" cy="366.8" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="590" y="375.1" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">👉</text>
+<circle cx="510" cy="348.8" r="12" fill="#4C1D95"/>
+<text x="510" y="353.8" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="590" y="415.3">Pick a tool</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="590" y="440.3">read, run, search, edit</tspan></text>
+<rect x="302" y="520.8" width="196" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="400" cy="556.8" r="22" fill="#D97706"/>
+<circle cx="400" cy="556.8" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="565.1" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
+<circle cx="320" cy="538.8" r="12" fill="#78350F"/>
+<text x="320" y="543.8" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="605.3">The tool runs</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="630.2">or asks you first</tspan></text>
+<rect x="112" y="318.6" width="196" height="152.6" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
+<circle cx="210" cy="354.6" r="22" fill="#0D9488"/>
+<circle cx="210" cy="354.6" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="210" y="362.9" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📥</text>
+<circle cx="130" cy="336.6" r="12" fill="#134E4A"/>
+<text x="130" y="341.6" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="210" y="403.1">The result</tspan><tspan x="210" y="427.5">comes back</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="210" y="452.5">into the context</tspan></text>
+<rect x="28" y="675.1" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="706.1">💡 Every result decides the next step.</tspan></text>
+</svg>
