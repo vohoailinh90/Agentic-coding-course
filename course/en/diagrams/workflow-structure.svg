@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 689" width="800" height="689" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Add Structure by Risk</title>
+<desc id="desc">Just do it — Use it when: One-sentence
+change; Guards against: Wasted
+ceremony; Extra cost: Almost none. Plan first — Use it when: Unclear approach,
+many files; Guards against: Solving the
+wrong problem; Extra cost: A few minutes&#x27; reading. Tests first — Use it when: Right answers
+known ahead; Guards against: &quot;Looks right&quot;; Extra cost: Writing a
+few cases. Separate review — Use it when: Mistakes
+are costly; Guards against: The author&#x27;s
+blind spots; Extra cost: A fresh
+session. Ask &quot;where could this go wrong?&quot;, then add only what it needs.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="687" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="659" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Add Structure by Risk</tspan></text>
+<g>
+<rect x="28" y="86.3" width="172.5" height="500.3" rx="20" fill="#F8FAFC" stroke="#475569" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#475569"/>
+<circle cx="114.2" cy="138.3" r="26" fill="#475569"/>
+<circle cx="114.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="114.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">⚡</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="114.2" y="191.3">Just do it</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="269.2">Use it when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="294.5">One-sentence</tspan><tspan x="44" y="317">change</tspan></text>
+<line x1="44" y1="358.9" x2="184.5" y2="358.9" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="386.4">Guards against</tspan></text>
+<text font-size="19" fill="#475569" text-anchor="start" font-weight="700"><tspan x="44" y="413.7">Wasted</tspan><tspan x="44" y="438.8">ceremony</tspan></text>
+<line x1="44" y1="483.9" x2="184.5" y2="483.9" stroke="#E2E8F0" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="511.4">Extra cost</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="536.7">Almost none</tspan></text>
+</g>
+<g>
+<rect x="218.5" y="86.3" width="172.5" height="500.3" rx="20" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+<path d="M218.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#2563EB"/>
+<circle cx="304.8" cy="138.3" r="26" fill="#2563EB"/>
+<circle cx="304.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="304.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🗺️</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="304.8" y="191.3">Plan first</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="269.2">Use it when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="294.5">Unclear</tspan><tspan x="234.5" y="317">approach,</tspan><tspan x="234.5" y="339.4">many files</tspan></text>
+<line x1="234.5" y1="358.9" x2="375" y2="358.9" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="386.4">Guards against</tspan></text>
+<text font-size="19" fill="#2563EB" text-anchor="start" font-weight="700"><tspan x="234.5" y="413.7">Solving the</tspan><tspan x="234.5" y="438.8">wrong</tspan><tspan x="234.5" y="463.8">problem</tspan></text>
+<line x1="234.5" y1="483.9" x2="375" y2="483.9" stroke="#DBEAFE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="234.5" y="511.4">Extra cost</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="234.5" y="536.7">A few minutes&#x27;</tspan><tspan x="234.5" y="559.2">reading</tspan></text>
+</g>
+<g>
+<rect x="409" y="86.3" width="172.5" height="500.3" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+<path d="M409,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="26" fill="#059669"/>
+<circle cx="495.2" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="495.2" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="495.2" y="191.3">Tests first</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="269.2">Use it when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="294.5">Right answers</tspan><tspan x="425" y="317">known ahead</tspan></text>
+<line x1="425" y1="358.9" x2="565.5" y2="358.9" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="386.4">Guards against</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="425" y="413.7">&quot;Looks right&quot;</tspan></text>
+<line x1="425" y1="483.9" x2="565.5" y2="483.9" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="425" y="511.4">Extra cost</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="425" y="536.7">Writing a</tspan><tspan x="425" y="559.2">few cases</tspan></text>
+</g>
+<g>
+<rect x="599.5" y="86.3" width="172.5" height="500.3" rx="20" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+<path d="M599.5,106.3 a20,20 0 0 1 20,-20 h132.5 a20,20 0 0 1 20,20 v135.4 h-172.5 z" fill="#7C3AED"/>
+<circle cx="685.8" cy="138.3" r="26" fill="#7C3AED"/>
+<circle cx="685.8" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="685.8" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔍</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="685.8" y="191.3">Separate</tspan><tspan x="685.8" y="219">review</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="269.2">Use it when</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="294.5">Mistakes</tspan><tspan x="615.5" y="317">are costly</tspan></text>
+<line x1="615.5" y1="358.9" x2="756" y2="358.9" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="386.4">Guards against</tspan></text>
+<text font-size="19" fill="#7C3AED" text-anchor="start" font-weight="700"><tspan x="615.5" y="413.7">The author&#x27;s</tspan><tspan x="615.5" y="438.8">blind spots</tspan></text>
+<line x1="615.5" y1="483.9" x2="756" y2="483.9" stroke="#EDE9FE" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="615.5" y="511.4">Extra cost</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="615.5" y="536.7">A fresh</tspan><tspan x="615.5" y="559.2">session</tspan></text>
+</g>
+<rect x="28" y="610.6" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="641.6">💡 Ask &quot;where could this go wrong?&quot;, then add only what it needs.</tspan></text>
+</svg>
