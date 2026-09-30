@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 641" width="800" height="641" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif" lang="ja">
+<title id="title">バイブ型とエージェント型</title>
+<desc id="desc">バイブコーディング — 渡すもの: ひとことの希望; 結果を確かめるのは: だれも —
+「動いているっぽい」; エラーが出たら: エラーを貼って祈る; 向いている場面: 使い捨ての試作. エージェント型 — 渡すもの: 目標・境界・確認方法; 結果を確かめるのは: 確認方法とあなたのレビュー; エラーが出たら: 合格するまで確かめ直す; 向いている場面: だれかが頼るもの. 道具は同じ。違いは、結果をだれかが確かめるかどうかです。</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="639" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="611" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">バイブ型とエージェント型</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="452.5" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">バイブコーディング</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">渡すもの</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">ひとことの希望</tspan></text>
+<line x1="44" y1="286.3" x2="352" y2="286.3" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="313.8">結果を確かめるのは</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="44" y="341.1">だれも —</tspan><tspan x="44" y="366.2">「動いているっぽい」</tspan></text>
+<line x1="44" y1="386.2" x2="352" y2="386.2" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="413.7">エラーが出たら</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="439.1">エラーを貼って祈る</tspan></text>
+<line x1="44" y1="458.5" x2="352" y2="458.5" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="486">向いている場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="511.3">使い捨ての試作</tspan></text>
+</g>
+<g class="pulse">
+<rect x="432" y="86.3" width="340" height="452.5" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">エージェント型</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">渡すもの</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">目標・境界・確認方法</tspan></text>
+<line x1="448" y1="286.3" x2="756" y2="286.3" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="313.8">結果を確かめるのは</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="341.1">確認方法とあなたのレビュー</tspan></text>
+<line x1="448" y1="386.2" x2="756" y2="386.2" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="413.7">エラーが出たら</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="439.1">合格するまで確かめ直す</tspan></text>
+<line x1="448" y1="458.5" x2="756" y2="458.5" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="486">向いている場面</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="511.3">だれかが頼るもの</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="562.8" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="593.8">💡 道具は同じ。違いは、結果をだれかが確かめるかどうかです。</tspan></text>
+</svg>

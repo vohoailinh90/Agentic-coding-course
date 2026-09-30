@@ -157,7 +157,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 5.1.1 | [Traditional Coding vs Agentic Coding](lessons/traditional-vs-agentic.md) | 📖 Concept | 8 min |
-| 5.1.2 | Vibe Coding vs Agentic Coding: What Is the Difference? | 📖 Concept | 8 min |
+| 5.1.2 | [Vibe Coding vs Agentic Coding: What Is the Difference?](lessons/vibe-vs-agentic.md) | 📖 Concept | 8 min |
 | 5.1.3 | Trace an Agent Loop Through a Real Session | 🎬 Demo | 10 min |
 | 5.1.4 | Choose a Tool by Environment, Not Hype | 📖 Concept | 10 min |
 | 5.1.5 | Add Structure When the Task Needs It: Plans, Tests First, Reviews | 📖 Concept | 10 min |

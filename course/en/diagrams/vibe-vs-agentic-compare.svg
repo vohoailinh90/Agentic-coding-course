@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 708" width="800" height="708" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Vibe Coding vs Agentic Coding</title>
+<desc id="desc">Vibe coding — What you give: One wish; Who checks the result: No one —
+&quot;seems to work&quot;; When it breaks: Paste the error,
+hope it works; Good for: Throwaway
+experiments. Agentic coding — What you give: Goal, boundaries,
+a check; Who checks the result: The check,
+then your review; When it breaks: Re-check
+until it passes; Good for: Things people
+rely on. Same tool; the difference is whether anyone checks the result.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="706" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="678" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Vibe Coding vs Agentic Coding</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="519.8" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">Vibe coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">What you give</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">One wish</tspan></text>
+<line x1="44" y1="308.7" x2="352" y2="308.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">Who checks the result</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">No one —</tspan><tspan x="44" y="388.6">&quot;seems to work&quot;</tspan></text>
+<line x1="44" y1="408.7" x2="352" y2="408.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">When it breaks</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="461.5">Paste the error,</tspan><tspan x="44" y="483.9">hope it works</tspan></text>
+<line x1="44" y1="503.4" x2="352" y2="503.4" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="530.9">Good for</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="556.2">Throwaway</tspan><tspan x="44" y="578.6">experiments</tspan></text>
+</g>
+<g class="pulse">
+<rect x="432" y="86.3" width="340" height="519.8" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">Agentic coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">What you give</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">Goal, boundaries,</tspan><tspan x="448" y="289.3">a check</tspan></text>
+<line x1="448" y1="308.7" x2="756" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="336.2">Who checks the result</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="363.5">The check,</tspan><tspan x="448" y="388.6">then your review</tspan></text>
+<line x1="448" y1="408.7" x2="756" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="436.2">When it breaks</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="461.5">Re-check</tspan><tspan x="448" y="483.9">until it passes</tspan></text>
+<line x1="448" y1="503.4" x2="756" y2="503.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="530.9">Good for</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="556.2">Things people</tspan><tspan x="448" y="578.6">rely on</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="630.1" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="661.1">💡 Same tool; the difference is whether anyone checks the result.</tspan></text>
+</svg>

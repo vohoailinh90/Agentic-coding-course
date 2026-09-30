@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 708" width="800" height="708" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Vibe coding và agentic coding</title>
+<desc id="desc">Vibe coding — Bạn đưa gì: Một câu mong muốn; Ai kiểm tra kết quả: Không ai —
+&quot;trông có vẻ chạy&quot;; Khi gặp lỗi: Dán lỗi lại,
+mong lần sau đúng; Hợp với: Thử nghiệm
+làm xong là bỏ. Agentic coding — Bạn đưa gì: Mục tiêu, ranh giới,
+phép kiểm tra; Ai kiểm tra kết quả: Phép kiểm tra,
+rồi bạn review; Khi gặp lỗi: Kiểm tra lại
+tới khi đạt; Hợp với: Thứ có người
+dựa vào. Cùng một công cụ; khác nhau ở chỗ có ai kiểm tra kết quả.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
+<rect x="1" y="1" width="798" height="706" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="678" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Vibe coding và agentic coding</tspan></text>
+<g>
+<rect x="28" y="86.3" width="340" height="519.8" rx="20" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.5"/>
+<path d="M28,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="26" fill="#E11D48"/>
+<circle cx="198" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="198" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🎲</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="198" y="191.3">Vibe coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="241.5">Bạn đưa gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="266.8">Một câu mong muốn</tspan></text>
+<line x1="44" y1="308.7" x2="352" y2="308.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="336.2">Ai kiểm tra kết quả</tspan></text>
+<text font-size="19" fill="#E11D48" text-anchor="start" font-weight="700"><tspan x="44" y="363.5">Không ai —</tspan><tspan x="44" y="388.6">&quot;trông có vẻ chạy&quot;</tspan></text>
+<line x1="44" y1="408.7" x2="352" y2="408.7" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="436.2">Khi gặp lỗi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="461.5">Dán lỗi lại,</tspan><tspan x="44" y="483.9">mong lần sau đúng</tspan></text>
+<line x1="44" y1="503.4" x2="352" y2="503.4" stroke="#FFE4E6" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="44" y="530.9">Hợp với</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="44" y="556.2">Thử nghiệm</tspan><tspan x="44" y="578.6">làm xong là bỏ</tspan></text>
+</g>
+<g class="pulse">
+<rect x="432" y="86.3" width="340" height="519.8" rx="20" fill="#ECFDF5" stroke="#059669" stroke-width="3.5"/>
+<path d="M432,106.3 a20,20 0 0 1 20,-20 h300 a20,20 0 0 1 20,20 v107.7 h-340 z" fill="#059669"/>
+<circle cx="602" cy="138.3" r="26" fill="#059669"/>
+<circle cx="602" cy="138.3" r="23" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="602" y="148.1" font-size="27.3" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<text font-size="21" fill="#FFFFFF" text-anchor="middle" font-weight="700"><tspan x="602" y="191.3">Agentic coding</tspan></text>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="241.5">Bạn đưa gì</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="266.8">Mục tiêu, ranh giới,</tspan><tspan x="448" y="289.3">phép kiểm tra</tspan></text>
+<line x1="448" y1="308.7" x2="756" y2="308.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="336.2">Ai kiểm tra kết quả</tspan></text>
+<text font-size="19" fill="#059669" text-anchor="start" font-weight="700"><tspan x="448" y="363.5">Phép kiểm tra,</tspan><tspan x="448" y="388.6">rồi bạn review</tspan></text>
+<line x1="448" y1="408.7" x2="756" y2="408.7" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="436.2">Khi gặp lỗi</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="461.5">Kiểm tra lại</tspan><tspan x="448" y="483.9">tới khi đạt</tspan></text>
+<line x1="448" y1="503.4" x2="756" y2="503.4" stroke="#D1FAE5" stroke-width="2"/>
+<text font-size="13.5" fill="#64748B" text-anchor="start" font-weight="700"><tspan x="448" y="530.9">Hợp với</tspan></text>
+<text font-size="17" fill="#0F172A" text-anchor="start"><tspan x="448" y="556.2">Thứ có người</tspan><tspan x="448" y="578.6">dựa vào</tspan></text>
+</g>
+<circle cx="400" cy="158.1" r="25" fill="#0F172A"/>
+<text x="400" y="164.1" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">VS</text>
+<rect x="28" y="630.1" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="661.1">💡 Cùng một công cụ; khác nhau ở chỗ có ai kiểm tra kết quả.</tspan></text>
+</svg>

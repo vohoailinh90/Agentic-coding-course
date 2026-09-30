@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: vibe coding và agentic coding"
+  en: "Recap: Vibe Coding vs Agentic Coding"
+  ja: まとめ：バイブコーディングとエージェント型
+points:
+  - icon: "🎲"
+    color: rose
+    name: {vi: "Vibe coding", en: Vibe coding, ja: バイブコーディング}
+    caption: {vi: "Không đọc, không kiểm tra,\ncó vẻ chạy là giữ", en: "No reading, no check;\nkeep what seems to work", ja: "読まず、確かめず、\n動けば採用"}
+  - icon: "🎯"
+    color: green
+    name: {vi: "Agentic thêm\nbốn thứ", en: "Agentic adds\nfour things", ja: "エージェント型は\n4つを足す"}
+    caption: {vi: "Mục tiêu, ranh giới,\nkiểm tra, review", en: "Goal, boundaries,\ncheck, review", ja: "目標・境界・\n確認・レビュー"}
+  - icon: "🧰"
+    color: amber
+    name: {vi: Cùng một công cụ, en: The same tool, ja: 道具は同じ}
+    caption: {vi: "Khác ở cách làm", en: "The way you work\nis what differs", ja: 違うのは進め方}
+  - icon: "❓"
+    color: indigo
+    name: {vi: "Sai thì\nai bị thiệt?", en: "If it's wrong,\nwho gets hurt?", ja: "まちがえたら\nだれが困る？"}
+    caption: {vi: "Không ai: vibe được.\nCó người: agentic", en: "No one: vibe is fine.\nSomeone: go agentic", ja: "だれも：バイブでよい\nだれか：エージェント型"}
+  - icon: "🔍"
+    color: teal
+    name: {vi: "Chạy được\nchưa chắc đúng", en: "Runs is not\nthe same as right", ja: "動く ≠ 正しい"}
+    caption: {vi: "Lỗi âm thầm cần\nphép kiểm tra", en: "Silent errors need\na written check", ja: "静かなミスには\n確認方法が必要"}
+takeaway:
+  vi: Vibe để thử; có người dựa vào thì kiểm tra.
+  en: Vibe to experiment; check when someone relies on it.
+  ja: 試すならバイブ。だれかが頼るなら確かめる。
