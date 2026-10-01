@@ -13,7 +13,7 @@
   - **Mỗi ngôn ngữ một thư mục** (`course/vi`, `course/en`, `course/ja`): mọi trang chỉ dùng một
     ngôn ngữ và có thanh 🌐 để chuyển ngôn ngữ; dữ liệu dùng chung nằm ở `course/data/`
     ([ADR 005](docs/decisions/005-language-folders-and-language-bar.md)).
-  - **Lộ trình v1** (6 chương · 17 chủ đề · 52 bài · 946 phút), rút ra từ vòng 1 brainstorm với Codex
+  - **Lộ trình v1** (6 chương · 17 chủ đề · 52 bài · 940 phút), rút ra từ vòng 1 brainstorm với Codex
     ([brainstorm/round-1.md](brainstorm/round-1.md)) và 4 quyết định của Linh: thực hành ngay buổi đầu,
     **lộ trình tối thiểu 19 bài** (347 phút) đi trước, phần sâu thành nhánh tùy chọn / nâng cao,
     9 bài cũ được gộp hoặc bỏ (id không bao giờ dùng lại).

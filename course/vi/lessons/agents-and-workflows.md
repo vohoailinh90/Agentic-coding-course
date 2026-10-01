@@ -28,9 +28,9 @@ Sau bài này, bạn sẽ:
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
 
-Huy xem một video: mười agent làm việc như một công ty — agent nghiên cứu, agent viết, agent biên tập, agent dịch, agent đăng bài. Cậu muốn làm y vậy cho **bản tin tháng** của câu lạc bộ: năm agent, mỗi agent một vai.
+Huy xem một video: mười agent làm việc như một công ty. Cậu muốn làm y vậy cho **bản tin tháng** của câu lạc bộ: năm agent, mỗi agent một vai.
 
-Nghe rất hay. Nhưng bản tin của Huy dài một trang, lấy thông tin từ ba file lịch sự kiện, mỗi tháng một lần. Năm agent là đúng công cụ — hay là thuê năm đầu bếp để nấu một bữa cơm nhà?
+Nhưng bản tin chỉ dài một trang, lấy từ ba file lịch, mỗi tháng một lần. Năm agent là đúng công cụ — hay là thuê năm đầu bếp nấu một bữa cơm nhà?
 
 <!-- section: concept -->
 ## Nội dung chính
@@ -39,70 +39,62 @@ Nghe rất hay. Nhưng bản tin của Huy dài một trang, lấy thông tin t�
 
 Anthropic (12/2024) phân biệt hai kiểu hệ thống:
 
-- **Workflow:** các bước được định sẵn — bởi code, hay bởi bạn. Mô hình làm từng bước, nhưng không chọn bước. Ví dụ: kỹ năng làm báo cáo tháng của Mai trong [Bộ nhớ dự án và kỹ năng dùng lại](memory-and-skills.md).
-- **Agent:** mô hình **tự quyết định** bước tiếp theo và công cụ cần dùng, như bạn đã thấy trong [vòng lặp của agent](the-agent-loop.md).
+- **Workflow:** các bước được định sẵn, bằng code hay do bạn đặt; mô hình làm từng bước nhưng không tự chọn bước. Ví dụ: kỹ năng báo cáo tháng của Mai trong [Bộ nhớ dự án và kỹ năng dùng lại](memory-and-skills.md).
+- **Agent:** mô hình **tự quyết định** bước tiếp theo và công cụ cần dùng, như trong [vòng lặp của agent](the-agent-loop.md).
 
-Workflow dễ đoán, ổn định cho việc đã rõ. Agent linh hoạt cho việc không đoán trước được các bước.
+Workflow dễ đoán cho việc đã rõ; agent linh hoạt khi không đoán trước được các bước.
 
 ### Bắt đầu đơn giản
 
-Lời khuyên của Anthropic: tìm **cách đơn giản nhất** làm được việc, và chỉ tăng độ phức tạp khi cần — đôi khi nghĩa là không cần hệ thống agent nào cả. Hệ thống agent thường đổi thời gian và chi phí lấy kết quả tốt hơn; hãy tự hỏi sự đánh đổi đó có đáng không.
+Lời khuyên của Anthropic: tìm **cách đơn giản nhất** làm được việc, chỉ thêm phức tạp khi cần.
 
 ![Chiếc thang độ phức tạp](../diagrams/complexity-ladder.svg)
 
-Leo từng bậc, và chỉ leo khi bậc dưới không đủ:
+Leo từng bậc, chỉ khi bậc dưới không đủ:
 
-1. **Một yêu cầu** cho chatbot — hỏi một lần, trả lời một lần, không công cụ, không vòng lặp — đủ cho phần lớn việc nhỏ.
-2. **Workflow cố định** — việc lặp lại với cùng các bước.
-3. **Một agent** — việc mà các bước phụ thuộc vào điều phát hiện ra giữa chừng.
-4. **Agent + subagent** — khi có một lý do cụ thể, như ba trường hợp dưới đây.
+1. **Một yêu cầu** cho chatbot — hỏi một lần, trả lời một lần, không công cụ, không vòng lặp.
+2. **Một workflow cố định** — việc lặp lại với cùng các bước.
+3. **Một agent** — các bước tùy vào điều nó phát hiện dọc đường.
+4. **Agent + subagent** — chỉ khi có lý do cụ thể, như ba lý do dưới đây.
 
 ### Ba lúc subagent có ích
 
-Một **subagent** là agent phụ do agent chính gọi ra, làm một phần việc trong **ngữ cảnh riêng** của nó rồi trả về kết quả. Tài liệu Claude Code (9/2026) nêu các lý do dùng nó; ba lý do hay gặp nhất:
+**Subagent** là một agent phụ do agent chính khởi động, làm một phần việc trong **ngữ cảnh riêng**. Tài liệu Claude Code (tính đến 9/2026) nêu các lý do nên dùng; ba lý do hay gặp nhất:
 
-- **Việc phụ sẽ làm ngập ngữ cảnh chính.** Tìm trong hàng trăm file, đọc log dài — subagent làm trong ngữ cảnh của nó và chỉ trả về câu trả lời cuối — nên hãy ghi trong lời giao việc là cần một bản tóm tắt ngắn.
-- **Cần một con mắt mới.** Một lượt review trong ngữ cảnh mới, chỉ thấy kết quả và tiêu chí (nếu công cụ của bạn chuyển cả cuộc trò chuyện sang, hãy yêu cầu ngữ cảnh mới) — như bạn đã học trong [Thêm quy trình khi việc cần](workflow-frameworks.md).
-- **Những phần độc lập làm song song**, không phần nào cần kết quả của phần kia.
+- **Việc phụ sẽ làm ngập ngữ cảnh chính** — tìm trong hàng trăm file, đọc log dài. Subagent chỉ trả về câu trả lời cuối, nên hãy yêu cầu một bản tóm tắt ngắn.
+- **Cần một con mắt mới** — một lượt review chỉ thấy kết quả và tiêu chí, như trong [Thêm quy trình khi việc cần](workflow-frameworks.md).
+- **Các phần độc lập có thể chạy song song.**
 
 ### Cái giá của mỗi agent thêm vào
 
-- **Tốn thêm:** mỗi subagent tự gửi yêu cầu tới mô hình, tính vào cùng giới hạn sử dụng với phiên chính.
-- **Thường bắt đầu mà không có cuộc trò chuyện của bạn:** với Claude Code (tính đến 9/2026), một subagent thông thường không thấy cuộc trò chuyện của bạn, cũng không thấy file agent chính đã đọc. Nó biết lời giao việc, cộng với những gì phần cài đặt của nó nạp sẵn (thường là file chỉ dẫn của dự án). Có công cụ — và chế độ fork của Claude Code — lại chuyển cả cuộc trò chuyện sang, nên hãy xem công cụ của bạn làm thế nào. Dù sao đi nữa, giao mơ hồ thì nó đoán.
-- **Thêm chỗ để sai:** kết quả chuyền qua nhiều tay; mỗi lần chuyền có thể mất hay méo thông tin. Và bạn vẫn phải kiểm tra kết quả cuối.
+- **Tốn thêm:** mỗi subagent tự gửi yêu cầu, tính vào cùng giới hạn sử dụng.
+- **Thường bắt đầu mà không có cuộc trò chuyện của bạn:** với Claude Code (tính đến 9/2026), subagent thông thường chỉ nhận lời giao việc cùng những gì phần cài đặt nạp sẵn (thường là file chỉ dẫn của dự án). Có công cụ, và chế độ fork của Claude Code, lại chuyển cả cuộc trò chuyện sang — hãy xem công cụ của bạn.
+- **Thêm chỗ để sai:** mỗi lần chuyển tay có thể rơi mất thông tin, và bạn vẫn phải kiểm tra kết quả cuối.
 
 <!-- section: analogy -->
 ## Ví dụ đời thường
 
-Bếp của một nhà hàng lớn có bếp trưởng, người sơ chế, người lo món nướng, người nếm cuối. Hợp lý — vì mỗi tối họ nấu hàng trăm suất. Nhưng thuê năm đầu bếp để nấu một bữa cơm nhà cho bốn người thì chỉ thêm việc chỉ đạo, thêm chỗ va nhau, và thêm tiền.
+Bếp nhà hàng lớn có bếp trưởng, vài đầu bếp và một người nếm trước khi ra món — hợp lý khi nấu hàng trăm đĩa mỗi tối. Thuê năm đầu bếp cho bữa cơm gia đình thì chỉ thêm việc chỉ huy, va chạm và tốn tiền. Một thứ đáng giữ cả trong bếp nhỏ: **một người không nấu món đó nếm lại**.
 
-Một thứ đáng thuê thêm ngay cả ở bếp nhỏ: **một người nếm lại** trước khi dọn ra — người không nấu món đó nên nếm khách quan hơn.
-
-Phép so sánh sai ở chỗ: một đầu bếp mới vào bếp còn nghe thấy, nhìn thấy mọi thứ xung quanh. Subagent thông thường thì không — nó không nghe cuộc trò chuyện của bạn với agent chính, nên điều gì nó cần từ cuộc trò chuyện đó phải được viết trong lời giao việc.
+Phép so sánh sai ở chỗ: đầu bếp mới vẫn nghe được mọi thứ trong bếp. Subagent thông thường thì không nghe cuộc trò chuyện của bạn với agent chính, nên điều gì nó cần từ đó phải được viết trong lời giao việc.
 
 <!-- section: example -->
 ## Ví dụ thực tế
 
-Huy viết ra kế hoạch năm agent, rồi đi từng bậc của chiếc thang.
+Mỗi tháng Huy phải đọc ba file lịch sự kiện (dữ liệu giả trong `ai-practice`), viết bản tin một trang, kiểm tra ngày giờ và địa điểm, lưu ra `ban_tin_thang_X.md`. Thay vì kế hoạch năm agent, cậu leo từng bậc thang:
 
-**Việc thật sự cần làm mỗi tháng:** đọc ba file lịch sự kiện (dữ liệu giả, trong `ai-practice`), viết bản tin một trang, kiểm tra ngày giờ và địa điểm, lưu ra `ban_tin_thang_X.md`.
+- **Một yêu cầu?** Gần đủ, nhưng tháng nào cũng lặp lại cùng các bước.
+- **Workflow cố định?** Đúng. Cậu viết kỹ năng `ban-tin-thang`: đọc ba file, viết theo mẫu, ghi ra file.
+- **Subagent?** Ba file lịch ngắn, không có gì cần chạy song song, nhưng cả câu lạc bộ sẽ dựa vào ngày giờ — nên **con mắt mới** thì có. Bước cuối của kỹ năng: *"Giao cho một subagent mới: so từng ngày giờ và địa điểm trong bản tin với ba file lịch. Chỉ báo chỗ không khớp, không sửa gì."*
 
-- **Bậc 1 — một yêu cầu?** Gần đủ. Nhưng tháng nào cũng làm lại cùng các bước.
-- **Bậc 2 — workflow cố định?** Đúng: các bước không đổi. Huy viết một kỹ năng `ban-tin-thang`: đọc ba file, viết theo mẫu, ghi ra file.
-- **Có cần subagent không?** Cậu xét ba lý do. Ba file lịch ngắn — không làm ngập ngữ cảnh. Không có phần nào cần làm song song. Còn **con mắt mới**? Có: ngày giờ sai trong bản tin là thứ cả câu lạc bộ sẽ dựa vào.
-
-Huy thêm một bước cuối vào kỹ năng: *"Giao cho một subagent mới: so từng ngày giờ và địa điểm trong bản tin với ba file lịch. Chỉ báo chỗ không khớp, không sửa gì."*
-
-Tháng đầu tiên, subagent review báo một chỗ: buổi dã ngoại ghi *thứ Bảy 17/10*, nhưng file lịch ghi *Chủ nhật 18/10*. Agent viết đã nhầm khi gộp hai dòng lịch. Huy sửa, rồi tự đọc lại cả bản tin trước khi gửi.
-
-Kết quả: một workflow và một subagent review — thay vì năm agent. Ít tốn hơn, ít chỗ để sai hơn, và chỗ duy nhất cần con mắt mới thì có con mắt mới.
+Tháng đầu, subagent review báo một chỗ: buổi dã ngoại ghi *thứ Bảy 17/10*, file lịch ghi *Chủ nhật 18/10*. Huy sửa, rồi tự đọc cả bản tin trước khi gửi. Một workflow và một người review thay vì năm agent: rẻ hơn, ít lần chuyển tay hơn, và có con mắt mới đúng chỗ cần.
 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
-- **"Càng nhiều agent càng thông minh."** — Mỗi agent thêm vào tốn thêm, và thêm một lần chuyền thông tin có thể sai. Thêm agent khi có lý do cụ thể, không phải vì nó nghe hiện đại.
-- **"Subagent biết những gì mình đã nói với agent chính."** — Với Claude Code, một subagent thông thường bắt đầu từ ngữ cảnh mới, không có cuộc trò chuyện của bạn (công cụ khác có thể khác); điều bạn đã nói với agent chính chỉ tới được nó nếu lời giao việc (hay file dự án nó đọc) có ghi. Lời giao việc cho subagent cần rõ như một yêu cầu cho người mới.
-- **"Có agent review rồi thì mình không cần đọc."** — Subagent review giúp bắt lỗi; nó không thay trách nhiệm của bạn với kết quả cuối.
+- **"Càng nhiều agent càng thông minh."** — Mỗi agent thêm vào là thêm chi phí và thêm một lần chuyển tay. Thêm agent vì một lý do cụ thể, không phải vì nghe hiện đại.
+- **"Subagent biết những gì mình đã nói với agent chính."** — Subagent thông thường của Claude Code không thấy cuộc trò chuyện đó (công cụ khác có thể khác). Viết lời giao việc rõ như một yêu cầu cho người mới.
+- **"Có agent review rồi thì mình không cần đọc."** — Nó giúp bắt lỗi; kết quả cuối vẫn là trách nhiệm của bạn.
 
 <!-- section: recap -->
 ## Tóm tắt bằng hình
@@ -115,7 +107,7 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 - Workflow: các bước định sẵn. Agent: mô hình tự chọn bước.
 - Bắt đầu đơn giản; chỉ leo lên bậc phức tạp hơn khi bậc dưới không đủ.
 - Subagent có ích khi việc phụ làm ngập ngữ cảnh, khi cần con mắt mới, hay khi có phần độc lập làm song song.
-- Mỗi agent thêm vào đều tốn thêm, thường bắt đầu mà không có cuộc trò chuyện của bạn, và thêm chỗ để sai.
+- Mỗi agent thêm vào: tốn thêm, thường không có cuộc trò chuyện của bạn, thêm chỗ để sai.
 - Nhiều agent không thay bạn kiểm tra kết quả cuối.
 
 <!-- section: quiz -->
@@ -143,13 +135,13 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 <summary>Xem đáp án</summary>
 
 1. **B** — ai chọn bước tiếp theo là khác biệt chính; cả hai đều dùng mô hình.
-2. **C** — việc phụ sẽ làm ngập ngữ cảnh chính; subagent làm riêng và, nếu lời giao việc yêu cầu, chỉ trả về một bản tóm tắt ngắn.
-3. **A** — một subagent thông thường không thấy cuộc trò chuyện của bạn; điều bạn đã nói với agent chính chỉ tới được nó qua lời giao việc (hay file dự án nó đọc).
+2. **C** — việc phụ sẽ làm ngập ngữ cảnh chính; subagent làm riêng và trả về bản tóm tắt bạn yêu cầu.
+3. **A** — điều bạn đã nói với agent chính chỉ tới được nó qua lời giao việc (hay file dự án nó đọc).
 
 </details>
 
 <!-- section: sources -->
 ## Nguồn tham khảo
 
-- Anthropic — [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) (tiếng Anh, 12/2024): workflow là hệ thống mà mô hình và công cụ được điều phối theo các bước định sẵn, agent là hệ thống mà mô hình tự điều khiển quá trình và việc dùng công cụ; tìm cách đơn giản nhất và chỉ tăng độ phức tạp khi cần; hệ thống agent đổi thời gian và chi phí lấy kết quả tốt hơn.
-- Anthropic — [Create custom subagents](https://code.claude.com/docs/en/sub-agents) (tiếng Anh, tính đến 9/2026): subagent làm việc trong ngữ cảnh riêng và chỉ trả về kết quả cuối, không trả về quá trình tìm kiếm; dùng khi việc phụ tạo nhiều đầu ra không cần giữ trong ngữ cảnh chính; subagent không thấy lịch sử trò chuyện hay file agent chính đã đọc; mỗi subagent tự gửi yêu cầu, tính vào cùng giới hạn sử dụng.
+- Anthropic — [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) (tiếng Anh, 12/2024): workflow theo các bước định sẵn, agent tự điều khiển quá trình; tìm cách đơn giản nhất, chỉ thêm phức tạp khi cần.
+- Anthropic — [Create custom subagents](https://code.claude.com/docs/en/sub-agents) (tiếng Anh, tính đến 9/2026): subagent làm trong ngữ cảnh riêng và chỉ trả về kết quả cuối; không thấy lịch sử trò chuyện; mỗi subagent tính vào cùng giới hạn sử dụng.
