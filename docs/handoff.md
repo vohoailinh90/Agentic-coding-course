@@ -11,8 +11,9 @@ write next, and how to write and check a lesson. It points at the rules instead 
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
-  `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape` and
-  `workflow-frameworks`,, `model-plus-harness`, `context-engineering`,, `prompt-engineering-for-agents`, `hooks-and-permissions`, written by Claude;
+  `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape`,
+  `workflow-frameworks`, `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`
+  and `hooks-and-permissions`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
@@ -59,12 +60,15 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`tests-and-ci-for-agents`** (hands-on) — tests as the agent's finish line: write the test first, see it fail, let the agent make it pass, then let CI run it on every push.
+- **`tests-and-ci-for-agents`** (demo) — tests as the agent's finish line: write the test first, see it fail, let the agent make it pass, then let CI run it on every push.
 - **`memory-and-skills`** (hands-on) — what the agent remembers between sessions (instruction files, auto memory) versus procedures it loads when needed (skills); package a repeated procedure as a skill and test it in a new session.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
-right in every language — check those before opening the pull request.
+right in every language — check those before opening the pull request. PR #17 added: the instruction-file
+example must hold only what is true for every session; a lesson's minutes must cover reading the
+whole body plus the exercise (`PROGRESS.md` then shows the new course total); and every promise about
+later lessons must match the curriculum.
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.
