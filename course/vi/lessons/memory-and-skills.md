@@ -62,7 +62,7 @@ Tài liệu Claude Code (9/2026) gợi ý: tạo một kỹ năng khi bạn **c�
 
 Một kỹ năng trong Claude Code là một file `SKILL.md` trong thư mục riêng, gồm hai phần:
 
-- **Phần mô tả** (ở đầu file): *khi nào* dùng kỹ năng này. Agent đọc mô tả để tự quyết định nạp kỹ năng khi việc phù hợp.
+- **Tên và phần mô tả** (ở đầu file): tên trùng với tên thư mục; mô tả nói *khi nào* dùng kỹ năng này. Agent đọc mô tả để tự quyết định nạp kỹ năng khi việc phù hợp.
 - **Phần hướng dẫn:** các bước agent làm theo khi kỹ năng chạy.
 
 Bạn cũng có thể gọi thẳng bằng tên, như `/bao-cao-thang`. Kỹ năng của Claude Code theo một chuẩn mở (Agent Skills) mà nhiều công cụ AI khác cũng dùng.
@@ -86,6 +86,7 @@ Khoảng 11 phút, trong `ai-practice`, dữ liệu giả từ [dự án tự đ
 
 ```text
 ---
+name: bao-cao-thang
 description: Làm báo cáo doanh thu tháng từ file ban_hang_thang_X.csv. Dùng khi mình nhờ làm báo cáo tháng.
 ---
 Khi làm báo cáo tháng X:

@@ -11,7 +11,7 @@ points:
   - icon: "🔁"
     color: indigo
     name: {vi: "CI: không ai\nquên được", en: "CI: nobody\ncan forget", ja: "CI：だれも\n忘れられない"}
-    caption: {vi: "Mỗi lần đẩy lên,\nmáy sạch", en: "Every push,\nclean machine", ja: "送るたびに、\nきれいな環境で"}
+    caption: {vi: "Mỗi pull request,\nmáy sạch", en: "Every pull request,\nclean machine", ja: "PRのたびに、\nきれいな環境で"}
   - icon: "🚦"
     color: amber
     name: {vi: "Đỏ: sửa.\nXanh: review", en: "Red: fix.\nGreen: review", ja: "赤：直す\n緑：レビュー"}

@@ -63,7 +63,7 @@ The Claude Code documentation (September 2026) suggests: create a skill when you
 
 A skill in Claude Code is a `SKILL.md` file in its own folder, with two parts:
 
-- **The description** (at the top of the file): *when* to use this skill. The agent reads it to decide by itself to load the skill when a task fits.
+- **The name and description** (at the top of the file): the name matches the folder; the description says *when* to use this skill. The agent reads it to decide by itself to load the skill when a task fits.
 - **The instructions:** the steps the agent follows when the skill runs.
 
 You can also call it directly by name, like `/monthly-report`. Claude Code's skills follow an open standard (Agent Skills) that other AI tools use too.
@@ -87,6 +87,7 @@ About 11 minutes, in `ai-practice`, with the made-up data from the [automation p
 
 ```text
 ---
+name: monthly-report
 description: Makes the monthly revenue report from a month's sales file, e.g. sales_october.csv. Use when I ask for a monthly report.
 ---
 When making the report for month X:

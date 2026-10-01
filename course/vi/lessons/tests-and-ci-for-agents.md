@@ -3,8 +3,8 @@ lesson: tests-and-ci-for-agents
 lang: vi
 status: review
 summary: >-
-  Test tự động là phép kiểm tra agent tự chạy trong vòng lặp của nó; CI chạy lại toàn bộ test đó trên một máy chủ mỗi
-  khi có thay đổi được đẩy lên, dù agent hay bạn có nhớ chạy hay không. Xem Huy thêm tính năng tiền tip cho trang chia
+  Test tự động là phép kiểm tra agent tự chạy trong vòng lặp của nó; CI chạy lại toàn bộ test đó trên một máy chủ vào
+  những lúc bạn đã cài cho nó — thường là mỗi pull request — dù agent hay bạn có nhớ chạy hay không. Xem Huy thêm tính năng tiền tip cho trang chia
   tiền: agent chỉ chạy test mới, CI bắt được lỗi ở test cũ — và khi agent đề nghị sửa đáp án trong test cho "xanh",
   Huy từ chối.
 social:
@@ -45,7 +45,7 @@ Agent làm nhanh và sửa nhiều chỗ một lúc. Người khó kiểm tra l�
 
 ### CI: chạy lại test ở một nơi không ai quên được
 
-Test chỉ có ích khi được chạy. Agent có thể chỉ chạy một phần, hoặc quên chạy. **CI** (tích hợp liên tục) giải quyết chuyện đó: mỗi khi một thay đổi được đẩy (push) lên kho code chung — thường kèm một *pull request*, tức một đề nghị gộp thay đổi — một máy chủ tự tải code về và chạy **toàn bộ** test. Kết quả hiện cho mọi người: ✅ xanh hoặc ❌ đỏ.
+Test chỉ có ích khi được chạy. Agent có thể chỉ chạy một phần, hoặc quên chạy. **CI** (tích hợp liên tục) giải quyết chuyện đó: bạn cài cho nó những lúc phải chạy — thường là mỗi khi có một *pull request*, tức một đề nghị gộp thay đổi vào kho code chung. Đến lúc đó, một máy chủ tự tải code về và chạy **toàn bộ** test. Kết quả hiện cho mọi người: ✅ xanh hoặc ❌ đỏ.
 
 ![Test và CI trong vòng làm việc của agent](../diagrams/tests-and-ci-flow.svg)
 
@@ -97,7 +97,7 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 ## Ghi nhớ
 
 - Test tự động: phép kiểm tra agent tự chạy, kiểm tra lại toàn bộ mỗi lần.
-- CI chạy toàn bộ test trên máy chủ mỗi khi có thay đổi được đẩy lên, dù ai có quên.
+- CI chạy toàn bộ test trên máy chủ vào những lúc đã cài (thường là mỗi pull request), dù ai có quên.
 - Đỏ thì quay lại sửa; xanh thì mới tới lượt bạn review.
 - "Làm cho test xanh" khác "làm cho code đúng": đừng để agent sửa đáp án cho khớp.
 - CI xanh chưa phải là đúng: đọc diff, nhất là mọi dòng đổi trong file test.
@@ -108,7 +108,7 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 **Câu 1.** CI chạy test khi nào?
 
 - A) Chỉ khi agent nhớ chạy
-- B) Mỗi khi có thay đổi được đẩy lên kho code chung, tự động
+- B) Tự động, vào những lúc đã cài cho nó — ví dụ mỗi pull request
 - C) Mỗi tháng một lần
 
 **Câu 2.** Test đỏ, và agent đề nghị đổi đáp án trong test cho khớp với kết quả mới. Bạn nên làm gì?
@@ -126,8 +126,8 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 <details>
 <summary>Xem đáp án</summary>
 
-1. **B** — CI tự chạy mỗi lần có thay đổi, không phụ thuộc trí nhớ của ai.
-2. **A** — đáp án trong test là định nghĩa của "đúng"; chỉ đổi nó khi bạn chắc đáp án cũ sai.
+1. **B** — CI tự chạy vào những lúc đã cài, không phụ thuộc trí nhớ của ai.
+2. **A** — đáp án trong test được lấy từ yêu cầu, không tự nó định nghĩa "đúng"; so nó với yêu cầu trước, và chỉ đổi khi yêu cầu cho thấy đáp án cũ sai.
 3. **C** — như agent của Huy: chạy riêng test mới thì không thấy test cũ bị hỏng.
 
 </details>
