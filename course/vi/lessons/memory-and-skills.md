@@ -93,7 +93,7 @@ Khi làm báo cáo tháng X:
 1. Kiểm tra có file ban_hang_thang_X.csv; không có thì dừng và báo mình.
 2. Chạy lam_bao_cao.py với file đó.
 3. Chạy kiem_tra.py. Không đạt thì dừng, báo mình kết quả, không sửa gì thêm.
-4. Nhắc mình tự cộng tay doanh thu một chi nhánh để so; đừng tự cộng thay mình.
+4. Nhắc mình tự cộng tay doanh thu một chi nhánh để so; đừng tự cộng thay mình. Dừng lại, chờ mình xác nhận là khớp rồi mới làm tiếp.
 5. Ghi một dòng vào nhat_ky.md: tháng, tổng doanh thu, kết quả kiểm tra.
 6. Commit với lời nhắn "Báo cáo tháng X".
 ```
@@ -104,7 +104,7 @@ Khi làm báo cáo tháng X:
 Làm báo cáo tháng 10.
 ```
 
-Agent có tự nạp kỹ năng không? Nó có chạy `kiem_tra.py` không, dù bạn không nhắc? Ở bước 4, nó có nhắc bạn tự cộng tay mà không cộng hộ không? Nếu nó không nạp kỹ năng, sửa phần mô tả cho rõ hơn "khi nào dùng", rồi thử lại. Bạn cũng có thể gọi thẳng `/bao-cao-thang`.
+Agent có tự nạp kỹ năng không? Nó có chạy `kiem_tra.py` không, dù bạn không nhắc? Ở bước 4, nó có nhắc bạn tự cộng tay, không cộng hộ, và chờ bạn xác nhận rồi mới ghi sổ và commit không? Nếu nó không nạp kỹ năng, sửa phần mô tả cho rõ hơn "khi nào dùng", rồi thử lại. Bạn cũng có thể gọi thẳng `/bao-cao-thang`.
 
 **4. Đọc bộ nhớ (2 phút).** Gõ `/memory` trong Claude Code (hoặc hỏi agent *"Bạn đã tự ghi nhớ những gì về dự án này?"*). Đọc từng dòng. Có dòng nào sai, cũ, hay không nên nằm đó? Xóa nó.
 

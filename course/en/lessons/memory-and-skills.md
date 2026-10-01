@@ -94,7 +94,7 @@ When making the report for month X:
 1. Check that the sales file for month X (e.g. sales_october.csv) exists; if not, stop and tell me.
 2. Run make_report.py on that file.
 3. Run check_report.py. If it fails, stop, tell me the result, and change nothing else.
-4. Remind me to add up one branch's revenue by hand to compare; don't add it up for me.
+4. Remind me to add up one branch's revenue by hand to compare; don't add it up for me. Stop and wait until I confirm it matches.
 5. Add a line to log.md: the month, total revenue, the check result.
 6. Commit with the message "Report for month X".
 ```
@@ -105,7 +105,7 @@ When making the report for month X:
 Make the October report.
 ```
 
-Did the agent load the skill by itself? Did it run `check_report.py`, even though you did not mention it? At step 4, did it remind you to add up by hand, without doing it for you? If it did not load the skill, make the description clearer about "when to use it", and try again. You can also call `/monthly-report` directly.
+Did the agent load the skill by itself? Did it run `check_report.py`, even though you did not mention it? At step 4, did it remind you to add up by hand, without doing it for you, and wait for your confirmation before logging and committing? If it did not load the skill, make the description clearer about "when to use it", and try again. You can also call `/monthly-report` directly.
 
 **4. Read the memory (2 minutes).** Type `/memory` in Claude Code (or ask the agent *"What have you noted about this project on your own?"*). Read every line. Is anything wrong, out of date, or something that should not be there? Delete it.
 

@@ -19,7 +19,7 @@ steps:
   - icon: "🚦"
     color: amber
     name: {vi: Xanh hay đỏ, en: Green or red, ja: 緑か赤か}
-    caption: {vi: "đỏ: quay lại sửa\ncode, không sửa test", en: "red: fix the code,\nnot the test", ja: "赤：テストでなく\nコードを直す"}
+    caption: {vi: "đỏ: so với yêu cầu\nrồi mới sửa", en: "red: check the\nrequirement, then fix", ja: "赤：要件を確かめて\nから直す"}
     arrow: {vi: xanh, en: green, ja: 緑}
   - icon: "🔍"
     color: violet

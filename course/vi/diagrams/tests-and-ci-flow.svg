@@ -42,7 +42,7 @@
 <circle cx="106" cy="512.3" r="12" fill="#78350F"/>
 <text x="106" y="517.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="578.8">Xanh hay đỏ</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="603.7">đỏ: quay lại sửa</tspan><tspan x="400" y="623.5">code, không sửa test</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="603.7">đỏ: so với yêu cầu</tspan><tspan x="400" y="623.5">rồi mới sửa</tspan></text>
 <line x1="400.0" y1="646.3" x2="400.0" y2="692.3" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
 <rect x="485.3" y="657.4" width="49.3" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="674.9">xanh</tspan></text>
