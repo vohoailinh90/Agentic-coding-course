@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- The last two lessons by Claude in vi, en and ja (status `review`): `project-mcp-tool` (a narrow,
+  read-only MCP tool whose adding-up is tested code, checked against right answers before it is
+  connected) and `capstone-your-idea` (the learner's own idea, with no brief: spec, plan, build, verify,
+  guardrails and an evidence pack). All 52 of 52 lessons are now written.
 - Two more lessons by Claude in vi, en and ja (status `review`): `evals` (tests check code, evals check
   an AI system over many tasks and runs; tasks, trials and graders; compare two ways of asking by numbers)
   and `project-retrospective` (four blameless questions, an evidence pack, and a stranger test with a new

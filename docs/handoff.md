@@ -7,17 +7,17 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-30
 
-- **50 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **52 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape`,
   `workflow-frameworks`, `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`, `hooks-and-permissions`,
-  `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows`, `mcp`, `evals` and `project-retrospective`, written by Claude;
+  `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows`, `mcp`, `evals`, `project-retrospective`, `project-mcp-tool` and `capstone-your-idea`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **2 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **0 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -47,15 +47,12 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `project-mcp-tool` | advanced-projects (advanced) | project | 90 | mcp |
-| `capstone-your-idea` | advanced-projects (advanced) | project | 120 | – |
 
 ### Sketches for the next two
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`project-mcp-tool`** (project) — build a small MCP tool that adds up revenue in tested code, on made-up data; test it from four sides (input, output, errors, permission boundary).
-- **`capstone-your-idea`** (project) — the learner's own small idea, with no brief: spec, plan, build, check, guardrails and an evidence pack, using everything in the course.
+- All 52 lessons are written. Next: the owner reviews every lesson (status `review` → `done`), and `python -m src.main export` builds the offline HTML copy.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
