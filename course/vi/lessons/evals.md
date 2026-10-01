@@ -85,14 +85,14 @@ Và `dap_an.jsonl` — đáp án đúng, viết trước khi chạy:
 {"so": 105, "ngay": "2026-09-30", "tien": 2000000}
 ```
 
-**2. Bộ chấm bằng code (2 phút).** Nhờ agent: *"Viết cham_diem.py, chạy bằng `python cham_diem.py FILE_KET_QUA dap_an.jsonl`: so từng hóa đơn trong dap_an.jsonl với file kết quả theo số hóa đơn, in số hóa đơn đúng và hóa đơn nào sai. Dòng nào không đọc được, hay thiếu hóa đơn nào, thì tính là sai."* Thử trước khi cho AI chạy: chép `dap_an.jsonl` thành `ket_qua_thu.jsonl` rồi chấm — mọi hóa đơn phải đúng. Sửa một con số trong `ket_qua_thu.jsonl` rồi chấm lại — nó phải báo sai đúng hóa đơn đó.
+**2. Bộ chấm bằng code (2 phút).** Nhờ agent: *"Viết cham_diem.py, chạy bằng `python cham_diem.py FILE_KET_QUA dap_an.jsonl`: so từng hóa đơn trong dap_an.jsonl với file kết quả theo số hóa đơn, in số hóa đơn đúng và hóa đơn nào sai. Dòng không đọc được, hóa đơn bị thiếu, số hóa đơn không có trong đáp án, hay một số xuất hiện hai lần, đều tính là sai."* Thử trước khi cho AI chạy: chép `dap_an.jsonl` thành `ket_qua_thu.jsonl` rồi chấm — mọi hóa đơn phải đúng. Sửa một con số trong `ket_qua_thu.jsonl` rồi chấm lại — nó phải báo sai đúng hóa đơn đó.
 
 **3. So hai cách viết yêu cầu (5 phút).** Mỗi lần chạy trong một **phiên mới**, ghi kết quả ra file riêng:
 
 - **Cách A:** *"Đọc hoa_don.txt, lấy số hóa đơn, ngày và số tiền, ghi ra ket_qua_A1.jsonl."*
 - **Cách B:** *"Đọc hoa_don.txt. Với mỗi dòng, ghi một dòng JSON vào ket_qua_B1.jsonl: so (số nguyên), ngay (dạng YYYY-MM-DD), tien (số nguyên, đơn vị đồng, là TỔNG của hóa đơn). Ví dụ (một hóa đơn không có trong file): {"so": 999, "ngay": "2026-01-15", "tien": 500000}."*
 
-Chạy mỗi cách **hai lần** — lần thứ hai, đổi tên file trong yêu cầu thành `ket_qua_A2.jsonl` hay `ket_qua_B2.jsonl` — rồi chấm cả bốn file bằng `cham_diem.py`. Ghi vào bảng: A được bao nhiêu trên 10, B được bao nhiêu trên 10.
+Chạy mỗi cách **hai lần** — lần thứ hai, đổi tên file trong yêu cầu thành `ket_qua_A2.jsonl` hay `ket_qua_B2.jsonl` — rồi chấm cả bốn file bằng `cham_diem.py`. Ghi vào bảng: A được bao nhiêu trên 10, B được bao nhiêu trên 10. Hai lần mỗi cách đủ để tập cách làm, chưa đủ để kết luận cách nào tốt hơn — muốn kết luận thật, hãy chạy mỗi cách nhiều lần hơn nữa.
 
 **4. Đọc lần sai (2 phút).** Mở lại phiên của một hóa đơn bị sai và đọc: AI hiểu sai ở đâu ("3,5 triệu"? số tạm ứng thay cho tổng?) — lỗi ở yêu cầu, hay ở đáp án của bạn? Nếu mọi lần chạy đều đúng, hãy đọc một lần chạy trên hóa đơn khó nhất (104 hay 105): AI đã quyết định thế nào? Rồi, cho lần sau, thêm một hóa đơn khó hơn vào `hoa_don.txt` và ghi đáp án của nó vào `dap_an.jsonl` trước khi chạy.
 

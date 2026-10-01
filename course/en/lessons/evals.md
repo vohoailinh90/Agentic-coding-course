@@ -86,14 +86,14 @@ And `answers.jsonl` — the right answers, written before any run:
 {"no": 105, "date": "2026-09-30", "amount": 2000}
 ```
 
-**2. A code grader (2 minutes).** Ask the agent: *"Write grade.py, run as `python grade.py RESULT_FILE answers.jsonl`: compare each invoice in answers.jsonl with the result file by its number, and print how many are right and which are wrong. A line that cannot be read, or a missing invoice, counts as wrong."* Test it before any AI run: copy `answers.jsonl` to `test_result.jsonl` and grade it — every invoice must be right. Then change one number in `test_result.jsonl` and grade it again — it must report exactly that invoice as wrong.
+**2. A code grader (2 minutes).** Ask the agent: *"Write grade.py, run as `python grade.py RESULT_FILE answers.jsonl`: compare each invoice in answers.jsonl with the result file by its number, and print how many are right and which are wrong. A line that cannot be read, a missing invoice, an invoice number not in the answers, or the same number twice, counts as wrong."* Test it before any AI run: copy `answers.jsonl` to `test_result.jsonl` and grade it — every invoice must be right. Then change one number in `test_result.jsonl` and grade it again — it must report exactly that invoice as wrong.
 
 **3. Compare two ways of asking (5 minutes).** Do each run in a **new session**, writing results to its own file:
 
 - **Way A:** *"Read invoices.txt, get the invoice number, date and amount, and write them to result_A1.jsonl."*
 - **Way B:** *"Read invoices.txt. For each line, write one JSON line to result_B1.jsonl: no (integer), date (YYYY-MM-DD), amount (whole dollars, the invoice TOTAL). Example (an invoice not in the file): {"no": 999, "date": "2026-01-15", "amount": 500}."*
 
-Run each way **twice** — for the second run, change the file name in the request to `result_A2.jsonl` or `result_B2.jsonl` — then grade all four files with `grade.py`. Fill in a table: A scored how many out of 10, B how many out of 10.
+Run each way **twice** — for the second run, change the file name in the request to `result_A2.jsonl` or `result_B2.jsonl` — then grade all four files with `grade.py`. Fill in a table: A scored how many out of 10, B how many out of 10. Two runs each is enough to practise the method, not to decide which way is better — for a real decision, run each way many more times.
 
 **4. Read a failure (2 minutes).** Reopen the session of one wrong invoice and read it: where did the AI misunderstand ("3.5 thousand dollars"? the deposit instead of the total?) — was the fault in the request, or in your answers? If every run passed, read one run on the trickiest invoice (104 or 105) instead: how did the AI decide? Then, for next time, add a harder invoice to `invoices.txt` and write its right answer in `answers.jsonl` before any run.
 
