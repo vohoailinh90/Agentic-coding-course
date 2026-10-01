@@ -4,7 +4,7 @@
 何度も採点; 2. 3つの部分 — タスク・試行・
 採点; 3. 採点はまず
 コードで — 速く・安く・
-偏りなく; 4. 小さく、
+毎回同じ; 4. 小さく、
 本物の失敗から — 新しい失敗は
 新しいタスクに; 5. 記録を読む — だれも合格しない？
 まずタスクを疑う. 数字で測り、読んで数字を理解する。</desc>
@@ -36,7 +36,7 @@
 <circle cx="554" cy="104.3" r="12" fill="#78350F"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">採点はまず</tspan><tspan x="654" y="195.2">コードで</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">速く・安く・</tspan><tspan x="654" y="239.9">偏りなく</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">速く・安く・</tspan><tspan x="654" y="239.9">毎回同じ</tspan></text>
 <rect x="155" y="276.7" width="236" height="172.4" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
 <circle cx="273" cy="312.7" r="22" fill="#059669"/>
 <circle cx="273" cy="312.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

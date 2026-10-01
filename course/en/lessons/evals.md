@@ -47,7 +47,7 @@ A [test](tests-and-ci-for-agents.md) checks **code**: same input, same result, p
 - **Task:** one test with a defined input and success criteria — for example, read one invoice and return its date and amount.
 - **Trial:** one attempt at a task; run each task a few times.
 - **Grader:** how you decide whether a trial passed.
-  - **Code-based** — exact matching, running tests, checking the outcome. Fast, cheap and objective; prefer it when you can.
+  - **Code-based** — exact matching, running tests, checking the outcome. Fast, cheap and consistent; prefer it when you can.
   - **Model-based** — an AI grades against a written rubric, for things hard to match exactly (tone, summaries).
   - **Human** — someone who knows the work grades it or spot-checks a sample. Slowest, but the final yardstick.
 
@@ -149,7 +149,7 @@ Run each way **twice** (A1, A2, B1, B2), then grade all four with `grade.py`. Fi
 <summary>Show answers</summary>
 
 1. **A** — one run does not tell you the success rate; several runs do.
-2. **B** — when there is an exact answer, code grades fast, cheaply and without bias.
+2. **B** — when there is an exact answer, code grades fast, cheaply and the same way every time (as long as the answers are right).
 3. **C** — a task nobody passes is usually a sign the task or the grader has a problem.
 
 </details>

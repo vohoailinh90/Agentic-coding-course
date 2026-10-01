@@ -6,8 +6,8 @@ khi nó chạy; 2. Bốn câu hỏi — Và đúng một điều
 làm khác lần sau; 3. Gói bằng chứng — Yêu cầu, trước–sau,
 kiểm tra, giới hạn; 4. Mỗi dòng
 có bằng chứng — Agent viết nháp,
-bạn kiểm; 5. Phép thử người lạ — Phiên mới chỉ đọc file
-vẫn chạy lại được. Làm xong, rồi chứng minh được là đã làm đúng.</desc>
+bạn kiểm; 5. Phép thử người lạ — Phiên mới chạy lại được;
+hỏi nó đọc thêm gì. Làm xong, rồi chứng minh được là đã làm đúng.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="549" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -52,7 +52,7 @@ vẫn chạy lại được. Làm xong, rồi chứng minh được là đã là
 <circle cx="427" cy="294.7" r="12" fill="#4C1D95"/>
 <text x="427" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="527" y="361.2">Phép thử người lạ</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Phiên mới chỉ đọc file</tspan><tspan x="527" y="405.9">vẫn chạy lại được</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Phiên mới chạy lại được;</tspan><tspan x="527" y="405.9">hỏi nó đọc thêm gì</tspan></text>
 <rect x="28" y="473.2" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="504.2">💡 Làm xong, rồi chứng minh được là đã làm đúng.</tspan></text>
 </svg>

@@ -70,7 +70,7 @@ An agent can read the [Git](git-version-control.md) history, the files and the c
 
 ### The stranger test
 
-An evidence pack is good when someone who **was not there** can still rerun and check the project. The cheapest way to test it: open **a new agent session**, let it read only the evidence file, and ask it to follow it. Wherever it has to guess, the file is missing something.
+An evidence pack is good when someone who **was not there** can still rerun and check the project. The cheapest way to test it: open **a new agent session**, let it read only the evidence file, and ask it to follow it. Wherever it has to guess, the file is missing something. One catch: many tools load an instruction file (such as `CLAUDE.md`) into every new session. Ask the session what it used from such a file; whatever the project needs from it belongs in the evidence file too.
 
 <!-- section: try-it -->
 ## Try It Yourself
@@ -97,7 +97,7 @@ Read only EVIDENCE.md. Follow it to rerun the program and the check.
 List every place where you had to guess because the file was not clear.
 ```
 
-Fix the file wherever it had to guess. Commit.
+Also ask: *"Did you use anything from a file loaded automatically at the start, such as an instruction file?"* Fix the evidence file wherever it had to guess or lean on such a file. Commit.
 
 **Evidence:**
 
@@ -124,7 +124,7 @@ Fix the file wherever it had to guess. Commit.
 - Look back with four questions, and choose exactly one thing to change next time.
 - Evidence pack: the spec, before and after, the checks, the limits, one improvement.
 - The agent drafts; you can point to the evidence for every line.
-- The stranger test: a new session reading only the file can still rerun it.
+- The stranger test: a new session starting from the file can still rerun it — and you check what else it read.
 
 <!-- section: quiz -->
 ## Quick Check
@@ -152,6 +152,6 @@ Fix the file wherever it had to guess. Commit.
 
 1. **B** — other people need to know when not to use it; without it, the most important part is missing.
 2. **A** — only write what you can point to evidence for; an unmeasured number is not evidence.
-3. **B** — a new session does not remember the conversations you had while building; it starts from the file (plus any instruction file its tool loads). Wherever it has to guess, the file is missing something.
+3. **B** — a new session does not remember the conversations you had while building; it starts from the file (plus any instruction file its tool loads — so check what it took from that too). Wherever it has to guess, the file is missing something.
 
 </details>

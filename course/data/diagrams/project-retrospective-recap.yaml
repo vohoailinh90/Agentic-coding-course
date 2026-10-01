@@ -23,7 +23,7 @@ points:
   - icon: "🧳"
     color: violet
     name: {vi: Phép thử người lạ, en: The stranger test, ja: 知らない人テスト}
-    caption: {vi: "Phiên mới chỉ đọc file\nvẫn chạy lại được", en: "A new session with only\nthe file can rerun it", ja: "ファイルだけ読む新しい\nセッションで再実行"}
+    caption: {vi: "Phiên mới chạy lại được;\nhỏi nó đọc thêm gì", en: "A new session reruns it;\nask what else it read", ja: "新しいセッションで再実行。\nほかに何を読んだか聞く"}
 takeaway:
   vi: Làm xong, rồi chứng minh được là đã làm đúng.
   en: Finish it, then show it was done right.

@@ -46,7 +46,7 @@ Một [test](tests-and-ci-for-agents.md) kiểm tra **code**: cùng đầu vào,
 - **Nhiệm vụ (task):** một bài thử với đầu vào và tiêu chí thành công rõ ràng — ví dụ đọc một hóa đơn, trả về ngày và số tiền.
 - **Lần chạy (trial):** một lần thử nhiệm vụ; mỗi nhiệm vụ nên chạy vài lần.
 - **Bộ chấm (grader):** cách quyết định một lần chạy đạt hay không.
-  - **Bằng code** — so khớp chính xác, chạy test, kiểm tra kết quả cuối. Nhanh, rẻ, khách quan; ưu tiên khi được.
+  - **Bằng code** — so khớp chính xác, chạy test, kiểm tra kết quả cuối. Nhanh, rẻ, lần nào cũng chấm như nhau; ưu tiên khi được.
   - **Bằng mô hình** — một AI chấm theo tiêu chí viết sẵn, cho việc khó so khớp chính xác (giọng văn, tóm tắt).
   - **Bằng người** — người hiểu việc chấm, hoặc kiểm tra ngẫu nhiên vài bài. Chậm nhất, nhưng là thước đo cuối cùng.
 
@@ -148,7 +148,7 @@ Chạy mỗi cách **hai lần** (A1, A2, B1, B2), rồi chấm cả bốn bằn
 <summary>Xem đáp án</summary>
 
 1. **A** — một lần chạy không cho biết tỉ lệ đúng; nhiều lần mới cho.
-2. **B** — có đáp án chính xác thì code chấm nhanh, rẻ và không thiên vị.
+2. **B** — có đáp án chính xác thì code chấm nhanh, rẻ và lần nào cũng như nhau (miễn là đáp án đúng).
 3. **C** — không ai đạt thường là dấu hiệu nhiệm vụ hay bộ chấm có vấn đề.
 
 </details>

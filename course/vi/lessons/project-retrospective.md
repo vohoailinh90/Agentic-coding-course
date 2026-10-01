@@ -70,7 +70,7 @@ Agent có thể đọc lịch sử [Git](git-version-control.md), các file và 
 
 ### Phép thử người lạ
 
-Gói bằng chứng tốt khi một người **không có mặt** lúc làm vẫn chạy lại và kiểm tra được. Cách thử rẻ nhất: mở **một phiên agent mới**, chỉ cho nó đọc file bằng chứng, và nhờ nó làm theo. Chỗ nào nó phải đoán, chỗ đó file còn thiếu.
+Gói bằng chứng tốt khi một người **không có mặt** lúc làm vẫn chạy lại và kiểm tra được. Cách thử rẻ nhất: mở **một phiên agent mới**, chỉ cho nó đọc file bằng chứng, và nhờ nó làm theo. Chỗ nào nó phải đoán, chỗ đó file còn thiếu. Lưu ý: nhiều công cụ tự nạp một file chỉ dẫn (như `CLAUDE.md`) vào mọi phiên mới. Hãy hỏi phiên đó đã dùng gì từ file như vậy; dự án cần gì từ đó thì cũng phải ghi vào file bằng chứng.
 
 <!-- section: try-it -->
 ## Thử ngay
@@ -97,7 +97,7 @@ Chỉ đọc BANG_CHUNG.md. Làm theo nó để chạy lại chương trình và
 Liệt kê mọi chỗ bạn phải đoán vì file không nói rõ.
 ```
 
-Sửa file ở những chỗ nó phải đoán. Commit.
+Hỏi thêm: *"Bạn có dùng gì từ file được nạp tự động lúc đầu, như file chỉ dẫn, không?"* Sửa file bằng chứng ở những chỗ nó phải đoán hay phải dựa vào file như vậy. Commit.
 
 **Bằng chứng:**
 
@@ -124,7 +124,7 @@ Sửa file ở những chỗ nó phải đoán. Commit.
 - Nhìn lại bằng bốn câu hỏi, và chọn đúng một điều làm khác lần sau.
 - Gói bằng chứng: yêu cầu, trước và sau, các phép kiểm tra, giới hạn, một cải tiến.
 - Agent viết nháp; bạn chỉ ra được bằng chứng cho từng dòng.
-- Phép thử người lạ: một phiên mới chỉ đọc file vẫn chạy lại được.
+- Phép thử người lạ: một phiên mới bắt đầu từ file vẫn chạy lại được — và bạn kiểm tra nó còn đọc thêm gì.
 
 <!-- section: quiz -->
 ## Tự kiểm tra
@@ -152,6 +152,6 @@ Sửa file ở những chỗ nó phải đoán. Commit.
 
 1. **B** — người khác cần biết khi nào không nên dùng; thiếu nó là thiếu phần quan trọng nhất.
 2. **A** — chỉ ghi điều bạn chỉ ra được bằng chứng; con số chưa đo không phải bằng chứng.
-3. **B** — phiên mới không nhớ các cuộc trò chuyện lúc bạn làm dự án; nó bắt đầu từ file (cùng file chỉ dẫn mà công cụ tự nạp). Chỗ nó phải đoán là chỗ file còn thiếu.
+3. **B** — phiên mới không nhớ các cuộc trò chuyện lúc bạn làm dự án; nó bắt đầu từ file (cùng file chỉ dẫn mà công cụ tự nạp — nên kiểm tra cả những gì nó lấy từ đó). Chỗ nó phải đoán là chỗ file còn thiếu.
 
 </details>

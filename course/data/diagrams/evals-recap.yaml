@@ -15,7 +15,7 @@ points:
   - icon: "🤖"
     color: amber
     name: {vi: "Ưu tiên chấm\nbằng code", en: "Prefer code\ngraders", ja: "採点はまず\nコードで"}
-    caption: {vi: "Nhanh, rẻ,\nkhông thiên vị", en: "Fast, cheap,\nunbiased", ja: "速く・安く・\n偏りなく"}
+    caption: {vi: "Nhanh, rẻ,\nchấm như nhau", en: "Fast, cheap,\nconsistent", ja: "速く・安く・\n毎回同じ"}
   - icon: "🌱"
     color: green
     name: {vi: "Bắt đầu nhỏ,\ntừ lỗi thật", en: "Start small,\nfrom real failures", ja: "小さく、\n本物の失敗から"}

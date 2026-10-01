@@ -4,7 +4,7 @@
 over many trials; 2. Three parts — Tasks, trials,
 graders; 3. Prefer code
 graders — Fast, cheap,
-unbiased; 4. Start small,
+consistent; 4. Start small,
 from real failures — Each new failure
 becomes a task; 5. Read the transcripts — Nobody passes?
 Suspect the task first. Measure with numbers, then read to understand them.</desc>
@@ -36,7 +36,7 @@ Suspect the task first. Measure with numbers, then read to understand them.</des
 <circle cx="554" cy="104.3" r="12" fill="#78350F"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Prefer code</tspan><tspan x="654" y="195.2">graders</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">Fast, cheap,</tspan><tspan x="654" y="239.9">unbiased</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">Fast, cheap,</tspan><tspan x="654" y="239.9">consistent</tspan></text>
 <rect x="155" y="276.7" width="236" height="172.4" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
 <circle cx="273" cy="312.7" r="22" fill="#059669"/>
 <circle cx="273" cy="312.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
