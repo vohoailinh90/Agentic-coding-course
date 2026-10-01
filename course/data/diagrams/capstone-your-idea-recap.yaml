@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: dự án cuối khóa"
+  en: "Recap: The Capstone"
+  ja: まとめ：卒業プロジェクト
+points:
+  - icon: "💡"
+    color: amber
+    name: {vi: Ba bộ lọc, en: Three filters, ja: 3つのフィルター}
+    caption: {vi: "Nhỏ, kiểm tra được,\nan toàn", en: "Small, checkable,\nsafe", ja: "小さく・確かめられて・\n安全"}
+  - icon: "📄"
+    color: blue
+    name: {vi: Một trang dự án, en: A one-page plan, ja: 1枚の計画}
+    caption: {vi: "Tiêu chí xong và\nranh giới rõ", en: "Done criteria and\nclear boundaries", ja: "完了条件と\nはっきりした境界"}
+  - icon: "🧱"
+    color: green
+    name: {vi: Mốc có kiểm tra, en: Milestones with checks, ja: 確認つきの区切り}
+    caption: {vi: "Mỗi mốc\nmột commit", en: "One commit\nper milestone", ja: "区切りごとに\nコミット"}
+  - icon: "🔍"
+    color: violet
+    name: {vi: Kiểm chứng, en: Verify, ja: 検証}
+    caption: {vi: "Làm hỏng thử và\nreview trong ngữ cảnh mới", en: "Break test and\na fresh-context review", ja: "壊す試験と\n新しい文脈のレビュー"}
+  - icon: "🎤"
+    color: teal
+    name: {vi: Trình bày năm phút, en: A five-minute demo, ja: 5分の発表}
+    caption: {vi: "Bằng chứng\nvà giới hạn", en: "Evidence\nand limits", ja: "証拠と限界"}
+takeaway:
+  vi: Nhỏ, đúng, có bằng chứng — đó là một dự án xong.
+  en: Small, right and evidenced — that is a finished project.
+  ja: 小さく、正しく、証拠つき。それが完成したプロジェクト。
