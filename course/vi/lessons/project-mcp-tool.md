@@ -108,7 +108,7 @@ claude mcp add --transport stdio doanh-thu -- python server_doanh_thu.py
 
 **7. Bằng chứng và dọn dẹp (5 phút):**
 
-- *Tôi cho xem được…* công cụ `tong_doanh_thu` trả đúng cả 6 ô qua agent, và báo lỗi rõ với đầu vào sai.
+- *Tôi cho xem được…* công cụ `tong_doanh_thu` trả đúng cả 6 ô trong phép kiểm tra trực tiếp, trả đúng tổng Quan 1 tháng 9 (9.675.000) qua agent, và báo lỗi rõ với đầu vào sai.
 - *Tôi đã kiểm tra…* công cụ trực tiếp với kết quả đúng biết trước; phép kiểm tra báo KHÔNG ĐẠT khi đáp án bị làm hỏng; code không có chỗ nào ghi file.
 - *Tôi sẽ không dùng cách này khi…* nối vào dữ liệu thật của công ty (⛔ trong khóa học này), hay cho công cụ quyền sửa, xóa, gửi.
 

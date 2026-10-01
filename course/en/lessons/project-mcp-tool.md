@@ -109,7 +109,7 @@ claude mcp add --transport stdio revenue -- python revenue_server.py
 
 **7. Evidence and cleanup (5 minutes):**
 
-- *I can show…* the `total_revenue` tool returning all 6 cells correctly through the agent, and clear errors for bad input.
+- *I can show…* the `total_revenue` tool returning all 6 cells correctly in the direct check, District 1's September total (9,675,000) correctly through the agent, and clear errors for bad input.
 - *I checked…* the tool directly against right answers known in advance; the check reports FAIL when an answer is broken; the code has no place that writes a file.
 - *I would not use this when…* connecting it to real company data (⛔ in this course), or giving the tool the ability to change, delete or send.
 
