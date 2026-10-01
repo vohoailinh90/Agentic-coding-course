@@ -63,13 +63,13 @@ Climb one step at a time, and only when the step below is not enough:
 A **subagent** is a helper agent that the main agent starts; it does one part of the work in **its own context** and returns the result. The Claude Code documentation (September 2026) lists reasons to use one; the three most common are:
 
 - **A side task would flood the main context.** Searching hundreds of files, reading long logs — the subagent does it in its own context and returns only a summary.
-- **You need fresh eyes.** A review in a fresh context that sees only the result and the criteria — as you learned in [Add Structure When the Task Needs It](workflow-frameworks.md).
+- **You need fresh eyes.** A review in a fresh context that sees only the result and the criteria (if your tool would pass the conversation along, ask for a fresh one) — as you learned in [Add Structure When the Task Needs It](workflow-frameworks.md).
 - **Independent parts can run in parallel**, where no part needs another's result.
 
 ### What every added agent costs
 
 - **More cost:** each subagent sends its own requests to the model, counted against the same usage limits as the main session.
-- **It starts without your conversation:** a subagent does not see your conversation, or the files the main agent has read. It knows its brief, plus whatever its setup loads (in Claude Code, usually the project's instruction file) — brief it vaguely and it guesses.
+- **It usually starts without your conversation:** in Claude Code (as of September 2026), an ordinary subagent does not see your conversation, or the files the main agent has read. It knows its brief, plus whatever its setup loads (usually the project's instruction file). Some tools — and Claude Code's fork mode — pass the conversation along instead, so check how yours works. Either way, brief it vaguely and it guesses.
 - **More places to go wrong:** results pass through more hands; each handoff can lose or distort information. And you still have to check the final result.
 
 <!-- section: analogy -->
@@ -79,7 +79,7 @@ A big restaurant kitchen has a head chef, a prep cook, a grill cook and someone 
 
 One thing worth adding even in a small kitchen: **someone who tastes again** before the food goes out — a person who did not cook the dish tastes it more honestly.
 
-Where the comparison breaks down: a new cook in the kitchen can still hear and see everything around them. A subagent cannot — about the task, it knows only what is written in its brief.
+Where the comparison breaks down: a new cook in the kitchen can still hear and see everything around them. An ordinary subagent cannot — about the task, it knows only what is written in its brief.
 
 <!-- section: example -->
 ## Real Example
@@ -102,7 +102,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 ## Common Misconceptions
 
 - **"More agents means more intelligence."** — Every added agent costs more, and adds another handoff where information can go wrong. Add agents for a specific reason, not because it sounds modern.
-- **"A subagent knows what I told the main agent."** — It starts with a fresh context, without your conversation; about the task, it only knows what its brief says. A brief for a subagent needs to be as clear as a request for someone new.
+- **"A subagent knows what I told the main agent."** — In Claude Code, an ordinary subagent starts with a fresh context, without your conversation (other tools vary); about the task, it only knows what its brief says. A brief for a subagent needs to be as clear as a request for someone new.
 - **"With a review agent, I don't need to read it."** — A review subagent helps catch mistakes; it does not replace your responsibility for the final result.
 
 <!-- section: recap -->
@@ -116,7 +116,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 - Workflow: steps fixed in advance. Agent: the model picks the steps.
 - Start simple; only climb to a more complex step when the one below is not enough.
 - Subagents help when a side task would flood the context, when you need fresh eyes, or when independent parts can run in parallel.
-- Every added agent costs more, starts without your conversation, and adds places to go wrong.
+- Every added agent costs more, usually starts without your conversation, and adds places to go wrong.
 - More agents do not replace your check of the final result.
 
 <!-- section: quiz -->
@@ -136,7 +136,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 
 **Question 3.** Why does a subagent's brief need to be clear?
 
-- A) Because the subagent starts with a fresh context and does not see your conversation with the main agent
+- A) Because an ordinary subagent (as in Claude Code) starts with a fresh context and does not see your conversation with the main agent
 - B) Because the subagent speaks another language
 - C) Because the subagent cannot use any tools
 
@@ -145,7 +145,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 
 1. **B** — who picks the next step is the main difference; both use a model.
 2. **C** — the side task would flood the main context; a subagent does it separately and returns only a summary.
-3. **A** — it does not see your conversation; about the task, it knows only what its brief says.
+3. **A** — an ordinary subagent does not see your conversation; about the task, it knows only what its brief says.
 
 </details>
 

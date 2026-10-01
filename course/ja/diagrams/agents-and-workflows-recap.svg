@@ -6,7 +6,7 @@
 柔軟; 3. シンプルに始める — 下の段で足りない
 ときだけ上る; 4. サブエージェントは
 理由があるとき — あふれる文脈・
-新しい目・並行作業; 5. エージェントには代償 — 費用・会話なし・
+新しい目・並行作業; 5. エージェントには代償 — 費用・ふつうは会話なし・
 失敗の場所が増える. まずシンプルに。はっきりした理由があるときにエージェントを足す。</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="549" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
@@ -52,7 +52,7 @@
 <circle cx="427" cy="294.7" r="12" fill="#881337"/>
 <text x="427" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="527" y="361.2">エージェントには代償</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">費用・会話なし・</tspan><tspan x="527" y="405.9">失敗の場所が増える</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">費用・ふつうは会話なし・</tspan><tspan x="527" y="405.9">失敗の場所が増える</tspan></text>
 <rect x="28" y="473.2" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="504.2">💡 まずシンプルに。はっきりした理由があるときにエージェントを足す。</tspan></text>
 </svg>
