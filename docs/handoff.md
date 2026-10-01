@@ -7,17 +7,17 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-30
 
-- **46 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **48 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape`,
   `workflow-frameworks`, `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`, `hooks-and-permissions`,
-  `tests-and-ci-for-agents` and `memory-and-skills`, written by Claude;
+  `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows` and `mcp`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **6 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **4 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -47,8 +47,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `agents-and-workflows` | advanced-practice (advanced) | concept | 12 | subagent |
-| `mcp` | advanced-practice (advanced) | demo | 12 | mcp |
 | `evals` | advanced-practice (advanced) | hands-on | 15 | eval |
 | `project-retrospective` | office-outcome (core) | hands-on | 15 | – |
 | `project-mcp-tool` | advanced-projects (advanced) | project | 90 | mcp |
@@ -58,8 +56,8 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`agents-and-workflows`** (concept) — a ladder of complexity: one call, a workflow with fixed steps, an agent that chooses its steps, subagents; start at the lowest rung that works.
-- **`mcp`** (demo) — the Model Context Protocol as a shared plug between agents and tools or data; what an MCP server offers, and the trust questions to ask before connecting one.
+- **`evals`** (hands-on) — tests check code, evals check an AI system over many tasks and runs: tasks, trials and graders; start small from real failures; compare two prompts by numbers, not feelings.
+- **`project-retrospective`** (hands-on) — look back with four blameless questions and pack the evidence into one file (spec, before and after, checks, limits, one improvement); test it with a new session that reads only that file.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
