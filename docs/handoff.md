@@ -59,7 +59,7 @@ the source if this snapshot goes stale. Lesson ids never change.
 Starting points, not requirements; the lesson's author decides.
 
 - **`agents-and-workflows`** (concept) — a ladder of complexity: one call, a workflow with fixed steps, an agent that chooses its steps, subagents; start at the lowest rung that works.
-- **`mcp`** (concept) — the Model Context Protocol as a shared plug between agents and tools or data; what an MCP server offers, and the trust questions to ask before connecting one.
+- **`mcp`** (demo) — the Model Context Protocol as a shared plug between agents and tools or data; what an MCP server offers, and the trust questions to ask before connecting one.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
