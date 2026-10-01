@@ -65,7 +65,10 @@ whole body plus the exercise (`PROGRESS.md` then shows the new course total); an
 later lessons must match the curriculum. PR #19 added: a general claim (what CI runs, when, on
 what machine; what a subagent knows) must hold for every setup, or say whose setup it describes —
 and once a claim is corrected, sweep the summary, takeaways, quiz, both diagrams and the changelog
-for the same claim in all three languages.
+for the same claim in all three languages. PR #20 added: keep a lesson body near 1,400 Vietnamese
+words instead of raising its minutes; date every tool behaviour ("as of September 2026"); quiz
+distractors are plausible mistakes, never jokes; real company data is ⛔ with no "approved tool"
+exception; and a new technical term gets a glossary entry.
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.
