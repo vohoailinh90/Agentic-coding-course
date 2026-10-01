@@ -52,3 +52,4 @@ Each term is explained in English, with what it is called in Vietnamese and in J
 | **MCP (Model Context Protocol)** | An open standard for connecting AI applications to external tools and data sources through a common interface. | MCP (Model Context Protocol) | MCP（モデル・コンテキスト・プロトコル） |
 | **CI (continuous integration)** | A service that automatically builds and tests a project every time someone pushes a change. | CI (tích hợp liên tục) | CI（継続的インテグレーション）［けいぞくてきインテグレーション］ |
 | **Eval (evaluation)** | A repeatable set of test cases and scoring rules used to measure how well an AI system performs. | Eval (bài đánh giá) | 評価（Eval）［ひょうか］ |
+| **Prompt injection** | Text inside data an agent reads (a web page, a document, a tool's result) that is written like an instruction, to make the agent do something the user did not ask for. | Prompt injection (chèn lệnh) | プロンプトインジェクション |

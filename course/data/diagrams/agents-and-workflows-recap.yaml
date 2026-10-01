@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: agent và workflow"
+  en: "Recap: Agents and Workflows"
+  ja: まとめ：エージェントとワークフロー
+points:
+  - icon: "📋"
+    color: blue
+    name: {vi: "Workflow:\nbước định sẵn", en: "Workflow:\nfixed steps", ja: "ワークフロー：\n決まった手順"}
+    caption: {vi: "Dễ đoán,\nổn định", en: "Predictable,\nconsistent", ja: 予測しやすく安定}
+  - icon: "🤖"
+    color: green
+    name: {vi: "Agent:\ntự chọn bước", en: "Agent:\npicks its steps", ja: "エージェント：\n手順を自分で選ぶ"}
+    caption: {vi: "Linh hoạt khi\nkhó đoán trước", en: "Flexible when\nsteps are unclear", ja: "先が予測できない\nときに柔軟"}
+  - icon: "🪜"
+    color: slate
+    name: {vi: Bắt đầu đơn giản, en: Start simple, ja: シンプルに始める}
+    caption: {vi: "Chỉ leo khi\nbậc dưới không đủ", en: "Climb only when\nthe step below fails", ja: "下の段で足りない\nときだけ上る"}
+  - icon: "🧑‍🤝‍🧑"
+    color: violet
+    name: {vi: "Subagent\nkhi có lý do", en: "Subagents\nfor a reason", ja: "サブエージェントは\n理由があるとき"}
+    caption: {vi: "Ngữ cảnh ngập,\ncon mắt mới, song song", en: "Flooded context,\nfresh eyes, parallel work", ja: "あふれる文脈・\n新しい目・並行作業"}
+  - icon: "💸"
+    color: rose
+    name: {vi: Mỗi agent có giá, en: Every agent costs, ja: エージェントには代償}
+    caption: {vi: "Tốn thêm, thường không có\ntrò chuyện, thêm chỗ sai", en: "More cost, often no shared\nchat, more places to fail", ja: "費用・ふつうは会話なし・\n失敗の場所が増える"}
+takeaway:
+  vi: Đơn giản trước; thêm agent khi có lý do rõ ràng.
+  en: Simple first; add agents when there is a clear reason.
+  ja: まずシンプルに。はっきりした理由があるときにエージェントを足す。

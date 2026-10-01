@@ -52,3 +52,4 @@
 | **MCP（モデル・コンテキスト・プロトコル）** | AIアプリを外部のツールやデータソースに共通の方法で接続するための、オープンな標準規格。 | MCP (Model Context Protocol) | MCP (Model Context Protocol) |
 | **CI（継続的インテグレーション）［けいぞくてきインテグレーション］** | 変更が送られるたびに、プロジェクトのビルドとテストを自動で実行するしくみ。 | CI (tích hợp liên tục) | CI (continuous integration) |
 | **評価（Eval）［ひょうか］** | AIシステムの性能を測るための、繰り返し実行できるテストケースと採点ルールの集まり。 | Eval (bài đánh giá) | Eval (evaluation) |
+| **プロンプトインジェクション** | エージェントが読むデータ（Webページ、資料、ツールの結果など）の中に、命令のように書かれた文章。利用者が頼んでいないことをエージェントにさせようとする。 | Prompt injection (chèn lệnh) | Prompt injection |

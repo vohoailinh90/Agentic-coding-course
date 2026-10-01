@@ -52,3 +52,4 @@ Mỗi thuật ngữ được giải thích bằng tiếng Việt, kèm cách g�
 | **MCP (Model Context Protocol)** | Chuẩn mở để kết nối ứng dụng AI với công cụ và nguồn dữ liệu bên ngoài qua một giao diện chung. | MCP (Model Context Protocol) | MCP（モデル・コンテキスト・プロトコル） |
 | **CI (tích hợp liên tục)** | Dịch vụ tự động build và chạy test cho dự án mỗi khi có người đẩy (push) thay đổi lên. | CI (continuous integration) | CI（継続的インテグレーション）［けいぞくてきインテグレーション］ |
 | **Eval (bài đánh giá)** | Bộ tình huống kiểm tra và quy tắc chấm điểm có thể chạy lặp lại để đo xem hệ thống AI làm tốt đến đâu. | Eval (evaluation) | 評価（Eval）［ひょうか］ |
+| **Prompt injection (chèn lệnh)** | Đoạn chữ trong dữ liệu mà agent đọc được (trang web, tài liệu, kết quả của công cụ) nhưng viết như một mệnh lệnh, nhằm khiến agent làm điều người dùng không yêu cầu. | Prompt injection | プロンプトインジェクション |

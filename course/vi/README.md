@@ -177,8 +177,8 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 5.3.1 | [Bộ nhớ dự án và kỹ năng dùng lại](lessons/memory-and-skills.md) | 🛠️ Thực hành | 25 phút |
-| 5.3.2 | Agent và workflow: khi nào cần nhiều agent? | 📖 Khái niệm | 12 phút |
-| 5.3.3 | MCP: cổng USB-C cho AI | 🎬 Minh họa | 12 phút |
+| 5.3.2 | [Agent và workflow: khi nào cần nhiều agent?](lessons/agents-and-workflows.md) | 📖 Khái niệm | 12 phút |
+| 5.3.3 | [MCP: cổng USB-C cho AI](lessons/mcp.md) | 🎬 Minh họa | 12 phút |
 | 5.3.4 | Evals: chấm điểm chất lượng agent | 🛠️ Thực hành | 15 phút |
 
 ## 6. 💼 Làm ra thứ có ích

@@ -177,8 +177,8 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 5.3.1 | [Project Memory and Reusable Skills](lessons/memory-and-skills.md) | 🛠️ Hands-on | 25 min |
-| 5.3.2 | Agents and Workflows: When Do You Need More Than One Agent? | 📖 Concept | 12 min |
-| 5.3.3 | MCP: A USB-C Port for AI | 🎬 Demo | 12 min |
+| 5.3.2 | [Agents and Workflows: When Do You Need More Than One Agent?](lessons/agents-and-workflows.md) | 📖 Concept | 12 min |
+| 5.3.3 | [MCP: A USB-C Port for AI](lessons/mcp.md) | 🎬 Demo | 12 min |
 | 5.3.4 | Evals: Scoring an Agent's Quality | 🛠️ Hands-on | 15 min |
 
 ## 6. 💼 Build Something Useful
