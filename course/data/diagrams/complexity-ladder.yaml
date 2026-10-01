@@ -19,7 +19,7 @@ steps:
     color: blue
     name: {vi: Workflow cố định, en: A fixed workflow, ja: 決まったワークフロー}
     caption: {vi: Cùng các bước mỗi lần, en: The same steps every time, ja: 毎回同じ手順}
-    arrow: {vi: bước khó đoán, en: steps unpredictable, ja: 手順が読めない}
+    arrow: {vi: bước khó đoán, en: steps unpredictable, ja: 手順が予測できない}
   - icon: "🤖"
     color: green
     name: {vi: Một agent, en: One agent, ja: ひとつのエージェント}

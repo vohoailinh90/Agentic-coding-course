@@ -62,7 +62,7 @@ Climb one step at a time, and only when the step below is not enough:
 
 A **subagent** is a helper agent that the main agent starts; it does one part of the work in **its own context** and returns the result. The Claude Code documentation (September 2026) lists reasons to use one; the three most common are:
 
-- **A side task would flood the main context.** Searching hundreds of files, reading long logs — the subagent does it in its own context and returns only a summary.
+- **A side task would flood the main context.** Searching hundreds of files, reading long logs — the subagent does it in its own context and returns only its final answer — so ask in the brief for a short summary.
 - **You need fresh eyes.** A review in a fresh context that sees only the result and the criteria (if your tool would pass the conversation along, ask for a fresh one) — as you learned in [Add Structure When the Task Needs It](workflow-frameworks.md).
 - **Independent parts can run in parallel**, where no part needs another's result.
 
@@ -79,7 +79,7 @@ A big restaurant kitchen has a head chef, a prep cook, a grill cook and someone 
 
 One thing worth adding even in a small kitchen: **someone who tastes again** before the food goes out — a person who did not cook the dish tastes it more honestly.
 
-Where the comparison breaks down: a new cook in the kitchen can still hear and see everything around them. An ordinary subagent cannot — about the task, it knows only what is written in its brief.
+Where the comparison breaks down: a new cook in the kitchen can still hear and see everything around them. An ordinary subagent cannot — it does not hear your conversation with the main agent, so whatever it needs from that conversation must be written in its brief.
 
 <!-- section: example -->
 ## Real Example
@@ -102,7 +102,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 ## Common Misconceptions
 
 - **"More agents means more intelligence."** — Every added agent costs more, and adds another handoff where information can go wrong. Add agents for a specific reason, not because it sounds modern.
-- **"A subagent knows what I told the main agent."** — In Claude Code, an ordinary subagent starts with a fresh context, without your conversation (other tools vary); about the task, it only knows what its brief says. A brief for a subagent needs to be as clear as a request for someone new.
+- **"A subagent knows what I told the main agent."** — In Claude Code, an ordinary subagent starts with a fresh context, without your conversation (other tools vary); what you told the main agent reaches it only if the brief (or the project files it reads) says so. A brief for a subagent needs to be as clear as a request for someone new.
 - **"With a review agent, I don't need to read it."** — A review subagent helps catch mistakes; it does not replace your responsibility for the final result.
 
 <!-- section: recap -->
@@ -144,8 +144,8 @@ The result: one workflow and one review subagent — instead of five agents. It 
 <summary>Show answers</summary>
 
 1. **B** — who picks the next step is the main difference; both use a model.
-2. **C** — the side task would flood the main context; a subagent does it separately and returns only a summary.
-3. **A** — an ordinary subagent does not see your conversation; about the task, it knows only what its brief says.
+2. **C** — the side task would flood the main context; a subagent does it separately and, if the brief asks for one, returns only a short summary.
+3. **A** — an ordinary subagent does not see your conversation; what you told the main agent reaches it only through the brief (or the project files it reads).
 
 </details>
 
@@ -153,4 +153,4 @@ The result: one workflow and one review subagent — instead of five agents. It 
 ## Recommended Sources
 
 - Anthropic — [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) (English, December 2024): workflows orchestrate models and tools through predefined code paths, agents let the model direct its own process and tool use; find the simplest solution and only add complexity when needed; agentic systems trade latency and cost for better performance.
-- Anthropic — [Create custom subagents](https://code.claude.com/docs/en/sub-agents) (English, as of September 2026): a subagent works in its own context and returns only a summary; use one when a side task produces output you do not need in the main context; a subagent does not see the conversation history or the files the main agent has read; each subagent sends its own requests, counted against the same usage limits.
+- Anthropic — [Create custom subagents](https://code.claude.com/docs/en/sub-agents) (English, as of September 2026): a subagent works in its own context and returns only its final result, not its exploration; use one when a side task produces output you do not need in the main context; a subagent does not see the conversation history or the files the main agent has read; each subagent sends its own requests, counted against the same usage limits.

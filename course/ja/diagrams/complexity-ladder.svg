@@ -34,8 +34,8 @@
 <text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="381.4">決まったワークフロー</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="406.4">毎回同じ手順</tspan></text>
 <line x1="400.0" y1="429.2" x2="400.0" y2="475.2" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
-<rect x="453.8" y="440.2" width="112.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
-<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="457.7">手順が読めない</tspan></text>
+<rect x="440.2" y="440.2" width="139.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="457.7">手順が予測できない</tspan></text>
 <rect x="88" y="481.2" width="624" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
 <circle cx="400" cy="517.2" r="22" fill="#059669"/>
 <circle cx="400" cy="517.2" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

@@ -7,11 +7,11 @@ points:
   - icon: "📋"
     color: blue
     name: {vi: "Workflow:\nbước định sẵn", en: "Workflow:\nfixed steps", ja: "ワークフロー：\n決まった手順"}
-    caption: {vi: "Dễ đoán,\nổn định", en: "Predictable,\nconsistent", ja: 読みやすく安定}
+    caption: {vi: "Dễ đoán,\nổn định", en: "Predictable,\nconsistent", ja: 予測しやすく安定}
   - icon: "🤖"
     color: green
     name: {vi: "Agent:\ntự chọn bước", en: "Agent:\npicks its steps", ja: "エージェント：\n手順を自分で選ぶ"}
-    caption: {vi: "Linh hoạt khi\nkhó đoán trước", en: "Flexible when\nsteps are unclear", ja: "先が読めないときに\n柔軟"}
+    caption: {vi: "Linh hoạt khi\nkhó đoán trước", en: "Flexible when\nsteps are unclear", ja: "先が予測できない\nときに柔軟"}
   - icon: "🪜"
     color: slate
     name: {vi: Bắt đầu đơn giản, en: Start simple, ja: シンプルに始める}

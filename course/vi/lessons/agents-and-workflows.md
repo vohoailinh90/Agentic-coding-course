@@ -61,7 +61,7 @@ Leo từng bậc, và chỉ leo khi bậc dưới không đủ:
 
 Một **subagent** là agent phụ do agent chính gọi ra, làm một phần việc trong **ngữ cảnh riêng** của nó rồi trả về kết quả. Tài liệu Claude Code (9/2026) nêu các lý do dùng nó; ba lý do hay gặp nhất:
 
-- **Việc phụ sẽ làm ngập ngữ cảnh chính.** Tìm trong hàng trăm file, đọc log dài — subagent làm trong ngữ cảnh của nó và chỉ trả về bản tóm tắt.
+- **Việc phụ sẽ làm ngập ngữ cảnh chính.** Tìm trong hàng trăm file, đọc log dài — subagent làm trong ngữ cảnh của nó và chỉ trả về câu trả lời cuối — nên hãy ghi trong lời giao việc là cần một bản tóm tắt ngắn.
 - **Cần một con mắt mới.** Một lượt review trong ngữ cảnh mới, chỉ thấy kết quả và tiêu chí (nếu công cụ của bạn chuyển cả cuộc trò chuyện sang, hãy yêu cầu ngữ cảnh mới) — như bạn đã học trong [Thêm quy trình khi việc cần](workflow-frameworks.md).
 - **Những phần độc lập làm song song**, không phần nào cần kết quả của phần kia.
 
@@ -78,7 +78,7 @@ Bếp của một nhà hàng lớn có bếp trưởng, người sơ chế, ngư
 
 Một thứ đáng thuê thêm ngay cả ở bếp nhỏ: **một người nếm lại** trước khi dọn ra — người không nấu món đó nên nếm khách quan hơn.
 
-Phép so sánh sai ở chỗ: một đầu bếp mới vào bếp còn nghe thấy, nhìn thấy mọi thứ xung quanh. Subagent thông thường thì không — về việc cần làm, nó chỉ biết những gì được viết trong lời giao việc.
+Phép so sánh sai ở chỗ: một đầu bếp mới vào bếp còn nghe thấy, nhìn thấy mọi thứ xung quanh. Subagent thông thường thì không — nó không nghe cuộc trò chuyện của bạn với agent chính, nên điều gì nó cần từ cuộc trò chuyện đó phải được viết trong lời giao việc.
 
 <!-- section: example -->
 ## Ví dụ thực tế
@@ -101,7 +101,7 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 ## Hiểu lầm thường gặp
 
 - **"Càng nhiều agent càng thông minh."** — Mỗi agent thêm vào tốn thêm, và thêm một lần chuyền thông tin có thể sai. Thêm agent khi có lý do cụ thể, không phải vì nó nghe hiện đại.
-- **"Subagent biết những gì mình đã nói với agent chính."** — Với Claude Code, một subagent thông thường bắt đầu từ ngữ cảnh mới, không có cuộc trò chuyện của bạn (công cụ khác có thể khác); về việc cần làm, nó chỉ biết những gì lời giao việc nói. Lời giao việc cho subagent cần rõ như một yêu cầu cho người mới.
+- **"Subagent biết những gì mình đã nói với agent chính."** — Với Claude Code, một subagent thông thường bắt đầu từ ngữ cảnh mới, không có cuộc trò chuyện của bạn (công cụ khác có thể khác); điều bạn đã nói với agent chính chỉ tới được nó nếu lời giao việc (hay file dự án nó đọc) có ghi. Lời giao việc cho subagent cần rõ như một yêu cầu cho người mới.
 - **"Có agent review rồi thì mình không cần đọc."** — Subagent review giúp bắt lỗi; nó không thay trách nhiệm của bạn với kết quả cuối.
 
 <!-- section: recap -->
@@ -143,8 +143,8 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 <summary>Xem đáp án</summary>
 
 1. **B** — ai chọn bước tiếp theo là khác biệt chính; cả hai đều dùng mô hình.
-2. **C** — việc phụ sẽ làm ngập ngữ cảnh chính; subagent làm riêng và chỉ trả về tóm tắt.
-3. **A** — một subagent thông thường không thấy cuộc trò chuyện của bạn; về việc cần làm, nó chỉ biết những gì lời giao việc nói.
+2. **C** — việc phụ sẽ làm ngập ngữ cảnh chính; subagent làm riêng và, nếu lời giao việc yêu cầu, chỉ trả về một bản tóm tắt ngắn.
+3. **A** — một subagent thông thường không thấy cuộc trò chuyện của bạn; điều bạn đã nói với agent chính chỉ tới được nó qua lời giao việc (hay file dự án nó đọc).
 
 </details>
 
@@ -152,4 +152,4 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 ## Nguồn tham khảo
 
 - Anthropic — [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) (tiếng Anh, 12/2024): workflow là hệ thống mà mô hình và công cụ được điều phối theo các bước định sẵn, agent là hệ thống mà mô hình tự điều khiển quá trình và việc dùng công cụ; tìm cách đơn giản nhất và chỉ tăng độ phức tạp khi cần; hệ thống agent đổi thời gian và chi phí lấy kết quả tốt hơn.
-- Anthropic — [Create custom subagents](https://code.claude.com/docs/en/sub-agents) (tiếng Anh, tính đến 9/2026): subagent làm việc trong ngữ cảnh riêng và chỉ trả về tóm tắt; dùng khi việc phụ tạo nhiều đầu ra không cần giữ trong ngữ cảnh chính; subagent không thấy lịch sử trò chuyện hay file agent chính đã đọc; mỗi subagent tự gửi yêu cầu, tính vào cùng giới hạn sử dụng.
+- Anthropic — [Create custom subagents](https://code.claude.com/docs/en/sub-agents) (tiếng Anh, tính đến 9/2026): subagent làm việc trong ngữ cảnh riêng và chỉ trả về kết quả cuối, không trả về quá trình tìm kiếm; dùng khi việc phụ tạo nhiều đầu ra không cần giữ trong ngữ cảnh chính; subagent không thấy lịch sử trò chuyện hay file agent chính đã đọc; mỗi subagent tự gửi yêu cầu, tính vào cùng giới hạn sử dụng.
