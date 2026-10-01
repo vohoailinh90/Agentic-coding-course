@@ -489,7 +489,7 @@ modules:
               en: "Prompt Engineering for Agents: System Prompts and Instructions"
               ja: エージェントのためのプロンプトエンジニアリング：システムプロンプトと指示
             type: hands-on
-            minutes: 12
+            minutes: 25
             terms: [prompt]
           - id: hooks-and-permissions
             title:

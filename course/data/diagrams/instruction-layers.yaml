@@ -1,0 +1,26 @@
+# Used in: prompt-engineering-for-agents (hands-on). The three layers of instructions an agent reads.
+template: flow
+title:
+  vi: Ba lớp chỉ dẫn của agent
+  en: Three Layers of Instructions
+  ja: エージェントへの指示の3つの層
+direction: horizontal
+steps:
+  - icon: "🏭"
+    color: slate
+    name: {vi: System prompt, en: System prompt, ja: システムプロンプト}
+    caption: {vi: "Nhà làm công cụ viết;\nbạn không sửa", en: "By the tool maker;\nnot yours to edit", ja: "ツールの作り手が書く。\n変えられない"}
+    arrow: {vi: rồi, en: then, ja: 次に}
+  - icon: "📌"
+    color: blue
+    name: {vi: File chỉ dẫn, en: Instruction file, ja: 指示ファイル}
+    caption: {vi: "Bạn viết;\nđọc mỗi phiên", en: "You write it;\nread every session", ja: "あなたが書く。\n毎セッション読まれる"}
+    arrow: {vi: rồi, en: then, ja: 次に}
+  - icon: "📝"
+    color: green
+    name: {vi: Yêu cầu của việc, en: The task request, ja: 作業の依頼}
+    caption: {vi: "Bạn viết;\ncho một việc", en: "You write it;\nfor one task", ja: "あなたが書く。\n1つの作業のため"}
+takeaway:
+  vi: Hai lớp sau là của bạn — viết chúng như cho một nhân viên mới.
+  en: The last two layers are yours; write them for a new colleague.
+  ja: 後の2つはあなたのもの。新しい同僚に渡すつもりで書きます。
