@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: test và CI"
+  en: "Recap: Tests and CI"
+  ja: まとめ：テストとCI
+points:
+  - icon: "✅"
+    color: green
+    name: {vi: Test tự động, en: Automated tests, ja: 自動テスト}
+    caption: {vi: "Agent tự chạy,\nkiểm tra toàn bộ", en: "The agent runs them,\nall cases every time", ja: "エージェントが実行、\n毎回すべて確認"}
+  - icon: "🔁"
+    color: indigo
+    name: {vi: "CI: không ai\nquên được", en: "CI: nobody\ncan forget", ja: "CI：だれも\n忘れられない"}
+    caption: {vi: "Mỗi lần đẩy lên,\nmáy sạch", en: "Every push,\nclean machine", ja: "送るたびに、\nきれいな環境で"}
+  - icon: "🚦"
+    color: amber
+    name: {vi: "Đỏ: sửa.\nXanh: review", en: "Red: fix.\nGreen: review", ja: "赤：直す\n緑：レビュー"}
+    caption: {vi: "Xanh mới tới\nlượt bạn đọc", en: "Green is when\nyour reading starts", ja: "緑になってから\nあなたが読む"}
+  - icon: "🙅"
+    color: rose
+    name: {vi: "Đừng sửa test\ncho xanh", en: "Don't bend the\ntests to pass", ja: "テストを曲げて\n通さない"}
+    caption: {vi: "Sửa code,\nkhông sửa đáp án", en: "Fix the code,\nnot the answer", ja: "答えではなく\nコードを直す"}
+  - icon: "🔍"
+    color: violet
+    name: {vi: "Xanh chưa\nchắc đúng", en: "Green isn't\nalways right", ja: "緑＝正しい\nとは限らない"}
+    caption: {vi: "Đọc diff,\nnhất là file test", en: "Read the diff,\nespecially tests", ja: "差分を読む。\n特にテスト"}
+takeaway:
+  vi: Để máy kiểm tra máy — và bạn kiểm tra cả hai.
+  en: Let machines check machines — and you check both.
+  ja: 機械に機械を確かめさせ、あなたは両方を確かめる。

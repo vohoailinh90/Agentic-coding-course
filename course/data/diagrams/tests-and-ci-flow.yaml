@@ -1,0 +1,31 @@
+# Used in: tests-and-ci-for-agents (demo). Where tests and CI sit in an agent's work.
+template: flow
+title:
+  vi: Test và CI trong vòng làm việc của agent
+  en: Tests and CI in an Agent's Work
+  ja: エージェントの作業の中のテストとCI
+direction: vertical
+steps:
+  - icon: "🤖"
+    color: green
+    name: {vi: Agent sửa code, en: Agent edits code, ja: エージェントが編集}
+    caption: {vi: "và chạy test\ntrên máy", en: "and runs tests\nlocally", ja: "手元で\nテストを実行"}
+    arrow: {vi: đẩy lên, en: pushes, ja: 送る}
+  - icon: "🖥️"
+    color: indigo
+    name: {vi: CI chạy toàn bộ, en: CI runs them all, ja: CIが全部実行}
+    caption: {vi: "máy sạch,\nmỗi lần", en: "clean machine,\nevery time", ja: "きれいな環境で\n毎回"}
+    arrow: {vi: kết quả, en: result, ja: 結果}
+  - icon: "🚦"
+    color: amber
+    name: {vi: Xanh hay đỏ, en: Green or red, ja: 緑か赤か}
+    caption: {vi: "đỏ: quay lại sửa\ncode, không sửa test", en: "red: fix the code,\nnot the test", ja: "赤：テストでなく\nコードを直す"}
+    arrow: {vi: xanh, en: green, ja: 緑}
+  - icon: "🔍"
+    color: violet
+    name: {vi: Bạn review, en: You review, ja: あなたがレビュー}
+    caption: {vi: "đọc diff,\nnhất là file test", en: "read the diff,\nespecially tests", ja: "差分を読む。\n特にテスト"}
+takeaway:
+  vi: Máy kiểm tra mọi lần; bạn kiểm tra điều máy không thấy.
+  en: Machines check every time; you check what they cannot see.
+  ja: 機械は毎回確かめ、あなたは機械に見えないところを確かめる。

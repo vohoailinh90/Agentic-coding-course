@@ -505,7 +505,7 @@ modules:
               en: "Tests and CI: Let Machines Check Machines"
               ja: テストとCI：機械に機械をチェックさせる
             type: demo
-            minutes: 12
+            minutes: 15
             terms: [test, ci]
       - id: advanced-practice
         track: advanced

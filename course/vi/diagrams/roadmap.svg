@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 825" width="800" height="825" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
 <title id="title">Lộ trình học</title>
-<desc id="desc">1. Bắt đầu an toàn, làm được ngay buổi đầu (7 bài · 79 phút · ⭐ 6 bài tối thiểu). 2. Giao việc, kiểm tra và sửa cùng agent (8 bài · 141 phút · ⭐ 8 bài tối thiểu). 3. Hiểu phần mềm vừa đủ, đúng lúc cần (7 bài · 82 phút · ⭐ 2 bài tối thiểu). 4. Những hiểu biết về AI bạn thật sự cần (12 bài · 118 phút · ⭐ 2 bài tối thiểu). 5. Làm việc với agent một cách đáng tin cậy (14 bài · 192 phút). 6. Làm ra thứ có ích (4 bài · 315 phút · ⭐ 1 bài tối thiểu)</desc>
+<desc id="desc">1. Bắt đầu an toàn, làm được ngay buổi đầu (7 bài · 79 phút · ⭐ 6 bài tối thiểu). 2. Giao việc, kiểm tra và sửa cùng agent (8 bài · 141 phút · ⭐ 8 bài tối thiểu). 3. Hiểu phần mềm vừa đủ, đúng lúc cần (7 bài · 82 phút · ⭐ 2 bài tối thiểu). 4. Những hiểu biết về AI bạn thật sự cần (12 bài · 118 phút · ⭐ 2 bài tối thiểu). 5. Làm việc với agent một cách đáng tin cậy (14 bài · 195 phút). 6. Làm ra thứ có ích (4 bài · 315 phút · ⭐ 1 bài tối thiểu)</desc>
 <style>
 .flow { animation: flow 1.4s linear infinite; }
 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
@@ -13,7 +13,7 @@
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
 <circle cx="46" cy="795" r="110" fill="#2563EB" fill-opacity="0.05"/>
 <text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Lộ trình học</tspan></text>
-<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">6 chương · 17 chủ đề · 52 bài · 927 phút</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">6 chương · 17 chủ đề · 52 bài · 930 phút</tspan></text>
 <text x="80" y="138.7" font-size="28" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🚩</text>
 <text font-size="17" fill="#475569" text-anchor="start" font-weight="700"><tspan x="128" y="135.7">Bắt đầu</tspan></text>
 <line x1="80" y1="142.2" x2="80" y2="766.6" stroke="url(#road)" stroke-width="14" stroke-linecap="round"/>
@@ -52,7 +52,7 @@
 <text x="80" y="612.7" font-size="19" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text x="162" y="602.2" font-size="26" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧰</text>
 <text font-size="19" fill="#881337" text-anchor="start" font-weight="700"><tspan x="190" y="599.2">Làm việc với agent một cách đáng tin cậy</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="626.3">14 bài · 192 phút</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="start"><tspan x="190" y="626.3">14 bài · 195 phút</tspan></text>
 <rect x="128" y="665.1" width="644" height="82.9" rx="18" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="2"/>
 <rect x="128" y="665.1" width="8" height="82.9" rx="4" fill="#0D9488"/>
 <circle cx="80" cy="706.6" r="24" fill="#0D9488" stroke="#FFFFFF" stroke-width="4"/>
