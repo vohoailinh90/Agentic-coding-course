@@ -576,7 +576,7 @@ modules:
               en: Project Retrospective and Evidence Pack
               ja: プロジェクトのふりかえりと証拠のまとめ
             type: hands-on
-            minutes: 15
+            minutes: 25
       - id: advanced-projects
         track: advanced
         title:

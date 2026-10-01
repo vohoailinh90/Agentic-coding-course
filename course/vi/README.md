@@ -8,7 +8,7 @@
 
 **Dành cho ai:** Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình — muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Không cần biết lập trình trước: bạn học vừa đủ để giao việc viết code cho AI, kiểm tra và chịu trách nhiệm về kết quả. Đặc biệt phù hợp với người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
 
-**6 chương · 17 chủ đề · 52 bài · 950 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
+**6 chương · 17 chủ đề · 52 bài · 960 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
 
 ![Lộ trình học](diagrams/roadmap.svg)
 
@@ -190,7 +190,7 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
 | 6.1.1 | ⭐ [Dự án: tự động hóa việc văn phòng (bảng tính → báo cáo)](lessons/project-office-automation.md) | 🚀 Dự án | 90 phút |
-| 6.1.2 | Nhìn lại dự án và gói bằng chứng | 🛠️ Thực hành | 15 phút |
+| 6.1.2 | [Nhìn lại dự án và gói bằng chứng](lessons/project-retrospective.md) | 🛠️ Thực hành | 25 phút |
 
 ### 6.2 Dự án nâng cao · _nâng cao_
 

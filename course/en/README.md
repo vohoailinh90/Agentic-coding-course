@@ -8,7 +8,7 @@
 
 **Who it is for:** Working adults, students and engineers from outside software who know nothing about AI or programming yet, and want to use AI agents to build their own tools and automate their work. No programming needed to start: you learn enough to hand coding work to AI, check it and own the result. Especially suited to Vietnamese learners who study or work in or with Japan.
 
-**Modules: 6 · Units: 17 · Lessons: 52 · 950 min** · [Glossary in three languages](glossary.md)
+**Modules: 6 · Units: 17 · Lessons: 52 · 960 min** · [Glossary in three languages](glossary.md)
 
 ![Your Learning Journey](diagrams/roadmap.svg)
 
@@ -190,7 +190,7 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | # | Lesson | Type | Time |
 |---|---|---|---|
 | 6.1.1 | ⭐ [Project: Automate an Office Task (Spreadsheet → Report)](lessons/project-office-automation.md) | 🚀 Project | 90 min |
-| 6.1.2 | Project Retrospective and Evidence Pack | 🛠️ Hands-on | 15 min |
+| 6.1.2 | [Project Retrospective and Evidence Pack](lessons/project-retrospective.md) | 🛠️ Hands-on | 25 min |
 
 ### 6.2 Advanced Projects · _advanced_
 

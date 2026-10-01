@@ -1,0 +1,31 @@
+# Used in: project-retrospective (hands-on). The five parts of an evidence pack.
+template: summary
+title:
+  vi: Năm phần của gói bằng chứng
+  en: The Five Parts of an Evidence Pack
+  ja: 証拠のまとめの5つの部分
+points:
+  - icon: "🎯"
+    color: blue
+    name: {vi: Yêu cầu, en: The spec, ja: 依頼内容}
+    caption: {vi: "Mục tiêu và\ntiêu chí hoàn thành", en: "Goal and\ndefinition of done", ja: "目標と\n完了条件"}
+  - icon: "⏱️"
+    color: teal
+    name: {vi: Trước và sau, en: Before and after, ja: 前と後}
+    caption: {vi: "Trước làm thế nào;\ngiờ chạy lệnh nào", en: "How it was done;\nthe command now", ja: "以前のやり方と\n今のコマンド"}
+  - icon: "✅"
+    color: green
+    name: {vi: Các phép kiểm tra, en: The checks, ja: 確認}
+    caption: {vi: "Chạy gì, kết quả,\nlần làm hỏng thử", en: "What ran, the result,\nthe break test", ja: "何を実行し、結果は、\nわざと壊した結果"}
+  - icon: "🚧"
+    color: rose
+    name: {vi: Giới hạn, en: Limits, ja: 限界}
+    caption: {vi: "Khi nào\nkhông nên dùng", en: "When not\nto use it", ja: "使わないほうが\nいい場面"}
+  - icon: "🔧"
+    color: amber
+    name: {vi: Một cải tiến, en: One improvement, ja: 改善を1つ}
+    caption: {vi: "Một điều làm khác\nlần sau", en: "One thing to do\ndifferently next time", ja: "次に変える\nことを1つ"}
+takeaway:
+  vi: Viết đủ để một người không có mặt vẫn chạy lại và kiểm tra được.
+  en: Enough for someone who wasn't there to rerun it and check it.
+  ja: その場にいなかった人でも、再実行して確かめられるように。
