@@ -481,7 +481,7 @@ modules:
               en: "Context Engineering: The Right Information at the Right Time"
               ja: コンテキストエンジニアリング：必要な情報を必要なときに
             type: hands-on
-            minutes: 12
+            minutes: 20
             terms: [context-engineering, context-window]
           - id: prompt-engineering-for-agents
             title:
