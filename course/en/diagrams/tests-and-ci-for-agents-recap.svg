@@ -3,7 +3,7 @@
 <desc id="desc">1. Automated tests — The agent runs them,
 the same every time; 2. CI: nobody
 can forget — Every pull request,
-clean machine; 3. Red: fix.
+fresh copy; 3. Red: fix.
 Green: review — Green is when
 your reading starts; 4. Don&#x27;t bend the
 tests to pass — Check the requirement,
@@ -30,7 +30,7 @@ especially tests. Let machines check machines — and you check both.</desc>
 <circle cx="300" cy="104.3" r="12" fill="#312E81"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#312E81" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">CI: nobody</tspan><tspan x="400" y="195.2">can forget</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="220.1">Every pull request,</tspan><tspan x="400" y="239.9">clean machine</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="220.1">Every pull request,</tspan><tspan x="400" y="239.9">fresh copy</tspan></text>
 <rect x="536" y="86.3" width="236" height="172.4" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
 <circle cx="654" cy="122.3" r="22" fill="#D97706"/>
 <circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

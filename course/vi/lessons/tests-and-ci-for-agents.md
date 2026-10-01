@@ -49,7 +49,7 @@ Test chỉ có ích khi được chạy. Agent có thể chỉ chạy một ph�
 
 ![Test và CI trong vòng làm việc của agent](../diagrams/tests-and-ci-flow.svg)
 
-CI giống [hook](hooks-and-permissions.md) ở chỗ nó luôn chạy, không phụ thuộc vào trí nhớ của ai. Khác ở chỗ nó chạy trên kho code chung, ở một máy sạch, và kết quả ai cũng thấy. Chính khóa học này cũng vậy: mỗi thay đổi đều qua CI chạy kiểm tra nội dung và test trước khi được gộp.
+CI giống [hook](hooks-and-permissions.md) ở chỗ nó luôn chạy, không phụ thuộc vào trí nhớ của ai. Khác ở chỗ nó chạy trên một bản code mới tải từ kho code chung, trên máy chủ chứ không phải máy bạn, và kết quả ai cũng thấy. Chính khóa học này cũng vậy: mỗi thay đổi đều qua CI chạy kiểm tra nội dung và test trước khi được gộp.
 
 ### Cẩn thận: "làm cho test xanh" không phải "làm cho code đúng"
 
@@ -84,7 +84,7 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
-- **"Agent đã chạy test rồi thì không cần CI."** — Agent có thể chỉ chạy một phần, hay chạy trên máy có thứ mà kho code không có. CI chạy đúng những test đã cài (nên cài cho nó chạy toàn bộ), trên một máy sạch, mỗi lần.
+- **"Agent đã chạy test rồi thì không cần CI."** — Agent có thể chỉ chạy một phần, hay chạy trên máy có thứ mà kho code không có. CI chạy đúng những test đã cài (nên cài cho nó chạy toàn bộ), trên một bản code mới tải từ kho, mỗi lần.
 - **"CI xanh là code đúng."** — CI chỉ kiểm tra những gì test kiểm tra. Nếu đáp án trong test bị sửa sai, CI vẫn xanh. Bạn vẫn phải đọc diff, nhất là file test.
 - **"CI là việc của công ty lớn."** — Với một kho code trên GitHub, một dự án nhỏ cũng có thể có CI chạy test mỗi lần đẩy thay đổi. Agent có thể giúp bạn cài — và bạn đọc lại trước khi đồng ý.
 

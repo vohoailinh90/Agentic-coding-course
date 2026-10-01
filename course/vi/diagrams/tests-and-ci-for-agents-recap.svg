@@ -3,7 +3,7 @@
 <desc id="desc">1. Test tự động — Agent tự chạy,
 lần nào cũng như nhau; 2. CI: không ai
 quên được — Mỗi pull request,
-máy sạch; 3. Đỏ: sửa.
+code mới tải; 3. Đỏ: sửa.
 Xanh: review — Xanh mới tới
 lượt bạn đọc; 4. Đừng sửa test
 cho xanh — So với yêu cầu
@@ -30,7 +30,7 @@ nhất là file test. Để máy kiểm tra máy — và bạn kiểm tra cả h
 <circle cx="300" cy="104.3" r="12" fill="#312E81"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#312E81" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">CI: không ai</tspan><tspan x="400" y="195.2">quên được</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="220.1">Mỗi pull request,</tspan><tspan x="400" y="239.9">máy sạch</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="220.1">Mỗi pull request,</tspan><tspan x="400" y="239.9">code mới tải</tspan></text>
 <rect x="536" y="86.3" width="236" height="172.4" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
 <circle cx="654" cy="122.3" r="22" fill="#D97706"/>
 <circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

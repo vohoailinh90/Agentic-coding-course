@@ -49,7 +49,7 @@ Tests only help when they are run. An agent may run only some of them, or forget
 
 ![Tests and CI in an agent's work](../diagrams/tests-and-ci-flow.svg)
 
-CI is like a [hook](hooks-and-permissions.md) in that it always runs, regardless of anyone's memory. It differs in that it runs on the shared repository, on a clean machine, and everyone sees the result. This course works the same way: every change goes through CI, which checks the content and runs the tests before it is merged.
+CI is like a [hook](hooks-and-permissions.md) in that it always runs, regardless of anyone's memory. It differs in that it runs on a fresh copy of the code from the shared repository, on a server rather than your computer, and everyone sees the result. This course works the same way: every change goes through CI, which checks the content and runs the tests before it is merged.
 
 ### Careful: "make the tests green" is not "make the code right"
 
@@ -84,7 +84,7 @@ Without CI, the bug in step 2 would have gone straight to the club — every bil
 <!-- section: misconceptions -->
 ## Common Misconceptions
 
-- **"The agent already ran the tests, so CI isn't needed."** — The agent may have run only some of them, or on a computer with something the repository does not have. CI runs exactly the tests it is set up to run (set it up to run all of them), on a clean machine, every time.
+- **"The agent already ran the tests, so CI isn't needed."** — The agent may have run only some of them, or on a computer with something the repository does not have. CI runs exactly the tests it is set up to run (set it up to run all of them), on a fresh copy of the code from the repository, every time.
 - **"Green CI means the code is right."** — CI only checks what the tests check. If an expected answer in a test was changed wrongly, CI is still green. You still read the diff, especially the test files.
 - **"CI is for big companies."** — With a repository on GitHub, even a small project can have CI run its tests on every push. An agent can help you set it up — and you read it before you approve.
 

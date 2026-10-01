@@ -32,7 +32,7 @@
 <circle cx="106" cy="308.3" r="12" fill="#312E81"/>
 <text x="106" y="313.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#312E81" text-anchor="middle" font-weight="700"><tspan x="400" y="374.8">CI chạy test</tspan><tspan x="400" y="399.2">đã cài</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="424.1">máy sạch,</tspan><tspan x="400" y="443.9">mỗi lần</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="424.1">code mới tải,</tspan><tspan x="400" y="443.9">mỗi lần</tspan></text>
 <line x1="400.0" y1="466.7" x2="400.0" y2="512.7" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
 <rect x="475.5" y="477.8" width="69" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="495.3">kết quả</tspan></text>
