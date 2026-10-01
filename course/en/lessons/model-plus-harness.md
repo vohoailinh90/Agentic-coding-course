@@ -66,7 +66,7 @@ Switching to a stronger model is the easiest idea, but often not the right one. 
 - **It does things you did not allow** → missing guardrails.
 - **It says it is done, but it is wrong** → missing checks.
 
-You can adjust all four yourself. The later lessons in *The Minimum Useful Harness* teach them one by one, starting with [Context Engineering](context-engineering.md): context, instructions for agents, automatic guardrails, and tests that run automatically.
+You can adjust all four yourself. Tools come mostly from choosing the right agent tool, as in [Choose a Tool by Environment, Not Hype](tool-landscape.md). The other three are taught step by step in the later lessons of *The Minimum Useful Harness*, starting with [Context Engineering](context-engineering.md): context, instructions for agents, automatic guardrails, and tests that run automatically.
 
 <!-- section: analogy -->
 ## Simple Analogy

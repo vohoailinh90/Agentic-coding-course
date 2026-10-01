@@ -65,7 +65,7 @@ Tuấn dùng mô hình qua một khung chat: không có công cụ chạy code, 
 - **Làm việc bạn không cho phép** → thiếu hàng rào.
 - **Báo xong mà sai** → thiếu phép kiểm tra.
 
-Bốn thứ này bạn tự điều chỉnh được. Các bài sau trong phần *Harness tối thiểu* dạy từng thứ, bắt đầu với [Context engineering](context-engineering.md): ngữ cảnh, chỉ dẫn cho agent, hàng rào tự động, và test chạy tự động.
+Bốn thứ này bạn tự điều chỉnh được. Công cụ phần lớn đến từ việc chọn đúng công cụ agent, như trong [Chọn công cụ theo môi trường, không theo lời quảng cáo](tool-landscape.md). Ba thứ còn lại được các bài sau trong phần *Harness tối thiểu* dạy từng bước, bắt đầu với [Context engineering](context-engineering.md): ngữ cảnh, chỉ dẫn cho agent, hàng rào tự động, và test chạy tự động.
 
 <!-- section: analogy -->
 ## Ví dụ đời thường
