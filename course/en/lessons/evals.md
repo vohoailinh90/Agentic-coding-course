@@ -95,12 +95,12 @@ And `answers.jsonl` — the right answers, written before any run:
 
 Run each way **twice** (A1, A2, B1, B2), then grade all four with `grade.py`. Fill in a table: A scored how many out of 10, B how many out of 10.
 
-**4. Read a failure (2 minutes).** Reopen the session of one wrong invoice and read it: where did the AI misunderstand ("3.5 thousand dollars"? the deposit instead of the total?) — was the fault in the request, or in your answers?
+**4. Read a failure (2 minutes).** Reopen the session of one wrong invoice and read it: where did the AI misunderstand ("3.5 thousand dollars"? the deposit instead of the total?) — was the fault in the request, or in your answers? If every run passed, read one run on the trickiest invoice (104 or 105) instead: how did the AI decide? Then add a harder invoice to `invoices.txt` for next time.
 
 **Evidence:**
 
 - *I can show…* five tasks, the answers, the grader, and the score table for the two ways of asking.
-- *I checked…* the grader reports a mistake when I deliberately broke an answer; I read the transcript of at least one failed run.
+- *I checked…* the grader reports a mistake when I deliberately broke an answer; I read the transcript of at least one failed run (or, if all passed, one run on the trickiest invoice).
 - *I would not use this when…* I only have one or two runs to compare (too few to conclude anything), or the tasks would need real company data.
 
 <!-- section: misconceptions -->

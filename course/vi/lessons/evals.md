@@ -94,12 +94,12 @@ Và `dap_an.jsonl` — đáp án đúng, viết trước khi chạy:
 
 Chạy mỗi cách **hai lần** (A1, A2, B1, B2), rồi chấm cả bốn bằng `cham_diem.py`. Ghi vào bảng: A được bao nhiêu trên 10, B được bao nhiêu trên 10.
 
-**4. Đọc lần sai (2 phút).** Mở lại phiên của một hóa đơn bị sai và đọc: AI hiểu sai ở đâu ("3,5 triệu"? số tạm ứng thay cho tổng?) — lỗi ở yêu cầu, hay ở đáp án của bạn?
+**4. Đọc lần sai (2 phút).** Mở lại phiên của một hóa đơn bị sai và đọc: AI hiểu sai ở đâu ("3,5 triệu"? số tạm ứng thay cho tổng?) — lỗi ở yêu cầu, hay ở đáp án của bạn? Nếu mọi lần chạy đều đúng, hãy đọc một lần chạy trên hóa đơn khó nhất (104 hay 105): AI đã quyết định thế nào? Rồi thêm một hóa đơn khó hơn vào `hoa_don.txt` cho lần sau.
 
 **Bằng chứng:**
 
 - *Tôi cho xem được…* năm nhiệm vụ, đáp án, bộ chấm, và bảng điểm của hai cách viết yêu cầu.
-- *Tôi đã kiểm tra…* bộ chấm báo sai khi tôi cố ý làm hỏng một đáp án; tôi đã đọc bản ghi của ít nhất một lần sai.
+- *Tôi đã kiểm tra…* bộ chấm báo sai khi tôi cố ý làm hỏng một đáp án; tôi đã đọc bản ghi của ít nhất một lần sai (hoặc, nếu tất cả đều đúng, một lần chạy trên hóa đơn khó nhất).
 - *Tôi sẽ không dùng cách này khi…* chỉ có một hai lần chạy để so (quá ít để kết luận), hay khi nhiệm vụ cần dữ liệu thật của công ty.
 
 <!-- section: misconceptions -->
