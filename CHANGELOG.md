@@ -4,8 +4,8 @@
 
 - Two more lessons by Claude in vi, en and ja (status `review`): `agents-and-workflows` (workflows
   versus agents; climb the complexity ladder one step at a time; three reasons a subagent helps, and what
-  every added agent costs) and `mcp` (an MCP server exposes a system's tools to any MCP client; a booking
-  that changes data still asks first; only connect servers you trust). The course now has 48 of 52 lessons.
+  every added agent costs) and `mcp` (an MCP server exposes a system's tools to any MCP client; the app running
+  the agent, not MCP, decides whether a call that changes data asks first; only connect servers you trust). The course now has 48 of 52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `tests-and-ci-for-agents` (tests the
   agent runs itself, CI that runs the tests it is set up to run, at the moments it is set up for, and never changing an expected answer
   just to turn a test green) and `memory-and-skills` (what the agent remembers between sessions versus
