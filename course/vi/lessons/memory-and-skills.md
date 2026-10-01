@@ -98,6 +98,8 @@ Khi làm báo cáo tháng X:
 6. Commit với lời nhắn "Báo cáo tháng X".
 ```
 
+Dùng đúng tên file trong dự án của bạn: nếu chương trình hay phép kiểm tra của bạn tên khác (ví dụ `kiem_tra_bao_cao.py`), sửa lại bước 2 và 3 cho khớp.
+
 **3. Thử ở phiên mới (3 phút).** Mở **phiên mới** và chỉ gõ:
 
 ```text

@@ -99,6 +99,8 @@ When making the report for month X:
 6. Commit with the message "Report for month X".
 ```
 
+Use the file names your project really has: if your program or check is called something else (for example `verify_report.py`), change steps 2 and 3 to match.
+
 **3. Test it in a new session (3 minutes).** Open a **new session** and type only:
 
 ```text

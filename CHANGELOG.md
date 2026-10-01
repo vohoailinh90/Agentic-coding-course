@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Two more lessons by Claude in vi, en and ja (status `review`): `tests-and-ci-for-agents` (tests the
-  agent runs itself, CI that runs every test on every pull request, and never changing an expected answer
+  agent runs itself, CI that runs the tests it is set up to run, at the moments it is set up for, and never changing an expected answer
   just to turn a test green) and `memory-and-skills` (what the agent remembers between sessions versus
   procedures it loads when needed; a repeated procedure packaged as a skill). The course now has 46 of
   52 lessons.
