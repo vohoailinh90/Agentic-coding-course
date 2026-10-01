@@ -7,8 +7,8 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-10-01
 
-- **52 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
-  (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
+- **Everything is written and waiting for the owner's review:** 52 of 52 lessons in Vietnamese,
+  English and Japanese, all with status `review`: the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape`,
@@ -35,7 +35,8 @@ lessons and Codex reviews them**:
    [claude-to-codex.md](claude-to-codex.md)); Codex posts its findings there.
 3. Claude checks each finding against the repository, fixes the confirmed ones and pushes (at most
    two review rounds). The owner merges once CI is green: `main` has no branch protection, so Claude
-   does not merge.
+   does not merge. PR #21 was the exception: the owner asked Claude to repeat the review until Codex
+   had no findings, and to merge once CI was green.
 
 Codex wrote four batches before this (issues 2, 3, 4 and 6); what the trial taught is kept in the
 rules below — the task id at the start of an issue title, and the standard section headings.
@@ -65,7 +66,12 @@ and once a claim is corrected, sweep the summary, takeaways, quiz, both diagrams
 for the same claim in all three languages. PR #20 added: keep a lesson body near 1,400 Vietnamese
 words instead of raising its minutes; date every tool behaviour ("as of September 2026"); quiz
 distractors are plausible mistakes, never jokes; real company data is ⛔ with no "approved tool"
-exception; and a new technical term gets a glossary entry.
+exception; and a new technical term gets a glossary entry. PR #21 added: every exercise step must run
+exactly as written — a command carries its arguments (`git restore` needs a path), a file or commit a
+step relies on must exist (a new empty repository has no commit until something is committed), a break
+test must change what the checker really reads, and a score says what an extra or duplicate row does;
+an evidence line claims only what the steps make the learner do; and practice data is made-up data
+only, never "your own data".
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.

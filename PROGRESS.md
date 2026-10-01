@@ -2,12 +2,13 @@
 
 > Đọc file này đầu tiên khi bắt đầu một phiên làm việc mới (người hay AI đều vậy).
 
-## Trạng thái hiện tại (cập nhật: 2026-09-30)
+## Trạng thái hiện tại (cập nhật: 2026-10-01)
 
-- **Đang làm:** Giai đoạn 1 — lộ trình v1 đã chốt sau 2 vòng brainstorm với Codex
-  ([brainstorm/round-2.md](brainstorm/round-2.md), [ADR 007](docs/decisions/007-roadmap-v1.md)); viết cả
-  khóa học bằng 3 thứ tiếng, theo thứ tự lộ trình tối thiểu rồi đến phần còn lại (Linh quyết định
-  2026-09-27: không cần người bản ngữ duyệt bản tiếng Nhật).
+- **Trạng thái: đã viết xong toàn bộ khóa học — 52/52 bài × 3 thứ tiếng (vi · en · ja), 960 phút, đều ở
+  trạng thái `review` — chờ owner (Linh) duyệt.** Giai đoạn 1 (viết nội dung) đã kết thúc. Lộ trình v1
+  chốt sau 2 vòng brainstorm với Codex ([brainstorm/round-2.md](brainstorm/round-2.md),
+  [ADR 007](docs/decisions/007-roadmap-v1.md)); Linh quyết định 2026-09-27: viết cả khóa học ngay, không
+  cần người bản ngữ duyệt bản tiếng Nhật.
 - **Đã xong:**
   - Repo tạo từ `claude-agent-routing-template` (harness Claude Code, giao thức Codex).
   - **Mỗi ngôn ngữ một thư mục** (`course/vi`, `course/en`, `course/ja`): mọi trang chỉ dùng một
@@ -32,7 +33,7 @@
     `workflow-frameworks` (PR #16), `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`, `hooks-and-permissions`, `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows`, `mcp`, `evals`, `project-retrospective`, `project-mcp-tool`, `capstone-your-idea`; Codex viết `security-basics`, `prompting-basics` (PR #5),
     `next-token-prediction`, `tool-calling` (PR #8), `what-is-software`, `project-anatomy` (PR #9) —
     **52/52 bài**. Từ PR #10, mỗi đợt Claude viết đều
-    qua Codex review (tối đa 2 vòng) trước khi Linh merge.
+    qua Codex review trước khi merge (thường tối đa 2 vòng; PR #21 lặp tới khi Codex không còn finding).
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
@@ -42,7 +43,7 @@
     ([ADR 009](docs/decisions/009-offline-html-export.md)).
 - **Chưa xong / đang vướng:**
   - Linh duyệt 52 bài ở trạng thái `review` (giọng văn, độ dài, ví dụ, infographic) → `done`.
-  - 0 bài còn lại (bảng trong [docs/handoff.md](docs/handoff.md)). Khi thử thật
+  - Không còn bài nào chưa viết (bảng trong [docs/handoff.md](docs/handoff.md) đã trống). Khi thử thật
     công cụ cho buổi thực hành đầu tiên (trình duyệt, máy cá nhân, máy công ty), cập nhật
     `choose-your-learning-setup` và `first-agent-session` theo kết quả.
   - Môi trường làm việc của Claude chặn nhiều trang tài liệu (Wikipedia, Microsoft, Apple, MDN,
@@ -55,12 +56,14 @@
 
 ## Bước tiếp theo
 
-1. Linh đọc duyệt lộ trình tối thiểu (bản HTML: `python -m src.main export`), thử 6 bài đầu với vài
-   người học thật, rồi đổi các bài đạt sang `done`.
+1. Linh đọc duyệt **cả 52 bài**, bắt đầu từ lộ trình tối thiểu 19 bài (bản HTML: `python -m src.main
+   export` → `outputs/html/`, không nằm trong Git), thử 6 bài đầu với vài người học thật, rồi đổi các bài
+   đạt sang `done`.
 2. **Cách làm (Linh quyết định 27/9/2026, [ADR 010](docs/decisions/010-claude-writes-codex-reviews.md)):
    Claude viết bài, Codex review.** Mỗi đợt khoảng 2 bài × 3 thứ tiếng nằm trên một nhánh `claude/…`
    và một PR; Claude gọi Codex review ngay trên PR (không cần bấm Create PR), sửa các lỗi đã kiểm
-   chứng; **Linh bấm Merge** khi CI xanh. Bản bàn giao: [docs/handoff.md](docs/handoff.md). Sau mỗi
-   đợt, xuất lại HTML.
+   chứng; **Linh bấm Merge** khi CI xanh (riêng PR #21, Linh yêu cầu Claude tự merge khi CI xanh và Codex
+   hết finding). Phần viết đã xong; mục này còn dùng khi sửa bài sau lượt duyệt. Bản bàn giao:
+   [docs/handoff.md](docs/handoff.md). Sau mỗi đợt, xuất lại HTML.
 3. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`, ảnh đăng kèm là
    hình tóm tắt của bài.
