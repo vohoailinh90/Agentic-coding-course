@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 551" width="800" height="551" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
 <title id="title">Recap: MCP</title>
 <desc id="desc">1. One common port — An open standard,
-like USB-C; 2. Server and client — The server exposes tools, data;
-the agent&#x27;s client connects; 3. Still just
+like USB-C; 2. Server and client — Server offers tools, data,
+prompts; client connects; 3. Still just
 tool calling — The model asks;
 the app&#x27;s settings decide; 4. Connecting
 grants access — Whose? What can it do?
@@ -28,7 +28,7 @@ in the real system. MCP opens doors; you decide which ones.</desc>
 <circle cx="300" cy="104.3" r="12" fill="#1E3A8A"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">Server and client</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">The server exposes tools,</tspan><tspan x="400" y="215.5">data;</tspan><tspan x="400" y="235.3">the agent&#x27;s client connects</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">Server offers tools, data,</tspan><tspan x="400" y="215.5">prompts; client connects</tspan></text>
 <rect x="536" y="86.3" width="236" height="172.4" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
 <circle cx="654" cy="122.3" r="22" fill="#059669"/>
 <circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

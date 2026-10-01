@@ -536,7 +536,7 @@ modules:
               ja: MCP：AIのためのUSB-Cポート
             type: demo
             minutes: 12
-            terms: [mcp]
+            terms: [mcp, prompt-injection]
           - id: evals
             title:
               vi: "Evals: chấm điểm chất lượng agent"

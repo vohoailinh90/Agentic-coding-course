@@ -4,7 +4,7 @@ lang: vi
 status: review
 summary: >-
   MCP (Model Context Protocol) là một chuẩn mở để nối ứng dụng AI với công cụ và dữ liệu bên ngoài qua một cổng chung —
-  như cổng USB-C nối được nhiều thiết bị. Một MCP server mở ra công cụ (và dữ liệu) của một hệ thống; agent gọi chúng như mọi
+  như cổng USB-C nối được nhiều thiết bị. Một MCP server mở ra công cụ, dữ liệu (resources) hay câu lệnh soạn sẵn (prompts) của một hệ thống; agent gọi công cụ của nó như mọi
   công cụ khác, và ứng dụng chạy agent (không phải MCP) quyết định có chạy hay phải hỏi bạn. Xem Hana dùng một MCP server lịch phòng
   họp (dữ liệu giả) để tìm và đặt phòng — và vì sao chỉ nối những server bạn tin.
 social:
@@ -91,7 +91,7 @@ Lịch **thật** của công ty nằm ngoài khóa học này (⛔); có nên c
 ## Ghi nhớ
 
 - MCP là chuẩn mở nối ứng dụng AI với công cụ và dữ liệu — một cổng chung, như USB-C.
-- MCP server mở ra công cụ và dữ liệu của một hệ thống; MCP client trong agent nối tới nó.
+- MCP server mở ra công cụ, dữ liệu hay câu lệnh soạn sẵn của một hệ thống; MCP client trong agent nối tới nó.
 - Mô hình chỉ yêu cầu dùng công cụ; ứng dụng chạy agent quyết định chạy hay hỏi bạn — hãy kiểm tra cài đặt duyệt của nó.
 - Nối một server là trao quyền: hỏi của ai, được làm gì, chạm tới dữ liệu nào.
 - Chỉ nối server bạn tin, và vẫn tự kiểm tra kết quả trong hệ thống thật.

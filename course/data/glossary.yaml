@@ -509,3 +509,14 @@ terms:
       term: 評価（Eval）
       reading: ひょうか
       definition: AIシステムの性能を測るための、繰り返し実行できるテストケースと採点ルールの集まり。
+
+  - id: prompt-injection
+    vi:
+      term: Prompt injection (chèn lệnh)
+      definition: Đoạn chữ trong dữ liệu mà agent đọc được (trang web, tài liệu, kết quả của công cụ) nhưng viết như một mệnh lệnh, nhằm khiến agent làm điều người dùng không yêu cầu.
+    en:
+      term: Prompt injection
+      definition: Text inside data an agent reads (a web page, a document, a tool's result) that is written like an instruction, to make the agent do something the user did not ask for.
+    ja:
+      term: プロンプトインジェクション
+      definition: エージェントが読むデータ（Webページ、資料、ツールの結果など）の中に、命令のように書かれた文章。利用者が頼んでいないことをエージェントにさせようとする。

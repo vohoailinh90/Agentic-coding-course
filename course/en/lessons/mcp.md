@@ -4,8 +4,8 @@ lang: en
 status: review
 summary: >-
   MCP (Model Context Protocol) is an open standard for connecting AI applications to outside tools and data
-  through one common port — like a USB-C port that fits many devices. An MCP server exposes a system's tools (and data);
-  the agent calls them like any other tool, and the app running the agent (not MCP itself) decides whether to
+  through one common port — like a USB-C port that fits many devices. An MCP server offers a system's tools, data (resources) or prompts;
+  the agent calls its tools like any other tool, and the app running the agent (not MCP itself) decides whether to
   run them or ask you. Watch Hana use a meeting-room calendar MCP server (made-up data) to find and book a room — and why you
   only connect servers you trust.
 social:
@@ -92,7 +92,7 @@ The company's **real** calendar stays out of this course (⛔); whether an agent
 ## Key Takeaways
 
 - MCP is an open standard connecting AI applications to tools and data — one common port, like USB-C.
-- An MCP server exposes a system's tools and data; the MCP client in the agent connects to it.
+- An MCP server offers a system's tools, data (resources) or prompts; the MCP client in the agent connects to it.
 - The model only asks to use a tool; the app running the agent runs it or asks you — check that its approval settings ask first.
 - Connecting a server grants access: ask whose it is, what it can do, which data it touches.
 - Only connect servers you trust, and still check the result in the real system.
