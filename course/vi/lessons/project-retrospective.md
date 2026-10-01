@@ -59,7 +59,7 @@ Gói bằng chứng là **một file ngắn** (ví dụ `BANG_CHUNG.md`) đặt 
 - **Yêu cầu:** mục tiêu và tiêu chí hoàn thành, như trong [Viết yêu cầu tốt](writing-good-specs.md).
 - **Trước và sau:** trước thì làm thế nào, mất bao lâu; giờ chạy bằng một lệnh nào. Con số ước lượng thì ghi rõ là ước lượng.
 - **Các phép kiểm tra:** chạy gì, kết quả ra sao, và bằng chứng phép kiểm tra thật sự bắt được lỗi (lần làm hỏng thử).
-- **Giới hạn:** khi nào **không** nên dùng — dữ liệu khác mẫu, dữ liệu thật chưa được phép, trường hợp chưa thử.
+- **Giới hạn:** khi nào **không** nên dùng — dữ liệu khác mẫu, dữ liệu thật của công ty (⛔ trong khóa học này), trường hợp chưa thử.
 - **Một cải tiến:** câu trả lời cho câu hỏi thứ tư ở trên.
 
 Đây là ba dòng bằng chứng quen thuộc (*Tôi cho xem được… / Tôi đã kiểm tra… / Tôi sẽ không dùng cách này khi…*), viết đủ để người khác tự làm lại.

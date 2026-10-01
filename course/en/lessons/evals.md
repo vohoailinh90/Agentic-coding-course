@@ -86,7 +86,7 @@ And `answers.jsonl` — the right answers, written before any run:
 {"no": 105, "date": "2026-09-30", "amount": 2000}
 ```
 
-**2. A code grader (2 minutes).** Ask the agent: *"Write grade.py: read a result file and answers.jsonl, compare each invoice by its number, and print how many of the 5 are right and which are wrong. A line that cannot be read, or a missing invoice, counts as wrong."* Try to break it: change one number in a copy of the answers and run the grader — it must report exactly that invoice as wrong.
+**2. A code grader (2 minutes).** Ask the agent: *"Write grade.py, run as `python grade.py RESULT_FILE answers.jsonl`: compare each invoice in answers.jsonl with the result file by its number, and print how many are right and which are wrong. A line that cannot be read, or a missing invoice, counts as wrong."* Test it before any AI run: copy `answers.jsonl` to `test_result.jsonl` and grade it — every invoice must be right. Then change one number in `test_result.jsonl` and grade it again — it must report exactly that invoice as wrong.
 
 **3. Compare two ways of asking (5 minutes).** Do each run in a **new session**, writing results to its own file:
 
@@ -95,7 +95,7 @@ And `answers.jsonl` — the right answers, written before any run:
 
 Run each way **twice** (A1, A2, B1, B2), then grade all four with `grade.py`. Fill in a table: A scored how many out of 10, B how many out of 10.
 
-**4. Read a failure (2 minutes).** Reopen the session of one wrong invoice and read it: where did the AI misunderstand ("3.5 thousand dollars"? the deposit instead of the total?) — was the fault in the request, or in your answers? If every run passed, read one run on the trickiest invoice (104 or 105) instead: how did the AI decide? Then add a harder invoice to `invoices.txt` for next time.
+**4. Read a failure (2 minutes).** Reopen the session of one wrong invoice and read it: where did the AI misunderstand ("3.5 thousand dollars"? the deposit instead of the total?) — was the fault in the request, or in your answers? If every run passed, read one run on the trickiest invoice (104 or 105) instead: how did the AI decide? Then, for next time, add a harder invoice to `invoices.txt` and write its right answer in `answers.jsonl` before any run.
 
 **Evidence:**
 

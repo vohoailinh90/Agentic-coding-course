@@ -59,7 +59,7 @@ An evidence pack is **one short file** (for example `EVIDENCE.md`) next to the p
 - **The spec:** the goal and the definition of done, as in [Writing Good Specs](writing-good-specs.md).
 - **Before and after:** how it was done before and how long it took; which one command runs it now. Mark estimates clearly as estimates.
 - **The checks:** what runs, what the result is, and evidence that the check really catches mistakes (the break test).
-- **The limits:** when **not** to use it — data in a different shape, real data not yet allowed, cases never tried.
+- **The limits:** when **not** to use it — data in a different shape, real company data (⛔ in this course), cases never tried.
 - **One improvement:** the answer to the fourth question above.
 
 These are the familiar three evidence lines (*I can show… / I checked… / I would not use this when…*), written out fully enough for someone else to do it again.
