@@ -7,16 +7,16 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-30
 
-- **42 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **44 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape` and
-  `workflow-frameworks`,, `model-plus-harness`, `context-engineering`, written by Claude;
+  `workflow-frameworks`,, `model-plus-harness`, `context-engineering`,, `prompt-engineering-for-agents`, `hooks-and-permissions`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **10 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **8 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -46,8 +46,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `prompt-engineering-for-agents` | minimum-harness (core) | hands-on | 12 | prompt |
-| `hooks-and-permissions` | minimum-harness (core) | hands-on | 12 | hook |
 | `tests-and-ci-for-agents` | minimum-harness (core) | demo | 12 | test, ci |
 | `memory-and-skills` | advanced-practice (advanced) | hands-on | 15 | – |
 | `agents-and-workflows` | advanced-practice (advanced) | concept | 12 | subagent |
@@ -61,8 +59,8 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`prompt-engineering-for-agents`** (hands-on) — three layers of instructions (system prompt, instruction file, task request); five ways to write instructions an agent can follow; test an instruction in a new session.
-- **`hooks-and-permissions`** (hands-on) — advice versus locks: permission rules (deny → ask → allow) and hooks are enforced by the tool; add a deny rule for a data folder and see the agent blocked.
+- **`tests-and-ci-for-agents`** (hands-on) — tests as the agent's finish line: write the test first, see it fail, let the agent make it pass, then let CI run it on every push.
+- **`memory-and-skills`** (hands-on) — what the agent remembers between sessions (instruction files, auto memory) versus procedures it loads when needed (skills); package a repeated procedure as a skill and test it in a new session.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `prompt-engineering-for-agents` (three
+  layers of instructions; five ways to write instructions an agent can follow; test an instruction in a
+  new session) and `hooks-and-permissions` (advice versus locks — permission rules and hooks are enforced
+  by the tool). `context-engineering` now takes 20 minutes. The course now has 44 of 52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `model-plus-harness` (agent = model +
   harness — tools, context and instructions, guardrails, checks; diagnose a weak agent by symptom and fix
   the harness first) and `context-engineering` (three drawers — always, when needed, never; a five-line
