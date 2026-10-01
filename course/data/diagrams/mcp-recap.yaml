@@ -15,7 +15,7 @@ points:
   - icon: "🔧"
     color: green
     name: {vi: "Vẫn là\ngọi công cụ", en: "Still just\ntool calling", ja: "中身は\nツール呼び出し"}
-    caption: {vi: "Mô hình yêu cầu;\nagent chạy hay hỏi bạn", en: "The model asks;\nthe agent runs or asks you", ja: "モデルが頼み、\n実行か確認かはエージェント"}
+    caption: {vi: "Mô hình yêu cầu;\ncài đặt của ứng dụng quyết định", en: "The model asks;\nthe app's settings decide", ja: "モデルが頼み、\nアプリの設定が決める"}
   - icon: "🔑"
     color: rose
     name: {vi: "Nối là\ntrao quyền", en: "Connecting\ngrants access", ja: "つなぐ＝\n権限を渡す"}

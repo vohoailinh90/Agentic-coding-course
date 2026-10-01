@@ -4,7 +4,7 @@
 like USB-C; 2. Server and client — The server exposes tools;
 the agent&#x27;s client connects; 3. Still just
 tool calling — The model asks;
-the agent runs or asks you; 4. Connecting
+the app&#x27;s settings decide; 4. Connecting
 grants access — Whose? What can it do?
 Which data?; 5. Check it yourself — Look at the result
 in the real system. MCP opens doors; you decide which ones.</desc>
@@ -36,7 +36,7 @@ in the real system. MCP opens doors; you decide which ones.</desc>
 <circle cx="554" cy="104.3" r="12" fill="#064E3B"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Still just</tspan><tspan x="654" y="195.2">tool calling</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">The model asks;</tspan><tspan x="654" y="239.9">the agent runs or asks you</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">The model asks;</tspan><tspan x="654" y="239.9">the app&#x27;s settings decide</tspan></text>
 <rect x="155" y="276.7" width="236" height="172.4" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
 <circle cx="273" cy="312.7" r="22" fill="#E11D48"/>
 <circle cx="273" cy="312.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

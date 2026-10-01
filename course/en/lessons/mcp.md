@@ -5,8 +5,8 @@ status: review
 summary: >-
   MCP (Model Context Protocol) is an open standard for connecting AI applications to outside tools and data
   through one common port — like a USB-C port that fits many devices. An MCP server exposes a system's tools;
-  the agent calls them like any other tool, and the agent's software still decides whether to run them or ask
-  you. Watch Hana use a meeting-room calendar MCP server (made-up data) to find and book a room — and why you
+  the agent calls them like any other tool, and the app running the agent (not MCP itself) decides whether to
+  run them or ask you. Watch Hana use a meeting-room calendar MCP server (made-up data) to find and book a room — and why you
   only connect servers you trust.
 social:
   hook: "Every AI app had its own way to connect to every tool — until a common \"USB-C port\" came along. What is MCP? 🔌"
@@ -49,7 +49,7 @@ Imagine five AI applications and ten pieces of software: to connect them all, yo
 
 ![One tool call through MCP](../diagrams/mcp-flow.svg)
 
-To the model, a tool through MCP is like any other tool: it only **asks** to use it. The agent's software decides whether to run it, or to ask you first — exactly according to the [permissions and guardrails](hooks-and-permissions.md) you set.
+To the model, a tool through MCP is like any other tool: it only **asks** to use it. MCP itself does not ask you anything: the app running the agent decides whether to run it, or to ask you first. In Claude Code, that follows the [permissions and guardrails](hooks-and-permissions.md) you set; other apps have their own approval settings, so check that yours asks before anything that changes data.
 
 ### Connecting a server grants access
 
@@ -84,7 +84,7 @@ The company's **real** calendar stays out of this course (⛔). Whether an agent
 ## Common Misconceptions
 
 - **"MCP is a new AI model."** — MCP is a connection standard, not a model. It lets AI applications that support it use tools through the same kind of port, whichever model they run.
-- **"Once an MCP server is connected, the agent does everything without asking."** — Tools through MCP still go through the agent's permissions. Anything that changes data should stay in ask-first mode.
+- **"Once an MCP server is connected, the agent does everything without asking."** — That depends on the app running the agent, not on MCP. In Claude Code, MCP tools go through the same permissions as other tools; in any app, check its approval settings and keep anything that changes data in ask-first mode.
 - **"Any server online is fine, since they all follow the standard."** — Following the standard does not make a server trustworthy. A stranger's server can read or send your data somewhere. Only connect servers you trust.
 
 <!-- section: recap -->
@@ -97,7 +97,7 @@ The company's **real** calendar stays out of this course (⛔). Whether an agent
 
 - MCP is an open standard connecting AI applications to tools and data — one common port, like USB-C.
 - An MCP server exposes a system's tools; the MCP client in the agent connects to it.
-- The model only asks to use a tool; the agent's software runs it or asks you.
+- The model only asks to use a tool; the app running the agent runs it or asks you — check that its approval settings ask first.
 - Connecting a server grants access: ask whose it is, what it can do, which data it touches.
 - Only connect servers you trust, and still check the result in the real system.
 
@@ -126,7 +126,7 @@ The company's **real** calendar stays out of this course (⛔). Whether an agent
 <summary>Show answers</summary>
 
 1. **B** — MCP is a common connection standard; it does not make models faster or translate anything.
-2. **A** — the model only asks; the software around it runs the tool or asks you, according to the permissions.
+2. **A** — the model only asks, and MCP itself does not ask you; the software around the model runs the tool or asks you, according to the permissions you set in it.
 3. **C** — following the standard does not make it trustworthy; and work email is ⛔ data.
 
 </details>

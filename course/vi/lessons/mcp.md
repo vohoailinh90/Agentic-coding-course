@@ -5,7 +5,7 @@ status: review
 summary: >-
   MCP (Model Context Protocol) là một chuẩn mở để nối ứng dụng AI với công cụ và dữ liệu bên ngoài qua một cổng chung —
   như cổng USB-C nối được nhiều thiết bị. Một MCP server mở ra các công cụ của một hệ thống; agent gọi chúng như mọi
-  công cụ khác, và phần mềm của agent vẫn quyết định có chạy hay phải hỏi bạn. Xem Hana dùng một MCP server lịch phòng
+  công cụ khác, và ứng dụng chạy agent (không phải MCP) quyết định có chạy hay phải hỏi bạn. Xem Hana dùng một MCP server lịch phòng
   họp (dữ liệu giả) để tìm và đặt phòng — và vì sao chỉ nối những server bạn tin.
 social:
   hook: "Mỗi ứng dụng AI một kiểu kết nối riêng với mỗi công cụ — cho tới khi có một \"cổng USB-C\" chung. MCP là gì? 🔌"
@@ -48,7 +48,7 @@ Hãy hình dung năm ứng dụng AI và mười phần mềm: muốn nối tấ
 
 ![Một lần gọi công cụ qua MCP](../diagrams/mcp-flow.svg)
 
-Với mô hình, công cụ qua MCP cũng như mọi công cụ khác: nó chỉ **yêu cầu** dùng công cụ. Phần mềm của agent quyết định có chạy không, hay phải hỏi bạn trước — đúng như [quyền hạn và hàng rào](hooks-and-permissions.md) bạn đã đặt.
+Với mô hình, công cụ qua MCP cũng như mọi công cụ khác: nó chỉ **yêu cầu** dùng công cụ. Bản thân MCP không hỏi bạn gì cả: ứng dụng chạy agent quyết định có chạy không, hay phải hỏi bạn trước. Với Claude Code, việc đó theo [quyền hạn và hàng rào](hooks-and-permissions.md) bạn đã đặt; ứng dụng khác có cài đặt duyệt riêng, nên hãy kiểm tra để nó hỏi trước mọi việc thay đổi dữ liệu.
 
 ### Nối một server là trao quyền
 
@@ -83,7 +83,7 @@ Lịch **thật** của công ty thì nằm ngoài khóa học này (⛔). Có n
 ## Hiểu lầm thường gặp
 
 - **"MCP là một mô hình AI mới."** — MCP là một chuẩn kết nối, không phải mô hình. Nó giúp các ứng dụng AI có hỗ trợ MCP dùng công cụ qua cùng một kiểu cổng, dù chạy mô hình nào.
-- **"Nối MCP server rồi thì agent tự làm mọi thứ, không cần hỏi."** — Công cụ qua MCP vẫn đi qua quyền hạn của agent. Việc thay đổi dữ liệu nên luôn ở chế độ hỏi trước.
+- **"Nối MCP server rồi thì agent tự làm mọi thứ, không cần hỏi."** — Điều đó tùy ứng dụng chạy agent, không tùy MCP. Với Claude Code, công cụ qua MCP đi qua cùng quyền hạn như công cụ khác; với ứng dụng nào cũng vậy, hãy kiểm tra cài đặt duyệt và giữ việc thay đổi dữ liệu ở chế độ hỏi trước.
 - **"Server nào trên mạng cũng dùng được, vì đều theo chuẩn."** — Theo chuẩn không có nghĩa là đáng tin. Một server lạ có thể đọc hay gửi dữ liệu của bạn đi. Chỉ nối server bạn tin.
 
 <!-- section: recap -->
@@ -96,7 +96,7 @@ Lịch **thật** của công ty thì nằm ngoài khóa học này (⛔). Có n
 
 - MCP là chuẩn mở nối ứng dụng AI với công cụ và dữ liệu — một cổng chung, như USB-C.
 - MCP server mở ra công cụ của một hệ thống; MCP client trong agent nối tới nó.
-- Mô hình chỉ yêu cầu dùng công cụ; phần mềm của agent quyết định chạy hay hỏi bạn.
+- Mô hình chỉ yêu cầu dùng công cụ; ứng dụng chạy agent quyết định chạy hay hỏi bạn — hãy kiểm tra cài đặt duyệt của nó.
 - Nối một server là trao quyền: hỏi của ai, được làm gì, chạm tới dữ liệu nào.
 - Chỉ nối server bạn tin, và vẫn tự kiểm tra kết quả trong hệ thống thật.
 
@@ -125,7 +125,7 @@ Lịch **thật** của công ty thì nằm ngoài khóa học này (⛔). Có n
 <summary>Xem đáp án</summary>
 
 1. **B** — MCP là chuẩn kết nối chung, không làm mô hình nhanh hơn hay dịch gì cả.
-2. **A** — mô hình chỉ yêu cầu; phần mềm bao quanh nó chạy công cụ hay hỏi bạn, theo quyền hạn.
+2. **A** — mô hình chỉ yêu cầu, và bản thân MCP không hỏi bạn; phần mềm bao quanh mô hình chạy công cụ hay hỏi bạn, theo quyền hạn bạn đặt trong nó.
 3. **C** — theo chuẩn không có nghĩa là đáng tin; email công ty còn là dữ liệu ⛔.
 
 </details>
