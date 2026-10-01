@@ -299,3 +299,20 @@ applies it.
 ## Delegating to Codex Cloud
 
 `docs/claude-to-codex.md` is the only approved protocol for delegating work to Codex Cloud (the `@codex` GitHub mention). Claude must read that file in full before posting any GitHub comment that mentions `@codex`, and must follow it exactly — task contract, comment tracking marker, GitHub location rules, duplicate-call and loop prevention, and response-validation steps included. Do not invent a different Codex invocation path (API, GitHub Action, CLI, SDK, or browser automation) — the file explicitly forbids all of those.
+
+## Repository layout
+
+The repository root holds only what a user needs to run the app: README and
+the agent instruction files, dependency files, and at most three entry-point
+launchers. Tests go in `tests/`, the app's modules in its package, developer
+tooling in `scripts/`. When a change adds a Python file, test or module, or
+restructures the repository, follow `.claude/skills/repo-layout/SKILL.md`.
+
+- `python3 scripts/layout_check.py` is the verdict: a test file or test
+  directory in the root, a root `.py` that has no
+  `if __name__ == "__main__":` guard and is not a Streamlit app (a library
+  module), or more than three root entry points fails it. Run it before
+  reporting done; reviewers run the script rather than judging the tree by eye.
+- Moving existing files is a restructure, not a typo fix: `git mv` to keep
+  history, fix every import and path, and prove the test suite still collects
+  the same number of tests from its new place.
