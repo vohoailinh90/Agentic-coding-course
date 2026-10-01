@@ -53,7 +53,7 @@ Lời khuyên của Anthropic: tìm **cách đơn giản nhất** làm được 
 Leo từng bậc, chỉ khi bậc dưới không đủ:
 
 1. **Một yêu cầu** cho chatbot — hỏi một lần, trả lời một lần, không công cụ, không vòng lặp.
-2. **Một workflow cố định** — việc lặp lại với cùng các bước.
+2. **Một workflow cố định** — các bước biết trước (nếu lặp lại, đóng gói thành kỹ năng).
 3. **Một agent** — các bước tùy vào điều nó phát hiện dọc đường.
 4. **Agent + subagent** — chỉ khi có lý do cụ thể, như ba lý do dưới đây.
 

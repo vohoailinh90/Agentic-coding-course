@@ -11,7 +11,7 @@ points:
   - icon: "🧩"
     color: blue
     name: {vi: "Server và client", en: "Server and client", ja: サーバーとクライアント}
-    caption: {vi: "Server mở công cụ;\nclient trong agent nối tới", en: "The server exposes tools;\nthe agent's client connects", ja: "サーバーがツールを公開し、\nクライアントがつなぐ"}
+    caption: {vi: "Server mở công cụ, dữ liệu;\nclient trong agent nối tới", en: "The server exposes tools, data;\nthe agent's client connects", ja: "サーバーがツールやデータを\n公開し、クライアントがつなぐ"}
   - icon: "🔧"
     color: green
     name: {vi: "Vẫn là\ngọi công cụ", en: "Still just\ntool calling", ja: "中身は\nツール呼び出し"}

@@ -4,7 +4,7 @@ lang: en
 status: review
 summary: >-
   MCP (Model Context Protocol) is an open standard for connecting AI applications to outside tools and data
-  through one common port — like a USB-C port that fits many devices. An MCP server exposes a system's tools;
+  through one common port — like a USB-C port that fits many devices. An MCP server exposes a system's tools (and data);
   the agent calls them like any other tool, and the app running the agent (not MCP itself) decides whether to
   run them or ask you. Watch Hana use a meeting-room calendar MCP server (made-up data) to find and book a room — and why you
   only connect servers you trust.
@@ -44,8 +44,10 @@ Five AI applications and ten pieces of software would need fifty separate connec
 
 ### Two sides: server and client
 
-- **The MCP server** sits on the side of a system (a calendar, a database, a document store…) and **exposes its tools**: name, input, output.
-- **The MCP client** lives inside your AI application; it connects to the server, tells the model which tools exist, and passes the model's tool calls to the server.
+- **The MCP server** sits on the side of a system (a calendar, a database, a document store…) and offers what that system can share: **tools** to call, and also data to read (*resources*) or ready-made prompts.
+- **The MCP client** lives inside your AI application; it connects to the server, fetches what it offers, and passes requests to it.
+
+This lesson follows the most common case: calling a tool.
 
 ![One tool call through MCP](../diagrams/mcp-flow.svg)
 
@@ -90,7 +92,7 @@ The company's **real** calendar stays out of this course (⛔); whether an agent
 ## Key Takeaways
 
 - MCP is an open standard connecting AI applications to tools and data — one common port, like USB-C.
-- An MCP server exposes a system's tools; the MCP client in the agent connects to it.
+- An MCP server exposes a system's tools and data; the MCP client in the agent connects to it.
 - The model only asks to use a tool; the app running the agent runs it or asks you — check that its approval settings ask first.
 - Connecting a server grants access: ask whose it is, what it can do, which data it touches.
 - Only connect servers you trust, and still check the result in the real system.

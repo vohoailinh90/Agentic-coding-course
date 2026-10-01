@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 571" width="800" height="571" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
 <title id="title">Tóm tắt: MCP</title>
 <desc id="desc">1. Một cổng chung — Chuẩn mở, như USB-C;
-hết cảnh mỗi cặp một dây; 2. Server và client — Server mở công cụ;
+hết cảnh mỗi cặp một dây; 2. Server và client — Server mở công cụ, dữ liệu;
 client trong agent nối tới; 3. Vẫn là
 gọi công cụ — Mô hình yêu cầu;
 cài đặt của ứng dụng quyết định; 4. Nối là
@@ -28,7 +28,7 @@ hệ thống thật. MCP mở cửa cho agent; bạn quyết định cửa nào,
 <circle cx="300" cy="104.3" r="12" fill="#1E3A8A"/>
 <text x="300" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">Server và client</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">Server mở công cụ;</tspan><tspan x="400" y="215.5">client trong agent nối tới</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">Server mở công cụ, dữ liệu;</tspan><tspan x="400" y="215.5">client trong agent nối tới</tspan></text>
 <rect x="536" y="86.3" width="236" height="192.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
 <circle cx="654" cy="122.3" r="22" fill="#059669"/>
 <circle cx="654" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

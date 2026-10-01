@@ -54,7 +54,7 @@ Anthropic's advice: find **the simplest solution** that works, and add complexit
 Climb one step at a time, only when the step below is not enough:
 
 1. **One request** to a chatbot — one question, one answer, no tools or loop.
-2. **A fixed workflow** — a task repeated with the same steps.
+2. **A fixed workflow** — the steps are known in advance (if it repeats, package it as a skill).
 3. **One agent** — the steps depend on what it discovers along the way.
 4. **Agent + subagent** — only for a specific reason, like the three below.
 

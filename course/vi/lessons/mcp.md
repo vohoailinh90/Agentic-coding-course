@@ -4,7 +4,7 @@ lang: vi
 status: review
 summary: >-
   MCP (Model Context Protocol) là một chuẩn mở để nối ứng dụng AI với công cụ và dữ liệu bên ngoài qua một cổng chung —
-  như cổng USB-C nối được nhiều thiết bị. Một MCP server mở ra các công cụ của một hệ thống; agent gọi chúng như mọi
+  như cổng USB-C nối được nhiều thiết bị. Một MCP server mở ra công cụ (và dữ liệu) của một hệ thống; agent gọi chúng như mọi
   công cụ khác, và ứng dụng chạy agent (không phải MCP) quyết định có chạy hay phải hỏi bạn. Xem Hana dùng một MCP server lịch phòng
   họp (dữ liệu giả) để tìm và đặt phòng — và vì sao chỉ nối những server bạn tin.
 social:
@@ -43,8 +43,10 @@ Năm ứng dụng AI và mười phần mềm sẽ cần năm mươi kết nối
 
 ### Hai phía: server và client
 
-- **MCP server** đứng về phía một hệ thống (lịch, cơ sở dữ liệu, kho tài liệu…) và **mở ra các công cụ** của nó: tên, đầu vào, đầu ra.
-- **MCP client** nằm trong ứng dụng AI của bạn; nó nối tới server, cho mô hình biết có những công cụ nào, và chuyển các lần gọi công cụ tới server.
+- **MCP server** đứng về phía một hệ thống (lịch, cơ sở dữ liệu, kho tài liệu…) và mở ra những gì hệ thống đó chia sẻ được: **công cụ** để gọi, và cả dữ liệu để đọc (*resources*) hay câu lệnh soạn sẵn (*prompts*).
+- **MCP client** nằm trong ứng dụng AI của bạn; nó nối tới server, lấy những gì server mở ra, và chuyển yêu cầu tới server.
+
+Bài này đi theo trường hợp hay gặp nhất: gọi một công cụ.
 
 ![Một lần gọi công cụ qua MCP](../diagrams/mcp-flow.svg)
 
@@ -89,7 +91,7 @@ Lịch **thật** của công ty nằm ngoài khóa học này (⛔); có nên c
 ## Ghi nhớ
 
 - MCP là chuẩn mở nối ứng dụng AI với công cụ và dữ liệu — một cổng chung, như USB-C.
-- MCP server mở ra công cụ của một hệ thống; MCP client trong agent nối tới nó.
+- MCP server mở ra công cụ và dữ liệu của một hệ thống; MCP client trong agent nối tới nó.
 - Mô hình chỉ yêu cầu dùng công cụ; ứng dụng chạy agent quyết định chạy hay hỏi bạn — hãy kiểm tra cài đặt duyệt của nó.
 - Nối một server là trao quyền: hỏi của ai, được làm gì, chạm tới dữ liệu nào.
 - Chỉ nối server bạn tin, và vẫn tự kiểm tra kết quả trong hệ thống thật.

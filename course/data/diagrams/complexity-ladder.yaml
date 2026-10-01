@@ -14,11 +14,11 @@ steps:
     color: slate
     name: {vi: "Một yêu cầu\ncho chatbot", en: "One chatbot\nrequest", ja: "チャットボットへの\nひとつの依頼"}
     caption: {vi: Đủ cho phần lớn việc nhỏ, en: Enough for most small tasks, ja: 小さな作業のほとんどはこれで足りる}
-    arrow: {vi: việc lặp lại, en: task repeats, ja: くり返す作業}
+    arrow: {vi: bước biết trước, en: steps known, ja: 手順がわかっている}
   - icon: "📋"
     color: blue
     name: {vi: Workflow cố định, en: A fixed workflow, ja: 決まったワークフロー}
-    caption: {vi: Cùng các bước mỗi lần, en: The same steps every time, ja: 毎回同じ手順}
+    caption: {vi: Các bước định sẵn, en: Steps set in advance, ja: 前もって決めた手順}
     arrow: {vi: bước khó đoán, en: steps unpredictable, ja: 手順が予測できない}
   - icon: "🤖"
     color: green

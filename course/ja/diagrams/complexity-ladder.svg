@@ -24,8 +24,8 @@
 <text font-size="18.5" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="197.2">チャットボットへの</tspan><tspan x="400" y="221.6">ひとつの依頼</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="246.6">小さな作業のほとんどはこれで足りる</tspan></text>
 <line x1="400.0" y1="269.4" x2="400.0" y2="315.4" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
-<rect x="460.5" y="280.4" width="99" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
-<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="297.9">くり返す作業</tspan></text>
+<rect x="440.2" y="280.4" width="139.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="297.9">手順がわかっている</tspan></text>
 <rect x="88" y="321.4" width="624" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
 <circle cx="400" cy="357.4" r="22" fill="#2563EB"/>
 <circle cx="400" cy="357.4" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
@@ -33,7 +33,7 @@
 <circle cx="106" cy="339.4" r="12" fill="#1E3A8A"/>
 <text x="106" y="344.4" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
 <text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="405.9">決まったワークフロー</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="430.8">毎回同じ手順</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="430.8">前もって決めた手順</tspan></text>
 <line x1="400.0" y1="453.6" x2="400.0" y2="499.6" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
 <rect x="440.2" y="464.7" width="139.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="482.2">手順が予測できない</tspan></text>
