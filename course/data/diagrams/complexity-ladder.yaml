@@ -1,0 +1,35 @@
+# Used in: agents-and-workflows (concept). Climb only when the step below is not enough.
+template: flow
+title:
+  vi: Chiếc thang độ phức tạp
+  en: The Complexity Ladder
+  ja: 複雑さのはしご
+subtitle:
+  vi: Chỉ leo khi bậc dưới không đủ
+  en: Climb only when the step below is not enough
+  ja: 下の段で足りないときだけ上る
+direction: vertical
+steps:
+  - icon: "💬"
+    color: slate
+    name: {vi: Một yêu cầu, en: One request, ja: ひとつの依頼}
+    caption: {vi: Đủ cho phần lớn việc nhỏ, en: Enough for most small tasks, ja: 小さな作業のほとんどはこれで足りる}
+    arrow: {vi: việc lặp lại, en: task repeats, ja: くり返す作業}
+  - icon: "📋"
+    color: blue
+    name: {vi: Workflow cố định, en: A fixed workflow, ja: 決まったワークフロー}
+    caption: {vi: Cùng các bước mỗi lần, en: The same steps every time, ja: 毎回同じ手順}
+    arrow: {vi: bước khó đoán, en: steps unpredictable, ja: 手順が読めない}
+  - icon: "🤖"
+    color: green
+    name: {vi: Một agent, en: One agent, ja: ひとつのエージェント}
+    caption: {vi: Tự chọn bước theo điều phát hiện, en: Picks steps from what it finds, ja: 見つけたことから手順を選ぶ}
+    arrow: {vi: có lý do cụ thể, en: a specific reason, ja: はっきりした理由}
+  - icon: "🧑‍🤝‍🧑"
+    color: violet
+    name: {vi: Agent + subagent, en: Agent + subagent, ja: エージェント＋サブエージェント}
+    caption: {vi: "Ngữ cảnh ngập, con mắt mới,\nhay việc song song", en: "Flooded context, fresh eyes,\nor parallel work", ja: "コンテキストがあふれる・\n新しい目・並行作業"}
+takeaway:
+  vi: Mỗi bậc thêm tốn thêm — leo vì cần, không vì nghe hiện đại.
+  en: Every step up costs more; climb because you need to.
+  ja: 上るほど高くつく。流行りではなく、必要だから上る。

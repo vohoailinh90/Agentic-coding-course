@@ -527,7 +527,7 @@ modules:
               en: "Agents and Workflows: When Do You Need More Than One Agent?"
               ja: エージェントとワークフロー：複数のエージェントが必要なのはいつ？
             type: concept
-            minutes: 12
+            minutes: 15
             terms: [subagent]
           - id: mcp
             title:

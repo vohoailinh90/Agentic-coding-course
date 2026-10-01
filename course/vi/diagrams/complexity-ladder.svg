@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 916" width="800" height="916" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
+<title id="title">Chiếc thang độ phức tạp</title>
+<desc id="desc">Một yêu cầu → Workflow cố định → Một agent → Agent + subagent. Mỗi bậc thêm tốn thêm — leo vì cần, không vì nghe hiện đại.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="1" width="798" height="914" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="886" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Chiếc thang độ phức tạp</tspan></text>
+<text font-size="17" fill="#475569" text-anchor="middle"><tspan x="400" y="85.3">Chỉ leo khi bậc dưới không đủ</tspan></text>
+<rect x="88" y="112.7" width="624" height="128.2" rx="18" fill="#F8FAFC" stroke="#475569" stroke-width="2"/>
+<circle cx="400" cy="148.7" r="22" fill="#475569"/>
+<circle cx="400" cy="148.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="157" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">💬</text>
+<circle cx="106" cy="130.7" r="12" fill="#0F172A"/>
+<text x="106" y="135.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="197.2">Một yêu cầu</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="222.1">Đủ cho phần lớn việc nhỏ</tspan></text>
+<line x1="400.0" y1="244.9" x2="400.0" y2="290.9" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="464.8" y="256" width="90.4" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="273.5">việc lặp lại</tspan></text>
+<rect x="88" y="296.9" width="624" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="332.9" r="22" fill="#2563EB"/>
+<circle cx="400" cy="332.9" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="341.3" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📋</text>
+<circle cx="106" cy="314.9" r="12" fill="#1E3A8A"/>
+<text x="106" y="319.9" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="381.4">Workflow cố định</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="406.4">Cùng các bước mỗi lần</tspan></text>
+<line x1="400.0" y1="429.2" x2="400.0" y2="475.2" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="453.9" y="440.2" width="112.2" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="457.7">bước khó đoán</tspan></text>
+<rect x="88" y="481.2" width="624" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="400" cy="517.2" r="22" fill="#059669"/>
+<circle cx="400" cy="517.2" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="525.5" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<circle cx="106" cy="499.2" r="12" fill="#064E3B"/>
+<text x="106" y="504.2" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="565.7">Một agent</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="590.6">Tự chọn bước theo điều phát hiện</tspan></text>
+<line x1="400.0" y1="613.4" x2="400.0" y2="659.4" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="451.6" y="624.5" width="116.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="642">có lý do cụ thể</tspan></text>
+<rect x="88" y="665.4" width="624" height="148" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="400" cy="701.4" r="22" fill="#7C3AED"/>
+<circle cx="400" cy="701.4" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="709.7" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧑‍🤝‍🧑</text>
+<circle cx="106" cy="683.4" r="12" fill="#4C1D95"/>
+<text x="106" y="688.4" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="400" y="749.9">Agent + subagent</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="774.8">Ngữ cảnh ngập, con mắt mới,</tspan><tspan x="400" y="794.6">hay việc song song</tspan></text>
+<rect x="28" y="837.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="868.4">💡 Mỗi bậc thêm tốn thêm — leo vì cần, không vì nghe hiện đại.</tspan></text>
+</svg>
