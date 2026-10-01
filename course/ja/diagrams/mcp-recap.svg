@@ -2,8 +2,8 @@
 <title id="title">まとめ：MCP</title>
 <desc id="desc">1. 共通の口 — USB-Cのような標準。
 組み合わせごとの線は不要; 2. サーバーとクライアント — サーバーがツール・データ・
-プロンプトを公開; 3. 中身は
-ツール呼び出し — モデルが頼み、
+プロンプトを公開; 3. MCPのツールも
+ふつうの呼び出し — モデルが頼み、
 アプリの設定が決める; 4. つなぐ＝
 権限を渡す — だれの？何ができる？
 どのデータ？; 5. 自分で確かめる — 本物のシステムで
@@ -35,7 +35,7 @@
 <text x="654" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
 <circle cx="554" cy="104.3" r="12" fill="#064E3B"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
-<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">中身は</tspan><tspan x="654" y="195.2">ツール呼び出し</tspan></text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">MCPのツールも</tspan><tspan x="654" y="195.2">ふつうの呼び出し</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">モデルが頼み、</tspan><tspan x="654" y="239.9">アプリの設定が決める</tspan></text>
 <rect x="155" y="276.7" width="236" height="172.4" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
 <circle cx="273" cy="312.7" r="22" fill="#E11D48"/>

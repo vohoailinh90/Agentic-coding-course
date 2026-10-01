@@ -14,7 +14,7 @@ points:
     caption: {vi: "Server mở công cụ, dữ liệu,\nprompt; client nối tới", en: "Server offers tools, data,\nprompts; client connects", ja: "サーバーがツール・データ・\nプロンプトを公開"}
   - icon: "🔧"
     color: green
-    name: {vi: "Vẫn là\ngọi công cụ", en: "Still just\ntool calling", ja: "中身は\nツール呼び出し"}
+    name: {vi: "Công cụ qua MCP:\ngọi như thường", en: "MCP tools: normal\ntool calling", ja: "MCPのツールも\nふつうの呼び出し"}
     caption: {vi: "Mô hình yêu cầu;\ncài đặt của ứng dụng quyết định", en: "The model asks;\nthe app's settings decide", ja: "モデルが頼み、\nアプリの設定が決める"}
   - icon: "🔑"
     color: rose

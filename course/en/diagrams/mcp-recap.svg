@@ -2,7 +2,7 @@
 <title id="title">Recap: MCP</title>
 <desc id="desc">1. One common port — An open standard,
 like USB-C; 2. Server and client — Server offers tools, data,
-prompts; client connects; 3. Still just
+prompts; client connects; 3. MCP tools: normal
 tool calling — The model asks;
 the app&#x27;s settings decide; 4. Connecting
 grants access — Whose? What can it do?
@@ -35,7 +35,7 @@ in the real system. MCP opens doors; you decide which ones.</desc>
 <text x="654" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
 <circle cx="554" cy="104.3" r="12" fill="#064E3B"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
-<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Still just</tspan><tspan x="654" y="195.2">tool calling</tspan></text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">MCP tools: normal</tspan><tspan x="654" y="195.2">tool calling</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">The model asks;</tspan><tspan x="654" y="239.9">the app&#x27;s settings decide</tspan></text>
 <rect x="155" y="276.7" width="236" height="172.4" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
 <circle cx="273" cy="312.7" r="22" fill="#E11D48"/>

@@ -2,8 +2,8 @@
 <title id="title">Tóm tắt: MCP</title>
 <desc id="desc">1. Một cổng chung — Chuẩn mở, như USB-C;
 hết cảnh mỗi cặp một dây; 2. Server và client — Server mở công cụ, dữ liệu,
-prompt; client nối tới; 3. Vẫn là
-gọi công cụ — Mô hình yêu cầu;
+prompt; client nối tới; 3. Công cụ qua MCP:
+gọi như thường — Mô hình yêu cầu;
 cài đặt của ứng dụng quyết định; 4. Nối là
 trao quyền — Của ai? Làm được gì?
 Chạm dữ liệu nào?; 5. Tự kiểm tra — Xem kết quả trong
@@ -35,7 +35,7 @@ hệ thống thật. MCP mở cửa cho agent; bạn quyết định cửa nào,
 <text x="654" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔧</text>
 <circle cx="554" cy="104.3" r="12" fill="#064E3B"/>
 <text x="554" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
-<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Vẫn là</tspan><tspan x="654" y="195.2">gọi công cụ</tspan></text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="654" y="170.8">Công cụ qua MCP:</tspan><tspan x="654" y="195.2">gọi như thường</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="654" y="220.1">Mô hình yêu cầu;</tspan><tspan x="654" y="239.9">cài đặt của ứng dụng quyết</tspan><tspan x="654" y="259.7">định</tspan></text>
 <rect x="155" y="296.5" width="236" height="172.4" rx="18" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
 <circle cx="273" cy="332.5" r="22" fill="#E11D48"/>
