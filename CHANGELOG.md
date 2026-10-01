@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Two more lessons by Claude in vi, en and ja (status `review`): `evals` (tests check code, evals check
+  an AI system over many tasks and runs; tasks, trials and graders; compare two ways of asking by numbers)
+  and `project-retrospective` (four blameless questions, an evidence pack, and a stranger test with a new
+  session). The course now has 50 of 52 lessons.
 - Two more lessons by Claude in vi, en and ja (status `review`): `agents-and-workflows` (workflows
   versus agents; climb the complexity ladder one step at a time; three reasons a subagent helps, and what
   every added agent costs) and `mcp` (an MCP server offers a system's tools, data or prompts to any MCP client; the app running
