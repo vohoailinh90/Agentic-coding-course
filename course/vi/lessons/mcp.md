@@ -28,7 +28,7 @@ Sau bài này, bạn sẽ:
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
 
-Mỗi thứ Hai, Hana mở ứng dụng lịch phòng họp của công ty, chép danh sách phòng trống, dán vào khung chat AI mà công ty cho phép dùng, nhờ nó chọn giờ — rồi quay lại ứng dụng lịch để tự đặt. AI giúp được, nhưng Hana vẫn là người chép qua chép lại.
+Mỗi thứ Hai, Hana mở ứng dụng lịch phòng họp của công ty, dò từng phòng xem phòng nào trống, chọn giờ, rồi tự đặt — toàn bộ bằng tay. Cô ước gì một agent làm được việc lặt vặt này.
 
 Sao agent không tự xem lịch và đặt phòng? Vì agent chỉ làm được những gì [công cụ](tool-calling.md) của nó cho phép, và ứng dụng lịch không phải một công cụ của nó. Từng có thời, muốn nối một ứng dụng AI với một phần mềm, người ta phải viết một kết nối riêng cho đúng cặp đó. MCP ra đời để thay đổi điều này.
 
@@ -56,7 +56,7 @@ Một MCP server có thể đọc dữ liệu và làm việc thật trong hệ 
 
 - **Của ai?** Nhà cung cấp chính thức của phần mềm, hay một người lạ trên mạng?
 - **Được làm gì?** Chỉ đọc, hay còn sửa, xóa, gửi?
-- **Chạm tới dữ liệu nào?** Dữ liệu công ty chỉ đi qua công cụ công ty cho phép — [việc bị cấm](data-safety-and-permissions.md) không đổi.
+- **Chạm tới dữ liệu nào?** Trong khóa học này, chỉ dữ liệu giả. Dữ liệu thật của công ty hay khách hàng vẫn nằm trong [việc bị cấm](data-safety-and-permissions.md), dù bạn nối server nào.
 
 <!-- section: example -->
 ## Ví dụ thực tế
@@ -77,7 +77,7 @@ Cô giao: *"Tìm một phòng cho 6 người, chiều thứ Năm này, trong m�
 
 **6. Hana tự kiểm tra.** Cô không chỉ tin báo cáo: cô gọi thêm `xem_lich` (hoặc mở chính ứng dụng lịch giả) và thấy phòng B đã được đặt lúc 14:00–15:00 thứ Năm.
 
-Nếu sau này làm với lịch **thật** của công ty, Hana sẽ hỏi IT trước: có MCP server chính thức, được duyệt không? Nó được làm những gì? Còn trong một dự án nâng cao sau, bạn sẽ tự làm một MCP server nhỏ như thế này.
+Lịch **thật** của công ty thì nằm ngoài khóa học này (⛔). Có nên cho agent chạm vào nó hay không là việc công ty và bộ phận IT quyết định, không phải việc Hana tự nối. Còn trong một dự án nâng cao sau, bạn sẽ tự làm một MCP server nhỏ như thế này.
 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp

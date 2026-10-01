@@ -29,7 +29,7 @@ By the end of this lesson, you will be able to:
 <!-- section: hook -->
 ## Why It Matters
 
-Every Monday, Hana opens her company's meeting-room calendar app, copies the list of free rooms, pastes it into the AI chat her company allows, asks it to pick a time — then goes back to the calendar app to book it herself. The AI helps, but Hana is still the one copying back and forth.
+Every Monday, Hana opens her company's meeting-room calendar app, checks room by room which ones are free, picks a time and books it — all by hand. She wishes an agent could do this small chore.
 
 Why can't the agent look at the calendar and book the room itself? Because an agent can only do what its [tools](tool-calling.md) allow, and the calendar app is not one of its tools. There was a time when connecting an AI application to a piece of software meant writing a custom connection for exactly that pair. MCP came along to change that.
 
@@ -57,7 +57,7 @@ An MCP server can read data and do real work in its system. Connecting it to you
 
 - **Whose is it?** The software's official provider, or a stranger online?
 - **What can it do?** Only read, or also change, delete, send?
-- **Which data does it touch?** Company data only goes through tools the company allows — the [never list](data-safety-and-permissions.md) does not change.
+- **Which data does it touch?** In this course, only made-up data. Real company or customer data stays on the [never list](data-safety-and-permissions.md), whatever server you connect.
 
 <!-- section: example -->
 ## Real Example
@@ -78,7 +78,7 @@ She asks: *"Find a room for 6 people, this Thursday afternoon, for one hour, the
 
 **6. Hana checks for herself.** She does not just trust the report: she calls `view_calendar` again (or opens the made-up calendar app itself) and sees room B booked for Thursday 14:00–15:00.
 
-If she later works with the company's **real** calendar, Hana will ask IT first: is there an official, approved MCP server? What is it allowed to do? And in an advanced project later on, you will build a small MCP server like this one yourself.
+The company's **real** calendar stays out of this course (⛔). Whether an agent should ever touch it is for the company and its IT team to decide, not something Hana connects on her own. And in an advanced project later on, you will build a small MCP server like this one yourself.
 
 <!-- section: misconceptions -->
 ## Common Misconceptions
