@@ -23,7 +23,7 @@ points:
   - icon: "💸"
     color: rose
     name: {vi: Mỗi agent có giá, en: Every agent costs, ja: エージェントには代償}
-    caption: {vi: "Tốn thêm, bắt đầu từ\ncon số không, thêm chỗ sai", en: "More cost, starts from\nzero, more places to fail", ja: "費用・ゼロから・\n失敗の場所が増える"}
+    caption: {vi: "Tốn thêm, không có cuộc\ntrò chuyện, thêm chỗ sai", en: "More cost, no shared\nchat, more places to fail", ja: "費用・会話なし・\n失敗の場所が増える"}
 takeaway:
   vi: Đơn giản trước; thêm agent khi có lý do rõ ràng.
   en: Simple first; add agents when there is a clear reason.

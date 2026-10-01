@@ -82,7 +82,7 @@ Nếu sau này làm với lịch **thật** của công ty, Hana sẽ hỏi IT t
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
-- **"MCP là một mô hình AI mới."** — MCP là một chuẩn kết nối, không phải mô hình. Nó giúp mô hình nào cũng có thể dùng công cụ qua cùng một kiểu cổng.
+- **"MCP là một mô hình AI mới."** — MCP là một chuẩn kết nối, không phải mô hình. Nó giúp các ứng dụng AI có hỗ trợ MCP dùng công cụ qua cùng một kiểu cổng, dù chạy mô hình nào.
 - **"Nối MCP server rồi thì agent tự làm mọi thứ, không cần hỏi."** — Công cụ qua MCP vẫn đi qua quyền hạn của agent. Việc thay đổi dữ liệu nên luôn ở chế độ hỏi trước.
 - **"Server nào trên mạng cũng dùng được, vì đều theo chuẩn."** — Theo chuẩn không có nghĩa là đáng tin. Một server lạ có thể đọc hay gửi dữ liệu của bạn đi. Chỉ nối server bạn tin.
 

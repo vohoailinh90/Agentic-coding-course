@@ -68,7 +68,7 @@ Một **subagent** là agent phụ do agent chính gọi ra, làm một phần v
 ### Cái giá của mỗi agent thêm vào
 
 - **Tốn thêm:** mỗi subagent tự gửi yêu cầu tới mô hình, tính vào cùng giới hạn sử dụng với phiên chính.
-- **Bắt đầu từ con số không:** subagent không thấy cuộc trò chuyện của bạn, cũng không thấy file agent chính đã đọc. Nó chỉ biết những gì được giao — giao mơ hồ thì nó đoán.
+- **Bắt đầu mà không có cuộc trò chuyện của bạn:** subagent không thấy cuộc trò chuyện của bạn, cũng không thấy file agent chính đã đọc. Nó biết lời giao việc, cộng với những gì phần cài đặt của nó nạp sẵn (với Claude Code, thường là file chỉ dẫn của dự án) — giao mơ hồ thì nó đoán.
 - **Thêm chỗ để sai:** kết quả chuyền qua nhiều tay; mỗi lần chuyền có thể mất hay méo thông tin. Và bạn vẫn phải kiểm tra kết quả cuối.
 
 <!-- section: analogy -->
@@ -78,7 +78,7 @@ Bếp của một nhà hàng lớn có bếp trưởng, người sơ chế, ngư
 
 Một thứ đáng thuê thêm ngay cả ở bếp nhỏ: **một người nếm lại** trước khi dọn ra — người không nấu món đó nên nếm khách quan hơn.
 
-Phép so sánh sai ở chỗ: một đầu bếp mới vào bếp còn nghe thấy, nhìn thấy mọi thứ xung quanh. Subagent thì không — nó chỉ biết đúng những gì được viết trong lời giao việc.
+Phép so sánh sai ở chỗ: một đầu bếp mới vào bếp còn nghe thấy, nhìn thấy mọi thứ xung quanh. Subagent thì không — về việc cần làm, nó chỉ biết những gì được viết trong lời giao việc.
 
 <!-- section: example -->
 ## Ví dụ thực tế
@@ -101,7 +101,7 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 ## Hiểu lầm thường gặp
 
 - **"Càng nhiều agent càng thông minh."** — Mỗi agent thêm vào tốn thêm, và thêm một lần chuyền thông tin có thể sai. Thêm agent khi có lý do cụ thể, không phải vì nó nghe hiện đại.
-- **"Subagent biết những gì mình đã nói với agent chính."** — Nó bắt đầu từ ngữ cảnh mới, chỉ biết những gì được giao. Lời giao việc cho subagent cần rõ như một yêu cầu cho người mới.
+- **"Subagent biết những gì mình đã nói với agent chính."** — Nó bắt đầu từ ngữ cảnh mới, không có cuộc trò chuyện của bạn; về việc cần làm, nó chỉ biết những gì lời giao việc nói. Lời giao việc cho subagent cần rõ như một yêu cầu cho người mới.
 - **"Có agent review rồi thì mình không cần đọc."** — Subagent review giúp bắt lỗi; nó không thay trách nhiệm của bạn với kết quả cuối.
 
 <!-- section: recap -->
@@ -115,7 +115,7 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 - Workflow: các bước định sẵn. Agent: mô hình tự chọn bước.
 - Bắt đầu đơn giản; chỉ leo lên bậc phức tạp hơn khi bậc dưới không đủ.
 - Subagent có ích khi việc phụ làm ngập ngữ cảnh, khi cần con mắt mới, hay khi có phần độc lập làm song song.
-- Mỗi agent thêm vào đều tốn thêm, bắt đầu từ con số không, và thêm chỗ để sai.
+- Mỗi agent thêm vào đều tốn thêm, bắt đầu mà không có cuộc trò chuyện của bạn, và thêm chỗ để sai.
 - Nhiều agent không thay bạn kiểm tra kết quả cuối.
 
 <!-- section: quiz -->
@@ -144,7 +144,7 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 
 1. **B** — ai chọn bước tiếp theo là khác biệt chính; cả hai đều dùng mô hình.
 2. **C** — việc phụ sẽ làm ngập ngữ cảnh chính; subagent làm riêng và chỉ trả về tóm tắt.
-3. **A** — nó chỉ biết những gì được viết trong lời giao việc.
+3. **A** — nó không thấy cuộc trò chuyện của bạn; về việc cần làm, nó chỉ biết những gì lời giao việc nói.
 
 </details>
 

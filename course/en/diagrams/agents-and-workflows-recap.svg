@@ -7,8 +7,8 @@ picks its steps — Flexible when
 steps are unclear; 3. Start simple — Climb only when
 the step below fails; 4. Subagents
 for a reason — Flooded context,
-fresh eyes, parallel work; 5. Every agent costs — More cost, starts from
-zero, more places to fail. Simple first; add agents when there is a clear reason.</desc>
+fresh eyes, parallel work; 5. Every agent costs — More cost, no shared
+chat, more places to fail. Simple first; add agents when there is a clear reason.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="549" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -53,7 +53,7 @@ zero, more places to fail. Simple first; add agents when there is a clear reason
 <circle cx="427" cy="294.7" r="12" fill="#881337"/>
 <text x="427" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="527" y="361.2">Every agent costs</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">More cost, starts from</tspan><tspan x="527" y="405.9">zero, more places to fail</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">More cost, no shared</tspan><tspan x="527" y="405.9">chat, more places to fail</tspan></text>
 <rect x="28" y="473.2" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="504.2">💡 Simple first; add agents when there is a clear reason.</tspan></text>
 </svg>

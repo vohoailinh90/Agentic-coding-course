@@ -7,8 +7,8 @@ tự chọn bước — Linh hoạt khi
 khó đoán trước; 3. Bắt đầu đơn giản — Chỉ leo khi
 bậc dưới không đủ; 4. Subagent
 khi có lý do — Ngữ cảnh ngập,
-con mắt mới, song song; 5. Mỗi agent có giá — Tốn thêm, bắt đầu từ
-con số không, thêm chỗ sai. Đơn giản trước; thêm agent khi có lý do rõ ràng.</desc>
+con mắt mới, song song; 5. Mỗi agent có giá — Tốn thêm, không có cuộc
+trò chuyện, thêm chỗ sai. Đơn giản trước; thêm agent khi có lý do rõ ràng.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
 <rect x="1" y="1" width="798" height="549" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
 <circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
@@ -53,7 +53,7 @@ con số không, thêm chỗ sai. Đơn giản trước; thêm agent khi có lý
 <circle cx="427" cy="294.7" r="12" fill="#881337"/>
 <text x="427" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
 <text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="527" y="361.2">Mỗi agent có giá</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Tốn thêm, bắt đầu từ</tspan><tspan x="527" y="405.9">con số không, thêm chỗ sai</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="527" y="386.1">Tốn thêm, không có cuộc</tspan><tspan x="527" y="405.9">trò chuyện, thêm chỗ sai</tspan></text>
 <rect x="28" y="473.2" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
 <text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="504.2">💡 Đơn giản trước; thêm agent khi có lý do rõ ràng.</tspan></text>
 </svg>

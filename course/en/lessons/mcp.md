@@ -83,7 +83,7 @@ If she later works with the company's **real** calendar, Hana will ask IT first:
 <!-- section: misconceptions -->
 ## Common Misconceptions
 
-- **"MCP is a new AI model."** — MCP is a connection standard, not a model. It lets any model use tools through the same kind of port.
+- **"MCP is a new AI model."** — MCP is a connection standard, not a model. It lets AI applications that support it use tools through the same kind of port, whichever model they run.
 - **"Once an MCP server is connected, the agent does everything without asking."** — Tools through MCP still go through the agent's permissions. Anything that changes data should stay in ask-first mode.
 - **"Any server online is fine, since they all follow the standard."** — Following the standard does not make a server trustworthy. A stranger's server can read or send your data somewhere. Only connect servers you trust.
 

@@ -64,7 +64,10 @@ summaries, objectives and takeaways say exactly what the body says, and that cou
 right in every language — check those before opening the pull request. PR #17 added: the instruction-file
 example must hold only what is true for every session; a lesson's minutes must cover reading the
 whole body plus the exercise (`PROGRESS.md` then shows the new course total); and every promise about
-later lessons must match the curriculum.
+later lessons must match the curriculum. PR #19 added: a general claim (what CI runs, when, on
+what machine; what a subagent knows) must hold for every setup, or say whose setup it describes —
+and once a claim is corrected, sweep the summary, takeaways, quiz, both diagrams and the changelog
+for the same claim in all three languages.
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.

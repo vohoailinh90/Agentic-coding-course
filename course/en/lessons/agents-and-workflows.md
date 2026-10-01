@@ -69,7 +69,7 @@ A **subagent** is a helper agent that the main agent starts; it does one part of
 ### What every added agent costs
 
 - **More cost:** each subagent sends its own requests to the model, counted against the same usage limits as the main session.
-- **It starts from zero:** a subagent does not see your conversation, or the files the main agent has read. It only knows what it is told — brief it vaguely and it guesses.
+- **It starts without your conversation:** a subagent does not see your conversation, or the files the main agent has read. It knows its brief, plus whatever its setup loads (in Claude Code, usually the project's instruction file) — brief it vaguely and it guesses.
 - **More places to go wrong:** results pass through more hands; each handoff can lose or distort information. And you still have to check the final result.
 
 <!-- section: analogy -->
@@ -79,7 +79,7 @@ A big restaurant kitchen has a head chef, a prep cook, a grill cook and someone 
 
 One thing worth adding even in a small kitchen: **someone who tastes again** before the food goes out — a person who did not cook the dish tastes it more honestly.
 
-Where the comparison breaks down: a new cook in the kitchen can still hear and see everything around them. A subagent cannot — it knows exactly what is written in its brief, and nothing more.
+Where the comparison breaks down: a new cook in the kitchen can still hear and see everything around them. A subagent cannot — about the task, it knows only what is written in its brief.
 
 <!-- section: example -->
 ## Real Example
@@ -102,7 +102,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 ## Common Misconceptions
 
 - **"More agents means more intelligence."** — Every added agent costs more, and adds another handoff where information can go wrong. Add agents for a specific reason, not because it sounds modern.
-- **"A subagent knows what I told the main agent."** — It starts with a fresh context and only knows what it is told. A brief for a subagent needs to be as clear as a request for someone new.
+- **"A subagent knows what I told the main agent."** — It starts with a fresh context, without your conversation; about the task, it only knows what its brief says. A brief for a subagent needs to be as clear as a request for someone new.
 - **"With a review agent, I don't need to read it."** — A review subagent helps catch mistakes; it does not replace your responsibility for the final result.
 
 <!-- section: recap -->
@@ -116,7 +116,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 - Workflow: steps fixed in advance. Agent: the model picks the steps.
 - Start simple; only climb to a more complex step when the one below is not enough.
 - Subagents help when a side task would flood the context, when you need fresh eyes, or when independent parts can run in parallel.
-- Every added agent costs more, starts from zero, and adds places to go wrong.
+- Every added agent costs more, starts without your conversation, and adds places to go wrong.
 - More agents do not replace your check of the final result.
 
 <!-- section: quiz -->
@@ -145,7 +145,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 
 1. **B** — who picks the next step is the main difference; both use a model.
 2. **C** — the side task would flood the main context; a subagent does it separately and returns only a summary.
-3. **A** — it only knows what is written in its brief.
+3. **A** — it does not see your conversation; about the task, it knows only what its brief says.
 
 </details>
 
