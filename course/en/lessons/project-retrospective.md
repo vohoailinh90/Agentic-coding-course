@@ -6,7 +6,7 @@ summary: >-
   Finishing a project is not the end: you still have to show others what it does, how it was checked, and when
   not to use it. Look back on the project with four questions, then pack the evidence into one file: the spec,
   before and after, the checks, the limits, and one thing to do differently next time. The final test: can a
-  new agent session that reads only that file rerun and check the project?
+  new agent session that starts from that file (and says what else its tool loaded) rerun and check the project?
 social:
   hook: "\"Can the whole team use this tool?\" Her manager asks — and Mai realizes all she has is… a feeling that it works. 📦"
   question: If you had 5 minutes to prove something you made can be trusted, what evidence would you show?
@@ -23,7 +23,7 @@ By the end of this lesson, you will be able to:
 
 - Look back on a project with four questions, without blaming anyone.
 - Pack a project's evidence into one short file: the spec, before and after, the checks, the limits, one improvement.
-- Test the evidence pack with a "stranger": a new agent session that may read only that file.
+- Test the evidence pack with a "stranger": a new agent session that starts from that file, and says what else it loaded.
 
 <!-- section: hook -->
 ## Why It Matters
@@ -70,7 +70,7 @@ An agent can read the [Git](git-version-control.md) history, the files and the c
 
 ### The stranger test
 
-An evidence pack is good when someone who **was not there** can still rerun and check the project. The cheapest way to test it: open **a new agent session**, let it read only the evidence file, and ask it to follow it. Wherever it has to guess, the file is missing something. One catch: many tools load an instruction file (such as `CLAUDE.md`) into every new session. Ask the session what it used from such a file; whatever the project needs from it belongs in the evidence file too.
+An evidence pack is good when someone who **was not there** can still rerun and check the project. The cheapest way to test it: open **a new agent session**, start it from the evidence file, and ask it to follow it. Wherever it has to guess, the file is missing something. One catch: many tools load an instruction file (such as `CLAUDE.md`) into every new session. Ask the session what it used from such a file; whatever the project needs from it belongs in the evidence file too.
 
 <!-- section: try-it -->
 ## Try It Yourself
@@ -101,7 +101,7 @@ Also ask: *"Did you use anything from a file loaded automatically at the start, 
 
 **Evidence:**
 
-- *I can show…* `RETRO.md` and `EVIDENCE.md`, and a new session that reran the project from that file alone.
+- *I can show…* `RETRO.md` and `EVIDENCE.md`, and a new session that reran the project starting from that file (with anything else it loaded listed and moved into the file).
 - *I checked…* every line in the file against the real files, the Git history and the rerun results.
 - *I would not use this when…* the evidence pack would have to contain real data or internal information — those are ⛔ in this course; keep the pack to made-up data.
 
@@ -144,7 +144,7 @@ Also ask: *"Did you use anything from a file loaded automatically at the start, 
 **Question 3.** What is the cheapest way to find out whether an evidence pack is complete?
 
 - A) Read it once more yourself
-- B) Let a new agent session read only that file and try to rerun the project
+- B) Let a new agent session start from that file, try to rerun the project, and say what else it used
 - C) Ask the agent that wrote it whether anything is missing
 
 <details>

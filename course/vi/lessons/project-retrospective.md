@@ -5,7 +5,7 @@ status: review
 summary: >-
   Làm xong một dự án chưa phải là xong: bạn còn phải cho người khác thấy nó làm gì, đã được kiểm tra thế nào, và không
   nên dùng khi nào. Nhìn lại dự án bằng bốn câu hỏi, rồi gói bằng chứng vào một file: yêu cầu, trước và sau, các phép
-  kiểm tra, giới hạn, và một điều sẽ làm khác lần sau. Phép thử cuối: một phiên agent mới chỉ đọc file đó có chạy lại
+  kiểm tra, giới hạn, và một điều sẽ làm khác lần sau. Phép thử cuối: một phiên agent mới bắt đầu từ file đó (và nói nó còn nạp gì khác) có chạy lại
   và kiểm tra được dự án không.
 social:
   hook: "\"Công cụ này có dùng cho cả phòng được không?\" — Quản lý hỏi, và Mai nhận ra mình chỉ có… cảm giác là nó chạy tốt. 📦"
@@ -23,7 +23,7 @@ Sau bài này, bạn sẽ:
 
 - Nhìn lại một dự án bằng bốn câu hỏi, không đổ lỗi cho ai.
 - Gói bằng chứng của dự án vào một file ngắn: yêu cầu, trước và sau, các phép kiểm tra, giới hạn, một cải tiến.
-- Kiểm tra gói bằng chứng bằng một "người lạ": một phiên agent mới chỉ được đọc file đó.
+- Kiểm tra gói bằng chứng bằng một "người lạ": một phiên agent mới bắt đầu từ file đó, và nói nó còn nạp gì khác.
 
 <!-- section: hook -->
 ## Mở đầu: vì sao nên quan tâm?
@@ -70,7 +70,7 @@ Agent có thể đọc lịch sử [Git](git-version-control.md), các file và 
 
 ### Phép thử người lạ
 
-Gói bằng chứng tốt khi một người **không có mặt** lúc làm vẫn chạy lại và kiểm tra được. Cách thử rẻ nhất: mở **một phiên agent mới**, chỉ cho nó đọc file bằng chứng, và nhờ nó làm theo. Chỗ nào nó phải đoán, chỗ đó file còn thiếu. Lưu ý: nhiều công cụ tự nạp một file chỉ dẫn (như `CLAUDE.md`) vào mọi phiên mới. Hãy hỏi phiên đó đã dùng gì từ file như vậy; dự án cần gì từ đó thì cũng phải ghi vào file bằng chứng.
+Gói bằng chứng tốt khi một người **không có mặt** lúc làm vẫn chạy lại và kiểm tra được. Cách thử rẻ nhất: mở **một phiên agent mới**, cho nó bắt đầu từ file bằng chứng, và nhờ nó làm theo. Chỗ nào nó phải đoán, chỗ đó file còn thiếu. Lưu ý: nhiều công cụ tự nạp một file chỉ dẫn (như `CLAUDE.md`) vào mọi phiên mới. Hãy hỏi phiên đó đã dùng gì từ file như vậy; dự án cần gì từ đó thì cũng phải ghi vào file bằng chứng.
 
 <!-- section: try-it -->
 ## Thử ngay
@@ -101,7 +101,7 @@ Hỏi thêm: *"Bạn có dùng gì từ file được nạp tự động lúc đ
 
 **Bằng chứng:**
 
-- *Tôi cho xem được…* `NHIN_LAI.md` và `BANG_CHUNG.md`, và một phiên mới chạy lại được dự án chỉ từ file đó.
+- *Tôi cho xem được…* `NHIN_LAI.md` và `BANG_CHUNG.md`, và một phiên mới chạy lại được dự án khi bắt đầu từ file đó (những gì nó nạp thêm đã được liệt kê và đưa vào file).
 - *Tôi đã kiểm tra…* từng dòng trong file với file thật, lịch sử Git và kết quả chạy lại.
 - *Tôi sẽ không dùng cách này khi…* gói bằng chứng cần chứa dữ liệu thật hay thông tin nội bộ — những thứ đó là ⛔ trong khóa học này; gói bằng chứng chỉ dùng dữ liệu giả.
 
@@ -144,7 +144,7 @@ Hỏi thêm: *"Bạn có dùng gì từ file được nạp tự động lúc đ
 **Câu 3.** Cách rẻ nhất để biết gói bằng chứng có đủ không?
 
 - A) Tự đọc lại một lần
-- B) Cho một phiên agent mới chỉ đọc file đó và thử chạy lại dự án
+- B) Cho một phiên agent mới bắt đầu từ file đó, thử chạy lại dự án, và nói nó còn dùng gì khác
 - C) Hỏi chính agent đã viết nó xem còn thiếu gì không
 
 <details>
