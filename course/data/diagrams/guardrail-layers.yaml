@@ -1,0 +1,43 @@
+# Used in: hooks-and-permissions (hands-on). Advice versus locks.
+template: compare
+title:
+  vi: Lời dặn, phân quyền và hook
+  en: Advice, Permissions and Hooks
+  ja: 指示・権限・フック
+rows:
+  - vi: Ai thực thi
+    en: Who enforces it
+    ja: 守らせるのは
+  - vi: Có thể bị quên?
+    en: Can it be forgotten?
+    ja: 忘れられる？
+  - vi: Dùng cho
+    en: Use it for
+    ja: 使いどころ
+emphasis_row: 2
+columns:
+  - icon: "📌"
+    color: blue
+    name: {vi: Lời dặn, en: Advice, ja: 指示}
+    values:
+      - {vi: Mô hình, en: The model, ja: モデル}
+      - {vi: "Có — hiểu sai\nhay quên", en: "Yes — misread\nor forgotten", ja: "ある：誤解・\n忘れる"}
+      - {vi: "Quy ước,\ncách làm", en: "Conventions,\nhow to work", ja: "約束ごと・\n進め方"}
+  - icon: "🔒"
+    color: rose
+    name: {vi: Phân quyền, en: Permissions, ja: 権限}
+    values:
+      - {vi: Công cụ, en: The tool, ja: ツール}
+      - {vi: "Không — xét\nmỗi lần", en: "No — checked\nevery time", ja: "ない：毎回\nチェック"}
+      - {vi: "Cho phép,\nhỏi, cấm", en: "Allow, ask,\ndeny", ja: "許可・確認・\n禁止"}
+  - icon: "🪝"
+    color: violet
+    name: {vi: Hook, en: Hooks, ja: フック}
+    values:
+      - {vi: Công cụ, en: The tool, ja: ツール}
+      - {vi: "Không — luôn\nchạy", en: "No — always\nruns", ja: "ない：必ず\n動く"}
+      - {vi: "Chặn, kiểm tra,\nbáo tin", en: "Block, check,\nnotify", ja: "止める・確かめる・\n知らせる"}
+takeaway:
+  vi: Điều không bao giờ được xảy ra thì cần ổ khóa, không chỉ lời dặn.
+  en: What must never happen needs a lock, not just advice.
+  ja: 絶対に起きてはならないことには、指示ではなく鍵を。

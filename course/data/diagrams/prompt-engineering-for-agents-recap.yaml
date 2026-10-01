@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: prompt engineering cho agent"
+  en: "Recap: Prompt Engineering for Agents"
+  ja: まとめ：エージェントのためのプロンプト
+points:
+  - icon: "🧱"
+    color: slate
+    name: {vi: Ba lớp chỉ dẫn, en: Three layers, ja: 3つの層}
+    caption: {vi: "System prompt,\nfile chỉ dẫn, yêu cầu", en: "System prompt,\nfile, request", ja: "システムプロンプト・\n指示ファイル・依頼"}
+  - icon: "🧑‍💼"
+    color: blue
+    name: {vi: "Viết cho\nnhân viên mới", en: "Write for a\nnew colleague", ja: "新しい同僚に\n向けて書く"}
+    caption: {vi: "Giỏi, nhưng chưa biết\nquy ước của bạn", en: "Smart, but new\nto your norms", ja: "有能だが、\nあなたの流儀は知らない"}
+  - icon: "💬"
+    color: green
+    name: {vi: "Lý do và\nđiều cần làm", en: "Reasons and\nwhat to do", ja: "理由と\nすべきこと"}
+    caption: {vi: "Cụ thể vừa đủ,\ncó ví dụ", en: "Specific enough,\nwith an example", ja: "ほどよく具体的に、\n例をつけて"}
+  - icon: "🤔"
+    color: amber
+    name: {vi: "Khi không chắc\nthì làm gì", en: "What to do\nwhen unsure", ja: "迷ったら\nどうするか"}
+    caption: {vi: "Hỏi, đừng tự điền,\nđừng sửa test", en: "Ask; don't fill gaps\nor bend the tests", ja: "聞く。勝手に埋めない、\nテストを曲げない"}
+  - icon: "🔬"
+    color: violet
+    name: {vi: "Thử ở\nphiên mới", en: "Test in a\nnew session", ja: "新しいセッションで\n試す"}
+    caption: {vi: "Chỉ dẫn là\ngiả thuyết", en: "An instruction\nis a hypothesis", ja: 指示は仮説}
+takeaway:
+  vi: Chỉ dẫn tốt là thứ đồng nghiệp mới làm theo được ngay.
+  en: A good instruction is one a new colleague could follow right away.
+  ja: よい指示とは、新しい同僚がすぐに従えるもの。

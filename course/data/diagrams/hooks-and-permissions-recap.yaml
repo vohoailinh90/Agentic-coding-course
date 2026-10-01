@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: hooks và phân quyền"
+  en: "Recap: Hooks and Permissions"
+  ja: まとめ：フックと権限
+points:
+  - icon: "📌"
+    color: blue
+    name: {vi: "Lời dặn:\nagent cố làm", en: "Advice:\nthe agent tries", ja: "指示：\nエージェントが努める"}
+    caption: {vi: "Có thể hiểu sai\nhay quên", en: "Can be misread\nor forgotten", ja: "誤解や\n忘れることがある"}
+  - icon: "🔒"
+    color: rose
+    name: {vi: "Phân quyền:\ncông cụ thực thi", en: "Permissions:\nthe tool enforces", ja: "権限：\nツールが守らせる"}
+    caption: {vi: "Cho phép, hỏi, cấm —\ncấm luôn thắng", en: "Allow, ask, deny —\ndeny always wins", ja: "許可・確認・禁止。\n禁止が常に勝つ"}
+  - icon: "🪝"
+    color: violet
+    name: {vi: "Hook:\nluôn chạy", en: "Hooks:\nalways run", ja: "フック：\n必ず動く"}
+    caption: {vi: "Chặn, kiểm tra,\nbáo tin", en: "Block, check,\nnotify", ja: "止める・確かめる・\n知らせる"}
+  - icon: "✋"
+    color: amber
+    name: {vi: "Hook chạy\ntrên máy bạn", en: "Hooks run on\nyour computer", ja: "フックは\nあなたのPCで動く"}
+    caption: {vi: "Chỉ dùng hook\nbạn đọc hiểu", en: "Use only hooks\nyou understand", ja: "理解したものだけ\n使う"}
+  - icon: "⛔"
+    color: slate
+    name: {vi: "Hàng rào\nkhông phải phép màu", en: "Guardrails\naren't magic", ja: "ガードレールは\n万能ではない"}
+    caption: {vi: "Dữ liệu thật\nvẫn không đưa vào", en: "Real data\nstill stays out", ja: "本物のデータは\nやはり入れない"}
+takeaway:
+  vi: Dặn điều nên làm; khóa điều không bao giờ được xảy ra.
+  en: Advise what should happen; lock what must never happen.
+  ja: すべきことは指示し、あってはならないことには鍵を。

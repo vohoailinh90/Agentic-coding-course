@@ -489,7 +489,7 @@ modules:
               en: "Prompt Engineering for Agents: System Prompts and Instructions"
               ja: エージェントのためのプロンプトエンジニアリング：システムプロンプトと指示
             type: hands-on
-            minutes: 12
+            minutes: 25
             terms: [prompt]
           - id: hooks-and-permissions
             title:
@@ -497,7 +497,7 @@ modules:
               en: "Hooks and Permissions: Automatic Guardrails"
               ja: フックと権限：自動のガードレール
             type: hands-on
-            minutes: 12
+            minutes: 25
             terms: [hook]
           - id: tests-and-ci-for-agents
             title:
