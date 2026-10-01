@@ -1,0 +1,44 @@
+# Used in: memory-and-skills (hands-on). Three kinds of file an agent carries to the next session.
+template: compare
+title:
+  vi: File chỉ dẫn, bộ nhớ, kỹ năng
+  en: Instructions, Memory, Skills
+  ja: 指示ファイル・メモリ・スキル
+rows:
+  - vi: Ai viết
+    en: Who writes it
+    ja: 書くのは
+  - vi: Nạp khi nào
+    en: When it loads
+    ja: 読みこむとき
+  - vi: Dùng cho
+    en: Use it for
+    ja: 使いどころ
+emphasis_row: 2
+columns:
+  - icon: "📌"
+    color: blue
+    name: {vi: File chỉ dẫn, en: Instruction file, ja: 指示ファイル}
+    values:
+      - {vi: Bạn, en: You, ja: あなた}
+      - {vi: Mọi phiên, en: Every session, ja: 毎セッション}
+      - {vi: "Quy tắc ngắn,\nđúng mọi việc", en: "Short rules\nfor every task", ja: "どの作業にも\n当てはまる規則"}
+  - icon: "🧠"
+    color: teal
+    name: {vi: Bộ nhớ tự động, en: Auto memory, ja: 自動メモリ}
+    values:
+      - {vi: Agent, en: The agent, ja: エージェント}
+      - {vi: "Mọi phiên\n(phần đầu)", en: "Every session\n(the first part)", ja: "毎セッション\n（先頭部分）"}
+      - {vi: "Điều học được\ntừ lời sửa", en: "Lessons from\nyour corrections", ja: "あなたの訂正から\n学んだこと"}
+  - icon: "🧰"
+    color: green
+    highlight: true
+    name: {vi: Kỹ năng, en: Skill, ja: スキル}
+    values:
+      - {vi: "Bạn\n(hoặc cài)", en: "You\n(or installed)", ja: "あなた\n（または導入）"}
+      - {vi: "Chỉ khi\ncần dùng", en: "Only when\nneeded", ja: "必要なとき\nだけ"}
+      - {vi: "Quy trình\nnhiều bước", en: "Multi-step\nprocedures", ja: "何段階もの\n手順"}
+takeaway:
+  vi: Quy tắc thì luôn có; quy trình thì nạp khi cần; bộ nhớ thì đọc lại.
+  en: Rules always there; procedures when needed; memory read back.
+  ja: 規則はいつも、手順は必要なときに、メモリは読み直す。

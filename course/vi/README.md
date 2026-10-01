@@ -8,7 +8,7 @@
 
 **Dành cho ai:** Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình — muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Không cần biết lập trình trước: bạn học vừa đủ để giao việc viết code cho AI, kiểm tra và chịu trách nhiệm về kết quả. Đặc biệt phù hợp với người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
 
-**6 chương · 17 chủ đề · 52 bài · 927 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
+**6 chương · 17 chủ đề · 52 bài · 940 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
 
 ![Lộ trình học](diagrams/roadmap.svg)
 
@@ -170,13 +170,13 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 | 5.2.2 | [Context engineering: đưa đúng thông tin, đúng lúc](lessons/context-engineering.md) | 🛠️ Thực hành | 20 phút |
 | 5.2.3 | [Prompt engineering cho agent: system prompt và chỉ dẫn](lessons/prompt-engineering-for-agents.md) | 🛠️ Thực hành | 25 phút |
 | 5.2.4 | [Hooks và phân quyền: hàng rào an toàn tự động](lessons/hooks-and-permissions.md) | 🛠️ Thực hành | 25 phút |
-| 5.2.5 | Test và CI: để máy kiểm tra máy | 🎬 Minh họa | 12 phút |
+| 5.2.5 | [Test và CI: để máy kiểm tra máy](lessons/tests-and-ci-for-agents.md) | 🎬 Minh họa | 15 phút |
 
 ### 5.3 Thực hành chuyên sâu · _nâng cao_
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 5.3.1 | Bộ nhớ dự án và kỹ năng dùng lại | 🛠️ Thực hành | 15 phút |
+| 5.3.1 | [Bộ nhớ dự án và kỹ năng dùng lại](lessons/memory-and-skills.md) | 🛠️ Thực hành | 25 phút |
 | 5.3.2 | Agent và workflow: khi nào cần nhiều agent? | 📖 Khái niệm | 12 phút |
 | 5.3.3 | MCP: cổng USB-C cho AI | 🎬 Minh họa | 12 phút |
 | 5.3.4 | Evals: chấm điểm chất lượng agent | 🛠️ Thực hành | 15 phút |

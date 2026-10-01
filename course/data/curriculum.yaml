@@ -505,7 +505,7 @@ modules:
               en: "Tests and CI: Let Machines Check Machines"
               ja: テストとCI：機械に機械をチェックさせる
             type: demo
-            minutes: 12
+            minutes: 15
             terms: [test, ci]
       - id: advanced-practice
         track: advanced
@@ -520,7 +520,7 @@ modules:
               en: Project Memory and Reusable Skills
               ja: プロジェクトの記憶と再利用できるスキル
             type: hands-on
-            minutes: 15
+            minutes: 25
           - id: agents-and-workflows
             title:
               vi: "Agent và workflow: khi nào cần nhiều agent?"

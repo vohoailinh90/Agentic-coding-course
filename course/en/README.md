@@ -8,7 +8,7 @@
 
 **Who it is for:** Working adults, students and engineers from outside software who know nothing about AI or programming yet, and want to use AI agents to build their own tools and automate their work. No programming needed to start: you learn enough to hand coding work to AI, check it and own the result. Especially suited to Vietnamese learners who study or work in or with Japan.
 
-**Modules: 6 · Units: 17 · Lessons: 52 · 927 min** · [Glossary in three languages](glossary.md)
+**Modules: 6 · Units: 17 · Lessons: 52 · 940 min** · [Glossary in three languages](glossary.md)
 
 ![Your Learning Journey](diagrams/roadmap.svg)
 
@@ -170,13 +170,13 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 | 5.2.2 | [Context Engineering: The Right Information at the Right Time](lessons/context-engineering.md) | 🛠️ Hands-on | 20 min |
 | 5.2.3 | [Prompt Engineering for Agents: System Prompts and Instructions](lessons/prompt-engineering-for-agents.md) | 🛠️ Hands-on | 25 min |
 | 5.2.4 | [Hooks and Permissions: Automatic Guardrails](lessons/hooks-and-permissions.md) | 🛠️ Hands-on | 25 min |
-| 5.2.5 | Tests and CI: Let Machines Check Machines | 🎬 Demo | 12 min |
+| 5.2.5 | [Tests and CI: Let Machines Check Machines](lessons/tests-and-ci-for-agents.md) | 🎬 Demo | 15 min |
 
 ### 5.3 Deeper Practice · _advanced_
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 5.3.1 | Project Memory and Reusable Skills | 🛠️ Hands-on | 15 min |
+| 5.3.1 | [Project Memory and Reusable Skills](lessons/memory-and-skills.md) | 🛠️ Hands-on | 25 min |
 | 5.3.2 | Agents and Workflows: When Do You Need More Than One Agent? | 📖 Concept | 12 min |
 | 5.3.3 | MCP: A USB-C Port for AI | 🎬 Demo | 12 min |
 | 5.3.4 | Evals: Scoring an Agent's Quality | 🛠️ Hands-on | 15 min |

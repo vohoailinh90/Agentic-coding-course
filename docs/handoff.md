@@ -7,17 +7,17 @@ write next, and how to write and check a lesson. It points at the rules instead 
 
 ## State on 2026-09-30
 
-- **44 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
+- **46 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape`,
-  `workflow-frameworks`, `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`
-  and `hooks-and-permissions`, written by Claude;
+  `workflow-frameworks`, `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`, `hooks-and-permissions`,
+  `tests-and-ci-for-agents` and `memory-and-skills`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **8 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **6 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -47,8 +47,6 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `tests-and-ci-for-agents` | minimum-harness (core) | demo | 12 | test, ci |
-| `memory-and-skills` | advanced-practice (advanced) | hands-on | 15 | – |
 | `agents-and-workflows` | advanced-practice (advanced) | concept | 12 | subagent |
 | `mcp` | advanced-practice (advanced) | demo | 12 | mcp |
 | `evals` | advanced-practice (advanced) | hands-on | 15 | eval |
@@ -60,8 +58,8 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`tests-and-ci-for-agents`** (demo) — tests as the agent's finish line: write the test first, see it fail, let the agent make it pass, then let CI run it on every push.
-- **`memory-and-skills`** (hands-on) — what the agent remembers between sessions (instruction files, auto memory) versus procedures it loads when needed (skills); package a repeated procedure as a skill and test it in a new session.
+- **`agents-and-workflows`** (concept) — a ladder of complexity: one call, a workflow with fixed steps, an agent that chooses its steps, subagents; start at the lowest rung that works.
+- **`mcp`** (demo) — the Model Context Protocol as a shared plug between agents and tools or data; what an MCP server offers, and the trust questions to ask before connecting one.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
