@@ -5,7 +5,7 @@ write next, and how to write and check a lesson. It points at the rules instead 
 [content-guide.md](content-guide.md) says how to write a lesson, [data-model.md](data-model.md) what
 `validate` enforces. When the two disagree with this page, they win; fix this page.
 
-## State on 2026-09-30
+## State on 2026-10-01
 
 - **52 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
   (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
