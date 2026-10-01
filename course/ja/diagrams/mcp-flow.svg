@@ -40,7 +40,7 @@
 <text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="667.3" y="170.8">システム</tspan></text>
 <text font-size="15" fill="#475569" text-anchor="middle"><tspan x="667.3" y="195.7">予定・データ・</tspan><tspan x="667.3" y="215.5">資料など</tspan></text>
 <rect x="196.6" y="246.3" width="139.5" height="43.6" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
-<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="266.3" y="263.8">クライアントが送る</tspan><tspan x="266.3" y="281.6">（または確認）</tspan></text>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="266.3" y="263.8">アプリが許可し、</tspan><tspan x="266.3" y="281.6">クライアントが送る</tspan></text>
 <rect x="490.9" y="246.3" width="85.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
 <text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="533.7" y="263.8">実際に動く</tspan></text>
 <rect x="28" y="313.9" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>

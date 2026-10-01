@@ -53,7 +53,7 @@ Anthropic's advice: find **the simplest solution** that works, and only add comp
 
 Climb one step at a time, and only when the step below is not enough:
 
-1. **One request** to a chatbot or an agent — enough for most small tasks.
+1. **One request** to a chatbot — one question, one answer, no tools or loop — enough for most small tasks.
 2. **A fixed workflow** — a task repeated with the same steps.
 3. **One agent** — a task whose steps depend on what it discovers along the way.
 4. **Agent + subagent** — when there is a specific reason, like the three below.

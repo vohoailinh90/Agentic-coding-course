@@ -10,7 +10,7 @@ steps:
     color: green
     name: {vi: Agent, en: Agent, ja: エージェント}
     caption: {vi: "mô hình yêu cầu\nmột công cụ", en: "the model asks\nfor a tool", ja: "モデルが\nツールを頼む"}
-    arrow: {vi: "client chuyển\n(hoặc hỏi bạn)", en: "client passes it\n(or asks you)", ja: "クライアントが送る\n（または確認）"}
+    arrow: {vi: "ứng dụng cho phép,\nclient chuyển đi", en: "app allows it,\nclient passes it", ja: "アプリが許可し、\nクライアントが送る"}
   - icon: "🔌"
     color: amber
     name: {vi: MCP server, en: MCP server, ja: MCPサーバー}

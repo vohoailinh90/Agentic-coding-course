@@ -12,7 +12,7 @@ direction: vertical
 steps:
   - icon: "💬"
     color: slate
-    name: {vi: Một yêu cầu, en: One request, ja: ひとつの依頼}
+    name: {vi: "Một yêu cầu\ncho chatbot", en: "One chatbot\nrequest", ja: "チャットボットへの\nひとつの依頼"}
     caption: {vi: Đủ cho phần lớn việc nhỏ, en: Enough for most small tasks, ja: 小さな作業のほとんどはこれで足りる}
     arrow: {vi: việc lặp lại, en: task repeats, ja: くり返す作業}
   - icon: "📋"

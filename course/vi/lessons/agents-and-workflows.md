@@ -52,7 +52,7 @@ Lời khuyên của Anthropic: tìm **cách đơn giản nhất** làm được 
 
 Leo từng bậc, và chỉ leo khi bậc dưới không đủ:
 
-1. **Một yêu cầu** cho chatbot hay agent — đủ cho phần lớn việc nhỏ.
+1. **Một yêu cầu** cho chatbot — hỏi một lần, trả lời một lần, không công cụ, không vòng lặp — đủ cho phần lớn việc nhỏ.
 2. **Workflow cố định** — việc lặp lại với cùng các bước.
 3. **Một agent** — việc mà các bước phụ thuộc vào điều phát hiện ra giữa chừng.
 4. **Agent + subagent** — khi có một lý do cụ thể, như ba trường hợp dưới đây.
