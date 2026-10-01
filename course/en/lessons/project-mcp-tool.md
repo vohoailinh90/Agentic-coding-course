@@ -80,18 +80,18 @@ The only tool: total_revenue(month, branch)
 - Returns the total of quantity × unit_price as a whole number (VND), with the month and branch.
 - A month with no file, or an unknown branch: return a clear error; don't guess.
 Constraints:
-- Only READ the sales_*.csv files in this folder; don't change, create or delete any other file.
+- The finished server only READS the sales_*.csv files in this folder: it never changes, creates or deletes any file. While building, you may create only the server file and check_tool.py.
 - Send no data off this computer.
 - If a library needs installing, ask me first and say who publishes it.
 Done when:
-1. There is check_tool.py that calls the calculation function directly (not through MCP), compares it with right_answers.md for all 6 cells, and tries 3 bad inputs.
-2. That check PASSES, and reports FAIL when I deliberately change a number in a copy of right_answers.md.
+1. There is check_tool.py that takes the answers file as an argument (default right_answers.md), calls the calculation function directly (not through MCP), compares it with that file for all 6 cells, and tries 3 bad inputs.
+2. `python check_tool.py` PASSES, and running it on a copy of the answers with one number deliberately changed (`python check_tool.py broken_answers.md`) reports FAIL.
 Before starting, restate the goal and criteria; propose a plan, change nothing yet.
 ```
 
 **3. Plan and build (25 minutes).** In plan mode, read the plan with the three familiar questions: which files will be created? Is anything new being installed (✋ — the official MCP library from the standard's publisher, or an unknown package)? Does the tool touch anything other than the sales files? Approve, then let the agent build it. Read the diff: look for every place the code **writes** a file — there must be none.
 
-**4. Test the tool directly (15 minutes).** Run `python check_tool.py`. All 6 cells right? Do the 3 bad inputs give clear errors? Add a test of your own: month `"../passwords"` — the tool must refuse because it is not a month name, and must not go looking for any other file. Then break a copy of the answers: the check must report FAIL.
+**4. Test the tool directly (15 minutes).** Run `python check_tool.py`. All 6 cells right? Do the 3 bad inputs give clear errors? Add a test of your own: month `"../passwords"` — the tool must refuse because it is not a month name, and must not go looking for any other file. Then break a copy of the answers: copy `right_answers.md` to `broken_answers.md`, change one number in the copy and run `python check_tool.py broken_answers.md`. The check must report FAIL (and on the original file it must still PASS). Delete the copy afterwards.
 
 **5. Connect it to the agent (10 minutes).** In the terminal, in the `ai-practice` folder:
 

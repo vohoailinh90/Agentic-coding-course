@@ -40,7 +40,7 @@ Liệt kê ba ý tưởng, rồi cho từng cái qua ba bộ lọc:
 
 - **Nhỏ:** làm xong phiên bản đầu trong khoảng hai tiếng. Quá lớn? Cắt còn phần lõi.
 - **Kiểm tra được:** bạn nói được trước *thế nào là đúng*, bằng những con số hay hành vi cụ thể.
-- **An toàn:** chỉ dữ liệu giả, hoặc dữ liệu của chính bạn mà bạn thoải mái đưa vào công cụ; không dữ liệu công ty, không dữ liệu của người khác, không mật khẩu hay API key.
+- **An toàn:** chỉ dữ liệu giả — một bản mẫu bạn tự bịa với cùng cột và định dạng, không dùng file, ghi chú hay ảnh thật của bạn; không dữ liệu công ty, không dữ liệu của người khác, không mật khẩu hay API key.
 
 Ý tưởng hay cho dự án cuối khóa thường là một việc lặp lại của chính bạn: một bảng tính cá nhân, một trang nhỏ, một công cụ đổi định dạng file. Ý tưởng qua được cả ba bộ lọc mới đáng làm.
 
@@ -75,7 +75,7 @@ Tiêu chí xong:
 4. Có phép kiểm tra với 5 từ mẫu:
    a) bấm "Nhớ" cho cả 5 từ: mỗi từ hiện đúng một lần, rồi hiện "Xong buổi ôn";
    b) bấm "Chưa nhớ" ở từ 1: các từ hiện tiếp theo là từ 2, từ 3, rồi từ 1.
-Dữ liệu: chỉ từ vựng tôi tự gõ; không bản vẽ, không tài liệu, không tên dự án của công ty. ⛔
+Dữ liệu: chỉ một danh sách mẫu khoảng 20 từ giả do tôi tự gõ (không dùng sổ tay, ảnh hay tin nhắn thật của tôi); không bản vẽ, không tài liệu, không tên dự án của công ty. ⛔
 Hành động: agent tự sửa file trong ai-practice/on-tu (✅); cài thư viện, xóa file (✋); gửi dữ liệu đi đâu (⛔).
 Không làm lần này: đồng bộ điện thoại, âm thanh phát âm.
 ```
@@ -105,13 +105,13 @@ Khoảng 120 phút, trong một thư mục mới trong `ai-practice`, ở chế 
 
 - *Tôi cho xem được…* dự án chạy được, trang dự án, lịch sử Git theo từng mốc, và `BANG_CHUNG.md`.
 - *Tôi đã kiểm tra…* từng tiêu chí xong; phép kiểm tra báo không đạt khi tôi làm hỏng thử; một lượt review trong ngữ cảnh mới.
-- *Tôi sẽ không dùng cách này khi…* dự án cần dữ liệu công ty hay dữ liệu của người khác, hoặc có người dựa vào nó mà chưa ai ngoài tôi kiểm tra.
+- *Tôi sẽ không dùng cách này khi…* dự án cần dữ liệu thật (dữ liệu công ty, của người khác, hay file cá nhân của chính bạn) thay vì dữ liệu giả, hoặc có người dựa vào nó mà chưa ai ngoài tôi kiểm tra.
 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
 - **"Dự án cuối khóa phải thật hoành tráng."** — Một việc nhỏ làm đúng, có bằng chứng, dạy bạn nhiều hơn một việc lớn bỏ dở. Lớn thì để lần sau, với dự án này làm nền.
-- **"Dùng dữ liệu công ty cho thật mới có ý nghĩa."** — Trong khóa học này, dữ liệu công ty vẫn là ⛔, dù chỉ để học. Dữ liệu giả hay dữ liệu của chính bạn là đủ để chứng minh cách làm.
+- **"Dùng dữ liệu công ty cho thật mới có ý nghĩa."** — Trong khóa học này, dữ liệu công ty vẫn là ⛔, dù chỉ để học. Dữ liệu giả có cùng cấu trúc là đủ để chứng minh cách làm.
 - **"Chạy được là xong."** — Xong là khi các tiêu chí đã được kiểm tra, có bằng chứng, và một người khác hiểu được giới hạn của nó.
 
 <!-- section: recap -->

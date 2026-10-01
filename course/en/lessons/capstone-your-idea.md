@@ -41,7 +41,7 @@ Write down three ideas, then put each one through three filters:
 
 - **Small:** the first version is done in about two hours. Too big? Cut it down to its core.
 - **Checkable:** you can say in advance *what "right" means*, with specific numbers or behavior.
-- **Safe:** only made-up data, or your own data that you are comfortable giving to the tool; no company data, no other people's data, no passwords or API keys.
+- **Safe:** only made-up data — a sample you invent with the same columns and formats, never your real files, notes or photos; no company data, no other people's data, no passwords or API keys.
 
 A good capstone idea is often a repeated task of your own: a personal spreadsheet, a small page, a tool that converts a file format. Only an idea that passes all three filters is worth building.
 
@@ -76,7 +76,7 @@ Done criteria:
 4. A check with 5 sample words:
    a) pressing "Got it" for all 5: each word appears exactly once, then "Session done" appears;
    b) pressing "Not yet" on word 1: the next words shown are word 2, word 3, then word 1.
-Data: only vocabulary I type myself; no drawings, documents or project names from work. ⛔
+Data: only a made-up sample list of about 20 words that I type in myself (not my real notebooks, photos or messages); no drawings, documents or project names from work. ⛔
 Actions: the agent edits files in ai-practice/review by itself (✅); installing libraries, deleting files (✋); sending data anywhere (⛔).
 Not doing this time: syncing to my phone, pronunciation audio.
 ```
@@ -106,13 +106,13 @@ About 120 minutes, in a new folder inside `ai-practice`, in the mode where the a
 
 - *I can show…* the working project, the one-page plan, the Git history milestone by milestone, and `EVIDENCE.md`.
 - *I checked…* every done criterion; the check fails when I break something on purpose; a review in a fresh context.
-- *I would not use this when…* the project needs company data or other people's data, or someone relies on it before anyone but me has checked it.
+- *I would not use this when…* the project needs real data (company data, other people's data or your own personal files) rather than made-up data, or someone relies on it before anyone but me has checked it.
 
 <!-- section: misconceptions -->
 ## Common Misconceptions
 
 - **"A capstone has to be impressive."** — A small task done right, with evidence, teaches you more than a big one left half-done. Save the big one for next time, with this project as a base.
-- **"It only means something with real company data."** — In this course, company data is still ⛔, even just for learning. Made-up data or your own data is enough to prove the method.
+- **"It only means something with real company data."** — In this course, company data is still ⛔, even just for learning. Made-up data with the same structure is enough to prove the method.
 - **"It runs, so it's done."** — It is done when the criteria have been checked, there is evidence, and someone else understands its limits.
 
 <!-- section: recap -->

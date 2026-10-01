@@ -79,18 +79,18 @@ Công cụ duy nhất: tong_doanh_thu(thang, chi_nhanh)
 - Trả về tổng so_luong × don_gia, là số nguyên (đồng), kèm tháng và chi nhánh.
 - Tháng không có file, hay chi nhánh lạ: trả về lỗi dễ hiểu, không đoán.
 Ràng buộc:
-- Chỉ ĐỌC các file ban_hang_thang_*.csv trong thư mục này; không sửa, không tạo, không xóa file nào khác.
+- Server hoàn chỉnh chỉ ĐỌC các file ban_hang_thang_*.csv trong thư mục này: không bao giờ sửa, tạo hay xóa file nào. Khi đang làm, chỉ được tạo file server và kiem_tra_cong_cu.py.
 - Không gửi dữ liệu ra ngoài máy.
 - Cần cài thư viện nào thì hỏi mình trước, và nói rõ thư viện đó của ai.
 Xong khi:
-1. Có kiem_tra_cong_cu.py gọi thẳng hàm tính (không qua MCP), so với ket_qua_dung.md cho cả 6 ô, và thử 3 đầu vào sai.
-2. Phép kiểm tra đó ĐẠT, và báo KHÔNG ĐẠT khi mình cố ý sửa sai một con số trong bản sao của ket_qua_dung.md.
+1. Có kiem_tra_cong_cu.py nhận tên file đáp án làm tham số (mặc định ket_qua_dung.md), gọi thẳng hàm tính (không qua MCP), so với file đó cho cả 6 ô, và thử 3 đầu vào sai.
+2. `python kiem_tra_cong_cu.py` ĐẠT, còn chạy với bản sao đáp án đã cố ý sửa sai một con số (`python kiem_tra_cong_cu.py dap_an_hong.md`) thì báo KHÔNG ĐẠT.
 Trước khi làm, nhắc lại mục tiêu và tiêu chí; đề xuất kế hoạch, chưa sửa gì.
 ```
 
 **3. Kế hoạch và làm (25 phút).** Ở chế độ lập kế hoạch, đọc kế hoạch với ba câu hỏi quen thuộc: file nào được tạo? Có cài gì mới không (✋ — thư viện MCP chính thức của nhà phát triển chuẩn, hay một gói lạ)? Công cụ có chạm tới thứ gì ngoài các file bán hàng không? Duyệt rồi để agent làm. Đọc diff: tìm mọi chỗ code **ghi** file — không được có chỗ nào.
 
-**4. Kiểm tra công cụ trực tiếp (15 phút).** Chạy `python kiem_tra_cong_cu.py`. Đủ 6 ô đúng? Ba đầu vào sai có ra lỗi dễ hiểu không? Thêm một phép thử của riêng bạn: tháng `"../mat_khau"` — công cụ phải từ chối vì đó không phải số tháng, và không được đi tìm file nào khác. Rồi làm hỏng thử bản sao đáp án: phép kiểm tra phải báo KHÔNG ĐẠT.
+**4. Kiểm tra công cụ trực tiếp (15 phút).** Chạy `python kiem_tra_cong_cu.py`. Đủ 6 ô đúng? Ba đầu vào sai có ra lỗi dễ hiểu không? Thêm một phép thử của riêng bạn: tháng `"../mat_khau"` — công cụ phải từ chối vì đó không phải số tháng, và không được đi tìm file nào khác. Rồi làm hỏng thử bản sao đáp án: chép `ket_qua_dung.md` thành `dap_an_hong.md`, sửa sai một con số trong bản sao và chạy `python kiem_tra_cong_cu.py dap_an_hong.md`. Phép kiểm tra phải báo KHÔNG ĐẠT (còn với file gốc vẫn phải ĐẠT). Thử xong thì xóa bản sao.
 
 **5. Nối vào agent (10 phút).** Trong terminal, ở thư mục `ai-practice`:
 
