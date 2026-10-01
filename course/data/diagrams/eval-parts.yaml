@@ -1,0 +1,28 @@
+# Used in: evals (hands-on). The three parts of an eval.
+template: equation
+title:
+  vi: Ba phần của một eval
+  en: The Three Parts of an Eval
+  ja: 評価の3つの部分
+terms:
+  - icon: "📝"
+    color: blue
+    name: {vi: Nhiệm vụ, en: Tasks, ja: タスク}
+    caption: {vi: "đầu vào +\ntiêu chí đạt", en: "input +\nsuccess criteria", ja: "入力＋\n合格の基準"}
+  - icon: "🔁"
+    color: indigo
+    name: {vi: Lần chạy, en: Trials, ja: 試行}
+    caption: {vi: "mỗi nhiệm vụ\nvài lần", en: "each task\nseveral times", ja: "タスクごとに\n数回"}
+  - icon: "💯"
+    color: amber
+    name: {vi: Bộ chấm, en: Graders, ja: 採点}
+    caption: {vi: "code, mô hình\nhay người", en: "code, model\nor human", ja: "コード・モデル・\n人"}
+result:
+  icon: "📊"
+  color: green
+  name: {vi: Tỉ lệ đạt, en: A pass rate, ja: 合格率}
+  caption: {vi: "con số thay cho\ncảm giác", en: "a number instead\nof a feeling", ja: "感覚ではなく\n数字"}
+takeaway:
+  vi: Một lần thử là giai thoại; một eval là bằng chứng.
+  en: One try is an anecdote; an eval is evidence.
+  ja: 1回の試しは体験談、評価は証拠。

@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: dự án công cụ MCP"
+  en: "Recap: The MCP Tool Project"
+  ja: まとめ：MCPツールのプロジェクト
+points:
+  - icon: "🎯"
+    color: blue
+    name: {vi: "Hẹp,\nchỉ đọc", en: "Narrow,\nread-only", ja: "せまく、\n読むだけ"}
+    caption: {vi: "Một công cụ,\nmột thư mục", en: "One tool,\none folder", ja: "ツール1つ、\nフォルダ1つ"}
+  - icon: "🧮"
+    color: green
+    name: {vi: Code tính số, en: Code does the maths, ja: 計算はコード}
+    caption: {vi: "Không để mô hình\n\"tính nhẩm\"", en: "Not the model's\nmental arithmetic", ja: "モデルの\n暗算に頼らない"}
+  - icon: "✅"
+    color: teal
+    name: {vi: "Kiểm tra\ntrước khi nối", en: "Test before\nconnecting", ja: "つなぐ前に\n確かめる"}
+    caption: {vi: "Kết quả đúng\nbiết trước", en: "Right answers\nknown ahead", ja: "先にわかっている\n正解で"}
+  - icon: "🧱"
+    color: rose
+    name: {vi: Bốn mặt, en: Four sides, ja: 4つの面}
+    caption: {vi: "Đầu vào, đầu ra,\nlỗi, ranh giới", en: "Input, output,\nerrors, limits", ja: "入力・出力・\nエラー・境界"}
+  - icon: "🧹"
+    color: slate
+    name: {vi: Không dùng thì gỡ, en: Remove when done, ja: 使わなければ外す}
+    caption: {vi: "Mỗi server nối vào\nlà một quyền trao đi", en: "Every connected server\ngrants access", ja: "つないだサーバーは\n渡した権限"}
+takeaway:
+  vi: Một công cụ nhỏ, đã kiểm tra, đáng tin hơn một agent tự tính.
+  en: A small, tested tool beats an agent doing sums.
+  ja: 確かめた小さなツールは、エージェントの暗算より信頼できる。

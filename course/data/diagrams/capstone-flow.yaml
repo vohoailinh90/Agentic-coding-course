@@ -1,0 +1,36 @@
+# Used in: capstone-your-idea (project). From an idea to evidence.
+template: flow
+title:
+  vi: Dự án cuối khóa, từ ý tưởng tới bằng chứng
+  en: The Capstone, from Idea to Evidence
+  ja: 卒業プロジェクト：アイデアから証拠まで
+direction: vertical
+steps:
+  - icon: "💡"
+    color: amber
+    name: {vi: Chọn ý tưởng, en: Pick an idea, ja: アイデアを選ぶ}
+    caption: {vi: "Nhỏ, kiểm tra được, an toàn", en: "Small, checkable, safe", ja: "小さく・確かめられて・安全"}
+    arrow: {vi: viết ra, en: write it down, ja: 書き出す}
+  - icon: "📄"
+    color: blue
+    name: {vi: Một trang dự án, en: A one-page plan, ja: 1枚の計画}
+    caption: {vi: "Tiêu chí xong, ranh giới dữ liệu và hành động", en: "Done criteria, data and action boundaries", ja: "完了条件・データと操作の境界"}
+    arrow: {vi: chia mốc, en: split, ja: 区切る}
+  - icon: "🔁"
+    color: green
+    name: {vi: Làm từng mốc, en: Build milestone by milestone, ja: 区切りごとに作る}
+    caption: {vi: "Kế hoạch, làm, kiểm tra, commit", en: "Plan, build, check, commit", ja: "計画・作る・確かめる・コミット"}
+    arrow: {vi: tất cả mốc, en: all milestones, ja: すべての区切り}
+  - icon: "🔍"
+    color: violet
+    name: {vi: Kiểm chứng, en: Verify, ja: 検証する}
+    caption: {vi: "Tiêu chí, làm hỏng thử, review mới", en: "Criteria, break test, fresh review", ja: "基準・壊す試験・新しい目のレビュー"}
+    arrow: {vi: đóng gói, en: package, ja: まとめる}
+  - icon: "📦"
+    color: teal
+    name: {vi: Bằng chứng và trình bày, en: Evidence and demo, ja: 証拠と発表}
+    caption: {vi: "Năm phút, kèm cả giới hạn", en: "Five minutes, limits included", ja: "5分で、限界も含めて"}
+takeaway:
+  vi: Mọi thứ trong khóa học, trên một vấn đề của chính bạn.
+  en: Everything in the course, on a problem of your own.
+  ja: 講座のすべてを、あなた自身の問題に。

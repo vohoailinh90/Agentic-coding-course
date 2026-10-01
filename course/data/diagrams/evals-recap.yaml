@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: evals"
+  en: "Recap: Evals"
+  ja: まとめ：評価（Evals）
+points:
+  - icon: "🧪"
+    color: blue
+    name: {vi: "Test ≠ eval", en: "Test ≠ eval", ja: "テスト ≠ 評価"}
+    caption: {vi: "Eval chấm cả hệ thống,\nnhiều lần chạy", en: "An eval grades the system,\nover many trials", ja: "評価はシステム全体を\n何度も採点"}
+  - icon: "🧩"
+    color: indigo
+    name: {vi: Ba phần, en: Three parts, ja: 3つの部分}
+    caption: {vi: "Nhiệm vụ, lần chạy,\nbộ chấm", en: "Tasks, trials,\ngraders", ja: "タスク・試行・\n採点"}
+  - icon: "🤖"
+    color: amber
+    name: {vi: "Ưu tiên chấm\nbằng code", en: "Prefer code\ngraders", ja: "採点はまず\nコードで"}
+    caption: {vi: "Nhanh, rẻ,\nchấm như nhau", en: "Fast, cheap,\nconsistent", ja: "速く・安く・\n毎回同じ"}
+  - icon: "🌱"
+    color: green
+    name: {vi: "Bắt đầu nhỏ,\ntừ lỗi thật", en: "Start small,\nfrom real failures", ja: "小さく、\n本物の失敗から"}
+    caption: {vi: "Mỗi lỗi mới thành\nmột nhiệm vụ mới", en: "Each new failure\nbecomes a task", ja: "新しい失敗は\n新しいタスクに"}
+  - icon: "📖"
+    color: violet
+    name: {vi: Đọc bản ghi, en: Read the transcripts, ja: 記録を読む}
+    caption: {vi: "Không ai đạt?\nNghi nhiệm vụ trước", en: "Nobody passes?\nSuspect the task first", ja: "だれも合格しない？\nまずタスクを疑う"}
+takeaway:
+  vi: Đo bằng con số, rồi đọc để hiểu con số.
+  en: Measure with numbers, then read to understand them.
+  ja: 数字で測り、読んで数字を理解する。

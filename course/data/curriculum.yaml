@@ -543,7 +543,7 @@ modules:
               en: "Evals: Scoring an Agent's Quality"
               ja: Evals：エージェントの品質を採点する
             type: hands-on
-            minutes: 15
+            minutes: 25
             terms: [eval]
 
   - id: build-something-useful
@@ -576,7 +576,7 @@ modules:
               en: Project Retrospective and Evidence Pack
               ja: プロジェクトのふりかえりと証拠のまとめ
             type: hands-on
-            minutes: 15
+            minutes: 25
       - id: advanced-projects
         track: advanced
         title:

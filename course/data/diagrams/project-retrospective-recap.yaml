@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: nhìn lại dự án và gói bằng chứng"
+  en: "Recap: Retrospective and Evidence Pack"
+  ja: まとめ：ふりかえりと証拠のまとめ
+points:
+  - icon: "🏁"
+    color: slate
+    name: {vi: "Xong là khi\nngười khác kiểm được", en: "Done means others\ncan check it", ja: "他人が確かめて\nはじめて完了"}
+    caption: {vi: "Không chỉ\nkhi nó chạy", en: "Not just\nwhen it runs", ja: "動くだけでは\n足りない"}
+  - icon: "🔄"
+    color: indigo
+    name: {vi: Bốn câu hỏi, en: Four questions, ja: 4つの問い}
+    caption: {vi: "Và đúng một điều\nlàm khác lần sau", en: "And exactly one thing\nto change next time", ja: "次に変えることは\nちょうど1つ"}
+  - icon: "📦"
+    color: green
+    name: {vi: Gói bằng chứng, en: Evidence pack, ja: 証拠のまとめ}
+    caption: {vi: "Yêu cầu, trước–sau,\nkiểm tra, giới hạn", en: "Spec, before/after,\nchecks, limits", ja: "依頼・前後・\n確認・限界"}
+  - icon: "🔍"
+    color: rose
+    name: {vi: "Mỗi dòng\ncó bằng chứng", en: "Every line\nhas evidence", ja: "どの行にも\n根拠を"}
+    caption: {vi: "Agent viết nháp,\nbạn kiểm", en: "The agent drafts,\nyou verify", ja: "下書きはエージェント、\n確認はあなた"}
+  - icon: "🧳"
+    color: violet
+    name: {vi: Phép thử người lạ, en: The stranger test, ja: 知らない人テスト}
+    caption: {vi: "Phiên mới chạy lại được;\nhỏi nó đọc thêm gì", en: "A new session reruns it;\nask what else it read", ja: "新しいセッションで再実行。\nほかに何を読んだか聞く"}
+takeaway:
+  vi: Làm xong, rồi chứng minh được là đã làm đúng.
+  en: Finish it, then show it was done right.
+  ja: やり終え、正しくできたことを示す。

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1054" width="800" height="1054" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="en">
+<title id="title">Five Steps to a Small MCP Tool</title>
+<desc id="desc">Write the spec → The agent builds it → Test it directly → Connect it → Use it and test the limits. Check the tool first, then hand it to the agent.</desc>
+<style>
+.flow { animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes flow { to { stroke-dashoffset: -36; } }
+@keyframes pulse { 50% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+</style>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient><marker id="arrow-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="1" y="1" width="798" height="1052" rx="24" fill="url(#bg)" stroke="#E2E8F0" stroke-width="2"/>
+<circle cx="760" cy="36" r="90" fill="#7C3AED" fill-opacity="0.06"/>
+<circle cx="46" cy="1024" r="110" fill="#2563EB" fill-opacity="0.05"/>
+<text font-size="29" fill="#0F172A" text-anchor="middle" font-weight="700"><tspan x="400" y="55">Five Steps to a Small MCP Tool</tspan></text>
+<rect x="88" y="86.3" width="624" height="128.2" rx="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+<circle cx="400" cy="122.3" r="22" fill="#2563EB"/>
+<circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="130.6" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">📝</text>
+<circle cx="106" cy="104.3" r="12" fill="#1E3A8A"/>
+<text x="106" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text font-size="18.5" fill="#1E3A8A" text-anchor="middle" font-weight="700"><tspan x="400" y="170.8">Write the spec</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="195.7">One tool, read-only, clear inputs</tspan></text>
+<line x1="400.0" y1="218.5" x2="400.0" y2="264.5" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="487.1" y="229.6" width="45.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="247.1">plan</tspan></text>
+<rect x="88" y="270.5" width="624" height="128.2" rx="18" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<circle cx="400" cy="306.5" r="22" fill="#059669"/>
+<circle cx="400" cy="306.5" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="314.8" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🤖</text>
+<circle cx="106" cy="288.5" r="12" fill="#064E3B"/>
+<text x="106" y="293.5" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="400" y="355">The agent builds it</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="379.9">You read the diff: nothing writes files</tspan></text>
+<line x1="400.0" y1="402.7" x2="400.0" y2="448.7" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="481.4" y="413.8" width="57.1" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="431.3">check</tspan></text>
+<rect x="88" y="454.7" width="624" height="128.2" rx="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
+<circle cx="400" cy="490.7" r="22" fill="#0D9488"/>
+<circle cx="400" cy="490.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="499" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">✅</text>
+<circle cx="106" cy="472.7" r="12" fill="#134E4A"/>
+<text x="106" y="477.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text font-size="18.5" fill="#134E4A" text-anchor="middle" font-weight="700"><tspan x="400" y="539.2">Test it directly</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="564.1">Against right answers; try bad input</tspan></text>
+<line x1="400.0" y1="586.9" x2="400.0" y2="632.9" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="473.6" y="598" width="72.8" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="615.5">connect</tspan></text>
+<rect x="88" y="638.9" width="624" height="128.2" rx="18" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+<circle cx="400" cy="674.9" r="22" fill="#D97706"/>
+<circle cx="400" cy="674.9" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="683.3" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🔌</text>
+<circle cx="106" cy="656.9" r="12" fill="#78350F"/>
+<text x="106" y="661.9" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text font-size="18.5" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="723.4">Connect it</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="748.4">A local server; /mcp shows connected</tspan></text>
+<line x1="400.0" y1="771.2" x2="400.0" y2="817.2" stroke="#475569" stroke-width="3" stroke-dasharray="9 9" class="flow" marker-end="url(#arrow-flow)"/>
+<rect x="489.3" y="782.3" width="41.5" height="25.8" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text font-size="13.5" fill="#475569" text-anchor="middle"><tspan x="510" y="799.8">use</tspan></text>
+<rect x="88" y="823.2" width="624" height="128.2" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+<circle cx="400" cy="859.2" r="22" fill="#7C3AED"/>
+<circle cx="400" cy="859.2" r="19" fill="#FFFFFF" fill-opacity="0.2"/>
+<text x="400" y="867.5" font-size="23.1" text-anchor="middle" font-family="'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif">🧪</text>
+<circle cx="106" cy="841.2" r="12" fill="#4C1D95"/>
+<text x="106" y="846.2" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text font-size="18.5" fill="#4C1D95" text-anchor="middle" font-weight="700"><tspan x="400" y="907.7">Use it and test the limits</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="400" y="932.6">Right, wrong, and asking to change data</tspan></text>
+<rect x="28" y="975.4" width="744" height="49.8" rx="16" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+<text font-size="18" fill="#78350F" text-anchor="middle" font-weight="700"><tspan x="400" y="1006.4">💡 Check the tool first, then hand it to the agent.</tspan></text>
+</svg>

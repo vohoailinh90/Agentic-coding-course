@@ -5,19 +5,19 @@ write next, and how to write and check a lesson. It points at the rules instead 
 [content-guide.md](content-guide.md) says how to write a lesson, [data-model.md](data-model.md) what
 `validate` enforces. When the two disagree with this page, they win; fix this page.
 
-## State on 2026-09-30
+## State on 2026-10-01
 
-- **48 of 52 lessons are written** in Vietnamese, English and Japanese, all with status `review`
-  (waiting for the owner's read): the 19-lesson minimum path; `how-to-learn-this-course`,
+- **Everything is written and waiting for the owner's review:** 52 of 52 lessons in Vietnamese,
+  English and Japanese, all with status `review`: the 19-lesson minimum path; `how-to-learn-this-course`,
   `programming-building-blocks`, `command-line-basics`, `ai-ml-dl`, `how-machines-learn`,
   `rag-intro`, `prompt-rag-finetune-compare`, `tokens`, `reasoning-models`, `choosing-models`,
   `traditional-vs-agentic`, `vibe-vs-agentic`, `the-agent-loop`, `tool-landscape`,
   `workflow-frameworks`, `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`, `hooks-and-permissions`,
-  `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows` and `mcp`, written by Claude;
+  `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows`, `mcp`, `evals`, `project-retrospective`, `project-mcp-tool` and `capstone-your-idea`, written by Claude;
   and `security-basics`, `prompting-basics`, `next-token-prediction`, `tool-calling`,
   `what-is-software` and `project-anatomy`, written by Codex. `python -m src.main stats` shows the counts; each course home
   (`course/<lang>/README.md`) lists every lesson in order.
-- **4 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
+- **0 lessons remain** (table below). The owner decided on 2026-09-27 to write the whole
   course now, in all three languages, with no native Japanese review
   ([ADR 007](decisions/007-roadmap-v1.md), last section).
 - The tooling is done and tested. `validate` also checks every finished quiz (three questions,
@@ -35,7 +35,8 @@ lessons and Codex reviews them**:
    [claude-to-codex.md](claude-to-codex.md)); Codex posts its findings there.
 3. Claude checks each finding against the repository, fixes the confirmed ones and pushes (at most
    two review rounds). The owner merges once CI is green: `main` has no branch protection, so Claude
-   does not merge.
+   does not merge. PR #21 was the exception: the owner asked Claude to repeat the review until Codex
+   had no findings, and to merge once CI was green.
 
 Codex wrote four batches before this (issues 2, 3, 4 and 6); what the trial taught is kept in the
 rules below — the task id at the start of an issue title, and the standard section headings.
@@ -47,17 +48,12 @@ the source if this snapshot goes stale. Lesson ids never change.
 
 | Lesson | Unit (track) | Type | Min | Glossary terms |
 |---|---|---|---:|---|
-| `evals` | advanced-practice (advanced) | hands-on | 15 | eval |
-| `project-retrospective` | office-outcome (core) | hands-on | 15 | – |
-| `project-mcp-tool` | advanced-projects (advanced) | project | 90 | mcp |
-| `capstone-your-idea` | advanced-projects (advanced) | project | 120 | – |
 
 ### Sketches for the next two
 
 Starting points, not requirements; the lesson's author decides.
 
-- **`evals`** (hands-on) — tests check code, evals check an AI system over many tasks and runs: tasks, trials and graders; start small from real failures; compare two prompts by numbers, not feelings.
-- **`project-retrospective`** (hands-on) — look back with four blameless questions and pack the evidence into one file (spec, before and after, checks, limits, one improvement); test it with a new session that reads only that file.
+- All 52 lessons are written. Next: the owner reviews every lesson (status `review` → `done`), and `python -m src.main export` builds the offline HTML copy.
 
 Review lessons learned (PR #15): Codex checks that every example spec is satisfiable and fair, that
 summaries, objectives and takeaways say exactly what the body says, and that counts and dates are
@@ -67,7 +63,15 @@ whole body plus the exercise (`PROGRESS.md` then shows the new course total); an
 later lessons must match the curriculum. PR #19 added: a general claim (what CI runs, when, on
 what machine; what a subagent knows) must hold for every setup, or say whose setup it describes —
 and once a claim is corrected, sweep the summary, takeaways, quiz, both diagrams and the changelog
-for the same claim in all three languages.
+for the same claim in all three languages. PR #20 added: keep a lesson body near 1,400 Vietnamese
+words instead of raising its minutes; date every tool behaviour ("as of September 2026"); quiz
+distractors are plausible mistakes, never jokes; real company data is ⛔ with no "approved tool"
+exception; and a new technical term gets a glossary entry. PR #21 added: every exercise step must run
+exactly as written — a command carries its arguments (`git restore` needs a path), a file or commit a
+step relies on must exist (a new empty repository has no commit until something is committed), a break
+test must change what the checker really reads, and a score says what an extra or duplicate row does;
+an evidence line claims only what the steps make the learner do; and practice data is made-up data
+only, never "your own data".
 
 Token counts: `js-tiktoken` installs from the npm registry (the Python `tiktoken` cannot download its
 tables here); it is how every count in `tokens` was made. Name the table and the date with a count.

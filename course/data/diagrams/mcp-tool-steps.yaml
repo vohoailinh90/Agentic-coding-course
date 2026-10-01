@@ -1,0 +1,36 @@
+# Used in: project-mcp-tool (project). The five steps of building a small MCP tool.
+template: flow
+title:
+  vi: Năm bước làm một công cụ MCP
+  en: Five Steps to a Small MCP Tool
+  ja: 小さなMCPツールを作る5ステップ
+direction: vertical
+steps:
+  - icon: "📝"
+    color: blue
+    name: {vi: Viết yêu cầu, en: Write the spec, ja: 依頼を書く}
+    caption: {vi: "Một công cụ, chỉ đọc, đầu vào rõ", en: "One tool, read-only, clear inputs", ja: "ツールは1つ、読むだけ、入力を明確に"}
+    arrow: {vi: kế hoạch, en: plan, ja: 計画}
+  - icon: "🤖"
+    color: green
+    name: {vi: Agent làm, en: The agent builds it, ja: エージェントが作る}
+    caption: {vi: "Bạn đọc diff: không chỗ nào ghi file", en: "You read the diff: nothing writes files", ja: "差分を読む：ファイルを書く所はない"}
+    arrow: {vi: kiểm tra, en: check, ja: 確認}
+  - icon: "✅"
+    color: teal
+    name: {vi: Kiểm tra trực tiếp, en: Test it directly, ja: 直接確かめる}
+    caption: {vi: "So với kết quả đúng; thử đầu vào sai", en: "Against right answers; try bad input", ja: "正解と比べ、まちがった入力も試す"}
+    arrow: {vi: nối vào, en: connect, ja: つなぐ}
+  - icon: "🔌"
+    color: amber
+    name: {vi: Nối vào agent, en: Connect it, ja: エージェントにつなぐ}
+    caption: {vi: "Server chạy trên máy; /mcp báo đã nối", en: "A local server; /mcp shows connected", ja: "手元で動くサーバー。/mcp で確認"}
+    arrow: {vi: dùng, en: use, ja: 使う}
+  - icon: "🧪"
+    color: violet
+    name: {vi: Dùng và thử ranh giới, en: Use it and test the limits, ja: 使って境界を試す}
+    caption: {vi: "Câu đúng, câu sai, câu đòi sửa dữ liệu", en: "Right, wrong, and asking to change data", ja: "正しい質問・まちがった質問・データの変更依頼"}
+takeaway:
+  vi: Kiểm tra công cụ trước, rồi mới giao cho agent.
+  en: Check the tool first, then hand it to the agent.
+  ja: まずツールを確かめ、それからエージェントに渡す。
