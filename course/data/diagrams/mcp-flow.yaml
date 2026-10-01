@@ -1,0 +1,26 @@
+# Used in: mcp (demo). One tool call through MCP.
+template: flow
+title:
+  vi: Một lần gọi công cụ qua MCP
+  en: One Tool Call Through MCP
+  ja: MCP経由のツール呼び出し
+direction: horizontal
+steps:
+  - icon: "🤖"
+    color: green
+    name: {vi: Agent, en: Agent, ja: エージェント}
+    caption: {vi: "mô hình yêu cầu\nmột công cụ", en: "the model asks\nfor a tool", ja: "モデルが\nツールを頼む"}
+    arrow: {vi: "client chuyển\n(hoặc hỏi bạn)", en: "client passes it\n(or asks you)", ja: "クライアントが送る\n（または確認）"}
+  - icon: "🔌"
+    color: amber
+    name: {vi: MCP server, en: MCP server, ja: MCPサーバー}
+    caption: {vi: "mở ra công cụ\ncủa hệ thống", en: "exposes the\nsystem's tools", ja: "システムの\nツールを公開"}
+    arrow: {vi: làm việc thật, en: acts for real, ja: 実際に動く}
+  - icon: "🗓️"
+    color: blue
+    name: {vi: Hệ thống, en: The system, ja: システム}
+    caption: {vi: "lịch, dữ liệu,\ntài liệu…", en: "calendar, data,\ndocuments…", ja: "予定・データ・\n資料など"}
+takeaway:
+  vi: Một cổng chung; mỗi cổng mở là một quyền trao đi.
+  en: One common port; every port you open grants access.
+  ja: どのツールにも共通の口。口を開けるたびに、権限を渡しています。

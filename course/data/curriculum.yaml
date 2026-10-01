@@ -535,7 +535,7 @@ modules:
               en: "MCP: A USB-C Port for AI"
               ja: MCP：AIのためのUSB-Cポート
             type: demo
-            minutes: 12
+            minutes: 15
             terms: [mcp]
           - id: evals
             title:

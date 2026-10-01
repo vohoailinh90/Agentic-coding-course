@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: MCP"
+  en: "Recap: MCP"
+  ja: まとめ：MCP
+points:
+  - icon: "🔌"
+    color: amber
+    name: {vi: Một cổng chung, en: One common port, ja: 共通の口}
+    caption: {vi: "Chuẩn mở, như USB-C;\nhết cảnh mỗi cặp một dây", en: "An open standard,\nlike USB-C", ja: "USB-Cのような標準。\n組み合わせごとの線は不要"}
+  - icon: "🧩"
+    color: blue
+    name: {vi: "Server và client", en: "Server and client", ja: サーバーとクライアント}
+    caption: {vi: "Server mở công cụ;\nclient trong agent nối tới", en: "The server exposes tools;\nthe agent's client connects", ja: "サーバーがツールを公開し、\nクライアントがつなぐ"}
+  - icon: "🔧"
+    color: green
+    name: {vi: "Vẫn là\ngọi công cụ", en: "Still just\ntool calling", ja: "中身は\nツール呼び出し"}
+    caption: {vi: "Mô hình yêu cầu;\nagent chạy hay hỏi bạn", en: "The model asks;\nthe agent runs or asks you", ja: "モデルが頼み、\n実行か確認かはエージェント"}
+  - icon: "🔑"
+    color: rose
+    name: {vi: "Nối là\ntrao quyền", en: "Connecting\ngrants access", ja: "つなぐ＝\n権限を渡す"}
+    caption: {vi: "Của ai? Làm được gì?\nChạm dữ liệu nào?", en: "Whose? What can it do?\nWhich data?", ja: "だれの？何ができる？\nどのデータ？"}
+  - icon: "🔍"
+    color: violet
+    name: {vi: Tự kiểm tra, en: Check it yourself, ja: 自分で確かめる}
+    caption: {vi: "Xem kết quả trong\nhệ thống thật", en: "Look at the result\nin the real system", ja: "本物のシステムで\n結果を見る"}
+takeaway:
+  vi: MCP mở cửa cho agent; bạn quyết định cửa nào, và ai được vào.
+  en: MCP opens doors; you decide which ones.
+  ja: MCPは扉を開く。どれを開くかはあなたが決める。
