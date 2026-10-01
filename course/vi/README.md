@@ -196,5 +196,5 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 6.2.1 | Dự án: làm một công cụ MCP nhỏ cho agent | 🚀 Dự án | 90 phút |
+| 6.2.1 | [Dự án: làm một công cụ MCP nhỏ cho agent](lessons/project-mcp-tool.md) | 🚀 Dự án | 90 phút |
 | 6.2.2 | Dự án cuối khóa: ý tưởng của riêng bạn | 🚀 Dự án | 120 phút |

@@ -196,5 +196,5 @@ Start here: 19 lessons · 347 min, enough to give an AI agent real work and chec
 
 | # | Lesson | Type | Time |
 |---|---|---|---|
-| 6.2.1 | Project: Build a Small MCP Tool for Your Agent | 🚀 Project | 90 min |
+| 6.2.1 | [Project: Build a Small MCP Tool for Your Agent](lessons/project-mcp-tool.md) | 🚀 Project | 90 min |
 | 6.2.2 | Capstone: Your Own Idea | 🚀 Project | 120 min |
