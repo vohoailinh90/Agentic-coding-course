@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 551" width="800" height="551" role="img" aria-labelledby="title desc" font-family="'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, 'Liberation Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', IPAPGothic, sans-serif" lang="vi">
 <title id="title">Tóm tắt: test và CI</title>
 <desc id="desc">1. Test tự động — Agent tự chạy,
-kiểm tra toàn bộ; 2. CI: không ai
+lần nào cũng như nhau; 2. CI: không ai
 quên được — Mỗi pull request,
 máy sạch; 3. Đỏ: sửa.
 Xanh: review — Xanh mới tới
@@ -22,7 +22,7 @@ nhất là file test. Để máy kiểm tra máy — và bạn kiểm tra cả h
 <circle cx="46" cy="104.3" r="12" fill="#064E3B"/>
 <text x="46" y="109.3" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
 <text font-size="18.5" fill="#064E3B" text-anchor="middle" font-weight="700"><tspan x="146" y="170.8">Test tự động</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="195.7">Agent tự chạy,</tspan><tspan x="146" y="215.5">kiểm tra toàn bộ</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="146" y="195.7">Agent tự chạy,</tspan><tspan x="146" y="215.5">lần nào cũng như nhau</tspan></text>
 <rect x="282" y="86.3" width="236" height="172.4" rx="18" fill="#EEF2FF" stroke="#4F46E5" stroke-width="2"/>
 <circle cx="400" cy="122.3" r="22" fill="#4F46E5"/>
 <circle cx="400" cy="122.3" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

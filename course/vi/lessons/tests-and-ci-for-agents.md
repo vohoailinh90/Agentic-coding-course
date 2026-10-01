@@ -3,8 +3,8 @@ lesson: tests-and-ci-for-agents
 lang: vi
 status: review
 summary: >-
-  Test tự động là phép kiểm tra agent tự chạy trong vòng lặp của nó; CI chạy lại toàn bộ test đó trên một máy chủ vào
-  những lúc bạn đã cài cho nó — thường là mỗi pull request — dù agent hay bạn có nhớ chạy hay không. Xem Huy thêm tính năng tiền tip cho trang chia
+  Test tự động là phép kiểm tra agent tự chạy trong vòng lặp của nó; CI chạy lại các test đã cài cho nó (thường là toàn bộ) trên một máy chủ vào
+  những lúc bạn đã cài — thường là mỗi pull request — dù agent hay bạn có nhớ chạy hay không. Xem Huy thêm tính năng tiền tip cho trang chia
   tiền: agent chỉ chạy test mới, CI bắt được lỗi ở test cũ — và khi agent đề nghị sửa đáp án trong test cho "xanh",
   Huy từ chối.
 social:
@@ -41,11 +41,11 @@ Agent nói đạt, máy chủ nói không. Ai đúng? Và nếu không có máy 
 
 Bạn đã biết biến ["trông có vẻ đúng" thành phép kiểm tra](testing-basics.md), và vì sao [agent cần một phép kiểm tra nó tự chạy được](traditional-vs-agentic.md). Khi các phép kiểm tra được viết thành chương trình, ta có **test tự động**: chạy vài giây, cho ra *đạt / không đạt* cho từng trường hợp. Agent chạy nó trong vòng lặp của mình, đọc kết quả, và sửa tới khi đạt.
 
-Agent làm nhanh và sửa nhiều chỗ một lúc. Người khó kiểm tra lại hết bằng tay; test thì kiểm tra lại **toàn bộ** mỗi lần, không mệt, không bỏ sót trường hợp cũ.
+Agent làm nhanh và sửa nhiều chỗ một lúc. Người khó kiểm tra lại hết bằng tay; test thì kiểm tra lại đúng những trường hợp đã viết, lần nào cũng như nhau, không mệt — miễn là bạn chạy hết chúng.
 
 ### CI: chạy lại test ở một nơi không ai quên được
 
-Test chỉ có ích khi được chạy. Agent có thể chỉ chạy một phần, hoặc quên chạy. **CI** (tích hợp liên tục) giải quyết chuyện đó: bạn cài cho nó những lúc phải chạy — thường là mỗi khi có một *pull request*, tức một đề nghị gộp thay đổi vào kho code chung. Đến lúc đó, một máy chủ tự tải code về và chạy **toàn bộ** test. Kết quả hiện cho mọi người: ✅ xanh hoặc ❌ đỏ.
+Test chỉ có ích khi được chạy. Agent có thể chỉ chạy một phần, hoặc quên chạy. **CI** (tích hợp liên tục) giải quyết chuyện đó: bạn cài cho nó những lúc phải chạy — thường là mỗi khi có một *pull request*, tức một đề nghị gộp thay đổi vào kho code chung. Đến lúc đó, một máy chủ tự tải code về và chạy các test mà bạn đã cài cho nó chạy — thường là **toàn bộ**, như CI của Huy dưới đây. Kết quả hiện cho mọi người: ✅ xanh hoặc ❌ đỏ.
 
 ![Test và CI trong vòng làm việc của agent](../diagrams/tests-and-ci-flow.svg)
 
@@ -84,7 +84,7 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 <!-- section: misconceptions -->
 ## Hiểu lầm thường gặp
 
-- **"Agent đã chạy test rồi thì không cần CI."** — Agent có thể chỉ chạy một phần, hay chạy trên máy có thứ mà kho code không có. CI chạy toàn bộ, trên một máy sạch, mỗi lần.
+- **"Agent đã chạy test rồi thì không cần CI."** — Agent có thể chỉ chạy một phần, hay chạy trên máy có thứ mà kho code không có. CI chạy đúng những test đã cài (nên cài cho nó chạy toàn bộ), trên một máy sạch, mỗi lần.
 - **"CI xanh là code đúng."** — CI chỉ kiểm tra những gì test kiểm tra. Nếu đáp án trong test bị sửa sai, CI vẫn xanh. Bạn vẫn phải đọc diff, nhất là file test.
 - **"CI là việc của công ty lớn."** — Với một kho code trên GitHub, một dự án nhỏ cũng có thể có CI chạy test mỗi lần đẩy thay đổi. Agent có thể giúp bạn cài — và bạn đọc lại trước khi đồng ý.
 
@@ -96,8 +96,8 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 <!-- section: takeaways -->
 ## Ghi nhớ
 
-- Test tự động: phép kiểm tra agent tự chạy, kiểm tra lại toàn bộ mỗi lần.
-- CI chạy toàn bộ test trên máy chủ vào những lúc đã cài (thường là mỗi pull request), dù ai có quên.
+- Test tự động: phép kiểm tra agent tự chạy, lần nào cũng kiểm tra đúng như nhau.
+- CI chạy các test đã cài (thường là toàn bộ) trên máy chủ vào những lúc đã cài (thường là mỗi pull request), dù ai có quên.
 - Đỏ thì quay lại sửa; xanh thì mới tới lượt bạn review.
 - "Làm cho test xanh" khác "làm cho code đúng": đừng để agent sửa đáp án cho khớp.
 - CI xanh chưa phải là đúng: đọc diff, nhất là mọi dòng đổi trong file test.

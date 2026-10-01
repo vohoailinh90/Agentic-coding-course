@@ -3,7 +3,7 @@ lesson: tests-and-ci-for-agents
 lang: en
 status: review
 summary: >-
-  An automated test is a check the agent runs itself inside its loop; CI runs all of those tests again on a
+  An automated test is a check the agent runs itself inside its loop; CI runs the tests it is set up to run (usually all of them) again on a
   server at the moments you set it up for — usually every pull request — whether or not the agent or you remembered to. Watch Huy add a tip
   option to the bill-splitting page: the agent runs only the new tests, CI catches a broken old one — and when
   the agent suggests changing the expected answer in the test to get green, Huy says no.
@@ -41,11 +41,11 @@ The agent says pass, the server says fail. Who is right? And without that server
 
 You already know how to [turn "looks right" into checks](testing-basics.md), and why [an agent needs a check it can run itself](traditional-vs-agentic.md). When those checks are written as a program, you have **automated tests**: they run in seconds and give *pass / fail* for each case. The agent runs them inside its loop, reads the result, and fixes things until they pass.
 
-An agent works fast and changes many places at once. A person struggles to recheck everything by hand; tests recheck **everything** every time, without getting tired, without skipping old cases.
+An agent works fast and changes many places at once. A person struggles to recheck everything by hand; tests recheck exactly the cases written in them, the same way every time, without getting tired — as long as you run them all.
 
 ### CI: running the tests where nobody can forget
 
-Tests only help when they are run. An agent may run only some of them, or forget to. **CI** (continuous integration) solves that: you set up when it runs — usually on every *pull request*, a proposal to merge a change into the shared repository. At those moments, a server fetches the code and runs **all** the tests. The result is shown to everyone: ✅ green or ❌ red.
+Tests only help when they are run. An agent may run only some of them, or forget to. **CI** (continuous integration) solves that: you set up when it runs — usually on every *pull request*, a proposal to merge a change into the shared repository. At those moments, a server fetches the code and runs the tests you set it up to run — usually **all** of them, as in Huy's CI below. The result is shown to everyone: ✅ green or ❌ red.
 
 ![Tests and CI in an agent's work](../diagrams/tests-and-ci-flow.svg)
 
@@ -84,7 +84,7 @@ Without CI, the bug in step 2 would have gone straight to the club — every bil
 <!-- section: misconceptions -->
 ## Common Misconceptions
 
-- **"The agent already ran the tests, so CI isn't needed."** — The agent may have run only some of them, or on a computer with something the repository does not have. CI runs all of them, on a clean machine, every time.
+- **"The agent already ran the tests, so CI isn't needed."** — The agent may have run only some of them, or on a computer with something the repository does not have. CI runs exactly the tests it is set up to run (set it up to run all of them), on a clean machine, every time.
 - **"Green CI means the code is right."** — CI only checks what the tests check. If an expected answer in a test was changed wrongly, CI is still green. You still read the diff, especially the test files.
 - **"CI is for big companies."** — With a repository on GitHub, even a small project can have CI run its tests on every push. An agent can help you set it up — and you read it before you approve.
 
@@ -96,8 +96,8 @@ Without CI, the bug in step 2 would have gone straight to the club — every bil
 <!-- section: takeaways -->
 ## Key Takeaways
 
-- Automated tests: checks the agent runs itself, rechecking everything each time.
-- CI runs all the tests on a server at the moments it is set up for (usually every pull request), whoever forgets.
+- Automated tests: checks the agent runs itself, the same way every time.
+- CI runs the tests it is set up to run (usually all of them) on a server at the moments it is set up for (usually every pull request), whoever forgets.
 - Red means go back and fix; only green is your turn to review.
 - "Make the tests green" is not "make the code right": don't let the agent change answers to match.
 - Green CI is not proof: read the diff, especially every changed line in the tests.

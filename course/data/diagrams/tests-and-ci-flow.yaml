@@ -13,7 +13,7 @@ steps:
     arrow: {vi: đẩy lên, en: pushes, ja: 送る}
   - icon: "🖥️"
     color: indigo
-    name: {vi: CI chạy toàn bộ, en: CI runs them all, ja: CIが全部実行}
+    name: {vi: "CI chạy test\nđã cài", en: "CI runs the\nset-up tests", ja: "CIが設定した\nテストを実行"}
     caption: {vi: "máy sạch,\nmỗi lần", en: "clean machine,\nevery time", ja: "きれいな環境で\n毎回"}
     arrow: {vi: kết quả, en: result, ja: 結果}
   - icon: "🚦"

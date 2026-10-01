@@ -7,7 +7,7 @@ points:
   - icon: "✅"
     color: green
     name: {vi: Test tự động, en: Automated tests, ja: 自動テスト}
-    caption: {vi: "Agent tự chạy,\nkiểm tra toàn bộ", en: "The agent runs them,\nall cases every time", ja: "エージェントが実行、\n毎回すべて確認"}
+    caption: {vi: "Agent tự chạy,\nlần nào cũng như nhau", en: "The agent runs them,\nthe same every time", ja: "エージェントが実行、\n毎回同じ確認"}
   - icon: "🔁"
     color: indigo
     name: {vi: "CI: không ai\nquên được", en: "CI: nobody\ncan forget", ja: "CI：だれも\n忘れられない"}
