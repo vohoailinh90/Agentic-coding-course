@@ -72,6 +72,11 @@ jobs:
       run: |
         python -m src.main validate
         python scripts/i18n_check.py src/locales --require vi,en,ja
+    - name: Repository layout check
+      # The root holds only entry-point launchers; tests live in tests/ and
+      # modules in the app's package. See .claude/skills/repo-layout/SKILL.md.
+      run: |
+        python scripts/layout_check.py
     - name: Runner switch drift guard
       # A workflow added later must not quietly hardcode ubuntu-latest while the
       # CI_RUNNER switch appears to be on. See docs/ci-runner-mode.md.
