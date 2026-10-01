@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: bộ nhớ dự án và kỹ năng"
+  en: "Recap: Project Memory and Skills"
+  ja: まとめ：プロジェクトの記憶とスキル
+points:
+  - icon: "🗃️"
+    color: slate
+    name: {vi: Nhớ bằng file, en: Memory is files, ja: 記憶はファイル}
+    caption: {vi: "Phiên mới,\nngữ cảnh mới", en: "New session,\nnew context", ja: "新しいセッションは\n新しいコンテキスト"}
+  - icon: "📌"
+    color: blue
+    name: {vi: File chỉ dẫn, en: Instruction file, ja: 指示ファイル}
+    caption: {vi: "Bạn viết,\nđọc mỗi phiên", en: "You write it,\nread every session", ja: "あなたが書き、\n毎回読まれる"}
+  - icon: "🧠"
+    color: teal
+    name: {vi: Bộ nhớ tự động, en: Auto memory, ja: 自動メモリ}
+    caption: {vi: "Agent ghi,\nbạn đọc lại", en: "The agent writes,\nyou read it back", ja: "エージェントが書き、\nあなたが読み直す"}
+  - icon: "🧰"
+    color: green
+    name: {vi: Kỹ năng, en: Skills, ja: スキル}
+    caption: {vi: "Quy trình lặp lại,\nnạp khi cần", en: "Repeated procedures,\nloaded when needed", ja: "くり返す手順を\n必要なときに"}
+  - icon: "✋"
+    color: amber
+    name: {vi: "Kỹ năng lạ:\nđọc trước", en: "Others' skills:\nread first", ja: "他人のスキル：\n先に読む"}
+    caption: {vi: "Có thể chạy lệnh\ntrên máy bạn", en: "They can run commands\non your computer", ja: "あなたのPCで\nコマンドが動きうる"}
+takeaway:
+  vi: Đừng dán lại mãi — đóng gói nó, và đọc lại thứ agent ghi.
+  en: "Stop re-pasting: package it, and read the agent's notes."
+  ja: 貼り直すのはやめて、手順にまとめ、エージェントのメモを読み直す。
