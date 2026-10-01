@@ -99,7 +99,7 @@ Nếu không có CI, lỗi ở bước 2 đã đi thẳng tới câu lạc bộ 
 - Test tự động: phép kiểm tra agent tự chạy, lần nào cũng kiểm tra đúng như nhau.
 - CI chạy các test đã cài (thường là toàn bộ) trên máy chủ vào những lúc đã cài (thường là mỗi pull request), dù ai có quên.
 - Đỏ thì quay lại sửa; xanh thì mới tới lượt bạn review.
-- "Làm cho test xanh" khác "làm cho code đúng": đừng để agent sửa đáp án cho khớp.
+- "Làm cho test xanh" khác "làm cho code đúng": đừng để agent sửa đáp án chỉ để khớp; so với yêu cầu trước.
 - CI xanh chưa phải là đúng: đọc diff, nhất là mọi dòng đổi trong file test.
 
 <!-- section: quiz -->

@@ -19,7 +19,7 @@ points:
   - icon: "🙅"
     color: rose
     name: {vi: "Đừng sửa test\ncho xanh", en: "Don't bend the\ntests to pass", ja: "テストを曲げて\n通さない"}
-    caption: {vi: "Sửa code,\nkhông sửa đáp án", en: "Fix the code,\nnot the answer", ja: "答えではなく\nコードを直す"}
+    caption: {vi: "So với yêu cầu\nrồi mới sửa", en: "Check the requirement,\nthen fix", ja: "要件を確かめて\nから直す"}
   - icon: "🔍"
     color: violet
     name: {vi: "Xanh chưa\nchắc đúng", en: "Green isn't\nalways right", ja: "緑＝正しい\nとは限らない"}

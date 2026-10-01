@@ -6,8 +6,8 @@
 きれいな環境で; 3. 赤：直す
 緑：レビュー — 緑になってから
 あなたが読む; 4. テストを曲げて
-通さない — 答えではなく
-コードを直す; 5. 緑＝正しい
+通さない — 要件を確かめて
+から直す; 5. 緑＝正しい
 とは限らない — 差分を読む。
 特にテスト. 機械に機械を確かめさせ、あなたは両方を確かめる。</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F5F9"/></linearGradient></defs>
@@ -46,7 +46,7 @@
 <circle cx="173" cy="294.7" r="12" fill="#881337"/>
 <text x="173" y="299.7" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text font-size="18.5" fill="#881337" text-anchor="middle" font-weight="700"><tspan x="273" y="361.2">テストを曲げて</tspan><tspan x="273" y="385.6">通さない</tspan></text>
-<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="410.6">答えではなく</tspan><tspan x="273" y="430.4">コードを直す</tspan></text>
+<text font-size="15" fill="#475569" text-anchor="middle"><tspan x="273" y="410.6">要件を確かめて</tspan><tspan x="273" y="430.4">から直す</tspan></text>
 <rect x="409" y="276.7" width="236" height="172.4" rx="18" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
 <circle cx="527" cy="312.7" r="22" fill="#7C3AED"/>
 <circle cx="527" cy="312.7" r="19" fill="#FFFFFF" fill-opacity="0.2"/>

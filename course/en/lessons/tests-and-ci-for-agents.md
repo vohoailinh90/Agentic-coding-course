@@ -99,7 +99,7 @@ Without CI, the bug in step 2 would have gone straight to the club — every bil
 - Automated tests: checks the agent runs itself, the same way every time.
 - CI runs the tests it is set up to run (usually all of them) on a server at the moments it is set up for (usually every pull request), whoever forgets.
 - Red means go back and fix; only green is your turn to review.
-- "Make the tests green" is not "make the code right": don't let the agent change answers to match.
+- "Make the tests green" is not "make the code right": don't let the agent change an answer just to match; check the requirement first.
 - Green CI is not proof: read the diff, especially every changed line in the tests.
 
 <!-- section: quiz -->
