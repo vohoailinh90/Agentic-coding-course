@@ -87,7 +87,7 @@ Năm phút trình bày cho một người bạn: vấn đề (30 giây), demo (2
 <!-- section: try-it -->
 ## Thử ngay
 
-Khoảng 120 phút, trong một thư mục mới trong `ai-practice`, ở chế độ agent hỏi trước. Commit trước khi bắt đầu (nếu `ai-practice` chưa là một kho Git, làm `git init` trước). (Đi đường chỉ xem? Làm bước 1–3 trên giấy: đó đã là nửa khó nhất của dự án.)
+Khoảng 120 phút, trong một thư mục mới trong `ai-practice`, ở chế độ agent hỏi trước. Bắt đầu bằng một mốc nền: trong thư mục mới, viết một file `README.md` một dòng (tên dự án) rồi commit — nếu `ai-practice` chưa là một kho Git, làm `git init` trước. Đó là commit khởi đầu của bạn. (Đi đường chỉ xem? Làm bước 1–3 trên giấy: đó đã là nửa khó nhất của dự án.)
 
 **1. Chọn ý tưởng (15 phút).** Viết ra ba ý tưởng. Cho từng cái qua ba bộ lọc: nhỏ, kiểm tra được, an toàn. Giữ lại một. Không cái nào qua? Cắt nhỏ ý tưởng tốt nhất cho tới khi qua.
 
@@ -97,7 +97,7 @@ Khoảng 120 phút, trong một thư mục mới trong `ai-practice`, ở chế 
 
 **4. Làm từng mốc (45 phút).** Với mỗi mốc: kế hoạch (đọc với ba câu hỏi), làm, đọc diff, chạy phép kiểm tra, commit. Agent bị kẹt hay đi lạc? Ngắt sớm, nói rõ hướng mới.
 
-**5. Kiểm chứng (15 phút).** Tự kiểm tra từng tiêu chí xong. Làm hỏng thử một chỗ để thấy phép kiểm tra báo không đạt, rồi trả lại như cũ (`git restore` — ✋, agent sẽ hỏi). Mở một phiên mới để review riêng: đưa trang dự án và toàn bộ thay đổi từ commit bạn làm trước khi bắt đầu (nhờ agent cho xem `git diff` từ commit đó tới commit mới nhất — `git diff` trơn sẽ trống khi mọi thứ đã commit), nhờ tìm chỗ thiếu.
+**5. Kiểm chứng (15 phút).** Tự kiểm tra từng tiêu chí xong. Làm hỏng thử một chỗ để thấy phép kiểm tra báo không đạt, rồi trả lại như cũ (`git restore TEN_FILE_BI_HONG` — ✋, agent sẽ hỏi). Mở một phiên mới để review riêng: đưa trang dự án và toàn bộ thay đổi từ commit khởi đầu của bạn (nhờ agent cho xem `git diff` từ commit đó tới commit mới nhất — `git diff` trơn sẽ trống khi mọi thứ đã commit), nhờ tìm chỗ thiếu.
 
 **6. Gói bằng chứng và trình bày (20 phút).** Viết `BANG_CHUNG.md` (yêu cầu, trước và sau, các phép kiểm tra, giới hạn, một cải tiến) và làm phép thử người lạ. Trình bày năm phút cho một người — bạn bè, người thân, đồng nghiệp — hoặc ghi âm cho chính mình.
 

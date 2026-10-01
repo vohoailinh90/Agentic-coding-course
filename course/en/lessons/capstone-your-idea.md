@@ -88,7 +88,7 @@ The five-minute demo for a friend: the problem (30 seconds), the demo (2 minutes
 <!-- section: try-it -->
 ## Try It Yourself
 
-About 120 minutes, in a new folder inside `ai-practice`, in the mode where the agent asks first. Commit before you start (if `ai-practice` is not a Git repository yet, run `git init` first). (On the watch-only route? Do steps 1–3 on paper: that is already the harder half of the project.)
+About 120 minutes, in a new folder inside `ai-practice`, in the mode where the agent asks first. Start with a baseline: in the new folder write a one-line `README.md` (the project's name) and commit it — if `ai-practice` is not a Git repository yet, run `git init` first. That is your starting commit. (On the watch-only route? Do steps 1–3 on paper: that is already the harder half of the project.)
 
 **1. Pick an idea (15 minutes).** Write down three ideas. Put each one through the three filters: small, checkable, safe. Keep one. None passes? Cut your best idea down until it does.
 
@@ -98,7 +98,7 @@ About 120 minutes, in a new folder inside `ai-practice`, in the mode where the a
 
 **4. Build each milestone (45 minutes).** For each milestone: plan (read it with the three questions), build, read the diff, run the check, commit. The agent is stuck or going off track? Interrupt early and give a clear new direction.
 
-**5. Verify (15 minutes).** Check every done criterion yourself. Break something on purpose to see the check fail, then put it back (`git restore` — ✋, the agent will ask). Open a new session for a separate review: give it the plan and the whole change since the commit you made before starting (ask the agent for the `git diff` from that commit to the latest one — a plain `git diff` is empty once everything is committed), and ask it to find what is missing.
+**5. Verify (15 minutes).** Check every done criterion yourself. Break something on purpose to see the check fail, then put it back (`git restore THE_FILE_YOU_BROKE` — ✋, the agent will ask). Open a new session for a separate review: give it the plan and the whole change since your starting commit (ask the agent for the `git diff` from that commit to the latest one — a plain `git diff` is empty once everything is committed), and ask it to find what is missing.
 
 **6. Evidence pack and demo (20 minutes).** Write `EVIDENCE.md` (spec, before and after, checks, limits, one improvement) and run the stranger test. Give a five-minute demo to someone — a friend, a family member, a colleague — or record it for yourself.
 

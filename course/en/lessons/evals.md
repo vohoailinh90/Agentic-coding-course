@@ -86,7 +86,7 @@ And `answers.jsonl` — the right answers, written before any run:
 {"no": 105, "date": "2026-09-30", "amount": 2000}
 ```
 
-**2. A code grader (2 minutes).** Ask the agent: *"Write grade.py, run as `python grade.py RESULT_FILE answers.jsonl`: compare each invoice in answers.jsonl with the result file by its number, and print how many are right and which are wrong. A line that cannot be read, a missing invoice, an invoice number not in the answers, or the same number twice, counts as wrong."* Test it before any AI run: copy `answers.jsonl` to `test_result.jsonl` and grade it — every invoice must be right. Then change the `amount` of one invoice in `test_result.jsonl` (leave its `no` alone) and grade it again — it must report exactly that invoice as wrong.
+**2. A code grader (2 minutes).** Ask the agent: *"Write grade.py, run as `python grade.py RESULT_FILE answers.jsonl`: compare each invoice in answers.jsonl with the result file by its number, and print the score (invoices right out of invoices expected) and which are wrong. A missing invoice counts as wrong. If a line cannot be read, an invoice number is not in the answers, or the same number appears twice, the whole run scores 0 and the grader says why."* Test it before any AI run: copy `answers.jsonl` to `test_result.jsonl` and grade it — every invoice must be right. Then change the `amount` of one invoice in `test_result.jsonl` (leave its `no` alone) and grade it again — it must report exactly that invoice as wrong.
 
 **3. Compare two ways of asking (5 minutes).** Do each run in a **new session**, writing results to its own file:
 

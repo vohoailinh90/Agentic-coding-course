@@ -85,7 +85,7 @@ Và `dap_an.jsonl` — đáp án đúng, viết trước khi chạy:
 {"so": 105, "ngay": "2026-09-30", "tien": 2000000}
 ```
 
-**2. Bộ chấm bằng code (2 phút).** Nhờ agent: *"Viết cham_diem.py, chạy bằng `python cham_diem.py FILE_KET_QUA dap_an.jsonl`: so từng hóa đơn trong dap_an.jsonl với file kết quả theo số hóa đơn, in số hóa đơn đúng và hóa đơn nào sai. Dòng không đọc được, hóa đơn bị thiếu, số hóa đơn không có trong đáp án, hay một số xuất hiện hai lần, đều tính là sai."* Thử trước khi cho AI chạy: chép `dap_an.jsonl` thành `ket_qua_thu.jsonl` rồi chấm — mọi hóa đơn phải đúng. Rồi sửa `tien` của một hóa đơn trong `ket_qua_thu.jsonl` (giữ nguyên `so`) và chấm lại — nó phải báo sai đúng hóa đơn đó.
+**2. Bộ chấm bằng code (2 phút).** Nhờ agent: *"Viết cham_diem.py, chạy bằng `python cham_diem.py FILE_KET_QUA dap_an.jsonl`: so từng hóa đơn trong dap_an.jsonl với file kết quả theo số hóa đơn, in điểm (số hóa đơn đúng trên số hóa đơn cần có) và hóa đơn nào sai. Hóa đơn bị thiếu tính là sai. Nếu có dòng không đọc được, số hóa đơn không có trong đáp án, hay một số xuất hiện hai lần, cả lần chạy đó được 0 điểm và bộ chấm nói rõ lý do."* Thử trước khi cho AI chạy: chép `dap_an.jsonl` thành `ket_qua_thu.jsonl` rồi chấm — mọi hóa đơn phải đúng. Rồi sửa `tien` của một hóa đơn trong `ket_qua_thu.jsonl` (giữ nguyên `so`) và chấm lại — nó phải báo sai đúng hóa đơn đó.
 
 **3. So hai cách viết yêu cầu (5 phút).** Mỗi lần chạy trong một **phiên mới**, ghi kết quả ra file riêng:
 
