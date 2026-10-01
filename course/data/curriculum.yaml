@@ -497,7 +497,7 @@ modules:
               en: "Hooks and Permissions: Automatic Guardrails"
               ja: フックと権限：自動のガードレール
             type: hands-on
-            minutes: 12
+            minutes: 25
             terms: [hook]
           - id: tests-and-ci-for-agents
             title:
