@@ -136,7 +136,7 @@ Kết quả: một workflow và một subagent review — thay vì năm agent. �
 **Câu 3.** Vì sao lời giao việc cho subagent cần rõ ràng?
 
 - A) Vì một subagent thông thường (như trong Claude Code) bắt đầu với ngữ cảnh mới, không thấy cuộc trò chuyện của bạn với agent chính
-- B) Vì subagent dùng ngôn ngữ khác
+- B) Vì subagent luôn chạy trên một mô hình yếu hơn, cần chỉ dẫn đơn giản hơn
 - C) Vì subagent không được dùng công cụ nào
 
 <details>

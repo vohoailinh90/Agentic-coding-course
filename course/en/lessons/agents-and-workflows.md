@@ -137,7 +137,7 @@ The result: one workflow and one review subagent — instead of five agents. It 
 **Question 3.** Why does a subagent's brief need to be clear?
 
 - A) Because an ordinary subagent (as in Claude Code) starts with a fresh context and does not see your conversation with the main agent
-- B) Because the subagent speaks another language
+- B) Because a subagent always runs on a weaker model that needs simpler instructions
 - C) Because the subagent cannot use any tools
 
 <details>

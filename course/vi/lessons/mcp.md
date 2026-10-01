@@ -113,7 +113,7 @@ Lịch **thật** của công ty thì nằm ngoài khóa học này (⛔). Có n
 
 - A) Phần mềm của agent, theo quyền hạn bạn đã đặt
 - B) Mô hình tự quyết, không ai kiểm soát
-- C) Phòng họp
+- C) MCP server, vì nó luôn hỏi bạn trước khi thay đổi dữ liệu
 
 **Câu 3.** Bạn thấy trên mạng một MCP server "đọc email và tự trả lời hộ". Nên làm gì trước khi nối?
 

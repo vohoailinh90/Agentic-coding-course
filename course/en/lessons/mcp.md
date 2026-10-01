@@ -114,7 +114,7 @@ The company's **real** calendar stays out of this course (⛔). Whether an agent
 
 - A) The agent's software, according to the permissions you set
 - B) The model decides by itself, with no control
-- C) The meeting room
+- C) The MCP server, which always asks you before changing data
 
 **Question 3.** You find an MCP server online that "reads your email and replies for you". What should you do before connecting it?
 
