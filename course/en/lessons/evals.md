@@ -93,7 +93,7 @@ And `answers.jsonl` — the right answers, written before any run:
 - **Way A:** *"Read invoices.txt, get the invoice number, date and amount, and write them to result_A1.jsonl."*
 - **Way B:** *"Read invoices.txt. For each line, write one JSON line to result_B1.jsonl: no (integer), date (YYYY-MM-DD), amount (whole dollars, the invoice TOTAL). Example (an invoice not in the file): {"no": 999, "date": "2026-01-15", "amount": 500}."*
 
-Run each way **twice** (A1, A2, B1, B2), then grade all four with `grade.py`. Fill in a table: A scored how many out of 10, B how many out of 10.
+Run each way **twice** — for the second run, change the file name in the request to `result_A2.jsonl` or `result_B2.jsonl` — then grade all four files with `grade.py`. Fill in a table: A scored how many out of 10, B how many out of 10.
 
 **4. Read a failure (2 minutes).** Reopen the session of one wrong invoice and read it: where did the AI misunderstand ("3.5 thousand dollars"? the deposit instead of the total?) — was the fault in the request, or in your answers? If every run passed, read one run on the trickiest invoice (104 or 105) instead: how did the AI decide? Then, for next time, add a harder invoice to `invoices.txt` and write its right answer in `answers.jsonl` before any run.
 

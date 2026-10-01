@@ -92,7 +92,7 @@ Và `dap_an.jsonl` — đáp án đúng, viết trước khi chạy:
 - **Cách A:** *"Đọc hoa_don.txt, lấy số hóa đơn, ngày và số tiền, ghi ra ket_qua_A1.jsonl."*
 - **Cách B:** *"Đọc hoa_don.txt. Với mỗi dòng, ghi một dòng JSON vào ket_qua_B1.jsonl: so (số nguyên), ngay (dạng YYYY-MM-DD), tien (số nguyên, đơn vị đồng, là TỔNG của hóa đơn). Ví dụ (một hóa đơn không có trong file): {"so": 999, "ngay": "2026-01-15", "tien": 500000}."*
 
-Chạy mỗi cách **hai lần** (A1, A2, B1, B2), rồi chấm cả bốn bằng `cham_diem.py`. Ghi vào bảng: A được bao nhiêu trên 10, B được bao nhiêu trên 10.
+Chạy mỗi cách **hai lần** — lần thứ hai, đổi tên file trong yêu cầu thành `ket_qua_A2.jsonl` hay `ket_qua_B2.jsonl` — rồi chấm cả bốn file bằng `cham_diem.py`. Ghi vào bảng: A được bao nhiêu trên 10, B được bao nhiêu trên 10.
 
 **4. Đọc lần sai (2 phút).** Mở lại phiên của một hóa đơn bị sai và đọc: AI hiểu sai ở đâu ("3,5 triệu"? số tạm ứng thay cho tổng?) — lỗi ở yêu cầu, hay ở đáp án của bạn? Nếu mọi lần chạy đều đúng, hãy đọc một lần chạy trên hóa đơn khó nhất (104 hay 105): AI đã quyết định thế nào? Rồi, cho lần sau, thêm một hóa đơn khó hơn vào `hoa_don.txt` và ghi đáp án của nó vào `dap_an.jsonl` trước khi chạy.
 
