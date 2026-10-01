@@ -1,0 +1,30 @@
+template: summary
+title:
+  vi: "Tóm tắt: context engineering"
+  en: "Recap: Context Engineering"
+  ja: まとめ：コンテキストエンジニアリング
+points:
+  - icon: "⏳"
+    color: indigo
+    name: {vi: Nguồn lực hữu hạn, en: A limited resource, ja: 限りある資源}
+    caption: {vi: "Thừa cũng hại\nnhư thiếu", en: "Too much hurts\nlike too little", ja: "多すぎても\n足りなくても困る"}
+  - icon: "📌"
+    color: blue
+    name: {vi: "Luôn có:\nfile chỉ dẫn ngắn", en: "Always:\na short file", ja: "いつも：\n短い指示ファイル"}
+    caption: {vi: "Chỉ điều đúng\nvới mọi phiên", en: "Only what's true\nfor every session", ja: "どのセッションにも\n当てはまることだけ"}
+  - icon: "🗂️"
+    color: green
+    name: {vi: "Khi cần:\nchỉ đường dẫn", en: "When needed:\ngive the path", ja: "必要なとき：\nパスを渡す"}
+    caption: {vi: "Agent tự đọc\nlúc việc cần", en: "The agent reads it\nwhen the task needs it", ja: "作業に必要なときに\n読ませる"}
+  - icon: "🚫"
+    color: rose
+    name: {vi: Không đưa vào, en: Leave out, ja: 入れない}
+    caption: {vi: "Không liên quan,\nbí mật, dữ liệu thật", en: "Irrelevant,\nsecrets, real data", ja: "無関係・秘密・\n本物のデータ"}
+  - icon: "✂️"
+    color: amber
+    name: {vi: Tỉa và thử lại, en: Prune and test, ja: 削って試す}
+    caption: {vi: "Bỏ dòng này\nthì có sai không?", en: "Would removing it\ncause mistakes?", ja: "消したら\nミスが出る？"}
+takeaway:
+  vi: Ít mà đúng, và đúng lúc.
+  en: Less, but right, and at the right time.
+  ja: 少なく、正しく、よいタイミングで。

@@ -8,7 +8,7 @@
 
 **Dành cho ai:** Người đi làm, sinh viên và kỹ sư ngoài ngành phần mềm — chưa biết gì về AI hay lập trình — muốn dùng AI agent để tự làm công cụ và tự động hóa công việc. Không cần biết lập trình trước: bạn học vừa đủ để giao việc viết code cho AI, kiểm tra và chịu trách nhiệm về kết quả. Đặc biệt phù hợp với người Việt đang học tập, làm việc ở Nhật hoặc với đối tác Nhật.
 
-**6 chương · 17 chủ đề · 52 bài · 893 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
+**6 chương · 17 chủ đề · 52 bài · 901 phút** · [Thuật ngữ 3 thứ tiếng](glossary.md)
 
 ![Lộ trình học](diagrams/roadmap.svg)
 
@@ -166,8 +166,8 @@ Bắt đầu từ đây: 19 bài · 347 phút, đủ để giao việc cho AI ag
 
 | # | Bài học | Loại | Thời lượng |
 |---|---|---|---|
-| 5.2.1 | Model + Harness = Agent: con ngựa và bộ yên cương | 📖 Khái niệm | 10 phút |
-| 5.2.2 | Context engineering: đưa đúng thông tin, đúng lúc | 🛠️ Thực hành | 12 phút |
+| 5.2.1 | [Model + Harness = Agent: con ngựa và bộ yên cương](lessons/model-plus-harness.md) | 📖 Khái niệm | 10 phút |
+| 5.2.2 | [Context engineering: đưa đúng thông tin, đúng lúc](lessons/context-engineering.md) | 🛠️ Thực hành | 20 phút |
 | 5.2.3 | Prompt engineering cho agent: system prompt và chỉ dẫn | 🛠️ Thực hành | 12 phút |
 | 5.2.4 | Hooks và phân quyền: hàng rào an toàn tự động | 🛠️ Thực hành | 12 phút |
 | 5.2.5 | Test và CI: để máy kiểm tra máy | 🎬 Minh họa | 12 phút |

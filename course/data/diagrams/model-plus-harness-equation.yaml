@@ -1,0 +1,32 @@
+# Used in: model-plus-harness (concept). The model plus the four parts of the harness.
+template: equation
+title:
+  vi: Mô hình + harness = agent
+  en: Model + Harness = Agent
+  ja: モデル＋ハーネス＝エージェント
+subtitle:
+  vi: Harness là mọi thứ bao quanh mô hình
+  en: The harness is everything around the model
+  ja: ハーネスはモデルを囲むすべて
+terms:
+  - icon: "🧠"
+    color: violet
+    name: {vi: Mô hình, en: Model, ja: モデル}
+    caption: {vi: suy luận, en: reasons, ja: 考える}
+  - icon: "🔧"
+    color: amber
+    name: {vi: "Công cụ\n+ ngữ cảnh", en: "Tools\n+ context", ja: "ツール\n＋コンテキスト"}
+    caption: {vi: "làm thật,\nbiết đủ", en: "acts for real,\nknows enough", ja: "実際に動き、\n知っている"}
+  - icon: "🚧"
+    color: rose
+    name: {vi: "Hàng rào\n+ kiểm tra", en: "Guardrails\n+ checks", ja: "ガードレール\n＋チェック"}
+    caption: {vi: "không vượt quá,\nbiết khi đúng", en: "stays in bounds,\nknows when right", ja: "はみ出さず、\n正しさがわかる"}
+result:
+  icon: "🤖"
+  color: green
+  name: {vi: Agent, en: Agent, ja: エージェント}
+  caption: {vi: làm được việc, en: gets work done, ja: 仕事ができる}
+takeaway:
+  vi: Bên trong mô hình bạn không sửa được; harness thì chỉnh được.
+  en: You can't change what's inside a model; you can tune the harness.
+  ja: モデルの中身は変えられなくても、ハーネスは調整できます。

@@ -1,0 +1,44 @@
+# Used in: context-engineering (hands-on). What goes into the context, and when.
+template: compare
+title:
+  vi: Ba ngăn của ngữ cảnh
+  en: Three Drawers of Context
+  ja: コンテキストの3つの引き出し
+rows:
+  - vi: Là gì
+    en: What
+    ja: 中身
+  - vi: Vào lúc nào
+    en: When it goes in
+    ja: 入るタイミング
+  - vi: Ví dụ
+    en: Example
+    ja: 例
+emphasis_row: 2
+columns:
+  - icon: "📌"
+    color: blue
+    name: {vi: Luôn có, en: Always, ja: いつも}
+    values:
+      - {vi: "File chỉ dẫn\nngắn", en: "A short\ninstruction file", ja: 短い指示ファイル}
+      - {vi: "Đầu mọi\nphiên", en: "Start of\nevery session", ja: 毎セッションの最初}
+      - {vi: "\"Không xóa file\"", en: "\"Don't delete\nfiles\"", ja: 「ファイルを消さない」}
+  - icon: "🗂️"
+    color: green
+    highlight: true
+    name: {vi: Khi cần, en: When needed, ja: 必要なとき}
+    values:
+      - {vi: "Đường dẫn\ntới tài liệu", en: "Paths to\ndocuments", ja: 資料へのパス}
+      - {vi: "Khi việc\ncần tới", en: "When the task\nneeds it", ja: 作業に必要なとき}
+      - {vi: "Mẫu báo cáo,\ndữ liệu giả", en: "Report template,\nmade-up data", ja: "レポートの型・\n架空のデータ"}
+  - icon: "🚫"
+    color: rose
+    name: {vi: Không đưa vào, en: Never, ja: 入れない}
+    values:
+      - {vi: "Không liên quan,\nbí mật", en: "Irrelevant,\nsecret", ja: "無関係・秘密"}
+      - {vi: Không bao giờ, en: Not at all, ja: 入れない}
+      - {vi: "Mật khẩu,\ndữ liệu thật", en: "Passwords,\nreal data", ja: "パスワード・\n本物のデータ"}
+takeaway:
+  vi: Đúng thông tin, đúng lúc — không phải càng nhiều càng tốt.
+  en: The right information at the right time, not the most.
+  ja: 多ければよいのではなく、必要な情報を必要なときに。
