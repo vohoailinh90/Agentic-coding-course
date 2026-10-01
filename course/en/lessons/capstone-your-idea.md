@@ -81,7 +81,7 @@ Actions: the agent edits files in ai-practice/review by itself (✅); installing
 Not doing this time: syncing to my phone, pronunciation audio.
 ```
 
-He splits it into three milestones: (1) read the CSV and show a word, (2) the "Show meaning" and "Got it / Not yet" buttons, (3) the 5-word check. At milestone 3, check (b) fails: a "Not yet" word comes back **immediately**, so the same word repeats forever — a bug he did not notice when he clicked around by hand at milestone 2. The agent fixes it, the check passes, he commits. Before calling it done, he opens a new session for a separate review, giving it only the plan and the diff. The review asks: what if the CSV has a comma inside a meaning? He adds such a word to the sample data, fixes it, and writes in the limits what has not been tried.
+He splits it into three milestones: (1) read the CSV and show a word, (2) the "Show meaning" and "Got it / Not yet" buttons, (3) the 5-word check. At milestone 3, check (b) fails: a "Not yet" word comes back **immediately**, so the same word repeats forever — a bug he did not notice when he clicked around by hand at milestone 2. The agent fixes it, the check passes, he commits. Before calling it done, he opens a new session for a separate review, giving it only the plan and the whole diff since his first commit. The review asks: what if the CSV has a comma inside a meaning? He adds such a word to the sample data, fixes it, and writes in the limits what has not been tried.
 
 The five-minute demo for a friend: the problem (30 seconds), the demo (2 minutes), the check evidence (1 minute), limits and next steps (1 minute), questions.
 
@@ -98,7 +98,7 @@ About 120 minutes, in a new folder inside `ai-practice`, in the mode where the a
 
 **4. Build each milestone (45 minutes).** For each milestone: plan (read it with the three questions), build, read the diff, run the check, commit. The agent is stuck or going off track? Interrupt early and give a clear new direction.
 
-**5. Verify (15 minutes).** Check every done criterion yourself. Break something on purpose to see the check fail. Open a new session for a separate review: give it only the plan and the diff, and ask it to find what is missing.
+**5. Verify (15 minutes).** Check every done criterion yourself. Break something on purpose to see the check fail, then put it back (`git restore` — ✋, the agent will ask). Open a new session for a separate review: give it the plan and the whole change since the commit you made before starting (ask the agent for the `git diff` from that commit to the latest one — a plain `git diff` is empty once everything is committed), and ask it to find what is missing.
 
 **6. Evidence pack and demo (20 minutes).** Write `EVIDENCE.md` (spec, before and after, checks, limits, one improvement) and run the stranger test. Give a five-minute demo to someone — a friend, a family member, a colleague — or record it for yourself.
 

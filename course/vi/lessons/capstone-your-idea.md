@@ -80,7 +80,7 @@ Hành động: agent tự sửa file trong ai-practice/on-tu (✅); cài thư vi
 Không làm lần này: đồng bộ điện thoại, âm thanh phát âm.
 ```
 
-Anh chia thành ba mốc: (1) đọc CSV và hiện từ, (2) nút "Xem nghĩa" và "Nhớ / Chưa nhớ", (3) phép kiểm tra 5 từ. Ở mốc 3, phép kiểm tra (b) không đạt: từ "Chưa nhớ" quay lại **ngay lập tức**, nên cứ lặp mãi một từ — lỗi mà lúc bấm thử bằng tay ở mốc 2 anh không để ý. Agent sửa, phép kiểm tra đạt, anh commit. Trước khi coi là xong, anh mở một phiên mới để review riêng, chỉ đưa trang dự án và diff. Phiên review hỏi: file CSV có dấu phẩy trong phần nghĩa thì sao? Anh thêm một từ như vậy vào dữ liệu mẫu, sửa, và ghi vào phần giới hạn những gì chưa thử.
+Anh chia thành ba mốc: (1) đọc CSV và hiện từ, (2) nút "Xem nghĩa" và "Nhớ / Chưa nhớ", (3) phép kiểm tra 5 từ. Ở mốc 3, phép kiểm tra (b) không đạt: từ "Chưa nhớ" quay lại **ngay lập tức**, nên cứ lặp mãi một từ — lỗi mà lúc bấm thử bằng tay ở mốc 2 anh không để ý. Agent sửa, phép kiểm tra đạt, anh commit. Trước khi coi là xong, anh mở một phiên mới để review riêng, chỉ đưa trang dự án và toàn bộ diff từ commit đầu tiên của anh. Phiên review hỏi: file CSV có dấu phẩy trong phần nghĩa thì sao? Anh thêm một từ như vậy vào dữ liệu mẫu, sửa, và ghi vào phần giới hạn những gì chưa thử.
 
 Năm phút trình bày cho một người bạn: vấn đề (30 giây), demo (2 phút), bằng chứng kiểm tra (1 phút), giới hạn và việc tiếp theo (1 phút), câu hỏi.
 
@@ -97,7 +97,7 @@ Khoảng 120 phút, trong một thư mục mới trong `ai-practice`, ở chế 
 
 **4. Làm từng mốc (45 phút).** Với mỗi mốc: kế hoạch (đọc với ba câu hỏi), làm, đọc diff, chạy phép kiểm tra, commit. Agent bị kẹt hay đi lạc? Ngắt sớm, nói rõ hướng mới.
 
-**5. Kiểm chứng (15 phút).** Tự kiểm tra từng tiêu chí xong. Làm hỏng thử một chỗ để thấy phép kiểm tra báo không đạt. Mở một phiên mới để review riêng: chỉ đưa trang dự án và diff, nhờ tìm chỗ thiếu.
+**5. Kiểm chứng (15 phút).** Tự kiểm tra từng tiêu chí xong. Làm hỏng thử một chỗ để thấy phép kiểm tra báo không đạt, rồi trả lại như cũ (`git restore` — ✋, agent sẽ hỏi). Mở một phiên mới để review riêng: đưa trang dự án và toàn bộ thay đổi từ commit bạn làm trước khi bắt đầu (nhờ agent cho xem `git diff` từ commit đó tới commit mới nhất — `git diff` trơn sẽ trống khi mọi thứ đã commit), nhờ tìm chỗ thiếu.
 
 **6. Gói bằng chứng và trình bày (20 phút).** Viết `BANG_CHUNG.md` (yêu cầu, trước và sau, các phép kiểm tra, giới hạn, một cải tiến) và làm phép thử người lạ. Trình bày năm phút cho một người — bạn bè, người thân, đồng nghiệp — hoặc ghi âm cho chính mình.
 
