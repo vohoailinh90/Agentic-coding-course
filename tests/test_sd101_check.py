@@ -194,7 +194,8 @@ class LessonYamlRuleTests(StoreCase):
         for url in ["https://@/image.png", "https://user@/image.png", "https://:443/image.png", "https://./a.png",
                     "https://-a.com/x", "https://a-.com/x", "https://a..b/x", "https://a_b.com/x", "https://host:abc/x",
                     "https://host:99999/x", "https://tên.vn/x", "http://", "https:///x", "ftp://example.com/x",
-                    "https://" + "a" * 64 + ".com/x", "https://1.2.3/x extra"]:
+                    "https://" + "a" * 64 + ".com/x", "https://1.2.3/x extra", "https://example.com/a b.png",
+                    "https://example.com/a\tb", "https://example.com/a\x01b", "https://example.com/\u200bb"]:
             with self.subTest(url=url):
                 self.assertTrue(self.evidence_problems(url), f"{url!r} was accepted")
 
