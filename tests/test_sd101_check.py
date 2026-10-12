@@ -238,6 +238,8 @@ class LessonMarkdownRuleTests(StoreCase):
                 (lesson_dir / name).unlink()
         (lesson_dir / "assets").mkdir()
         self.assertProblem("assets is not allowed")
+        (lesson_dir / "folder.svg").mkdir()
+        self.assertProblem("folder.svg is not allowed")
 
     def test_an_unclosed_tilde_fence_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n~~~mermaid\nflowchart TB\n")
@@ -368,6 +370,10 @@ class LessonMarkdownRuleTests(StoreCase):
             with self.subTest(form=name):
                 self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
                 self.assertProblem("lessons must not use source images")
+
+    def test_a_src_attribute_on_a_tag_other_than_img_is_not_an_image(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + '\n<span src="missing.png">chữ</span>\n')
+        self.assertEqual([], self.problems())
 
     def test_a_local_image_is_not_a_source_image(self) -> None:
         lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n![sơ đồ](diagram.svg)\n")

@@ -183,7 +183,7 @@ mutations:
 - label: a src on a tag other than <img> counts as an image
   find: '        elif tag == "img":'
   replace: '        elif True:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_src_attribute_on_a_tag_other_than_img_is_not_an_image
 - label: an image that is not an .svg file is accepted
   find: '        if target is None or not target.lower().endswith(".svg"):'
   replace: '        if target is None:'
