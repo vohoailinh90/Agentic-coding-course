@@ -618,10 +618,6 @@ mutations:
   find: '            if not isinstance(lesson_id, str):'
   replace: '            if False:'
   test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
-- label: a lesson listed twice in the source map is accepted
-  find: '            elif lesson_id in entries:'
-  replace: '            elif False:'
-  test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
 - label: a relative link that leads nowhere is accepted
   find: '        if target is not None and not resolves(lesson_dir, target, boundary):'
   replace: '        if False:'
@@ -710,3 +706,59 @@ mutations:
   find: "    except (OSError, ValueError, RuntimeError):\n        return False\n\n\ndef valid_host"
   replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_host"
   test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised
+- label: ids that do not run 001, 002, ... within their group are accepted
+  find: '            if pin_roster and lesson_id != f"{category.get(''id'')}-{number:03d}":'
+  replace: '            if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_other_ways_to_change_the_roster_are_reported
+- label: the group sizes of the roster are not compared
+  find: '    if pin_roster and tuple(sizes) != EXPECTED_GROUP_SIZES:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_removing_an_unwritten_entry_is_reported
+- label: the roster is pinned for every source map, even a small one
+  find: '    if pin_roster and tuple(sizes) != EXPECTED_GROUP_SIZES:'
+  replace: '    if tuple(sizes) != EXPECTED_GROUP_SIZES:'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_good_source_map_with_two_categories_is_fine
+- label: a source map without its own pinned commit is accepted
+  find: "    if not pinned:\n        problems.append"
+  replace: "    if False:\n        problems.append"
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_map_needs_its_own_pinned_commit_and_repository
+- label: a snapshot URL is never compared with the pinned blob URL
+  find: '                           or lesson.get("source_snapshot_url") != f"https://github.com/{repository}/blob/{commit}/{source_path}"):'
+  replace: '                           or False):'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_moving_snapshot_url_is_reported_even_if_the_lesson_links_it
+- label: a source path that is not a string is accepted
+  find: '            if pinned and (not isinstance(source_path, str) or not source_path'
+  replace: '            if pinned and (False'
+  test: tests.test_sd101_check.SourceMapPinTests.test_every_other_wrong_snapshot_url_is_reported
+- label: an empty source path is accepted
+  find: not isinstance(source_path, str) or not source_path
+  replace: not isinstance(source_path, str)
+  test: tests.test_sd101_check.SourceMapPinTests.test_every_other_wrong_snapshot_url_is_reported
+- label: a short or upper-case commit counts as pinned
+  find: COMMIT = re.compile(r"[0-9a-f]{40}")
+  replace: COMMIT = re.compile(r"[0-9a-fA-F]{7,40}")
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_map_needs_its_own_pinned_commit_and_repository
+- label: any text counts as a repository
+  find: REPOSITORY = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
+  replace: REPOSITORY = re.compile(r".*")
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_map_needs_its_own_pinned_commit_and_repository
+- label: the command line never pins the roster
+  find: '    pin_roster = arguments.source_map.resolve() == DEFAULT_SOURCE_MAP.resolve()'
+  replace: '    pin_roster = False'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_command_line_pins_the_default_source_map_only
+- label: the command line pins the roster of every source map
+  find: '    pin_roster = arguments.source_map.resolve() == DEFAULT_SOURCE_MAP.resolve()'
+  replace: '    pin_roster = True'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_command_line_pins_the_default_source_map_only
+- label: the default source map is recognised only by its spelling
+  find: '    pin_roster = arguments.source_map.resolve() == DEFAULT_SOURCE_MAP.resolve()'
+  replace: '    pin_roster = arguments.source_map == DEFAULT_SOURCE_MAP'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_command_line_pins_the_default_source_map_only
+- label: the real store is checked without the pinned roster
+  find: '    entries, problems = load_source_map(source_map, pin_roster)'
+  replace: '    entries, problems = load_source_map(source_map)'
+  test: tests.test_sd101_check.SourceMapPinTests.test_removing_an_unwritten_entry_is_reported
+- label: a lesson listed twice in the source map is accepted
+  find: "            if lesson_id in entries:\n                problems.append(Problem(\"source map\", f\"{lesson_id} is listed twice\"))"
+  replace: "            if False:\n                problems.append(Problem(\"source map\", f\"{lesson_id} is listed twice\"))"
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised

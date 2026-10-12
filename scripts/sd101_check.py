@@ -94,6 +94,11 @@ SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
 STORE_ENTRIES = {"README.md", "lessons"}
+# DECISIONS.md keeps all 15 groups and 404 ids of the source, in its order; ids are never removed or reused.
+# Changing the roster means changing this line and that decision together.
+EXPECTED_GROUP_SIZES = (50, 32, 8, 47, 5, 29, 20, 24, 20, 28, 49, 18, 27, 35, 12)
+REPOSITORY = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
+COMMIT = re.compile(r"[0-9a-f]{40}")
 LESSON_LINK = re.compile(r"lessons/(sd-\d{2}-\d{3})/lesson\.md")
 ALLOWED_HTML = {"details", "summary", "br", "a", "img", "sub", "sup", "kbd"}
 RASTER_ELEMENTS = {"image", "feimage", "img"}
@@ -120,8 +125,13 @@ class Problem:
         return f"{self.where}: {self.message}"
 
 
-def load_source_map(path: pathlib.Path) -> tuple[dict[str, dict], list[Problem]]:
-    """The source map's lessons by id, in source order, and what is wrong with the file (if anything)."""
+def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[str, dict], list[Problem]]:
+    """The source map's lessons by id, in source order, and what is wrong with the file (if anything).
+
+    Every entry's source_snapshot_url must be the blob URL of its source_path at the map's own pinned commit,
+    so a moving URL (/blob/main/...) cannot slip in. With pin_roster the map must also keep the 15 groups and
+    404 ids of DECISIONS.md, each group numbered 001, 002, ... in order.
+    """
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as error:  # JSONDecodeError and UnicodeDecodeError are ValueErrors
@@ -129,21 +139,41 @@ def load_source_map(path: pathlib.Path) -> tuple[dict[str, dict], list[Problem]]
     categories = data.get("categories") if isinstance(data, dict) else None
     if not isinstance(categories, list):
         return {}, [Problem("source map", "has no 'categories' list")]
+    repository, commit = data.get("source_repository"), data.get("source_commit_sha")
+    pinned = (isinstance(repository, str) and REPOSITORY.fullmatch(repository) is not None
+              and isinstance(commit, str) and COMMIT.fullmatch(commit) is not None)
     entries: dict[str, dict] = {}
     problems: list[Problem] = []
+    if not pinned:
+        problems.append(Problem("source map", "needs a source_repository (owner/name) and a 40-hex source_commit_sha"))
+    sizes: list[int] = []
     for position, category in enumerate(categories):
         lessons = category.get("lessons") if isinstance(category, dict) else None
         if not isinstance(lessons, list):
             problems.append(Problem("source map", f"category {position} has no 'lessons' list"))
             continue
-        for lesson in lessons:
+        sizes.append(len(lessons))
+        for number, lesson in enumerate(lessons, 1):
             lesson_id = lesson.get("id") if isinstance(lesson, dict) else None
             if not isinstance(lesson_id, str):
                 problems.append(Problem("source map", f"a lesson entry in category {position} has no string 'id'"))
-            elif lesson_id in entries:
+                continue
+            if lesson_id in entries:
                 problems.append(Problem("source map", f"{lesson_id} is listed twice"))
-            else:
-                entries[lesson_id] = lesson
+                continue
+            entries[lesson_id] = lesson
+            if pin_roster and lesson_id != f"{category.get('id')}-{number:03d}":
+                problems.append(Problem("source map", f"{lesson_id} should be {category.get('id')}-{number:03d}: "
+                                                      "ids run 001, 002, ... within their group"))
+            source_path = lesson.get("source_path")
+            if pinned and (not isinstance(source_path, str) or not source_path
+                           or lesson.get("source_snapshot_url") != f"https://github.com/{repository}/blob/{commit}/{source_path}"):
+                problems.append(Problem("source map", f"{lesson_id}: source_snapshot_url is not "
+                                                      f"https://github.com/{repository}/blob/{commit}/<source_path>"))
+    if pin_roster and tuple(sizes) != EXPECTED_GROUP_SIZES:
+        problems.append(Problem("source map", f"has {len(sizes)} groups of sizes {tuple(sizes)} ({sum(sizes)} ids), "
+                                              f"but DECISIONS.md keeps {EXPECTED_GROUP_SIZES} "
+                                              f"({sum(EXPECTED_GROUP_SIZES)} ids)"))
     return entries, problems
 
 
@@ -544,8 +574,8 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, d
     return problems
 
 
-def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
-    entries, problems = load_source_map(source_map)
+def check_store(store: pathlib.Path, source_map: pathlib.Path, pin_roster: bool = False) -> list[Problem]:
+    entries, problems = load_source_map(source_map, pin_roster)
     boundary = repository_root(store)
     lessons_dir = store / "lessons"
     lesson_dirs = sorted(path for path in lessons_dir.iterdir() if path.is_dir()) if lessons_dir.is_dir() else []
@@ -591,7 +621,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--store", type=pathlib.Path, default=DEFAULT_STORE)
     parser.add_argument("--source-map", type=pathlib.Path, default=DEFAULT_SOURCE_MAP)
     arguments = parser.parse_args(argv)
-    problems = check_store(arguments.store, arguments.source_map)
+    pin_roster = arguments.source_map.resolve() == DEFAULT_SOURCE_MAP.resolve()
+    problems = check_store(arguments.store, arguments.source_map, pin_roster)
     for problem in problems:
         print(problem)
     lessons_dir = arguments.store / "lessons"

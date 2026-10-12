@@ -9,13 +9,17 @@ import io
 import json
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 import yaml
 
 from scripts import sd101_check as check
 
-SNAPSHOT = "https://github.com/ByteByteGoHq/system-design-101/blob/abc123/data/guides/one.md"
+COMMIT = "b28380a4710c5ec9638ec037d4168e288f334cba"
+SOURCE_PATH = "data/guides/one.md"
+PIN = {"source_repository": "ByteByteGoHq/system-design-101", "source_commit_sha": COMMIT}
+SNAPSHOT = f"https://github.com/ByteByteGoHq/system-design-101/blob/{COMMIT}/{SOURCE_PATH}"
 BODY = f"# Bài một\n\nNội dung.\n\n## Liên hệ nguồn\n\n[bài nguồn]({SNAPSHOT}).\n"
 META = {
     "id": "sd-01-001",
@@ -42,8 +46,8 @@ class StoreCase(unittest.TestCase):
         self.write_readme(README)
 
     def write_source_map(self, lessons: dict[str, tuple[str, str]]) -> None:
-        data = {"categories": [{"id": "sd-01", "lessons": [
-            {"id": lesson_id, "title_vi": title, "source_snapshot_url": snapshot}
+        data = {**PIN, "categories": [{"id": "sd-01", "lessons": [
+            {"id": lesson_id, "title_vi": title, "source_path": SOURCE_PATH, "source_snapshot_url": snapshot}
             for lesson_id, (title, snapshot) in lessons.items()]}]}
         self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
@@ -74,8 +78,134 @@ class StoreCase(unittest.TestCase):
 
 class RealStoreTests(unittest.TestCase):
     def test_the_real_store_passes_every_rule(self) -> None:
-        problems = check.check_store(check.DEFAULT_STORE, check.DEFAULT_SOURCE_MAP)
+        problems = check.check_store(check.DEFAULT_STORE, check.DEFAULT_SOURCE_MAP, pin_roster=True)
         self.assertEqual([], [str(problem) for problem in problems])
+
+
+class SourceMapPinTests(unittest.TestCase):
+    """The real source map, altered one way at a time: the roster and the pinned URLs are guarded."""
+
+    def check(self, change, *, pin_roster: bool = True) -> list[str]:
+        data = json.loads(check.DEFAULT_SOURCE_MAP.read_text(encoding="utf-8"))
+        change(data)
+        with tempfile.TemporaryDirectory() as tmp:
+            altered = Path(tmp) / "source-map.json"
+            altered.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            problems = check.check_store(check.DEFAULT_STORE, altered, pin_roster=pin_roster)
+        return [str(problem) for problem in problems if str(problem).startswith("source map")]
+
+    def test_the_unaltered_source_map_has_no_problem(self) -> None:
+        self.assertEqual([], self.check(lambda data: None))
+
+    def test_removing_an_unwritten_entry_is_reported(self) -> None:
+        def remove(data):
+            del data["categories"][0]["lessons"][3]  # sd-01-004
+        found = self.check(remove)
+        self.assertTrue(any("has 15 groups of sizes (49, 32," in line for line in found), found)
+        self.assertTrue(any("sd-01-005 should be sd-01-004" in line for line in found), found)
+
+    def test_the_other_ways_to_change_the_roster_are_reported(self) -> None:
+        def drop_last(data):
+            data["categories"][-1]["lessons"].pop()
+
+        def drop_group(data):
+            data["categories"].pop(2)
+
+        def add_entry(data):
+            extra = dict(data["categories"][0]["lessons"][-1], id="sd-01-051")
+            data["categories"][0]["lessons"].append(extra)
+
+        def swap(data):
+            lessons = data["categories"][1]["lessons"]
+            lessons[0], lessons[1] = lessons[1], lessons[0]
+
+        def renumber(data):
+            data["categories"][4]["lessons"][0]["id"] = "sd-05-009"
+
+        def empty(data):
+            data["categories"] = []
+
+        for name, change in {"the last entry removed": drop_last, "a group removed": drop_group,
+                             "an entry added": add_entry, "two entries swapped": swap, "an id renumbered": renumber,
+                             "no groups": empty}.items():
+            with self.subTest(change=name):
+                self.assertTrue(self.check(change), name)
+
+    def test_the_roster_is_pinned_only_for_the_real_source_map(self) -> None:
+        def remove(data):
+            del data["categories"][0]["lessons"][3]
+        self.assertEqual([], self.check(remove, pin_roster=False))
+
+    def test_the_command_line_pins_the_default_source_map_only(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            copy = Path(tmp) / "source-map.json"
+            copy.write_bytes(check.DEFAULT_SOURCE_MAP.read_bytes())
+            with mock.patch.object(check, "EXPECTED_GROUP_SIZES", (1,)), contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(1, check.main([]))
+                self.assertEqual(1, check.main(["--source-map", str(check.DEFAULT_SOURCE_MAP.parent / ".." /
+                                                                   check.DEFAULT_SOURCE_MAP.parent.name /
+                                                                   check.DEFAULT_SOURCE_MAP.name)]))
+                self.assertEqual(0, check.main(["--source-map", str(copy)]))
+
+    def test_a_moving_snapshot_url_is_reported_even_if_the_lesson_links_it(self) -> None:
+        def moving(data):
+            entry = data["categories"][0]["lessons"][0]
+            entry["source_snapshot_url"] = f"https://github.com/ByteByteGoHq/system-design-101/blob/main/{entry['source_path']}"
+        found = self.check(moving)
+        self.assertTrue(any("sd-01-001: source_snapshot_url is not" in line for line in found), found)
+
+    def test_every_other_wrong_snapshot_url_is_reported(self) -> None:
+        def entry_of(data):
+            return data["categories"][0]["lessons"][1]
+
+        def set_url(url):
+            return lambda data: entry_of(data).update(source_snapshot_url=url)
+
+        path, commit = "data/guides/x.md", COMMIT
+        for name, change in {
+            "another repository": set_url(f"https://github.com/someone/else/blob/{commit}/{path}"),
+            "another commit": set_url(f"https://github.com/ByteByteGoHq/system-design-101/blob/{'0' * 40}/{path}"),
+            "a short commit": set_url(f"https://github.com/ByteByteGoHq/system-design-101/blob/b28380a/{path}"),
+            "another path": set_url(f"https://github.com/ByteByteGoHq/system-design-101/blob/{commit}/data/other.md"),
+            "a tree URL": set_url(f"https://github.com/ByteByteGoHq/system-design-101/tree/{commit}/{path}"),
+            "a raw URL": set_url(f"https://raw.githubusercontent.com/ByteByteGoHq/system-design-101/{commit}/{path}"),
+            "a trailing fragment": lambda data: entry_of(data).update(
+                source_snapshot_url=entry_of(data)["source_snapshot_url"] + "#L1"),
+            "no URL": lambda data: entry_of(data).pop("source_snapshot_url"),
+            "a null URL": set_url(None),
+            "a null source path with a matching tail": lambda data: entry_of(data).update(
+                source_path=None, source_snapshot_url=f"https://github.com/ByteByteGoHq/system-design-101/blob/{commit}/None"),
+            "an empty source path": lambda data: entry_of(data).update(
+                source_path="", source_snapshot_url=f"https://github.com/ByteByteGoHq/system-design-101/blob/{commit}/"),
+        }.items():
+            with self.subTest(change=name):
+                self.assertTrue(any("sd-01-002: source_snapshot_url is not" in line
+                                    for line in self.check(change, pin_roster=False)), name)
+
+    def test_the_map_needs_its_own_pinned_commit_and_repository(self) -> None:
+        for name, change in {
+            "no commit": lambda data: data.pop("source_commit_sha"),
+            "a short commit": lambda data: data.update(source_commit_sha="b28380a"),
+            "an upper-case commit": lambda data: data.update(source_commit_sha=data["source_commit_sha"].upper()),
+            "a branch name": lambda data: data.update(source_commit_sha="main"),
+            "no repository": lambda data: data.pop("source_repository"),
+            "a repository without an owner": lambda data: data.update(source_repository="system-design-101"),
+            "a null commit": lambda data: data.update(source_commit_sha=None),
+        }.items():
+            with self.subTest(change=name):
+                self.assertTrue(any("needs a source_repository" in line
+                                    for line in self.check(change, pin_roster=False)), name)
+
+    def test_re_pinning_every_entry_and_the_map_to_one_new_commit_is_allowed(self) -> None:
+        new = "0123456789abcdef0123456789abcdef01234567"
+
+        def repin(data):
+            old = data["source_commit_sha"]
+            data["source_commit_sha"] = new
+            for category in data["categories"]:
+                for lesson in category["lessons"]:
+                    lesson["source_snapshot_url"] = lesson["source_snapshot_url"].replace(old, new)
+        self.assertEqual([], self.check(repin))
 
 
 class LessonYamlRuleTests(StoreCase):
@@ -577,7 +707,8 @@ class LessonMarkdownRuleTests(StoreCase):
                             "blank": {"source_snapshot_url": "  "}, "a number": {"source_snapshot_url": 5},
                             "a list": {"source_snapshot_url": [SNAPSHOT]}, "missing": {}}.items():
             with self.subTest(entry=name):
-                data = {"categories": [{"id": "sd-01", "lessons": [{"id": "sd-01-001", "title_vi": "Bài một", **entry}]}]}
+                data = {**PIN, "categories": [{"id": "sd-01", "lessons": [
+                    {"id": "sd-01-001", "title_vi": "Bài một", "source_path": SOURCE_PATH, **entry}]}]}
                 self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
                 self.assertProblem("the source map has no source_snapshot_url for this lesson")
 
@@ -853,7 +984,7 @@ class SourceMapRuleTests(StoreCase):
         self.assertProblem("source map: cannot be read")
 
     def test_a_malformed_category_or_lesson_entry_is_reported_not_raised(self) -> None:
-        good = {"id": "sd-01-001", "title_vi": "Bài một", "source_snapshot_url": SNAPSHOT}
+        good = {"id": "sd-01-001", "title_vi": "Bài một", "source_path": SOURCE_PATH, "source_snapshot_url": SNAPSHOT}
         cases = {"a category that is not an object": [1], "a category with no lessons": [{"id": "sd-01"}],
                  "lessons that are not a list": [{"lessons": {}}], "a lesson that is not an object": [{"lessons": [5]}],
                  "a lesson without an id": [{"lessons": [{"title_vi": "x"}]}],
@@ -863,7 +994,7 @@ class SourceMapRuleTests(StoreCase):
                  "a lesson listed in two categories": [{"lessons": [good]}, {"lessons": [good]}]}
         for name, categories in cases.items():
             with self.subTest(entry=name):
-                self.source_map.write_text(json.dumps({"categories": categories}), encoding="utf-8")
+                self.source_map.write_text(json.dumps({**PIN, "categories": categories}), encoding="utf-8")
                 self.assertProblem("source map: ")
 
     def test_the_rest_of_the_store_is_still_checked_when_the_source_map_is_malformed(self) -> None:
@@ -874,9 +1005,10 @@ class SourceMapRuleTests(StoreCase):
         self.assertTrue(any("unclosed code fence" in line for line in found), found)
 
     def test_a_good_source_map_with_two_categories_is_fine(self) -> None:
-        data = {"categories": [{"id": "a", "lessons": [{"id": "sd-01-001", "title_vi": "Bài một",
-                                                         "source_snapshot_url": SNAPSHOT}]},
-                               {"id": "b", "lessons": []}]}
+        data = {**PIN, "categories": [{"id": "a", "lessons": [{"id": "sd-01-001", "title_vi": "Bài một",
+                                                                "source_path": SOURCE_PATH,
+                                                                "source_snapshot_url": SNAPSHOT}]},
+                                      {"id": "b", "lessons": []}]}
         self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
         self.assertEqual([], self.problems())
 
