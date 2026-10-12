@@ -20,6 +20,16 @@ COMMIT = "b28380a4710c5ec9638ec037d4168e288f334cba"
 SOURCE_PATH = "data/guides/one.md"
 PIN = {"source_repository": "ByteByteGoHq/system-design-101", "source_commit_sha": COMMIT}
 SNAPSHOT = f"https://github.com/ByteByteGoHq/system-design-101/blob/{COMMIT}/{SOURCE_PATH}"
+
+
+def source_entry(lesson_id: str = "sd-01-001", title: str | None = "Bài một", snapshot: object = SNAPSHOT,
+                 **changes: object) -> dict:
+    """A complete source-map entry, as the real map records one."""
+    entry = {"id": lesson_id, "title_vi": title, "title_source": "One", "source_url": "https://bytebytego.com/guides/one",
+             "source_path": SOURCE_PATH, "source_body_reviewed": False, "source_blob_sha": "a" * 40,
+             "source_snapshot_url": snapshot}
+    entry.update(changes)
+    return entry
 BODY = f"# Bài một\n\nNội dung.\n\n## Liên hệ nguồn\n\n[bài nguồn]({SNAPSHOT}).\n"
 META = {
     "id": "sd-01-001",
@@ -46,8 +56,11 @@ class StoreCase(unittest.TestCase):
         self.write_readme(README)
 
     def write_source_map(self, lessons: dict[str, tuple[str, str]]) -> None:
+        # the fixture lessons share one source file, so when there are several they name each other
         data = {**PIN, "categories": [{"id": "sd-01", "lessons": [
-            {"id": lesson_id, "title_vi": title, "source_path": SOURCE_PATH, "source_snapshot_url": snapshot}
+            source_entry(lesson_id, title, snapshot,
+                         **({"same_source_as": [other for other in lessons if other != lesson_id]}
+                            if len(lessons) > 1 else {}))
             for lesson_id, (title, snapshot) in lessons.items()]}]}
         self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
@@ -214,6 +227,83 @@ class SourceMapPinTests(unittest.TestCase):
             with self.subTest(change=name):
                 self.assertTrue(any("needs a source_repository" in line
                                     for line in self.check(change, pin_roster=False)), name)
+
+    def entry(self, data, number=1):
+        return data["categories"][0]["lessons"][number]  # sd-01-002 by default
+
+    def test_a_missing_entry_field_is_reported(self) -> None:
+        for key in sorted(check.SOURCE_ENTRY_KEYS - {"id"}):
+            with self.subTest(key=key):
+                found = self.check(lambda data: self.entry(data).pop(key), pin_roster=False)
+                self.assertTrue(any(f"sd-01-002 is missing {key}" in line or f"sd-01-002: source_snapshot_url" in line
+                                    for line in found), found)
+
+    def test_an_entry_field_of_the_wrong_kind_is_reported(self) -> None:
+        cases = {
+            "source_body_reviewed": ["yes", 1, 0, None, "true", []],
+            "source_blob_sha": ["a" * 39, "A" * 40, "g" * 40, None, 5, "", ["a" * 40]],
+            "title_source": ["", "  ", None, 5, ["x"]],
+            "source_path": ["", "  ", None, 5],
+            "source_url": ["", "not a url", "ftp://bytebytego.com/x", None, 5, "https://"],
+            "title_vi": ["", "  ", 5, ["x"], {"a": 1}, True],
+        }
+        for key, values in cases.items():
+            for value in values:
+                with self.subTest(key=key, value=value):
+                    found = self.check(lambda data: self.entry(data).update({key: value}), pin_roster=False)
+                    self.assertTrue(any(line.startswith("source map: sd-01-002 ") or "sd-01-002:" in line
+                                        for line in found), found)
+
+    def test_a_null_title_vi_is_allowed_and_a_string_is_too(self) -> None:
+        self.assertEqual([], self.check(lambda data: self.entry(data).update(title_vi=None), pin_roster=False))
+        self.assertEqual([], self.check(lambda data: self.entry(data).update(title_vi="Tiêu đề"), pin_roster=False))
+        self.assertEqual([], self.check(lambda data: self.entry(data).update(source_body_reviewed=True),
+                                        pin_roster=False))
+
+    def test_progress_fields_do_not_belong_in_the_source_map(self) -> None:
+        for key in ("status", "content_status", "verification", "learner_test"):
+            with self.subTest(key=key):
+                found = self.check(lambda data: self.entry(data).update({key: "drafted"}), pin_roster=False)
+                self.assertTrue(any(f"sd-01-002 has unknown keys {key}" in line for line in found), found)
+
+    def test_same_source_entries_must_name_each_other(self) -> None:
+        def entry_of(data, lesson_id):
+            return next(lesson for category in data["categories"] for lesson in category["lessons"]
+                        if lesson["id"] == lesson_id)
+
+        cases = {
+            "one side dropped": (lambda data: entry_of(data, "sd-10-023").pop("same_source_as"),
+                                 "sd-01-045: same_source_as names sd-10-023, which does not name sd-01-045 back"),
+            "a missing partner": (lambda data: entry_of(data, "sd-01-045").update(same_source_as=["sd-99-999"]),
+                                  "sd-01-045: same_source_as names sd-99-999, which is not another entry"),
+            "itself": (lambda data: entry_of(data, "sd-01-045").update(same_source_as=["sd-01-045"]),
+                       "sd-01-045: same_source_as names sd-01-045, which is not another entry"),
+            "another source path": (lambda data: entry_of(data, "sd-10-023").update(
+                source_path="data/guides/other.md",
+                source_snapshot_url=f"https://github.com/ByteByteGoHq/system-design-101/blob/{data['source_commit_sha']}/data/guides/other.md"),
+                                    "sd-01-045: same_source_as names sd-10-023, which has another source_path"),
+            "not a list": (lambda data: entry_of(data, "sd-01-045").update(same_source_as="sd-10-023"),
+                           "sd-01-045: same_source_as must be a non-empty list of ids"),
+            "an empty list": (lambda data: entry_of(data, "sd-01-045").update(same_source_as=[]),
+                              "sd-01-045: same_source_as must be a non-empty list of ids"),
+            "a list of numbers": (lambda data: entry_of(data, "sd-01-045").update(same_source_as=[5]),
+                                  "sd-01-045: same_source_as must be a non-empty list of ids"),
+        }
+        for name, (change, expected) in cases.items():
+            with self.subTest(change=name):
+                found = self.check(change, pin_roster=False)
+                self.assertTrue(any(expected in line for line in found), found)
+
+    def test_two_entries_sharing_a_source_file_must_say_so(self) -> None:
+        def share(data):
+            first, second = data["categories"][0]["lessons"][4], data["categories"][0]["lessons"][5]
+            second["source_path"] = first["source_path"]
+            second["source_snapshot_url"] = first["source_snapshot_url"]
+        found = self.check(share, pin_roster=False)
+        self.assertTrue(any("sd-01-005: shares its source_path with sd-01-006 but does not list them" in line
+                            for line in found), found)
+        self.assertTrue(any("sd-01-006: shares its source_path with sd-01-005 but does not list them" in line
+                            for line in found), found)
 
     def test_re_pinning_every_entry_and_the_map_to_one_new_commit_is_allowed(self) -> None:
         new = "0123456789abcdef0123456789abcdef01234567"
@@ -722,12 +812,16 @@ class LessonMarkdownRuleTests(StoreCase):
         self.assertEqual([], self.problems())
 
     def test_a_source_map_entry_without_a_snapshot_url_is_reported(self) -> None:
-        for name, entry in {"null": {"source_snapshot_url": None}, "empty": {"source_snapshot_url": ""},
-                            "blank": {"source_snapshot_url": "  "}, "a number": {"source_snapshot_url": 5},
-                            "a list": {"source_snapshot_url": [SNAPSHOT]}, "missing": {}}.items():
+        missing = object()
+        for name, value in {"null": None, "empty": "", "blank": "  ", "a number": 5, "a list": [SNAPSHOT],
+                            "missing": missing}.items():
             with self.subTest(entry=name):
-                data = {**PIN, "categories": [{"id": "sd-01", "lessons": [
-                    {"id": "sd-01-001", "title_vi": "Bài một", "source_path": SOURCE_PATH, **entry}]}]}
+                entry = source_entry()
+                if value is missing:
+                    del entry["source_snapshot_url"]
+                else:
+                    entry["source_snapshot_url"] = value
+                data = {**PIN, "categories": [{"id": "sd-01", "lessons": [entry]}]}
                 self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
                 self.assertProblem("the source map has no source_snapshot_url for this lesson")
 
@@ -1003,7 +1097,7 @@ class SourceMapRuleTests(StoreCase):
         self.assertProblem("source map: cannot be read")
 
     def test_a_malformed_category_or_lesson_entry_is_reported_not_raised(self) -> None:
-        good = {"id": "sd-01-001", "title_vi": "Bài một", "source_path": SOURCE_PATH, "source_snapshot_url": SNAPSHOT}
+        good = source_entry()
         cases = {"a category that is not an object": [1], "a category with no lessons": [{"id": "sd-01"}],
                  "lessons that are not a list": [{"lessons": {}}], "a lesson that is not an object": [{"lessons": [5]}],
                  "a lesson without an id": [{"lessons": [{"title_vi": "x"}]}],
@@ -1024,10 +1118,7 @@ class SourceMapRuleTests(StoreCase):
         self.assertTrue(any("unclosed code fence" in line for line in found), found)
 
     def test_a_good_source_map_with_two_categories_is_fine(self) -> None:
-        data = {**PIN, "categories": [{"id": "a", "lessons": [{"id": "sd-01-001", "title_vi": "Bài một",
-                                                                "source_path": SOURCE_PATH,
-                                                                "source_snapshot_url": SNAPSHOT}]},
-                                      {"id": "b", "lessons": []}]}
+        data = {**PIN, "categories": [{"id": "a", "lessons": [source_entry()]}, {"id": "b", "lessons": []}]}
         self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
         self.assertEqual([], self.problems())
 

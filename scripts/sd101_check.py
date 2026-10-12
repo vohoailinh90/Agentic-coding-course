@@ -100,6 +100,8 @@ STORE_ENTRIES = {"README.md", "lessons"}
 EXPECTED_GROUPS = (("sd-01", 50), ("sd-02", 32), ("sd-03", 8), ("sd-04", 47), ("sd-05", 5), ("sd-06", 29),
                    ("sd-07", 20), ("sd-08", 24), ("sd-09", 20), ("sd-10", 28), ("sd-11", 49), ("sd-12", 18),
                    ("sd-13", 27), ("sd-14", 35), ("sd-15", 12))
+SOURCE_ENTRY_KEYS = {"id", "title_vi", "title_source", "source_url", "source_path", "source_body_reviewed",
+                     "source_blob_sha", "source_snapshot_url"}
 REPOSITORY = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
 COMMIT = re.compile(r"[0-9a-f]{40}")
 LESSON_LINK = re.compile(r"lessons/(sd-\d{2}-\d{3})/lesson\.md")
@@ -128,11 +130,73 @@ class Problem:
         return f"{self.where}: {self.message}"
 
 
+def text_value(value: object) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def entry_problems(entry: dict) -> list[str]:
+    """What is wrong with one source-map entry: missing or unknown keys, and values of the wrong kind.
+
+    The map records facts about the source only (DECISIONS.md), so progress fields are unknown keys here.
+    """
+    found: list[str] = []
+    missing = sorted(SOURCE_ENTRY_KEYS - set(entry))
+    unknown = sorted(set(entry) - SOURCE_ENTRY_KEYS - {"same_source_as"})
+    if missing:
+        found.append(f"is missing {', '.join(missing)}")
+    if unknown:
+        found.append(f"has unknown keys {', '.join(unknown)}; the map records facts about the source only")
+    if entry.get("title_vi") is not None and not text_value(entry.get("title_vi")):
+        found.append("title_vi must be null (not yet titled) or a non-empty string")
+    for key in ("title_source", "source_path"):
+        if key in entry and not text_value(entry[key]):
+            found.append(f"{key} must be a non-empty string")
+    if "source_url" in entry and not valid_url(entry["source_url"]):
+        found.append("source_url must be an http(s) URL")
+    if "source_body_reviewed" in entry and not isinstance(entry["source_body_reviewed"], bool):
+        found.append("source_body_reviewed must be true or false")
+    if "source_blob_sha" in entry and not (isinstance(entry["source_blob_sha"], str)
+                                           and COMMIT.fullmatch(entry["source_blob_sha"])):
+        found.append("source_blob_sha must be a 40-hex Git blob id")
+    return found
+
+
+def same_source_problems(entries: dict[str, dict]) -> list[str]:
+    """Entries that share a source file must say so, both ways: same_source_as lists the other ids."""
+    found: list[str] = []
+    by_path: dict[str, list[str]] = {}
+    for lesson_id, entry in entries.items():
+        others = entry.get("same_source_as")
+        if others is not None:
+            if not isinstance(others, list) or not others or not all(isinstance(other, str) for other in others):
+                found.append(f"{lesson_id}: same_source_as must be a non-empty list of ids")
+                continue
+            for other in others:
+                partner = entries.get(other)
+                if other == lesson_id or partner is None:
+                    found.append(f"{lesson_id}: same_source_as names {other}, which is not another entry")
+                elif lesson_id not in (partner.get("same_source_as") if isinstance(partner.get("same_source_as"), list) else []):
+                    found.append(f"{lesson_id}: same_source_as names {other}, which does not name {lesson_id} back")
+                elif partner.get("source_path") != entry.get("source_path"):
+                    found.append(f"{lesson_id}: same_source_as names {other}, which has another source_path")
+        if isinstance(entry.get("source_path"), str):
+            by_path.setdefault(entry["source_path"], []).append(lesson_id)
+    for group in by_path.values():
+        for lesson_id in group:
+            declared = entries[lesson_id].get("same_source_as")
+            declared = set(declared) if isinstance(declared, list) else set()
+            if not set(group) - {lesson_id} <= declared:
+                found.append(f"{lesson_id}: shares its source_path with {', '.join(sorted(set(group) - {lesson_id}))} "
+                             "but does not list them in same_source_as")
+    return found
+
+
 def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[str, dict], list[Problem]]:
     """The source map's lessons by id, in source order, and what is wrong with the file (if anything).
 
-    Every entry's source_snapshot_url must be the blob URL of its source_path at the map's own pinned commit,
-    so a moving URL (/blob/main/...) cannot slip in. With pin_roster the map must also keep the 15 groups (by id
+    Every entry must have exactly the source facts DECISIONS.md records (no progress fields), and its
+    source_snapshot_url must be the blob URL of its source_path at the map's own pinned commit, so a moving URL
+    (/blob/main/...) cannot slip in. Entries that share a source file must name each other in same_source_as. With pin_roster the map must also keep the 15 groups (by id
     and size) and 404 ids of DECISIONS.md, each group numbered 001, 002, ... in order.
     """
     try:
@@ -165,6 +229,7 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
                 problems.append(Problem("source map", f"{lesson_id} is listed twice"))
                 continue
             entries[lesson_id] = lesson
+            problems.extend(Problem("source map", f"{lesson_id} {reason}") for reason in entry_problems(lesson))
             if pin_roster and lesson_id != f"{category.get('id')}-{number:03d}":
                 problems.append(Problem("source map", f"{lesson_id} should be {category.get('id')}-{number:03d}: "
                                                       "ids run 001, 002, ... within their group"))
@@ -173,6 +238,7 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
                            or lesson.get("source_snapshot_url") != f"https://github.com/{repository}/blob/{commit}/{source_path}"):
                 problems.append(Problem("source map", f"{lesson_id}: source_snapshot_url is not "
                                                       f"https://github.com/{repository}/blob/{commit}/<source_path>"))
+    problems.extend(Problem("source map", reason) for reason in same_source_problems(entries))
     if pin_roster and tuple(groups) != EXPECTED_GROUPS:
         first = next(f"{got} instead of {want}" for got, want in itertools.zip_longest(groups, EXPECTED_GROUPS)
                      if got != want)
