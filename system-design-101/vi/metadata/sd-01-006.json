@@ -3,7 +3,7 @@
   "title_vi": "Những điều cần biết về HTTP headers",
   "language": "vi",
   "kind": "flow",
-  "content_status": "review",
+  "content_status": "done",
   "source_ref": "sd-01-006",
   "source_snapshot": {
     "repository": "ByteByteGoHq/system-design-101",
@@ -28,7 +28,14 @@
       "checked_on": "2026-10-12"
     },
     "technical_review": {
-      "status": "pending"
+      "status": "checked",
+      "pr": 32,
+      "head_sha": "8a2a01eed6b139240ecc71a11e491a4bb7c63a11",
+      "base_sha": "b8730a33c02e381e898452520b394aca3189bd73",
+      "comment_id": 6132865870,
+      "checked_on": "2026-10-12",
+      "github_ci": "not_run_base_filter",
+      "evidence": "No major issues on exact head/base; local content checks and unchanged mobile evidence passed. Not release approval."
     },
     "mobile": {
       "status": "checked",
@@ -72,5 +79,5 @@
     "Body nguồn chỉ nêu vai trò chung; ví dụ cụ thể viết mới, claim dựa MDN/RFC. Không đọc hoặc dùng ảnh nguồn."
   ],
   "design_notes_vi": "Sơ đồ mới request văn bản, response JSON; tách control/header/body và nhãn Accept với Content-Type. Giá trị dài xuống dòng chỉ là trình bày.",
-  "editorial_note_vi": "Chờ review kỹ thuật; chưa user testing."
+  "editorial_note_vi": "Đã review kỹ thuật trên snapshot ghi trong verification; chưa user testing/phê duyệt phát hành."
 }

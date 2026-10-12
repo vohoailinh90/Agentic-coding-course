@@ -8,23 +8,25 @@
     "sd-01-003",
     "sd-01-004",
     "sd-01-005",
-    "sd-01-006"
+    "sd-01-006",
+    "sd-01-007"
   ],
   "reviewed_ids": [
     "sd-01-001",
     "sd-01-002",
     "sd-01-003",
     "sd-01-004",
-    "sd-01-005"
-  ],
-  "next_id": "sd-01-007",
-  "active_batch_ids": [
+    "sd-01-005",
     "sd-01-006"
   ],
-  "active_pr": 32,
+  "next_id": "sd-01-008",
+  "active_batch_ids": [
+    "sd-01-007"
+  ],
+  "active_pr": null,
   "updated_on": "2026-10-12",
-  "active_branch": "codex/system-design-vi-sd-01-006",
-  "previous_pr": 31,
+  "active_branch": "codex/system-design-vi-sd-01-007",
+  "previous_pr": 32,
   "superseded_pr": 24,
   "integration_review_pending": false,
   "adopted_main_sha": "89186c1a1aeb90a47e2a563fdc7786b2dacec787"

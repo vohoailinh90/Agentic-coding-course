@@ -13,7 +13,9 @@ Các mục gần nhau hoặc dùng chung nguồn vẫn giữ ID và vị trí ri
 
 5. [NAT giúp Internet mở rộng ra sao?](lessons/sd-01-005/lesson.md) — đã qua review kỹ thuật ở SHA b8730a33 của PR #31.
 
-6. [Những điều cần biết về HTTP headers](lessons/sd-01-006/lesson.md) — đã viết, chờ review.
+6. [Những điều cần biết về HTTP headers](lessons/sd-01-006/lesson.md) — đã qua review kỹ thuật ở SHA8a2a01ee của PR #32.
+
+7. [Chính sách định tuyến lưu lượng Internet](lessons/sd-01-007/lesson.md) — đã viết, chờ review.
 
 Danh mục đầy đủ và snapshot nguồn: [bảng đối chiếu](../../brainstorm/system-design-101-vi/source-map.json).
 Quy tắc đã chốt: [kết luận brainstorm](../../brainstorm/system-design-101-vi/DECISIONS.md).
