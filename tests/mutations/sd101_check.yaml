@@ -594,3 +594,43 @@ mutations:
   find: '    in_source_order = [lesson_id for lesson_id in entries if lesson_id in listed]'
   replace: '    in_source_order = [lesson_id for lesson_id in entries if lesson_id in lesson_ids]'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_missing_lesson_is_reported_as_missing_not_as_out_of_order
+- label: a CSS animation in an SVG is accepted
+  find: '            if ANIMATION.search(value):'
+  replace: '            if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: '@keyframes is not recognised as an animation'
+  find: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  replace: ANIMATION = re.compile(r"\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: an animation declaration is not recognised as an animation
+  find: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  replace: ANIMATION = re.compile(r"@keyframes|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: a transition declaration is not recognised
+  find: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  replace: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: a vendor-prefixed animation is not recognised
+  find: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  replace: ANIMATION = re.compile(r"@keyframes|^animation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: an upper-case animation is not recognised
+  find: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  replace: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:")
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: any text containing the word animation is taken for an animation
+  find: ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
+  replace: ANIMATION = re.compile(r"animation|transition|@keyframes", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_words_that_only_look_like_animation_are_fine
+- label: the style element text is not searched for animations
+  find: '            values.append(("style", element.text or ""))'
+  replace: '            pass'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_css_animation_and_transition_in_an_svg_are_reported
+- label: raw HTML outside the allow-list in the README is accepted
+  find: '                    for tag in sorted(html_scan(text).tags - ALLOWED_HTML))'
+  replace: '                    for tag in [])'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_raw_html_outside_the_allow_list_in_the_readme_is_reported
+- label: the allowed raw HTML in the README is refused
+  find: '                    for tag in sorted(html_scan(text).tags - ALLOWED_HTML))'
+  replace: '                    for tag in sorted(html_scan(text).tags))'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_the_allowed_raw_html_in_the_readme_is_fine

@@ -22,7 +22,8 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
   - the directory holds only lesson.md, lesson.yaml and .svg figures drawn for the lesson
     (a downloaded PNG or JPG is refused whatever it shows), and each .svg is a self-contained
     drawing: it parses as XML with an <svg> root, uses only plain drawing elements (no <image>,
-    <foreignObject>, <script>, <a>, animation) and no processing instruction (<?xml-stylesheet?>),
+    <foreignObject>, <script>, <a>, animation, CSS @keyframes/animation/transition) and no processing
+    instruction (<?xml-stylesheet?>),
     links to nothing but its own #fragments (href, url(), @import), and never mentions the source
     image host, so a renamed PNG or an SVG that wraps or
     loads a raster is refused too
@@ -36,7 +37,8 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
 And once for the store: it holds only README.md and lessons/, and lessons/ holds only lesson
 directories (an image dropped beside the README is refused like one in a lesson); README.md embeds
-no image, links every lesson directory (as a real link, not a path in a comment or a code block)
+no image and only the allowed raw HTML tags (so no HTML table can hide a status), links every
+lesson directory (as a real link, not a path in a comment or a code block)
 in source-map order, every relative link in it resolves (a row left behind for a deleted lesson is an error), and it
 carries no status words in its table, however formatted (status lives only in lesson.yaml).
 
@@ -103,6 +105,7 @@ SVG_ELEMENTS = {
     "filter", "feblend", "fecolormatrix", "fecomposite", "fedropshadow", "fegaussianblur", "feflood", "feoffset",
     "femerge", "femergenode",
 }
+ANIMATION = re.compile(r"@keyframes|\banimation(?:-[a-z-]+)?\s*:|\btransition(?:-[a-z-]+)?\s*:", re.IGNORECASE)
 URL_CALL = re.compile(r"url\(\s*['\"]?\s*([^)'\"\s]*)", re.IGNORECASE)
 
 
@@ -385,6 +388,8 @@ def svg_problem(path: pathlib.Path) -> str | None:
                 return f"links to {value.strip()!r}, outside the drawing"
             if reaches_outside(value):
                 return "refers to something outside the drawing with url() or @import"
+            if ANIMATION.search(value):
+                return "uses a CSS animation or transition, but a figure is static"
     return None
 
 
@@ -489,6 +494,8 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, d
     in_source_order = [lesson_id for lesson_id in entries if lesson_id in listed]
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
+    problems.extend(Problem("README.md", f"uses <{tag}>; raw HTML is limited to {', '.join(sorted(ALLOWED_HTML))}")
+                    for tag in sorted(html_scan(text).tags - ALLOWED_HTML))
     problems.extend(Problem("README.md", f"embeds the image {source!r}; the index has no figures")
                     for source in sorted(image_sources(text)))
     problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")

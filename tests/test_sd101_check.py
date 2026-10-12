@@ -433,6 +433,29 @@ class LessonMarkdownRuleTests(StoreCase):
                 (lesson_dir / "figure.svg").write_text(svg, encoding="utf-8")
                 self.assertProblem("has a processing instruction")
 
+    def test_css_animation_and_transition_in_an_svg_are_reported(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        cases = {
+            "keyframes in a style element": "<svg><style>@keyframes x{from{opacity:0}to{opacity:1}} rect{animation:x 1s}</style></svg>",
+            "an entity-escaped keyframes": "<svg><style>@keyframes x&#123;from&#123;opacity:0&#125;&#125;</style></svg>",
+            "an animation in a style attribute": '<svg><rect style="animation: spin 1s infinite"/></svg>',
+            "an animation-name property": '<svg><rect style="animation-name:spin"/></svg>',
+            "a prefixed animation": '<svg><rect style="-webkit-animation: spin 1s"/></svg>',
+            "a transition": '<svg><rect style="transition: all 1s"/></svg>',
+            "an upper-case property": '<svg><rect style="ANIMATION : spin 1s"/></svg>',
+        }
+        for name, svg in cases.items():
+            with self.subTest(file=name):
+                (lesson_dir / "figure.svg").write_text(svg, encoding="utf-8")
+                self.assertProblem("uses a CSS animation or transition")
+
+    def test_words_that_only_look_like_animation_are_fine(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        (lesson_dir / "figure.svg").write_text(
+            '<svg><style>.animal{fill:red} .a{transform:rotate(3deg)}</style><title>animation: demo</title>'
+            '<text>animation: transition: @keyframes</text><rect class="animation"/></svg>', encoding="utf-8")
+        self.assertEqual([], self.problems())
+
     def test_the_xml_declaration_is_not_a_processing_instruction(self) -> None:
         lesson_dir = self.write_lesson("sd-01-001")
         (lesson_dir / "figure.svg").write_text('<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg/>',
@@ -880,6 +903,18 @@ class ReadmeRuleTests(StoreCase):
     def test_lessons_holds_only_lesson_directories(self) -> None:
         (self.store / "lessons" / "copied-source.png").write_bytes(b"x")
         self.assertProblem("lessons: copied-source.png is not a lesson directory")
+
+    def test_raw_html_outside_the_allow_list_in_the_readme_is_reported(self) -> None:
+        for name, html in {"a table": "<table><tr><td>drafted</td></tr></table>", "a div": "<div>drafted</div>",
+                           "a closing tag": "</table>", "a span": "<span>drafted</span>"}.items():
+            with self.subTest(html=name):
+                self.write_readme(README + "\n" + html + "\n")
+                self.assertProblem("README.md: uses <")
+
+    def test_the_allowed_raw_html_in_the_readme_is_fine(self) -> None:
+        self.write_readme(README + '\n<details><summary>Thêm</summary>\n\nchữ<br/>\n\n</details>\n'
+                          '<a href="lessons/sd-01-001/lesson.md">x</a>\n')
+        self.assertEqual([], self.problems())
 
     def test_the_readme_embeds_no_image(self) -> None:
         (self.store / "copied-source.png").write_bytes(b"x")
