@@ -220,11 +220,28 @@ def relative_target(destination: str) -> str | None:
     return unquote(destination.split("#")[0].split("?")[0]) or None
 
 
-def valid_url(url: object) -> bool:
-    if not isinstance(url, str):
+def exists(path: pathlib.Path) -> bool:
+    """path.exists(), but a name the filesystem rejects (too long, embedded NUL) simply does not exist."""
+    try:
+        return path.exists()
+    except (OSError, ValueError):
         return False
-    parsed = urlparse(url)
+
+
+def valid_url(url: object) -> bool:
+    """An http(s) URL with a host, no whitespace or control characters, that urlparse can read."""
+    if not isinstance(url, str) or any(char.isspace() or not char.isprintable() for char in url):
+        return False
+    try:
+        parsed = urlparse(url)
+    except ValueError:
+        return False
     return parsed.scheme in ("http", "https") and bool(parsed.netloc)
+
+
+def one_of(value: object, vocabulary: set[str]) -> bool:
+    """True when value is a string in the vocabulary; a list or mapping from YAML is simply not."""
+    return isinstance(value, str) and value in vocabulary
 
 
 def valid_date(when: object) -> bool:
@@ -263,7 +280,7 @@ def svg_problem(path: pathlib.Path) -> str | None:
     """Why a file named *.svg is not a self-contained drawing made for the lesson, or None."""
     try:
         root = ElementTree.parse(path).getroot()
-    except (ElementTree.ParseError, OSError):
+    except (ElementTree.ParseError, OSError, LookupError, ValueError):
         return "is not well-formed XML, so it is not an SVG"
     if root.tag.rsplit("}", 1)[-1] != "svg":
         return "does not have an <svg> root element"
@@ -289,7 +306,7 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
         return [Problem(lesson_id, "lesson.yaml is not a mapping")]
     problems: list[Problem] = []
     if set(meta) != KEYS:
-        problems.append(Problem(lesson_id, f"lesson.yaml keys are {sorted(meta)}, expected {sorted(KEYS)}"))
+        problems.append(Problem(lesson_id, f"lesson.yaml keys are {sorted(map(str, meta))}, expected {sorted(KEYS)}"))
     if meta.get("id") != lesson_id:
         problems.append(Problem(lesson_id, f"id is {meta.get('id')!r}, expected the directory name"))
     entry = entries.get(lesson_id)
@@ -302,7 +319,7 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
         problems.append(Problem(lesson_id, "title_vi differs from the source map"))
 
     status = meta.get("content_status")
-    if status not in CONTENT_STATUS:
+    if not one_of(status, CONTENT_STATUS):
         problems.append(Problem(lesson_id, f"content_status {status!r} is not one of {sorted(CONTENT_STATUS)}"))
     verification = meta.get("verification")
     states = {"learner_test": meta.get("learner_test")}
@@ -311,7 +328,7 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
     else:
         states.update(verification)
     for name, value in states.items():
-        if value not in CHECK_STATE:
+        if not one_of(value, CHECK_STATE):
             problems.append(Problem(lesson_id, f"{name} {value!r} is not one of {sorted(CHECK_STATE)}"))
     if status == "approved" and any(value != "done" for value in states.values()):
         problems.append(Problem(lesson_id, "approved needs every verification field and learner_test to be done"))
@@ -341,7 +358,7 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     sources = image_sources(text)
     for destination in sorted(link_destinations(text) | sources):
         target = relative_target(destination)
-        if target is not None and not (lesson_dir / target).exists():
+        if target is not None and not exists(lesson_dir / target):
             problems.append(Problem(lesson_id, f"relative link {destination!r} does not resolve"))
     for source in sorted(sources):
         target = relative_target(source)
@@ -366,7 +383,7 @@ def plain_cell(cell: str) -> str:
 
 def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     readme = store / "README.md"
-    if not readme.exists():
+    if not readme.is_file():
         return [Problem("README.md", "is missing")]
     try:
         text = readme.read_text(encoding="utf-8")
@@ -378,7 +395,7 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
     problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")
                     for destination, target in sorted(destinations.items())
-                    if target and not (store / target).exists())
+                    if target and not exists(store / target))
     if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):
         problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
     return problems
@@ -400,16 +417,16 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
             elif path.is_file() and path.suffix.lower() == ".svg" and (reason := svg_problem(path)):
                 problems.append(Problem(lesson_id, f"{path.name} {reason}"))
         for required in (markdown, meta_file):
-            if not required.exists():
+            if not required.is_file():
                 problems.append(Problem(lesson_id, f"{required.name} is missing"))
-        if meta_file.exists():
+        if meta_file.is_file():
             try:
                 meta = yaml.safe_load(meta_file.read_text(encoding="utf-8"))
             except (yaml.YAMLError, ValueError) as error:
                 problems.append(Problem(lesson_id, f"lesson.yaml does not parse: {error}"))
             else:
                 problems.extend(check_yaml(lesson_id, meta, entries))
-        if markdown.exists():
+        if markdown.is_file():
             try:
                 text = markdown.read_text(encoding="utf-8")
             except UnicodeDecodeError:

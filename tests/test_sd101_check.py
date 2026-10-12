@@ -579,6 +579,98 @@ class LessonMarkdownRuleTests(StoreCase):
         (lesson_dir / "diagram.svg").write_text("<svg/>", encoding="utf-8")
         self.assertEqual([], self.problems())
 
+class RobustnessTests(StoreCase):
+    """Whatever an author types, the checker reports problems and keeps going; it never raises."""
+
+    ODD_VALUES = [None, True, 0, 1.5, "", " ", "drafted", "x" * 400, [], ["drafted"], [[1]], {}, {"a": 1}, [{"a": 1}],
+                  datetime.date(2026, 1, 1)]
+
+    def run_checker(self, data: object, *, raw: str | None = None) -> list[str]:
+        lesson_dir = self.write_lesson("sd-01-001")
+        text = raw if raw is not None else yaml.safe_dump(data, allow_unicode=True, sort_keys=False)
+        (lesson_dir / "lesson.yaml").write_text(text, encoding="utf-8")
+        return self.problems()
+
+    def test_an_odd_value_for_any_lesson_yaml_field_is_reported_not_raised(self) -> None:
+        for key in sorted(check.KEYS):
+            for value in self.ODD_VALUES:
+                with self.subTest(key=key, value=value):
+                    self.run_checker(self.meta(**{key: value}))
+
+    def test_an_odd_value_inside_verification_or_an_evidence_entry_is_reported_not_raised(self) -> None:
+        good = {"url": "https://example.com/a.png", "sha256": "a" * 64, "retrieved_on": "2026-10-12"}
+        for value in self.ODD_VALUES:
+            for key in sorted(check.VERIFICATION_KEYS):
+                with self.subTest(verification=key, value=value):
+                    self.run_checker(self.meta(verification={**META["verification"], key: value}))
+            for key in sorted(check.IMAGE_EVIDENCE_KEYS):
+                with self.subTest(evidence=key, value=value):
+                    self.run_checker(self.meta(image_evidence=[{**good, key: value}]))
+            with self.subTest(evidence_item=value):
+                self.run_checker(self.meta(image_evidence=[value]))
+
+    def test_a_lesson_yaml_that_is_not_a_mapping_or_has_odd_keys_is_reported_not_raised(self) -> None:
+        for name, raw in {"a list": "- a\n- b\n", "a string": "hello\n", "empty": "", "a number": "3\n",
+                          "mixed key types": "1: a\nid: x\n", "a null key": "null: a\nid: x\n",
+                          "a boolean key": "true: a\n", "a date key": "2026-10-12: a\n"}.items():
+            with self.subTest(file=name):
+                self.run_checker(None, raw=raw)
+
+    def test_a_malformed_evidence_url_is_a_problem(self) -> None:
+        for url in ["https://[", "http://[::1", "https://[x]/a.png", "https://a b/c", "//", ":", "http://exa\x00mple.com"]:
+            with self.subTest(url=url):
+                data = self.meta(image_evidence=[{"url": url, "sha256": "a" * 64, "retrieved_on": "2026-10-12"}])
+                self.assertTrue(any("image_evidence" in line for line in self.run_checker(data)))
+
+    def test_odd_svg_files_are_reported_not_raised(self) -> None:
+        laughs = ('<?xml version="1.0"?><!DOCTYPE l [<!ENTITY a "aaaaaaaaaa"><!ENTITY b "&a;&a;&a;&a;&a;&a;&a;&a;">'
+                  '<!ENTITY c "&b;&b;&b;&b;&b;&b;&b;&b;"><!ENTITY d "&c;&c;&c;&c;&c;&c;&c;&c;">]><svg>&d;</svg>')
+        odd = {"invalid utf-8": b"\xff\xfe<svg/>", "unknown encoding": b'<?xml version="1.0" encoding="nope"?><svg/>',
+               "entity expansion": laughs.encode(), "deep nesting": b"<svg>" + b"<g>" * 3000 + b"</g>" * 3000 + b"</svg>",
+               "a null byte": b"<svg>\x00</svg>", "a bom": b"\xef\xbb\xbf<svg/>", "only a comment": b"<!-- x -->"}
+        lesson_dir = self.write_lesson("sd-01-001")
+        for name, content in odd.items():
+            with self.subTest(file=name):
+                (lesson_dir / "figure.svg").write_bytes(content)
+                self.assertIsInstance(self.problems(), list)
+
+    def test_a_lesson_file_that_is_a_directory_is_reported_not_raised(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        for name in ("lesson.md", "lesson.yaml"):
+            with self.subTest(name=name):
+                (lesson_dir / name).unlink()
+                (lesson_dir / name).mkdir()
+                self.assertProblem(f"{name} is missing")
+                (lesson_dir / name).rmdir()
+                self.write_lesson("sd-01-001")
+
+    def test_pathological_markdown_is_reported_not_raised(self) -> None:
+        deep = {"nested quotes": "> " * 3000 + "x", "nested lists": "".join("  " * i + "- a\n" for i in range(400)),
+                "unmatched brackets": "[" * 20000, "unmatched emphasis": "*_" * 20000, "a long line": "a" * 200_000,
+                "many fences": "```\n" * 5000, "many tags": "<details>" * 5000, "nul bytes": "a\x00b\x00",
+                "empty": "", "only whitespace": " \n\t\n", "crlf": "# a\r\n\r\n```\r\nx\r\n```\r\n"}
+        for name, body in deep.items():
+            with self.subTest(markdown=name):
+                self.write_lesson("sd-01-001", body=body)
+                self.write_readme(body)
+                self.assertIsInstance(self.problems(), list)
+
+    def test_a_readme_that_is_a_directory_is_reported_not_raised(self) -> None:
+        (self.store / "README.md").unlink()
+        (self.store / "README.md").mkdir()
+        self.assertProblem("README.md: is missing")
+
+    def test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised(self) -> None:
+        destinations = ["a" * 300 + ".md", "x/" + "b" * 300 + ".svg", "%00", "a%00b.md", "..", "../..", "/", "//",
+                        "http://[", "mailto:", "#", "?x", "<>", " ", "\\"]
+        for destination in destinations:
+            with self.subTest(destination=destination):
+                self.write_lesson("sd-01-001", body=BODY + f"\n[x](<{destination}>) ![y](<{destination}>)\n"
+                                  f'<a href="{destination}">z</a> <img src="{destination}" srcset="{destination} 1x">\n')
+                self.write_readme(README + f"\n[x](<{destination}>)\n")
+                self.assertIsInstance(self.problems(), list)
+
+
 class ReadmeRuleTests(StoreCase):
     def test_a_lesson_missing_from_the_readme_is_reported(self) -> None:
         self.write_readme("# Kho\n")
