@@ -185,6 +185,26 @@ class LessonYamlRuleTests(StoreCase):
                 self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[entry]))
                 self.assertProblem("each image_evidence entry needs")
 
+    def evidence_problems(self, url: str) -> list[str]:
+        evidence = [{"url": url, "sha256": "a" * 64, "retrieved_on": "2026-10-12"}]
+        self.write_lesson("sd-01-001", meta=self.meta(image_evidence=evidence))
+        return [line for line in self.problems() if "image_evidence" in line]
+
+    def test_an_evidence_url_needs_a_real_host_and_a_readable_port(self) -> None:
+        for url in ["https://@/image.png", "https://user@/image.png", "https://:443/image.png", "https://./a.png",
+                    "https://-a.com/x", "https://a-.com/x", "https://a..b/x", "https://a_b.com/x", "https://host:abc/x",
+                    "https://host:99999/x", "https://tên.vn/x", "http://", "https:///x", "ftp://example.com/x",
+                    "https://" + "a" * 64 + ".com/x", "https://1.2.3/x extra"]:
+            with self.subTest(url=url):
+                self.assertTrue(self.evidence_problems(url), f"{url!r} was accepted")
+
+    def test_ordinary_evidence_urls_are_accepted(self) -> None:
+        for url in ["https://user@example.com/a.png", "https://example.com:8443/a", "http://127.0.0.1/a",
+                    "https://[::1]/a", "https://example.com./a", "https://sub-1.example.co.uk/a?b=c#d",
+                    "https://localhost/a", "https://EXAMPLE.com/a", "https://xn--tn-qla.vn/a"]:
+            with self.subTest(url=url):
+                self.assertEqual([], self.evidence_problems(url))
+
     def test_an_image_evidence_entry_without_a_digest_is_reported(self) -> None:
         self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[{"url": "https://x/y.png"}]))
         self.assertProblem("image_evidence entry needs")
@@ -421,6 +441,21 @@ class LessonMarkdownRuleTests(StoreCase):
         lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n[hình](<sơ đồ.svg>)\n")
         (lesson_dir / "sơ đồ.svg").write_text("<svg/>", encoding="utf-8")
         self.assertEqual([], self.problems())
+
+    def test_a_source_map_entry_without_a_snapshot_url_is_reported(self) -> None:
+        for name, entry in {"null": {"source_snapshot_url": None}, "empty": {"source_snapshot_url": ""},
+                            "blank": {"source_snapshot_url": "  "}, "a number": {"source_snapshot_url": 5},
+                            "a list": {"source_snapshot_url": [SNAPSHOT]}, "missing": {}}.items():
+            with self.subTest(entry=name):
+                data = {"categories": [{"id": "sd-01", "lessons": [{"id": "sd-01-001", "title_vi": "Bài một", **entry}]}]}
+                self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+                self.assertProblem("the source map has no source_snapshot_url for this lesson")
+
+    def test_a_lesson_that_is_not_in_the_source_map_is_not_also_missing_a_snapshot(self) -> None:
+        self.write_source_map({})
+        found = self.problems()
+        self.assertTrue(any("id is not in the source map" in line for line in found), found)
+        self.assertFalse(any("snapshot" in line for line in found), found)
 
     def test_a_lesson_that_does_not_link_the_pinned_snapshot_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body="# Bài một\n\nKhông có nguồn.\n")

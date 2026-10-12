@@ -116,14 +116,6 @@ mutations:
   find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
   replace: '    if False:'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
-- label: an image evidence url need not be an http(s) url with a host
-  find: '    return parsed.scheme in ("http", "https") and bool(parsed.netloc)'
-  replace: '    return isinstance(url, str)'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
-- label: an image evidence url may lack a host
-  find: '    return parsed.scheme in ("http", "https") and bool(parsed.netloc)'
-  replace: '    return parsed.scheme in ("http", "https")'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
 - label: an image evidence digest need not be 64 hex characters
   find: '    return (valid_url(item["url"]) and isinstance(digest, str) and SHA256.fullmatch(digest) is not None'
   replace: '    return (valid_url(item["url"]) and isinstance(digest, str)'
@@ -324,18 +316,6 @@ mutations:
   find: '    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}'
   replace: '    destinations = {destination: destination for destination in link_destinations(text)}'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
-- label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
-  find: '    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
-  replace: '    if snapshot and snapshot not in text:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_a_code_block_is_not_a_link
-- label: a link to a section of the pinned snapshot is not the snapshot
-  find: '    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
-  replace: '    if snapshot and snapshot not in link_destinations(text):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_link_to_a_section_of_the_pinned_snapshot_is_a_link_to_it
-- label: a link to another file with a fragment is taken for the snapshot
-  find: '    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
-  replace: '    if snapshot and not any(destination.startswith(snapshot) for destination in link_destinations(text)):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_link_to_another_file_with_a_fragment_is_not_the_snapshot
 - label: a README status cell is compared as raw source text, not as what it shows
   find: "    return [\"\".join(child.content for child in following.children or []\n                    if child.type in (\"text\", \"text_special\", \"code_inline\"))"
   replace: '    return [following.content'
@@ -396,10 +376,6 @@ mutations:
   find: "    except UnicodeDecodeError:\n        return [Problem(\"README.md\", \"is not valid UTF-8 text\")]"
   replace: "    except ZeroDivisionError:\n        return [Problem(\"README.md\", \"is not valid UTF-8 text\")]"
   test: tests.test_sd101_check.LessonYamlRuleTests.test_text_that_is_not_utf8_is_reported_not_raised
-- label: an unreadable evidence URL raises instead of being reported
-  find: "    except ValueError:\n        return False\n    return parsed.scheme in (\"http\", \"https\") and bool(parsed.netloc)"
-  replace: "    except ZeroDivisionError:\n        return False\n    return parsed.scheme in (\"http\", \"https\") and bool(parsed.netloc)"
-  test: tests.test_sd101_check.RobustnessTests.test_a_malformed_evidence_url_is_a_problem
 - label: an evidence URL with whitespace or a control character is accepted
   find: '    if not isinstance(url, str) or any(char.isspace() or not char.isprintable() for char in url):'
   replace: '    if not isinstance(url, str):'
@@ -416,10 +392,6 @@ mutations:
   find: f"lesson.yaml keys are {sorted(map(str, meta))}, expected {sorted(KEYS)}"
   replace: f"lesson.yaml keys are {sorted(meta)}, expected {sorted(KEYS)}"
   test: tests.test_sd101_check.RobustnessTests.test_a_lesson_yaml_that_is_not_a_mapping_or_has_odd_keys_is_reported_not_raised
-- label: a link name the filesystem rejects raises instead of not existing
-  find: "    except (OSError, ValueError):\n        return False\n\n\ndef valid_url"
-  replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_url"
-  test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised
 - label: an SVG that declares an unknown encoding raises
   find: '    except (ElementTree.ParseError, OSError, LookupError):'
   replace: '    except (ElementTree.ParseError, OSError):'
@@ -452,3 +424,67 @@ mutations:
   find: '                    if target and not exists(store / target))'
   replace: '                    if False)'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported
+- label: an image evidence url need not be an http(s) url with a host
+  find: '    return parsed.scheme in ("http", "https") and valid_host(parsed.hostname)'
+  replace: '    return isinstance(url, str)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence url may lack a host
+  find: '    return parsed.scheme in ("http", "https") and valid_host(parsed.hostname)'
+  replace: '    return parsed.scheme in ("http", "https")'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence url needs only a non-empty authority, not a host
+  find: '    return parsed.scheme in ("http", "https") and valid_host(parsed.hostname)'
+  replace: '    return parsed.scheme in ("http", "https") and bool(parsed.netloc)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_an_evidence_url_needs_a_real_host_and_a_readable_port
+- label: an image evidence url may have an unreadable port
+  find: "        parsed = urlparse(url)\n        parsed.port"
+  replace: '        parsed = urlparse(url)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_an_evidence_url_needs_a_real_host_and_a_readable_port
+- label: an unreadable evidence URL raises instead of being reported
+  find: "    except ValueError:\n        return False\n    return parsed.scheme"
+  replace: "    except ZeroDivisionError:\n        return False\n    return parsed.scheme"
+  test: tests.test_sd101_check.RobustnessTests.test_a_malformed_evidence_url_is_a_problem
+- label: an IP address is not accepted as a host
+  find: '        ipaddress.ip_address(host)'
+  replace: '        raise ValueError(host)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_ordinary_evidence_urls_are_accepted
+- label: any text is accepted as a DNS name
+  find: '        return HOSTNAME.fullmatch(host) is not None'
+  replace: '        return True'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_an_evidence_url_needs_a_real_host_and_a_readable_port
+- label: a DNS name may not end with a dot
+  find: '\.?")
+
+  SCHEME'
+  replace: '")
+
+  SCHEME'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_ordinary_evidence_urls_are_accepted
+- label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
+  find: '        elif snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
+  replace: '        elif snapshot not in text:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_a_code_block_is_not_a_link
+- label: a link to a section of the pinned snapshot is not the snapshot
+  find: '        elif snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
+  replace: '        elif snapshot not in link_destinations(text):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_link_to_a_section_of_the_pinned_snapshot_is_a_link_to_it
+- label: a link to another file with a fragment is taken for the snapshot
+  find: '        elif snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
+  replace: '        elif not any(destination.startswith(snapshot) for destination in link_destinations(text)):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_link_to_another_file_with_a_fragment_is_not_the_snapshot
+- label: a source map entry without a snapshot URL is not reported
+  find: '        if not isinstance(snapshot, str) or not snapshot.strip():'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_source_map_entry_without_a_snapshot_url_is_reported
+- label: a blank snapshot URL in the source map counts as one
+  find: '        if not isinstance(snapshot, str) or not snapshot.strip():'
+  replace: '        if not isinstance(snapshot, str) or not snapshot:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_source_map_entry_without_a_snapshot_url_is_reported
+- label: a lesson missing from the source map is also reported as missing a snapshot
+  find: "    if lesson_id in entries:\n        snapshot"
+  replace: "    if True:\n        snapshot = entries.get(lesson_id, {})"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_that_is_not_in_the_source_map_is_not_also_missing_a_snapshot
+- label: a link name the filesystem rejects raises instead of not existing
+  find: "    except (OSError, ValueError):\n        return False\n\n\ndef valid_host"
+  replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_host"
+  test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised

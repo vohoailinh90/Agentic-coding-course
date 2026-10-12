@@ -53,6 +53,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import ipaddress
 import json
 import pathlib
 import posixpath
@@ -80,6 +81,7 @@ LESSON_ID = re.compile(r"\bsd-\d{2}-\d{3}\b")
 SHA256 = re.compile(r"[0-9a-fA-F]{64}")
 ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
+HOSTNAME = re.compile(r"(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)*[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.?")
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
@@ -228,15 +230,27 @@ def exists(path: pathlib.Path) -> bool:
         return False
 
 
+def valid_host(host: str | None) -> bool:
+    """A DNS name (ASCII labels, as in a copied address bar) or an IP address; not empty, not '.' or '-a'."""
+    if not host:
+        return False
+    try:
+        ipaddress.ip_address(host)
+    except ValueError:
+        return HOSTNAME.fullmatch(host) is not None
+    return True
+
+
 def valid_url(url: object) -> bool:
-    """An http(s) URL with a host, no whitespace or control characters, that urlparse can read."""
+    """An http(s) URL with a real host and a readable port, no whitespace or control characters."""
     if not isinstance(url, str) or any(char.isspace() or not char.isprintable() for char in url):
         return False
     try:
         parsed = urlparse(url)
+        parsed.port
     except ValueError:
         return False
-    return parsed.scheme in ("http", "https") and bool(parsed.netloc)
+    return parsed.scheme in ("http", "https") and valid_host(parsed.hostname)
 
 
 def one_of(value: object, vocabulary: set[str]) -> bool:
@@ -365,9 +379,12 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
         if target is None or not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):
             problems.append(Problem(lesson_id, f"image {source!r} must be a local .svg file drawn for the lesson, "
                                                "directly inside the lesson directory"))
-    snapshot = entries.get(lesson_id, {}).get("source_snapshot_url")
-    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:
-        problems.append(Problem(lesson_id, "lesson.md does not link the pinned source snapshot"))
+    if lesson_id in entries:
+        snapshot = entries[lesson_id].get("source_snapshot_url")
+        if not isinstance(snapshot, str) or not snapshot.strip():
+            problems.append(Problem(lesson_id, "the source map has no source_snapshot_url for this lesson"))
+        elif snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:
+            problems.append(Problem(lesson_id, "lesson.md does not link the pinned source snapshot"))
     for mentioned in sorted(set(LESSON_ID.findall(text))):
         if mentioned not in lesson_ids:
             problems.append(Problem(lesson_id, f"mentions {mentioned}, which has no lesson directory"))
