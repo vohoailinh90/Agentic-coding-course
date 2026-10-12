@@ -2,6 +2,9 @@
 
 Ngày chốt: 2026-10-12. Người dùng đã giao viết lần lượt từng bài sau brainstorm.
 
+**Đây là tài liệu chuẩn.** [BRIEF.md](BRIEF.md) và [README.md](README.md) là đề xuất v0 dùng để
+brainstorm; nếu mâu thuẫn với tài liệu này thì tài liệu này thắng.
+
 ## Evidence và giới hạn
 
 - [Phản hồi vòng 1](https://github.com/vohoailinh90/Agentic-coding-course/pull/23#issuecomment-6126033008)
@@ -13,6 +16,10 @@ Ngày chốt: 2026-10-12. Người dùng đã giao viết lần lượt từng b
   “Đơn được xác nhận”. Đây là kết luận biên tập của người biên soạn để tiếp tục trong phạm vi
   người dùng đã giao, không phải kết quả user testing hay xác nhận của ByteByteGo.
 - Kiểm kê độc lập: 15 nhóm, 404 ID, 400 đường dẫn nguồn duy nhất; vẫn giữ đủ 404 vị trí.
+- Rà soát lần hai (2026-10-12, commit `5f1ad05`): Codex nêu 7 finding, đã sửa ở commit sau đó.
+  Yêu cầu AUDIT kèm các phát hiện riêng của Claude nhận về review inline chứ không phải báo cáo
+  theo contract, nên phần chưa có phán quyết của Codex (mục trùng nguồn, trạng thái, mô tả PR,
+  trích dẫn chuẩn) chỉ dựa trên kiểm tra của người biên soạn.
 
 ## Quyết định để bắt đầu viết
 
@@ -24,13 +31,35 @@ Ngày chốt: 2026-10-12. Người dùng đã giao viết lần lượt từng b
 | Mật độ | Mặc định mềm 150–300 từ phần chính; phần sâu tùy chọn, không viết cho đủ quota |
 | Hình | Một hình chính hoặc các khung so sánh dọc; không thêm hình trùng ý |
 | Đánh đổi | Một giới hạn, ngộ nhận hoặc bối cảnh quan trọng; không ép failure mode lên mọi bài |
-| Tiến độ | `content_status` riêng; đọc nguồn, kiểm chứng, kỹ thuật và mobile là các trạng thái riêng |
+| Tiến độ | Theo yêu cầu người dùng trong phiên biên soạn hiện tại, metadata JSON là nơi duy nhất ghi trạng thái từng bài; không nhân đôi sang YAML. `source-map.json` chỉ ghi thông tin nguồn |
 | Duyệt | Ghim nguồn, kiểm chứng claim, review kỹ thuật, kiểm tra hình mobile |
-| Người học thử | Ghi riêng; chưa thực hiện thì không báo đạt, không chặn việc viết nháp |
+| Hình trên điện thoại | Không cuộn ngang; chữ thông điệp hiệu dụng ≥ 14 px ở 375 px và ≥ 12 px ở 320 px. Đo ước lượng bằng Mermaid + Chromium, hệ số thu = min(1, (W − 32) / chiều rộng SVG); chưa thay cho kiểm tra thật trên GitHub hoặc điện thoại |
+| Người học thử | Ghi riêng; chưa thực hiện thì không báo đạt. Chỉ chặn việc chuyển bài sang `approved` hoặc phát hành, không chặn viết nháp hay viết bài kế tiếp |
+| Giấy phép nguồn | Nguồn là CC BY-NC-ND 4.0. Theo văn bản giấy phép, ND cho phép làm bản cải biên phi thương mại nhưng không cho chia sẻ (chưa đối chiếu lại văn bản trong phiên rà soát); kho này công khai nên đẩy lên đã là chia sẻ. Chủ repo quyết định hoãn việc giải quyết quyền dùng. Cho tới khi giải quyết, repo công khai chỉ nhận: (a) metadata nguồn (tiêu đề, URL, hash); (b) bài viết độc lập, tự viết từ kiến thức và tiêu chuẩn kỹ thuật, sơ đồ tự thiết kế, không dịch hay diễn đạt lại sát câu chữ nguồn, không dùng ảnh nguồn. Bản dịch hoặc cải biên sát nguồn không đưa vào repo công khai trước khi quyền được giải quyết. Việc một bài bám cùng chủ đề và thứ tự với nguồn có phải là cải biên hay không là câu hỏi pháp lý chưa kết luận. Đây là rủi ro còn mở, không phải đã được cho phép; không thêm bước xin duyệt cho việc viết bài độc lập |
+| Ảnh nguồn | Ảnh của bài nguồn nằm ở URL ngoài (`assets.bytebytego.com`), chưa được mở và chưa được ghim, trừ khi `lesson.yaml` ghi khác. Khi review của một bài dựa vào nội dung ảnh (như ảnh Load Balancer), ghi `image_evidence` trước khi dùng làm bằng chứng. Không ghim hàng loạt ảnh từ đầu và không lưu ảnh nguồn vào repo |
 | Công cụ | Metadata JSON + Markdown + SVG thiết kế mới; chưa xây framework renderer |
-| PR | Đợt nhỏ theo thứ tự; gọi Codex review; chưa tự merge hoặc deploy |
+| PR | Đợt nhỏ theo thứ tự; gọi Codex review sau thay đổi. Yêu cầu người dùng hiện tại: không tự merge/deploy, kể cả khi review sạch. Các quyền merge ghi trước đó không áp dụng cho phiên này |
 
-## Phản biện kỹ thuật đã kiểm chứng độc lập
+## Schema tối thiểu
+
+`source-map.json` giữ thông tin về nguồn: `source_path`, phiên bản ghim, `source_body_reviewed`,
+`same_source_as` cho mục trùng nguồn (bốn cặp: `sd-01-045`/`sd-10-023`, `sd-02-019`/`sd-13-012`,
+`sd-07-012`/`sd-12-010`, `sd-08-020`/`sd-10-026`). Đã đọc thân bài không có nghĩa là mọi claim đúng.
+
+Mỗi bài chỉ có một nội dung ở `lessons/<id>/lesson.md`. Trạng thái và evidence nằm ở
+`metadata/<id>.json`; `lesson.yaml` chỉ là chỉ dẫn tới JSON, không giữ bản sao trạng thái.
+
+- `content_status`: `draft | review | done`; `done` chỉ ghi sau technical/visual review hiện hành.
+- `verification`: đọc nguồn, claim, review kỹ thuật, mobile và thử người học độc lập.
+- Đã có review trên SHA cũ không đồng nghĩa review tổ hợp với main mới; lưu evidence cũ và chờ review mới.
+- Chưa thử người học thì không ghi đã thử hoặc đã được phê duyệt phát hành. Viết nháp tiếp không bị chặn.
+- `progress.json` là điều phối công việc (PR đang mở, ID kế tiếp), không thay metadata làm nguồn quyết định.
+- Evidence ảnh nguồn chỉ ghi khi thực sự dùng ảnh nguồn để kiểm chứng; không lưu ảnh nguồn vào repo.
+
+## Phản biện kỹ thuật dựa trên tiêu chuẩn
+
+Số mục trích dẫn dưới đây chưa được kiểm lại ở lượt rà soát 2026-10-12 (môi trường rà soát không
+truy cập được rfc-editor.org và html.spec.whatwg.org). Kiểm lại khi viết `sd-01-001`.
 
 - [RFC 6202 §2.1–2.2](https://www.rfc-editor.org/rfc/rfc6202.html): polling ngắn hỏi định kỳ;
   polling dài trả khi có sự kiện hoặc hết hạn rồi mở request mới. Request lặp không có nghĩa
@@ -45,6 +74,7 @@ Ngày chốt: 2026-10-12. Người dùng đã giao viết lần lượt từng b
 1. `sd-01-001`: Polling ngắn, polling dài, SSE và WebSocket.
 2. `sd-01-002`: Ứng dụng thực tế của bộ cân bằng tải.
 3. `sd-01-003`: Các mã HTTP kỳ lạ và bối cảnh sử dụng.
-4. Sau đợt thử, tiếp tục từng ID theo bảng đối chiếu và ghi tiến độ bền vững trong kho mới.
+4. Tiếp tục từng ID theo bảng đối chiếu, không chờ đợt thử người học; thử nghiệm với người học chỉ
+   chặn phát hành (xem hàng “Người học thử”). Tiến độ ghi ở metadata JSON của từng bài.
 
 Sửa chữa theo review sau này được ghi vào PR nội dung, không mở thêm vòng brainstorm tự động.

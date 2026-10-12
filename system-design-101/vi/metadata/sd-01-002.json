@@ -30,7 +30,8 @@
       "checked_on": "2026-10-12"
     },
     "technical_review": {
-      "status": "pending"
+      "status": "pending",
+      "reason": "Merged main snapshot and reconciled canonical paths; old review does not approve new integration."
     },
     "mobile": {
       "status": "checked",
@@ -79,5 +80,12 @@
     }
   ],
   "design_notes_vi": "Sáu khung topology dọc mới, tương ứng sáu use case nguồn. Hình lỗi có đường bị gạch và đường tới máy khỏe; câu hỏi chỉ hỏi thông tin có trên hình. Không dùng asset gốc vì URL ảnh tên HTTP status codes; chưa khẳng định đã mở/kiểm tra pixel asset đó.",
-  "editorial_note_vi": "Mô tả khả năng khi cấu hình, không khẳng định mọi LB có đủ tính năng. Nguồn AWS là ví dụ implementation. Đã đọc nguồn chính thức ngày 2026-10-12."
+  "editorial_note_vi": "Mô tả khả năng khi cấu hình, không khẳng định mọi LB có đủ tính năng. Nguồn AWS là ví dụ implementation. Đã đọc nguồn chính thức ngày 2026-10-12.",
+  "prior_reviews": [
+    {
+      "sha": "f4fda4798d08ce982061d67a483fa26fd6e3decf",
+      "url": "https://github.com/vohoailinh90/Agentic-coding-course/pull/25#issuecomment-6126952093",
+      "result": "No major issues reported; applies only to that commit."
+    }
+  ]
 }

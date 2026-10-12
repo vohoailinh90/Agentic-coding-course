@@ -2,7 +2,7 @@
 
 > Đọc file này đầu tiên khi bắt đầu một phiên làm việc mới (người hay AI đều vậy).
 
-## Trạng thái hiện tại (cập nhật: 2026-10-01)
+## Trạng thái hiện tại (cập nhật: 2026-10-12)
 
 - **Trạng thái: đã viết xong toàn bộ khóa học — 52/52 bài × 3 thứ tiếng (vi · en · ja), 960 phút, đều ở
   trạng thái `review` — chờ owner (Linh) duyệt.** Giai đoạn 1 (viết nội dung) đã kết thúc. Lộ trình v1
@@ -50,9 +50,23 @@
     docs.github.com, docs.python.org…), nên nguồn tham khảo hiện chỉ lấy từ tài liệu của Anthropic và
     Google Cloud. Mở thêm trong cài đặt Network access của môi trường nếu muốn nguồn đa dạng hơn.
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
-- **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 007 (lộ trình v1, và quyết định viết cả
+- **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 011 (kho System Design tiếng Việt), 007 (lộ trình v1, và quyết định viết cả
   khóa học ngay), 008 (hình tóm tắt trong mọi bài), 009 (file HTML xem offline), 010 (Claude viết bài,
   Codex review).
+
+## System Design 101 tiếng Việt (nhánh riêng, bắt đầu 2026-10-12)
+
+- Kho riêng `system-design-101/vi/`, nằm ngoài `course/`; chi tiết ở
+  [brainstorm/system-design-101-vi/DECISIONS.md](brainstorm/system-design-101-vi/DECISIONS.md) và
+  [ADR 011](docs/decisions/011-system-design-store.md). Bảng đối chiếu 404 mục nguồn ở
+  `brainstorm/system-design-101-vi/source-map.json`.
+- **Đã có bài:** `sd-01-001` (polling, SSE, WebSocket), `sd-01-002` (bộ cân bằng tải). Trạng thái và các bước
+  kiểm chứng của từng bài chỉ ghi ở `system-design-101/vi/metadata/<id>.json`, không lặp lại ở đây.
+- PR theo đợt nhỏ; đối chiếu Codex review với SHA head/base hiện hành. Theo yêu cầu mới nhất trong
+  phiên biên soạn này: không tự merge/deploy. Kho đã có hai bản bài độc lập từ các phiên khác nhau;
+  PR #25 đang hợp nhất về một nội dung cho mỗi ID.
+- **Rủi ro còn mở:** nguồn là CC BY-NC-ND 4.0 và repo công khai; bài viết độc lập bằng lời riêng, sơ đồ mới,
+  không dịch sát nguồn. Chưa đăng Facebook/website trước khi giải quyết quyền dùng.
 
 ## Bước tiếp theo
 

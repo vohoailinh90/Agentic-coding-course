@@ -1,5 +1,8 @@
 # Brief: chương trình System Design 101 bằng tiếng Việt
 
+> Brief đầu vào của vòng brainstorm (đề xuất v0). Quyết định đã chốt nằm ở [DECISIONS.md](DECISIONS.md);
+> nếu mâu thuẫn với bảng bên dưới thì DECISIONS.md thắng.
+
 ## Mục tiêu và phạm vi
 
 Người học muốn hiểu cách hệ thống hoạt động qua hình và lời giải thích ngắn. Chương trình mới
@@ -16,8 +19,10 @@ Codex phản biện, không phải thông tin người dùng đã xác nhận.
 - Bài nguồn dùng ảnh lớn + lời giải thích gọn; giữ cách đọc này cho chương trình mới.
 - Đã mở và đọc 8 bài: Polling/SSE/WebSocket, ứng dụng Load Balancer, mã HTTP kỳ lạ,
   Read Replica, Redis 101, AWS Lambda, IPC trên Linux, DevSecOps.
-- Bài Load Balancer đang tham chiếu cùng URL ảnh HTTP status codes với bài mã HTTP.
-  URL không phù hợp chủ đề; cần xem ảnh và tìm nguồn đúng trước khi biên soạn.
+- Bài Load Balancer và bài mã HTTP cùng tham chiếu một URL ảnh
+  (`…/0232-http-status-code-shouldnt-exist.png`; kiểm từ Markdown đã ghim, dòng 16 và dòng 14).
+  Nội dung ảnh chưa được mở và chưa được ghim; nhận định "không phù hợp chủ đề" mới dựa trên tên file
+  và việc trùng URL. Cần xem ảnh và tìm nguồn đúng trước khi biên soạn.
 - Bài SSE dùng cách diễn đạt dễ khiến người đọc hiểu rằng browser không thể gửi request khác.
   Mẫu đề xuất ghi rõ **luồng SSE** chỉ đi một chiều; browser vẫn có thể gửi HTTP request riêng.
 - Những bài kể kiến trúc công ty và công cụ cần giữ mốc thời gian nguồn, không biến mô tả lịch sử
@@ -30,19 +35,19 @@ Codex phản biện, không phải thông tin người dùng đã xác nhận.
 | Mục lục | Giữ nguyên 15 nhóm / 404 mục; nhãn và nội dung học bằng tiếng Việt |
 | Bài gần trùng | Giữ ID riêng, thêm liên kết “đọc cùng”; không tự gộp hay bỏ |
 | Bài khó với người mới | Thẻ “cần biết trước” dẫn sang bài cùng khóa; không đảo mục lục |
-| Mật độ chữ | 150–300 từ phần thân, ngoại trừ case study cần lý do cụ thể |
+| Mật độ chữ | Mặc định mềm 150–300 từ phần chính, phần sâu tùy chọn (xem DECISIONS.md) |
 | Hình | Sơ đồ chính + hình so sánh hoặc hình đánh đổi nếu cần |
 | Màu | Xanh: client; tím: dịch vụ; xanh lá: dữ liệu; cam: chờ/cảnh báo |
 | Trên điện thoại | Một luồng đọc dọc, chia hình rộng thành khung nhỏ, nhãn ngắn |
 | Kiểm tra hiểu | Một câu hỏi đọc sơ đồ, đáp án ngắn có lý do |
-| Kiến trúc nội dung | Đề xuất kho riêng `system-design/vi/`, metadata và assets riêng |
+| Kiến trúc nội dung | Đề xuất kho riêng `system-design-101/vi/`, metadata và assets riêng |
 | Giai đoạn hiện tại | Chỉ `brainstorm/system-design-101-vi/`; chưa sửa schema của khóa cũ |
 
 ## Hình và nguồn
 
 Mỗi bài có link nguồn gốc, commit/blob để đối chiếu, trạng thái đọc và kiểm chứng.
 Sơ đồ được thiết kế mới từ kiến thức kỹ thuật đã kiểm chứng; không sao chép bố cục ảnh hay dịch
-nguyên văn toàn bộ bài nguồn. Repo nguồn ghi [CC BY-NC-ND 4.0](https://github.com/ByteByteGoHq/system-design-101/blob/main/LICENSE.md).
+nguyên văn toàn bộ bài nguồn. Repo nguồn ghi [CC BY-NC-ND 4.0](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/LICENSE.md).
 Nếu muốn phát hành bản dịch hoặc ảnh cải biên từ tài sản gốc, cần giải quyết quyền sử dụng trước.
 Đợt brainstorm chỉ dùng metadata đối chiếu, link nguồn và sơ đồ tự thiết kế.
 
