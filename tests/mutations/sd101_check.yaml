@@ -323,7 +323,7 @@ mutations:
 - label: a quoted url() target is read with its quote
   find: URL_CALL = re.compile(r"url\(\s*['\"]?\s*([^)'\"\s]*)", re.IGNORECASE)
   replace: URL_CALL = re.compile(r"url\(([^)]*)", re.IGNORECASE)
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_real_looking_svg_drawing_is_accepted
 - label: an image that is not an .svg file is accepted
   find: '        if target is None or not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):'
   replace: '        if target is None or posixpath.dirname(posixpath.normpath(target)):'
