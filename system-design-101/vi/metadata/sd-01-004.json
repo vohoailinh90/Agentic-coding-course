@@ -3,7 +3,7 @@
   "title_vi": "gRPC hoạt động thế nào?",
   "language": "vi",
   "kind": "flow",
-  "content_status": "review",
+  "content_status": "done",
   "source_ref": "sd-01-004",
   "source_snapshot": {
     "repository": "ByteByteGoHq/system-design-101",
@@ -29,7 +29,14 @@
       "checked_on": "2026-10-12"
     },
     "technical_review": {
-      "status": "pending"
+      "status": "checked",
+      "head_sha": "11996effc9a83ac8908b52bcd3477f7f08d1d261",
+      "base_sha": "034a992d1b90d023083b2fe03790c06fdf991bca",
+      "pr": 30,
+      "comment_id": 6131548831,
+      "checked_on": "2026-10-12",
+      "github_ci": "not_run_base_filter",
+      "evidence": "No major issues on this head/base; local JSON/layout/links/whitespace and prior unchanged mobile content checks passed. Not release approval."
     },
     "mobile": {
       "status": "checked",
@@ -81,5 +88,5 @@
     "Corrects serialization of the stub to serialization of the message.",
     "Omits 5X faster-than-JSON claim because no benchmark workload, environment or evidence is supplied."
   ],
-  "editorial_note_vi": "Technical review pending; no performance multiplier, learner testing or release approval claimed."
+  "editorial_note_vi": "Đã review kỹ thuật trên snapshot ghi ở verification; chưa thử với người học hoặc phê duyệt phát hành."
 }
