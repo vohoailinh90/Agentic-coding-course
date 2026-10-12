@@ -305,6 +305,49 @@ class SourceMapPinTests(unittest.TestCase):
         self.assertTrue(any("sd-01-006: shares its source_path with sd-01-005 but does not list them" in line
                             for line in found), found)
 
+    ODD = [None, True, 0, 1.5, "", " ", "sd-01-001", "x" * 300, [], [None], [{}], [[1]], [5], ["sd-01-001"],
+           {}, {"a": 1}, [{"a": 1}]]
+
+    def load(self, change, *, pin_roster: bool = True) -> list[str]:
+        """Only the source-map rules, on an altered copy of the real map (fast enough to sweep)."""
+        data = json.loads(check.DEFAULT_SOURCE_MAP.read_text(encoding="utf-8"))
+        change(data)
+        with tempfile.TemporaryDirectory() as tmp:
+            altered = Path(tmp) / "source-map.json"
+            altered.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            return [str(problem) for problem in check.load_source_map(altered, pin_roster)[1]]
+
+    def test_an_odd_value_in_any_source_map_field_is_reported_not_raised(self) -> None:
+        keys = sorted(check.SOURCE_ENTRY_KEYS) + ["same_source_as", "unknown"]
+        for key in keys:
+            for value in self.ODD:
+                for lesson in (1, 44):  # sd-01-002, and sd-01-045 which has a same-source partner
+                    with self.subTest(key=key, value=value, lesson=lesson):
+                        self.load(lambda data: self.entry(data, lesson).update({key: value}))
+
+    def test_an_odd_value_for_a_map_level_field_or_a_group_is_reported_not_raised(self) -> None:
+        for key in ("source_repository", "source_commit_sha", "categories", "schema_version"):
+            for value in self.ODD:
+                with self.subTest(key=key, value=value):
+                    self.load(lambda data: data.update({key: value}))
+        for key in ("id", "lessons", "extra"):
+            for value in self.ODD:
+                with self.subTest(group=key, value=value):
+                    self.load(lambda data: data["categories"][0].update({key: value}))
+
+    def test_an_odd_group_or_entry_is_reported_not_raised(self) -> None:
+        for value in self.ODD:
+            with self.subTest(value=value):
+                self.load(lambda data: data["categories"].insert(3, value))
+                self.load(lambda data: data["categories"][0]["lessons"].insert(5, value))
+                self.load(lambda data: data["categories"][0]["lessons"].__setitem__(2, value))
+
+    def test_an_odd_value_in_the_entry_of_a_written_lesson_is_reported_not_raised(self) -> None:
+        for key in ("id", "title_vi", "source_path", "source_snapshot_url", "same_source_as"):
+            for value in self.ODD:
+                with self.subTest(key=key, value=value):
+                    self.check(lambda data: self.entry(data, 0).update({key: value}))
+
     def test_re_pinning_every_entry_and_the_map_to_one_new_commit_is_allowed(self) -> None:
         new = "0123456789abcdef0123456789abcdef01234567"
 
