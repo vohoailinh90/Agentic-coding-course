@@ -834,30 +834,6 @@ mutations:
   find: path.read_text(encoding="utf-8"), object_pairs_hook=object_without_duplicate_keys)
   replace: path.read_text(encoding="utf-8"))
   test: tests.test_sd101_check.SourceMapPinTests.test_a_key_named_twice_in_the_source_map_is_reported
-- label: a source_path with a dot segment is accepted
-  find: and ".." not in value.split("/"))
-  replace: )
-  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
-- label: a source_path that is not normalised is accepted
-  find: ' and posixpath.normpath(value) == value
-
-  '
-  replace: '
-
-  '
-  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
-- label: an absolute source_path is accepted
-  find: ' and not value.startswith("/") and'
-  replace: ' and'
-  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
-- label: a source_path with a fragment or query mark is accepted
-  find: char in "#?\\"
-  replace: char in "\\"
-  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
-- label: a source_path with whitespace is accepted
-  find: "for char in value)\n            and \"..\""
-  replace: "for char in \"\")\n            and \"..\""
-  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
 - label: a source_path is only checked for being text
   find: '    if "source_path" in entry and not repository_path(entry["source_path"]):'
   replace: '    if "source_path" in entry and not text_value(entry["source_path"]):'
@@ -946,3 +922,35 @@ mutations:
   find: '    if "title_source" in entry and not text_value(entry["title_source"]):'
   replace: '    if False:'
   test: tests.test_sd101_check.SourceMapPinTests.test_an_entry_field_of_the_wrong_kind_is_reported
+- label: a source_path with an empty part (// or a leading or trailing /) is accepted
+  find: 'part in ("", ".", "..")'
+  replace: 'part in (".", "..")'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with a . part is accepted
+  find: 'part in ("", ".", "..")'
+  replace: 'part in ("", "..")'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with a .. part is accepted
+  find: 'part in ("", ".", "..")'
+  replace: 'part in ("", ".")'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with whitespace is accepted
+  find: "char.isspace() or not char.isprintable() or char in \"#?\\\\\""
+  replace: "not char.isprintable() or char in \"#?\\\\\""
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with a control character is accepted
+  find: "char.isspace() or not char.isprintable() or char in \"#?\\\\\""
+  replace: "char.isspace() or char in \"#?\\\\\""
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: 'a source_path with a # mark is accepted'
+  find: "char in \"#?\\\\\""
+  replace: "char in \"?\\\\\""
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with a ? is accepted
+  find: "char in \"#?\\\\\""
+  replace: "char in \"#\\\\\""
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with a backslash is accepted
+  find: "char in \"#?\\\\\""
+  replace: 'char in "#?"'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported

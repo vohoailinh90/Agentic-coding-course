@@ -145,10 +145,10 @@ def object_without_duplicate_keys(pairs: list[tuple[str, object]]) -> dict:
 
 
 def repository_path(value: object) -> bool:
-    """A normalised path inside the repository: relative, no . or .. part, nothing a URL would read differently."""
-    return (isinstance(value, str) and bool(value) and not value.startswith("/") and posixpath.normpath(value) == value
-            and not any(char.isspace() or not char.isprintable() or char in "#?\\" for char in value)
-            and ".." not in value.split("/"))
+    """A path inside the repository that a URL reads as written: relative, with no empty, . or .. part (so no
+    leading or trailing / either), and nothing a URL would split on or drop (# ? \\ whitespace)."""
+    return (isinstance(value, str) and not any(part in ("", ".", "..") for part in value.split("/"))
+            and not any(char.isspace() or not char.isprintable() or char in "#?\\" for char in value))
 
 
 def text_value(value: object) -> bool:

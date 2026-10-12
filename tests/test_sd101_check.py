@@ -371,7 +371,8 @@ class SourceMapPinTests(unittest.TestCase):
 
     def test_a_source_path_that_a_url_would_read_differently_is_reported(self) -> None:
         for path in ["../README.md", "/data/x.md", "data//x.md", "./data/x.md", "data/./x.md", "data/../x.md",
-                     "data/x.md/", "data/a b.md", "data/a#b.md", "data/a?b.md", "data\\a.md", "data/a\tb.md", ".."]:
+                     "data/x.md/", "data/a b.md", "data/a#b.md", "data/a?b.md", "data\\a.md", "data/a\tb.md", "..",
+                     ".", "/", "./", "data/.", "data/..", "data/", "data/a\x7fb.md"]:
             def change(data, path=path):
                 entry = self.entry(data)
                 entry["source_path"] = path
