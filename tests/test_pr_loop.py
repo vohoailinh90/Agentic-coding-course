@@ -127,6 +127,9 @@ class PullRequestLoopTests(unittest.TestCase):
         self.assertIn("for course lesson batches ADR 010 does", self.section)
         self.assertIn("two per batch under ADR 010", self.section)
         self.assertNotIn("limit of three", self.section)
+        progress = read(ROOT / "PROGRESS.md").replace("\n", " ")
+        self.assertIn("từ 2026-10-12 không giới hạn số vòng", progress)
+        self.assertNotIn("thường tối đa 2 vòng; PR #21", progress)
         self.assertNotIn("FIX round caps", self.section)
 
     def test_every_protocol_section_it_cites_exists(self) -> None:
