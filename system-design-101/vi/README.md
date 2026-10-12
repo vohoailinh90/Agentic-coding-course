@@ -5,9 +5,11 @@ Các mục gần nhau hoặc dùng chung nguồn vẫn giữ ID và vị trí ri
 
 ## API và phát triển web
 
-1. [Polling ngắn, polling dài, SSE và WebSocket](lessons/sd-01-001/lesson.md) — đã có review ở SHA cũ; chờ review hợp nhất PR #25.
-2. [Ứng dụng thực tế của bộ cân bằng tải](lessons/sd-01-002/lesson.md) — đã viết, chờ review.
-3. [Năm mã trạng thái HTTP kỳ lạ](lessons/sd-01-003/lesson.md) — tiếp nhận bản nháp main, bổ sung kiểm chứng; chờ review.
+1. [Polling ngắn, polling dài, SSE và WebSocket](lessons/sd-01-001/lesson.md) — đã qua review kỹ thuật ở SHA 034a992 của PR #25.
+2. [Ứng dụng thực tế của bộ cân bằng tải](lessons/sd-01-002/lesson.md) — đã qua review kỹ thuật ở SHA 034a992 của PR #25.
+3. [Năm mã trạng thái HTTP kỳ lạ](lessons/sd-01-003/lesson.md) — đã qua review kỹ thuật ở SHA 034a992 của PR #25.
+
+4. [gRPC hoạt động thế nào?](lessons/sd-01-004/lesson.md) — đã viết, chờ review.
 
 Danh mục đầy đủ và snapshot nguồn: [bảng đối chiếu](../../brainstorm/system-design-101-vi/source-map.json).
 Quy tắc đã chốt: [kết luận brainstorm](../../brainstorm/system-design-101-vi/DECISIONS.md).
