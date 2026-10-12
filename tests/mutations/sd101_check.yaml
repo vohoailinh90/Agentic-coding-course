@@ -37,9 +37,25 @@ mutations:
   replace: '    if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_unclosed_code_fence_is_reported
 - label: a relative link that leads nowhere is accepted
-  find: '        if not (lesson_dir / target.split("#")[0]).exists():'
+  find: '        if target is not None and not (lesson_dir / target).exists():'
   replace: '        if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
+- label: only inline links are checked, so a reference-style link to a missing file is accepted
+  find: '    for destination in sorted(link_destinations(text)):'
+  replace: '    for destination in sorted(re.findall(r"\\]\\(([^)]+)\\)", text)):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_broken_reference_style_relative_link_is_reported
+- label: anchors, URLs and mail links are treated as relative paths
+  find: '    if destination.startswith(("#", "//")) or SCHEME.match(destination):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_anchors_urls_and_mail_links_are_not_relative_links
+- label: a fragment or query is kept in the path that must exist
+  find: '    return unquote(destination.split("#")[0].split("?")[0]) or None'
+  replace: '    return unquote(destination) or None'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_with_a_fragment_or_query_is_checked_by_its_path
+- label: a percent-encoded path is not decoded before it is looked up
+  find: '    return unquote(destination.split("#")[0].split("?")[0]) or None'
+  replace: '    return destination.split("#")[0].split("?")[0] or None'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_with_non_ascii_letters_resolves
 - label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
   find: '    if snapshot and snapshot not in link_destinations(text):'
   replace: '    if snapshot and snapshot not in text:'
@@ -64,6 +80,14 @@ mutations:
   find: '    if SOURCE_IMAGE_HOST in text.lower():'
   replace: '    if SOURCE_IMAGE_HOST in text:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_every_form_of_source_image_embed_is_reported
+- label: a README path anywhere in the file counts as a link
+  find: '                for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]'
+  replace: '                for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in text]'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_path_in_a_comment_a_code_block_or_prose_is_not_a_link
+- label: a README link written with ./ no longer counts
+  find: '    linked = {posixpath.normpath(destination) for destination in link_destinations(text)}'
+  replace: '    linked = set(link_destinations(text))'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts
 - label: the README is no longer checked at all
   find: '    problems.extend(check_readme(store, lesson_ids))'
   replace: '    pass'

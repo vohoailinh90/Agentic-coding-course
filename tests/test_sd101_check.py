@@ -161,6 +161,38 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=BODY + "\n[meta](lesson.yaml)\n")
         self.assertEqual([], self.problems())
 
+    def test_a_broken_reference_style_relative_link_is_reported(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n[tài liệu][ref]\n\n[ref]: missing.md\n")
+        self.assertProblem("'missing.md' does not resolve")
+
+    def test_a_broken_relative_html_anchor_is_reported(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + '\n<a href="missing.md">tài liệu</a>\n')
+        self.assertProblem("'missing.md' does not resolve")
+
+    def test_a_reference_style_relative_link_that_resolves_is_accepted(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n[meta][ref]\n\n[ref]: lesson.yaml\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_relative_link_with_a_fragment_or_query_is_checked_by_its_path(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n[a](lesson.yaml#id) [b](lesson.yaml?x=1)\n")
+        self.assertEqual([], self.problems())
+        self.write_lesson("sd-01-001", body=BODY + "\n[c](missing.md#id)\n")
+        self.assertProblem("'missing.md#id' does not resolve")
+
+    def test_anchors_urls_and_mail_links_are_not_relative_links(self) -> None:
+        links = "[a](#phan-nguon) [b](https://example.com/x) [c](mailto:a@b.vn) [d](//example.com/x)"
+        self.write_lesson("sd-01-001", body=BODY + "\n" + links + "\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_link_shaped_text_in_a_code_block_is_not_checked(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n```\n[x](missing.md)\n```\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_relative_link_with_non_ascii_letters_resolves(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n[hình](<sơ đồ.svg>)\n")
+        (lesson_dir / "sơ đồ.svg").write_text("<svg/>", encoding="utf-8")
+        self.assertEqual([], self.problems())
+
     def test_a_lesson_that_does_not_link_the_pinned_snapshot_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body="# Bài một\n\nKhông có nguồn.\n")
         self.assertProblem("pinned source snapshot")
@@ -239,6 +271,24 @@ class ReadmeRuleTests(StoreCase):
         row = "| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài đã drafted xong |\n"
         self.write_readme("# Kho\n\n| ID | Bài |\n|---|---|\n" + row)
         self.assertEqual([], self.problems())
+
+    def test_a_readme_path_in_a_comment_a_code_block_or_prose_is_not_a_link(self) -> None:
+        path = "lessons/sd-01-001/lesson.md"
+        forms = {"html comment": f"<!-- [x]({path}) -->", "code block": f"```\n[x]({path})\n```",
+                 "plain prose": f"Xem {path} nhé."}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_readme(f"# Kho\n\n{form}\n")
+                self.assertProblem("does not link lessons/sd-01-001/lesson.md")
+
+    def test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts(self) -> None:
+        path = "lessons/sd-01-001/lesson.md"
+        forms = {"html anchor": f'<a href="{path}">bài một</a>', "reference": f"[bài một][s]\n\n[s]: {path}",
+                 "dot slash": f"[bài một](./{path})"}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_readme(f"# Kho\n\n{form}\n")
+                self.assertEqual([], self.problems())
 
 
 class CommandLineTests(StoreCase):
