@@ -38,14 +38,14 @@ Khách chỉ nói chuyện với bộ cân bằng tải. Nó chia khách vào c�
 **Giới hạn cần nhớ:** nếu chỉ có một bộ cân bằng tải thì chính nó là điểm hỏng duy nhất. Hệ thống
 thật thường chạy từ hai bộ trở lên hoặc dùng dịch vụ được quản lý.
 
-**Nhìn hình:** trong hình, máy C báo lỗi. Khách mới sẽ được đưa tới máy nào, và bộ cân bằng tải biết
-C lỗi bằng cách nào?
+**Nhìn hình:** trong hình, máy C báo lỗi và chỉ có mũi tên nét đứt "bỏ qua" tới nó. Khách mới sẽ được
+đưa tới máy nào, và mũi tên nét đứt cho biết bộ cân bằng tải làm gì với C?
 
 <details>
 <summary>Xem gợi ý</summary>
 
-Khách mới đi vào máy A hoặc B. Bộ cân bằng tải biết nhờ kiểm tra sức khỏe định kỳ (việc 1): máy C
-không trả lời tốt nên bị bỏ qua (việc 2).
+Khách mới đi vào máy A hoặc B. Nét đứt nghĩa là bộ cân bằng tải tạm không đưa khách vào C (việc 2).
+Hình không vẽ cách nó biết C lỗi: đó là nhờ kiểm tra sức khỏe định kỳ (việc 1).
 
 </details>
 
@@ -68,8 +68,8 @@ không trả lời tốt nên bị bỏ qua (việc 2).
 
 Chủ đề và thứ tự theo mục `sd-01-002` của
 [bài ByteByteGo, bản đã ghim](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/load-balancer-realistic-use-cases-you-may-not-know.md).
-Bài này viết bằng lời riêng, sơ đồ thiết kế mới. Bài nguồn dùng cùng một URL ảnh với bài về mã HTTP
-(`sd-01-003`, xem hai bản đã ghim); ảnh đó chưa được mở, nên bài này không dùng ảnh nguồn và dựng lại
+Bài này viết bằng lời riêng, sơ đồ thiết kế mới. Bài nguồn dùng cùng một URL ảnh với bài nguồn về mã HTTP
+(`5-http-status-codes-that-should-never-have-been-created`, xem hai bản đã ghim); ảnh đó chưa được mở, nên bài này không dùng ảnh nguồn và dựng lại
 hình từ các ý ở trên. Các điểm kỹ thuật chưa đối chiếu với tài liệu chính thức trong bản nháp này.
 
 Các bài cùng chủ đề (bộ cân bằng tải, reverse proxy, API gateway) nằm ở những mục sau trong mục lục
