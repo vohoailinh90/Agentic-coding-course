@@ -5,8 +5,8 @@ Các mục gần nhau hoặc dùng chung nguồn vẫn giữ ID và vị trí ri
 
 ## API và phát triển web
 
-1. [Polling ngắn, polling dài, SSE và WebSocket](lessons/sd-01-001.md) — đã viết, chờ review.
-2. Ứng dụng thực tế của bộ cân bằng tải — sẽ viết tiếp.
+1. [Polling ngắn, polling dài, SSE và WebSocket](lessons/sd-01-001.md) — đã qua review ở PR #24.
+2. [Ứng dụng thực tế của bộ cân bằng tải](lessons/sd-01-002.md) — đã viết, chờ review.
 3. Các mã HTTP kỳ lạ và bối cảnh sử dụng — sẽ viết tiếp.
 
 Danh mục đầy đủ và snapshot nguồn: [bảng đối chiếu](../../brainstorm/system-design-101-vi/source-map.json).

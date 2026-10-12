@@ -3,7 +3,7 @@
   "title_vi": "Polling ngắn, polling dài, SSE và WebSocket",
   "language": "vi",
   "kind": "comparison",
-  "content_status": "review",
+  "content_status": "done",
   "source_ref": "sd-01-001",
   "source_snapshot": {
     "repository": "ByteByteGoHq/system-design-101",
@@ -24,7 +24,10 @@
       "checked_on": "2026-10-12"
     },
     "technical_review": {
-      "status": "pending"
+      "status": "checked",
+      "reviewed_sha": "8e3e4637e0da9be8fc09d0a7945eab0433bfc4cc",
+      "evidence_url": "https://github.com/vohoailinh90/Agentic-coding-course/pull/24#issuecomment-6126543116",
+      "note": "No major issues reported; applies to the cited commit, not future changes."
     },
     "mobile": {
       "status": "checked",

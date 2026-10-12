@@ -2,10 +2,19 @@
   "language": "vi",
   "total_occurrences": 404,
   "total_source_documents": 400,
-  "written_ids": ["sd-01-001"],
-  "reviewed_ids": [],
-  "next_id": "sd-01-002",
-  "active_batch_ids": ["sd-01-001"],
+  "written_ids": [
+    "sd-01-001",
+    "sd-01-002"
+  ],
+  "reviewed_ids": [
+    "sd-01-001"
+  ],
+  "next_id": "sd-01-003",
+  "active_batch_ids": [
+    "sd-01-002"
+  ],
   "active_pr": null,
-  "updated_on": "2026-10-12"
+  "updated_on": "2026-10-12",
+  "active_branch": "codex/system-design-vi-sd-01-002",
+  "previous_pr": 24
 }
