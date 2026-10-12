@@ -585,7 +585,8 @@ class ReadmeRuleTests(StoreCase):
         forms = {"bold": "**approved**", "code": "`drafted`", "capital": "Approved", "html": "<b>planned</b>",
                  "trailing dot": "drafted.", "emphasis": "_drafted_", "link": "[drafted](https://example.com)",
                  "bold link": "[**approved**](lessons/sd-01-001/lesson.md)", "reference link": "[planned][s]",
-                 "entity": "&#100;rafted", "image alt": "![x](a.svg) drafted"}
+                 "entity": "&#100;rafted", "image alt": "![x](a.svg) drafted",
+                 "strikethrough": "~~drafted~~", "escaped asterisks": "\\*approved\\*"}
         for name, cell in forms.items():
             with self.subTest(form=name):
                 row = f"| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài một | {cell} |\n"

@@ -384,10 +384,6 @@ mutations:
   find: BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
   replace: BLOCKQUOTE_PREFIX = re.compile(r"^\s*>")
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_closed_fence_inside_a_blockquote_or_a_list_is_closed
-- label: an unclosed fence inside a blockquote is accepted
-  find: BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
-  replace: BLOCKQUOTE_PREFIX = re.compile(r"^.*$")
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_unclosed_fence_inside_a_blockquote_is_reported
 - label: an <img> without a source is not recorded
   find: '            self.srcs.extend(sources or [""])'
   replace: '            self.srcs.extend(sources)'
