@@ -118,9 +118,31 @@ class Problem:
         return f"{self.where}: {self.message}"
 
 
-def load_source_map(path: pathlib.Path) -> dict[str, dict]:
-    data = json.loads(path.read_text(encoding="utf-8"))
-    return {lesson["id"]: lesson for category in data["categories"] for lesson in category["lessons"]}
+def load_source_map(path: pathlib.Path) -> tuple[dict[str, dict], list[Problem]]:
+    """The source map's lessons by id, in source order, and what is wrong with the file (if anything)."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:  # JSONDecodeError and UnicodeDecodeError are ValueErrors
+        return {}, [Problem("source map", f"cannot be read: {error}")]
+    categories = data.get("categories") if isinstance(data, dict) else None
+    if not isinstance(categories, list):
+        return {}, [Problem("source map", "has no 'categories' list")]
+    entries: dict[str, dict] = {}
+    problems: list[Problem] = []
+    for position, category in enumerate(categories):
+        lessons = category.get("lessons") if isinstance(category, dict) else None
+        if not isinstance(lessons, list):
+            problems.append(Problem("source map", f"category {position} has no 'lessons' list"))
+            continue
+        for lesson in lessons:
+            lesson_id = lesson.get("id") if isinstance(lesson, dict) else None
+            if not isinstance(lesson_id, str):
+                problems.append(Problem("source map", f"a lesson entry in category {position} has no string 'id'"))
+            elif lesson_id in entries:
+                problems.append(Problem("source map", f"{lesson_id} is listed twice"))
+            else:
+                entries[lesson_id] = lesson
+    return entries, problems
 
 
 def srcset_urls(value: str) -> list[str]:
@@ -279,10 +301,17 @@ def relative_target(destination: str) -> str | None:
     return unquote(destination.split("#")[0].split("?")[0]) or None
 
 
-def exists(path: pathlib.Path) -> bool:
-    """path.exists(), but a name the filesystem rejects (too long, embedded NUL) simply does not exist."""
+def resolves(base: pathlib.Path, target: str) -> bool:
+    """Whether a relative link target names something under base.
+
+    A root-relative target (/x) is not relative to the file: on GitHub it points outside the repository, and
+    joined to base it would silently become a path on the machine running the check. A name the filesystem
+    rejects (too long, embedded NUL) simply does not exist.
+    """
+    if target.startswith("/"):
+        return False
     try:
-        return path.exists()
+        return (base / target).exists()
     except (OSError, ValueError):
         return False
 
@@ -450,7 +479,7 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     sources = image_sources(text)
     for destination in sorted(link_destinations(text) | sources):
         target = relative_target(destination)
-        if target is not None and not exists(lesson_dir / target):
+        if target is not None and not resolves(lesson_dir, target):
             problems.append(Problem(lesson_id, f"relative link {destination!r} does not resolve"))
     for source in sorted(sources):
         target = relative_target(source)
@@ -500,7 +529,7 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, d
                     for source in sorted(image_sources(text)))
     problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")
                     for destination, target in sorted(destinations.items())
-                    if target and not exists(store / target))
+                    if target and not resolves(store, target))
     if listed != in_source_order:
         problems.append(Problem("README.md", "lists the lessons out of source order; the source map order is "
                                              + ", ".join(in_source_order)))
@@ -510,11 +539,10 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, d
 
 
 def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
-    entries = load_source_map(source_map)
+    entries, problems = load_source_map(source_map)
     lessons_dir = store / "lessons"
     lesson_dirs = sorted(path for path in lessons_dir.iterdir() if path.is_dir()) if lessons_dir.is_dir() else []
     lesson_ids = {path.name for path in lesson_dirs}
-    problems: list[Problem] = []
     for path in sorted(store.iterdir()) if store.is_dir() else []:
         if path.name not in STORE_ENTRIES:
             problems.append(Problem(path.name, "is not allowed in the store, which holds only README.md and lessons/"))

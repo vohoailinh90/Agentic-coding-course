@@ -526,6 +526,15 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=BODY + "\n[thiếu](nowhere.md)\n")
         self.assertProblem("does not resolve")
 
+    def test_a_root_relative_link_is_not_looked_up_on_the_machine_running_the_check(self) -> None:
+        on_this_machine = self.root / "exists.md"
+        on_this_machine.write_text("x", encoding="utf-8")
+        for name, destination in {"a file on this machine": str(on_this_machine), "a directory": str(self.root),
+                                  "the filesystem root": "/", "a missing one": "/no/such/file"}.items():
+            with self.subTest(destination=name):
+                self.write_lesson("sd-01-001", body=BODY + f"\n[x]({destination})\n")
+                self.assertProblem(f"relative link '{destination}' does not resolve")
+
     def test_a_relative_link_that_resolves_is_accepted(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n[meta](lesson.yaml)\n")
         self.assertEqual([], self.problems())
@@ -826,6 +835,51 @@ class RobustnessTests(StoreCase):
                 self.assertIsInstance(self.problems(), list)
 
 
+class SourceMapRuleTests(StoreCase):
+    """A hand-edited source-map.json that is wrong is a problem to report, not a traceback."""
+
+    def test_a_source_map_that_cannot_be_read_is_reported_not_raised(self) -> None:
+        cases = {"invalid json": b"{", "invalid utf-8": b"\xff\xfe{}", "empty": b"", "a list": b"[]",
+                 "a string": b'"x"', "null": b"null", "no categories": b"{}",
+                 "categories is an object": b'{"categories": {}}', "categories is null": b'{"categories": null}'}
+        for name, content in cases.items():
+            with self.subTest(source_map=name):
+                self.source_map.write_bytes(content)
+                self.assertProblem("source map: ")
+
+    def test_a_missing_source_map_is_reported_not_raised(self) -> None:
+        self.source_map.unlink()
+        self.assertProblem("source map: cannot be read")
+
+    def test_a_malformed_category_or_lesson_entry_is_reported_not_raised(self) -> None:
+        good = {"id": "sd-01-001", "title_vi": "Bài một", "source_snapshot_url": SNAPSHOT}
+        cases = {"a category that is not an object": [1], "a category with no lessons": [{"id": "sd-01"}],
+                 "lessons that are not a list": [{"lessons": {}}], "a lesson that is not an object": [{"lessons": [5]}],
+                 "a lesson without an id": [{"lessons": [{"title_vi": "x"}]}],
+                 "an id that is null": [{"lessons": [{"id": None}]}], "an id that is a number": [{"lessons": [{"id": 5}]}],
+                 "an id that is a list": [{"lessons": [{"id": ["sd-01-001"]}]}],
+                 "a lesson listed twice": [{"lessons": [good, good]}],
+                 "a lesson listed in two categories": [{"lessons": [good]}, {"lessons": [good]}]}
+        for name, categories in cases.items():
+            with self.subTest(entry=name):
+                self.source_map.write_text(json.dumps({"categories": categories}), encoding="utf-8")
+                self.assertProblem("source map: ")
+
+    def test_the_rest_of_the_store_is_still_checked_when_the_source_map_is_malformed(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n```\nopen\n")
+        self.source_map.write_text("{", encoding="utf-8")
+        found = self.problems()
+        self.assertTrue(any(line.startswith("source map: ") for line in found), found)
+        self.assertTrue(any("unclosed code fence" in line for line in found), found)
+
+    def test_a_good_source_map_with_two_categories_is_fine(self) -> None:
+        data = {"categories": [{"id": "a", "lessons": [{"id": "sd-01-001", "title_vi": "Bài một",
+                                                         "source_snapshot_url": SNAPSHOT}]},
+                               {"id": "b", "lessons": []}]}
+        self.source_map.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        self.assertEqual([], self.problems())
+
+
 class ReadmeRuleTests(StoreCase):
     def test_a_lesson_missing_from_the_readme_is_reported(self) -> None:
         self.write_readme("# Kho\n")
@@ -931,6 +985,11 @@ class ReadmeRuleTests(StoreCase):
         (self.store / "figure.svg").write_text("<svg/>", encoding="utf-8")
         self.write_readme(README + "\n[hình](figure.svg)\n")
         self.assertFalse(any("embeds the image" in line for line in self.problems()), self.problems())
+
+    def test_a_root_relative_readme_link_is_reported(self) -> None:
+        (self.root / "exists.md").write_text("x", encoding="utf-8")
+        self.write_readme(README + f"\n[x]({self.root / 'exists.md'})\n")
+        self.assertProblem("README.md: relative link")
 
     def test_a_missing_readme_is_reported(self) -> None:
         (self.store / "README.md").unlink()

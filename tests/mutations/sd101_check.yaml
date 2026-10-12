@@ -384,18 +384,10 @@ mutations:
   find: '    if not readme.is_file():'
   replace: '    if not readme.exists():'
   test: tests.test_sd101_check.RobustnessTests.test_a_readme_that_is_a_directory_is_reported_not_raised
-- label: a relative link that leads nowhere is accepted
-  find: '        if target is not None and not exists(lesson_dir / target):'
-  replace: '        if False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
 - label: a file that is not XML is accepted as an SVG
   find: '    except (ElementTree.ParseError, OSError, LookupError):'
   replace: '    except (OSError, LookupError):'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: a README link to a lesson that was deleted is accepted
-  find: '                    if target and not exists(store / target))'
-  replace: '                    if False)'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported
 - label: an image evidence url need not be an http(s) url with a host
   find: '    return parsed.scheme in ("http", "https") and valid_host(parsed.hostname)'
   replace: '    return isinstance(url, str)'
@@ -634,3 +626,43 @@ mutations:
   find: '                    for tag in sorted(html_scan(text).tags - ALLOWED_HTML))'
   replace: '                    for tag in sorted(html_scan(text).tags))'
   test: tests.test_sd101_check.ReadmeRuleTests.test_the_allowed_raw_html_in_the_readme_is_fine
+- label: a relative link that leads nowhere is accepted
+  find: '        if target is not None and not resolves(lesson_dir, target):'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
+- label: a README link to a lesson that was deleted is accepted
+  find: '                    if target and not resolves(store, target))'
+  replace: '                    if False)'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported
+- label: a root-relative link is looked up on the machine running the check (lesson)
+  find: "    if target.startswith(\"/\"):\n        return False\n"
+  replace: ''
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_root_relative_link_is_not_looked_up_on_the_machine_running_the_check
+- label: a root-relative link is looked up on the machine running the check (README)
+  find: "    if target.startswith(\"/\"):\n        return False\n"
+  replace: ''
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_root_relative_readme_link_is_reported
+- label: a source map that cannot be read raises
+  find: '    except (OSError, ValueError) as error:  # JSONDecodeError'
+  replace: '    except ZeroDivisionError as error:  # JSONDecodeError'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_source_map_that_cannot_be_read_is_reported_not_raised
+- label: a missing source map raises
+  find: '    except (OSError, ValueError) as error:  # JSONDecodeError'
+  replace: '    except ValueError as error:  # JSONDecodeError'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_missing_source_map_is_reported_not_raised
+- label: a source map without a categories list raises
+  find: "    if not isinstance(categories, list):\n        return {}"
+  replace: "    if False:\n        return {}"
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_source_map_that_cannot_be_read_is_reported_not_raised
+- label: a category without a lessons list raises
+  find: "        if not isinstance(lessons, list):\n            problems.append"
+  replace: "        if False:\n            problems.append"
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
+- label: a lesson entry without a string id is accepted
+  find: '            if not isinstance(lesson_id, str):'
+  replace: '            if False:'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
+- label: a lesson listed twice in the source map is accepted
+  find: '            elif lesson_id in entries:'
+  replace: '            elif False:'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
