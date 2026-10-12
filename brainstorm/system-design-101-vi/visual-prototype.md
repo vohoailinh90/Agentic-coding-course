@@ -41,7 +41,7 @@ sequenceDiagram
     participant C as Trình duyệt
     participant S as Máy chủ
     C->>S: Mở luồng sự kiện
-    S-->>C: Đã xác nhận
+    S-->>C: Đơn được xác nhận
     S-->>C: Đang giao hàng
     S-->>C: Đã giao
 ```
