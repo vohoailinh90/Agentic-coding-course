@@ -33,8 +33,9 @@ lessons and Codex reviews them**:
    runs every check below, and opens a pull request.
 2. Claude asks Codex for a review on the pull request (the built-in review command of
    [claude-to-codex.md](claude-to-codex.md)); Codex posts its findings there.
-3. Claude checks each finding against the repository, fixes the confirmed ones and pushes (at most
-   two review rounds). The owner merges once CI is green: `main` has no branch protection, so Claude
+3. Claude checks each finding against the repository, fixes the confirmed ones and pushes, and asks
+   for a new review of the new head until a review of the current head is clean (no cap on rounds
+   since 2026-10-12; see *Pull request lifecycle* in `CLAUDE.md`). The owner merges once CI is green: `main` has no branch protection, so Claude
    does not merge. PR #21 was the exception: the owner asked Claude to repeat the review until Codex
    had no findings, and to merge once CI was green.
 

@@ -1,6 +1,9 @@
 # 010 — Claude writes the lessons; Codex reviews each batch
 
-Status: accepted by the owner, 2026-09-27.
+Status: accepted by the owner, 2026-09-27. Updated 2026-10-12: the cap of two review rounds per batch
+is removed — reviews are repeated on each new head until a review of the current head is clean (see
+*Pull request lifecycle* in `CLAUDE.md`). The rest stands, including that the owner merges while
+`main` has no branch protection.
 
 ## Context
 
@@ -18,7 +21,7 @@ of [claude-to-codex.md](../claude-to-codex.md).
   opens a pull request.
 - Claude posts the built-in review command on the pull request; Codex reviews it, no click needed.
 - Claude checks every finding against the repository, fixes the confirmed ones on the branch, and
-  asks for a new review only after a push (at most two rounds per batch).
+  asks for a new review only after a push (superseded 2026-10-12: no cap on rounds, see Status).
 - The owner merges once CI is green and the review is settled: `main` has no branch protection, so
   Claude does not merge (claude-to-codex.md, section 20).
 - Checks with a computable answer stay in `validate` and the tests; the review is for judgement —

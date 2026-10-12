@@ -53,13 +53,26 @@ class PullRequestLoopTests(unittest.TestCase):
                        "other than a P2/P3 whose recorded rejection stands"):
             self.assertIn(phrase, self.section)
 
+    def test_a_prose_only_fix_needs_no_regression_test(self) -> None:
+        self.assertIn("with a regression test where the defect has testable behavior", self.section)
+
+    def test_no_document_still_caps_review_rounds(self) -> None:
+        """The handoff and ADR 010 once said at most two review rounds; both must say the cap is gone."""
+        for rel in ("docs/handoff.md", "docs/decisions/010-claude-writes-codex-reviews.md"):
+            with self.subTest(path=rel):
+                text = read(ROOT / rel).replace("\n", " ")
+                self.assertNotIn("at most two review rounds", text)
+                self.assertNotIn("(at most two rounds per batch)", text)
+                self.assertIn("2026-10-12", text)
+
     def test_the_next_task_is_never_invented(self) -> None:
         self.assertIn("never invent work", self.section)
         self.assertIn("the user explicitly asked for", self.section)
         self.assertIn("skip it rather than stack", self.section)
 
     def test_the_trigger_string_ban_keeps_the_intentional_comment_exception(self) -> None:
-        self.assertIn("except the one intentional trigger comment", self.section)
+        self.assertIn("except the intentional trigger comments the protocol authorizes", self.section)
+        self.assertIn("each review request of steps 1 and 3, a security review", self.section)
 
     def test_every_protocol_section_it_cites_exists(self) -> None:
         protocol = read(PROTOCOL)
@@ -80,6 +93,7 @@ class PullRequestLoopTests(unittest.TestCase):
         sec20 = protocol[protocol.index("## 20. "):protocol.index("## 21. ")]
         loop = sec20[sec20.index("### The loop every PR goes through"):]
         self.assertIn("a rejected P0/P1 is open until", loop)
+        self.assertIn("every review command the work requires", loop)
         self.assertIn("A fix pushed after the last review is unreviewed", loop)
 
     def test_section_11_applies_the_same_head_rule_per_review_command(self) -> None:
