@@ -1,71 +1,67 @@
 # Năm mã trạng thái HTTP kỳ lạ
 
-> Bản nháp `sd-01-003`, chưa duyệt. Trạng thái và các bước kiểm chứng ở [lesson.yaml](lesson.yaml).
+**Một mã HTTP có tên lạ không có nghĩa nó là mã chuẩn.** Mã trạng thái nằm trong phản hồi,
+cho biết kết quả xử lý yêu cầu. Hãy nhìn cả số mã lẫn nơi quy định ý nghĩa của nó.
 
-**Mỗi phản hồi HTTP có một mã trạng thái gồm ba chữ số cho biết kết quả: 200 là ổn, 404 là không tìm
-thấy.** Nhưng có vài mã kỳ lạ, có mã nghe như đùa. Chúng từ đâu ra, và có nên dùng không?
+![Năm thẻ dọc: 451 được đăng ký cho lý do pháp lý; 218 và 420 chưa được IANA gán; 530 chưa được gán nhưng Pantheon dùng riêng; 418 được giữ chỗ là Unused. Nhãn chữ phân biệt trạng thái, không chỉ dựa vào màu.](../../diagrams/sd-01-003-main.svg)
 
-```mermaid
-%%{init: {"flowchart": {"nodeSpacing": 12, "rankSpacing": 16, "padding": 8}}}%%
-flowchart TB
-    H2(["2xx: thành công"]):::head
-    N218["218 This Is Fine<br/>(không chuẩn)"]:::odd
-    H4(["4xx: lỗi do phía khách"]):::head
-    N418["418 I'm a Teapot<br/>(đùa)"]:::odd
-    N420["420 Enhance Your Calm<br/>(không chuẩn)"]:::odd
-    N451["451 Unavailable For Legal Reasons<br/>(chuẩn)"]:::std
-    H5(["5xx: lỗi do máy chủ"]):::head
-    N530["530 Site Frozen<br/>(không chuẩn)"]:::odd
-    H2 ~~~ N218
-    N218 ~~~ H4
-    H4 ~~~ N418
-    N418 ~~~ N420
-    N420 ~~~ N451
-    N451 ~~~ H5
-    H5 ~~~ N530
-    classDef head fill:#e2e8f0,stroke:#475569,color:#0f172a
-    classDef std fill:#dcfce7,stroke:#15803d,color:#0f172a
-    classDef odd fill:#ffedd5,stroke:#c2410c,color:#0f172a,stroke-dasharray: 4 3
-```
+## Đọc hình
 
-Đọc hình: chữ số đầu cho biết nhóm (2xx thành công, 4xx lỗi do phía khách, 5xx lỗi do máy chủ). Viền
-liền là mã chuẩn: danh sách mã HTTP chính thức của IANA (tổ chức giữ các danh sách số và tên chính
-thức của Internet) gán cho nó một ý nghĩa. Viền đứt là mã không được gán ý nghĩa trong danh sách đó:
-do một sản phẩm tự đặt, hoặc chỉ là trò đùa. RFC (văn bản mô tả giao thức Internet) nhắc tới một mã
-chưa chắc làm nó thành mã chuẩn.
+**451 — Unavailable For Legal Reasons.** Mã đã đăng ký cho trường hợp truy cập bị từ chối
+do yêu cầu pháp lý. Đây là mã chuẩn, dù bài gốc xếp nó trong danh sách “kỳ lạ”.
 
-- **418 I'm a Teapot:** trò đùa Cá tháng Tư trong một RFC năm 1998 về "giao thức điều khiển ấm pha cà
-  phê". Danh sách chính thức chỉ giữ chỗ số này, đánh dấu "không dùng".
-- **420 Enhance Your Calm:** Twitter từng trả mã này khi bị gọi quá nhiều lần, tức vượt giới hạn tần
-  suất. Mã chuẩn tương ứng là 429.
-- **451 Unavailable For Legal Reasons:** máy chủ từ chối vì lý do pháp lý, như lệnh của tòa án. Đây là
-  mã chuẩn (RFC 7725).
-- **218 This Is Fine:** tên lấy từ một meme (hình hài hước lan truyền trên mạng). Theo nguồn, nó dùng để
-  vượt qua cơ chế ghi đè lỗi của máy chủ, tức cơ chế thay phản hồi lỗi bằng một trang lỗi chung.
-- **530 Site Frozen:** Pantheon (một dịch vụ lưu trữ website) dùng khi một trang bị "đóng băng". Lý do
-  đóng băng do nhà cung cấp quy định.
+**218 — This Is Fine.** Tên trong bài nguồn; số 218 nằm trong dải chưa được IANA gán.
+Không thể suy ra một ý nghĩa HTTP chính thức chỉ từ tên này.
 
-**Giới hạn cần nhớ:** mã không chuẩn chỉ có nghĩa với hệ thống đã đặt ra nó, và cùng một số có thể mang
-nghĩa khác ở nơi khác. Khi tự làm dịch vụ, hãy dùng mã chuẩn nếu đã có, như 429 cho vượt giới hạn tần
-suất.
+**420 — Enhance Your Calm.** Số 420 chưa được IANA gán. Khi cần thông báo quá nhiều
+yêu cầu trong một khoảng thời gian, mã chuẩn liên quan là **429 Too Many Requests**.
 
-**Nhìn hình:** mã nào nằm ở nhóm thành công (2xx) nhưng viền đứt cho biết nó không phải mã chuẩn?
+**530 — Site Frozen.** IANA chưa gán số này. Pantheon dùng nó cho site bị đóng băng;
+ý nghĩa riêng của một nhà cung cấp không tự thành ý nghĩa chuẩn cho mọi dịch vụ.
+
+**418 — I'm a Teapot.** Tên xuất phát từ RFC đùa ngày Cá tháng Tư.
+Trong registry hiện hành, số 418 được giữ chỗ với nhãn **Unused**, không phải mã chưa được gán.
+
+## Giới hạn cần nhớ
+
+Tên trong bài nguồn, mã đã đăng ký và mã do sản phẩm dùng riêng là ba điều khác nhau.
+Nếu một ý nghĩa đã có mã chuẩn phù hợp, đừng tự chọn một số lạ chỉ vì tên dễ nhớ.
+
+## Nhìn hình trả lời
+
+Mã nào trên hình vừa có ý nghĩa pháp lý vừa được đăng ký chính thức?
 
 <details>
-<summary>Xem gợi ý</summary>
+<summary>Xem đáp án</summary>
 
-Mã 218 This Is Fine. Tên nghe như một cảnh báo nhưng nó thuộc nhóm thành công, và vì không chuẩn nên
-chỉ nên hiểu theo hệ thống đặt ra nó.
+451. Thẻ ghi “Đã đăng ký” và nêu lý do pháp lý. 418 là giữ chỗ; 218, 420 và 530 chưa được gán.
 
 </details>
 
-## Liên hệ nguồn
+<details>
+<summary>Xem sâu hơn: đâu là chuyện lịch sử chưa kiểm chứng?</summary>
 
-Chủ đề và thứ tự theo mục `sd-01-003` của
-[bài ByteByteGo, bản đã ghim](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/5-http-status-codes-that-should-never-have-been-created.md).
-Bài này viết bằng lời riêng, sơ đồ thiết kế mới. Bài nguồn dùng cùng một URL ảnh với bài nguồn về bộ
-cân bằng tải (`load-balancer-realistic-use-cases-you-may-not-know`, xem hai bản đã ghim). Tên file ảnh
-nói về mã trạng thái HTTP nên có thể đúng chủ đề bài này, nhưng ảnh chưa được mở, và bài này không dùng
-ảnh nguồn. Các mã, tên nhà cung cấp, số RFC và trạng thái trong danh sách đăng ký chưa được đối chiếu với tài
-liệu chính thức trong bản nháp này; những chỗ ghi "theo nguồn" chỉ dựa vào bài nguồn. Bài nguồn còn
-nêu một nguyên nhân cho mã 530; bài này không lặp lại vì chưa kiểm chứng và có thể không đúng.
+Bài ByteByteGo kể rằng Twitter từng dùng 420 để báo giới hạn tần suất, và gắn 218 với meme
+“This Is Fine” cùng một cách xử lý trang lỗi. Những câu chuyện này chưa được xác minh độc lập
+trong đợt biên soạn này; không xem chúng là hướng dẫn dùng API hiện tại.
+
+Tài liệu X hiện được mở dẫn tới trang mã phản hồi, nhưng không có mục 420. Điều đó không đủ
+để bác bỏ cách dùng trong quá khứ. Phần chính chỉ khẳng định trạng thái đăng ký đã đối chiếu IANA.
+
+Pantheon nêu site có thể bị đóng băng do không hoạt động; không suy ra rằng mọi 530 đều do
+nợ phí. Một sản phẩm khác có thể dùng cùng số với ý nghĩa khác.
+
+</details>
+
+## Nguồn đối chiếu
+
+- [ByteByteGo — bài nguồn, phiên bản cố định](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/5-http-status-codes-that-should-never-have-been-created.md).
+- [IANA — registry mã HTTP](https://www.iana.org/assignments/http-status-codes): 218 thuộc 209–225; 420 thuộc 419–420; 530 thuộc 512–599 chưa được gán; 418 là Unused; 451 đã đăng ký.
+- [RFC 7725 §3](https://www.rfc-editor.org/rfc/rfc7725.html): ý nghĩa 451.
+- [RFC 9110 §15.5.19](https://www.rfc-editor.org/rfc/rfc9110.html): trạng thái giữ chỗ 418.
+- [RFC 2324 §2.3.2](https://www.rfc-editor.org/rfc/rfc2324.html): tên I'm a Teapot trong RFC đùa.
+- [RFC 6585 §4](https://www.rfc-editor.org/rfc/rfc6585.html): ý nghĩa 429.
+- [Pantheon — Platform and Site Information](https://docs.pantheon.io/guides/platform-considerations/platform-site-info): 530 cho site bị đóng băng.
+
+Đã đọc các nguồn trên ngày 2026-10-12. Đây là bài viết độc lập và hình thiết kế mới,
+không dùng ảnh nguồn. Trạng thái và giới hạn kiểm chứng lưu trong [metadata JSON](../../metadata/sd-01-003.json).

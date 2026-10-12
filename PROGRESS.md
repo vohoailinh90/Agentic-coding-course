@@ -60,9 +60,11 @@
   [brainstorm/system-design-101-vi/DECISIONS.md](brainstorm/system-design-101-vi/DECISIONS.md) và
   [ADR 011](docs/decisions/011-system-design-store.md). Bảng đối chiếu 404 mục nguồn ở
   `brainstorm/system-design-101-vi/source-map.json`.
-- **Đã có bài:** `sd-01-001` (polling, SSE, WebSocket), `sd-01-002` (bộ cân bằng tải), `sd-01-003` (5 mã HTTP kỳ lạ). Trạng thái và các bước
-  kiểm chứng của từng bài chỉ ghi ở `lesson.yaml` của bài đó, không lặp lại ở đây.
-- Mỗi bài một PR; Claude gọi Codex review lặp tới khi hết finding rồi merge (chủ repo quyết định 12/10/2026).
+- **Đã có bài:** `sd-01-001` (polling, SSE, WebSocket), `sd-01-002` (bộ cân bằng tải), `sd-01-003` (mã HTTP kỳ lạ). Trạng thái và các bước
+  kiểm chứng của từng bài chỉ ghi ở `system-design-101/vi/metadata/<id>.json`, không lặp lại ở đây.
+- PR theo đợt nhỏ; đối chiếu Codex review với SHA head/base hiện hành. Theo yêu cầu mới nhất trong
+  phiên biên soạn này: không tự merge/deploy. Kho đã có hai bản bài độc lập từ các phiên khác nhau;
+  PR #25 đang hợp nhất về một nội dung cho mỗi ID.
 - **Rủi ro còn mở:** nguồn là CC BY-NC-ND 4.0 và repo công khai; bài viết độc lập bằng lời riêng, sơ đồ mới,
   không dịch sát nguồn. Chưa đăng Facebook/website trước khi giải quyết quyền dùng.
 

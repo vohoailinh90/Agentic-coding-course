@@ -1,76 +1,70 @@
-# Bộ cân bằng tải làm những việc gì?
+# Ứng dụng thực tế của bộ cân bằng tải
 
-> Bản nháp `sd-01-002`, chưa duyệt. Trạng thái và các bước kiểm chứng ở [lesson.yaml](lesson.yaml).
+**Một máy chủ lỗi: người dùng có phải gặp lỗi theo không?**
 
-**Cửa hàng online chạy trên ba máy chủ, khách chỉ biết một địa chỉ.** Ai quyết định khách vào máy
-nào, và chuyện gì xảy ra khi một máy hỏng? Đó là việc của bộ cân bằng tải.
+Bộ cân bằng tải (**Load Balancer, LB**) đứng trước các máy chủ xử lý request.
+Ngoài chia tải, một LB phù hợp còn hỗ trợ các tình huống dưới đây khi được cấu hình.
 
-```mermaid
-%%{init: {"flowchart": {"nodeSpacing": 12, "rankSpacing": 36, "padding": 8}}}%%
-flowchart TB
-    K["Khách"]:::client --> LB(["Bộ cân bằng tải"]):::service
-    LB --> A["Máy A"]:::service
-    LB --> B["Máy B"]:::service
-    LB -.->|"bỏ qua"| C["Máy C (lỗi)"]:::bad
-    classDef client fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
-    classDef service fill:#ede9fe,stroke:#6d28d9,color:#0f172a
-    classDef bad fill:#ffedd5,stroke:#c2410c,color:#0f172a,stroke-dasharray: 4 3
-```
+![Sáu khung dọc: tránh máy A lỗi và chọn B; kiểm tra sức khỏe; phân luồng mobile và desktop; kết thúc TLS tại LB; chia tải giữa vùng sẵn sàng A và B; giữ các lượt của cùng người dùng tới máy A khi A còn đủ điều kiện.](../../diagrams/sd-01-002-main.svg)
 
-Khách chỉ nói chuyện với bộ cân bằng tải. Nó chia khách vào các máy còn khỏe và bỏ qua máy C đang lỗi.
+## Đọc hình
 
-## Sáu việc thường gặp
+**1. Xử lý lỗi.** Khi A bị loại khỏi nhóm phục vụ, request mới có thể đi tới B còn khỏe.
+LB không tự cứu request đang xử lý dở trên A.
 
-1. **Kiểm tra sức khỏe:** định kỳ hỏi từng máy "còn làm việc được không?", chỉ chuyển khách vào máy
-   trả lời tốt.
-2. **Xử lý khi máy hỏng:** máy không qua kiểm tra bị tạm loại khỏi danh sách; khi hồi phục thì được
-   nhận lại. Khách không phải biết máy nào hỏng.
-3. **Định tuyến theo nền tảng:** nhìn vào thông tin đi kèm mỗi yêu cầu (đường dẫn, hoặc header là dòng
-   mô tả như loại thiết bị) để đưa khách di động và khách web tới các nhóm máy khác nhau.
-4. **Kết thúc SSL:** HTTPS là kết nối được mã hóa (bằng SSL/TLS) để người ngoài không đọc được. Bộ cân
-   bằng tải giải mã ở cửa vào rồi chuyển yêu cầu cho các máy phía sau, nên các máy đó đỡ việc mã hóa
-   (nếu đoạn sau không mã hóa lại).
-5. **Cân bằng giữa nhiều vùng:** vùng là khu vực (hoặc nhóm trung tâm dữ liệu) tách biệt nhau. Chia
-   khách ra máy ở nhiều vùng, một vùng gặp sự cố thì vùng khác vẫn phục vụ.
-6. **Giữ phiên:** phiên là chuỗi thao tác liền nhau của một khách, như giỏ hàng. Đưa khách vào cùng
-   một máy suốt phiên để dữ liệu phiên lưu trên máy đó vẫn dùng được.
+**2. Kiểm tra sức khỏe.** LB gửi request kiểm tra định kỳ. Kết quả giúp quyết định máy nào
+được nhận lưu lượng; bài kiểm tra cần phản ánh khả năng phục vụ thật.
 
-**Giới hạn cần nhớ:** nếu chỉ có một bộ cân bằng tải thì chính nó là điểm hỏng duy nhất. Hệ thống
-thật thường chạy từ hai bộ trở lên hoặc dùng dịch vụ được quản lý.
+**3. Phân luồng theo nền tảng.** LB ở lớp HTTP có thể dùng luật theo header để chọn
+nhóm máy phục vụ mobile hoặc desktop. Nó không tự nhận diện chính xác mọi thiết bị.
 
-**Nhìn hình:** trong hình, máy C báo lỗi và chỉ có mũi tên nét đứt "bỏ qua" tới nó. Khách mới sẽ được
-đưa tới máy nào, và mũi tên nét đứt cho biết bộ cân bằng tải làm gì với C?
+**4. Kết thúc TLS.** Kết nối HTTPS từ người dùng kết thúc tại LB. LB xử lý mã hóa trên chặng đó;
+chặng tới máy phía sau có thể cấu hình HTTP hoặc HTTPS riêng.
+
+**5. Chia tải xuyên vùng sẵn sàng.** Có thể phân phối request tới máy ở nhiều vùng sẵn sàng
+đã bật. Đây không đồng nghĩa với định tuyến xuyên quốc gia.
+
+**6. Giữ phiên — stickiness.** Nhiều lượt của cùng người dùng được hướng về cùng máy theo
+chính sách đã chọn. Máy đó lỗi thì việc giữ phiên không bảo đảm giữ nguyên trạng thái ứng dụng.
+
+## Giới hạn cần nhớ
+
+Không phải mọi LB đều có đủ sáu khả năng. Ví dụ AWS Application Load Balancer có thể
+**fail open**: nếu mọi máy trong nhóm đều không khỏe, nó vẫn gửi request tới các máy đó.
+Vì vậy đừng hiểu “health check” là cam kết hệ thống luôn hoạt động.
+
+## Nhìn hình trả lời
+
+Trong khung 1., A lỗi và B vẫn khỏe: mũi tên request mới đi tới máy nào?
 
 <details>
-<summary>Xem gợi ý</summary>
+<summary>Xem đáp án</summary>
 
-Khách mới đi vào máy A hoặc B. Nét đứt nghĩa là bộ cân bằng tải tạm không đưa khách vào C (việc 2).
-Hình không vẽ cách nó biết C lỗi: đó là nhờ kiểm tra sức khỏe định kỳ (việc 1).
+Máy B. Đường tới A bị gạch bỏ. Hình mô tả quyết định cho request mới,
+không thể hiện việc phục hồi công việc A đang xử lý dở.
 
 </details>
 
 <details>
-<summary>Xem sâu hơn (tùy chọn, chưa kiểm chứng bằng tài liệu)</summary>
+<summary>Xem sâu hơn: giữ phiên có thay cho lưu trạng thái không?</summary>
 
-- Kết thúc SSL nghĩa là đoạn từ bộ cân bằng tải tới máy phía sau có thể đi không mã hóa. Nếu mạng
-  nội bộ chưa đủ tin cậy thì mã hóa lại đoạn đó; khi ấy các máy phía sau vẫn phải mã hóa và giải mã
-  đoạn này.
-- Giữ phiên có giá: tải có thể lệch, và máy chết thì mất phiên trên máy đó. Nhiều hệ thống lưu phiên
-  ở một kho dùng chung để không cần giữ phiên.
-- Kiểm tra sức khỏe quá nông (chỉ thấy cổng mở) có thể bỏ sót lỗi của ứng dụng; nên kiểm tra một
-  đường dẫn phản ánh đúng tình trạng làm việc.
-- Định tuyến theo nội dung yêu cầu cần bộ cân bằng tải đọc được HTTP (tầng ứng dụng), không chỉ
-  chuyển các gói tin.
+Không. Nếu trạng thái phiên chỉ nằm trong bộ nhớ của A, chuyển sang B khi A lỗi có thể mất
+trạng thái đó. Ứng dụng cần cách lưu hoặc khôi phục phù hợp, chẳng hạn kho phiên dùng chung.
+
+Health check cũng có khoảng thời gian phát hiện lỗi và ngưỡng đánh giá. Một kiểm tra quá đơn giản
+có thể báo “khỏe” dù chức năng chính đã hỏng. Header do client gửi không nên dùng làm bằng chứng
+ủy quyền; phân luồng giao diện và kiểm soát truy cập là hai nhiệm vụ riêng.
 
 </details>
 
-## Liên hệ nguồn
+## Nguồn đối chiếu
 
-Chủ đề và thứ tự theo mục `sd-01-002` của
-[bài ByteByteGo, bản đã ghim](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/load-balancer-realistic-use-cases-you-may-not-know.md).
-Bài này viết bằng lời riêng, sơ đồ thiết kế mới. Bài nguồn dùng cùng một URL ảnh với bài nguồn về mã HTTP
-(`5-http-status-codes-that-should-never-have-been-created`, xem hai bản đã ghim); ảnh đó chưa được mở, nên bài này không dùng ảnh nguồn và dựng lại
-hình từ các ý ở trên. Các điểm kỹ thuật chưa đối chiếu với tài liệu chính thức trong bản nháp này.
+- [ByteByteGo — phiên bản cố định](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/load-balancer-realistic-use-cases-you-may-not-know.md): sáu tình huống gốc.
+- [AWS — health checks](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html): kiểm tra sức khỏe và fail open.
+- [AWS — listener rule conditions](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/rule-condition-types.html): luật theo HTTP header.
+- [AWS — target group protocols](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html): HTTP/HTTPS tới máy phía sau.
+- [AWS — HTTPS certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/https-listener-certificates.html): TLS ở LB.
+- [AWS — target group attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html): cross-zone và stickiness.
 
-Các bài cùng chủ đề (bộ cân bằng tải, reverse proxy, API gateway) nằm ở những mục sau trong mục lục
-nguồn; sẽ thêm tên và liên kết khi các bài đó được viết.
+Đã đọc nguồn ngày 2026-10-12. URL ảnh của bài gốc có tên HTTP status codes, không phù hợp
+chủ đề; chương trình không dùng ảnh đó. Hình mới được dựng từ các cơ chế đã đối chiếu với tài liệu AWS.

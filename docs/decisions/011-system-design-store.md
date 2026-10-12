@@ -17,16 +17,17 @@ there without bending it. The source is licensed CC BY-NC-ND 4.0 and this reposi
   is the canonical record of the detail (order, density, lesson schema, mobile thresholds, evidence
   limits). This record only fixes the points that cross the repository:
   - Every one of the 404 entries keeps its place and order; entries that share a source stay separate.
-  - Each lesson's progress lives only in its own `lesson.yaml`: `content_status`, independent
-    verification fields and `learner_test`. `approved` needs all of them `done`.
+  - The user's current instruction keeps each lesson's progress only in `metadata/<id>.json`,
+    with content status and independent verification. `lesson.yaml` is a pointer, not a duplicate
+    progress record. One lesson body lives at `lessons/<id>/lesson.md`; old flat paths redirect.
   - **Licence:** lessons are written independently, in own words, with new diagrams; no close
     translation and no source images. The owner deferred resolving the right to use the source until
     publication. Whether following the source's topics and order counts as an adaptation is an open
     legal question, not a permission.
-- Each lesson goes in its own pull request. Claude requests the Codex review, fixes the confirmed
-  findings and re-requests a review after each push until Codex reports none. The owner told Claude
-  on 2026-10-12 to merge then (as for PR #21), even though `main` has no branch protection; Claude
-  checks CI, the head SHA Codex reviewed and the base SHA first, and merges pinned to that head SHA.
+- Small lesson batches go through Codex review on the actual head and current base. The user's
+  current instruction is **do not merge or deploy automatically**, overriding the earlier merge
+  permission recorded by another session. Old review evidence is preserved, never treated as
+  approval for a new integration commit.
 
 ## Consequences
 

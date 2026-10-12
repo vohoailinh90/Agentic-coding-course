@@ -1,10 +1,3 @@
 id: sd-01-003
-title_vi: 5 mã HTTP kỳ lạ và bối cảnh sử dụng
-content_status: drafted      # planned | drafted | approved
-verification:                # mỗi mục: pending | done
-  source_read: done          # đã đọc thân bài nguồn ở blob ghim trong source-map.json
-  claims: pending            # chưa đối chiếu RFC 2324 / 7725 / 6585, danh sách mã HTTP của IANA và tài liệu các nhà cung cấp (không truy cập được lúc viết)
-  technical: pending         # chờ review kỹ thuật
-  mobile: pending            # chờ kiểm tra thật trên GitHub hoặc điện thoại
-learner_test: pending        # chưa thử với người học
-image_evidence: []           # không dùng ảnh nguồn; ảnh nguồn của bài này chưa được mở (xem lesson.md)
+metadata_ref: ../../metadata/sd-01-003.json
+# Chỉ dẫn tới JSON, không giữ bản sao trạng thái.
