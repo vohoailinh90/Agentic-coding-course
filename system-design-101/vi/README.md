@@ -12,5 +12,6 @@ ghi tiến độ). Bài viết độc lập bằng lời riêng, sơ đồ tự 
 |---|---|
 | [sd-01-001](lessons/sd-01-001/lesson.md) | Polling ngắn, polling dài, SSE và WebSocket |
 | [sd-01-002](lessons/sd-01-002/lesson.md) | Ứng dụng thực tế của bộ cân bằng tải |
+| [sd-01-003](lessons/sd-01-003/lesson.md) | 5 mã HTTP kỳ lạ và bối cảnh sử dụng |
 
 Trạng thái từng bài xem ở `lesson.yaml` của bài đó, không lặp lại ở đây.
