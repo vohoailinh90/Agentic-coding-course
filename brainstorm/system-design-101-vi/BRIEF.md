@@ -19,8 +19,10 @@ Codex phản biện, không phải thông tin người dùng đã xác nhận.
 - Bài nguồn dùng ảnh lớn + lời giải thích gọn; giữ cách đọc này cho chương trình mới.
 - Đã mở và đọc 8 bài: Polling/SSE/WebSocket, ứng dụng Load Balancer, mã HTTP kỳ lạ,
   Read Replica, Redis 101, AWS Lambda, IPC trên Linux, DevSecOps.
-- Bài Load Balancer đang tham chiếu cùng URL ảnh HTTP status codes với bài mã HTTP.
-  URL không phù hợp chủ đề; cần xem ảnh và tìm nguồn đúng trước khi biên soạn.
+- Bài Load Balancer và bài mã HTTP cùng tham chiếu một URL ảnh
+  (`…/0232-http-status-code-shouldnt-exist.png`; kiểm từ Markdown đã ghim, dòng 16 và dòng 14).
+  Nội dung ảnh chưa được mở và chưa được ghim; nhận định "không phù hợp chủ đề" mới dựa trên tên file
+  và việc trùng URL. Cần xem ảnh và tìm nguồn đúng trước khi biên soạn.
 - Bài SSE dùng cách diễn đạt dễ khiến người đọc hiểu rằng browser không thể gửi request khác.
   Mẫu đề xuất ghi rõ **luồng SSE** chỉ đi một chiều; browser vẫn có thể gửi HTTP request riêng.
 - Những bài kể kiến trúc công ty và công cụ cần giữ mốc thời gian nguồn, không biến mô tả lịch sử
