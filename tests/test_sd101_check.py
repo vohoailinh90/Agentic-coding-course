@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import contextlib
 import copy
+import datetime
 import io
 import json
 import tempfile
@@ -139,6 +140,25 @@ class LessonYamlRuleTests(StoreCase):
         self.write_lesson("sd-01-001", meta=data)
         self.assertProblem("approved needs every verification field")
 
+    def test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date(self) -> None:
+        entry = {"url": "https://assets.bytebytego.com/d/1.png", "sha256": "a" * 64, "retrieved_on": "2026-10-12"}
+        self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[entry]))
+        self.assertEqual([], self.problems())
+        # yaml.safe_dump writes a date unquoted and safe_load reads it back as a datetime.date
+        self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[{**entry, "retrieved_on": datetime.date(2026, 10, 12)}]))
+        self.assertEqual([], self.problems())
+
+    def test_image_evidence_values_must_be_real(self) -> None:
+        good = {"url": "https://assets.bytebytego.com/d/1.png", "sha256": "a" * 64, "retrieved_on": "2026-10-12"}
+        bad = {"null url": {**good, "url": None}, "not an http url": {**good, "url": "ftp://x/y.png"},
+               "empty digest": {**good, "sha256": ""}, "short digest": {**good, "sha256": "a" * 63},
+               "non-hex digest": {**good, "sha256": "z" * 64}, "null date": {**good, "retrieved_on": None},
+               "not a date": {**good, "retrieved_on": "yesterday"}}
+        for name, entry in bad.items():
+            with self.subTest(entry=name):
+                self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[entry]))
+                self.assertProblem("each image_evidence entry needs")
+
     def test_an_image_evidence_entry_without_a_digest_is_reported(self) -> None:
         self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[{"url": "https://x/y.png"}]))
         self.assertProblem("image_evidence entry needs")
@@ -266,6 +286,15 @@ class ReadmeRuleTests(StoreCase):
         row = "| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài một | drafted |\n"
         self.write_readme("# Kho\n\n| ID | Bài | Trạng thái |\n|---|---|---|\n" + row)
         self.assertProblem("repeats a lesson status")
+
+    def test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported(self) -> None:
+        forms = {"bold": "**approved**", "code": "`drafted`", "capital": "Approved", "html": "<b>planned</b>",
+                 "trailing dot": "drafted.", "emphasis": "_drafted_"}
+        for name, cell in forms.items():
+            with self.subTest(form=name):
+                row = f"| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài một | {cell} |\n"
+                self.write_readme("# Kho\n\n| ID | Bài | Ghi chú |\n|---|---|---|\n" + row)
+                self.assertProblem("repeats a lesson status")
 
     def test_a_status_word_inside_a_longer_title_is_not_a_status(self) -> None:
         row = "| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài đã drafted xong |\n"

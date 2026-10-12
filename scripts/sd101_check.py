@@ -17,7 +17,8 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     non-empty string equal to the source map's title_vi (a null there is not a title)
   - content_status is planned | drafted | approved; each verification field and
     learner_test is pending | done; `approved` needs all of them `done`
-  - image_evidence is a list, and each entry has url, sha256 and retrieved_on
+  - image_evidence is a list, and each entry has an http(s) url, a 64-hex sha256 and
+    a retrieved_on date
   - lesson.md: code fences and <details> are balanced, every relative link
     (inline, reference-style or <a href>) resolves,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
@@ -25,8 +26,8 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     directory, and it never contains assets.bytebytego.com, the host of every
     source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
 And once for the store: README.md links every lesson directory (as a real link, not a
-path in a comment or a code block) and carries no status words in its table (status
-lives only in lesson.yaml).
+path in a comment or a code block) and carries no status words in its table, however formatted
+(status lives only in lesson.yaml).
 
 Not checked, because it is not computable here: whether a claim is true, whether a
 figure reads well, and the Mermaid text-size estimate (needs a browser).
@@ -40,6 +41,7 @@ Exit status is 1 when any problem is found.
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import pathlib
 import posixpath
@@ -62,6 +64,8 @@ CHECK_STATE = {"pending", "done"}
 IMAGE_EVIDENCE_KEYS = {"url", "sha256", "retrieved_on"}
 
 LESSON_ID = re.compile(r"\bsd-\d{2}-\d{3}\b")
+SHA256 = re.compile(r"[0-9a-fA-F]{64}")
+ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 HTML_LINK = re.compile(r"""<a\b[^>]*?\bhref\s*=\s*["']?([^"'\s>]+)""", re.IGNORECASE)
@@ -104,6 +108,16 @@ def relative_target(destination: str) -> str | None:
     return unquote(destination.split("#")[0].split("?")[0]) or None
 
 
+def valid_image_evidence(item: object) -> bool:
+    """An entry has an http(s) url, a 64-hex sha256 and a date (YAML turns 2026-10-12 into a date)."""
+    if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:
+        return False
+    url, digest, when = item["url"], item["sha256"], item["retrieved_on"]
+    return (isinstance(url, str) and url.startswith(("http://", "https://"))
+            and isinstance(digest, str) and SHA256.fullmatch(digest) is not None
+            and (isinstance(when, datetime.date) or (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None)))
+
+
 def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[Problem]:
     if not isinstance(meta, dict):
         return [Problem(lesson_id, "lesson.yaml is not a mapping")]
@@ -141,8 +155,9 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
         problems.append(Problem(lesson_id, "image_evidence must be a list"))
     else:
         for item in evidence:
-            if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:
-                problems.append(Problem(lesson_id, f"each image_evidence entry needs {sorted(IMAGE_EVIDENCE_KEYS)}"))
+            if not valid_image_evidence(item):
+                problems.append(Problem(lesson_id, "each image_evidence entry needs an http(s) url, a 64-hex sha256 "
+                                                   "and a retrieved_on date"))
     return problems
 
 
@@ -168,6 +183,11 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     return problems
 
 
+def plain_cell(cell: str) -> str:
+    """What a table cell shows: no HTML tags or emphasis marks, no edge punctuation, lower case."""
+    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()
+
+
 def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     readme = store / "README.md"
     if not readme.exists():
@@ -177,7 +197,7 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
     for row in (line for line in text.splitlines() if line.startswith("|") and "lessons/" in line):
-        cells = {cell.strip() for cell in row.strip("|").split("|")}
+        cells = {plain_cell(cell) for cell in row.strip().strip("|").split("|")}
         if cells & CONTENT_STATUS:
             problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
     return problems

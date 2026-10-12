@@ -29,9 +29,25 @@ mutations:
   replace: '    if False:'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_a_null_title_that_matches_a_null_source_map_title_is_reported
 - label: an image evidence entry may lack its digest
-  find: '            if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:'
-  replace: '            if not isinstance(item, dict):'
+  find: '    if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:'
+  replace: '    if not isinstance(item, dict):'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_an_image_evidence_entry_without_a_digest_is_reported
+- label: an image evidence url need not be an http(s) url
+  find: '    return (isinstance(url, str) and url.startswith(("http://", "https://"))'
+  replace: '    return (isinstance(url, str)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence digest need not be 64 hex characters
+  find: '            and isinstance(digest, str) and SHA256.fullmatch(digest) is not None'
+  replace: '            and isinstance(digest, str)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence date may be any text or null
+  find: '            and (isinstance(when, datetime.date) or (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None)))'
+  replace: '            and when is not None)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: a date that YAML parsed into a date object is rejected
+  find: '            and (isinstance(when, datetime.date) or (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None)))'
+  replace: '            and (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None))'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date
 - label: an unclosed code fence is accepted
   find: '    if text.count("```") % 2:'
   replace: '    if False:'
@@ -92,6 +108,14 @@ mutations:
   find: '    problems.extend(check_readme(store, lesson_ids))'
   replace: '    pass'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
+- label: a README status cell is compared as raw text, not as what it shows
+  find: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()'
+  replace: '    return cell.strip()'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: a README status cell is compared case sensitively
+  find: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()'
+  replace: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:")'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
 - label: a status repeated in a README row is accepted
   find: '        if cells & CONTENT_STATUS:'
   replace: '        if False:'
