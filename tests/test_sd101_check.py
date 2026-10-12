@@ -169,6 +169,18 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=BODY + "\n```mermaid\nflowchart TB\n")
         self.assertProblem("unclosed code fence")
 
+    def test_details_with_attributes_is_a_balanced_details_block(self) -> None:
+        block = "<details open>\n<summary>x</summary>\n\nnội dung\n\n</details>"
+        self.write_lesson("sd-01-001", body=BODY + "\n" + block + "\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_details_tag_in_a_code_block_a_code_span_or_a_comment_is_not_counted(self) -> None:
+        for name, text in {"code block": "```html\n<details>\n```", "code span": "Gõ `<details>` để mở.",
+                           "comment": "<!-- <details> -->"}.items():
+            with self.subTest(where=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + text + "\n")
+                self.assertEqual([], self.problems())
+
     def test_an_unclosed_tilde_fence_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n~~~mermaid\nflowchart TB\n")
         self.assertProblem("unclosed code fence")
@@ -338,6 +350,27 @@ class ReadmeRuleTests(StoreCase):
         path = "lessons/sd-01-001/lesson.md"
         self.write_readme(f"# Kho\n\n<a title='href=\"{path}\"'>bài một</a>\n")
         self.assertProblem("does not link lessons/sd-01-001/lesson.md")
+
+    def test_a_table_without_outer_pipes_or_with_an_indented_row_is_still_inspected(self) -> None:
+        link = "[sd-01-001](lessons/sd-01-001/lesson.md)"
+        forms = {"no outer pipes": f"ID | Bài | Ghi chú\n--- | --- | ---\n{link} | Bài một | drafted",
+                 "indented rows": f"  | ID | Bài | Ghi chú |\n  |---|---|---|\n  | {link} | Bài một | drafted |"}
+        for name, table in forms.items():
+            with self.subTest(table=name):
+                self.write_readme(f"# Kho\n\n{table}\n")
+                self.assertProblem("repeats a lesson status")
+
+    def test_a_table_shown_inside_a_code_block_is_not_a_readme_table(self) -> None:
+        self.write_readme(README + "\n```\n| ID | Ghi chú |\n|---|---|\n| sd-01-001 | drafted |\n```\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson(self) -> None:
+        forms = {"fragment": "lessons/sd-01-001/lesson.md#vi-du", "query": "lessons/sd-01-001/lesson.md?x=1",
+                 "encoded": "lessons/sd%2D01%2D001/lesson.md"}
+        for name, target in forms.items():
+            with self.subTest(link=name):
+                self.write_readme(f"# Kho\n\n[bài một]({target})\n")
+                self.assertEqual([], self.problems())
 
     def test_a_status_word_inside_a_longer_title_is_not_a_status(self) -> None:
         row = "| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài đã drafted xong |\n"

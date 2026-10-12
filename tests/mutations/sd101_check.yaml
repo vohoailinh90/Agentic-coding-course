@@ -84,14 +84,6 @@ mutations:
   find: '    if snapshot and snapshot not in link_destinations(text):'
   replace: '    if snapshot and snapshot not in text:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_a_code_block_is_not_a_link
-- label: an HTML anchor is no longer recognised as a link
-  find: '            elif item.type in ("html_inline", "html_block"):'
-  replace: '            elif False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_an_html_anchor_is_a_link
-- label: HTML is scanned with a pattern, so a comment or an attribute value can hold a link
-  find: '                parser.feed(item.content)'
-  replace: '                parser.hrefs.extend(re.findall(r"href=.?([^\s\"''>]+)", item.content))'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
 - label: an href on a tag other than <a> counts as a link
   find: '        if tag == "a":'
   replace: '        if True:'
@@ -112,10 +104,6 @@ mutations:
   find: '                for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]'
   replace: '                for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in text]'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_path_in_a_comment_a_code_block_or_prose_is_not_a_link
-- label: a README link written with ./ no longer counts
-  find: '    linked = {posixpath.normpath(destination) for destination in link_destinations(text)}'
-  replace: '    linked = set(link_destinations(text))'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts
 - label: the README is no longer checked at all
   find: '    problems.extend(check_readme(store, lesson_ids))'
   replace: '    pass'
@@ -128,15 +116,63 @@ mutations:
   find: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()'
   replace: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:")'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
-- label: README rows are inspected only when the lesson path is written in the row itself
-  find: '    for row in (line for line in text.splitlines() if line.startswith("|")):'
-  replace: '    for row in (line for line in text.splitlines() if line.startswith("|") and "lessons/" in line):'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_in_a_row_whose_lesson_link_is_a_reference_is_reported
-- label: a status repeated in a README row is accepted
-  find: '        if cells & CONTENT_STATUS:'
-  replace: '        if False:'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
 - label: a broken store still exits zero
   find: '    return 1 if problems else 0'
   replace: '    return 0'
   test: tests.test_sd101_check.CommandLineTests.test_a_broken_store_exits_one_and_prints_the_problem
+- label: an HTML anchor is no longer recognised as a link
+  find: '    return found | set(html_scan(text).hrefs)'
+  replace: '    return found'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_an_html_anchor_is_a_link
+- label: Markdown links are no longer recognised as links
+  find: '    found = {token.attrGet("href") or "" for token in markdown_tokens(text) if token.type == "link_open"}'
+  replace: '    found: set[str] = set()'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_a_reference_style_link_is_a_link
+- label: HTML is scanned with a pattern, so a comment or an attribute value can hold a link
+  find: '            scan.feed(token.content)'
+  replace: '            scan.hrefs.extend(re.findall(r"href=.?([^\s\"''>]+)", token.content))'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
+- label: code blocks, code spans and comments are scanned for HTML tags too
+  find: '        if token.type in ("html_inline", "html_block"):'
+  replace: '        if token.content:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_details_tag_in_a_code_block_a_code_span_or_a_comment_is_not_counted
+- label: unbalanced <details> tags are accepted
+  find: '    if scan.details_opened != scan.details_closed:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_unbalanced_details_tags_are_reported
+- label: <details> is counted as an exact literal again
+  find: '    if scan.details_opened != scan.details_closed:'
+  replace: '    if text.count("<details>") != text.count("</details>"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
+- label: an opening <details> tag is never counted
+  find: '        elif tag == "details":'
+  replace: '        elif False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
+- label: a closing </details> tag is never counted
+  find: "        if tag == \"details\":\n            self.details_closed += 1"
+  replace: "        if False:\n            self.details_closed += 1"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
+- label: README tables are found by raw lines that start with a pipe
+  find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
+  replace: '    if any(plain_cell(cell) in CONTENT_STATUS for line in text.splitlines() if line.startswith("|") for cell in line.strip("|").split("|")):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_table_without_outer_pipes_or_with_an_indented_row_is_still_inspected
+- label: a table shown inside a code block is read as a README table
+  find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
+  replace: '    if any(plain_cell(cell) in CONTENT_STATUS for line in text.splitlines() if line.startswith("|") for cell in line.strip("|").split("|")):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_table_shown_inside_a_code_block_is_not_a_readme_table
+- label: Markdown tables are not parsed
+  find: '    for token in MarkdownIt("commonmark").enable("table").parse(text):'
+  replace: '    for token in MarkdownIt("commonmark").parse(text):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
+- label: a README status is no longer looked for in any table cell
+  find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
+- label: a README link written with ./ no longer counts
+  find: '    linked = {posixpath.normpath(target) for target in targets if target}'
+  replace: '    linked = {target for target in targets if target}'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts
+- label: a README link with a fragment, query or percent-encoding no longer counts
+  find: '    targets = (relative_target(destination) for destination in link_destinations(text))'
+  replace: '    targets = iter(link_destinations(text))'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson

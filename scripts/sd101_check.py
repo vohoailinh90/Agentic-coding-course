@@ -19,7 +19,7 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     learner_test is pending | done; `approved` needs all of them `done`
   - image_evidence is a list, and each entry has an http(s) url, a 64-hex sha256 and
     a retrieved_on date
-  - lesson.md: no code fence (``` or ~~~) is left open, <details> tags are balanced, every relative link
+  - lesson.md: no code fence (``` or ~~~) is left open, <details> tags are balanced (<details open> too), every relative link
     (inline, reference-style or <a href>) resolves,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
     in a code block or a comment), it mentions no lesson id that has no lesson
@@ -88,22 +88,51 @@ def load_source_map(path: pathlib.Path) -> dict[str, dict]:
     return {lesson["id"]: lesson for category in data["categories"] for lesson in category["lessons"]}
 
 
-class AnchorHrefs(HTMLParser):
-    """The href of every <a> tag in a piece of HTML. Comments and attribute text are not tags."""
+class HtmlScan(HTMLParser):
+    """Facts about the HTML tags in a piece of HTML: each <a href>, and how many <details> open and close.
+
+    Comments and attribute text are not tags, so a quoted "href=..." or a commented-out tag counts for nothing.
+    """
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.hrefs: list[str] = []
+        self.details_opened = 0
+        self.details_closed = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag == "a":
             self.hrefs.extend(value for name, value in attrs if name == "href" and value)
+        elif tag == "details":
+            self.details_opened += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "details":
+            self.details_closed += 1
+
+
+def markdown_tokens(text: str) -> list:
+    """Every token Markdown (CommonMark plus GFM tables) produces for text, inline children included."""
+    tokens: list = []
+    for token in MarkdownIt("commonmark").enable("table").parse(text):
+        tokens.append(token)
+        tokens.extend(token.children or [])
+    return tokens
+
+
+def html_scan(text: str) -> HtmlScan:
+    """Scan only the HTML Markdown would render: not code blocks, code spans or comments."""
+    scan = HtmlScan()
+    for token in markdown_tokens(text):
+        if token.type in ("html_inline", "html_block"):
+            scan.feed(token.content)
+    return scan
 
 
 def has_unclosed_fence(text: str) -> bool:
     """True when a code fence (``` or ~~~, any length) is still open at the end of the file."""
     lines = text.split("\n")
-    for token in MarkdownIt("commonmark").parse(text):
+    for token in markdown_tokens(text):
         if token.type == "fence" and token.map:
             closing = lines[token.map[1] - 1].strip() if token.map[1] - 1 < len(lines) else ""
             if not (closing and set(closing) == {token.markup[0]} and len(closing) >= len(token.markup)):
@@ -116,16 +145,15 @@ def link_destinations(text: str) -> set[str]:
 
     A URL in a code block, an HTML comment or plain prose is not a link, so it is not returned.
     """
-    found: set[str] = set()
-    for token in MarkdownIt("commonmark").parse(text):
-        for item in [token, *(token.children or [])]:
-            if item.type == "link_open":
-                found.add(item.attrGet("href") or "")
-            elif item.type in ("html_inline", "html_block"):
-                parser = AnchorHrefs()
-                parser.feed(item.content)
-                found.update(parser.hrefs)
-    return found
+    found = {token.attrGet("href") or "" for token in markdown_tokens(text) if token.type == "link_open"}
+    return found | set(html_scan(text).hrefs)
+
+
+def table_cells(text: str) -> list[str]:
+    """The source text of every cell of every table Markdown would render, with or without outer pipes."""
+    tokens = markdown_tokens(text)
+    return [following.content for token, following in zip(tokens, tokens[1:])
+            if token.type in ("th_open", "td_open") and following.type == "inline"]
 
 
 def relative_target(destination: str) -> str | None:
@@ -193,7 +221,8 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     problems: list[Problem] = []
     if has_unclosed_fence(text):
         problems.append(Problem(lesson_id, "lesson.md has an unclosed code fence"))
-    if text.count("<details>") != text.count("</details>"):
+    scan = html_scan(text)
+    if scan.details_opened != scan.details_closed:
         problems.append(Problem(lesson_id, "lesson.md has unbalanced <details> tags"))
     for destination in sorted(link_destinations(text)):
         target = relative_target(destination)
@@ -220,13 +249,12 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     if not readme.exists():
         return [Problem("README.md", "is missing")]
     text = readme.read_text(encoding="utf-8")
-    linked = {posixpath.normpath(destination) for destination in link_destinations(text)}
+    targets = (relative_target(destination) for destination in link_destinations(text))
+    linked = {posixpath.normpath(target) for target in targets if target}
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
-    for row in (line for line in text.splitlines() if line.startswith("|")):
-        cells = {plain_cell(cell) for cell in row.strip().strip("|").split("|")}
-        if cells & CONTENT_STATUS:
-            problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
+    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):
+        problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
     return problems
 
 
