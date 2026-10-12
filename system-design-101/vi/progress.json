@@ -1,0 +1,11 @@
+{
+  "language": "vi",
+  "total_occurrences": 404,
+  "total_source_documents": 400,
+  "written_ids": ["sd-01-001"],
+  "reviewed_ids": [],
+  "next_id": "sd-01-002",
+  "active_batch_ids": ["sd-01-001"],
+  "active_pr": null,
+  "updated_on": "2026-10-12"
+}

@@ -1,0 +1,87 @@
+{
+  "id": "sd-01-001",
+  "title_vi": "Polling ngắn, polling dài, SSE và WebSocket",
+  "language": "vi",
+  "kind": "comparison",
+  "content_status": "review",
+  "source_ref": "sd-01-001",
+  "source_snapshot": {
+    "repository": "ByteByteGoHq/system-design-101",
+    "commit_sha": "b28380a4710c5ec9638ec037d4168e288f334cba",
+    "path": "data/guides/shortlong-polling-sse-websocket.md",
+    "blob_sha": "a0aaac9a25a364a6a1128be0f99caecfcabd68b0"
+  },
+  "diagram": "../diagrams/sd-01-001-main.svg",
+  "prerequisites": [],
+  "related": [],
+  "verification": {
+    "source_body": {
+      "status": "read",
+      "checked_on": "2026-10-12"
+    },
+    "claims": {
+      "status": "checked",
+      "checked_on": "2026-10-12"
+    },
+    "technical_review": {
+      "status": "pending"
+    },
+    "mobile": {
+      "status": "checked",
+      "widths_px": [
+        320,
+        375,
+        430
+      ],
+      "minimum_diagram_text_px": 13.5,
+      "overflow": false,
+      "text_outside_viewbox": false,
+      "checked_on": "2026-10-12",
+      "evidence": "Chromium rendered SVG at each width; 320px screenshot visually inspected. Not user testing.",
+      "whole_lesson_no_horizontal_overflow": true,
+      "optional_sections_checked_open": true
+    },
+    "user_testing": {
+      "status": "not_performed"
+    }
+  },
+  "claims": [
+    {
+      "id": "polling-short",
+      "claim_vi": "Polling ngắn gửi request định kỳ; đổi chu kỳ hỏi tạo đánh đổi độ trễ và tải.",
+      "source": "https://www.rfc-editor.org/rfc/rfc6202.html",
+      "section": "2.1",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "id": "polling-long",
+      "claim_vi": "Polling dài chờ sự kiện hoặc timeout; client gửi lượt hỏi mới sau phản hồi. Request có thể dùng lại HTTP connection.",
+      "source": "https://www.rfc-editor.org/rfc/rfc6202.html",
+      "section": "2.1–2.2",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "id": "sse",
+      "claim_vi": "SSE truyền sự kiện về client sau khi client mở luồng; không cấm gửi HTTP request khác.",
+      "source": "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+      "section": "9.2.1–9.2.3",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "id": "sse-reconnect",
+      "claim_vi": "EventSource reconnect theo điều kiện tiêu chuẩn; Last-Event-ID hỗ trợ máy chủ biết ID cuối. Phát lại cần hỗ trợ ứng dụng.",
+      "source": "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+      "section": "9.2.3–9.2.4",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "id": "websocket",
+      "claim_vi": "Sau handshake thành công, mỗi phía gửi dữ liệu độc lập trên kênh hai chiều.",
+      "source": "https://www.rfc-editor.org/rfc/rfc6455.html",
+      "section": "1.2",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "design_notes_vi": "Bốn thẻ sequence dọc cùng hai actor, thiết kế mới bằng SVG. Phân biệt trạng thái đơn hàng với ACK giao thức; nêu timeout trong polling dài; không ngụ ý mỗi request tạo TCP connection mới.",
+  "editorial_note_vi": "Phần chính ngắn; reconnect và đồng bộ lại đặt trong mục xem sâu hơn. Không công bố đã được Codex duyệt khi chưa có review."
+}
