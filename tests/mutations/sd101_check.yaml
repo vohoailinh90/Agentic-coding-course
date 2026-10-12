@@ -504,3 +504,43 @@ mutations:
   find: "        self.handle_starttag(tag, attrs)\n\n    def handle_endtag"
   replace: "        self.handle_starttag(tag, attrs)\n        self.handle_endtag(tag)\n\n    def handle_endtag"
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_self_closing_details_tag_opens_a_block_as_it_does_in_html
+- label: an SVG element outside the plain drawing set is accepted
+  find: '        if name not in SVG_ELEMENTS or namespace_of(element.tag) not in ("", SVG_NAMESPACE):'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an SVG element is accepted whatever its name, if the namespace is the SVG one
+  find: '        if name not in SVG_ELEMENTS or namespace_of(element.tag) not in ("", SVG_NAMESPACE):'
+  replace: '        if namespace_of(element.tag) not in ("", SVG_NAMESPACE):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an element in a foreign namespace is accepted if its name is an SVG one
+  find: '        if name not in SVG_ELEMENTS or namespace_of(element.tag) not in ("", SVG_NAMESPACE):'
+  replace: '        if name not in SVG_ELEMENTS:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: the namespace of an element is never read
+  find: '    return tag[1:].split("}", 1)[0] if isinstance(tag, str) and tag.startswith("{") else ""'
+  replace: '    return ""'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an SVG that is not in the SVG namespace is refused
+  find: namespace_of(element.tag) not in ("", SVG_NAMESPACE)
+  replace: namespace_of(element.tag) != SVG_NAMESPACE
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_real_looking_svg_drawing_is_accepted
+- label: path is not a drawing element
+  find: '    "path", "rect", "circle",'
+  replace: '    "rect", "circle",'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_elements_of_an_ordinary_drawing_are_accepted
+- label: text on a path is not a drawing element
+  find: '"tspan", "textpath", "marker"'
+  replace: '"tspan", "marker"'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_elements_of_an_ordinary_drawing_are_accepted
+- label: a clip path is not a drawing element
+  find: '"mask", "clippath", "lineargradient"'
+  replace: '"mask", "lineargradient"'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_elements_of_an_ordinary_drawing_are_accepted
+- label: a blur filter is not a drawing element
+  find: '"fedropshadow", "fegaussianblur", "feflood"'
+  replace: '"fedropshadow", "feflood"'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_elements_of_an_ordinary_drawing_are_accepted
+- label: a gradient stop is not a drawing element
+  find: '"radialgradient", "stop",'
+  replace: '"radialgradient",'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_elements_of_an_ordinary_drawing_are_accepted

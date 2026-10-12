@@ -346,18 +346,38 @@ class LessonMarkdownRuleTests(StoreCase):
             "xml with another root": (b"<html/>", "does not have an <svg> root"),
             "an embedded raster": (f'<svg><image href="{png}"/></svg>'.encode(), "embeds a picture with <image>"),
             "a linked raster": (b'<svg><image href="source.png"/></svg>', "embeds a picture with <image>"),
-            "a namespaced image": (b'<svg xmlns="http://www.w3.org/2000/svg"><image/></svg>', "<image>"),
+            "a namespaced image": (b'<svg xmlns="http://www.w3.org/2000/svg"><image/></svg>',
+                                   "embeds a picture with <image>"),
+            "a bare html img": (b'<svg><img xmlns="http://www.w3.org/1999/xhtml" src="a.png"/></svg>',
+                                "embeds a picture with <img>"),
             "an html img inside foreignObject": (
                 b'<svg xmlns="http://www.w3.org/2000/svg"><foreignObject>'
-                b'<img xmlns="http://www.w3.org/1999/xhtml" src="a.png"/></foreignObject></svg>', "<img>"),
+                b'<img xmlns="http://www.w3.org/1999/xhtml" src="a.png"/></foreignObject></svg>',
+                "uses <foreignobject>"),
+            "an html object holding a data uri inside foreignObject": (
+                f'<svg xmlns="http://www.w3.org/2000/svg"><foreignObject><object xmlns="http://www.w3.org/1999/xhtml" '
+                f'data="{png}"/></foreignObject></svg>'.encode(), "uses <foreignobject>"),
+            "a bare object holding a data uri": (f'<svg><object data="{png}"/></svg>'.encode(), "uses <object>"),
+            "an embed": (b'<svg><embed src="a.png"/></svg>', "uses <embed>"),
+            "an iframe": (b'<svg><iframe src="a.html"/></svg>', "uses <iframe>"),
+            "a script": (b"<svg><script>alert(1)</script></svg>", "uses <script>"),
+            "an animation that sets an href": (b'<svg><use href="#a"><set attributeName="href" to="x.svg"/></use></svg>',
+                                              "uses <set>"),
+            "an animate": (b'<svg><rect><animate attributeName="x" to="9"/></rect></svg>', "uses <animate>"),
+            "a link element": (b'<svg><a href="#a"><rect/></a></svg>', "uses <a>"),
+            "an inkscape element": (b'<svg xmlns:s="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"><s:namedview/></svg>',
+                                    "uses <namedview>"),
+            "a svg-named element in another namespace": (b'<svg><rect xmlns="http://www.w3.org/1999/xhtml"/></svg>',
+                                                         "uses <rect>"),
             "a feImage that loads the source host": (
                 b'<svg xmlns="http://www.w3.org/2000/svg"><filter><feImage href="https://assets.bytebytego.com/'
                 b'source.png"/></filter></svg>', "assets.bytebytego.com"),
             "a feImage that loads another picture": (
-                b'<svg xmlns="http://www.w3.org/2000/svg"><filter><feImage href="#a"/></filter></svg>', "<feimage>"),
+                b'<svg xmlns="http://www.w3.org/2000/svg"><filter><feImage href="#a"/></filter></svg>',
+                "embeds a picture with <feimage>"),
             "the source host in a label": (b"<svg><text>assets.bytebytego.com</text></svg>", "assets.bytebytego.com"),
             "an href to another file": (b'<svg><use href="other.svg#a"/></svg>', "outside the drawing"),
-            "an href to a web page": (b'<svg><a href="https://example.com/">x</a></svg>', "outside the drawing"),
+            "an href to a web page": (b'<svg><use href="https://example.com/a.svg"/></svg>', "outside the drawing"),
             "a namespaced xlink:href": (
                 b'<svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="https://example.com/a.svg"/></svg>',
                 "outside the drawing"),
@@ -378,6 +398,18 @@ class LessonMarkdownRuleTests(StoreCase):
                 (lesson_dir / "figure.svg").write_bytes(content)
                 self.assertProblem(f"figure.svg")
                 self.assertProblem(reason)
+
+    def test_the_elements_of_an_ordinary_drawing_are_accepted(self) -> None:
+        names = ["g", "defs", "symbol", "use", "title", "desc", "style", "path", "rect", "circle", "ellipse", "line",
+                 "polyline", "polygon", "text", "tspan", "textPath", "marker", "pattern", "mask", "clipPath",
+                 "linearGradient", "radialGradient", "stop", "filter", "feBlend", "feColorMatrix", "feComposite",
+                 "feDropShadow", "feGaussianBlur", "feFlood", "feOffset", "feMerge", "feMergeNode"]
+        lesson_dir = self.write_lesson("sd-01-001")
+        for name in names:
+            with self.subTest(element=name):
+                (lesson_dir / "figure.svg").write_text(
+                    f'<svg xmlns="http://www.w3.org/2000/svg"><svg><{name}/></svg></svg>', encoding="utf-8")
+                self.assertEqual([], self.problems())
 
     def test_a_real_looking_svg_drawing_is_accepted(self) -> None:
         drawing = ('<?xml version="1.0" encoding="UTF-8"?>\n'

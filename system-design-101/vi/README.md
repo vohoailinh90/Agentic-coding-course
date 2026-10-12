@@ -11,8 +11,10 @@ ghi tiến độ). Bài viết độc lập bằng lời riêng, sơ đồ tự 
 ảnh nguồn, vì nguồn là CC BY-NC-ND 4.0 và kho này công khai. Hình trong bài là Mermaid trong
 `lesson.md` hoặc tệp `.svg` tự vẽ nằm cạnh bài; thư mục bài chỉ chứa `lesson.md`, `lesson.yaml`
 và các tệp `.svg` đó (PNG/JPG không được phép, kể cả khi tự chụp). Hình trong `lesson.md` phải nằm
-ngay trong thư mục của chính bài đó. Tệp `.svg` phải là bản vẽ tự chứa (vẽ tay hoặc sinh từ sơ đồ):
-không `<image>`/`<feImage>`, không liên kết hay `url()` ra ngoài ngoài các `#fragment` của nó. HTML thô
+ngay trong thư mục của chính bài đó. Tệp `.svg` phải là bản vẽ thuần (vẽ tay hoặc xuất từ sơ đồ, không dùng
+nhãn HTML): chỉ phần tử vẽ như `path`, `rect`, `text`, `g`, `marker`, `use`; không `<image>`,
+`<foreignObject>`, `<script>`, `<a>` hay hoạt ảnh; không liên kết hay `url()` ra ngoài ngoài các
+`#fragment` của nó. HTML thô
 trong `lesson.md` chỉ gồm `details`, `summary`, `br`, `a`, `img`, `sub`, `sup`, `kbd`.
 
 | ID | Bài |

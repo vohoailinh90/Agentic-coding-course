@@ -21,9 +21,10 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     sha256 and a real retrieved_on date
   - the directory holds only lesson.md, lesson.yaml and .svg figures drawn for the lesson
     (a downloaded PNG or JPG is refused whatever it shows), and each .svg is a self-contained
-    drawing: it parses as XML with an <svg> root, has no <image>, <feImage> or <img> element, links
-    to nothing but its own #fragments (href, url(), @import), and never mentions the source image
-    host, so a renamed PNG or an SVG that loads a raster is refused too
+    drawing: it parses as XML with an <svg> root, uses only plain drawing elements (no <image>,
+    <foreignObject>, <script>, <a>, animation), links to nothing but its own #fragments (href, url(),
+    @import), and never mentions the source image host, so a renamed PNG or an SVG that wraps or
+    loads a raster is refused too
   - lesson.md: no code fence (``` or ~~~) is left open, raw HTML is limited to a short list of tags
     (details, summary, br, a, img, sub, sup, kbd), <details> tags nest properly (<details open> too),
     every relative link and image source (inline, reference-style, <a href>, <img src>, <img srcset>)
@@ -87,6 +88,16 @@ SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
 ALLOWED_HTML = {"details", "summary", "br", "a", "img", "sub", "sup", "kbd"}
 RASTER_ELEMENTS = {"image", "feimage", "img"}
+SVG_NAMESPACE = "http://www.w3.org/2000/svg"
+# The elements of a plain drawing. Anything else (foreignObject and the HTML inside it, script, a, animation,
+# image) is refused rather than hunted one by one: each is a way to carry or load something that is not drawn.
+SVG_ELEMENTS = {
+    "svg", "g", "defs", "symbol", "use", "title", "desc", "style",
+    "path", "rect", "circle", "ellipse", "line", "polyline", "polygon",
+    "text", "tspan", "textpath", "marker", "pattern", "mask", "clippath", "lineargradient", "radialgradient", "stop",
+    "filter", "feblend", "fecolormatrix", "fecomposite", "fedropshadow", "fegaussianblur", "feflood", "feoffset",
+    "femerge", "femergenode",
+}
 URL_CALL = re.compile(r"url\(\s*['\"]?\s*([^)'\"\s]*)", re.IGNORECASE)
 
 
@@ -315,6 +326,11 @@ def reaches_outside(value: str) -> bool:
     return "@import" in value.lower() or any(not target.startswith("#") for target in URL_CALL.findall(value))
 
 
+def namespace_of(tag: object) -> str:
+    """The namespace of an ElementTree tag such as '{http://www.w3.org/2000/svg}rect'; '' when it has none."""
+    return tag[1:].split("}", 1)[0] if isinstance(tag, str) and tag.startswith("{") else ""
+
+
 def svg_problem(path: pathlib.Path) -> str | None:
     """Why a file named *.svg is not a self-contained drawing made for the lesson, or None."""
     try:
@@ -329,6 +345,8 @@ def svg_problem(path: pathlib.Path) -> str | None:
         name = local_name(element.tag)
         if name in RASTER_ELEMENTS:
             return f"embeds a picture with <{name}>"
+        if name not in SVG_ELEMENTS or namespace_of(element.tag) not in ("", SVG_NAMESPACE):
+            return f"uses <{name}>, which is not an element of a plain SVG drawing"
         values = list(element.attrib.items())
         if name == "style":
             values.append(("style", element.text or ""))
