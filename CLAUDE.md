@@ -27,6 +27,9 @@ routed.
   `outputs/html/` (ignored by Git) for sharing without GitHub
   (`docs/decisions/009-offline-html-export.md`); `tests/test_course_export.py` checks on the real
   course that every link in them lands on a page.
+- **`python3 scripts/sd101_check.py` must pass** before any commit that touches `system-design-101/`
+  (the Vietnamese-only System Design store, `docs/decisions/011-system-design-store.md`; its rules are
+  in `brainstorm/system-design-101-vi/DECISIONS.md`). `pytest` runs it too.
 - **Never refer to a lesson by its number** in content; numbers change when the roadmap is
   reordered. Lesson ids never change and are never reused; a lesson taken out goes to `retired`.
 - **Verify every source link** before committing it, and never invent statistics.

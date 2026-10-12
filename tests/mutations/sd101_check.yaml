@@ -1,0 +1,61 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each rule of the System Design store checker
+# in turn and require the named test to fail. A mutation that SURVIVES means the test guards nothing.
+
+target: scripts/sd101_check.py
+note: The checker is what stops ~400 hand-written lessons drifting from the schema in DECISIONS.md.
+  Each entry switches one rule off and names the test that must notice.
+mutations:
+- label: approved no longer needs the verification fields to be done
+  find: '    if status == "approved" and any(value != "done" for value in states.values()):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_approved_with_a_pending_check_is_reported
+- label: the learner test no longer counts toward approved
+  find: '    states = {"learner_test": meta.get("learner_test")}'
+  replace: '    states = {}'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_learner_test_that_is_still_pending_blocks_approved
+- label: a lesson id that differs from its directory is accepted
+  find: '    if meta.get("id") != lesson_id:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_an_id_that_is_not_the_directory_name_is_reported
+- label: a title that differs from the source map is accepted
+  find: '    elif meta.get("title_vi") != entry.get("title_vi"):'
+  replace: '    elif False:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_title_that_differs_from_the_source_map_is_reported
+- label: an image evidence entry may lack its digest
+  find: '            if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:'
+  replace: '            if not isinstance(item, dict):'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_an_image_evidence_entry_without_a_digest_is_reported
+- label: an unclosed code fence is accepted
+  find: '    if text.count("```") % 2:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_unclosed_code_fence_is_reported
+- label: a relative link that leads nowhere is accepted
+  find: '        if not (lesson_dir / target.split("#")[0]).exists():'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
+- label: a snapshot link wrapped across lines is no longer recognised
+  find: '    if snapshot and snapshot not in text.replace("\n", ""):'
+  replace: '    if snapshot and snapshot not in text:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_link_broken_across_lines_still_counts
+- label: a mention of a lesson that has no directory is accepted
+  find: '        if mentioned not in lesson_ids:'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_mention_of_a_lesson_without_a_directory_is_reported
+- label: an embedded source image is accepted
+  find: '    if SOURCE_IMAGE.search(text):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_embedded_source_image_is_reported
+- label: the README is no longer checked at all
+  find: '    problems.extend(check_readme(store, lesson_ids))'
+  replace: '    pass'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
+- label: a status repeated in a README row is accepted
+  find: '        if cells & CONTENT_STATUS:'
+  replace: '        if False:'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
+- label: a broken store still exits zero
+  find: '    return 1 if problems else 0'
+  replace: '    return 0'
+  test: tests.test_sd101_check.CommandLineTests.test_a_broken_store_exits_one_and_prints_the_problem
