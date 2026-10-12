@@ -3,7 +3,7 @@
   "title_vi": "NAT giúp Internet mở rộng ra sao?",
   "language": "vi",
   "kind": "flow",
-  "content_status": "review",
+  "content_status": "done",
   "source_ref": "sd-01-005",
   "source_snapshot": {
     "repository": "ByteByteGoHq/system-design-101",
@@ -28,7 +28,14 @@
       "checked_on": "2026-10-12"
     },
     "technical_review": {
-      "status": "pending"
+      "status": "checked",
+      "pr": 31,
+      "head_sha": "b8730a33c02e381e898452520b394aca3189bd73",
+      "base_sha": "11996effc9a83ac8908b52bcd3477f7f08d1d261",
+      "comment_id": 6131806994,
+      "checked_on": "2026-10-12",
+      "github_ci": "not_run_base_filter",
+      "evidence": "No major issues on this head/base; local JSON/pointers/links/layout/whitespace and mobile checks passed. Not release approval."
     },
     "mobile": {
       "status": "checked",
@@ -75,5 +82,5 @@
     "Ảnh nguồn có URL http-header không phù hợp chủ đề; không tải, dùng hoặc trace."
   ],
   "design_notes_vi": "Sơ đồ mới năm khung dọc, hai ánh xạ TCP và đường phản hồi cho B; địa chỉ ngoài chỉ dành cho tài liệu.",
-  "editorial_note_vi": "Chờ review kỹ thuật; chưa thử với người học."
+  "editorial_note_vi": "Đã review kỹ thuật trên snapshot ghi trong verification; chưa user testing hoặc phê duyệt phát hành."
 }
