@@ -84,21 +84,9 @@ mutations:
   find: '        if token.type in ("html_inline", "html_block"):'
   replace: '        if token.content:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_details_tag_in_a_code_block_a_code_span_or_a_comment_is_not_counted
-- label: README tables are found by raw lines that start with a pipe
-  find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
-  replace: '    if any(plain_cell(cell) in CONTENT_STATUS for line in text.splitlines() if line.startswith("|") for cell in line.strip("|").split("|")):'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_table_without_outer_pipes_or_with_an_indented_row_is_still_inspected
-- label: a table shown inside a code block is read as a README table
-  find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
-  replace: '    if any(plain_cell(cell) in CONTENT_STATUS for line in text.splitlines() if line.startswith("|") for cell in line.strip("|").split("|")):'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_table_shown_inside_a_code_block_is_not_a_readme_table
 - label: Markdown tables are not parsed
   find: '    for token in MarkdownIt("commonmark").enable("table").parse(text):'
   replace: '    for token in MarkdownIt("commonmark").parse(text):'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
-- label: a README status is no longer looked for in any table cell
-  find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
-  replace: '    if False:'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
 - label: an image evidence digest need not be 64 hex characters
   find: '    return (valid_url(item["url"]) and isinstance(digest, str) and SHA256.fullmatch(digest) is not None'
@@ -300,14 +288,6 @@ mutations:
   find: '                    if child.type in ("text", "text_special", "code_inline"))'
   replace: '                    if child.type in ("code_inline",))'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
-- label: a README status cell is compared case sensitively
-  find: '    return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()'
-  replace: '    return re.sub(r"[*_`~]", "", cell).strip(" .,;:")'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
-- label: a README status cell keeps its emphasis marks
-  find: '    return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()'
-  replace: '    return cell.strip(" .,;:").lower()'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
 - label: a lone opening fence is read as its own closing line
   find: '            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if token.map[0] < last < len(lines) else ""'
   replace: '            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if last < len(lines) else ""'
@@ -416,14 +396,6 @@ mutations:
   find: '        return HOSTNAME.fullmatch(host) is not None'
   replace: '        return True'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_an_evidence_url_needs_a_real_host_and_a_readable_port
-- label: a DNS name may not end with a dot
-  find: '\.?")
-
-  SCHEME'
-  replace: '")
-
-  SCHEME'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_ordinary_evidence_urls_are_accepted
 - label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
   find: '        elif snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
   replace: '        elif snapshot not in text:'
@@ -448,10 +420,6 @@ mutations:
   find: "    if lesson_id in entries:\n        snapshot"
   replace: "    if True:\n        snapshot = entries.get(lesson_id, {})"
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_that_is_not_in_the_source_map_is_not_also_missing_a_snapshot
-- label: a link name the filesystem rejects raises instead of not existing
-  find: "    except (OSError, ValueError):\n        return False\n\n\ndef valid_host"
-  replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_host"
-  test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised
 - label: a key named twice in lesson.yaml is accepted
   find: '                if duplicate:'
   replace: '                if False:'
@@ -524,10 +492,6 @@ mutations:
   find: '                    for source in sorted(image_sources(text)))'
   replace: '                    for source in sorted(link_destinations(text) | image_sources(text)) if source.endswith(".svg"))'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_may_link_to_an_image_without_embedding_it
-- label: the README is no longer checked at all
-  find: '    problems.extend(check_readme(store, lesson_ids, entries))'
-  replace: '    pass'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
 - label: an HTML anchor is no longer recognised as a link
   find: '            found.extend(scan.hrefs)'
   replace: '            pass'
@@ -626,14 +590,6 @@ mutations:
   find: '                    for tag in sorted(html_scan(text).tags - ALLOWED_HTML))'
   replace: '                    for tag in sorted(html_scan(text).tags))'
   test: tests.test_sd101_check.ReadmeRuleTests.test_the_allowed_raw_html_in_the_readme_is_fine
-- label: a relative link that leads nowhere is accepted
-  find: '        if target is not None and not resolves(lesson_dir, target):'
-  replace: '        if False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
-- label: a README link to a lesson that was deleted is accepted
-  find: '                    if target and not resolves(store, target))'
-  replace: '                    if False)'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported
 - label: a root-relative link is looked up on the machine running the check (lesson)
   find: "    if target.startswith(\"/\"):\n        return False\n"
   replace: ''
@@ -666,3 +622,95 @@ mutations:
   find: '            elif lesson_id in entries:'
   replace: '            elif False:'
   test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
+- label: a relative link that leads nowhere is accepted
+  find: '        if target is not None and not resolves(lesson_dir, target, boundary):'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
+- label: a README link to a lesson that was deleted is accepted
+  find: '                    if target and not resolves(store, target, boundary))'
+  replace: '                    if False)'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported
+- label: a link may climb out of the lesson directory and leave the store
+  find: '        return (resolved == boundary or boundary in resolved.parents) and resolved.exists()'
+  replace: '        return resolved.exists()'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_out_of_the_store_is_reported
+- label: a link may climb out of the store through its README
+  find: '        return (resolved == boundary or boundary in resolved.parents) and resolved.exists()'
+  replace: '        return resolved.exists()'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_far_out_of_the_store_is_reported_even_if_the_file_exists
+- label: a link that stays inside the boundary is refused
+  find: '        return (resolved == boundary or boundary in resolved.parents) and resolved.exists()'
+  replace: '        return resolved == boundary and resolved.exists()'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_and_comes_back_into_the_store_is_fine
+- label: the target is not normalised before the boundary is tested
+  find: '        resolved = (base / target).resolve()'
+  replace: '        resolved = base / target'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_and_comes_back_into_the_store_is_fine
+- label: the target is not normalised so a ../ link is judged by its text
+  find: '        resolved = (base / target).resolve()'
+  replace: '        resolved = base / target'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_out_of_the_store_is_reported
+- label: the repository root is always the checkout, even for a store outside it
+  find: '    return ROOT if resolved == ROOT or ROOT in resolved.parents else resolved'
+  replace: '    return ROOT'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_out_of_the_store_is_reported
+- label: the repository root is always the store, so README cannot link the brainstorm notes
+  find: '    return ROOT if resolved == ROOT or ROOT in resolved.parents else resolved'
+  replace: '    return resolved'
+  test: tests.test_sd101_check.RealStoreTests.test_the_real_store_passes_every_rule
+- label: a status in a README cell is compared as the whole cell, not as a word in it
+  find: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
+  replace: STATUS_WORD = re.compile(r"^\s*(?:planned|drafted|approved)\s*$", re.IGNORECASE)
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_inside_a_longer_cell_is_a_status
+- label: a status word inside a longer word counts as a status
+  find: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
+  replace: STATUS_WORD = re.compile(r"(?:planned|drafted|approved)", re.IGNORECASE)
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_word_that_merely_contains_a_status_word_is_not_a_status
+- label: a status word next to an underscore is not found
+  find: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
+  replace: STATUS_WORD = re.compile(r"\b(?:planned|drafted|approved)\b", re.IGNORECASE)
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_inside_a_longer_cell_is_a_status
+- label: a capitalised status word is not found
+  find: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
+  replace: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])")
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: planned is not a status word
+  find: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
+  replace: STATUS_WORD = re.compile(r"(?<![^\W_])(?:drafted|approved)(?![^\W_])", re.IGNORECASE)
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_inside_a_longer_cell_is_a_status
+- label: approved is not a status word
+  find: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
+  replace: STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted)(?![^\W_])", re.IGNORECASE)
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_inside_a_longer_cell_is_a_status
+- label: a status word outside a table is taken for a status
+  find: '    if any(STATUS_WORD.search(cell) for cell in table_cells(text)):'
+  replace: '    if STATUS_WORD.search(text):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_outside_a_table_is_not_checked
+- label: a status in a README cell is not looked for at all
+  find: '    if any(STATUS_WORD.search(cell) for cell in table_cells(text)):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
+- label: README tables are found by raw lines that start with a pipe
+  find: '    if any(STATUS_WORD.search(cell) for cell in table_cells(text)):'
+  replace: '    if any(STATUS_WORD.search(cell) for line in text.splitlines() if line.startswith("|") for cell in line.strip("|").split("|")):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_table_without_outer_pipes_or_with_an_indented_row_is_still_inspected
+- label: a table shown inside a code block is read as a README table
+  find: '    if any(STATUS_WORD.search(cell) for cell in table_cells(text)):'
+  replace: '    if any(STATUS_WORD.search(cell) for line in text.splitlines() if line.count("|") >= 2 for cell in line.strip().strip("|").split("|")):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_table_shown_inside_a_code_block_is_not_a_readme_table
+- label: the README is no longer checked at all
+  find: '    problems.extend(check_readme(store, lesson_ids, entries, boundary))'
+  replace: '    pass'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
+- label: a DNS name may not end with a dot
+  find: '\.?")
+
+  STATUS_WORD'
+  replace: '")
+
+  STATUS_WORD'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_ordinary_evidence_urls_are_accepted
+- label: a link name the filesystem rejects raises instead of not existing
+  find: "    except (OSError, ValueError, RuntimeError):\n        return False\n\n\ndef valid_host"
+  replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_host"
+  test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised

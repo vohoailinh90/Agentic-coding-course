@@ -40,7 +40,8 @@ directories (an image dropped beside the README is refused like one in a lesson)
 no image and only the allowed raw HTML tags (so no HTML table can hide a status), links every
 lesson directory (as a real link, not a path in a comment or a code block)
 in source-map order, every relative link in it resolves (a row left behind for a deleted lesson is an error), and it
-carries no status words in its table, however formatted (status lives only in lesson.yaml).
+has no status word (planned, drafted, approved) anywhere in a table cell, however formatted or decorated (status
+lives only in lesson.yaml).
 
 This guards against honest mistakes while ~400 lessons are written; it is not a security
 boundary. Markup crafted to slip past a rule on purpose is out of scope.
@@ -88,6 +89,7 @@ SHA256 = re.compile(r"[0-9a-fA-F]{64}")
 ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
 HOSTNAME = re.compile(r"(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)*[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.?")
+STATUS_WORD = re.compile(r"(?<![^\W_])(?:planned|drafted|approved)(?![^\W_])", re.IGNORECASE)
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
@@ -301,18 +303,26 @@ def relative_target(destination: str) -> str | None:
     return unquote(destination.split("#")[0].split("?")[0]) or None
 
 
-def resolves(base: pathlib.Path, target: str) -> bool:
-    """Whether a relative link target names something under base.
+def repository_root(store: pathlib.Path) -> pathlib.Path:
+    """How far a relative link may reach: the checkout when the store sits inside it, else the store itself."""
+    resolved = store.resolve()
+    return ROOT if resolved == ROOT or ROOT in resolved.parents else resolved
+
+
+def resolves(base: pathlib.Path, target: str, boundary: pathlib.Path) -> bool:
+    """Whether a relative link target names something that exists under boundary.
 
     A root-relative target (/x) is not relative to the file: on GitHub it points outside the repository, and
-    joined to base it would silently become a path on the machine running the check. A name the filesystem
-    rejects (too long, embedded NUL) simply does not exist.
+    joined to base it would silently become a path on the machine running the check. A relative target that
+    climbs out of the boundary (../../../etc/passwd), or leaves it through a symlink, points elsewhere on
+    GitHub too. A name the filesystem rejects (too long, embedded NUL) simply does not exist.
     """
     if target.startswith("/"):
         return False
     try:
-        return (base / target).exists()
-    except (OSError, ValueError):
+        resolved = (base / target).resolve()
+        return (resolved == boundary or boundary in resolved.parents) and resolved.exists()
+    except (OSError, ValueError, RuntimeError):
         return False
 
 
@@ -466,7 +476,7 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
 
 
 def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries: dict[str, dict],
-                   lesson_ids: set[str]) -> list[Problem]:
+                   lesson_ids: set[str], boundary: pathlib.Path) -> list[Problem]:
     problems: list[Problem] = []
     if has_unclosed_fence(text):
         problems.append(Problem(lesson_id, "lesson.md has an unclosed code fence"))
@@ -479,7 +489,7 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     sources = image_sources(text)
     for destination in sorted(link_destinations(text) | sources):
         target = relative_target(destination)
-        if target is not None and not resolves(lesson_dir, target):
+        if target is not None and not resolves(lesson_dir, target, boundary):
             problems.append(Problem(lesson_id, f"relative link {destination!r} does not resolve"))
     for source in sorted(sources):
         target = relative_target(source)
@@ -500,12 +510,8 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     return problems
 
 
-def plain_cell(cell: str) -> str:
-    """What a table cell shows, compared with the vocabulary: no stray emphasis marks or edge punctuation, lower case."""
-    return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()
-
-
-def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, dict]) -> list[Problem]:
+def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, dict],
+                 boundary: pathlib.Path) -> list[Problem]:
     readme = store / "README.md"
     if not readme.is_file():
         return [Problem("README.md", "is missing")]
@@ -529,17 +535,18 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, d
                     for source in sorted(image_sources(text)))
     problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")
                     for destination, target in sorted(destinations.items())
-                    if target and not resolves(store, target))
+                    if target and not resolves(store, target, boundary))
     if listed != in_source_order:
         problems.append(Problem("README.md", "lists the lessons out of source order; the source map order is "
                                              + ", ".join(in_source_order)))
-    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):
+    if any(STATUS_WORD.search(cell) for cell in table_cells(text)):
         problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
     return problems
 
 
 def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
     entries, problems = load_source_map(source_map)
+    boundary = repository_root(store)
     lessons_dir = store / "lessons"
     lesson_dirs = sorted(path for path in lessons_dir.iterdir() if path.is_dir()) if lessons_dir.is_dir() else []
     lesson_ids = {path.name for path in lesson_dirs}
@@ -574,8 +581,8 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
             except UnicodeDecodeError:
                 problems.append(Problem(lesson_id, "lesson.md is not valid UTF-8 text"))
             else:
-                problems.extend(check_markdown(lesson_id, text, lesson_dir, entries, lesson_ids))
-    problems.extend(check_readme(store, lesson_ids, entries))
+                problems.extend(check_markdown(lesson_id, text, lesson_dir, entries, lesson_ids, boundary))
+    problems.extend(check_readme(store, lesson_ids, entries, boundary))
     return problems
 
 

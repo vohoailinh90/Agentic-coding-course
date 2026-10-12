@@ -986,6 +986,23 @@ class ReadmeRuleTests(StoreCase):
         self.write_readme(README + "\n[hình](figure.svg)\n")
         self.assertFalse(any("embeds the image" in line for line in self.problems()), self.problems())
 
+    def test_a_link_that_climbs_out_of_the_store_is_reported(self) -> None:
+        outside = self.root / "exists.md"
+        outside.write_text("x", encoding="utf-8")
+        self.write_lesson("sd-01-001", body=BODY + "\n[x](../../../exists.md)\n")
+        self.assertProblem("relative link '../../../exists.md' does not resolve")
+        self.write_readme(README + "\n[x](../exists.md)\n")
+        self.assertProblem("README.md: relative link '../exists.md' does not resolve")
+
+    def test_a_link_that_climbs_far_out_of_the_store_is_reported_even_if_the_file_exists(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n[x](" + "../" * 40 + "etc/hostname)\n")
+        self.assertProblem("does not resolve")
+
+    def test_a_link_that_climbs_and_comes_back_into_the_store_is_fine(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n[x](../../lessons/sd-01-001/lesson.yaml)\n")
+        self.write_readme(README + "\n[x](lessons/../README.md)\n")
+        self.assertEqual([], self.problems())
+
     def test_a_root_relative_readme_link_is_reported(self) -> None:
         (self.root / "exists.md").write_text("x", encoding="utf-8")
         self.write_readme(README + f"\n[x]({self.root / 'exists.md'})\n")
@@ -1046,9 +1063,24 @@ class ReadmeRuleTests(StoreCase):
                 self.write_readme(f"# Kho\n\n[bài một]({target})\n")
                 self.assertEqual([], self.problems())
 
-    def test_a_status_word_inside_a_longer_title_is_not_a_status(self) -> None:
-        row = "| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài đã drafted xong |\n"
-        self.write_readme("# Kho\n\n| ID | Bài |\n|---|---|\n" + row)
+    def test_a_status_word_inside_a_longer_cell_is_a_status(self) -> None:
+        for cell in ["Bài đã drafted xong", "Trạng thái: drafted", "drafted!", "(approved)", "status=planned", "[drafted]",
+                     "đang PLANNED", "Approved/Drafted", "_drafted_", "\\_approved\\_", "drafted, approved", "tiếng\u00a0drafted"]:
+            with self.subTest(cell=cell):
+                row = f"| [sd-01-001](lessons/sd-01-001/lesson.md) | {cell} |\n"
+                self.write_readme("# Kho\n\n| ID | Bài |\n|---|---|\n" + row)
+                self.assertProblem("repeats a lesson status")
+
+    def test_a_word_that_merely_contains_a_status_word_is_not_a_status(self) -> None:
+        for cell in ["undrafted", "redrafted", "disapproved", "approvedly", "planned2", "2planned", "unplanned",
+                     "overdrafted", "Bài về kế hoạch", "approval", "drafting", "plan"]:
+            with self.subTest(cell=cell):
+                row = f"| [sd-01-001](lessons/sd-01-001/lesson.md) | {cell} |\n"
+                self.write_readme("# Kho\n\n| ID | Bài |\n|---|---|\n" + row)
+                self.assertEqual([], self.problems())
+
+    def test_a_status_word_outside_a_table_is_not_checked(self) -> None:
+        self.write_readme(README + "\nMọi bài ở trạng thái drafted hoặc approved được ghi trong lesson.yaml.\n")
         self.assertEqual([], self.problems())
 
     def test_a_readme_path_in_a_comment_a_code_block_or_prose_is_not_a_link(self) -> None:
