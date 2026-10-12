@@ -8,13 +8,14 @@ trình duyệt đều bắt đầu kết nối.
 ## Polling ngắn — hỏi lại định kỳ
 
 ```mermaid
+%%{init: {"sequence": {"width": 100, "actorMargin": 30, "messageMargin": 24, "mirrorActors": false}}}%%
 sequenceDiagram
     participant C as Trình duyệt
     participant S as Máy chủ
-    C->>S: Có trạng thái mới không?
+    C->>S: Có tin mới chưa?
     S-->>C: Chưa có
     Note over C: Đợi một khoảng
-    C->>S: Có trạng thái mới không?
+    C->>S: Có tin mới chưa?
     S-->>C: Đang giao hàng
 ```
 
@@ -23,13 +24,14 @@ Dễ làm; nhiều lượt hỏi có thể không có dữ liệu mới. Chu k�
 ## Polling dài — giữ lượt hỏi đến khi có tin
 
 ```mermaid
+%%{init: {"sequence": {"width": 100, "actorMargin": 30, "messageMargin": 24, "mirrorActors": false}}}%%
 sequenceDiagram
     participant C as Trình duyệt
     participant S as Máy chủ
     C->>S: Chờ trạng thái mới
-    Note over S: Giữ request tới khi có tin hoặc hết hạn
+    Note over C,S: Giữ tới khi có tin<br/>hoặc hết hạn
     S-->>C: Đang giao hàng
-    C->>S: Mở lượt chờ tiếp theo
+    C->>S: Mở lượt chờ mới
 ```
 
 Ít phản hồi rỗng hơn; vẫn cần gửi request mới sau mỗi phản hồi hoặc khi hết hạn.
@@ -37,13 +39,15 @@ sequenceDiagram
 ## SSE — máy chủ gửi sự kiện một chiều
 
 ```mermaid
+%%{init: {"sequence": {"width": 100, "actorMargin": 30, "messageMargin": 24, "mirrorActors": false}}}%%
 sequenceDiagram
     participant C as Trình duyệt
     participant S as Máy chủ
     C->>S: Mở luồng sự kiện
     S-->>C: Đơn được xác nhận
     S-->>C: Đang giao hàng
-    S-->>C: Đã giao
+    C->>S: Hủy đơn qua HTTP
+    S-->>C: Đã hủy
 ```
 
 Hợp với thông báo trạng thái. **Luồng SSE chỉ đi từ máy chủ tới trình duyệt**;
@@ -52,11 +56,12 @@ trình duyệt vẫn có thể gửi HTTP request riêng, chẳng hạn để h�
 ## WebSocket — trao đổi hai chiều
 
 ```mermaid
+%%{init: {"sequence": {"width": 100, "actorMargin": 30, "messageMargin": 24, "mirrorActors": false}}}%%
 sequenceDiagram
     participant C as Trình duyệt
     participant S as Máy chủ
-    C->>S: Bắt đầu kết nối WebSocket
-    S-->>C: Kết nối được thiết lập
+    C->>S: Mở WebSocket
+    S-->>C: Đã kết nối
     C->>S: Gửi tin nhắn
     S-->>C: Nhận tin nhắn
     C->>S: Gửi tiếp
@@ -82,6 +87,7 @@ hạ tầng và mức phức tạp chấp nhận được.
 
 </details>
 
-Nguồn đối chiếu: [bài ByteByteGo](https://github.com/ByteByteGoHq/system-design-101/blob/main/data/guides/shortlong-polling-sse-websocket.md).
+Nguồn đối chiếu: [bài ByteByteGo, bản đã ghim](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/shortlong-polling-sse-websocket.md).
 Các sơ đồ là bố cục mới cho bản brainstorm. Bản học cuối cần bổ sung kiểm chứng từ tài liệu
-giao thức chính thức; chưa kiểm tra hình render trên điện thoại.
+giao thức chính thức. Độ rộng và cỡ chữ các hình đã được đo ước lượng ở 320/375/430 px (cách đo trong
+DECISIONS.md); chưa kiểm tra render thật trên GitHub hoặc điện thoại.

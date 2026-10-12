@@ -1,11 +1,11 @@
 # System Design 101 — học bằng hình, tiếng Việt
 
-**Đề xuất v0 để brainstorm.** Giữ 15 nhóm và 404 mục bài học theo mục lục
+**Đề xuất v0; quyết định đã chốt nằm ở [DECISIONS.md](DECISIONS.md) và thắng khi mâu thuẫn.** Giữ 15 nhóm và 404 mục bài học theo mục lục
 [ByteByteGo](https://github.com/ByteByteGoHq/system-design-101). Mỗi mục nguồn có một ID
 trong [source-map.json](source-map.json); những bài gần nhau vẫn có mục riêng.
 
 ```mermaid
-flowchart LR
+flowchart TB
     A["404 mục nguồn"] --> B["Đối chiếu từng bài"]
     B --> C["Sơ đồ tiếng Việt"]
     C --> D["Chú thích ngắn"]
@@ -14,9 +14,10 @@ flowchart LR
 
 | Bắt đầu ở đâu? | Nội dung |
 |---|---|
-| [Brief brainstorm](BRIEF.md) | Ràng buộc, quyết định đề xuất, câu hỏi cho Codex |
+| [Kết luận brainstorm](DECISIONS.md) | Quyết định đã chốt, giấy phép, schema tối thiểu, thứ tự viết |
+| [Brief brainstorm](BRIEF.md) | Ràng buộc, đề xuất v0, câu hỏi cho Codex |
 | [Mẫu bài trực quan](visual-prototype.md) | Polling / SSE / WebSocket, bốn sơ đồ nhỏ |
-| [Bảng đối chiếu](source-map.json) | Đủ 404 mục, thứ tự nguồn, link và đường dẫn từng bài |
+| [Bảng đối chiếu](source-map.json) | Đủ 404 mục, thứ tự nguồn, link, phiên bản đã ghim và mục trùng nguồn |
 
 Nội dung học chỉ có tiếng Việt; tên công nghệ như SSE, HTTP, Redis giữ nguyên.
 Tiêu đề tiếng Anh trong bảng đối chiếu chỉ là metadata nguồn. Đã đọc thân bài của 8 bài mẫu;
@@ -32,8 +33,8 @@ flowchart TB
     D --> E["Một câu hỏi nhìn hình"]
 ```
 
-Đề xuất 70–80% diện tích dành cho hình, 150–300 từ phần thân mỗi bài, 5–8 phút học.
-Đây là mục tiêu trình bày để thử nghiệm, chưa phải số đo của khóa học hoàn chỉnh.
+Hình chiếm phần lớn bài; phần chính 150–300 từ là mặc định mềm (phần sâu tùy chọn), 5–8 phút học.
+Đây là mục tiêu trình bày để thử nghiệm, chưa đo với người học thật.
 
 ## Bản đồ chương
 
@@ -56,11 +57,10 @@ flowchart TB
 | Nền tảng máy tính | 12 |
 | **Tổng** | **404** |
 
-## Sau brainstorm
+## Bước tiếp theo
 
-1. Chốt mẫu bài và cách tổ chức kho nội dung mới.
-2. Thử 3 bài đầu của nhóm API, giữ nguyên thứ tự nguồn.
-3. Duyệt độ rõ của hình trên điện thoại, độ chính xác và mức bám sát bài gốc.
-4. Biên soạn từng nhóm, mỗi PR một đợt nhỏ; đánh dấu bài đã đọc nguồn và đã kiểm chứng.
+Theo [DECISIONS.md](DECISIONS.md): viết lần lượt từng bài theo thứ tự nguồn, bắt đầu từ ba bài đầu
+của nhóm API; mỗi PR một đợt nhỏ, gọi Codex review tới khi hết finding rồi merge. Tiến độ và bước
+kiểm chứng của từng bài ghi ở `lesson.yaml` của bài đó, không ghi ở `source-map.json`.
 
 PR này chưa thay đổi giáo trình Agentic Coding hoặc bộ sinh bài hiện tại.
