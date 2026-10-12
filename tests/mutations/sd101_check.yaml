@@ -895,7 +895,7 @@ mutations:
   replace: "        if False:\n            found.append(f\"{key} must be"
   test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
 - label: an observation date that is not a date is accepted
-  find: '    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):'
+  find: '    if not valid_date(data.get("observed_on")):'
   replace: '    if False:'
   test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
 - label: an empty note is accepted
