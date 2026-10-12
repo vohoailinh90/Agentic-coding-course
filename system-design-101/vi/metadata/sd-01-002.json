@@ -86,6 +86,11 @@
       "sha": "f4fda4798d08ce982061d67a483fa26fd6e3decf",
       "url": "https://github.com/vohoailinh90/Agentic-coding-course/pull/25#issuecomment-6126952093",
       "result": "No major issues reported; applies only to that commit."
+    },
+    {
+      "sha": "cc77dd212a0432075590348c16e3761d9ace1bce",
+      "url": "https://github.com/vohoailinh90/Agentic-coding-course/pull/25#issuecomment-6127917483",
+      "result": "No major issues reported; CI 38273986497 successful for that snapshot. Does not cover newer main."
     }
   ]
 }
