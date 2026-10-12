@@ -266,8 +266,9 @@ class LessonMarkdownRuleTests(StoreCase):
 
     def test_a_real_looking_svg_drawing_is_accepted(self) -> None:
         drawing = ('<?xml version="1.0" encoding="UTF-8"?>\n'
-                   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><title>Data: sơ đồ</title>'
-                   '<defs><style>.a{fill:red}</style></defs><use href="#a"/><text>Data: chữ</text></svg>')
+                   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" aria-label="Data: sơ đồ">'
+                   '<title>Data: sơ đồ</title><defs><style>.a::after{content:"data: chữ"}</style></defs>'
+                   '<use href="#a"/><text>Data: chữ</text></svg>')
         lesson_dir = self.write_lesson("sd-01-001")
         (lesson_dir / "figure.svg").write_text(drawing, encoding="utf-8")
         self.assertEqual([], self.problems())
