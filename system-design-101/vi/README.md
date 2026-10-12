@@ -9,7 +9,9 @@ Các mục gần nhau hoặc dùng chung nguồn vẫn giữ ID và vị trí ri
 2. [Ứng dụng thực tế của bộ cân bằng tải](lessons/sd-01-002/lesson.md) — đã qua review kỹ thuật ở SHA 034a992 của PR #25.
 3. [Năm mã trạng thái HTTP kỳ lạ](lessons/sd-01-003/lesson.md) — đã qua review kỹ thuật ở SHA 034a992 của PR #25.
 
-4. [gRPC hoạt động thế nào?](lessons/sd-01-004/lesson.md) — đã viết, chờ review.
+4. [gRPC hoạt động thế nào?](lessons/sd-01-004/lesson.md) — đã qua review kỹ thuật ở SHA 11996eff của PR #30.
+
+5. [NAT giúp Internet mở rộng ra sao?](lessons/sd-01-005/lesson.md) — đã viết, chờ review.
 
 Danh mục đầy đủ và snapshot nguồn: [bảng đối chiếu](../../brainstorm/system-design-101-vi/source-map.json).
 Quy tắc đã chốt: [kết luận brainstorm](../../brainstorm/system-design-101-vi/DECISIONS.md).
