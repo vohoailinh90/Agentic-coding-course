@@ -1,0 +1,15 @@
+# System Design 101 — tiếng Việt
+
+Kho nội dung bài học System Design bằng tiếng Việt, học bằng hình. Quyết định, schema và quy tắc
+nằm ở [brainstorm/system-design-101-vi/DECISIONS.md](../../brainstorm/system-design-101-vi/DECISIONS.md);
+bảng đối chiếu 404 mục nguồn ở [source-map.json](../../brainstorm/system-design-101-vi/source-map.json).
+
+Quy tắc ngắn: mỗi bài là một thư mục `lessons/<id>/` có `lesson.md` và `lesson.yaml` (nơi duy nhất
+ghi tiến độ). Bài viết độc lập bằng lời riêng, sơ đồ tự thiết kế, không dịch sát nguồn và không dùng
+ảnh nguồn, vì nguồn là CC BY-NC-ND 4.0 và kho này công khai.
+
+| ID | Bài |
+|---|---|
+| [sd-01-001](lessons/sd-01-001/lesson.md) | Polling ngắn, polling dài, SSE và WebSocket |
+
+Trạng thái từng bài xem ở `lesson.yaml` của bài đó, không lặp lại ở đây.

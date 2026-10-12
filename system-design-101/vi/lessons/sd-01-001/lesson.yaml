@@ -1,0 +1,10 @@
+id: sd-01-001
+title_vi: Polling ngắn, polling dài, SSE và WebSocket
+content_status: drafted      # planned | drafted | approved
+verification:                # mỗi mục: pending | done
+  source_read: done          # đã đọc thân bài nguồn ở blob ghim trong source-map.json
+  claims: pending            # chưa đối chiếu RFC 6202 / WHATWG SSE / RFC 6455 (không truy cập được lúc viết)
+  technical: pending         # chờ review kỹ thuật
+  mobile: pending            # đo ước lượng đã đạt ngưỡng (chữ >= 14 px ở 375 px, >= 12 px ở 320 px; Mermaid + Chromium); chờ kiểm tra thật trên GitHub hoặc điện thoại
+learner_test: pending        # chưa thử với người học
+image_evidence: []           # bài không dùng ảnh nguồn
