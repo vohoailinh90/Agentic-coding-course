@@ -29,7 +29,7 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     every relative link and image source (inline, reference-style, <a href>, <img src>, <img srcset>)
     resolves, every image is a .svg file directly inside the lesson's own directory,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
-    in a code block or a comment), it mentions no lesson id that has no lesson
+    in a code block or a comment; a #fragment on it is fine), it mentions no lesson id that has no lesson
     directory, and it never contains assets.bytebytego.com, the host of every
     source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
 And once for the store: README.md links every lesson directory (as a real link, not a
@@ -79,6 +79,7 @@ IMAGE_EVIDENCE_KEYS = {"url", "sha256", "retrieved_on"}
 LESSON_ID = re.compile(r"\bsd-\d{2}-\d{3}\b")
 SHA256 = re.compile(r"[0-9a-fA-F]{64}")
 ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
@@ -138,10 +139,11 @@ class HtmlScan(HTMLParser):
         if tag == "a":
             self.hrefs.extend(value for name, value in attrs if name == "href" and value)
         elif tag == "img":
-            self.srcs.extend(value for name, value in attrs if name == "src" and value)
+            sources = [value for name, value in attrs if name == "src" and value]
             for name, value in attrs:
                 if name == "srcset" and value:
-                    self.srcs.extend(srcset_urls(value))
+                    sources.extend(srcset_urls(value))
+            self.srcs.extend(sources or [""])
         elif tag == "details":
             self.details_depth += 1
 
@@ -178,7 +180,7 @@ def has_unclosed_fence(text: str) -> bool:
     for token in markdown_tokens(text):
         if token.type == "fence" and token.map:
             last = token.map[1] - 1
-            closing = lines[last].strip() if last > token.map[0] and last < len(lines) else ""
+            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if token.map[0] < last < len(lines) else ""
             if not (closing and set(closing) == {token.markup[0]} and len(closing) >= len(token.markup)):
                 return True
     return False
@@ -200,9 +202,14 @@ def image_sources(text: str) -> set[str]:
 
 
 def table_cells(text: str) -> list[str]:
-    """The source text of every cell of every table Markdown would render, with or without outer pipes."""
+    """The text shown in every cell of every table Markdown would render, with or without outer pipes.
+
+    It is read from the inline tokens, so link syntax, emphasis marks, HTML tags and entities are gone.
+    """
     tokens = markdown_tokens(text)
-    return [following.content for token, following in zip(tokens, tokens[1:])
+    return ["".join(child.content for child in following.children or []
+                    if child.type in ("text", "text_special", "code_inline"))
+            for token, following in zip(tokens, tokens[1:])
             if token.type in ("th_open", "td_open") and following.type == "inline"]
 
 
@@ -342,7 +349,7 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
             problems.append(Problem(lesson_id, f"image {source!r} must be a local .svg file drawn for the lesson, "
                                                "directly inside the lesson directory"))
     snapshot = entries.get(lesson_id, {}).get("source_snapshot_url")
-    if snapshot and snapshot not in link_destinations(text):
+    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:
         problems.append(Problem(lesson_id, "lesson.md does not link the pinned source snapshot"))
     for mentioned in sorted(set(LESSON_ID.findall(text))):
         if mentioned not in lesson_ids:
@@ -353,8 +360,8 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
 
 
 def plain_cell(cell: str) -> str:
-    """What a table cell shows: no HTML tags or emphasis marks, no edge punctuation, lower case."""
-    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()
+    """What a table cell shows, compared with the vocabulary: no stray emphasis marks or edge punctuation, lower case."""
+    return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()
 
 
 def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:

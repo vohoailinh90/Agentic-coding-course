@@ -60,10 +60,6 @@ mutations:
   find: '    return unquote(destination.split("#")[0].split("?")[0]) or None'
   replace: '    return destination.split("#")[0].split("?")[0] or None'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_with_non_ascii_letters_resolves
-- label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
-  find: '    if snapshot and snapshot not in link_destinations(text):'
-  replace: '    if snapshot and snapshot not in text:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_a_code_block_is_not_a_link
 - label: an href on a tag other than <a> counts as a link
   find: '        if tag == "a":'
   replace: '        if True:'
@@ -88,14 +84,6 @@ mutations:
   find: '    problems.extend(check_readme(store, lesson_ids))'
   replace: '    pass'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
-- label: a README status cell is compared as raw text, not as what it shows
-  find: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()'
-  replace: '    return cell.strip()'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
-- label: a README status cell is compared case sensitively
-  find: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()'
-  replace: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:")'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
 - label: a broken store still exits zero
   find: '    return 1 if problems else 0'
   replace: '    return 0'
@@ -332,14 +320,6 @@ mutations:
   find: RASTER_ELEMENTS = {"image", "feimage", "img"}
   replace: RASTER_ELEMENTS = {"image", "feimage"}
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: a lone opening fence is read as its own closing line
-  find: '            closing = lines[last].strip() if last > token.map[0] and last < len(lines) else ""'
-  replace: '            closing = lines[last].strip() if last < len(lines) else ""'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lone_opening_fence_at_the_end_of_the_file_is_reported
-- label: an empty fenced block is read as unclosed
-  find: '            closing = lines[last].strip() if last > token.map[0] and last < len(lines) else ""'
-  replace: '            closing = ""'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_empty_fenced_block_is_not_unclosed
 - label: a README link to a lesson that was deleted is accepted
   find: '                    if target and not (store / target).exists())'
   replace: '                    if False)'
@@ -356,3 +336,63 @@ mutations:
   find: '    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}'
   replace: '    destinations = {destination: destination for destination in link_destinations(text)}'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
+- label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
+  find: '    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
+  replace: '    if snapshot and snapshot not in text:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_a_code_block_is_not_a_link
+- label: a link to a section of the pinned snapshot is not the snapshot
+  find: '    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
+  replace: '    if snapshot and snapshot not in link_destinations(text):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_link_to_a_section_of_the_pinned_snapshot_is_a_link_to_it
+- label: a link to another file with a fragment is taken for the snapshot
+  find: '    if snapshot and snapshot not in {destination.split("#")[0] for destination in link_destinations(text)}:'
+  replace: '    if snapshot and not any(destination.startswith(snapshot) for destination in link_destinations(text)):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_link_to_another_file_with_a_fragment_is_not_the_snapshot
+- label: a README status cell is compared as raw source text, not as what it shows
+  find: "    return [\"\".join(child.content for child in following.children or []\n                    if child.type in (\"text\", \"text_special\", \"code_inline\"))"
+  replace: '    return [following.content'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: the text of a code span is not part of what a README cell shows
+  find: '                    if child.type in ("text", "text_special", "code_inline"))'
+  replace: '                    if child.type in ("text", "text_special"))'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: an entity in a README cell is not decoded
+  find: '                    if child.type in ("text", "text_special", "code_inline"))'
+  replace: '                    if child.type in ("code_inline",))'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: a README status cell is compared case sensitively
+  find: '    return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()'
+  replace: '    return re.sub(r"[*_`~]", "", cell).strip(" .,;:")'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: a README status cell keeps its emphasis marks
+  find: '    return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()'
+  replace: '    return cell.strip(" .,;:").lower()'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: a lone opening fence is read as its own closing line
+  find: '            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if token.map[0] < last < len(lines) else ""'
+  replace: '            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if last < len(lines) else ""'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lone_opening_fence_at_the_end_of_the_file_is_reported
+- label: an empty fenced block is read as unclosed
+  find: '            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if token.map[0] < last < len(lines) else ""'
+  replace: '            closing = ""'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_empty_fenced_block_is_not_unclosed
+- label: the blockquote prefix is left on the closing fence line
+  find: '            closing = BLOCKQUOTE_PREFIX.sub("", lines[last]).strip() if token.map[0] < last < len(lines) else ""'
+  replace: '            closing = lines[last].strip() if token.map[0] < last < len(lines) else ""'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_closed_fence_inside_a_blockquote_or_a_list_is_closed
+- label: only one level of blockquote prefix is removed
+  find: BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
+  replace: BLOCKQUOTE_PREFIX = re.compile(r"^\s*>")
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_closed_fence_inside_a_blockquote_or_a_list_is_closed
+- label: an unclosed fence inside a blockquote is accepted
+  find: BLOCKQUOTE_PREFIX = re.compile(r"^(?:\s*>)+")
+  replace: BLOCKQUOTE_PREFIX = re.compile(r"^.*$")
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_unclosed_fence_inside_a_blockquote_is_reported
+- label: an <img> without a source is not recorded
+  find: '            self.srcs.extend(sources or [""])'
+  replace: '            self.srcs.extend(sources)'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_html_image_without_a_source_is_reported
+- label: an <img> with only a srcset is taken for one without a source
+  find: '            self.srcs.extend(sources or [""])'
+  replace: '            self.srcs.extend([""] + sources)'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_html_image_with_only_a_srcset_is_a_source

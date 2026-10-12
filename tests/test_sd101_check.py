@@ -309,6 +309,21 @@ class LessonMarkdownRuleTests(StoreCase):
         (lesson_dir / "figure.svg").write_text(drawing, encoding="utf-8")
         self.assertEqual([], self.problems())
 
+    def test_a_closed_fence_inside_a_blockquote_or_a_list_is_closed(self) -> None:
+        forms = {"blockquote": "> ```\n> flowchart TB\n> ```", "nested blockquote": "> > ~~~\n> > a\n> > ~~~",
+                 "blockquote without a space": ">```\n>a\n>```", "list item": "- mục\n\n  ```\n  a\n  ```",
+                 "blockquote in a list": "- mục\n\n  > ```\n  > a\n  > ```"}
+        for name, block in forms.items():
+            with self.subTest(block=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + block + "\n")
+                self.assertEqual([], self.problems())
+
+    def test_an_unclosed_fence_inside_a_blockquote_is_reported(self) -> None:
+        for name, block in {"unclosed": "> ```\n> flowchart TB", "closed by a shorter fence": "> ````\n> a\n> ```"}.items():
+            with self.subTest(block=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + block + "\n")
+                self.assertProblem("unclosed code fence")
+
     def test_a_lone_opening_fence_at_the_end_of_the_file_is_reported(self) -> None:
         for name, ending in {"backticks": "```", "tildes": "~~~", "long backticks": "````",
                              "backticks and a newline": "```\n", "an info string": "```mermaid"}.items():
@@ -413,6 +428,18 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=f"# Bài một\n\nNguồn: {SNAPSHOT}\n")
         self.assertProblem("pinned source snapshot")
 
+    def test_a_link_to_a_section_of_the_pinned_snapshot_is_a_link_to_it(self) -> None:
+        for name, body in {"markdown": f"# Bài một\n\n[nguồn]({SNAPSHOT}#phan-1)\n",
+                           "html": f'# Bài một\n\n<a href="{SNAPSHOT}#phan-1">nguồn</a>\n',
+                           "reference": f"# Bài một\n\n[nguồn][s]\n\n[s]: {SNAPSHOT}#L10-L20\n"}.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=body)
+                self.assertEqual([], self.problems())
+
+    def test_a_link_to_another_file_with_a_fragment_is_not_the_snapshot(self) -> None:
+        self.write_lesson("sd-01-001", body=f"# Bài một\n\n[nguồn]({SNAPSHOT}x#phan-1)\n")
+        self.assertProblem("does not link the pinned source snapshot")
+
     def test_a_snapshot_given_as_an_html_anchor_is_a_link(self) -> None:
         self.write_lesson("sd-01-001", body=f'# Bài một\n\n<a href="{SNAPSHOT}">nguồn</a>\n')
         self.assertEqual([], self.problems())
@@ -454,6 +481,20 @@ class LessonMarkdownRuleTests(StoreCase):
 
     def test_a_src_attribute_on_a_tag_other_than_img_is_not_an_image(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + '\nH<sub src="missing.png">2</sub>O\n')
+        self.assertEqual([], self.problems())
+
+    def test_an_html_image_without_a_source_is_reported(self) -> None:
+        forms = {"no attributes": "<img>", "only alt": '<img alt="sơ đồ">', "empty src": '<img src="" alt="x">',
+                 "empty single-quoted src": "<img src=''>", "empty srcset": '<img srcset="" alt="x">',
+                 "only a width": '<img width="100">'}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
+                self.assertProblem("must be a local .svg file")
+
+    def test_an_html_image_with_only_a_srcset_is_a_source(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001", body=BODY + '\n<img srcset="a.svg 1x" alt="x">\n')
+        (lesson_dir / "a.svg").write_text("<svg/>", encoding="utf-8")
         self.assertEqual([], self.problems())
 
     def test_a_missing_or_non_svg_image_in_an_img_srcset_is_reported(self) -> None:
@@ -542,11 +583,14 @@ class ReadmeRuleTests(StoreCase):
 
     def test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported(self) -> None:
         forms = {"bold": "**approved**", "code": "`drafted`", "capital": "Approved", "html": "<b>planned</b>",
-                 "trailing dot": "drafted.", "emphasis": "_drafted_"}
+                 "trailing dot": "drafted.", "emphasis": "_drafted_", "link": "[drafted](https://example.com)",
+                 "bold link": "[**approved**](lessons/sd-01-001/lesson.md)", "reference link": "[planned][s]",
+                 "entity": "&#100;rafted", "image alt": "![x](a.svg) drafted"}
         for name, cell in forms.items():
             with self.subTest(form=name):
                 row = f"| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài một | {cell} |\n"
-                self.write_readme("# Kho\n\n| ID | Bài | Ghi chú |\n|---|---|---|\n" + row)
+                self.write_readme("# Kho\n\n| ID | Bài | Ghi chú |\n|---|---|---|\n" + row
+                                  + "\n[s]: https://example.com\n")
                 self.assertProblem("repeats a lesson status")
 
     def test_a_status_in_a_row_whose_lesson_link_is_a_reference_is_reported(self) -> None:
