@@ -17,8 +17,7 @@ flowchart TB
     classDef bad fill:#ffedd5,stroke:#c2410c,color:#0f172a,stroke-dasharray: 4 3
 ```
 
-Khách luôn nói chuyện với bộ cân bằng tải, không nói thẳng với máy nào. Nó chia khách vào các máy còn
-khỏe; máy C đang lỗi bị bỏ qua cho đến khi hồi phục.
+Khách chỉ nói chuyện với bộ cân bằng tải. Nó chia khách vào các máy còn khỏe và bỏ qua máy C đang lỗi.
 
 ## Sáu việc thường gặp
 
@@ -26,14 +25,14 @@ khỏe; máy C đang lỗi bị bỏ qua cho đến khi hồi phục.
    trả lời tốt.
 2. **Xử lý khi máy hỏng:** máy không qua kiểm tra bị tạm loại khỏi danh sách; khi hồi phục thì được
    nhận lại. Khách không phải biết máy nào hỏng.
-3. **Định tuyến theo nền tảng:** dựa vào nội dung yêu cầu (đường dẫn, header) để đưa khách di động
-   và khách web tới các nhóm máy khác nhau.
-4. **Kết thúc SSL:** bộ cân bằng tải mã hóa và giải mã HTTPS thay cho các máy phía sau, nên các máy
-   đó nhẹ việc hơn.
-5. **Cân bằng giữa nhiều vùng:** chia khách ra các máy đặt ở nhiều vùng, nên một vùng gặp sự cố thì
-   vùng khác vẫn phục vụ.
-6. **Giữ phiên:** đưa cùng một khách vào cùng một máy trong suốt phiên, để dữ liệu phiên lưu trên
-   máy đó vẫn dùng được.
+3. **Định tuyến theo nền tảng:** nhìn vào thông tin đi kèm mỗi yêu cầu (đường dẫn, hoặc header là dòng
+   mô tả như loại thiết bị) để đưa khách di động và khách web tới các nhóm máy khác nhau.
+4. **Kết thúc SSL:** HTTPS là kết nối được mã hóa (bằng SSL/TLS) để người ngoài không đọc được. Mã hóa
+   và giải mã tốn sức, nên bộ cân bằng tải làm thay các máy phía sau.
+5. **Cân bằng giữa nhiều vùng:** vùng là khu vực (hoặc nhóm trung tâm dữ liệu) tách biệt nhau. Chia
+   khách ra máy ở nhiều vùng, một vùng gặp sự cố thì vùng khác vẫn phục vụ.
+6. **Giữ phiên:** phiên là chuỗi thao tác liền nhau của một khách, như giỏ hàng. Đưa khách vào cùng
+   một máy suốt phiên để dữ liệu phiên lưu trên máy đó vẫn dùng được.
 
 **Giới hạn cần nhớ:** nếu chỉ có một bộ cân bằng tải thì chính nó là điểm hỏng duy nhất. Hệ thống
 thật thường chạy từ hai bộ trở lên hoặc dùng dịch vụ được quản lý.
@@ -71,5 +70,5 @@ Bài này viết bằng lời riêng, sơ đồ thiết kế mới. Bài nguồn
 (`sd-01-003`, xem hai bản đã ghim); ảnh đó chưa được mở, nên bài này không dùng ảnh nguồn và dựng lại
 hình từ các ý ở trên. Các điểm kỹ thuật chưa đối chiếu với tài liệu chính thức trong bản nháp này.
 
-Đọc cùng: `sd-01-011` (các tình huống dùng bộ cân bằng tải), `sd-01-016` và `sd-01-018` (so với
-reverse proxy và API gateway).
+Các bài cùng chủ đề (bộ cân bằng tải, reverse proxy, API gateway) nằm ở những mục sau trong mục lục
+nguồn; sẽ thêm tên và liên kết khi các bài đó được viết.
