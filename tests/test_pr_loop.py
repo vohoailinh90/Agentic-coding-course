@@ -59,6 +59,11 @@ class PullRequestLoopTests(unittest.TestCase):
         loop = protocol[protocol.index("Fix, then review the new head."):]
         self.assertIn("with a regression test where the defect has testable behavior", loop[:600])
         self.assertIn("a prose-only fix", loop[:600])
+        fix = protocol[protocol.index("## 13. "):protocol.index("## 14. ")]
+        self.assertNotIn("  - Add or update a regression test.", fix)
+        self.assertNotIn("  - A regression test covers the confirmed defect.", fix)
+        self.assertIn("where the defect has testable behavior", fix)
+        self.assertIn("where it has testable behavior", fix)
 
     def test_no_document_still_caps_review_rounds(self) -> None:
         """The handoff and ADR 010 once said at most two review rounds; both must say the cap is gone."""
@@ -97,6 +102,15 @@ class PullRequestLoopTests(unittest.TestCase):
                 for phrase in stale:
                     self.assertNotIn(phrase, text)
                 self.assertRegex(text, required)
+
+    def test_a_thumbs_up_only_clean_run_can_end_the_loop(self) -> None:
+        """Section 16 says a clean review may leave only a thumbs-up, so the exit must accept it for the requested head."""
+        protocol = read(PROTOCOL).replace("\n", " ")
+        exit_rule = protocol[protocol.index("**Exit when clean.**"):]
+        exit_rule = exit_rule[:exit_rule.index("A fix pushed after the last review")]
+        for phrase in ("only a thumbs-up", "👍 reaction on that command's request comment",
+                       "provided the PR head has not moved since that request was posted"):
+            self.assertIn(phrase, exit_rule)
 
     def test_every_protocol_section_it_cites_exists(self) -> None:
         protocol = read(PROTOCOL)
