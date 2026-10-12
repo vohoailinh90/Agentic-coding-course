@@ -27,8 +27,9 @@ Khách chỉ nói chuyện với bộ cân bằng tải. Nó chia khách vào c�
    nhận lại. Khách không phải biết máy nào hỏng.
 3. **Định tuyến theo nền tảng:** nhìn vào thông tin đi kèm mỗi yêu cầu (đường dẫn, hoặc header là dòng
    mô tả như loại thiết bị) để đưa khách di động và khách web tới các nhóm máy khác nhau.
-4. **Kết thúc SSL:** HTTPS là kết nối được mã hóa (bằng SSL/TLS) để người ngoài không đọc được. Mã hóa
-   và giải mã tốn sức, nên bộ cân bằng tải làm thay các máy phía sau.
+4. **Kết thúc SSL:** HTTPS là kết nối được mã hóa (bằng SSL/TLS) để người ngoài không đọc được. Bộ cân
+   bằng tải giải mã ở cửa vào rồi chuyển yêu cầu cho các máy phía sau, nên các máy đó đỡ việc mã hóa
+   (nếu đoạn sau không mã hóa lại).
 5. **Cân bằng giữa nhiều vùng:** vùng là khu vực (hoặc nhóm trung tâm dữ liệu) tách biệt nhau. Chia
    khách ra máy ở nhiều vùng, một vùng gặp sự cố thì vùng khác vẫn phục vụ.
 6. **Giữ phiên:** phiên là chuỗi thao tác liền nhau của một khách, như giỏ hàng. Đưa khách vào cùng
@@ -52,7 +53,8 @@ không trả lời tốt nên bị bỏ qua (việc 2).
 <summary>Xem sâu hơn (tùy chọn, chưa kiểm chứng bằng tài liệu)</summary>
 
 - Kết thúc SSL nghĩa là đoạn từ bộ cân bằng tải tới máy phía sau có thể đi không mã hóa. Nếu mạng
-  nội bộ chưa đủ tin cậy thì mã hóa lại đoạn đó.
+  nội bộ chưa đủ tin cậy thì mã hóa lại đoạn đó; khi ấy các máy phía sau vẫn phải mã hóa và giải mã
+  đoạn này.
 - Giữ phiên có giá: tải có thể lệch, và máy chết thì mất phiên trên máy đó. Nhiều hệ thống lưu phiên
   ở một kho dùng chung để không cần giữ phiên.
 - Kiểm tra sức khỏe quá nông (chỉ thấy cổng mở) có thể bỏ sót lỗi của ứng dụng; nên kiểm tra một
