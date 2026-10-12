@@ -33,7 +33,8 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     directory, and it never contains assets.bytebytego.com, the host of every
     source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
 And once for the store: README.md links every lesson directory (as a real link, not a
-path in a comment or a code block) and carries no status words in its table, however formatted
+path in a comment or a code block), every relative link in it resolves (a row left behind for a
+deleted lesson is an error), and it carries no status words in its table, however formatted
 (status lives only in lesson.yaml).
 
 This guards against honest mistakes while ~400 lessons are written; it is not a security
@@ -176,7 +177,8 @@ def has_unclosed_fence(text: str) -> bool:
     lines = text.split("\n")
     for token in markdown_tokens(text):
         if token.type == "fence" and token.map:
-            closing = lines[token.map[1] - 1].strip() if token.map[1] - 1 < len(lines) else ""
+            last = token.map[1] - 1
+            closing = lines[last].strip() if last > token.map[0] and last < len(lines) else ""
             if not (closing and set(closing) == {token.markup[0]} and len(closing) >= len(token.markup)):
                 return True
     return False
@@ -360,10 +362,13 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     if not readme.exists():
         return [Problem("README.md", "is missing")]
     text = readme.read_text(encoding="utf-8")
-    targets = (relative_target(destination) for destination in link_destinations(text))
-    linked = {posixpath.normpath(target) for target in targets if target}
+    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}
+    linked = {posixpath.normpath(target) for target in destinations.values() if target}
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
+    problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")
+                    for destination, target in sorted(destinations.items())
+                    if target and not (store / target).exists())
     if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):
         problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
     return problems

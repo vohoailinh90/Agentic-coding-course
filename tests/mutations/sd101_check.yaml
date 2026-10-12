@@ -132,14 +132,6 @@ mutations:
   find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
   replace: '    if False:'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_word_in_a_readme_row_is_reported
-- label: a README link written with ./ no longer counts
-  find: '    linked = {posixpath.normpath(target) for target in targets if target}'
-  replace: '    linked = {target for target in targets if target}'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts
-- label: a README link with a fragment, query or percent-encoding no longer counts
-  find: '    targets = (relative_target(destination) for destination in link_destinations(text))'
-  replace: '    targets = iter(link_destinations(text))'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
 - label: an image evidence url need not be an http(s) url with a host
   find: '    return parsed.scheme in ("http", "https") and bool(parsed.netloc)'
   replace: '    return isinstance(url, str)'
@@ -340,3 +332,27 @@ mutations:
   find: RASTER_ELEMENTS = {"image", "feimage", "img"}
   replace: RASTER_ELEMENTS = {"image", "feimage"}
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: a lone opening fence is read as its own closing line
+  find: '            closing = lines[last].strip() if last > token.map[0] and last < len(lines) else ""'
+  replace: '            closing = lines[last].strip() if last < len(lines) else ""'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lone_opening_fence_at_the_end_of_the_file_is_reported
+- label: an empty fenced block is read as unclosed
+  find: '            closing = lines[last].strip() if last > token.map[0] and last < len(lines) else ""'
+  replace: '            closing = ""'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_empty_fenced_block_is_not_unclosed
+- label: a README link to a lesson that was deleted is accepted
+  find: '                    if target and not (store / target).exists())'
+  replace: '                    if False)'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported
+- label: a README link is looked up with its fragment
+  find: '    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}'
+  replace: '    destinations = {destination: destination for destination in link_destinations(text)}'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_readme_links_that_are_not_relative_paths_are_not_looked_up
+- label: a README link written with ./ no longer counts
+  find: '    linked = {posixpath.normpath(target) for target in destinations.values() if target}'
+  replace: '    linked = {target for target in destinations.values() if target}'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts
+- label: a README link with a fragment, query or percent-encoding no longer counts
+  find: '    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}'
+  replace: '    destinations = {destination: destination for destination in link_destinations(text)}'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson

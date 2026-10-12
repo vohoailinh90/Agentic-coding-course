@@ -309,6 +309,19 @@ class LessonMarkdownRuleTests(StoreCase):
         (lesson_dir / "figure.svg").write_text(drawing, encoding="utf-8")
         self.assertEqual([], self.problems())
 
+    def test_a_lone_opening_fence_at_the_end_of_the_file_is_reported(self) -> None:
+        for name, ending in {"backticks": "```", "tildes": "~~~", "long backticks": "````",
+                             "backticks and a newline": "```\n", "an info string": "```mermaid"}.items():
+            with self.subTest(ending=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + ending)
+                self.assertProblem("unclosed code fence")
+
+    def test_an_empty_fenced_block_is_not_unclosed(self) -> None:
+        for name, block in {"backticks": "```\n```", "tildes": "~~~\n~~~", "an info string": "```text\n```\n"}.items():
+            with self.subTest(block=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + block + "\n")
+                self.assertEqual([], self.problems())
+
     def test_an_unclosed_tilde_fence_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n~~~mermaid\nflowchart TB\n")
         self.assertProblem("unclosed code fence")
@@ -504,6 +517,19 @@ class ReadmeRuleTests(StoreCase):
     def test_a_lesson_missing_from_the_readme_is_reported(self) -> None:
         self.write_readme("# Kho\n")
         self.assertProblem("does not link lessons/sd-01-001/lesson.md")
+
+    def test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported(self) -> None:
+        self.write_readme(README + "| [sd-01-009](lessons/sd-01-009/lesson.md) | Bài đã xóa |\n")
+        self.assertProblem("relative link 'lessons/sd-01-009/lesson.md' does not resolve")
+        self.write_readme(README + "[x][ref]\n\n[ref]: lessons/sd-01-009/lesson.md#phan-1\n")
+        self.assertProblem("relative link 'lessons/sd-01-009/lesson.md#phan-1' does not resolve")
+        self.write_readme(README + '<a href="lessons/sd-01-009/lesson.md">x</a>\n')
+        self.assertProblem("'lessons/sd-01-009/lesson.md' does not resolve")
+
+    def test_readme_links_that_are_not_relative_paths_are_not_looked_up(self) -> None:
+        self.write_readme(README + "[web](https://example.com/x) [mail](mailto:a@b.c) [top](#kho)\n"
+                          "[again](lessons/sd-01-001/lesson.md#phan-1)\n")
+        self.assertEqual([], self.problems())
 
     def test_a_missing_readme_is_reported(self) -> None:
         (self.store / "README.md").unlink()
