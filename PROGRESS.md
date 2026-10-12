@@ -60,14 +60,14 @@
   [brainstorm/system-design-101-vi/DECISIONS.md](brainstorm/system-design-101-vi/DECISIONS.md) và
   [ADR 011](docs/decisions/011-system-design-store.md). Bảng đối chiếu 404 mục nguồn ở
   `brainstorm/system-design-101-vi/source-map.json`.
-- **Đã có bài:** `sd-01-001` (polling, SSE, WebSocket), `sd-01-002` (bộ cân bằng tải), `sd-01-003` (mã HTTP kỳ lạ), `sd-01-004` (gRPC), `sd-01-005` (NAT, đang review). Trạng thái và các bước
+- **Đã có bài:** `sd-01-001` (polling, SSE, WebSocket), `sd-01-002` (bộ cân bằng tải), `sd-01-003` (mã HTTP kỳ lạ), `sd-01-004` (gRPC), `sd-01-005` (NAT, PR #31 đang review). Trạng thái và các bước
   kiểm chứng của từng bài chỉ ghi ở `system-design-101/vi/metadata/<id>.json`, không lặp lại ở đây.
 - PR theo đợt nhỏ; đối chiếu Codex review với SHA head/base hiện hành. Theo yêu cầu mới nhất trong
   phiên biên soạn này: không tự merge/deploy. Kho đã có hai bản bài độc lập từ các phiên khác nhau;
   PR #25 đã hợp nhất một nội dung cho mỗi ID và đạt review/CI tại
   `034a992d1b90d023083b2fe03790c06fdf991bca`, nhưng vẫn mở, chưa merge vào main.
   PR #30 đạt review 6131548831 tại 11996eff, base nhánh #25; chưa merge.
-  Đợt NAT nối tiếp nhánh #30; PR hiện hành ở system-design-101/vi/progress.json. Bài kế tiếp sd-01-006 (HTTP headers).
+  PR #31 (NAT) nối tiếp nhánh #30; tiến độ ở system-design-101/vi/progress.json. Bài kế tiếp sd-01-006 (HTTP headers).
 - **Rủi ro còn mở:** nguồn là CC BY-NC-ND 4.0 và repo công khai; bài viết độc lập bằng lời riêng, sơ đồ mới,
   không dịch sát nguồn. Chưa đăng Facebook/website trước khi giải quyết quyền dùng.
 
