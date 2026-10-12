@@ -280,7 +280,7 @@ def svg_problem(path: pathlib.Path) -> str | None:
     """Why a file named *.svg is not a self-contained drawing made for the lesson, or None."""
     try:
         root = ElementTree.parse(path).getroot()
-    except (ElementTree.ParseError, OSError, LookupError, ValueError):
+    except (ElementTree.ParseError, OSError, LookupError):
         return "is not well-formed XML, so it is not an SVG"
     if root.tag.rsplit("}", 1)[-1] != "svg":
         return "does not have an <svg> root element"

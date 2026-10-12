@@ -421,12 +421,8 @@ mutations:
   replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_url"
   test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised
 - label: an SVG that declares an unknown encoding raises
-  find: '    except (ElementTree.ParseError, OSError, LookupError, ValueError):'
-  replace: '    except (ElementTree.ParseError, OSError, ValueError):'
-  test: tests.test_sd101_check.RobustnessTests.test_odd_svg_files_are_reported_not_raised
-- label: an SVG that is not valid UTF-8 raises
-  find: '    except (ElementTree.ParseError, OSError, LookupError, ValueError):'
-  replace: '    except (ElementTree.ParseError, OSError, LookupError):'
+  find: '    except (ElementTree.ParseError, OSError, LookupError):'
+  replace: '    except (ElementTree.ParseError, OSError):'
   test: tests.test_sd101_check.RobustnessTests.test_odd_svg_files_are_reported_not_raised
 - label: a lesson.md that is a directory raises
   find: '            if not required.is_file():'
@@ -449,8 +445,8 @@ mutations:
   replace: '        if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
 - label: a file that is not XML is accepted as an SVG
-  find: '    except (ElementTree.ParseError, OSError, LookupError, ValueError):'
-  replace: '    except (OSError, LookupError, ValueError):'
+  find: '    except (ElementTree.ParseError, OSError, LookupError):'
+  replace: '    except (OSError, LookupError):'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
 - label: a README link to a lesson that was deleted is accepted
   find: '                    if target and not exists(store / target))'
