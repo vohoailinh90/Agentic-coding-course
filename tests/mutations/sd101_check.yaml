@@ -392,3 +392,19 @@ mutations:
   find: '            self.srcs.extend(sources or [""])'
   replace: '            self.srcs.extend([""] + sources)'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_html_image_with_only_a_srcset_is_a_source
+- label: an impossible date in lesson.yaml raises instead of being reported
+  find: '            except (yaml.YAMLError, ValueError) as error:'
+  replace: '            except yaml.YAMLError as error:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_lesson_yaml_that_does_not_parse_is_reported_not_raised
+- label: invalid YAML syntax in lesson.yaml raises instead of being reported
+  find: '            except (yaml.YAMLError, ValueError) as error:'
+  replace: '            except ValueError as error:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_lesson_yaml_that_does_not_parse_is_reported_not_raised
+- label: a lesson.md that is not UTF-8 raises instead of being reported
+  find: "            except UnicodeDecodeError:\n                problems.append(Problem(lesson_id, \"lesson.md is not valid UTF-8 text\"))"
+  replace: "            except ZeroDivisionError:\n                problems.append(Problem(lesson_id, \"lesson.md is not valid UTF-8 text\"))"
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_text_that_is_not_utf8_is_reported_not_raised
+- label: a README that is not UTF-8 raises instead of being reported
+  find: "    except UnicodeDecodeError:\n        return [Problem(\"README.md\", \"is not valid UTF-8 text\")]"
+  replace: "    except ZeroDivisionError:\n        return [Problem(\"README.md\", \"is not valid UTF-8 text\")]"
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_text_that_is_not_utf8_is_reported_not_raised

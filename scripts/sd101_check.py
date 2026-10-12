@@ -368,7 +368,10 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     readme = store / "README.md"
     if not readme.exists():
         return [Problem("README.md", "is missing")]
-    text = readme.read_text(encoding="utf-8")
+    try:
+        text = readme.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        return [Problem("README.md", "is not valid UTF-8 text")]
     destinations = {destination: relative_target(destination) for destination in link_destinations(text)}
     linked = {posixpath.normpath(target) for target in destinations.values() if target}
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
@@ -402,13 +405,17 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
         if meta_file.exists():
             try:
                 meta = yaml.safe_load(meta_file.read_text(encoding="utf-8"))
-            except yaml.YAMLError as error:
+            except (yaml.YAMLError, ValueError) as error:
                 problems.append(Problem(lesson_id, f"lesson.yaml does not parse: {error}"))
             else:
                 problems.extend(check_yaml(lesson_id, meta, entries))
         if markdown.exists():
-            text = markdown.read_text(encoding="utf-8")
-            problems.extend(check_markdown(lesson_id, text, lesson_dir, entries, lesson_ids))
+            try:
+                text = markdown.read_text(encoding="utf-8")
+            except UnicodeDecodeError:
+                problems.append(Problem(lesson_id, "lesson.md is not valid UTF-8 text"))
+            else:
+                problems.extend(check_markdown(lesson_id, text, lesson_dir, entries, lesson_ids))
     problems.extend(check_readme(store, lesson_ids))
     return problems
 

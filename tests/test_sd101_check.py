@@ -86,6 +86,31 @@ class LessonYamlRuleTests(StoreCase):
         (self.store / "lessons" / "sd-01-001" / "lesson.yaml").unlink()
         self.assertProblem("lesson.yaml is missing")
 
+    def test_a_lesson_yaml_that_does_not_parse_is_reported_not_raised(self) -> None:
+        lesson_dir = self.store / "lessons" / "sd-01-001"
+        evidence = ("image_evidence:\n- url: https://example.com/a.png\n  sha256: " + "a" * 64
+                    + "\n  retrieved_on: {date}\n")
+        base = yaml.safe_dump({key: value for key, value in META.items() if key != "image_evidence"},
+                              allow_unicode=True)
+        broken = {"invalid syntax": "id: [unclosed\n", "an impossible day": evidence.format(date="2026-02-30"),
+                  "an impossible month": evidence.format(date="2026-13-01"),
+                  "an impossible time": evidence.format(date="2026-10-12 25:00:00")}
+        for name, tail in broken.items():
+            with self.subTest(file=name):
+                (lesson_dir / "lesson.yaml").write_text(base + tail if name != "invalid syntax" else tail,
+                                                        encoding="utf-8")
+                self.assertProblem("lesson.yaml does not parse")
+        with self.subTest(file="not utf-8"):
+            (lesson_dir / "lesson.yaml").write_bytes(b"id: \xff\xfe\n")
+            self.assertProblem("lesson.yaml does not parse")
+
+    def test_text_that_is_not_utf8_is_reported_not_raised(self) -> None:
+        (self.store / "lessons" / "sd-01-001" / "lesson.md").write_bytes(BODY.encode() + b"\xff\xfe")
+        self.assertProblem("lesson.md is not valid UTF-8 text")
+        self.write_lesson("sd-01-001")
+        (self.store / "README.md").write_bytes(README.encode() + b"\xff\xfe")
+        self.assertProblem("README.md: is not valid UTF-8 text")
+
     def test_unknown_or_missing_keys_are_reported(self) -> None:
         data = self.meta()
         data["status"] = "drafted"
