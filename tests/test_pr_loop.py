@@ -122,6 +122,9 @@ class PullRequestLoopTests(unittest.TestCase):
         """ADR 010 (owner merges) and ADR 011 (Claude merges lesson PRs) decide who merges; the lifecycle must not contradict them."""
         self.assertIn("ADR 010", self.section)
         self.assertIn("ADR 011", self.section)
+        self.assertIn("for course lesson batches ADR 010 does", self.section)
+        self.assertIn("two per batch under ADR 010", self.section)
+        self.assertNotIn("limit of three", self.section)
         self.assertNotIn("FIX round caps", self.section)
 
     def test_every_protocol_section_it_cites_exists(self) -> None:
