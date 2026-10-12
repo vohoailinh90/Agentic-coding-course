@@ -76,26 +76,10 @@ mutations:
   find: '                for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]'
   replace: '                for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in text]'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_path_in_a_comment_a_code_block_or_prose_is_not_a_link
-- label: the README is no longer checked at all
-  find: '    problems.extend(check_readme(store, lesson_ids))'
-  replace: '    pass'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
 - label: a broken store still exits zero
   find: '    return 1 if problems else 0'
   replace: '    return 0'
   test: tests.test_sd101_check.CommandLineTests.test_a_broken_store_exits_one_and_prints_the_problem
-- label: an HTML anchor is no longer recognised as a link
-  find: '    return found | set(html_scan(text).hrefs)'
-  replace: '    return found'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_an_html_anchor_is_a_link
-- label: Markdown links are no longer recognised as links
-  find: '    found = {token.attrGet("href") or "" for token in markdown_tokens(text) if token.type == "link_open"}'
-  replace: '    found: set[str] = set()'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_a_reference_style_link_is_a_link
-- label: HTML is scanned with a pattern, so a comment or an attribute value can hold a link
-  find: '            scan.feed(token.content)'
-  replace: '            scan.hrefs.extend(re.findall(r"href=.?([^\s\"''>]+)", token.content))'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
 - label: code blocks, code spans and comments are scanned for HTML tags too
   find: '        if token.type in ("html_inline", "html_block"):'
   replace: '        if token.content:'
@@ -124,10 +108,6 @@ mutations:
   find: '            and valid_date(item["retrieved_on"]))'
   replace: '            and True)'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
-- label: a date that YAML parsed into a date object is rejected
-  find: "    if isinstance(when, datetime.date):\n        return True"
-  replace: "    if isinstance(when, datetime.date):\n        return False"
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date
 - label: a date with the right shape but no such day is accepted
   find: '        datetime.date.fromisoformat(when)'
   replace: '        pass'
@@ -304,18 +284,10 @@ mutations:
   find: RASTER_ELEMENTS = {"image", "feimage", "img"}
   replace: RASTER_ELEMENTS = {"image", "feimage"}
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: a README link is looked up with its fragment
-  find: '    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}'
-  replace: '    destinations = {destination: destination for destination in link_destinations(text)}'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_readme_links_that_are_not_relative_paths_are_not_looked_up
 - label: a README link written with ./ no longer counts
   find: '    linked = {posixpath.normpath(target) for target in destinations.values() if target}'
   replace: '    linked = {target for target in destinations.values() if target}'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_as_an_html_anchor_or_a_reference_or_with_dot_slash_counts
-- label: a README link with a fragment, query or percent-encoding no longer counts
-  find: '    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}'
-  replace: '    destinations = {destination: destination for destination in link_destinations(text)}'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
 - label: a README status cell is compared as raw source text, not as what it shows
   find: "    return [\"\".join(child.content for child in following.children or []\n                    if child.type in (\"text\", \"text_special\", \"code_inline\"))"
   replace: '    return [following.content'
@@ -560,3 +532,65 @@ mutations:
   find: '                    for source in sorted(image_sources(text)))'
   replace: '                    for source in sorted(link_destinations(text) | image_sources(text)) if source.endswith(".svg"))'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_may_link_to_an_image_without_embedding_it
+- label: the README is no longer checked at all
+  find: '    problems.extend(check_readme(store, lesson_ids, entries))'
+  replace: '    pass'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_missing_from_the_readme_is_reported
+- label: an HTML anchor is no longer recognised as a link
+  find: '            found.extend(scan.hrefs)'
+  replace: '            pass'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_an_html_anchor_is_a_link
+- label: Markdown links are no longer recognised as links
+  find: '            found.append(token.attrGet("href") or "")'
+  replace: '            pass'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_a_reference_style_link_is_a_link
+- label: HTML is scanned with a pattern, so a comment or an attribute value can hold a link
+  find: "            scan = HtmlScan()\n            scan.feed(token.content)\n            found.extend(scan.hrefs)"
+  replace: '            found.extend(re.findall(r"href=.?([^\s\"''>]+)", token.content))'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
+- label: HTML anchors are listed before Markdown links, whatever their place in the file
+  find: '            found.extend(scan.hrefs)'
+  replace: '            found[0:0] = scan.hrefs'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_source_order_holds_across_markdown_html_and_reference_links
+- label: a date that YAML parsed into a date object is rejected
+  find: '        return not isinstance(when, datetime.datetime)'
+  replace: '        return False'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date
+- label: a timestamp is accepted as a retrieval date
+  find: '        return not isinstance(when, datetime.datetime)'
+  replace: '        return True'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_timestamp_is_not_a_retrieval_date
+- label: a README link is looked up with its fragment
+  find: '    destinations = {destination: relative_target(destination) for destination in link_sequence(text)}'
+  replace: '    destinations = {destination: destination for destination in link_sequence(text)}'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_readme_links_that_are_not_relative_paths_are_not_looked_up
+- label: a README link with a fragment, query or percent-encoding no longer counts
+  find: '    destinations = {destination: relative_target(destination) for destination in link_sequence(text)}'
+  replace: '    destinations = {destination: destination for destination in link_sequence(text)}'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
+- label: an SVG with a processing instruction is accepted
+  find: '    if found := processing_instructions(path.read_bytes()):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_processing_instruction_is_reported
+- label: a processing instruction is never recorded
+  find: '    parser.ProcessingInstructionHandler = lambda target, data: found.append(target)'
+  replace: '    parser.ProcessingInstructionHandler = lambda target, data: None'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_processing_instruction_is_reported
+- label: the XML declaration is taken for a processing instruction
+  find: '    parser = expat.ParserCreate()
+
+  '
+  replace: "    parser = expat.ParserCreate()\n    parser.XmlDeclHandler = lambda version, encoding, standalone: found.append(\"xml\")\n"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_xml_declaration_is_not_a_processing_instruction
+- label: lessons out of source order are accepted
+  find: '    if listed != in_source_order:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_lessons_listed_out_of_source_order_are_reported
+- label: a lesson linked twice is listed twice
+  find: ' and match.group(1) not in listed:'
+  replace: ':'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_lesson_linked_twice_counts_where_it_is_first_linked
+- label: a lesson that is not linked is reported as out of order
+  find: '    in_source_order = [lesson_id for lesson_id in entries if lesson_id in listed]'
+  replace: '    in_source_order = [lesson_id for lesson_id in entries if lesson_id in lesson_ids]'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_missing_lesson_is_reported_as_missing_not_as_out_of_order

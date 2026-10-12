@@ -22,8 +22,9 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
   - the directory holds only lesson.md, lesson.yaml and .svg figures drawn for the lesson
     (a downloaded PNG or JPG is refused whatever it shows), and each .svg is a self-contained
     drawing: it parses as XML with an <svg> root, uses only plain drawing elements (no <image>,
-    <foreignObject>, <script>, <a>, animation), links to nothing but its own #fragments (href, url(),
-    @import), and never mentions the source image host, so a renamed PNG or an SVG that wraps or
+    <foreignObject>, <script>, <a>, animation) and no processing instruction (<?xml-stylesheet?>),
+    links to nothing but its own #fragments (href, url(), @import), and never mentions the source
+    image host, so a renamed PNG or an SVG that wraps or
     loads a raster is refused too
   - lesson.md: no code fence (``` or ~~~) is left open, raw HTML is limited to a short list of tags
     (details, summary, br, a, img, sub, sup, kbd), <details> tags nest properly (<details open> too),
@@ -35,8 +36,8 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
 And once for the store: it holds only README.md and lessons/, and lessons/ holds only lesson
 directories (an image dropped beside the README is refused like one in a lesson); README.md embeds
-no image, links every lesson directory (as a real link, not a path in a comment or a code block),
-every relative link in it resolves (a row left behind for a deleted lesson is an error), and it
+no image, links every lesson directory (as a real link, not a path in a comment or a code block)
+in source-map order, every relative link in it resolves (a row left behind for a deleted lesson is an error), and it
 carries no status words in its table, however formatted (status lives only in lesson.yaml).
 
 This guards against honest mistakes while ~400 lessons are written; it is not a security
@@ -62,6 +63,7 @@ import posixpath
 import re
 import sys
 import xml.etree.ElementTree as ElementTree
+import xml.parsers.expat as expat
 from dataclasses import dataclass
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlparse
@@ -88,6 +90,7 @@ SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
 STORE_ENTRIES = {"README.md", "lessons"}
+LESSON_LINK = re.compile(r"lessons/(sd-\d{2}-\d{3})/lesson\.md")
 ALLOWED_HTML = {"details", "summary", "br", "a", "img", "sub", "sup", "kbd"}
 RASTER_ELEMENTS = {"image", "feimage", "img"}
 SVG_NAMESPACE = "http://www.w3.org/2000/svg"
@@ -226,13 +229,26 @@ def has_unclosed_fence(text: str) -> bool:
     return False
 
 
-def link_destinations(text: str) -> set[str]:
-    """Destinations of the links Markdown would render: [x](url), [x][ref] and <a href>.
+def link_sequence(text: str) -> list[str]:
+    """Destinations of the links Markdown would render, in the order a reader meets them:
+    [x](url), [x][ref] and <a href>.
 
     A URL in a code block, an HTML comment or plain prose is not a link, so it is not returned.
     """
-    found = {token.attrGet("href") or "" for token in markdown_tokens(text) if token.type == "link_open"}
-    return found | set(html_scan(text).hrefs)
+    found: list[str] = []
+    for token in markdown_tokens(text):
+        if token.type == "link_open":
+            found.append(token.attrGet("href") or "")
+        elif token.type in ("html_inline", "html_block"):
+            scan = HtmlScan()
+            scan.feed(token.content)
+            found.extend(scan.hrefs)
+    return found
+
+
+def link_destinations(text: str) -> set[str]:
+    """The distinct destinations of the links Markdown would render."""
+    return set(link_sequence(text))
 
 
 def image_sources(text: str) -> set[str]:
@@ -297,9 +313,10 @@ def one_of(value: object, vocabulary: set[str]) -> bool:
 
 
 def valid_date(when: object) -> bool:
-    """A real calendar date: a date object (YAML turns an unquoted 2026-10-12 into one) or a YYYY-MM-DD string."""
+    """A real calendar date: a date object (YAML turns an unquoted 2026-10-12 into one; a timestamp is not one)
+    or a YYYY-MM-DD string."""
     if isinstance(when, datetime.date):
-        return True
+        return not isinstance(when, datetime.datetime)
     if not isinstance(when, str) or ISO_DATE.fullmatch(when) is None:
         return False
     try:
@@ -333,6 +350,15 @@ def namespace_of(tag: object) -> str:
     return tag[1:].split("}", 1)[0] if isinstance(tag, str) and tag.startswith("{") else ""
 
 
+def processing_instructions(raw: bytes) -> list[str]:
+    """The targets of the processing instructions in an XML document (the XML declaration is not one)."""
+    found: list[str] = []
+    parser = expat.ParserCreate()
+    parser.ProcessingInstructionHandler = lambda target, data: found.append(target)
+    parser.Parse(raw, True)  # ElementTree has already read this file, so it is well-formed
+    return found
+
+
 def svg_problem(path: pathlib.Path) -> str | None:
     """Why a file named *.svg is not a self-contained drawing made for the lesson, or None."""
     try:
@@ -343,6 +369,8 @@ def svg_problem(path: pathlib.Path) -> str | None:
         return "does not have an <svg> root element"
     if SOURCE_IMAGE_HOST in path.read_text(encoding="utf-8", errors="replace").lower():
         return f"contains {SOURCE_IMAGE_HOST}; figures must not use source images"
+    if found := processing_instructions(path.read_bytes()):
+        return f"has a processing instruction (<?{found[0]} ...?>), which can load a stylesheet or other file"
     for element in root.iter():
         name = local_name(element.tag)
         if name in RASTER_ELEMENTS:
@@ -443,7 +471,7 @@ def plain_cell(cell: str) -> str:
     return re.sub(r"[*_`~]", "", cell).strip(" .,;:").lower()
 
 
-def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
+def check_readme(store: pathlib.Path, lesson_ids: set[str], entries: dict[str, dict]) -> list[Problem]:
     readme = store / "README.md"
     if not readme.is_file():
         return [Problem("README.md", "is missing")]
@@ -451,8 +479,14 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
         text = readme.read_text(encoding="utf-8")
     except UnicodeDecodeError:
         return [Problem("README.md", "is not valid UTF-8 text")]
-    destinations = {destination: relative_target(destination) for destination in link_destinations(text)}
+    destinations = {destination: relative_target(destination) for destination in link_sequence(text)}
     linked = {posixpath.normpath(target) for target in destinations.values() if target}
+    listed: list[str] = []
+    for target in destinations.values():
+        match = LESSON_LINK.fullmatch(posixpath.normpath(target)) if target else None
+        if match and match.group(1) in lesson_ids and match.group(1) not in listed:
+            listed.append(match.group(1))
+    in_source_order = [lesson_id for lesson_id in entries if lesson_id in listed]
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
     problems.extend(Problem("README.md", f"embeds the image {source!r}; the index has no figures")
@@ -460,6 +494,9 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")
                     for destination, target in sorted(destinations.items())
                     if target and not exists(store / target))
+    if listed != in_source_order:
+        problems.append(Problem("README.md", "lists the lessons out of source order; the source map order is "
+                                             + ", ".join(in_source_order)))
     if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):
         problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
     return problems
@@ -503,7 +540,7 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
                 problems.append(Problem(lesson_id, "lesson.md is not valid UTF-8 text"))
             else:
                 problems.extend(check_markdown(lesson_id, text, lesson_dir, entries, lesson_ids))
-    problems.extend(check_readme(store, lesson_ids))
+    problems.extend(check_readme(store, lesson_ids, entries))
     return problems
 
 

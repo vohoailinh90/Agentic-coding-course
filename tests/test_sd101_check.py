@@ -230,6 +230,17 @@ class LessonYamlRuleTests(StoreCase):
             with self.subTest(url=url):
                 self.assertEqual([], self.evidence_problems(url))
 
+    def test_a_timestamp_is_not_a_retrieval_date(self) -> None:
+        good = {"url": "https://example.com/a.png", "sha256": "a" * 64}
+        for name, when in {"datetime": datetime.datetime(2026, 10, 12, 12, 34, 56),
+                           "datetime at midnight": datetime.datetime(2026, 10, 12),
+                           "a quoted timestamp": "2026-10-12 12:34:56", "an ISO timestamp": "2026-10-12T12:34:56Z"}.items():
+            with self.subTest(value=name):
+                self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[{**good, "retrieved_on": when}]))
+                self.assertTrue([line for line in self.problems() if "image_evidence" in line])
+        self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[{**good, "retrieved_on": datetime.date(2026, 10, 12)}]))
+        self.assertEqual([], self.problems())
+
     def test_an_image_evidence_entry_without_a_digest_is_reported(self) -> None:
         self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[{"url": "https://x/y.png"}]))
         self.assertProblem("image_evidence entry needs")
@@ -410,6 +421,23 @@ class LessonMarkdownRuleTests(StoreCase):
                 (lesson_dir / "figure.svg").write_text(
                     f'<svg xmlns="http://www.w3.org/2000/svg"><svg><{name}/></svg></svg>', encoding="utf-8")
                 self.assertEqual([], self.problems())
+
+    def test_an_svg_with_a_processing_instruction_is_reported(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        for name, svg in {"a stylesheet in the prolog": '<?xml-stylesheet href="https://example.com/s.css"?><svg/>',
+                          "a stylesheet after the declaration":
+                              '<?xml version="1.0"?>\n<?xml-stylesheet href="s.css" type="text/css"?>\n<svg/>',
+                          "an instruction inside the drawing": "<svg><g><?php echo 1 ?></g></svg>",
+                          "an instruction after the drawing": "<svg/><?xpacket end='w'?>"}.items():
+            with self.subTest(file=name):
+                (lesson_dir / "figure.svg").write_text(svg, encoding="utf-8")
+                self.assertProblem("has a processing instruction")
+
+    def test_the_xml_declaration_is_not_a_processing_instruction(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        (lesson_dir / "figure.svg").write_text('<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg/>',
+                                               encoding="utf-8")
+        self.assertEqual([], self.problems())
 
     def test_a_real_looking_svg_drawing_is_accepted(self) -> None:
         drawing = ('<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -779,6 +807,53 @@ class ReadmeRuleTests(StoreCase):
     def test_a_lesson_missing_from_the_readme_is_reported(self) -> None:
         self.write_readme("# Kho\n")
         self.assertProblem("does not link lessons/sd-01-001/lesson.md")
+
+    def three_lessons(self) -> None:
+        titles = {"sd-01-001": "Bài một", "sd-01-002": "Bài hai", "sd-01-003": "Bài ba"}
+        self.write_source_map({lesson_id: (title, SNAPSHOT) for lesson_id, title in titles.items()})
+        for lesson_id, title in titles.items():
+            self.write_lesson(lesson_id, meta=self.meta(id=lesson_id, title_vi=title))
+
+    def row(self, lesson_id: str) -> str:
+        return f"| [{lesson_id}](lessons/{lesson_id}/lesson.md) | Bài |\n"
+
+    def readme_of(self, *rows: str) -> str:
+        return "# Kho\n\n| ID | Bài |\n|---|---|\n" + "".join(rows)
+
+    def test_lessons_listed_in_source_order_are_accepted(self) -> None:
+        self.three_lessons()
+        self.write_readme(self.readme_of(*(self.row(f"sd-01-00{n}") for n in (1, 2, 3))))
+        self.assertEqual([], self.problems())
+
+    def test_lessons_listed_out_of_source_order_are_reported(self) -> None:
+        self.three_lessons()
+        for order in ((2, 1, 3), (1, 3, 2), (3, 2, 1)):
+            with self.subTest(order=order):
+                self.write_readme(self.readme_of(*(self.row(f"sd-01-00{n}") for n in order)))
+                self.assertProblem("lists the lessons out of source order")
+
+    def test_source_order_holds_across_markdown_html_and_reference_links(self) -> None:
+        self.three_lessons()
+        self.write_readme(self.readme_of(
+            '| <a href="lessons/sd-01-002/lesson.md">sd-01-002</a> | Bài |\n', "| [sd-01-001][one] | Bài |\n",
+            self.row("sd-01-003")) + "\n[one]: lessons/sd-01-001/lesson.md\n")
+        self.assertProblem("lists the lessons out of source order")
+        self.write_readme(self.readme_of("| [sd-01-001][one] | Bài |\n",
+                                         '| <a href="lessons/sd-01-002/lesson.md">sd-01-002</a> | Bài |\n',
+                                         self.row("sd-01-003")) + "\n[one]: lessons/sd-01-001/lesson.md\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_lesson_linked_twice_counts_where_it_is_first_linked(self) -> None:
+        self.three_lessons()
+        self.write_readme(self.readme_of(*(self.row(f"sd-01-00{n}") for n in (1, 2, 3))) + "\n[lại](lessons/sd-01-001/lesson.md#a)\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_missing_lesson_is_reported_as_missing_not_as_out_of_order(self) -> None:
+        self.three_lessons()
+        self.write_readme(self.readme_of(self.row("sd-01-001"), self.row("sd-01-003")))
+        found = self.problems()
+        self.assertTrue(any("does not link lessons/sd-01-002/lesson.md" in line for line in found), found)
+        self.assertFalse(any("out of source order" in line for line in found), found)
 
     def test_a_readme_row_left_behind_for_a_deleted_lesson_is_reported(self) -> None:
         self.write_readme(README + "| [sd-01-009](lessons/sd-01-009/lesson.md) | Bài đã xóa |\n")
