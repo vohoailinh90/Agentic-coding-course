@@ -23,7 +23,7 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     (a downloaded PNG or JPG is refused whatever it shows), and each .svg is a self-contained
     drawing: it parses as XML with an <svg> root, uses only plain drawing elements (no <image>,
     <foreignObject>, <script>, <a>, animation, CSS @keyframes/animation/transition) and no processing
-    instruction (<?xml-stylesheet?>),
+    instruction (<?xml-stylesheet?>) or DOCTYPE,
     links to nothing but its own #fragments (href, url(), @import), and never mentions the source
     image host, so a renamed PNG or an SVG that wraps or
     loads a raster is refused too
@@ -493,11 +493,13 @@ def namespace_of(tag: object) -> str:
     return tag[1:].split("}", 1)[0] if isinstance(tag, str) and tag.startswith("{") else ""
 
 
-def processing_instructions(raw: bytes) -> list[str]:
-    """The targets of the processing instructions in an XML document (the XML declaration is not one)."""
+def prolog_features(raw: bytes) -> list[str]:
+    """What an XML document carries besides its elements that can pull in something else: processing
+    instructions (<?xml-stylesheet ...?>) and a DOCTYPE (an external DTD, entities). The XML declaration is neither."""
     found: list[str] = []
     parser = expat.ParserCreate()
-    parser.ProcessingInstructionHandler = lambda target, data: found.append(target)
+    parser.ProcessingInstructionHandler = lambda target, data: found.append(f"a processing instruction (<?{target} ...?>)")
+    parser.StartDoctypeDeclHandler = lambda name, system_id, public_id, has_internal: found.append("a DOCTYPE declaration")
     parser.Parse(raw, True)  # ElementTree has already read this file, so it is well-formed
     return found
 
@@ -512,8 +514,8 @@ def svg_problem(path: pathlib.Path) -> str | None:
         return "does not have an <svg> root element"
     if SOURCE_IMAGE_HOST in path.read_text(encoding="utf-8", errors="replace").lower():
         return f"contains {SOURCE_IMAGE_HOST}; figures must not use source images"
-    if found := processing_instructions(path.read_bytes()):
-        return f"has a processing instruction (<?{found[0]} ...?>), which can load a stylesheet or other file"
+    if found := prolog_features(path.read_bytes()):
+        return f"has {found[0]}, which can load a stylesheet, a DTD or another file; remove it"
     for element in root.iter():
         name = local_name(element.tag)
         if name in RASTER_ELEMENTS:

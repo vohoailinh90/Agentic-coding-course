@@ -524,20 +524,6 @@ mutations:
   find: '    destinations = {destination: relative_target(destination) for destination in link_sequence(text)}'
   replace: '    destinations = {destination: destination for destination in link_sequence(text)}'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
-- label: an SVG with a processing instruction is accepted
-  find: '    if found := processing_instructions(path.read_bytes()):'
-  replace: '    if False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_processing_instruction_is_reported
-- label: a processing instruction is never recorded
-  find: '    parser.ProcessingInstructionHandler = lambda target, data: found.append(target)'
-  replace: '    parser.ProcessingInstructionHandler = lambda target, data: None'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_processing_instruction_is_reported
-- label: the XML declaration is taken for a processing instruction
-  find: '    parser = expat.ParserCreate()
-
-  '
-  replace: "    parser = expat.ParserCreate()\n    parser.XmlDeclHandler = lambda version, encoding, standalone: found.append(\"xml\")\n"
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_xml_declaration_is_not_a_processing_instruction
 - label: lessons out of source order are accepted
   find: '    if listed != in_source_order:'
   replace: '    if False:'
@@ -838,3 +824,25 @@ mutations:
   find: '            problems.extend(Problem("source map", f"{lesson_id} {reason}") for reason in entry_problems(lesson))'
   replace: '            pass'
   test: tests.test_sd101_check.SourceMapPinTests.test_a_missing_entry_field_is_reported
+- label: an SVG with a processing instruction is accepted
+  find: '    if found := prolog_features(path.read_bytes()):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_processing_instruction_is_reported
+- label: a processing instruction is never recorded
+  find: '    parser.ProcessingInstructionHandler = lambda target, data: found.append(f"a processing instruction (<?{target} ...?>)")'
+  replace: '    parser.ProcessingInstructionHandler = lambda target, data: None'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_processing_instruction_is_reported
+- label: a DOCTYPE declaration is never recorded
+  find: '    parser.StartDoctypeDeclHandler = lambda name, system_id, public_id, has_internal: found.append("a DOCTYPE declaration")'
+  replace: '    parser.StartDoctypeDeclHandler = lambda name, system_id, public_id, has_internal: None'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_doctype_is_reported
+- label: the XML declaration is taken for a processing instruction
+  find: '    parser = expat.ParserCreate()
+
+  '
+  replace: "    parser = expat.ParserCreate()\n    parser.XmlDeclHandler = lambda version, encoding, standalone: found.append(\"the XML declaration\")\n"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_xml_declaration_is_not_a_processing_instruction
+- label: only the first prolog feature is reported as a processing instruction
+  find: '        return f"has {found[0]}, which can load a stylesheet, a DTD or another file; remove it"'
+  replace: '        return "has a processing instruction, which can load a stylesheet, a DTD or another file; remove it"'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_doctype_is_reported

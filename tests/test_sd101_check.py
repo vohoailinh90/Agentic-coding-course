@@ -738,6 +738,21 @@ class LessonMarkdownRuleTests(StoreCase):
             '<text>animation: transition: @keyframes</text><rect class="animation"/></svg>', encoding="utf-8")
         self.assertEqual([], self.problems())
 
+    def test_an_svg_with_a_doctype_is_reported(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        cases = {
+            "an external DTD": '<!DOCTYPE svg SYSTEM "https://example.com/svg.dtd"><svg/>',
+            "the W3C SVG 1.1 DTD": '<?xml version="1.0"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" '
+                                   '"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg/>',
+            "an internal subset with an entity": '<!DOCTYPE svg [<!ENTITY a "x">]><svg>&a;</svg>',
+            "a bare DOCTYPE": "<!DOCTYPE svg><svg/>",
+            "a DOCTYPE after a comment": "<!-- c --><!DOCTYPE svg><svg/>",
+        }
+        for name, svg in cases.items():
+            with self.subTest(file=name):
+                (lesson_dir / "figure.svg").write_text(svg, encoding="utf-8")
+                self.assertProblem("has a DOCTYPE declaration")
+
     def test_the_xml_declaration_is_not_a_processing_instruction(self) -> None:
         lesson_dir = self.write_lesson("sd-01-001")
         (lesson_dir / "figure.svg").write_text('<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg/>',
