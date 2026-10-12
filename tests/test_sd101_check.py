@@ -241,6 +241,37 @@ class LessonMarkdownRuleTests(StoreCase):
         (lesson_dir / "folder.svg").mkdir()
         self.assertProblem("folder.svg is not allowed")
 
+    def test_an_svg_file_must_be_a_drawing_not_a_renamed_picture(self) -> None:
+        png = "data:image/png;base64,iVBORw0KGgo="
+        svgs = {
+            "a renamed png": (b"\x89PNG\r\n\x1a\n\x00\x00", "is not well-formed XML"),
+            "an empty file": (b"", "is not well-formed XML"),
+            "xml with another root": (b"<html/>", "does not have an <svg> root"),
+            "an embedded raster": (f'<svg><image href="{png}"/></svg>'.encode(), "embeds a picture with <image>"),
+            "a linked raster": (b'<svg><image href="source.png"/></svg>', "embeds a picture with <image>"),
+            "a namespaced image": (b'<svg xmlns="http://www.w3.org/2000/svg"><image/></svg>', "<image>"),
+            "an html img inside foreignObject": (
+                b'<svg xmlns="http://www.w3.org/2000/svg"><foreignObject>'
+                b'<img xmlns="http://www.w3.org/1999/xhtml" src="a.png"/></foreignObject></svg>', "<img>"),
+            "a data uri in an attribute": (f'<svg><rect style="fill:url({png})"/></svg>'.encode(), "data: URI"),
+            "a data uri in a style element": (f"<svg><style>.a{{background:url({png})}}</style></svg>".encode(),
+                                              "data: URI"),
+        }
+        lesson_dir = self.write_lesson("sd-01-001")
+        for name, (content, reason) in svgs.items():
+            with self.subTest(file=name):
+                (lesson_dir / "figure.svg").write_bytes(content)
+                self.assertProblem(f"figure.svg")
+                self.assertProblem(reason)
+
+    def test_a_real_looking_svg_drawing_is_accepted(self) -> None:
+        drawing = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+                   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><title>Data: sơ đồ</title>'
+                   '<defs><style>.a{fill:red}</style></defs><use href="#a"/><text>Data: chữ</text></svg>')
+        lesson_dir = self.write_lesson("sd-01-001")
+        (lesson_dir / "figure.svg").write_text(drawing, encoding="utf-8")
+        self.assertEqual([], self.problems())
+
     def test_an_unclosed_tilde_fence_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n~~~mermaid\nflowchart TB\n")
         self.assertProblem("unclosed code fence")
@@ -372,7 +403,57 @@ class LessonMarkdownRuleTests(StoreCase):
                 self.assertProblem("lessons must not use source images")
 
     def test_a_src_attribute_on_a_tag_other_than_img_is_not_an_image(self) -> None:
-        self.write_lesson("sd-01-001", body=BODY + '\n<span src="missing.png">chữ</span>\n')
+        self.write_lesson("sd-01-001", body=BODY + '\nH<sub src="missing.png">2</sub>O\n')
+        self.assertEqual([], self.problems())
+
+    def test_a_missing_or_non_svg_image_in_an_img_srcset_is_reported(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001", body=BODY + '\n<img srcset="one.svg 1x, two.svg 2x" alt="x">\n')
+        (lesson_dir / "one.svg").write_text("<svg/>", encoding="utf-8")
+        self.assertProblem("'two.svg' does not resolve")
+        (lesson_dir / "two.svg").write_text("<svg/>", encoding="utf-8")
+        self.assertEqual([], self.problems())
+        self.write_lesson("sd-01-001", body=BODY + '\n<img srcset="one.svg 1x, two.png 2x" alt="x">\n')
+        (lesson_dir / "two.png").write_bytes(b"x")
+        self.assertProblem("'two.png' must be a local .svg file")
+
+    def test_srcset_urls_are_split_like_the_html_spec_splits_them(self) -> None:
+        cases = {
+            "a.svg": ["a.svg"],
+            "a.svg 1x, b.svg 2x": ["a.svg", "b.svg"],
+            "a.svg, b.svg": ["a.svg", "b.svg"],
+            "a.svg 1x,b.svg 2x": ["a.svg", "b.svg"],
+            "a.svg,b.svg": ["a.svg,b.svg"],
+            "  a.svg 100w ,  b.svg 200w  ": ["a.svg", "b.svg"],
+            "a,b.svg 1x": ["a,b.svg"],
+            "": [],
+        }
+        for value, expected in cases.items():
+            with self.subTest(value=value):
+                self.assertEqual(expected, check.srcset_urls(value))
+
+    def test_raw_html_outside_the_allow_list_is_reported(self) -> None:
+        forms = {
+            "picture": '<picture><source srcset="a.svg"></picture>',
+            "inline svg": '<svg><image href="a.png"/></svg>',
+            "object": '<object data="a.svg"></object>',
+            "video": '<video poster="a.png"></video>',
+            "iframe": '<iframe src="https://example.com"></iframe>',
+            "script": "<script>alert(1)</script>",
+            "div": "<div>chữ</div>",
+        }
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
+                self.assertProblem("raw HTML is limited to")
+
+    def test_the_allowed_html_tags_are_accepted(self) -> None:
+        body = (BODY + "\nH<sub>2</sub>O, x<sup>2</sup>, <kbd>Ctrl</kbd><br>dòng sau\n\n"
+                "<details open>\n<summary>Gợi ý</summary>\n\nĐáp án.\n\n</details>\n")
+        self.write_lesson("sd-01-001", body=body)
+        self.assertEqual([], self.problems())
+
+    def test_html_tags_inside_code_are_not_raw_html(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n`<div>`\n\n```html\n<picture></picture>\n```\n")
         self.assertEqual([], self.problems())
 
     def test_a_local_image_is_not_a_source_image(self) -> None:

@@ -236,3 +236,63 @@ mutations:
   find: "            if self.details_depth:\n                self.details_depth -= 1"
   replace: "            if self.details_depth:\n                self.details_depth = 0"
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_nested_details_blocks_are_balanced
+- label: a tag outside the allow-list is accepted
+  find: '    for tag in sorted(scan.tags - ALLOWED_HTML):'
+  replace: '    for tag in sorted(set()):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_raw_html_outside_the_allow_list_is_reported
+- label: every HTML tag is on the allow-list
+  find: '    for tag in sorted(scan.tags - ALLOWED_HTML):'
+  replace: '    for tag in sorted(scan.tags - scan.tags):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_raw_html_outside_the_allow_list_is_reported
+- label: an allowed tag is refused (the tag set is recorded for end tags too)
+  find: '        self.tags.add(tag)'
+  replace: '        self.tags.add(tag + "!")'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_allowed_html_tags_are_accepted
+- label: HTML tags are collected from every html token, code included
+  find: '        if token.type in ("html_inline", "html_block"):'
+  replace: '        if token.content:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_html_tags_inside_code_are_not_raw_html
+- label: an img srcset is not collected
+  find: '                if name == "srcset" and value:'
+  replace: '                if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_missing_or_non_svg_image_in_an_img_srcset_is_reported
+- label: only the first srcset candidate is read
+  find: "            comma = value.find(\",\", position)\n            position = len(value) if comma == -1 else comma + 1"
+  replace: '            position = len(value)'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_srcset_urls_are_split_like_the_html_spec_splits_them
+- label: a trailing comma stays on the srcset URL
+  find: '            url = url.rstrip(",")'
+  replace: '            pass'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_srcset_urls_are_split_like_the_html_spec_splits_them
+- label: a .svg file is not opened, so a renamed PNG passes
+  find: '            elif path.is_file() and path.suffix.lower() == ".svg" and (reason := svg_problem(path)):'
+  replace: '            elif False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: a file that is not XML is accepted as an SVG
+  find: '    except (ElementTree.ParseError, OSError):'
+  replace: '    except OSError:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an XML file with another root element is accepted as an SVG
+  find: '    if root.tag.rsplit("}", 1)[-1] != "svg":'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an SVG may embed a picture with <image>
+  find: '        if name in RASTER_ELEMENTS:'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an SVG may embed an HTML <img> in foreignObject
+  find: RASTER_ELEMENTS = {"image", "img"}
+  replace: RASTER_ELEMENTS = {"image"}
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: 'an SVG may carry a data: URI'
+  find: '        if any(DATA_URI.search(value) for value in values):'
+  replace: '        if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: 'the text of an SVG <style> element is not searched for data: URIs'
+  find: '        values = list(element.attrib.values()) + ([element.text or ""] if name == "style" else [])'
+  replace: '        values = list(element.attrib.values())'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: any text containing "data:" is taken for a data URI
+  find: DATA_URI = re.compile(r"\bdata:[\w.+-]+/[\w.+-]+", re.IGNORECASE)
+  replace: DATA_URI = re.compile(r"data:", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_real_looking_svg_drawing_is_accepted

@@ -20,10 +20,13 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
   - image_evidence is a list, and each entry has an http(s) url with a host, a 64-hex
     sha256 and a real retrieved_on date
   - the directory holds only lesson.md, lesson.yaml and .svg figures drawn for the lesson
-    (a downloaded PNG or JPG is refused whatever it shows)
-  - lesson.md: no code fence (``` or ~~~) is left open, <details> tags nest properly (<details open> too), every relative link
-    and image source (inline, reference-style, <a href>, <img src>) resolves, every image is a
-    local .svg file,
+    (a downloaded PNG or JPG is refused whatever it shows), and each .svg parses as XML with an
+    <svg> root and carries no <image> or <img> element and no data: URI, so a renamed PNG or an
+    SVG that wraps a raster is refused too
+  - lesson.md: no code fence (``` or ~~~) is left open, raw HTML is limited to a short list of tags
+    (details, summary, br, a, img, sub, sup, kbd), <details> tags nest properly (<details open> too),
+    every relative link and image source (inline, reference-style, <a href>, <img src>, <img srcset>)
+    resolves, every image is a local .svg file,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
     in a code block or a comment), it mentions no lesson id that has no lesson
     directory, and it never contains assets.bytebytego.com, the host of every
@@ -53,6 +56,7 @@ import pathlib
 import posixpath
 import re
 import sys
+import xml.etree.ElementTree as ElementTree
 from dataclasses import dataclass
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlparse
@@ -76,6 +80,9 @@ ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
+ALLOWED_HTML = {"details", "summary", "br", "a", "img", "sub", "sup", "kbd"}
+RASTER_ELEMENTS = {"image", "img"}
+DATA_URI = re.compile(r"\bdata:[\w.+-]+/[\w.+-]+", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -92,24 +99,47 @@ def load_source_map(path: pathlib.Path) -> dict[str, dict]:
     return {lesson["id"]: lesson for category in data["categories"] for lesson in category["lessons"]}
 
 
+def srcset_urls(value: str) -> list[str]:
+    """The URLs of an <img srcset> value: each candidate is a URL, then optional descriptors, comma separated."""
+    urls: list[str] = []
+    position = 0
+    while True:
+        match = re.compile(r"[\s,]*(\S+)").match(value, position)
+        if match is None:
+            return urls
+        url, position = match.group(1), match.end()
+        if url.endswith(","):
+            url = url.rstrip(",")
+        else:
+            comma = value.find(",", position)
+            position = len(value) if comma == -1 else comma + 1
+        urls.append(url)
+
+
 class HtmlScan(HTMLParser):
-    """Facts about the HTML tags in a piece of HTML: each <a href>, each <img src>, <details> nesting.
+    """Facts about the HTML tags in a piece of HTML: which tags, each <a href>, each <img src> and srcset URL,
+    <details> nesting.
 
     Comments and attribute text are not tags, so a quoted "href=..." or a commented-out tag counts for nothing.
     """
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
+        self.tags: set[str] = set()
         self.hrefs: list[str] = []
         self.srcs: list[str] = []
         self.details_depth = 0
         self.stray_details_close = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self.tags.add(tag)
         if tag == "a":
             self.hrefs.extend(value for name, value in attrs if name == "href" and value)
         elif tag == "img":
             self.srcs.extend(value for name, value in attrs if name == "src" and value)
+            for name, value in attrs:
+                if name == "srcset" and value:
+                    self.srcs.extend(srcset_urls(value))
         elif tag == "details":
             self.details_depth += 1
 
@@ -208,6 +238,24 @@ def valid_image_evidence(item: object) -> bool:
             and valid_date(item["retrieved_on"]))
 
 
+def svg_problem(path: pathlib.Path) -> str | None:
+    """Why a file named *.svg is not a drawing made for the lesson, or None when it looks like one."""
+    try:
+        root = ElementTree.parse(path).getroot()
+    except (ElementTree.ParseError, OSError):
+        return "is not well-formed XML, so it is not an SVG"
+    if root.tag.rsplit("}", 1)[-1] != "svg":
+        return "does not have an <svg> root element"
+    for element in root.iter():
+        name = element.tag.rsplit("}", 1)[-1].lower() if isinstance(element.tag, str) else ""
+        if name in RASTER_ELEMENTS:
+            return f"embeds a picture with <{name}>"
+        values = list(element.attrib.values()) + ([element.text or ""] if name == "style" else [])
+        if any(DATA_URI.search(value) for value in values):
+            return "carries a data: URI"
+    return None
+
+
 def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[Problem]:
     if not isinstance(meta, dict):
         return [Problem(lesson_id, "lesson.yaml is not a mapping")]
@@ -259,6 +307,9 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     scan = html_scan(text)
     if scan.stray_details_close or scan.details_depth:
         problems.append(Problem(lesson_id, "lesson.md has unbalanced <details> tags"))
+    for tag in sorted(scan.tags - ALLOWED_HTML):
+        problems.append(Problem(lesson_id, f"lesson.md uses <{tag}>; raw HTML is limited to "
+                                           f"{', '.join(sorted(ALLOWED_HTML))}"))
     sources = image_sources(text)
     for destination in sorted(link_destinations(text) | sources):
         target = relative_target(destination)
@@ -311,6 +362,8 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
             if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):
                 problems.append(Problem(lesson_id, f"{path.name} is not allowed; a lesson directory holds only "
                                                    "lesson.md, lesson.yaml and .svg figures drawn for it"))
+            elif path.is_file() and path.suffix.lower() == ".svg" and (reason := svg_problem(path)):
+                problems.append(Problem(lesson_id, f"{path.name} {reason}"))
         for required in (markdown, meta_file):
             if not required.exists():
                 problems.append(Problem(lesson_id, f"{required.name} is missing"))
