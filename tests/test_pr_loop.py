@@ -122,6 +122,8 @@ class PullRequestLoopTests(unittest.TestCase):
         """ADR 010 (owner merges) and ADR 011 (Claude merges lesson PRs) decide who merges; the lifecycle must not contradict them."""
         self.assertIn("ADR 010", self.section)
         self.assertIn("ADR 011", self.section)
+        self.assertIn("a security review where the change touches authentication, authorization, secrets, payments or personal data", self.section)
+        self.assertNotIn("or the route", self.section)
         self.assertIn("for course lesson batches ADR 010 does", self.section)
         self.assertIn("two per batch under ADR 010", self.section)
         self.assertNotIn("limit of three", self.section)
