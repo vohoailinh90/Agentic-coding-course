@@ -303,7 +303,7 @@ class LessonMarkdownRuleTests(StoreCase):
                    'viewBox="0 0 10 10" aria-label="Data: sơ đồ"><title>Data: sơ đồ</title>'
                    '<defs><style>.a::after{content:"data: chữ"}</style>'
                    '<marker id="m"/><linearGradient id="g"/></defs>'
-                   '<rect fill="url('#g')" style="marker-end:url( #m )"/><use href="#a"/><use xlink:href="#a"/>'
+                   '<rect fill="url(\'#g\')" style="marker-end:url( #m )"/><use href="#a"/><use xlink:href="#a"/>'
                    '<text>Data: chữ</text></svg>')
         lesson_dir = self.write_lesson("sd-01-001")
         (lesson_dir / "figure.svg").write_text(drawing, encoding="utf-8")
