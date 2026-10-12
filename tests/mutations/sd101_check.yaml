@@ -488,3 +488,19 @@ mutations:
   find: "    except (OSError, ValueError):\n        return False\n\n\ndef valid_host"
   replace: "    except ZeroDivisionError:\n        return False\n\n\ndef valid_host"
   test: tests.test_sd101_check.RobustnessTests.test_odd_links_and_paths_in_lesson_md_and_readme_are_reported_not_raised
+- label: a key named twice in lesson.yaml is accepted
+  find: '                if duplicate:'
+  replace: '                if False:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_key_named_twice_in_lesson_yaml_is_reported
+- label: lesson.yaml is loaded without the duplicate-key check
+  find: 'Loader=StrictLoader)  # noqa: S506'
+  replace: 'Loader=yaml.SafeLoader)  # noqa: S506'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_key_named_twice_in_lesson_yaml_is_reported
+- label: a merge key is read as a plain key and the file does not parse
+  find: '                if key_node.tag == "tag:yaml.org,2002:merge":'
+  replace: '                if False:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_yaml_merge_key_and_repeated_values_are_not_duplicate_keys
+- label: a self-closing details tag opens and closes a block at once
+  find: "        self.handle_starttag(tag, attrs)\n\n    def handle_endtag"
+  replace: "        self.handle_starttag(tag, attrs)\n        self.handle_endtag(tag)\n\n    def handle_endtag"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_self_closing_details_tag_opens_a_block_as_it_does_in_html

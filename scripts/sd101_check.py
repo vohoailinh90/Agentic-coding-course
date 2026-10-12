@@ -121,6 +121,27 @@ def srcset_urls(value: str) -> list[str]:
         urls.append(url)
 
 
+class StrictLoader(yaml.SafeLoader):
+    """A safe YAML loader that refuses a mapping naming the same key twice (safe_load keeps the last one)."""
+
+    def construct_mapping(self, node, deep=False):
+        if isinstance(node, yaml.MappingNode):
+            seen = set()
+            for key_node, _value in node.value:
+                if key_node.tag == "tag:yaml.org,2002:merge":  # `<<: *anchor`; an explicit key may override it
+                    continue
+                key = self.construct_object(key_node, deep=True)
+                try:
+                    duplicate = key in seen
+                except TypeError:  # an unhashable key; the base class reports it
+                    continue
+                if duplicate:
+                    raise yaml.constructor.ConstructorError("while constructing a mapping", node.start_mark,
+                                                            f"found duplicate key {key!r}", key_node.start_mark)
+                seen.add(key)
+        return super().construct_mapping(node, deep=deep)
+
+
 class HtmlScan(HTMLParser):
     """Facts about the HTML tags in a piece of HTML: which tags, each <a href>, each <img src> and srcset URL,
     <details> nesting.
@@ -148,6 +169,10 @@ class HtmlScan(HTMLParser):
             self.srcs.extend(sources or [""])
         elif tag == "details":
             self.details_depth += 1
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        """A self-closing tag is a start tag: in HTML <details/> still opens a details element."""
+        self.handle_starttag(tag, attrs)
 
     def handle_endtag(self, tag: str) -> None:
         self.tags.add(tag)
@@ -438,7 +463,7 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
                 problems.append(Problem(lesson_id, f"{required.name} is missing"))
         if meta_file.is_file():
             try:
-                meta = yaml.safe_load(meta_file.read_text(encoding="utf-8"))
+                meta = yaml.load(meta_file.read_text(encoding="utf-8"), Loader=StrictLoader)  # noqa: S506
             except (yaml.YAMLError, ValueError) as error:
                 problems.append(Problem(lesson_id, f"lesson.yaml does not parse: {error}"))
             else:

@@ -104,6 +104,30 @@ class LessonYamlRuleTests(StoreCase):
             (lesson_dir / "lesson.yaml").write_bytes(b"id: \xff\xfe\n")
             self.assertProblem("lesson.yaml does not parse")
 
+    def test_a_key_named_twice_in_lesson_yaml_is_reported(self) -> None:
+        lesson_dir = self.store / "lessons" / "sd-01-001"
+        base = yaml.safe_dump(META, allow_unicode=True, sort_keys=False)
+        evidence = ("\nimage_evidence:\n- url: https://example.com/a.png\n  sha256: " + "a" * 64
+                    + "\n  retrieved_on: '2026-10-12'\n  {extra}\n")
+        twice = {
+            "a top-level key with another value": base + "content_status: approved\n",
+            "a top-level key with the same value": base + "content_status: drafted\n",
+            "a verification key": base.replace("  claims: pending\n", "  claims: pending\n  claims: done\n"),
+            "an evidence key": base.replace("image_evidence: []\n", "").rstrip("\n") + evidence.format(extra="url: https://b.example/"),
+            "a quoted and an unquoted spelling": base + "'content_status': approved\n",
+        }
+        for name, text in twice.items():
+            with self.subTest(file=name):
+                (lesson_dir / "lesson.yaml").write_text(text, encoding="utf-8")
+                self.assertProblem("duplicate key")
+
+    def test_a_yaml_merge_key_and_repeated_values_are_not_duplicate_keys(self) -> None:
+        lesson_dir = self.store / "lessons" / "sd-01-001"
+        text = yaml.safe_dump(META, allow_unicode=True, sort_keys=False).replace(
+            "verification:\n", "verification: &v\n", 1) + "extra: {<<: *v, claims: done}\n"
+        (lesson_dir / "lesson.yaml").write_text(text, encoding="utf-8")
+        self.assertFalse(any("does not parse" in line for line in self.problems()), self.problems())
+
     def test_text_that_is_not_utf8_is_reported_not_raised(self) -> None:
         (self.store / "lessons" / "sd-01-001" / "lesson.md").write_bytes(BODY.encode() + b"\xff\xfe")
         self.assertProblem("lesson.md is not valid UTF-8 text")
@@ -227,6 +251,18 @@ class LessonMarkdownRuleTests(StoreCase):
             with self.subTest(where=name):
                 self.write_lesson("sd-01-001", body=BODY + "\n" + text + "\n")
                 self.assertEqual([], self.problems())
+
+    def test_a_self_closing_details_tag_opens_a_block_as_it_does_in_html(self) -> None:
+        for name, tag in {"slash": "<details/>", "space and slash": "<details />", "attribute": "<details open/>"}.items():
+            with self.subTest(tag=name):
+                self.write_lesson("sd-01-001", body=BODY + f"\n{tag}\n<summary>x</summary>\n\nchữ\n")
+                self.assertProblem("unbalanced <details> tags")
+        self.write_lesson("sd-01-001", body=BODY + "\n<details/>\n<summary>x</summary>\n\nchữ\n\n</details>\n")
+        self.assertEqual([], self.problems())
+
+    def test_self_closing_void_tags_are_fine(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\ndòng<br/>sau<br />nữa\n")
+        self.assertEqual([], self.problems())
 
     def test_a_stray_closing_details_tag_is_reported_even_when_a_later_block_balances_the_count(self) -> None:
         block = "<details>\n<summary>x</summary>\n\nnội dung\n\n</details>"
