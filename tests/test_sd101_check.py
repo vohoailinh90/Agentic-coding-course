@@ -226,6 +226,21 @@ class LessonMarkdownRuleTests(StoreCase):
                 (lesson_dir / "diagram.jpg").write_bytes(b"\xff\xd8")
                 self.assertProblem("must be a local .svg file")
 
+    def test_an_image_must_sit_directly_in_the_lesson_directory(self) -> None:
+        self.write_source_map({"sd-01-001": ("Bài một", SNAPSHOT), "sd-01-002": ("Bài hai", SNAPSHOT)})
+        other = self.write_lesson("sd-01-002", meta=self.meta(id="sd-01-002", title_vi="Bài hai"))
+        (other / "figure.svg").write_text("<svg/>", encoding="utf-8")
+        mine = self.write_lesson("sd-01-001", body=BODY + "\n![x](./figure.svg)\n")
+        (mine / "figure.svg").write_text("<svg/>", encoding="utf-8")
+        self.assertEqual([], [line for line in self.problems() if line.startswith("sd-01-001")])
+        forms = {"another lesson": "../sd-01-002/figure.svg", "the same lesson by a detour": "../sd-01-001/figure.svg",
+                 "encoded": "..%2Fsd-01-002%2Ffigure.svg", "a subdirectory": "figures/figure.svg",
+                 "an absolute path": "/figure.svg"}
+        for name, destination in forms.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=BODY + f"\n![x]({destination})\n")
+                self.assertProblem("directly inside the lesson directory")
+
     def test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures(self) -> None:
         lesson_dir = self.write_lesson("sd-01-001")
         (lesson_dir / "diagram.svg").write_text("<svg/>", encoding="utf-8")
@@ -253,9 +268,27 @@ class LessonMarkdownRuleTests(StoreCase):
             "an html img inside foreignObject": (
                 b'<svg xmlns="http://www.w3.org/2000/svg"><foreignObject>'
                 b'<img xmlns="http://www.w3.org/1999/xhtml" src="a.png"/></foreignObject></svg>', "<img>"),
-            "a data uri in an attribute": (f'<svg><rect style="fill:url({png})"/></svg>'.encode(), "data: URI"),
-            "a data uri in a style element": (f"<svg><style>.a{{background:url({png})}}</style></svg>".encode(),
-                                              "data: URI"),
+            "a feImage that loads the source host": (
+                b'<svg xmlns="http://www.w3.org/2000/svg"><filter><feImage href="https://assets.bytebytego.com/'
+                b'source.png"/></filter></svg>', "assets.bytebytego.com"),
+            "a feImage that loads another picture": (
+                b'<svg xmlns="http://www.w3.org/2000/svg"><filter><feImage href="#a"/></filter></svg>', "<feimage>"),
+            "the source host in a label": (b"<svg><text>assets.bytebytego.com</text></svg>", "assets.bytebytego.com"),
+            "an href to another file": (b'<svg><use href="other.svg#a"/></svg>', "outside the drawing"),
+            "an href to a web page": (b'<svg><a href="https://example.com/">x</a></svg>', "outside the drawing"),
+            "a namespaced xlink:href": (
+                b'<svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="https://example.com/a.svg"/></svg>',
+                "outside the drawing"),
+            "a data uri in an href": (f'<svg><use href="{png}"/></svg>'.encode(), "outside the drawing"),
+            "a url() to a file in an attribute": (b'<svg><rect style="fill:url(https://example.com/a.png)"/></svg>',
+                                                  "url() or @import"),
+            "a data uri in a url() in an attribute": (f'<svg><rect style="fill:url({png})"/></svg>'.encode(),
+                                                      "url() or @import"),
+            "a quoted url() in an attribute": (b'<svg><rect style="fill:url( \'a.png\' )"/></svg>',
+                                               "url() or @import"),
+            "a url() in a style element": (f"<svg><style>.a{{background:url({png})}}</style></svg>".encode(),
+                                           "url() or @import"),
+            "an @import in a style element": (b'<svg><style>@import "fonts.css";</style></svg>', "url() or @import"),
         }
         lesson_dir = self.write_lesson("sd-01-001")
         for name, (content, reason) in svgs.items():
@@ -266,9 +299,12 @@ class LessonMarkdownRuleTests(StoreCase):
 
     def test_a_real_looking_svg_drawing_is_accepted(self) -> None:
         drawing = ('<?xml version="1.0" encoding="UTF-8"?>\n'
-                   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" aria-label="Data: sơ đồ">'
-                   '<title>Data: sơ đồ</title><defs><style>.a::after{content:"data: chữ"}</style></defs>'
-                   '<use href="#a"/><text>Data: chữ</text></svg>')
+                   '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
+                   'viewBox="0 0 10 10" aria-label="Data: sơ đồ"><title>Data: sơ đồ</title>'
+                   '<defs><style>.a::after{content:"data: chữ"}</style>'
+                   '<marker id="m"/><linearGradient id="g"/></defs>'
+                   '<rect fill="url(#g)" style="marker-end:url( #m )"/><use href="#a"/><use xlink:href="#a"/>'
+                   '<text>Data: chữ</text></svg>')
         lesson_dir = self.write_lesson("sd-01-001")
         (lesson_dir / "figure.svg").write_text(drawing, encoding="utf-8")
         self.assertEqual([], self.problems())
@@ -441,6 +477,8 @@ class LessonMarkdownRuleTests(StoreCase):
             "iframe": '<iframe src="https://example.com"></iframe>',
             "script": "<script>alert(1)</script>",
             "div": "<div>chữ</div>",
+            "a closing tag without its opener": "</div>",
+            "an inline closing tag without its opener": "chữ</span> nữa",
         }
         for name, form in forms.items():
             with self.subTest(form=name):

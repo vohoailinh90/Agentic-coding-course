@@ -20,13 +20,14 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
   - image_evidence is a list, and each entry has an http(s) url with a host, a 64-hex
     sha256 and a real retrieved_on date
   - the directory holds only lesson.md, lesson.yaml and .svg figures drawn for the lesson
-    (a downloaded PNG or JPG is refused whatever it shows), and each .svg parses as XML with an
-    <svg> root and carries no <image> or <img> element and no data: URI, so a renamed PNG or an
-    SVG that wraps a raster is refused too
+    (a downloaded PNG or JPG is refused whatever it shows), and each .svg is a self-contained
+    drawing: it parses as XML with an <svg> root, has no <image>, <feImage> or <img> element, links
+    to nothing but its own #fragments (href, url(), @import), and never mentions the source image
+    host, so a renamed PNG or an SVG that loads a raster is refused too
   - lesson.md: no code fence (``` or ~~~) is left open, raw HTML is limited to a short list of tags
     (details, summary, br, a, img, sub, sup, kbd), <details> tags nest properly (<details open> too),
     every relative link and image source (inline, reference-style, <a href>, <img src>, <img srcset>)
-    resolves, every image is a local .svg file,
+    resolves, every image is a .svg file directly inside the lesson's own directory,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
     in a code block or a comment), it mentions no lesson id that has no lesson
     directory, and it never contains assets.bytebytego.com, the host of every
@@ -81,8 +82,8 @@ SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
 ALLOWED_HTML = {"details", "summary", "br", "a", "img", "sub", "sup", "kbd"}
-RASTER_ELEMENTS = {"image", "img"}
-DATA_URI = re.compile(r"\bdata:[\w.+-]+/[\w.+-]+", re.IGNORECASE)
+RASTER_ELEMENTS = {"image", "feimage", "img"}
+URL_CALL = re.compile(r"url\(\s*['\"]?\s*([^)'\"\s]*)", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -144,6 +145,7 @@ class HtmlScan(HTMLParser):
             self.details_depth += 1
 
     def handle_endtag(self, tag: str) -> None:
+        self.tags.add(tag)
         if tag == "details":
             if self.details_depth:
                 self.details_depth -= 1
@@ -238,21 +240,38 @@ def valid_image_evidence(item: object) -> bool:
             and valid_date(item["retrieved_on"]))
 
 
+def local_name(name: object) -> str:
+    """The lower-case local part of an XML name: '{namespace}feImage' -> 'feimage'."""
+    return name.rsplit("}", 1)[-1].lower() if isinstance(name, str) else ""
+
+
+def reaches_outside(value: str) -> bool:
+    """True when a CSS or attribute value has an @import or a url() that is not a #fragment of the drawing."""
+    return "@import" in value.lower() or any(not target.startswith("#") for target in URL_CALL.findall(value))
+
+
 def svg_problem(path: pathlib.Path) -> str | None:
-    """Why a file named *.svg is not a drawing made for the lesson, or None when it looks like one."""
+    """Why a file named *.svg is not a self-contained drawing made for the lesson, or None."""
     try:
         root = ElementTree.parse(path).getroot()
     except (ElementTree.ParseError, OSError):
         return "is not well-formed XML, so it is not an SVG"
     if root.tag.rsplit("}", 1)[-1] != "svg":
         return "does not have an <svg> root element"
+    if SOURCE_IMAGE_HOST in path.read_text(encoding="utf-8", errors="replace").lower():
+        return f"contains {SOURCE_IMAGE_HOST}; figures must not use source images"
     for element in root.iter():
-        name = element.tag.rsplit("}", 1)[-1].lower() if isinstance(element.tag, str) else ""
+        name = local_name(element.tag)
         if name in RASTER_ELEMENTS:
             return f"embeds a picture with <{name}>"
-        values = list(element.attrib.values()) + ([element.text or ""] if name == "style" else [])
-        if any(DATA_URI.search(value) for value in values):
-            return "carries a data: URI"
+        values = list(element.attrib.items())
+        if name == "style":
+            values.append(("style", element.text or ""))
+        for attribute, value in values:
+            if local_name(attribute) == "href" and not value.strip().startswith("#"):
+                return f"links to {value.strip()!r}, outside the drawing"
+            if reaches_outside(value):
+                return "refers to something outside the drawing with url() or @import"
     return None
 
 
@@ -317,8 +336,9 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
             problems.append(Problem(lesson_id, f"relative link {destination!r} does not resolve"))
     for source in sorted(sources):
         target = relative_target(source)
-        if target is None or not target.lower().endswith(".svg"):
-            problems.append(Problem(lesson_id, f"image {source!r} must be a local .svg file drawn for the lesson"))
+        if target is None or not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):
+            problems.append(Problem(lesson_id, f"image {source!r} must be a local .svg file drawn for the lesson, "
+                                               "directly inside the lesson directory"))
     snapshot = entries.get(lesson_id, {}).get("source_snapshot_url")
     if snapshot and snapshot not in link_destinations(text):
         problems.append(Problem(lesson_id, "lesson.md does not link the pinned source snapshot"))

@@ -184,18 +184,6 @@ mutations:
   find: '        elif tag == "img":'
   replace: '        elif True:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_src_attribute_on_a_tag_other_than_img_is_not_an_image
-- label: an image that is not an .svg file is accepted
-  find: '        if target is None or not target.lower().endswith(".svg"):'
-  replace: '        if target is None:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_that_is_not_a_local_svg_is_reported
-- label: a remote image is accepted
-  find: '        if target is None or not target.lower().endswith(".svg"):'
-  replace: '        if target is not None and not target.lower().endswith(".svg"):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_that_is_not_a_local_svg_is_reported
-- label: an upper-case .SVG figure is refused
-  find: '        if target is None or not target.lower().endswith(".svg"):'
-  replace: '        if target is None or not target.endswith(".svg"):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_local_svg_figure_is_accepted_in_every_form_and_in_any_case
 - label: a copied source image in the lesson directory is accepted
   find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
   replace: '            if False:'
@@ -244,10 +232,6 @@ mutations:
   find: '    for tag in sorted(scan.tags - ALLOWED_HTML):'
   replace: '    for tag in sorted(scan.tags - scan.tags):'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_raw_html_outside_the_allow_list_is_reported
-- label: an allowed tag is refused (the tag set is recorded for end tags too)
-  find: '        self.tags.add(tag)'
-  replace: '        self.tags.add(tag + "!")'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_allowed_html_tags_are_accepted
 - label: HTML tags are collected from every html token, code included
   find: '        if token.type in ("html_inline", "html_block"):'
   replace: '        if token.content:'
@@ -280,19 +264,79 @@ mutations:
   find: '        if name in RASTER_ELEMENTS:'
   replace: '        if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: an SVG may embed an HTML <img> in foreignObject
-  find: RASTER_ELEMENTS = {"image", "img"}
-  replace: RASTER_ELEMENTS = {"image"}
+- label: an allowed tag is refused (the start tag is recorded under another name)
+  find: "        self.tags.add(tag)\n        if tag == \"a\":"
+  replace: "        self.tags.add(tag + \"!\")\n        if tag == \"a\":"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_allowed_html_tags_are_accepted
+- label: a closing tag is not checked against the HTML allow-list
+  find: "        self.tags.add(tag)\n        if tag == \"details\":"
+  replace: '        if tag == "details":'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_raw_html_outside_the_allow_list_is_reported
+- label: an image in another directory is accepted
+  find: ' or posixpath.dirname(posixpath.normpath(target)):'
+  replace: ':'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_must_sit_directly_in_the_lesson_directory
+- label: an image path is not normalised before its directory is read
+  find: posixpath.dirname(posixpath.normpath(target))
+  replace: posixpath.dirname(target)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_must_sit_directly_in_the_lesson_directory
+- label: an SVG may mention the source image host
+  find: '    if SOURCE_IMAGE_HOST in path.read_text(encoding="utf-8", errors="replace").lower():'
+  replace: '    if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: 'an SVG may carry a data: URI'
-  find: '        if any(DATA_URI.search(value) for value in values):'
-  replace: '        if False:'
+- label: an SVG may load a picture with <feImage>
+  find: RASTER_ELEMENTS = {"image", "feimage", "img"}
+  replace: RASTER_ELEMENTS = {"image", "img"}
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: 'the text of an SVG <style> element is not searched for data: URIs'
-  find: '        values = list(element.attrib.values()) + ([element.text or ""] if name == "style" else [])'
-  replace: '        values = list(element.attrib.values())'
+- label: SVG element names are compared with their case
+  find: '    return name.rsplit("}", 1)[-1].lower() if isinstance(name, str) else ""'
+  replace: '    return name.rsplit("}", 1)[-1] if isinstance(name, str) else ""'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
-- label: any text containing "data:" is taken for a data URI
-  find: DATA_URI = re.compile(r"\bdata:[\w.+-]+/[\w.+-]+", re.IGNORECASE)
-  replace: DATA_URI = re.compile(r"data:", re.IGNORECASE)
+- label: an SVG href may point outside the drawing
+  find: '            if local_name(attribute) == "href" and not value.strip().startswith("#"):'
+  replace: '            if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: a namespaced xlink:href is not read as an href
+  find: '            if local_name(attribute) == "href" and not value.strip().startswith("#"):'
+  replace: '            if attribute == "href" and not value.strip().startswith("#"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: 'every SVG href is refused, even a #fragment'
+  find: '            if local_name(attribute) == "href" and not value.strip().startswith("#"):'
+  replace: '            if local_name(attribute) == "href":'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_real_looking_svg_drawing_is_accepted
+- label: an SVG attribute may hold a url() or @import to the outside
+  find: '            if reaches_outside(value):'
+  replace: '            if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: the text of an SVG <style> element is not checked for url() or @import
+  find: '            values.append(("style", element.text or ""))'
+  replace: '            pass'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an @import is not treated as reaching outside
+  find: '    return "@import" in value.lower() or any('
+  replace: '    return any('
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: 'every url() is refused, even to a #fragment'
+  find: any(not target.startswith("#") for target in URL_CALL.findall(value))
+  replace: bool(URL_CALL.findall(value))
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_real_looking_svg_drawing_is_accepted
+- label: a quoted url() target is read with its quote
+  find: URL_CALL = re.compile(r"url\(\s*['\"]?\s*([^)'\"\s]*)", re.IGNORECASE)
+  replace: URL_CALL = re.compile(r"url\(([^)]*)", re.IGNORECASE)
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
+- label: an image that is not an .svg file is accepted
+  find: '        if target is None or not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):'
+  replace: '        if target is None or posixpath.dirname(posixpath.normpath(target)):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_that_is_not_a_local_svg_is_reported
+- label: a remote image is accepted
+  find: '        if target is None or not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):'
+  replace: '        if target is not None and (not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target))):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_that_is_not_a_local_svg_is_reported
+- label: an upper-case .SVG figure is refused
+  find: '        if target is None or not target.lower().endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):'
+  replace: '        if target is None or not target.endswith(".svg") or posixpath.dirname(posixpath.normpath(target)):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_local_svg_figure_is_accepted_in_every_form_and_in_any_case
+- label: an SVG may embed an HTML <img> in foreignObject
+  find: RASTER_ELEMENTS = {"image", "feimage", "img"}
+  replace: RASTER_ELEMENTS = {"image", "feimage"}
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_file_must_be_a_drawing_not_a_renamed_picture
