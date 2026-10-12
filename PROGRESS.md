@@ -2,7 +2,7 @@
 
 > Đọc file này đầu tiên khi bắt đầu một phiên làm việc mới (người hay AI đều vậy).
 
-## Trạng thái hiện tại (cập nhật: 2026-10-01)
+## Trạng thái hiện tại (cập nhật: 2026-10-12)
 
 - **Trạng thái: đã viết xong toàn bộ khóa học — 52/52 bài × 3 thứ tiếng (vi · en · ja), 960 phút, đều ở
   trạng thái `review` — chờ owner (Linh) duyệt.** Giai đoạn 1 (viết nội dung) đã kết thúc. Lộ trình v1
@@ -50,9 +50,21 @@
     docs.github.com, docs.python.org…), nên nguồn tham khảo hiện chỉ lấy từ tài liệu của Anthropic và
     Google Cloud. Mở thêm trong cài đặt Network access của môi trường nếu muốn nguồn đa dạng hơn.
   - Website có nút chuyển ngôn ngữ (giai đoạn 3) — hiện dùng thanh 🌐 trên GitHub.
-- **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 007 (lộ trình v1, và quyết định viết cả
+- **Quyết định gần nhất:** [docs/decisions/](docs/decisions/) 011 (kho System Design tiếng Việt), 007 (lộ trình v1, và quyết định viết cả
   khóa học ngay), 008 (hình tóm tắt trong mọi bài), 009 (file HTML xem offline), 010 (Claude viết bài,
   Codex review).
+
+## System Design 101 tiếng Việt (nhánh riêng, bắt đầu 2026-10-12)
+
+- Kho riêng `system-design-101/vi/`, nằm ngoài `course/`; chi tiết ở
+  [brainstorm/system-design-101-vi/DECISIONS.md](brainstorm/system-design-101-vi/DECISIONS.md) và
+  [ADR 011](docs/decisions/011-system-design-store.md). Bảng đối chiếu 404 mục nguồn ở
+  `brainstorm/system-design-101-vi/source-map.json`.
+- **Đã viết (trạng thái `drafted`):** `sd-01-001` (polling, SSE, WebSocket), `sd-01-002` (bộ cân bằng tải). Tiến độ từng bài
+  chỉ ghi ở `lesson.yaml` của bài đó; đều còn `claims`, `technical`, `mobile`, `learner_test` ở `pending`.
+- Mỗi bài một PR; Claude gọi Codex review lặp tới khi hết finding rồi merge (chủ repo quyết định 12/10/2026).
+- **Rủi ro còn mở:** nguồn là CC BY-NC-ND 4.0 và repo công khai; bài viết độc lập bằng lời riêng, sơ đồ mới,
+  không dịch sát nguồn. Chưa đăng Facebook/website trước khi giải quyết quyền dùng.
 
 ## Bước tiếp theo
 
