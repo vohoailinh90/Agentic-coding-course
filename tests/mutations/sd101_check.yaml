@@ -379,7 +379,7 @@ mutations:
 - label: an evidence URL with whitespace or a control character is accepted
   find: '    if not isinstance(url, str) or any(char.isspace() or not char.isprintable() for char in url):'
   replace: '    if not isinstance(url, str):'
-  test: tests.test_sd101_check.RobustnessTests.test_an_evidence_url_needs_a_real_host_and_a_readable_port
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_an_evidence_url_needs_a_real_host_and_a_readable_port
 - label: a list or mapping in a status field raises instead of being reported
   find: '    return isinstance(value, str) and value in vocabulary'
   replace: '    return value in vocabulary'
