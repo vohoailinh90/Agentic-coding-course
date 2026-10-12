@@ -30,8 +30,9 @@ there without bending it. The source is licensed CC BY-NC-ND 4.0 and this reposi
 
 ## Consequences
 
-- No generator and no `validate` for the new store yet; a small checker comes after the first lessons
-  show the schema is stable.
+- No generator for the new store. `scripts/sd101_check.py`, which the test suite runs, enforces the
+  lesson schema, the link to the pinned source, the no-status README rule and the no-source-image
+  rule. It cannot judge whether a claim is true or a figure reads well; that stays with the review.
 - Claims in the lessons are checked against the RFC and HTML specifications only where those can be
   reached; where they cannot, `claims` stays `pending` and the lesson says so.
 - The licence question can still stop publication; drafts must not be posted to Facebook or a website

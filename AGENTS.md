@@ -11,6 +11,8 @@ takes complete beginners to directing AI agents.
 3. Before committing anything under `course/`: `python -m src.main build`, then
    `python -m src.main validate` (it must pass) and `python -m pytest -q`. Generated files are
    written by `build`, never by hand.
+   For `system-design-101/` (the Vietnamese-only System Design store) run `python3 scripts/sd101_check.py`
+   instead; it must pass too.
 4. Work on the branch your task names and open a pull request; do not push to `main`. Report every
    changed file, the checks you ran with their output, and anything you could not verify.
 
