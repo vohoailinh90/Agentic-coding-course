@@ -8,7 +8,9 @@ Kiểm tra trước khi commit: `python3 scripts/sd101_check.py`.
 
 Quy tắc ngắn: mỗi bài là một thư mục `lessons/<id>/` có `lesson.md` và `lesson.yaml` (nơi duy nhất
 ghi tiến độ). Bài viết độc lập bằng lời riêng, sơ đồ tự thiết kế, không dịch sát nguồn và không dùng
-ảnh nguồn, vì nguồn là CC BY-NC-ND 4.0 và kho này công khai.
+ảnh nguồn, vì nguồn là CC BY-NC-ND 4.0 và kho này công khai. Hình trong bài là Mermaid trong
+`lesson.md` hoặc tệp `.svg` tự vẽ nằm cạnh bài; thư mục bài chỉ chứa `lesson.md`, `lesson.yaml`
+và các tệp `.svg` đó (PNG/JPG không được phép, kể cả khi tự chụp).
 
 | ID | Bài |
 |---|---|

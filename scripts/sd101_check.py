@@ -17,10 +17,13 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     non-empty string equal to the source map's title_vi (a null there is not a title)
   - content_status is planned | drafted | approved; each verification field and
     learner_test is pending | done; `approved` needs all of them `done`
-  - image_evidence is a list, and each entry has an http(s) url, a 64-hex sha256 and
-    a retrieved_on date
-  - lesson.md: no code fence (``` or ~~~) is left open, <details> tags are balanced (<details open> too), every relative link
-    (inline, reference-style or <a href>) resolves,
+  - image_evidence is a list, and each entry has an http(s) url with a host, a 64-hex
+    sha256 and a real retrieved_on date
+  - the directory holds only lesson.md, lesson.yaml and .svg figures drawn for the lesson
+    (a downloaded PNG or JPG is refused whatever it shows)
+  - lesson.md: no code fence (``` or ~~~) is left open, <details> tags nest properly (<details open> too), every relative link
+    and image source (inline, reference-style, <a href>, <img src>) resolves, every image is a
+    local .svg file,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
     in a code block or a comment), it mentions no lesson id that has no lesson
     directory, and it never contains assets.bytebytego.com, the host of every
@@ -52,7 +55,7 @@ import re
 import sys
 from dataclasses import dataclass
 from html.parser import HTMLParser
-from urllib.parse import unquote
+from urllib.parse import unquote, urlparse
 
 import yaml
 from markdown_it import MarkdownIt
@@ -72,6 +75,7 @@ SHA256 = re.compile(r"[0-9a-fA-F]{64}")
 ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
+ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
 
 
 @dataclass(frozen=True)
@@ -89,7 +93,7 @@ def load_source_map(path: pathlib.Path) -> dict[str, dict]:
 
 
 class HtmlScan(HTMLParser):
-    """Facts about the HTML tags in a piece of HTML: each <a href>, and how many <details> open and close.
+    """Facts about the HTML tags in a piece of HTML: each <a href>, each <img src>, <details> nesting.
 
     Comments and attribute text are not tags, so a quoted "href=..." or a commented-out tag counts for nothing.
     """
@@ -97,18 +101,24 @@ class HtmlScan(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.hrefs: list[str] = []
-        self.details_opened = 0
-        self.details_closed = 0
+        self.srcs: list[str] = []
+        self.details_depth = 0
+        self.stray_details_close = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag == "a":
             self.hrefs.extend(value for name, value in attrs if name == "href" and value)
+        elif tag == "img":
+            self.srcs.extend(value for name, value in attrs if name == "src" and value)
         elif tag == "details":
-            self.details_opened += 1
+            self.details_depth += 1
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "details":
-            self.details_closed += 1
+            if self.details_depth:
+                self.details_depth -= 1
+            else:
+                self.stray_details_close = True
 
 
 def markdown_tokens(text: str) -> list:
@@ -149,6 +159,12 @@ def link_destinations(text: str) -> set[str]:
     return found | set(html_scan(text).hrefs)
 
 
+def image_sources(text: str) -> set[str]:
+    """Sources of the images Markdown would render: ![x](src), ![x][ref] and <img src>."""
+    found = {token.attrGet("src") or "" for token in markdown_tokens(text) if token.type == "image"}
+    return found | set(html_scan(text).srcs)
+
+
 def table_cells(text: str) -> list[str]:
     """The source text of every cell of every table Markdown would render, with or without outer pipes."""
     tokens = markdown_tokens(text)
@@ -163,14 +179,33 @@ def relative_target(destination: str) -> str | None:
     return unquote(destination.split("#")[0].split("?")[0]) or None
 
 
+def valid_url(url: object) -> bool:
+    if not isinstance(url, str):
+        return False
+    parsed = urlparse(url)
+    return parsed.scheme in ("http", "https") and bool(parsed.netloc)
+
+
+def valid_date(when: object) -> bool:
+    """A real calendar date: a date object (YAML turns an unquoted 2026-10-12 into one) or a YYYY-MM-DD string."""
+    if isinstance(when, datetime.date):
+        return True
+    if not isinstance(when, str) or ISO_DATE.fullmatch(when) is None:
+        return False
+    try:
+        datetime.date.fromisoformat(when)
+    except ValueError:
+        return False
+    return True
+
+
 def valid_image_evidence(item: object) -> bool:
-    """An entry has an http(s) url, a 64-hex sha256 and a date (YAML turns 2026-10-12 into a date)."""
+    """An entry has an http(s) url with a host, a 64-hex sha256 and a real date."""
     if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:
         return False
-    url, digest, when = item["url"], item["sha256"], item["retrieved_on"]
-    return (isinstance(url, str) and url.startswith(("http://", "https://"))
-            and isinstance(digest, str) and SHA256.fullmatch(digest) is not None
-            and (isinstance(when, datetime.date) or (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None)))
+    digest = item["sha256"]
+    return (valid_url(item["url"]) and isinstance(digest, str) and SHA256.fullmatch(digest) is not None
+            and valid_date(item["retrieved_on"]))
 
 
 def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[Problem]:
@@ -222,12 +257,17 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
     if has_unclosed_fence(text):
         problems.append(Problem(lesson_id, "lesson.md has an unclosed code fence"))
     scan = html_scan(text)
-    if scan.details_opened != scan.details_closed:
+    if scan.stray_details_close or scan.details_depth:
         problems.append(Problem(lesson_id, "lesson.md has unbalanced <details> tags"))
-    for destination in sorted(link_destinations(text)):
+    sources = image_sources(text)
+    for destination in sorted(link_destinations(text) | sources):
         target = relative_target(destination)
         if target is not None and not (lesson_dir / target).exists():
             problems.append(Problem(lesson_id, f"relative link {destination!r} does not resolve"))
+    for source in sorted(sources):
+        target = relative_target(source)
+        if target is None or not target.lower().endswith(".svg"):
+            problems.append(Problem(lesson_id, f"image {source!r} must be a local .svg file drawn for the lesson"))
     snapshot = entries.get(lesson_id, {}).get("source_snapshot_url")
     if snapshot and snapshot not in link_destinations(text):
         problems.append(Problem(lesson_id, "lesson.md does not link the pinned source snapshot"))
@@ -267,6 +307,10 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
     for lesson_dir in lesson_dirs:
         lesson_id = lesson_dir.name
         markdown, meta_file = lesson_dir / "lesson.md", lesson_dir / "lesson.yaml"
+        for path in sorted(lesson_dir.iterdir()):
+            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):
+                problems.append(Problem(lesson_id, f"{path.name} is not allowed; a lesson directory holds only "
+                                                   "lesson.md, lesson.yaml and .svg figures drawn for it"))
         for required in (markdown, meta_file):
             if not required.exists():
                 problems.append(Problem(lesson_id, f"{required.name} is missing"))

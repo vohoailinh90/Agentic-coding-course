@@ -153,7 +153,8 @@ class LessonYamlRuleTests(StoreCase):
         bad = {"null url": {**good, "url": None}, "not an http url": {**good, "url": "ftp://x/y.png"},
                "empty digest": {**good, "sha256": ""}, "short digest": {**good, "sha256": "a" * 63},
                "non-hex digest": {**good, "sha256": "z" * 64}, "null date": {**good, "retrieved_on": None},
-               "not a date": {**good, "retrieved_on": "yesterday"}}
+               "not a date": {**good, "retrieved_on": "yesterday"}, "url without a host": {**good, "url": "https://"},
+               "month 99": {**good, "retrieved_on": "2026-99-99"}, "february 30": {**good, "retrieved_on": "2026-02-30"}}
         for name, entry in bad.items():
             with self.subTest(entry=name):
                 self.write_lesson("sd-01-001", meta=self.meta(image_evidence=[entry]))
@@ -180,6 +181,63 @@ class LessonMarkdownRuleTests(StoreCase):
             with self.subTest(where=name):
                 self.write_lesson("sd-01-001", body=BODY + "\n" + text + "\n")
                 self.assertEqual([], self.problems())
+
+    def test_a_stray_closing_details_tag_is_reported_even_when_a_later_block_balances_the_count(self) -> None:
+        block = "<details>\n<summary>x</summary>\n\nnội dung\n\n</details>"
+        forms = {"close then an open block left open": "</details>\n\n<details>\n<summary>x</summary>\n\nnội dung\n",
+                 "close then a balanced block": "</details>\n\n" + block,
+                 "close only": "</details>"}
+        for name, text in forms.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + text + "\n")
+                self.assertProblem("unbalanced <details>")
+
+    def test_nested_details_blocks_are_balanced(self) -> None:
+        inner = "<details>\n<summary>trong</summary>\n\nb\n\n</details>"
+        outer = f"<details>\n<summary>ngoài</summary>\n\n{inner}\n\n</details>"
+        self.write_lesson("sd-01-001", body=BODY + "\n" + outer + "\n")
+        self.assertEqual([], self.problems())
+
+    def test_a_missing_local_image_is_reported_in_every_form(self) -> None:
+        forms = {"inline": "![sơ đồ](missing.svg)", "reference": "![sơ đồ][i]\n\n[i]: missing.svg",
+                 "html img": '<img src="missing.svg" alt="sơ đồ">'}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
+                self.assertProblem("'missing.svg' does not resolve")
+
+    def test_a_local_svg_figure_is_accepted_in_every_form_and_in_any_case(self) -> None:
+        forms = {"inline": "![sơ đồ](diagram.svg)", "reference": "![sơ đồ][i]\n\n[i]: diagram.svg",
+                 "html img": '<img src="diagram.svg" alt="sơ đồ">', "upper case": "![sơ đồ](FIGURE.SVG)"}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
+                (lesson_dir / "diagram.svg").write_text("<svg/>", encoding="utf-8")
+                (lesson_dir / "FIGURE.SVG").write_text("<svg/>", encoding="utf-8")
+                self.assertEqual([], self.problems())
+
+    def test_an_image_that_is_not_a_local_svg_is_reported(self) -> None:
+        forms = {"local png": "![x](diagram.png)", "local jpeg in html": '<img src="diagram.jpg">',
+                 "remote svg": "![x](https://example.com/a.svg)", "remote png": "![x](https://example.com/a.png)"}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
+                (lesson_dir / "diagram.png").write_bytes(b"\x89PNG")
+                (lesson_dir / "diagram.jpg").write_bytes(b"\xff\xd8")
+                self.assertProblem("must be a local .svg file")
+
+    def test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001")
+        (lesson_dir / "diagram.svg").write_text("<svg/>", encoding="utf-8")
+        (lesson_dir / "FIGURE.SVG").write_text("<svg/>", encoding="utf-8")
+        self.assertEqual([], self.problems())
+        for name in ("diagram.png", "photo.JPG", "notes.txt", "diagram.svg.png"):
+            with self.subTest(file=name):
+                (lesson_dir / name).write_bytes(b"x")
+                self.assertProblem(f"{name} is not allowed")
+                (lesson_dir / name).unlink()
+        (lesson_dir / "assets").mkdir()
+        self.assertProblem("assets is not allowed")
 
     def test_an_unclosed_tilde_fence_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n~~~mermaid\nflowchart TB\n")

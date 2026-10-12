@@ -32,22 +32,6 @@ mutations:
   find: '    if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:'
   replace: '    if not isinstance(item, dict):'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_an_image_evidence_entry_without_a_digest_is_reported
-- label: an image evidence url need not be an http(s) url
-  find: '    return (isinstance(url, str) and url.startswith(("http://", "https://"))'
-  replace: '    return (isinstance(url, str)'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
-- label: an image evidence digest need not be 64 hex characters
-  find: '            and isinstance(digest, str) and SHA256.fullmatch(digest) is not None'
-  replace: '            and isinstance(digest, str)'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
-- label: an image evidence date may be any text or null
-  find: '            and (isinstance(when, datetime.date) or (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None)))'
-  replace: '            and when is not None)'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
-- label: a date that YAML parsed into a date object is rejected
-  find: '            and (isinstance(when, datetime.date) or (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None)))'
-  replace: '            and (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None))'
-  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date
 - label: an unclosed code fence is accepted
   find: '    if has_unclosed_fence(text):'
   replace: '    if False:'
@@ -64,10 +48,6 @@ mutations:
   find: '        if target is not None and not (lesson_dir / target).exists():'
   replace: '        if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
-- label: only inline links are checked, so a reference-style link to a missing file is accepted
-  find: '    for destination in sorted(link_destinations(text)):'
-  replace: '    for destination in sorted(re.findall(r"\\]\\(([^)]+)\\)", text)):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_broken_reference_style_relative_link_is_reported
 - label: anchors, URLs and mail links are treated as relative paths
   find: '    if destination.startswith(("#", "//")) or SCHEME.match(destination):'
   replace: '    if False:'
@@ -136,22 +116,6 @@ mutations:
   find: '        if token.type in ("html_inline", "html_block"):'
   replace: '        if token.content:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_details_tag_in_a_code_block_a_code_span_or_a_comment_is_not_counted
-- label: unbalanced <details> tags are accepted
-  find: '    if scan.details_opened != scan.details_closed:'
-  replace: '    if False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_unbalanced_details_tags_are_reported
-- label: <details> is counted as an exact literal again
-  find: '    if scan.details_opened != scan.details_closed:'
-  replace: '    if text.count("<details>") != text.count("</details>"):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
-- label: an opening <details> tag is never counted
-  find: '        elif tag == "details":'
-  replace: '        elif False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
-- label: a closing </details> tag is never counted
-  find: "        if tag == \"details\":\n            self.details_closed += 1"
-  replace: "        if False:\n            self.details_closed += 1"
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
 - label: README tables are found by raw lines that start with a pipe
   find: '    if any(plain_cell(cell) in CONTENT_STATUS for cell in table_cells(text)):'
   replace: '    if any(plain_cell(cell) in CONTENT_STATUS for line in text.splitlines() if line.startswith("|") for cell in line.strip("|").split("|")):'
@@ -176,3 +140,99 @@ mutations:
   find: '    targets = (relative_target(destination) for destination in link_destinations(text))'
   replace: '    targets = iter(link_destinations(text))'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_link_with_a_fragment_a_query_or_encoding_still_links_the_lesson
+- label: an image evidence url need not be an http(s) url with a host
+  find: '    return parsed.scheme in ("http", "https") and bool(parsed.netloc)'
+  replace: '    return isinstance(url, str)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence url may lack a host
+  find: '    return parsed.scheme in ("http", "https") and bool(parsed.netloc)'
+  replace: '    return parsed.scheme in ("http", "https")'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence digest need not be 64 hex characters
+  find: '    return (valid_url(item["url"]) and isinstance(digest, str) and SHA256.fullmatch(digest) is not None'
+  replace: '    return (valid_url(item["url"]) and isinstance(digest, str)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: an image evidence date may be missing
+  find: '            and valid_date(item["retrieved_on"]))'
+  replace: '            and True)'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: a date that YAML parsed into a date object is rejected
+  find: "    if isinstance(when, datetime.date):\n        return True"
+  replace: "    if isinstance(when, datetime.date):\n        return False"
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date
+- label: a date with the right shape but no such day is accepted
+  find: '        datetime.date.fromisoformat(when)'
+  replace: '        pass'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_values_must_be_real
+- label: only inline links are checked, so a reference-style link to a missing file is accepted
+  find: '    for destination in sorted(link_destinations(text) | sources):'
+  replace: '    for destination in sorted(set(re.findall(r"\]\(([^)]+)\)", text))):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_broken_reference_style_relative_link_is_reported
+- label: a missing local image is accepted
+  find: '    for destination in sorted(link_destinations(text) | sources):'
+  replace: '    for destination in sorted(link_destinations(text)):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_missing_local_image_is_reported_in_every_form
+- label: Markdown images are not collected
+  find: '    found = {token.attrGet("src") or "" for token in markdown_tokens(text) if token.type == "image"}'
+  replace: '    found: set[str] = set()'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_missing_local_image_is_reported_in_every_form
+- label: an <img src> is not collected
+  find: '    return found | set(html_scan(text).srcs)'
+  replace: '    return found'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_missing_local_image_is_reported_in_every_form
+- label: a src on a tag other than <img> counts as an image
+  find: '        elif tag == "img":'
+  replace: '        elif True:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
+- label: an image that is not an .svg file is accepted
+  find: '        if target is None or not target.lower().endswith(".svg"):'
+  replace: '        if target is None:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_that_is_not_a_local_svg_is_reported
+- label: a remote image is accepted
+  find: '        if target is None or not target.lower().endswith(".svg"):'
+  replace: '        if target is not None and not target.lower().endswith(".svg"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_image_that_is_not_a_local_svg_is_reported
+- label: an upper-case .SVG figure is refused
+  find: '        if target is None or not target.lower().endswith(".svg"):'
+  replace: '        if target is None or not target.endswith(".svg"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_local_svg_figure_is_accepted_in_every_form_and_in_any_case
+- label: a copied source image in the lesson directory is accepted
+  find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
+  replace: '            if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
+- label: a directory named like an .svg file is accepted
+  find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
+  replace: '            if path.name not in ALLOWED_FILES and path.suffix.lower() != ".svg":'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
+- label: an upper-case .SVG file in the lesson directory is refused
+  find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
+  replace: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix == ".svg"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
+- label: a stray </details> that a later block balances is accepted
+  find: '    if scan.stray_details_close or scan.details_depth:'
+  replace: '    if scan.details_depth:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_stray_closing_details_tag_is_reported_even_when_a_later_block_balances_the_count
+- label: an unclosed <details> is accepted
+  find: '    if scan.stray_details_close or scan.details_depth:'
+  replace: '    if scan.stray_details_close:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_unbalanced_details_tags_are_reported
+- label: <details> nesting is not tracked
+  find: '    if scan.stray_details_close or scan.details_depth:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_unbalanced_details_tags_are_reported
+- label: an opening <details> tag is never counted
+  find: "        elif tag == \"details\":\n            self.details_depth += 1"
+  replace: "        elif False:\n            self.details_depth += 1"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_unbalanced_details_tags_are_reported
+- label: a closing </details> tag at depth zero is not remembered
+  find: "            else:\n                self.stray_details_close = True"
+  replace: "            else:\n                pass"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_stray_closing_details_tag_is_reported_even_when_a_later_block_balances_the_count
+- label: a closing </details> tag does not close the block
+  find: "            if self.details_depth:\n                self.details_depth -= 1"
+  replace: "            if self.details_depth:\n                self.details_depth += 0"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_details_with_attributes_is_a_balanced_details_block
+- label: nested <details> blocks are read as unbalanced
+  find: "            if self.details_depth:\n                self.details_depth -= 1"
+  replace: "            if self.details_depth:\n                self.details_depth = 0"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_nested_details_blocks_are_balanced
