@@ -8,6 +8,8 @@ Quy tắc ngắn: mỗi bài là một thư mục `lessons/<id>/` có `lesson.md
 ghi tiến độ). Bài viết độc lập bằng lời riêng, sơ đồ tự thiết kế, không dịch sát nguồn và không dùng
 ảnh nguồn, vì nguồn là CC BY-NC-ND 4.0 và kho này công khai.
 
-| ID | Bài | Trạng thái |
-|---|---|---|
-| [sd-01-001](lessons/sd-01-001/lesson.md) | Polling ngắn, polling dài, SSE và WebSocket | drafted |
+| ID | Bài |
+|---|---|
+| [sd-01-001](lessons/sd-01-001/lesson.md) | Polling ngắn, polling dài, SSE và WebSocket |
+
+Trạng thái từng bài xem ở `lesson.yaml` của bài đó, không lặp lại ở đây.
