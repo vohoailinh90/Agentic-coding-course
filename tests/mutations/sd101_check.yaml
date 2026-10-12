@@ -120,18 +120,6 @@ mutations:
   find: '        elif tag == "img":'
   replace: '        elif True:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_src_attribute_on_a_tag_other_than_img_is_not_an_image
-- label: a copied source image in the lesson directory is accepted
-  find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
-  replace: '            if False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
-- label: a directory named like an .svg file is accepted
-  find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
-  replace: '            if path.name not in ALLOWED_FILES and path.suffix.lower() != ".svg":'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
-- label: an upper-case .SVG file in the lesson directory is refused
-  find: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
-  replace: '            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix == ".svg"):'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
 - label: a stray </details> that a later block balances is accepted
   find: '    if scan.stray_details_close or scan.details_depth:'
   replace: '    if scan.details_depth:'
@@ -480,10 +468,6 @@ mutations:
   find: '        if path.name not in STORE_ENTRIES:'
   replace: '        if False:'
   test: tests.test_sd101_check.ReadmeRuleTests.test_the_store_holds_only_the_readme_and_the_lessons_directory
-- label: a stray file inside lessons/ is accepted
-  find: "        if not path.is_dir():\n            problems.append(Problem(\"lessons\""
-  replace: "        if False:\n            problems.append(Problem(\"lessons\""
-  test: tests.test_sd101_check.ReadmeRuleTests.test_lessons_holds_only_lesson_directories
 - label: an image embedded in the README is accepted
   find: '                    for source in sorted(image_sources(text)))'
   replace: '                    for source in [])'
@@ -776,10 +760,6 @@ mutations:
   find: '    if entry.get("title_vi") is not None and not text_value(entry.get("title_vi")):'
   replace: '    if not text_value(entry.get("title_vi")):'
   test: tests.test_sd101_check.SourceMapPinTests.test_a_null_title_vi_is_allowed_and_a_string_is_too
-- label: an empty source title or path in the source map is accepted
-  find: '        if key in entry and not text_value(entry[key]):'
-  replace: '        if False:'
-  test: tests.test_sd101_check.SourceMapPinTests.test_an_entry_field_of_the_wrong_kind_is_reported
 - label: a source URL that is not a URL is accepted
   find: '    if "source_url" in entry and not valid_url(entry["source_url"]):'
   replace: '    if False:'
@@ -846,3 +826,127 @@ mutations:
   find: '        return f"has {found[0]}, which can load a stylesheet, a DTD or another file; remove it"'
   replace: '        return "has a processing instruction, which can load a stylesheet, a DTD or another file; remove it"'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_svg_with_a_doctype_is_reported
+- label: a key named twice in the source map JSON is accepted
+  find: "        if key in seen:\n            raise ValueError"
+  replace: "        if False:\n            raise ValueError"
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_key_named_twice_in_the_source_map_is_reported
+- label: the source map JSON is read without the duplicate-key hook
+  find: path.read_text(encoding="utf-8"), object_pairs_hook=object_without_duplicate_keys)
+  replace: path.read_text(encoding="utf-8"))
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_key_named_twice_in_the_source_map_is_reported
+- label: a source_path with a dot segment is accepted
+  find: and ".." not in value.split("/"))
+  replace: )
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path that is not normalised is accepted
+  find: ' and posixpath.normpath(value) == value
+
+  '
+  replace: '
+
+  '
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: an absolute source_path is accepted
+  find: ' and not value.startswith("/") and'
+  replace: ' and'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with a fragment or query mark is accepted
+  find: char in "#?\\"
+  replace: char in "\\"
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path with whitespace is accepted
+  find: "for char in value)\n            and \"..\""
+  replace: "for char in \"\")\n            and \"..\""
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: a source_path is only checked for being text
+  find: '    if "source_path" in entry and not repository_path(entry["source_path"]):'
+  replace: '    if "source_path" in entry and not text_value(entry["source_path"]):'
+  test: tests.test_sd101_check.SourceMapPinTests.test_a_source_path_that_a_url_would_read_differently_is_reported
+- label: the top-level records of the real map are not checked
+  find: '    top_level = top_level_problems(data) if pin_roster else []'
+  replace: '    top_level = []'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: the top-level records of every source map are checked
+  find: '    top_level = top_level_problems(data) if pin_roster else []'
+  replace: '    top_level = top_level_problems(data)'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_good_source_map_with_two_categories_is_fine
+- label: the top-level key set is not compared
+  find: '    if set(data) != SOURCE_MAP_KEYS:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: schema_version 2 or true is accepted
+  find: '    if data.get("schema_version") != 1 or isinstance(data.get("schema_version"), bool):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: a boolean counts as schema_version 1
+  find: '    if data.get("schema_version") != 1 or isinstance(data.get("schema_version"), bool):'
+  replace: '    if data.get("schema_version") != 1:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: another language is accepted
+  find: '    if data.get("language") != "vi":'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: another source repository is accepted
+  find: '    if data.get("source_repository") != SOURCE_REPOSITORY:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: a git object id of the wrong shape is accepted at the top level
+  find: "        if not (isinstance(value, str) and COMMIT.fullmatch(value)):\n            found.append(f\"{key} must be"
+  replace: "        if False:\n            found.append(f\"{key} must be"
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: an observation date that is not a date is accepted
+  find: '    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: a numeric observation date is accepted
+  find: '    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):'
+  replace: '    if not valid_date(data.get("observed_on")):'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: an empty note is accepted
+  find: '    if not text_value(data.get("note")):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
+- label: a group of the real map may lack a title or have unknown keys
+  find: '        if pin_roster and (set(category) != GROUP_KEYS or not text_value(category.get("title_vi"))'
+  replace: '        if False and (set(category) != GROUP_KEYS or not text_value(category.get("title_vi"))'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_groups_of_the_real_map_are_pinned
+- label: a group title_source is not required
+  find: '                           or not text_value(category.get("title_source"))):'
+  replace: '                           or False):'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_groups_of_the_real_map_are_pinned
+- label: a symbolic link inside a lesson directory is accepted
+  find: "            if path.is_symlink():\n                problems.append(Problem(lesson_id"
+  replace: "            if False:\n                problems.append(Problem(lesson_id"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_symbolic_link_is_not_a_lesson_file
+- label: a symbolic link for a lesson directory is followed
+  find: if path.is_dir() and not path.is_symlink())
+  replace: if path.is_dir())
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_symbolic_link_for_a_lesson_directory_the_readme_or_lessons_is_reported
+- label: a symbolic link in lessons/ is accepted
+  find: '        if path.is_symlink() or not path.is_dir():'
+  replace: '        if not path.is_dir():'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_symbolic_link_for_a_lesson_directory_the_readme_or_lessons_is_reported
+- label: a symbolic link README or lessons directory in the store is accepted
+  find: "        elif path.is_symlink():\n            problems.append(Problem(path.name, \"is a symbolic link"
+  replace: "        elif False:\n            problems.append(Problem(path.name, \"is a symbolic link"
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_symbolic_link_for_a_lesson_directory_the_readme_or_lessons_is_reported
+- label: a copied source image in the lesson directory is accepted
+  find: '            elif path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
+  replace: '            elif False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
+- label: a directory named like an .svg file is accepted
+  find: '            elif path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
+  replace: '            elif path.name not in ALLOWED_FILES and path.suffix.lower() != ".svg":'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
+- label: an upper-case .SVG file in the lesson directory is refused
+  find: '            elif path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):'
+  replace: '            elif path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix == ".svg"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures
+- label: a stray file inside lessons/ is accepted
+  find: "        if path.is_symlink() or not path.is_dir():\n            problems.append(Problem(\"lessons\""
+  replace: "        if False:\n            problems.append(Problem(\"lessons\""
+  test: tests.test_sd101_check.ReadmeRuleTests.test_lessons_holds_only_lesson_directories
+- label: an empty source title in the source map is accepted
+  find: '    if "title_source" in entry and not text_value(entry["title_source"]):'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_an_entry_field_of_the_wrong_kind_is_reported

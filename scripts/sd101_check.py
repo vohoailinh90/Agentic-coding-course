@@ -102,6 +102,10 @@ EXPECTED_GROUPS = (("sd-01", 50), ("sd-02", 32), ("sd-03", 8), ("sd-04", 47), ("
                    ("sd-13", 27), ("sd-14", 35), ("sd-15", 12))
 SOURCE_ENTRY_KEYS = {"id", "title_vi", "title_source", "source_url", "source_path", "source_body_reviewed",
                      "source_blob_sha", "source_snapshot_url"}
+SOURCE_MAP_KEYS = {"schema_version", "language", "note", "source_repository", "source_readme_blob_sha", "observed_on",
+                   "source_commit_sha", "source_tree_sha", "categories"}
+SOURCE_REPOSITORY = "ByteByteGoHq/system-design-101"
+GROUP_KEYS = {"id", "title_vi", "title_source", "lessons"}
 REPOSITORY = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
 COMMIT = re.compile(r"[0-9a-f]{40}")
 LESSON_LINK = re.compile(r"lessons/(sd-\d{2}-\d{3})/lesson\.md")
@@ -130,6 +134,23 @@ class Problem:
         return f"{self.where}: {self.message}"
 
 
+def object_without_duplicate_keys(pairs: list[tuple[str, object]]) -> dict:
+    """json.loads keeps the last of two equal keys; a source map that names a key twice is ambiguous evidence."""
+    seen: set[str] = set()
+    for key, _value in pairs:
+        if key in seen:
+            raise ValueError(f"duplicate key {key!r}")
+        seen.add(key)
+    return dict(pairs)
+
+
+def repository_path(value: object) -> bool:
+    """A normalised path inside the repository: relative, no . or .. part, nothing a URL would read differently."""
+    return (isinstance(value, str) and bool(value) and not value.startswith("/") and posixpath.normpath(value) == value
+            and not any(char.isspace() or not char.isprintable() or char in "#?\\" for char in value)
+            and ".." not in value.split("/"))
+
+
 def text_value(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
@@ -148,9 +169,10 @@ def entry_problems(entry: dict) -> list[str]:
         found.append(f"has unknown keys {', '.join(unknown)}; the map records facts about the source only")
     if entry.get("title_vi") is not None and not text_value(entry.get("title_vi")):
         found.append("title_vi must be null (not yet titled) or a non-empty string")
-    for key in ("title_source", "source_path"):
-        if key in entry and not text_value(entry[key]):
-            found.append(f"{key} must be a non-empty string")
+    if "title_source" in entry and not text_value(entry["title_source"]):
+        found.append("title_source must be a non-empty string")
+    if "source_path" in entry and not repository_path(entry["source_path"]):
+        found.append("source_path must be a normalised path inside the repository (no leading /, no . or .. part)")
     if "source_url" in entry and not valid_url(entry["source_url"]):
         found.append("source_url must be an http(s) URL")
     if "source_body_reviewed" in entry and not isinstance(entry["source_body_reviewed"], bool):
@@ -191,6 +213,30 @@ def same_source_problems(entries: dict[str, dict]) -> list[str]:
     return found
 
 
+def top_level_problems(data: dict) -> list[str]:
+    """The records around the groups that DECISIONS.md relies on: schema version, language, the pinned source."""
+    found: list[str] = []
+    if set(data) != SOURCE_MAP_KEYS:
+        missing, unknown = sorted(SOURCE_MAP_KEYS - set(data)), sorted(set(data) - SOURCE_MAP_KEYS)
+        found.append("has the wrong top-level keys" + (f"; missing {', '.join(missing)}" if missing else "")
+                     + (f"; unknown {', '.join(unknown)}" if unknown else ""))
+    if data.get("schema_version") != 1 or isinstance(data.get("schema_version"), bool):
+        found.append("schema_version must be 1")
+    if data.get("language") != "vi":
+        found.append("language must be 'vi'")
+    if data.get("source_repository") != SOURCE_REPOSITORY:
+        found.append(f"source_repository must be {SOURCE_REPOSITORY}")
+    for key in ("source_commit_sha", "source_tree_sha", "source_readme_blob_sha"):
+        value = data.get(key)
+        if not (isinstance(value, str) and COMMIT.fullmatch(value)):
+            found.append(f"{key} must be a 40-hex Git object id")
+    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):
+        found.append("observed_on must be a YYYY-MM-DD date")
+    if not text_value(data.get("note")):
+        found.append("note must be a non-empty string")
+    return found
+
+
 def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[str, dict], list[Problem]]:
     """The source map's lessons by id, in source order, and what is wrong with the file (if anything).
 
@@ -200,17 +246,18 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
     and size) and 404 ids of DECISIONS.md, each group numbered 001, 002, ... in order.
     """
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=object_without_duplicate_keys)
     except (OSError, ValueError) as error:  # JSONDecodeError and UnicodeDecodeError are ValueErrors
         return {}, [Problem("source map", f"cannot be read: {error}")]
     categories = data.get("categories") if isinstance(data, dict) else None
     if not isinstance(categories, list):
         return {}, [Problem("source map", "has no 'categories' list")]
     repository, commit = data.get("source_repository"), data.get("source_commit_sha")
+    top_level = top_level_problems(data) if pin_roster else []
     pinned = (isinstance(repository, str) and REPOSITORY.fullmatch(repository) is not None
               and isinstance(commit, str) and COMMIT.fullmatch(commit) is not None)
     entries: dict[str, dict] = {}
-    problems: list[Problem] = []
+    problems: list[Problem] = [Problem("source map", reason) for reason in top_level]
     if not pinned:
         problems.append(Problem("source map", "needs a source_repository (owner/name) and a 40-hex source_commit_sha"))
     groups: list[tuple[object, int]] = []
@@ -220,6 +267,10 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
             problems.append(Problem("source map", f"category {position} has no 'lessons' list"))
             continue
         groups.append((category.get("id"), len(lessons)))
+        if pin_roster and (set(category) != GROUP_KEYS or not text_value(category.get("title_vi"))
+                           or not text_value(category.get("title_source"))):
+            problems.append(Problem("source map", f"group {category.get('id')} needs exactly {', '.join(sorted(GROUP_KEYS))} "
+                                                  "with a title_vi and a title_source"))
         for number, lesson in enumerate(lessons, 1):
             lesson_id = lesson.get("id") if isinstance(lesson, dict) else None
             if not isinstance(lesson_id, str):
@@ -651,19 +702,25 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path, pin_roster: bool 
     entries, problems = load_source_map(source_map, pin_roster)
     boundary = repository_root(store)
     lessons_dir = store / "lessons"
-    lesson_dirs = sorted(path for path in lessons_dir.iterdir() if path.is_dir()) if lessons_dir.is_dir() else []
+    lesson_dirs = (sorted(path for path in lessons_dir.iterdir() if path.is_dir() and not path.is_symlink())
+                   if lessons_dir.is_dir() else [])
     lesson_ids = {path.name for path in lesson_dirs}
     for path in sorted(store.iterdir()) if store.is_dir() else []:
         if path.name not in STORE_ENTRIES:
             problems.append(Problem(path.name, "is not allowed in the store, which holds only README.md and lessons/"))
+        elif path.is_symlink():
+            problems.append(Problem(path.name, "is a symbolic link; the store holds real files and directories only"))
     for path in sorted(lessons_dir.iterdir()) if lessons_dir.is_dir() else []:
-        if not path.is_dir():
+        if path.is_symlink() or not path.is_dir():
             problems.append(Problem("lessons", f"{path.name} is not a lesson directory"))
     for lesson_dir in lesson_dirs:
         lesson_id = lesson_dir.name
         markdown, meta_file = lesson_dir / "lesson.md", lesson_dir / "lesson.yaml"
         for path in sorted(lesson_dir.iterdir()):
-            if path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):
+            if path.is_symlink():
+                problems.append(Problem(lesson_id, f"{path.name} is a symbolic link; a lesson directory holds real files "
+                                                   "only, so a figure cannot change with another file"))
+            elif path.name not in ALLOWED_FILES and not (path.is_file() and path.suffix.lower() == ".svg"):
                 problems.append(Problem(lesson_id, f"{path.name} is not allowed; a lesson directory holds only "
                                                    "lesson.md, lesson.yaml and .svg figures drawn for it"))
             elif path.is_file() and path.suffix.lower() == ".svg" and (reason := svg_problem(path)):

@@ -7,6 +7,7 @@ import copy
 import datetime
 import io
 import json
+import os
 import tempfile
 import unittest
 from unittest import mock
@@ -348,6 +349,89 @@ class SourceMapPinTests(unittest.TestCase):
                 with self.subTest(key=key, value=value):
                     self.check(lambda data: self.entry(data, 0).update({key: value}))
 
+    def check_text(self, text: str, *, pin_roster: bool = True) -> list[str]:
+        with tempfile.TemporaryDirectory() as tmp:
+            altered = Path(tmp) / "source-map.json"
+            altered.write_text(text, encoding="utf-8")
+            return [str(problem) for problem in check.load_source_map(altered, pin_roster)[1]]
+
+    def test_a_key_named_twice_in_the_source_map_is_reported(self) -> None:
+        text = check.DEFAULT_SOURCE_MAP.read_text(encoding="utf-8")
+        data = json.loads(text)
+        commit, blob = data["source_commit_sha"], data["categories"][0]["lessons"][0]["source_blob_sha"]
+        for name, (old, new) in {
+            "the pinned commit": (f'"source_commit_sha": "{commit}"', f'"source_commit_sha": "{"0" * 40}", "source_commit_sha": "{commit}"'),
+            "a blob id": (f'"source_blob_sha": "{blob}"', f'"source_blob_sha": "{blob}", "source_blob_sha": "{blob}"'),
+            "the schema version": ('"schema_version": 1', '"schema_version": 1, "schema_version": 1'),
+        }.items():
+            with self.subTest(key=name):
+                self.assertEqual(1, text.count(old))
+                found = self.check_text(text.replace(old, new, 1))
+                self.assertTrue(any("cannot be read: duplicate key" in line for line in found), found)
+
+    def test_a_source_path_that_a_url_would_read_differently_is_reported(self) -> None:
+        for path in ["../README.md", "/data/x.md", "data//x.md", "./data/x.md", "data/./x.md", "data/../x.md",
+                     "data/x.md/", "data/a b.md", "data/a#b.md", "data/a?b.md", "data\\a.md", "data/a\tb.md", ".."]:
+            def change(data, path=path):
+                entry = self.entry(data)
+                entry["source_path"] = path
+                entry["source_snapshot_url"] = f"https://github.com/{data['source_repository']}/blob/{data['source_commit_sha']}/{path}"
+            with self.subTest(path=path):
+                found = self.check(change, pin_roster=False)
+                self.assertTrue(any("sd-01-002 source_path must be a normalised path" in line for line in found), found)
+
+    def test_the_real_source_paths_with_an_apostrophe_or_a_plus_are_fine(self) -> None:
+        data = json.loads(check.DEFAULT_SOURCE_MAP.read_text(encoding="utf-8"))
+        paths = [lesson["source_path"] for category in data["categories"] for lesson in category["lessons"]]
+        self.assertTrue(any("'" in path for path in paths) and any("+" in path for path in paths))
+        self.assertEqual([], self.check(lambda data: None))
+
+    @staticmethod
+    def move_to_another_repository(data) -> None:
+        old = data["source_repository"]
+        data["source_repository"] = "someone/else"
+        for category in data["categories"]:
+            for lesson in category["lessons"]:
+                lesson["source_snapshot_url"] = lesson["source_snapshot_url"].replace(old, "someone/else")
+
+    def test_the_top_level_records_of_the_real_map_are_pinned(self) -> None:
+        cases = {
+            "no schema version": lambda data: data.pop("schema_version"),
+            "another schema version": lambda data: data.update(schema_version=2),
+            "a boolean schema version": lambda data: data.update(schema_version=True),
+            "another language": lambda data: data.update(language="en"),
+            "another repository": self.move_to_another_repository,
+            "no tree sha": lambda data: data.pop("source_tree_sha"),
+            "a short tree sha": lambda data: data.update(source_tree_sha="7c914cc"),
+            "a corrupted readme blob sha": lambda data: data.update(source_readme_blob_sha="z" * 40),
+            "no readme blob sha": lambda data: data.pop("source_readme_blob_sha"),
+            "no observation date": lambda data: data.pop("observed_on"),
+            "an impossible observation date": lambda data: data.update(observed_on="2026-02-30"),
+            "a free-text observation date": lambda data: data.update(observed_on="yesterday"),
+            "a numeric observation date": lambda data: data.update(observed_on=20261012),
+            "no note": lambda data: data.pop("note"),
+            "an empty note": lambda data: data.update(note="  "),
+            "an unknown top-level key": lambda data: data.update(status="drafted"),
+        }
+        for name, change in cases.items():
+            with self.subTest(change=name):
+                found = self.check(change)
+                self.assertTrue(any(("top-level" in line or "must be" in line) for line in found), found)
+                self.assertEqual([], self.check(change, pin_roster=False), "only the real map is held to its top-level records")
+
+    def test_the_groups_of_the_real_map_are_pinned(self) -> None:
+        cases = {
+            "no title_vi": lambda data: data["categories"][2].pop("title_vi"),
+            "an empty title_vi": lambda data: data["categories"][2].update(title_vi=""),
+            "a null title_vi": lambda data: data["categories"][2].update(title_vi=None),
+            "no title_source": lambda data: data["categories"][2].pop("title_source"),
+            "an unknown group key": lambda data: data["categories"][2].update(status="drafted"),
+        }
+        for name, change in cases.items():
+            with self.subTest(change=name):
+                found = self.check(change)
+                self.assertTrue(any("group sd-03 needs exactly" in line for line in found), found)
+
     def test_re_pinning_every_entry_and_the_map_to_one_new_commit_is_allowed(self) -> None:
         new = "0123456789abcdef0123456789abcdef01234567"
 
@@ -615,6 +699,43 @@ class LessonMarkdownRuleTests(StoreCase):
             with self.subTest(form=name):
                 self.write_lesson("sd-01-001", body=BODY + f"\n![x]({destination})\n")
                 self.assertProblem("directly inside the lesson directory")
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "needs symbolic links")
+    def test_a_symbolic_link_is_not_a_lesson_file(self) -> None:
+        elsewhere = self.root / "shared.svg"
+        elsewhere.write_text("<svg/>", encoding="utf-8")
+        lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n![x](shared.svg)\n")
+        (lesson_dir / "shared.svg").symlink_to(elsewhere)
+        self.assertProblem("shared.svg is a symbolic link")
+        (lesson_dir / "shared.svg").unlink()
+        lesson_md = lesson_dir / "lesson.md"
+        real = self.root / "real.md"
+        real.write_text(BODY, encoding="utf-8")
+        lesson_md.unlink()
+        lesson_md.symlink_to(real)
+        self.assertProblem("lesson.md is a symbolic link")
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "needs symbolic links")
+    def test_a_symbolic_link_for_a_lesson_directory_the_readme_or_lessons_is_reported(self) -> None:
+        copy = self.root / "elsewhere"
+        copy.mkdir()
+        (copy / "lesson.md").write_text(BODY, encoding="utf-8")
+        (copy / "lesson.yaml").write_text(yaml.safe_dump(META), encoding="utf-8")
+        (self.store / "lessons" / "sd-01-002").symlink_to(copy, target_is_directory=True)
+        self.assertProblem("lessons: sd-01-002 is not a lesson directory")
+        (self.store / "lessons" / "sd-01-002").unlink()
+        readme = self.store / "README.md"
+        real = self.root / "README.real"
+        real.write_text(README, encoding="utf-8")
+        readme.unlink()
+        readme.symlink_to(real)
+        self.assertProblem("README.md: is a symbolic link")
+        readme.unlink()
+        self.write_readme(README)
+        moved = self.root / "lessons-real"
+        (self.store / "lessons").rename(moved)
+        (self.store / "lessons").symlink_to(moved, target_is_directory=True)
+        self.assertProblem("lessons: is a symbolic link")
 
     def test_a_lesson_directory_may_hold_only_lesson_files_and_svg_figures(self) -> None:
         lesson_dir = self.write_lesson("sd-01-001")
