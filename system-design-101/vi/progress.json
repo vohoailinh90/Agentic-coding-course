@@ -17,7 +17,7 @@
   "active_batch_ids": [
     "sd-01-004"
   ],
-  "active_pr": null,
+  "active_pr": 30,
   "updated_on": "2026-10-12",
   "active_branch": "codex/system-design-vi-sd-01-004",
   "previous_pr": 25,
