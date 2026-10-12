@@ -1,0 +1,3751 @@
+{
+  "schema_version": 1,
+  "language": "vi",
+  "source_repository": "ByteByteGoHq/system-design-101",
+  "source_readme_blob_sha": "0a75df39b6f3efbff31365615ea0dd052004ab4b",
+  "observed_on": "2026-10-12",
+  "note": "Bản kiểm kê cho brainstorm; tiêu đề nguồn dùng để đối chiếu. title_vi=null là chưa biên soạn, không phải nội dung tiếng Anh của khóa học.",
+  "categories": [
+    {
+      "id": "sd-01",
+      "title_vi": "API và phát triển web",
+      "title_source": "API and Web Development",
+      "lessons": [
+        {
+          "id": "sd-01-001",
+          "title_vi": "Polling ngắn, polling dài, SSE và WebSocket",
+          "title_source": "Short/long polling, SSE, WebSocket",
+          "source_url": "https://bytebytego.com/guides/shortlong-polling-sse-websocket",
+          "source_path": "data/guides/shortlong-polling-sse-websocket.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-01-002",
+          "title_vi": "Ứng dụng thực tế của bộ cân bằng tải",
+          "title_source": "Load Balancer Realistic Use Cases",
+          "source_url": "https://bytebytego.com/guides/load-balancer-realistic-use-cases-you-may-not-know",
+          "source_path": "data/guides/load-balancer-realistic-use-cases-you-may-not-know.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-01-003",
+          "title_vi": "5 mã HTTP kỳ lạ và bối cảnh sử dụng",
+          "title_source": "5 HTTP Status Codes That Should Never Have Been Created",
+          "source_url": "https://bytebytego.com/guides/5-http-status-codes-that-should-never-have-been-created",
+          "source_path": "data/guides/5-http-status-codes-that-should-never-have-been-created.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-01-004",
+          "title_vi": "gRPC hoạt động thế nào?",
+          "title_source": "How does gRPC work?",
+          "source_url": "https://bytebytego.com/guides/how-does-grpc-work",
+          "source_path": "data/guides/how-does-grpc-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-005",
+          "title_vi": "NAT giúp Internet mở rộng ra sao?",
+          "title_source": "How NAT Enabled the Internet",
+          "source_url": "https://bytebytego.com/guides/how-nat-made-the-growth-of-the-internet-possible",
+          "source_path": "data/guides/how-nat-made-the-growth-of-the-internet-possible.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-006",
+          "title_vi": "Những điều cần biết về HTTP headers",
+          "title_source": "Important Things About HTTP Headers",
+          "source_url": "https://bytebytego.com/guides/important-things-about-http-headers-you-may-not-know",
+          "source_path": "data/guides/important-things-about-http-headers-you-may-not-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-007",
+          "title_vi": "Chính sách định tuyến lưu lượng Internet",
+          "title_source": "Internet Traffic Routing Policies",
+          "source_url": "https://bytebytego.com/guides/internet-traffic-routing-policies",
+          "source_path": "data/guides/internet-traffic-routing-policies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-008",
+          "title_vi": "Trình duyệt dựng trang web thế nào?",
+          "title_source": "How Browsers Render Web Pages",
+          "source_url": "https://bytebytego.com/guides/how-does-the-browser-render-a-web-page",
+          "source_path": "data/guides/how-does-the-browser-render-a-web-page.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-009",
+          "title_vi": "Vì sao HTTP/2 nhanh hơn HTTP/1?",
+          "title_source": "What makes HTTP2 faster than HTTP1?",
+          "source_url": "https://bytebytego.com/guides/what-makes-http2-faster-than-http1",
+          "source_path": "data/guides/what-makes-http2-faster-than-http1.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-010",
+          "title_vi": "CSS là gì?",
+          "title_source": "What is CSS (Cascading Style Sheets)?",
+          "source_url": "https://bytebytego.com/guides/what-is-css-cascading-style-sheets",
+          "source_path": "data/guides/what-is-css-cascading-style-sheets.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-011",
+          "title_vi": "Các tình huống dùng bộ cân bằng tải",
+          "title_source": "Key Use Cases for Load Balancers",
+          "source_url": "https://bytebytego.com/guides/key-use-cases-for-load-balancers",
+          "source_path": "data/guides/key-use-cases-for-load-balancers.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-012",
+          "title_vi": "18 cổng mạng thường gặp",
+          "title_source": "18 Common Ports Worth Knowing",
+          "source_url": "https://bytebytego.com/guides/18-common-ports-worth-knowing",
+          "source_path": "data/guides/18-common-ports-worth-knowing.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-013",
+          "title_vi": "Phân biệt WAN, LAN, PAN và MAN",
+          "title_source": "What are the differences between WAN, LAN, PAN and MAN?",
+          "source_url": "https://bytebytego.com/guides/what-are-the-differences-between-wan-lan-pan-and-man",
+          "source_path": "data/guides/what-are-the-differences-between-wan-lan-pan-and-man.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-014",
+          "title_vi": "JavaScript hoạt động thế nào?",
+          "title_source": "How does Javascript Work?",
+          "source_url": "https://bytebytego.com/guides/how-does-javascript-work",
+          "source_path": "data/guides/how-does-javascript-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-015",
+          "title_vi": "8 gợi ý thiết kế API hiệu quả",
+          "title_source": "8 Tips for Efficient API Design",
+          "source_url": "https://bytebytego.com/guides/8-tips-for-efficient-api-design",
+          "source_path": "data/guides/8-tips-for-efficient-api-design.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-016",
+          "title_vi": "Reverse Proxy, API Gateway và Load Balancer",
+          "title_source": "Reverse Proxy vs. API Gateway vs. Load Balancer",
+          "source_url": "https://bytebytego.com/guides/reverse-proxy-vs-api-gateway-vs-load-balancer",
+          "source_path": "data/guides/reverse-proxy-vs-api-gateway-vs-load-balancer.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-017",
+          "title_vi": "REST API hoạt động thế nào?",
+          "title_source": "How does REST API work?",
+          "source_url": "https://bytebytego.com/guides/how-does-rest-api-work",
+          "source_path": "data/guides/how-does-rest-api-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-018",
+          "title_vi": "Load Balancer và API Gateway",
+          "title_source": "Load Balancer vs. API Gateway",
+          "source_url": "https://bytebytego.com/guides/what-are-the-differences-between-a-load-balancer-and-an-api-gateway",
+          "source_path": "data/guides/what-are-the-differences-between-a-load-balancer-and-an-api-gateway.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-019",
+          "title_vi": "GraphQL tại LinkedIn",
+          "title_source": "How GraphQL Works at LinkedIn",
+          "source_url": "https://bytebytego.com/guides/how-does-graphql-work-in-the-real-world",
+          "source_path": "data/guides/how-does-graphql-work-in-the-real-world.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-020",
+          "title_vi": "Các cách đưa GraphQL vào hệ thống",
+          "title_source": "GraphQL Adoption Patterns",
+          "source_url": "https://bytebytego.com/guides/graphql-adoption-patterns",
+          "source_path": "data/guides/graphql-adoption-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-021",
+          "title_vi": "Bảng tra cứu thiết kế API",
+          "title_source": "A cheat sheet for API designs",
+          "source_url": "https://bytebytego.com/guides/a-cheat-sheet-for-api-designs",
+          "source_path": "data/guides/a-cheat-sheet-for-api-designs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-022",
+          "title_vi": "Nhập môn API Gateway",
+          "title_source": "API Gateway 101",
+          "source_url": "https://bytebytego.com/guides/api-gateway-101",
+          "source_path": "data/guides/api-gateway-101.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-023",
+          "title_vi": "3 tình huống dùng API Gateway",
+          "title_source": "Top 3 API Gateway Use Cases",
+          "source_url": "https://bytebytego.com/guides/top-3-api-gateway-use-cases",
+          "source_path": "data/guides/top-3-api-gateway-use-cases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-024",
+          "title_vi": null,
+          "title_source": "What do version numbers mean?",
+          "source_url": "https://bytebytego.com/guides/what-do-version-numbers-mean",
+          "source_path": "data/guides/what-do-version-numbers-mean.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-025",
+          "title_vi": null,
+          "title_source": "Do you know all the components of a URL?",
+          "source_url": "https://bytebytego.com/guides/do-you-know-all-the-components-of-a-url",
+          "source_path": "data/guides/do-you-know-all-the-components-of-a-url.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-026",
+          "title_vi": null,
+          "title_source": "Unicast vs Broadcast vs Multicast vs Anycast",
+          "source_url": "https://bytebytego.com/guides/unicast-vs-broadcast-vs-multicast-vs-anycast",
+          "source_path": "data/guides/unicast-vs-broadcast-vs-multicast-vs-anycast.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-027",
+          "title_vi": null,
+          "title_source": "10 Essential Components of a Production Web Application",
+          "source_url": "https://bytebytego.com/guides/10-essential-components-of-a-production-web-application",
+          "source_path": "data/guides/10-essential-components-of-a-production-web-application.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-028",
+          "title_vi": null,
+          "title_source": "URL, URI, URN - Differences Explained",
+          "source_url": "https://bytebytego.com/guides/url-uri-urn-do-you-know-the-differences",
+          "source_path": "data/guides/url-uri-urn-do-you-know-the-differences.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-029",
+          "title_vi": null,
+          "title_source": "API vs SDK",
+          "source_url": "https://bytebytego.com/guides/api-vs-sdk",
+          "source_path": "data/guides/api-vs-sdk.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-030",
+          "title_vi": null,
+          "title_source": "A Cheatsheet to Build Secure APIs",
+          "source_url": "https://bytebytego.com/guides/a-cheatsheet-to-build-secure-apis",
+          "source_path": "data/guides/a-cheatsheet-to-build-secure-apis.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-031",
+          "title_vi": null,
+          "title_source": "HTTP Status Codes You Should Know",
+          "source_url": "https://bytebytego.com/guides/http-status-code-you-should-know",
+          "source_path": "data/guides/http-status-code-you-should-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-032",
+          "title_vi": null,
+          "title_source": "SOAP vs REST vs GraphQL vs RPC",
+          "source_url": "https://bytebytego.com/guides/soap-vs-rest-vs-graphql-vs-rpc",
+          "source_path": "data/guides/soap-vs-rest-vs-graphql-vs-rpc.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-033",
+          "title_vi": null,
+          "title_source": "A Cheatsheet on Comparing API Architectural Styles",
+          "source_url": "https://bytebytego.com/guides/a-cheatsheet-on-comparing-api-architectural-styles",
+          "source_path": "data/guides/a-cheatsheet-on-comparing-api-architectural-styles.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-034",
+          "title_vi": null,
+          "title_source": "Top 9 HTTP Request Methods",
+          "source_url": "https://bytebytego.com/guides/top-9-http-request-methods",
+          "source_path": "data/guides/top-9-http-request-methods.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-035",
+          "title_vi": null,
+          "title_source": "What is a Load Balancer?",
+          "source_url": "https://bytebytego.com/guides/what-is-a-load-balancer",
+          "source_path": "data/guides/what-is-a-load-balancer.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-036",
+          "title_vi": null,
+          "title_source": "Proxy vs Reverse Proxy",
+          "source_url": "https://bytebytego.com/guides/proxy-vs-reverse-proxy",
+          "source_path": "data/guides/proxy-vs-reverse-proxy.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-037",
+          "title_vi": null,
+          "title_source": "HTTP/1 -> HTTP/2 -> HTTP/3",
+          "source_url": "https://bytebytego.com/guides/http1-http2-http3",
+          "source_path": "data/guides/http1-http2-http3.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-038",
+          "title_vi": null,
+          "title_source": "Polling vs Webhooks",
+          "source_url": "https://bytebytego.com/guides/polling-vs-webhooks",
+          "source_path": "data/guides/polling-vs-webhooks.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-039",
+          "title_vi": null,
+          "title_source": "How do we Perform Pagination in API Design?",
+          "source_url": "https://bytebytego.com/guides/how-do-we-perform-pagination-in-api-design",
+          "source_path": "data/guides/how-do-we-perform-pagination-in-api-design.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-040",
+          "title_vi": null,
+          "title_source": "How to Design Effective and Safe APIs",
+          "source_url": "https://bytebytego.com/guides/how-do-we-design-effective-and-safe-apis",
+          "source_path": "data/guides/how-do-we-design-effective-and-safe-apis.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-041",
+          "title_vi": null,
+          "title_source": "How to Design Secure Web API Access",
+          "source_url": "https://bytebytego.com/guides/how-to-design-secure-web-api-access-for-your-website",
+          "source_path": "data/guides/how-to-design-secure-web-api-access-for-your-website.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-042",
+          "title_vi": null,
+          "title_source": "What Does an API Gateway Do?",
+          "source_url": "https://bytebytego.com/guides/what-does-api-gateway-do",
+          "source_path": "data/guides/what-does-api-gateway-do.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-043",
+          "title_vi": null,
+          "title_source": "What is gRPC?",
+          "source_url": "https://bytebytego.com/guides/what-is-grpc",
+          "source_path": "data/guides/what-is-grpc.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-044",
+          "title_vi": null,
+          "title_source": "Top 12 Tips for API Security",
+          "source_url": "https://bytebytego.com/guides/top-12-tips-for-api-security",
+          "source_path": "data/guides/top-12-tips-for-api-security.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-045",
+          "title_vi": null,
+          "title_source": "Explaining 9 Types of API Testing",
+          "source_url": "https://bytebytego.com/guides/explaining-9-types-of-api-testing",
+          "source_path": "data/guides/explaining-9-types-of-api-testing.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-046",
+          "title_vi": null,
+          "title_source": "REST API vs. GraphQL",
+          "source_url": "https://bytebytego.com/guides/rest-api-vs-graphql",
+          "source_path": "data/guides/rest-api-vs-graphql.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-047",
+          "title_vi": null,
+          "title_source": "What is GraphQL?",
+          "source_url": "https://bytebytego.com/guides/what-is-graphql",
+          "source_path": "data/guides/what-is-graphql.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-048",
+          "title_vi": null,
+          "title_source": "REST API Cheatsheet",
+          "source_url": "https://bytebytego.com/guides/rest-api-cheatsheet",
+          "source_path": "data/guides/rest-api-cheatsheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-049",
+          "title_vi": null,
+          "title_source": "The Ultimate API Learning Roadmap",
+          "source_url": "https://bytebytego.com/guides/the-ultimate-api-learning-roadmap",
+          "source_path": "data/guides/the-ultimate-api-learning-roadmap.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-01-050",
+          "title_vi": null,
+          "title_source": "The Evolving Landscape of API Protocols in 2023",
+          "source_url": "https://bytebytego.com/guides/the-evolving-landscape-of-api-protocols-in-2023",
+          "source_path": "data/guides/the-evolving-landscape-of-api-protocols-in-2023.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-02",
+      "title_vi": "Tình huống thực tế",
+      "title_source": "Real World Case Studies",
+      "lessons": [
+        {
+          "id": "sd-02-001",
+          "title_vi": null,
+          "title_source": "100X Postgres Scaling at Figma",
+          "source_url": "https://bytebytego.com/guides/100x-postgres-scaling-at-figma",
+          "source_path": "data/guides/100x-postgres-scaling-at-figma.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-002",
+          "title_vi": null,
+          "title_source": "API of APIs - App Integrations",
+          "source_url": "https://bytebytego.com/guides/api-of-apis-app-integrations",
+          "source_path": "data/guides/api-of-apis-app-integrations.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-003",
+          "title_vi": null,
+          "title_source": "The one-line change that reduced clone times by 99% at Pinterest",
+          "source_url": "https://bytebytego.com/guides/the-one-line-change-that-reduced-clone-times-by-a-whopping-99-says-pinterest",
+          "source_path": "data/guides/the-one-line-change-that-reduced-clone-times-by-a-whopping-99-says-pinterest.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-004",
+          "title_vi": null,
+          "title_source": "Is Telegram Secure?",
+          "source_url": "https://bytebytego.com/guides/is-telegram-secure",
+          "source_path": "data/guides/is-telegram-secure.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-005",
+          "title_vi": null,
+          "title_source": "Fixing Bugs Automatically at Meta Scale",
+          "source_url": "https://bytebytego.com/guides/fixing-bugs-automatically-at-meta-scale",
+          "source_path": "data/guides/fixing-bugs-automatically-at-meta-scale.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-006",
+          "title_vi": null,
+          "title_source": "How Levelsfyi Scaled to Millions of Users with Google Sheets",
+          "source_url": "https://bytebytego.com/guides/how-levelsfyi-scaled-to-millions-of-users-with-google-sheets",
+          "source_path": "data/guides/how-levelsfyi-scaled-to-millions-of-users-with-google-sheets.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-007",
+          "title_vi": null,
+          "title_source": "McDonald’s Event-Driven Architecture",
+          "source_url": "https://bytebytego.com/guides/mcdonald's-event-driven-architecture",
+          "source_path": "data/guides/mcdonald's-event-driven-architecture.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-008",
+          "title_vi": null,
+          "title_source": "Uber Tech Stack - CI/CD",
+          "source_url": "https://bytebytego.com/guides/uber-tech-stack-cicd",
+          "source_path": "data/guides/uber-tech-stack-cicd.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-009",
+          "title_vi": null,
+          "title_source": "How to Design Stack Overflow",
+          "source_url": "https://bytebytego.com/guides/how-will-you-design-the-stack-overflow-website",
+          "source_path": "data/guides/how-will-you-design-the-stack-overflow-website.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-010",
+          "title_vi": null,
+          "title_source": "Twitter 1.0 Tech Stack",
+          "source_url": "https://bytebytego.com/guides/twitter-10-tech-stack",
+          "source_path": "data/guides/twitter-10-tech-stack.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-011",
+          "title_vi": null,
+          "title_source": "How does Twitter recommend “For You” Timeline in 1.5 seconds?",
+          "source_url": "https://bytebytego.com/guides/how-does-twitter-recommend-tweets",
+          "source_path": "data/guides/how-does-twitter-recommend-tweets.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-012",
+          "title_vi": null,
+          "title_source": "How YouTube Handles Massive Video Uploads",
+          "source_url": "https://bytebytego.com/guides/how-does-youtube-handle-massive-video-content-upload",
+          "source_path": "data/guides/how-does-youtube-handle-massive-video-content-upload.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-013",
+          "title_vi": null,
+          "title_source": "How Does a Typical Push Notification System Work?",
+          "source_url": "https://bytebytego.com/guides/how-does-a-typical-push-notification-system-work",
+          "source_path": "data/guides/how-does-a-typical-push-notification-system-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-014",
+          "title_vi": null,
+          "title_source": "4 Ways Netflix Uses Caching",
+          "source_url": "https://bytebytego.com/guides/4-ways-netflix-uses-caching-to-hold-user-attention",
+          "source_path": "data/guides/4-ways-netflix-uses-caching-to-hold-user-attention.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-015",
+          "title_vi": null,
+          "title_source": "Netflix Tech Stack - Databases",
+          "source_url": "https://bytebytego.com/guides/netflix-tech-stack-databases",
+          "source_path": "data/guides/netflix-tech-stack-databases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-016",
+          "title_vi": null,
+          "title_source": "0 to 1.5 Billion Guests: Airbnb's Architectural Evolution",
+          "source_url": "https://bytebytego.com/guides/airbnb-artchitectural-evolution",
+          "source_path": "data/guides/airbnb-artchitectural-evolution.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-017",
+          "title_vi": null,
+          "title_source": "How Netflix Scales Push Messaging",
+          "source_url": "https://bytebytego.com/guides/how-does-netflix-scale-push-messaging-for-millions-of-devices",
+          "source_path": "data/guides/how-does-netflix-scale-push-messaging-for-millions-of-devices.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-018",
+          "title_vi": null,
+          "title_source": "Netflix's Overall Architecture",
+          "source_url": "https://bytebytego.com/guides/netflixs-overall-architecture",
+          "source_path": "data/guides/netflixs-overall-architecture.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-019",
+          "title_vi": null,
+          "title_source": "Netflix Tech Stack - CI/CD Pipeline",
+          "source_url": "https://bytebytego.com/guides/netflix-tech-stack-cicd-pipeline",
+          "source_path": "data/guides/netflix-tech-stack-cicd-pipeline.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-020",
+          "title_vi": null,
+          "title_source": "How TikTok Manages a 200K File Frontend MonoRepo",
+          "source_url": "https://bytebytego.com/guides/how-tiktok-manages-a-200k-file-frontend-monorepo",
+          "source_path": "data/guides/how-tiktok-manages-a-200k-file-frontend-monorepo.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-021",
+          "title_vi": null,
+          "title_source": "How Netflix Really Uses Java",
+          "source_url": "https://bytebytego.com/guides/how-netflix-really-uses-java",
+          "source_path": "data/guides/how-netflix-really-uses-java.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-022",
+          "title_vi": null,
+          "title_source": "Evolution of Airbnb’s Microservice Architecture",
+          "source_url": "https://bytebytego.com/guides/evolution-of-airbnb's-microservice",
+          "source_path": "data/guides/evolution-of-airbnb's-microservice.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-023",
+          "title_vi": null,
+          "title_source": "Reddit's Core Architecture",
+          "source_url": "https://bytebytego.com/guides/reddit's-core-architecture",
+          "source_path": "data/guides/reddit's-core-architecture.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-024",
+          "title_vi": null,
+          "title_source": "10 Principles for Building Resilient Payment Systems",
+          "source_url": "https://bytebytego.com/guides/10-principles-for-building-resilient-payment-systems-by-shopify",
+          "source_path": "data/guides/10-principles-for-building-resilient-payment-systems-by-shopify.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-025",
+          "title_vi": null,
+          "title_source": "What is the Journey of a Slack Message?",
+          "source_url": "https://bytebytego.com/guides/what-is-the-journey-of-a-slack-message",
+          "source_path": "data/guides/what-is-the-journey-of-a-slack-message.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-026",
+          "title_vi": null,
+          "title_source": "Top 9 Engineering Blogs",
+          "source_url": "https://bytebytego.com/guides/top-9-engineering-blog-favorites",
+          "source_path": "data/guides/top-9-engineering-blog-favorites.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-027",
+          "title_vi": null,
+          "title_source": "Uber Tech Stack",
+          "source_url": "https://bytebytego.com/guides/uber-tech-stack",
+          "source_path": "data/guides/uber-tech-stack.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-028",
+          "title_vi": null,
+          "title_source": "Evolution of the Netflix API Architecture",
+          "source_url": "https://bytebytego.com/guides/evolution-of-the-netflix-api-architecture",
+          "source_path": "data/guides/evolution-of-the-netflix-api-architecture.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-029",
+          "title_vi": null,
+          "title_source": "How Discord Stores Trillions of Messages",
+          "source_url": "https://bytebytego.com/guides/how-discord-stores-trillions-of-messages",
+          "source_path": "data/guides/how-discord-stores-trillions-of-messages.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-030",
+          "title_vi": null,
+          "title_source": "Twitter Architecture 2022 vs. 2012",
+          "source_url": "https://bytebytego.com/guides/twitter-architecture-2022-vs-2012",
+          "source_path": "data/guides/twitter-architecture-2022-vs-2012.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-031",
+          "title_vi": null,
+          "title_source": "Evolution of Uber's API Layer",
+          "source_url": "https://bytebytego.com/guides/evolution-of-uber's-api-layer",
+          "source_path": "data/guides/evolution-of-uber's-api-layer.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-02-032",
+          "title_vi": null,
+          "title_source": "Netflix's Tech Stack",
+          "source_url": "https://bytebytego.com/guides/netflixs-tech-stack",
+          "source_path": "data/guides/netflixs-tech-stack.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-03",
+      "title_vi": "AI và học máy",
+      "title_source": "AI and Machine Learning",
+      "lessons": [
+        {
+          "id": "sd-03-001",
+          "title_vi": null,
+          "title_source": "5 Functions to Merge Data with Pandas",
+          "source_url": "https://bytebytego.com/guides/5-functions-to-merge-data-with-pandas",
+          "source_path": "data/guides/5-functions-to-merge-data-with-pandas.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-002",
+          "title_vi": null,
+          "title_source": "Key Data Terms",
+          "source_url": "https://bytebytego.com/guides/key-data-terms",
+          "source_path": "data/guides/key-data-terms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-003",
+          "title_vi": null,
+          "title_source": "ChatGPT Timeline",
+          "source_url": "https://bytebytego.com/guides/chatgpt-timeline",
+          "source_path": "data/guides/chatgpt-timeline.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-004",
+          "title_vi": null,
+          "title_source": "DeepSeek 1-Pager",
+          "source_url": "https://bytebytego.com/guides/deepseek-1-pager",
+          "source_path": "data/guides/deepseek-1-pager.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-005",
+          "title_vi": null,
+          "title_source": "The Open Source AI Stack",
+          "source_url": "https://bytebytego.com/guides/the-open-source-ai-stack",
+          "source_path": "data/guides/the-open-source-ai-stack.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-006",
+          "title_vi": null,
+          "title_source": "What is an AI Agent?",
+          "source_url": "https://bytebytego.com/guides/what-is-an-ai-agent",
+          "source_path": "data/guides/what-is-an-ai-agent.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-007",
+          "title_vi": null,
+          "title_source": "Data Pipelines Overview",
+          "source_url": "https://bytebytego.com/guides/data-pipelines-overview",
+          "source_path": "data/guides/data-pipelines-overview.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-03-008",
+          "title_vi": null,
+          "title_source": "How does ChatGPT work?",
+          "source_url": "https://bytebytego.com/guides/how-does-chatgpt-work",
+          "source_path": "data/guides/how-does-chatgpt-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-04",
+      "title_vi": "Cơ sở dữ liệu và lưu trữ",
+      "title_source": "Database and Storage",
+      "lessons": [
+        {
+          "id": "sd-04-001",
+          "title_vi": null,
+          "title_source": "Read Replica Pattern",
+          "source_url": "https://bytebytego.com/guides/read-replica-pattern",
+          "source_path": "data/guides/read-replica-pattern.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-04-002",
+          "title_vi": null,
+          "title_source": "Pessimistic vs Optimistic Locking",
+          "source_url": "https://bytebytego.com/guides/pessimistic-vs-optimistic-locking",
+          "source_path": "data/guides/pessimistic-vs-optimistic-locking.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-003",
+          "title_vi": null,
+          "title_source": "How to Upload a Large File to S3",
+          "source_url": "https://bytebytego.com/guides/how-to-upload-a-large-file-to-s3",
+          "source_path": "data/guides/how-to-upload-a-large-file-to-s3.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-004",
+          "title_vi": null,
+          "title_source": "Types of Message Queues",
+          "source_url": "https://bytebytego.com/guides/types-of-message-queue",
+          "source_path": "data/guides/types-of-message-queue.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-005",
+          "title_vi": null,
+          "title_source": "Smooth Data Migration with Avro",
+          "source_url": "https://bytebytego.com/guides/smooth-data-migration-with-avro",
+          "source_path": "data/guides/smooth-data-migration-with-avro.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-006",
+          "title_vi": null,
+          "title_source": "The Ultimate Kafka 101 You Cannot Miss",
+          "source_url": "https://bytebytego.com/guides/the-ultimate-kafka-101-you-cannot-miss",
+          "source_path": "data/guides/the-ultimate-kafka-101-you-cannot-miss.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-007",
+          "title_vi": null,
+          "title_source": "Database Isolation Levels",
+          "source_url": "https://bytebytego.com/guides/what-are-database-isolation-levels",
+          "source_path": "data/guides/what-are-database-isolation-levels.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-008",
+          "title_vi": null,
+          "title_source": "Top 6 Data Management Patterns",
+          "source_url": "https://bytebytego.com/guides/how-do-we-manage-data",
+          "source_path": "data/guides/how-do-we-manage-data.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-009",
+          "title_vi": null,
+          "title_source": "Why is Kafka Fast?",
+          "source_url": "https://bytebytego.com/guides/why-is-kafka-fast",
+          "source_path": "data/guides/why-is-kafka-fast.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-010",
+          "title_vi": null,
+          "title_source": "Explaining the 4 Most Commonly Used Types of Queues",
+          "source_url": "https://bytebytego.com/guides/explaining-the-4-most-commonly-used-types-of-queues-in-a-single-diagram",
+          "source_path": "data/guides/explaining-the-4-most-commonly-used-types-of-queues-in-a-single-diagram.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-011",
+          "title_vi": null,
+          "title_source": "Time Series DB (TSDB) in 20 Lines",
+          "source_url": "https://bytebytego.com/guides/time-series-db-tsdb-in-20-lines",
+          "source_path": "data/guides/time-series-db-tsdb-in-20-lines.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-012",
+          "title_vi": null,
+          "title_source": "Differences in Event Sourcing System Design",
+          "source_url": "https://bytebytego.com/guides/differences-in-event-sourcing-system-design",
+          "source_path": "data/guides/differences-in-event-sourcing-system-design.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-013",
+          "title_vi": null,
+          "title_source": "Erasure Coding",
+          "source_url": "https://bytebytego.com/guides/erasure-coding",
+          "source_path": "data/guides/erasure-coding.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-014",
+          "title_vi": null,
+          "title_source": "Delivery Semantics",
+          "source_url": "https://bytebytego.com/guides/delivery-semantics",
+          "source_path": "data/guides/delivery-semantics.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-015",
+          "title_vi": null,
+          "title_source": "Change Data Capture: Key to Leverage Real-time Data",
+          "source_url": "https://bytebytego.com/guides/change-data-capture-key-to-leverage-real-time-data",
+          "source_path": "data/guides/change-data-capture-key-to-leverage-real-time-data.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-016",
+          "title_vi": null,
+          "title_source": "Can Kafka Lose Messages?",
+          "source_url": "https://bytebytego.com/guides/can-kafka-lose-messages",
+          "source_path": "data/guides/can-kafka-lose-messages.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-017",
+          "title_vi": null,
+          "title_source": "Storage Systems Overview",
+          "source_url": "https://bytebytego.com/guides/storage-systems-overview",
+          "source_path": "data/guides/storage-systems-overview.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-018",
+          "title_vi": null,
+          "title_source": "Explain the Top 6 Use Cases of Object Stores",
+          "source_url": "https://bytebytego.com/guides/explain-the-top-6-use-cases-of-object-stores",
+          "source_path": "data/guides/explain-the-top-6-use-cases-of-object-stores.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-019",
+          "title_vi": null,
+          "title_source": "Top Eventual Consistency Patterns You Must Know",
+          "source_url": "https://bytebytego.com/guides/top-eventual-consistency-patterns-you-must-know",
+          "source_path": "data/guides/top-eventual-consistency-patterns-you-must-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-020",
+          "title_vi": null,
+          "title_source": "B-Tree vs. LSM-Tree",
+          "source_url": "https://bytebytego.com/guides/b-tree-vs",
+          "source_path": "data/guides/b-tree-vs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-021",
+          "title_vi": null,
+          "title_source": "How to Decide Which Type of Database to Use",
+          "source_url": "https://bytebytego.com/guides/how-do-you-decide-which-type-of-database-to-use",
+          "source_path": "data/guides/how-do-you-decide-which-type-of-database-to-use.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-022",
+          "title_vi": null,
+          "title_source": "Cloud Database Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/cloud-database-cheat-sheet",
+          "source_path": "data/guides/cloud-database-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-023",
+          "title_vi": null,
+          "title_source": "Types of Memory",
+          "source_url": "https://bytebytego.com/guides/types-of-memory",
+          "source_path": "data/guides/types-of-memory.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-024",
+          "title_vi": null,
+          "title_source": "Understanding Database Types",
+          "source_url": "https://bytebytego.com/guides/understanding-database-types",
+          "source_path": "data/guides/understanding-database-types.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-025",
+          "title_vi": null,
+          "title_source": "Top 4 Data Sharding Algorithms Explained",
+          "source_url": "https://bytebytego.com/guides/top-4-data-sharding-algorithms-explained",
+          "source_path": "data/guides/top-4-data-sharding-algorithms-explained.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-026",
+          "title_vi": null,
+          "title_source": "Top 6 Database Models",
+          "source_url": "https://bytebytego.com/guides/top-6-database-models",
+          "source_path": "data/guides/top-6-database-models.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-027",
+          "title_vi": null,
+          "title_source": "SQL Statement Execution in Database",
+          "source_url": "https://bytebytego.com/guides/how-is-a-sql-statement-executed-in-the-database",
+          "source_path": "data/guides/how-is-a-sql-statement-executed-in-the-database.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-028",
+          "title_vi": null,
+          "title_source": "What is Serverless DB?",
+          "source_url": "https://bytebytego.com/guides/what-is-serverless-db",
+          "source_path": "data/guides/what-is-serverless-db.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-029",
+          "title_vi": null,
+          "title_source": "Why PostgreSQL is the Most Loved Database",
+          "source_url": "https://bytebytego.com/guides/why-is-postgresql-voted-as-the-most-loved-database-by-stackoverflow-2022-developer-survey",
+          "source_path": "data/guides/why-is-postgresql-voted-as-the-most-loved-database-by-stackoverflow-2022-developer-survey.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-030",
+          "title_vi": null,
+          "title_source": "Top 10 Most Popular Open-Source Databases",
+          "source_url": "https://bytebytego.com/guides/top-10-most-popular-open-source-databases",
+          "source_path": "data/guides/top-10-most-popular-open-source-databases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-031",
+          "title_vi": null,
+          "title_source": "Is PostgreSQL Eating the Database World?",
+          "source_url": "https://bytebytego.com/guides/is-postgresql-eating-the-database-world",
+          "source_path": "data/guides/is-postgresql-eating-the-database-world.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-032",
+          "title_vi": null,
+          "title_source": "How to Choose the Right Database",
+          "source_url": "https://bytebytego.com/guides/how-to-choose-the-right-database",
+          "source_path": "data/guides/how-to-choose-the-right-database.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-033",
+          "title_vi": null,
+          "title_source": "iQIYI Database Selection Trees",
+          "source_url": "https://bytebytego.com/guides/iqiyi-database-selection-trees",
+          "source_path": "data/guides/iqiyi-database-selection-trees.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-034",
+          "title_vi": null,
+          "title_source": "8 Data Structures That Power Your Databases",
+          "source_url": "https://bytebytego.com/guides/8-data-structures-that-power-your-databases",
+          "source_path": "data/guides/8-data-structures-that-power-your-databases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-035",
+          "title_vi": null,
+          "title_source": "How to Implement Read Replica Pattern",
+          "source_url": "https://bytebytego.com/guides/how-to-implement-read-replica-pattern",
+          "source_path": "data/guides/how-to-implement-read-replica-pattern.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-036",
+          "title_vi": null,
+          "title_source": "A Crash Course on Database Sharding",
+          "source_url": "https://bytebytego.com/guides/a-crash-course-in-database-sharding",
+          "source_path": "data/guides/a-crash-course-in-database-sharding.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-037",
+          "title_vi": null,
+          "title_source": "IBM MQ -> RabbitMQ -> Kafka -> Pulsar: Message Queue Evolution",
+          "source_url": "https://bytebytego.com/guides/how-do-message-queue-architectures-evolve",
+          "source_path": "data/guides/how-do-message-queue-architectures-evolve.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-038",
+          "title_vi": null,
+          "title_source": "CAP Theorem: One of the Most Misunderstood Terms",
+          "source_url": "https://bytebytego.com/guides/cap-theorem-one-of-the-most-misunderstood-terms",
+          "source_path": "data/guides/cap-theorem-one-of-the-most-misunderstood-terms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-039",
+          "title_vi": null,
+          "title_source": "Consistent Hashing Explained",
+          "source_url": "https://bytebytego.com/guides/consistent-hashing",
+          "source_path": "data/guides/consistent-hashing.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-040",
+          "title_vi": null,
+          "title_source": "Types of Databases",
+          "source_url": "https://bytebytego.com/guides/types-of-databases",
+          "source_path": "data/guides/types-of-databases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-041",
+          "title_vi": null,
+          "title_source": "Key Concepts to Understand Database Sharding",
+          "source_url": "https://bytebytego.com/guides/key-concepts-to-understand-database-sharding",
+          "source_path": "data/guides/key-concepts-to-understand-database-sharding.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-042",
+          "title_vi": null,
+          "title_source": "Database Locks Explained",
+          "source_url": "https://bytebytego.com/guides/what-are-the-differences-among-database-locks",
+          "source_path": "data/guides/what-are-the-differences-among-database-locks.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-043",
+          "title_vi": null,
+          "title_source": "A Cheatsheet on Database Performance",
+          "source_url": "https://bytebytego.com/guides/a-cheatsheet-on-database-performance",
+          "source_path": "data/guides/a-cheatsheet-on-database-performance.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-044",
+          "title_vi": null,
+          "title_source": "What does ACID mean?",
+          "source_url": "https://bytebytego.com/guides/what-does-acid-mean",
+          "source_path": "data/guides/what-does-acid-mean.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-045",
+          "title_vi": null,
+          "title_source": "Top 5 Kafka Use Cases",
+          "source_url": "https://bytebytego.com/guides/top-5-kafka-use-cases",
+          "source_path": "data/guides/top-5-kafka-use-cases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-046",
+          "title_vi": null,
+          "title_source": "Types of Memory and Storage",
+          "source_url": "https://bytebytego.com/guides/types-of-memory-and-storage",
+          "source_path": "data/guides/types-of-memory-and-storage.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-04-047",
+          "title_vi": null,
+          "title_source": "7 Must-Know Strategies to Scale Your Database",
+          "source_url": "https://bytebytego.com/guides/7-must-know-strategies-to-scale-your-database",
+          "source_path": "data/guides/7-must-know-strategies-to-scale-your-database.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-05",
+      "title_vi": "Phỏng vấn kỹ thuật",
+      "title_source": "Technical Interviews",
+      "lessons": [
+        {
+          "id": "sd-05-001",
+          "title_vi": null,
+          "title_source": "How do SQL Joins Work?",
+          "source_url": "https://bytebytego.com/guides/how-do-sql-joins-work",
+          "source_path": "data/guides/how-do-sql-joins-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-05-002",
+          "title_vi": null,
+          "title_source": "What Happens When You Type google.com Into a Browser?",
+          "source_url": "https://bytebytego.com/guides/what-happens-when-you-type-google",
+          "source_path": "data/guides/what-happens-when-you-type-google.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-05-003",
+          "title_vi": null,
+          "title_source": "What Happens When You Type a URL Into Your Browser?",
+          "source_url": "https://bytebytego.com/guides/what-happens-when-you-type-a-url-into-your-browser",
+          "source_path": "data/guides/what-happens-when-you-type-a-url-into-your-browser.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-05-004",
+          "title_vi": null,
+          "title_source": "How to Ace System Design Interviews",
+          "source_url": "https://bytebytego.com/guides/how-to-ace-system-design-interviews-like-a-boss",
+          "source_path": "data/guides/how-to-ace-system-design-interviews-like-a-boss.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-05-005",
+          "title_vi": null,
+          "title_source": "Recommended Materials for Technical Interviews",
+          "source_url": "https://bytebytego.com/guides/my-recommended-materials-for-cracking-your-next-technical-interview",
+          "source_path": "data/guides/my-recommended-materials-for-cracking-your-next-technical-interview.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-06",
+      "title_vi": "Bộ nhớ đệm và hiệu năng",
+      "title_source": "Caching & Performance",
+      "lessons": [
+        {
+          "id": "sd-06-001",
+          "title_vi": null,
+          "title_source": "What is ELK Stack and Why is it Popular?",
+          "source_url": "https://bytebytego.com/guides/what-is-elk-stack-and-why-is-it-so-popular-for-log-management",
+          "source_path": "data/guides/what-is-elk-stack-and-why-is-it-so-popular-for-log-management.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-002",
+          "title_vi": null,
+          "title_source": "Why are Content Delivery Networks (CDN) so Popular?",
+          "source_url": "https://bytebytego.com/guides/why-are-content-delivery-networks-cdn-so-popular",
+          "source_path": "data/guides/why-are-content-delivery-networks-cdn-so-popular.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-003",
+          "title_vi": null,
+          "title_source": "How Big Keys Impact Redis Persistence",
+          "source_url": "https://bytebytego.com/guides/how-do-big-keys-impact-redis-persistence",
+          "source_path": "data/guides/how-do-big-keys-impact-redis-persistence.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-004",
+          "title_vi": null,
+          "title_source": "A Beginner's Guide to CDN",
+          "source_url": "https://bytebytego.com/guides/a-beginner's-guide-to-cdn-content-delivery-network",
+          "source_path": "data/guides/a-beginner's-guide-to-cdn-content-delivery-network.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-005",
+          "title_vi": null,
+          "title_source": "The Ultimate Redis 101",
+          "source_url": "https://bytebytego.com/guides/the-ultimate-redis-101",
+          "source_path": "data/guides/the-ultimate-redis-101.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-06-006",
+          "title_vi": null,
+          "title_source": "Cache Systems Every Developer Should Know",
+          "source_url": "https://bytebytego.com/guides/cache-systems-every-developer-should-know",
+          "source_path": "data/guides/cache-systems-every-developer-should-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-007",
+          "title_vi": null,
+          "title_source": "Top 5 Strategies to Reduce Latency",
+          "source_url": "https://bytebytego.com/guides/top-5-strategies-to-reduce-latency",
+          "source_path": "data/guides/top-5-strategies-to-reduce-latency.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-008",
+          "title_vi": null,
+          "title_source": "Top 5 Caching Strategies",
+          "source_url": "https://bytebytego.com/guides/top-5-caching-strategies",
+          "source_path": "data/guides/top-5-caching-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-009",
+          "title_vi": null,
+          "title_source": "Things to Consider When Using Cache",
+          "source_url": "https://bytebytego.com/guides/things-to-consider-when-using-cache",
+          "source_path": "data/guides/things-to-consider-when-using-cache.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-010",
+          "title_vi": null,
+          "title_source": "Cache Eviction Policies",
+          "source_url": "https://bytebytego.com/guides/most-popular-cache-eviction",
+          "source_path": "data/guides/most-popular-cache-eviction.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-011",
+          "title_vi": null,
+          "title_source": "Memcached vs Redis",
+          "source_url": "https://bytebytego.com/guides/memcached-vs-redis",
+          "source_path": "data/guides/memcached-vs-redis.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-012",
+          "title_vi": null,
+          "title_source": "Low Latency Stock Exchange",
+          "source_url": "https://bytebytego.com/guides/low-latency-stock-exchange",
+          "source_path": "data/guides/low-latency-stock-exchange.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-013",
+          "title_vi": null,
+          "title_source": "Cache Miss Attack",
+          "source_url": "https://bytebytego.com/guides/cache-miss-attack",
+          "source_path": "data/guides/cache-miss-attack.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-014",
+          "title_vi": null,
+          "title_source": "Top 8 Cache Eviction Strategies",
+          "source_url": "https://bytebytego.com/guides/top-8-cache-eviction-strategies",
+          "source_path": "data/guides/top-8-cache-eviction-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-015",
+          "title_vi": null,
+          "title_source": "How Can Cache Systems Go Wrong?",
+          "source_url": "https://bytebytego.com/guides/how-can-cache-systems-go-wrong",
+          "source_path": "data/guides/how-can-cache-systems-go-wrong.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-016",
+          "title_vi": null,
+          "title_source": "Top 6 Elasticsearch Use Cases",
+          "source_url": "https://bytebytego.com/guides/top-6-elasticsearch-use-cases",
+          "source_path": "data/guides/top-6-elasticsearch-use-cases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-017",
+          "title_vi": null,
+          "title_source": "How Does CDN Work?",
+          "source_url": "https://bytebytego.com/guides/how-does-cnd-work",
+          "source_path": "data/guides/how-does-cnd-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-018",
+          "title_vi": null,
+          "title_source": "How Redis Architecture Evolved",
+          "source_url": "https://bytebytego.com/guides/how-redis-architecture-evolve",
+          "source_path": "data/guides/how-redis-architecture-evolve.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-019",
+          "title_vi": null,
+          "title_source": "How Does Redis Persist Data?",
+          "source_url": "https://bytebytego.com/guides/how-does-redis-persist-data",
+          "source_path": "data/guides/how-does-redis-persist-data.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-020",
+          "title_vi": null,
+          "title_source": "How can Redis be used?",
+          "source_url": "https://bytebytego.com/guides/how-can-redis-be-used",
+          "source_path": "data/guides/how-can-redis-be-used.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-021",
+          "title_vi": null,
+          "title_source": "Why is Redis so Fast?",
+          "source_url": "https://bytebytego.com/guides/why-is-redis-so-fast",
+          "source_path": "data/guides/why-is-redis-so-fast.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-022",
+          "title_vi": null,
+          "title_source": "How to Learn Elasticsearch",
+          "source_url": "https://bytebytego.com/guides/how-do-we-learn-elasticsearch",
+          "source_path": "data/guides/how-do-we-learn-elasticsearch.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-023",
+          "title_vi": null,
+          "title_source": "What is CDN (Content Delivery Network)?",
+          "source_url": "https://bytebytego.com/guides/what-is-cdn-content-delivery-network",
+          "source_path": "data/guides/what-is-cdn-content-delivery-network.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-024",
+          "title_vi": null,
+          "title_source": "Frontend Performance Optimization",
+          "source_url": "https://bytebytego.com/guides/how-to-load-your-websites-at-lightning-speed",
+          "source_path": "data/guides/how-to-load-your-websites-at-lightning-speed.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-025",
+          "title_vi": null,
+          "title_source": "Which Latency Numbers Should You Know?",
+          "source_url": "https://bytebytego.com/guides/which-latency-numbers-should-you-know",
+          "source_path": "data/guides/which-latency-numbers-should-you-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-026",
+          "title_vi": null,
+          "title_source": "Top Caching Strategies",
+          "source_url": "https://bytebytego.com/guides/what-are-the-top-caching-strategies",
+          "source_path": "data/guides/what-are-the-top-caching-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-027",
+          "title_vi": null,
+          "title_source": "Top 9 Website Performance Metrics You Cannot Ignore",
+          "source_url": "https://bytebytego.com/guides/top-9-website-performance-metrics-you-cannot-ignore",
+          "source_path": "data/guides/top-9-website-performance-metrics-you-cannot-ignore.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-028",
+          "title_vi": null,
+          "title_source": "Top 5 Common Ways to Improve API Performance",
+          "source_url": "https://bytebytego.com/guides/top-5-common-ways-to-improve-api-performance",
+          "source_path": "data/guides/top-5-common-ways-to-improve-api-performance.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-06-029",
+          "title_vi": null,
+          "title_source": "Learn Cache",
+          "source_url": "https://bytebytego.com/guides/learn-cache",
+          "source_path": "data/guides/learn-cache.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-07",
+      "title_vi": "Thanh toán và công nghệ tài chính",
+      "title_source": "Payment and Fintech",
+      "lessons": [
+        {
+          "id": "sd-07-001",
+          "title_vi": null,
+          "title_source": "E-commerce Workflow",
+          "source_url": "https://bytebytego.com/guides/e-commerce-workflow",
+          "source_path": "data/guides/e-commerce-workflow.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-002",
+          "title_vi": null,
+          "title_source": "Digital Wallets: Banks vs. Blockchain",
+          "source_url": "https://bytebytego.com/guides/digital-wallet-in-traditional-banks-vs-wallet-in-blockchain",
+          "source_path": "data/guides/digital-wallet-in-traditional-banks-vs-wallet-in-blockchain.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-003",
+          "title_vi": null,
+          "title_source": "What is a Stop-Loss Order and How Does it Work?",
+          "source_url": "https://bytebytego.com/guides/what-is-a-stop-loss-order-and-how-does-it-work",
+          "source_path": "data/guides/what-is-a-stop-loss-order-and-how-does-it-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-004",
+          "title_vi": null,
+          "title_source": "What is Web 3.0? Why doesn't it have ads?",
+          "source_url": "https://bytebytego.com/guides/what-is-web-3",
+          "source_path": "data/guides/what-is-web-3.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-005",
+          "title_vi": null,
+          "title_source": "SWIFT Payment Messaging System",
+          "source_url": "https://bytebytego.com/guides/swift-payment-messaging-system",
+          "source_path": "data/guides/swift-payment-messaging-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-006",
+          "title_vi": null,
+          "title_source": "4 Ways of QR Code Payment",
+          "source_url": "https://bytebytego.com/guides/4-ways-of-qr-code-payment",
+          "source_path": "data/guides/4-ways-of-qr-code-payment.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-007",
+          "title_vi": null,
+          "title_source": "Handling Hotspot Accounts",
+          "source_url": "https://bytebytego.com/guides/handling-hotspot-accounts",
+          "source_path": "data/guides/handling-hotspot-accounts.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-008",
+          "title_vi": null,
+          "title_source": "Reconciliation in Payment",
+          "source_url": "https://bytebytego.com/guides/reconciliation-in-payment",
+          "source_path": "data/guides/reconciliation-in-payment.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-009",
+          "title_vi": null,
+          "title_source": "Unified Payments Interface (UPI)",
+          "source_url": "https://bytebytego.com/guides/unified-payments-interface-upi-in-india",
+          "source_path": "data/guides/unified-payments-interface-upi-in-india.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-010",
+          "title_vi": null,
+          "title_source": "How Scan to Pay Works",
+          "source_url": "https://bytebytego.com/guides/how-does-scan-to-pay-work",
+          "source_path": "data/guides/how-does-scan-to-pay-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-011",
+          "title_vi": null,
+          "title_source": "Money Movement",
+          "source_url": "https://bytebytego.com/guides/money-movement",
+          "source_path": "data/guides/money-movement.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-012",
+          "title_vi": null,
+          "title_source": "Payment System",
+          "source_url": "https://bytebytego.com/guides/payment-system",
+          "source_path": "data/guides/payment-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-013",
+          "title_vi": null,
+          "title_source": "How to Learn Payments",
+          "source_url": "https://bytebytego.com/guides/how-to-learn-payments",
+          "source_path": "data/guides/how-to-learn-payments.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-014",
+          "title_vi": null,
+          "title_source": "The Payments Ecosystem",
+          "source_url": "https://bytebytego.com/guides/the-payments-ecosystem",
+          "source_path": "data/guides/the-payments-ecosystem.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-015",
+          "title_vi": null,
+          "title_source": "Foreign Exchange Payments",
+          "source_url": "https://bytebytego.com/guides/foreign-exchange-payments",
+          "source_path": "data/guides/foreign-exchange-payments.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-016",
+          "title_vi": null,
+          "title_source": "How to Avoid Double Payment",
+          "source_url": "https://bytebytego.com/guides/how-to-avoid-double-payment",
+          "source_path": "data/guides/how-to-avoid-double-payment.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-017",
+          "title_vi": null,
+          "title_source": "How do Apple Pay and Google Pay work?",
+          "source_url": "https://bytebytego.com/guides/how-applegoogle-pay-works",
+          "source_path": "data/guides/how-applegoogle-pay-works.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-018",
+          "title_vi": null,
+          "title_source": "How VISA Works When Swiping a Credit Card",
+          "source_url": "https://bytebytego.com/guides/how-does-visa-work-when-we-swipe-a-credit-card-at-a-merchant's-shop",
+          "source_path": "data/guides/how-does-visa-work-when-we-swipe-a-credit-card-at-a-merchant's-shop.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-019",
+          "title_vi": null,
+          "title_source": "How ACH Payment Works",
+          "source_url": "https://bytebytego.com/guides/how-does-ach-payment-work",
+          "source_path": "data/guides/how-does-ach-payment-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-07-020",
+          "title_vi": null,
+          "title_source": "How does Visa make money?",
+          "source_url": "https://bytebytego.com/guides/how-does-visa-make-money",
+          "source_path": "data/guides/how-does-visa-make-money.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-08",
+      "title_vi": "Kiến trúc phần mềm",
+      "title_source": "Software Architecture",
+      "lessons": [
+        {
+          "id": "sd-08-001",
+          "title_vi": null,
+          "title_source": "Inter-Process Communication on Linux",
+          "source_url": "https://bytebytego.com/guides/how-do-processes-talk-to-each-other-on-linux",
+          "source_path": "data/guides/how-do-processes-talk-to-each-other-on-linux.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-08-002",
+          "title_vi": null,
+          "title_source": "Orchestration vs. Choreography in Microservices",
+          "source_url": "https://bytebytego.com/guides/orchestration-vs-choreography-microservices",
+          "source_path": "data/guides/orchestration-vs-choreography-microservices.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-003",
+          "title_vi": null,
+          "title_source": "UML Class Diagrams Cheatsheet",
+          "source_url": "https://bytebytego.com/guides/a-cheatsheet-for-uml-class-diagrams",
+          "source_path": "data/guides/a-cheatsheet-for-uml-class-diagrams.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-004",
+          "title_vi": null,
+          "title_source": "Amazon Prime Video Monitoring Service",
+          "source_url": "https://bytebytego.com/guides/amazon-prime-video-monitoring-service",
+          "source_path": "data/guides/amazon-prime-video-monitoring-service.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-005",
+          "title_vi": null,
+          "title_source": "Is Microservice Architecture the Silver Bullet?",
+          "source_url": "https://bytebytego.com/guides/is-microservice-architecture-the-silver-bullet",
+          "source_path": "data/guides/is-microservice-architecture-the-silver-bullet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-006",
+          "title_vi": null,
+          "title_source": "Database Middleware",
+          "source_url": "https://bytebytego.com/guides/database-middleware",
+          "source_path": "data/guides/database-middleware.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-007",
+          "title_vi": null,
+          "title_source": "9 Best Practices for Developing Microservices",
+          "source_url": "https://bytebytego.com/guides/9-best-practices-for-developing-microservices",
+          "source_path": "data/guides/9-best-practices-for-developing-microservices.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-008",
+          "title_vi": null,
+          "title_source": "Design Patterns Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/design-patterns-cheat-sheet-part-1-and-part-2",
+          "source_path": "data/guides/design-patterns-cheat-sheet-part-1-and-part-2.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-009",
+          "title_vi": null,
+          "title_source": "Key Terms in Domain-Driven Design",
+          "source_url": "https://bytebytego.com/guides/key-terms-in-domain-driven-design",
+          "source_path": "data/guides/key-terms-in-domain-driven-design.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-010",
+          "title_vi": null,
+          "title_source": "8 Key OOP Concepts Every Developer Should Know",
+          "source_url": "https://bytebytego.com/guides/8-key-oop-concepts-every-developer-should-know",
+          "source_path": "data/guides/8-key-oop-concepts-every-developer-should-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-011",
+          "title_vi": null,
+          "title_source": "18 Key Design Patterns Every Developer Should Know",
+          "source_url": "https://bytebytego.com/guides/18-key-design-patterns-every-developer-should-know",
+          "source_path": "data/guides/18-key-design-patterns-every-developer-should-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-012",
+          "title_vi": null,
+          "title_source": "10 System Design Tradeoffs You Cannot Ignore",
+          "source_url": "https://bytebytego.com/guides/10-system-design-tradeoffs-you-cannot-ignore",
+          "source_path": "data/guides/10-system-design-tradeoffs-you-cannot-ignore.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-013",
+          "title_vi": null,
+          "title_source": "9 Essential Components of a Production Microservice Application",
+          "source_url": "https://bytebytego.com/guides/9-essential-components-of-a-production-microservice-application",
+          "source_path": "data/guides/9-essential-components-of-a-production-microservice-application.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-014",
+          "title_vi": null,
+          "title_source": "9 Best Practices for Building Microservices",
+          "source_url": "https://bytebytego.com/guides/9-best-practices-for-building-microservices",
+          "source_path": "data/guides/9-best-practices-for-building-microservices.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-015",
+          "title_vi": null,
+          "title_source": "8 Key Concepts in Domain-Driven Design",
+          "source_url": "https://bytebytego.com/guides/8-key-concepts-in-ddd",
+          "source_path": "data/guides/8-key-concepts-in-ddd.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-016",
+          "title_vi": null,
+          "title_source": "8 Common System Design Problems and Solutions",
+          "source_url": "https://bytebytego.com/guides/8-common-system-design-problems-and-solutions",
+          "source_path": "data/guides/8-common-system-design-problems-and-solutions.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-017",
+          "title_vi": null,
+          "title_source": "6 Software Architectural Patterns You Must Know",
+          "source_url": "https://bytebytego.com/guides/6-software-architectural-patterns-you-must-know",
+          "source_path": "data/guides/6-software-architectural-patterns-you-must-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-018",
+          "title_vi": null,
+          "title_source": "How To Release A Mobile App",
+          "source_url": "https://bytebytego.com/guides/how-to-release-a-mobile-app",
+          "source_path": "data/guides/how-to-release-a-mobile-app.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-019",
+          "title_vi": null,
+          "title_source": "How Do Computer Programs Run?",
+          "source_url": "https://bytebytego.com/guides/how-do-computer-programs-run",
+          "source_path": "data/guides/how-do-computer-programs-run.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-020",
+          "title_vi": null,
+          "title_source": "Linux Boot Process Explained",
+          "source_url": "https://bytebytego.com/guides/linux-boot-process-explained",
+          "source_path": "data/guides/linux-boot-process-explained.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-021",
+          "title_vi": null,
+          "title_source": "MVC, MVP, MVVM, VIPER Patterns",
+          "source_url": "https://bytebytego.com/guides/mvc-mvp-mvvm-viper-patterns",
+          "source_path": "data/guides/mvc-mvp-mvvm-viper-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-022",
+          "title_vi": null,
+          "title_source": "The Ultimate Software Architect Knowledge Map",
+          "source_url": "https://bytebytego.com/guides/the-ultimate-software-architect-knowledge-map",
+          "source_path": "data/guides/the-ultimate-software-architect-knowledge-map.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-023",
+          "title_vi": null,
+          "title_source": "Typical Microservice Architecture",
+          "source_url": "https://bytebytego.com/guides/what-does-a-typical-microservice-architecture-look-like",
+          "source_path": "data/guides/what-does-a-typical-microservice-architecture-look-like.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-08-024",
+          "title_vi": null,
+          "title_source": "Top 5 Software Architectural Patterns",
+          "source_url": "https://bytebytego.com/guides/top-5-software-architectural-patterns",
+          "source_path": "data/guides/top-5-software-architectural-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-09",
+      "title_vi": "Công cụ và năng suất",
+      "title_source": "DevTools & Productivity",
+      "lessons": [
+        {
+          "id": "sd-09-001",
+          "title_vi": null,
+          "title_source": "Git Commands Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/git-commands-cheat-sheet",
+          "source_path": "data/guides/git-commands-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-002",
+          "title_vi": null,
+          "title_source": "How does Git Work?",
+          "source_url": "https://bytebytego.com/guides/git-workflow",
+          "source_path": "data/guides/git-workflow.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-003",
+          "title_vi": null,
+          "title_source": "JSON Crack: Visualize JSON Files",
+          "source_url": "https://bytebytego.com/guides/json-files",
+          "source_path": "data/guides/json-files.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-004",
+          "title_vi": null,
+          "title_source": "Git vs GitHub",
+          "source_url": "https://bytebytego.com/guides/git-vs-github",
+          "source_path": "data/guides/git-vs-github.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-005",
+          "title_vi": null,
+          "title_source": "Git Merge vs. Git Rebase",
+          "source_url": "https://bytebytego.com/guides/git-merge-vs-git-rebate",
+          "source_path": "data/guides/git-merge-vs-git-rebate.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-006",
+          "title_vi": null,
+          "title_source": "30 Useful AI Apps That Can Help You in 2025",
+          "source_url": "https://bytebytego.com/guides/30-useful-ai-apps-that-can-help-you-in-2025",
+          "source_path": "data/guides/30-useful-ai-apps-that-can-help-you-in-2025.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-007",
+          "title_vi": null,
+          "title_source": "Diagram as Code",
+          "source_url": "https://bytebytego.com/guides/diagram-as-code",
+          "source_path": "data/guides/diagram-as-code.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-008",
+          "title_vi": null,
+          "title_source": "Top 9 Causes of 100% CPU Usage",
+          "source_url": "https://bytebytego.com/guides/top-9-cases-behind-100-cpu-usage",
+          "source_path": "data/guides/top-9-cases-behind-100-cpu-usage.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-009",
+          "title_vi": null,
+          "title_source": "Top 6 Tools to Turn Code into Beautiful Diagrams",
+          "source_url": "https://bytebytego.com/guides/top-6-tools-to-turn-code-into-beautiful-diagrams",
+          "source_path": "data/guides/top-6-tools-to-turn-code-into-beautiful-diagrams.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-010",
+          "title_vi": null,
+          "title_source": "Tools for Shipping Code to Production",
+          "source_url": "https://bytebytego.com/guides/what-tools-does-your-team-use-to-ship-code-to-production-and-ensure-code-quality",
+          "source_path": "data/guides/what-tools-does-your-team-use-to-ship-code-to-production-and-ensure-code-quality.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-011",
+          "title_vi": null,
+          "title_source": "Making Sense of Search Engine Optimization",
+          "source_url": "https://bytebytego.com/guides/making-sense-of-search-engine-optimization",
+          "source_path": "data/guides/making-sense-of-search-engine-optimization.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-012",
+          "title_vi": null,
+          "title_source": "Most Used Linux Commands Map",
+          "source_url": "https://bytebytego.com/guides/most-used-linux-commands-map",
+          "source_path": "data/guides/most-used-linux-commands-map.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-013",
+          "title_vi": null,
+          "title_source": "Linux File Permissions Illustrated",
+          "source_url": "https://bytebytego.com/guides/linux-file-permission-illustrated",
+          "source_path": "data/guides/linux-file-permission-illustrated.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-014",
+          "title_vi": null,
+          "title_source": "5 Important Components of Linux",
+          "source_url": "https://bytebytego.com/guides/5-important-components-of-linux",
+          "source_path": "data/guides/5-important-components-of-linux.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-015",
+          "title_vi": null,
+          "title_source": "15 Open-Source Projects That Changed the World",
+          "source_url": "https://bytebytego.com/guides/15-open-source-projects-that-changed-the-world",
+          "source_path": "data/guides/15-open-source-projects-that-changed-the-world.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-016",
+          "title_vi": null,
+          "title_source": "20 Popular Open Source Projects Started by Big Companies",
+          "source_url": "https://bytebytego.com/guides/20-popular-open-source-projects-started-or-supported-by-big-companies",
+          "source_path": "data/guides/20-popular-open-source-projects-started-or-supported-by-big-companies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-017",
+          "title_vi": null,
+          "title_source": "Linux File System Explained",
+          "source_url": "https://bytebytego.com/guides/linux-file-system-explained",
+          "source_path": "data/guides/linux-file-system-explained.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-018",
+          "title_vi": null,
+          "title_source": "Life is Short, Use Dev Tools",
+          "source_url": "https://bytebytego.com/guides/life-is-short-use-dev-tools",
+          "source_path": "data/guides/life-is-short-use-dev-tools.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-019",
+          "title_vi": null,
+          "title_source": "How Git Works",
+          "source_url": "https://bytebytego.com/guides/how-does-git-work",
+          "source_path": "data/guides/how-does-git-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-09-020",
+          "title_vi": null,
+          "title_source": "How do Companies Ship Code to Production?",
+          "source_url": "https://bytebytego.com/guides/how-do-companies-ship-code-to-production",
+          "source_path": "data/guides/how-do-companies-ship-code-to-production.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-10",
+      "title_vi": "Phát triển phần mềm",
+      "title_source": "Software Development",
+      "lessons": [
+        {
+          "id": "sd-10-001",
+          "title_vi": null,
+          "title_source": "Top 6 Most Commonly Used Server Types",
+          "source_url": "https://bytebytego.com/guides/top-6-most-commonly-used-server-types",
+          "source_path": "data/guides/top-6-most-commonly-used-server-types.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-002",
+          "title_vi": null,
+          "title_source": "How does Garbage Collection work?",
+          "source_url": "https://bytebytego.com/guides/how-does-garbage-collection-work",
+          "source_path": "data/guides/how-does-garbage-collection-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-003",
+          "title_vi": null,
+          "title_source": "A Roadmap for Full-Stack Development",
+          "source_url": "https://bytebytego.com/guides/a-roadmap-for-full-stack-development",
+          "source_path": "data/guides/a-roadmap-for-full-stack-development.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-004",
+          "title_vi": null,
+          "title_source": "What Are the Greenest Programming Languages?",
+          "source_url": "https://bytebytego.com/guides/what-are-the-greenest-programming-languages",
+          "source_path": "data/guides/what-are-the-greenest-programming-languages.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-005",
+          "title_vi": null,
+          "title_source": "Java Collection Hierarchy",
+          "source_url": "https://bytebytego.com/guides/java-collection-hierarchy",
+          "source_path": "data/guides/java-collection-hierarchy.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-006",
+          "title_vi": null,
+          "title_source": "Running C, C++, or Rust in a Web Browser",
+          "source_url": "https://bytebytego.com/guides/is-it-possible-to-run-c-c++-or-rust-on-a-web-browser",
+          "source_path": "data/guides/is-it-possible-to-run-c-c++-or-rust-on-a-web-browser.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-007",
+          "title_vi": null,
+          "title_source": "Top 8 C++ Use Cases",
+          "source_url": "https://bytebytego.com/guides/top-8-c++-use-cases",
+          "source_path": "data/guides/top-8-c++-use-cases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-008",
+          "title_vi": null,
+          "title_source": "Top 6 Multithreading Design Patterns You Must Know",
+          "source_url": "https://bytebytego.com/guides/top-6-multithreading-design-patterns-you-must-know",
+          "source_path": "data/guides/top-6-multithreading-design-patterns-you-must-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-009",
+          "title_vi": null,
+          "title_source": "Data Transmission Between Applications",
+          "source_url": "https://bytebytego.com/guides/how-is-data-transmitted-between-applications",
+          "source_path": "data/guides/how-is-data-transmitted-between-applications.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-010",
+          "title_vi": null,
+          "title_source": "Blocking vs Non-Blocking Queue",
+          "source_url": "https://bytebytego.com/guides/blocking-vs-non-blocking-queue",
+          "source_path": "data/guides/blocking-vs-non-blocking-queue.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-011",
+          "title_vi": null,
+          "title_source": "Big Endian vs Little Endian",
+          "source_url": "https://bytebytego.com/guides/big-endian-vs-little-endian",
+          "source_path": "data/guides/big-endian-vs-little-endian.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-012",
+          "title_vi": null,
+          "title_source": "How to Avoid Crawling Duplicate URLs at Google Scale?",
+          "source_url": "https://bytebytego.com/guides/how-to-avoid-crawling-duplicate-urls-at-google-scale",
+          "source_path": "data/guides/how-to-avoid-crawling-duplicate-urls-at-google-scale.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-013",
+          "title_vi": null,
+          "title_source": "10 Books for Software Developers",
+          "source_url": "https://bytebytego.com/guides/10-books-for-software-developers",
+          "source_path": "data/guides/10-books-for-software-developers.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-014",
+          "title_vi": null,
+          "title_source": "Top 8 Standards Every Developer Should Know",
+          "source_url": "https://bytebytego.com/guides/top-8-standards-every-developer-should-know",
+          "source_path": "data/guides/top-8-standards-every-developer-should-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-015",
+          "title_vi": null,
+          "title_source": "How Do C++, Java, Python Work?",
+          "source_url": "https://bytebytego.com/guides/how-do-c++-java-python-work",
+          "source_path": "data/guides/how-do-c++-java-python-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-016",
+          "title_vi": null,
+          "title_source": "10 Key Data Structures We Use Every Day",
+          "source_url": "https://bytebytego.com/guides/10-key-data-structures-we-use-every-day",
+          "source_path": "data/guides/10-key-data-structures-we-use-every-day.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-017",
+          "title_vi": null,
+          "title_source": "A Brief History of Programming Languages",
+          "source_url": "https://bytebytego.com/guides/a-brief-history-og-programming-languages",
+          "source_path": "data/guides/a-brief-history-og-programming-languages.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-018",
+          "title_vi": null,
+          "title_source": "Top 6 Load Balancing Algorithms",
+          "source_url": "https://bytebytego.com/guides/top-6-load-balancing-algorithms",
+          "source_path": "data/guides/top-6-load-balancing-algorithms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-019",
+          "title_vi": null,
+          "title_source": "The Fundamental Pillars of Object-Oriented Programming",
+          "source_url": "https://bytebytego.com/guides/the-fundamental-pillars-of-object-oriented-programming",
+          "source_path": "data/guides/the-fundamental-pillars-of-object-oriented-programming.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-020",
+          "title_vi": null,
+          "title_source": "Top 8 Programming Paradigms",
+          "source_url": "https://bytebytego.com/guides/top-8-programming-paradigms",
+          "source_path": "data/guides/top-8-programming-paradigms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-021",
+          "title_vi": null,
+          "title_source": "Algorithms for System Design Interviews",
+          "source_url": "https://bytebytego.com/guides/algorithms-you-should-know-before-taking-system-design-interviews",
+          "source_path": "data/guides/algorithms-you-should-know-before-taking-system-design-interviews.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-022",
+          "title_vi": null,
+          "title_source": "Imperative vs Functional vs Object-oriented Programming",
+          "source_url": "https://bytebytego.com/guides/imperative-vs-functional-vs-object-oriented-programming",
+          "source_path": "data/guides/imperative-vs-functional-vs-object-oriented-programming.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-023",
+          "title_vi": null,
+          "title_source": "Explaining 9 Types of API Testing",
+          "source_url": "https://bytebytego.com/guides/explaining-9-types-of-api-testing",
+          "source_path": "data/guides/explaining-9-types-of-api-testing.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-024",
+          "title_vi": null,
+          "title_source": "The 9 Algorithms That Dominate Our World",
+          "source_url": "https://bytebytego.com/guides/the-9-algorithms-that-dominate-our-world",
+          "source_path": "data/guides/the-9-algorithms-that-dominate-our-world.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-025",
+          "title_vi": null,
+          "title_source": "Concurrency vs Parallelism",
+          "source_url": "https://bytebytego.com/guides/concurrency-is-not-parallelism",
+          "source_path": "data/guides/concurrency-is-not-parallelism.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-026",
+          "title_vi": null,
+          "title_source": "Linux Boot Process Explained",
+          "source_url": "https://bytebytego.com/guides/linux-boot-process-explained",
+          "source_path": "data/guides/linux-boot-process-explained.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-027",
+          "title_vi": null,
+          "title_source": "11 Steps to Go From Junior to Senior Developer",
+          "source_url": "https://bytebytego.com/guides/11-steps-to-go-from-junior-to-senior-developer",
+          "source_path": "data/guides/11-steps-to-go-from-junior-to-senior-developer.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-10-028",
+          "title_vi": null,
+          "title_source": "10 Good Coding Principles to Improve Code Quality",
+          "source_url": "https://bytebytego.com/guides/10-good-coding-principles-to-improve-code-quality",
+          "source_path": "data/guides/10-good-coding-principles-to-improve-code-quality.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-11",
+      "title_vi": "Đám mây và hệ thống phân tán",
+      "title_source": "Cloud & Distributed Systems",
+      "lessons": [
+        {
+          "id": "sd-11-001",
+          "title_vi": null,
+          "title_source": "How AWS Lambda Works Behind the Scenes",
+          "source_url": "https://bytebytego.com/guides/how-does-aws-lambda-work-behind-the-scenes",
+          "source_path": "data/guides/how-does-aws-lambda-work-behind-the-scenes.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-11-002",
+          "title_vi": null,
+          "title_source": "8 Must-Know Scalability Strategies",
+          "source_url": "https://bytebytego.com/guides/8-must-know-scalability-strategies",
+          "source_path": "data/guides/8-must-know-scalability-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-003",
+          "title_vi": null,
+          "title_source": "System Design Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/system-design-cheat-sheet",
+          "source_path": "data/guides/system-design-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-004",
+          "title_vi": null,
+          "title_source": "Cloud Disaster Recovery Strategies",
+          "source_url": "https://bytebytego.com/guides/cloud-disaster-recovery-strategies",
+          "source_path": "data/guides/cloud-disaster-recovery-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-005",
+          "title_vi": null,
+          "title_source": "Vertical vs Horizontal Partitioning",
+          "source_url": "https://bytebytego.com/guides/vertical-partitioning-vs-horizontal-partitioning",
+          "source_path": "data/guides/vertical-partitioning-vs-horizontal-partitioning.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-006",
+          "title_vi": null,
+          "title_source": "Top 9 Architectural Patterns for Data and Communication Flow",
+          "source_url": "https://bytebytego.com/guides/top-9-architectural-patterns-for-data-and-communication-flow",
+          "source_path": "data/guides/top-9-architectural-patterns-for-data-and-communication-flow.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-007",
+          "title_vi": null,
+          "title_source": "Top 6 Cases to Apply Idempotency",
+          "source_url": "https://bytebytego.com/guides/top-6-cases-to-apply-idempotency",
+          "source_path": "data/guides/top-6-cases-to-apply-idempotency.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-008",
+          "title_vi": null,
+          "title_source": "Top 5 Trade-offs in System Designs",
+          "source_url": "https://bytebytego.com/guides/top-5-trade-offs-in-system-designs",
+          "source_path": "data/guides/top-5-trade-offs-in-system-designs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-009",
+          "title_vi": null,
+          "title_source": "How to Detect Node Failures in Distributed Systems",
+          "source_url": "https://bytebytego.com/guides/how-do-we-detect-node-failures-in-distributed-systems",
+          "source_path": "data/guides/how-do-we-detect-node-failures-in-distributed-systems.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-010",
+          "title_vi": null,
+          "title_source": "Why Meta, Google, and Amazon Stop Using Leap Seconds",
+          "source_url": "https://bytebytego.com/guides/do-you-know-why-meta-google-and-amazon-all-stop-using-leap-seconds",
+          "source_path": "data/guides/do-you-know-why-meta-google-and-amazon-all-stop-using-leap-seconds.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-011",
+          "title_vi": null,
+          "title_source": "The Fantastic Four of System Design",
+          "source_url": "https://bytebytego.com/guides/who-are-the-fantastic-four-of-system-design",
+          "source_path": "data/guides/who-are-the-fantastic-four-of-system-design.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-012",
+          "title_vi": null,
+          "title_source": "What makes AWS Lambda so fast?",
+          "source_url": "https://bytebytego.com/guides/what-makes-aws-lambda-so-fast",
+          "source_path": "data/guides/what-makes-aws-lambda-so-fast.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-013",
+          "title_vi": null,
+          "title_source": "Scaling Websites for Millions of Users",
+          "source_url": "https://bytebytego.com/guides/how-to-scale-a-website-to-support-millions-of-users",
+          "source_path": "data/guides/how-to-scale-a-website-to-support-millions-of-users.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-014",
+          "title_vi": null,
+          "title_source": "Resiliency Patterns",
+          "source_url": "https://bytebytego.com/guides/resiliency-patterns",
+          "source_path": "data/guides/resiliency-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-015",
+          "title_vi": null,
+          "title_source": "25 Papers That Completely Transformed the Computer World",
+          "source_url": "https://bytebytego.com/guides/25-papers-that-completely-transformed-the-computer-world",
+          "source_path": "data/guides/25-papers-that-completely-transformed-the-computer-world.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-016",
+          "title_vi": null,
+          "title_source": "A Crash Course on Architectural Scalability",
+          "source_url": "https://bytebytego.com/guides/a-crash-course-on-architectural-scalability",
+          "source_path": "data/guides/a-crash-course-on-architectural-scalability.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-017",
+          "title_vi": null,
+          "title_source": "Must Know System Design Building Blocks",
+          "source_url": "https://bytebytego.com/guides/must-know-system-design-building-blocks",
+          "source_path": "data/guides/must-know-system-design-building-blocks.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-018",
+          "title_vi": null,
+          "title_source": "Monorepo vs. Microrepo: Which is Best?",
+          "source_url": "https://bytebytego.com/guides/monorepo-vs",
+          "source_path": "data/guides/monorepo-vs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-019",
+          "title_vi": null,
+          "title_source": "How to Handle Web Request Errors",
+          "source_url": "https://bytebytego.com/guides/how-to-handle-web-request-error",
+          "source_path": "data/guides/how-to-handle-web-request-error.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-020",
+          "title_vi": null,
+          "title_source": "A Cheat Sheet for Designing Fault-Tolerant Systems",
+          "source_url": "https://bytebytego.com/guides/a-cheat-sheet-for-designing-fault-tolerant-systems",
+          "source_path": "data/guides/a-cheat-sheet-for-designing-fault-tolerant-systems.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-021",
+          "title_vi": null,
+          "title_source": "Typical AWS Network Architecture",
+          "source_url": "https://bytebytego.com/guides/typical-aws-network-architecture-in-one-diagram",
+          "source_path": "data/guides/typical-aws-network-architecture-in-one-diagram.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-022",
+          "title_vi": null,
+          "title_source": "Unique ID Generator",
+          "source_url": "https://bytebytego.com/guides/unique-id-generator",
+          "source_path": "data/guides/unique-id-generator.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-023",
+          "title_vi": null,
+          "title_source": "Amazon's Build System: Brazil",
+          "source_url": "https://bytebytego.com/guides/how-does-amazon-build-system-work",
+          "source_path": "data/guides/how-does-amazon-build-system-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-024",
+          "title_vi": null,
+          "title_source": "Infrastructure as Code Landscape Cheatsheet",
+          "source_url": "https://bytebytego.com/guides/a-cheatsheet-on-infrastructure-as-code-landscape",
+          "source_path": "data/guides/a-cheatsheet-on-infrastructure-as-code-landscape.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-025",
+          "title_vi": null,
+          "title_source": "How do we manage configurations in a system?",
+          "source_url": "https://bytebytego.com/guides/how-do-we-manage-configurations-in-a-system",
+          "source_path": "data/guides/how-do-we-manage-configurations-in-a-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-026",
+          "title_vi": null,
+          "title_source": "How do we incorporate Event Sourcing into systems?",
+          "source_url": "https://bytebytego.com/guides/how-do-we-incorporate-event-sourcing-into-the-systems",
+          "source_path": "data/guides/how-do-we-incorporate-event-sourcing-into-the-systems.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-027",
+          "title_vi": null,
+          "title_source": "The 12-Factor App",
+          "source_url": "https://bytebytego.com/guides/the-12-factor-app",
+          "source_path": "data/guides/the-12-factor-app.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-028",
+          "title_vi": null,
+          "title_source": "Explaining 5 Unique ID Generators",
+          "source_url": "https://bytebytego.com/guides/explaining-5-unique-id-generators-in-distributed-systems",
+          "source_path": "data/guides/explaining-5-unique-id-generators-in-distributed-systems.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-029",
+          "title_vi": null,
+          "title_source": "Retry Strategies for System Failures",
+          "source_url": "https://bytebytego.com/guides/how-do-we-retry-on-failures",
+          "source_path": "data/guides/how-do-we-retry-on-failures.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-030",
+          "title_vi": null,
+          "title_source": "Cloud Monitoring Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/cloud-monitoring-cheat-sheet",
+          "source_path": "data/guides/cloud-monitoring-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-031",
+          "title_vi": null,
+          "title_source": "Why Use a Distributed Lock?",
+          "source_url": "https://bytebytego.com/guides/why-do-we-need-to-use-a-distributed-lock",
+          "source_path": "data/guides/why-do-we-need-to-use-a-distributed-lock.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-032",
+          "title_vi": null,
+          "title_source": "Top 6 Cloud Messaging Patterns",
+          "source_url": "https://bytebytego.com/guides/top-6-cloud-messaging-patterns",
+          "source_path": "data/guides/top-6-cloud-messaging-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-033",
+          "title_vi": null,
+          "title_source": "Most Important AWS Services to Learn",
+          "source_url": "https://bytebytego.com/guides/what-are-the-most-important-aws-services-to-learn",
+          "source_path": "data/guides/what-are-the-most-important-aws-services-to-learn.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-034",
+          "title_vi": null,
+          "title_source": "How to Transform a System to be Cloud Native",
+          "source_url": "https://bytebytego.com/guides/how-do-we-transform-a-system-to-be-cloud-native",
+          "source_path": "data/guides/how-do-we-transform-a-system-to-be-cloud-native.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-035",
+          "title_vi": null,
+          "title_source": "Hidden Costs of the Cloud",
+          "source_url": "https://bytebytego.com/guides/hidden-costs-of-the-cloud",
+          "source_path": "data/guides/hidden-costs-of-the-cloud.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-036",
+          "title_vi": null,
+          "title_source": "2 Decades of Cloud Evolution",
+          "source_url": "https://bytebytego.com/guides/2-decades-of-cloud-evolution",
+          "source_path": "data/guides/2-decades-of-cloud-evolution.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-037",
+          "title_vi": null,
+          "title_source": "Cloud Cost Reduction Techniques",
+          "source_url": "https://bytebytego.com/guides/cloud-cost-reduction-techniques",
+          "source_path": "data/guides/cloud-cost-reduction-techniques.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-038",
+          "title_vi": null,
+          "title_source": "Top 7 Most-Used Distributed System Patterns",
+          "source_url": "https://bytebytego.com/guides/top-7-most-used-distributed-system-patterns",
+          "source_path": "data/guides/top-7-most-used-distributed-system-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-039",
+          "title_vi": null,
+          "title_source": "Cloud Load Balancer Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/cloud-load-balancer-cheat-sheet",
+          "source_path": "data/guides/cloud-load-balancer-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-040",
+          "title_vi": null,
+          "title_source": "AWS Services Evolution",
+          "source_url": "https://bytebytego.com/guides/aws-services-evolution",
+          "source_path": "data/guides/aws-services-evolution.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-041",
+          "title_vi": null,
+          "title_source": "Azure Services Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/azure-services-cheat-sheet",
+          "source_path": "data/guides/azure-services-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-042",
+          "title_vi": null,
+          "title_source": "A cheat sheet for system designs",
+          "source_url": "https://bytebytego.com/guides/a-cheat-sheet-for-system-designs",
+          "source_path": "data/guides/a-cheat-sheet-for-system-designs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-043",
+          "title_vi": null,
+          "title_source": "CAP, BASE, SOLID, KISS, What do these acronyms mean?",
+          "source_url": "https://bytebytego.com/guides/cap-base-solid-kiss-what-do-these-acronyms-mean",
+          "source_path": "data/guides/cap-base-solid-kiss-what-do-these-acronyms-mean.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-044",
+          "title_vi": null,
+          "title_source": "System Design Blueprint: The Ultimate Guide",
+          "source_url": "https://bytebytego.com/guides/system-design-blueprint-the-ultimate-guide",
+          "source_path": "data/guides/system-design-blueprint-the-ultimate-guide.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-045",
+          "title_vi": null,
+          "title_source": "How to Design for High Availability",
+          "source_url": "https://bytebytego.com/guides/how-do-we-design-for-high-availability",
+          "source_path": "data/guides/how-do-we-design-for-high-availability.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-046",
+          "title_vi": null,
+          "title_source": "What is Cloud Native?",
+          "source_url": "https://bytebytego.com/guides/what-is-cloud-native",
+          "source_path": "data/guides/what-is-cloud-native.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-047",
+          "title_vi": null,
+          "title_source": "Cloud Comparison Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/cloud-comparison-cheat-sheet",
+          "source_path": "data/guides/cloud-comparison-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-048",
+          "title_vi": null,
+          "title_source": "Big Data Pipeline Cheatsheet for AWS, Azure, and Google Cloud",
+          "source_url": "https://bytebytego.com/guides/big-data-pipeline-cheatsheet-for-aws-azure-and-google-cloud",
+          "source_path": "data/guides/big-data-pipeline-cheatsheet-for-aws-azure-and-google-cloud.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-11-049",
+          "title_vi": null,
+          "title_source": "AWS Services Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/aws-services-cheat-sheet",
+          "source_path": "data/guides/aws-services-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-12",
+      "title_vi": "Hệ thống hoạt động thế nào?",
+      "title_source": "How it Works?",
+      "lessons": [
+        {
+          "id": "sd-12-001",
+          "title_vi": null,
+          "title_source": "How do AirTags work?",
+          "source_url": "https://bytebytego.com/guides/how-do-airtags-work",
+          "source_path": "data/guides/how-do-airtags-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-002",
+          "title_vi": null,
+          "title_source": "How is Email Delivered?",
+          "source_url": "https://bytebytego.com/guides/how-is-email-delivered",
+          "source_path": "data/guides/how-is-email-delivered.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-003",
+          "title_vi": null,
+          "title_source": "Design Gmail",
+          "source_url": "https://bytebytego.com/guides/design-gmail",
+          "source_path": "data/guides/design-gmail.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-004",
+          "title_vi": null,
+          "title_source": "How Google/Apple Maps Blur License Plates and Faces",
+          "source_url": "https://bytebytego.com/guides/how-do-googleapple-maps-blur-license-plates-and-human-faces-on-street-view",
+          "source_path": "data/guides/how-do-googleapple-maps-blur-license-plates-and-human-faces-on-street-view.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-005",
+          "title_vi": null,
+          "title_source": "Quadtree",
+          "source_url": "https://bytebytego.com/guides/quadtree",
+          "source_path": "data/guides/quadtree.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-006",
+          "title_vi": null,
+          "title_source": "Build a Simple Chat Application with Redis",
+          "source_url": "https://bytebytego.com/guides/build-a-simple-chat-application",
+          "source_path": "data/guides/build-a-simple-chat-application.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-007",
+          "title_vi": null,
+          "title_source": "Live Streaming Explained",
+          "source_url": "https://bytebytego.com/guides/live-streaming-explained",
+          "source_path": "data/guides/live-streaming-explained.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-008",
+          "title_vi": null,
+          "title_source": "How to Design a System for Internationalization",
+          "source_url": "https://bytebytego.com/guides/how-do-we-design-a-system-for-internationalization",
+          "source_path": "data/guides/how-do-we-design-a-system-for-internationalization.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-009",
+          "title_vi": null,
+          "title_source": "How to Design Google Docs",
+          "source_url": "https://bytebytego.com/guides/how-to-design-google-docs",
+          "source_path": "data/guides/how-to-design-google-docs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-010",
+          "title_vi": null,
+          "title_source": "Payment System",
+          "source_url": "https://bytebytego.com/guides/payment-system",
+          "source_path": "data/guides/payment-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-011",
+          "title_vi": null,
+          "title_source": "Experiment Platform Architecture",
+          "source_url": "https://bytebytego.com/guides/possible-experiment-platform-architecture",
+          "source_path": "data/guides/possible-experiment-platform-architecture.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-012",
+          "title_vi": null,
+          "title_source": "Design Google Maps",
+          "source_url": "https://bytebytego.com/guides/design-google-maps",
+          "source_path": "data/guides/design-google-maps.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-013",
+          "title_vi": null,
+          "title_source": "Designing a Chat Application",
+          "source_url": "https://bytebytego.com/guides/how-do-we-design-a-chat-application-like-whatsapp-facebook-messenger-or-discord",
+          "source_path": "data/guides/how-do-we-design-a-chat-application-like-whatsapp-facebook-messenger-or-discord.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-014",
+          "title_vi": null,
+          "title_source": "Design Stock Exchange",
+          "source_url": "https://bytebytego.com/guides/design-stock-exchange",
+          "source_path": "data/guides/design-stock-exchange.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-015",
+          "title_vi": null,
+          "title_source": "How are Notifications Pushed to Our Phones or PCs?",
+          "source_url": "https://bytebytego.com/guides/how-are-notifications-pushed-to-our-phones-or-pcs",
+          "source_path": "data/guides/how-are-notifications-pushed-to-our-phones-or-pcs.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-016",
+          "title_vi": null,
+          "title_source": "What Happens When You Upload a File to Amazon S3?",
+          "source_url": "https://bytebytego.com/guides/what-happens-when-you-upload-a-file-to-amazon-s3",
+          "source_path": "data/guides/what-happens-when-you-upload-a-file-to-amazon-s3.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-017",
+          "title_vi": null,
+          "title_source": "Proximity Service",
+          "source_url": "https://bytebytego.com/guides/proximity-service",
+          "source_path": "data/guides/proximity-service.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-12-018",
+          "title_vi": null,
+          "title_source": "How Do Search Engines Work?",
+          "source_url": "https://bytebytego.com/guides/how-do-search-engines-work",
+          "source_path": "data/guides/how-do-search-engines-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-13",
+      "title_vi": "DevOps và CI/CD",
+      "title_source": "DevOps and CI/CD",
+      "lessons": [
+        {
+          "id": "sd-13-001",
+          "title_vi": null,
+          "title_source": "Top 10 Kubernetes Design Patterns",
+          "source_url": "https://bytebytego.com/guides/top-10-k8s-design-patterns",
+          "source_path": "data/guides/top-10-k8s-design-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-002",
+          "title_vi": null,
+          "title_source": "Some DevOps Books I Find Enlightening",
+          "source_url": "https://bytebytego.com/guides/some-devops-books-i-find-enlightening",
+          "source_path": "data/guides/some-devops-books-i-find-enlightening.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-003",
+          "title_vi": null,
+          "title_source": "Paradigm Shift: Developer to Tester Ratio",
+          "source_url": "https://bytebytego.com/guides/paradigm-shift-how-developer-to-tester-ratio-changed-from-11-to-1001",
+          "source_path": "data/guides/paradigm-shift-how-developer-to-tester-ratio-changed-from-11-to-1001.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-004",
+          "title_vi": null,
+          "title_source": "Push vs Pull in Metrics Collection Systems",
+          "source_url": "https://bytebytego.com/guides/push-vs-pull-in-metrics-collecting-systems",
+          "source_path": "data/guides/push-vs-pull-in-metrics-collecting-systems.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-005",
+          "title_vi": null,
+          "title_source": "Choose the Right Database for Metric Collection",
+          "source_url": "https://bytebytego.com/guides/choose-the-right-database-for-metric-collecting-system",
+          "source_path": "data/guides/choose-the-right-database-for-metric-collecting-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-006",
+          "title_vi": null,
+          "title_source": "Top 4 Kubernetes Service Types",
+          "source_url": "https://bytebytego.com/guides/top-4-kubernetes-service-types-in-one-diagram",
+          "source_path": "data/guides/top-4-kubernetes-service-types-in-one-diagram.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-007",
+          "title_vi": null,
+          "title_source": "Cloud Native Anti-Patterns",
+          "source_url": "https://bytebytego.com/guides/cloud-native-anti-patterns",
+          "source_path": "data/guides/cloud-native-anti-patterns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-008",
+          "title_vi": null,
+          "title_source": "Kubernetes Tools Stack Wheel",
+          "source_url": "https://bytebytego.com/guides/kubernetes-tools-stack-wheel",
+          "source_path": "data/guides/kubernetes-tools-stack-wheel.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-009",
+          "title_vi": null,
+          "title_source": "Kubernetes Tools Ecosystem",
+          "source_url": "https://bytebytego.com/guides/kubernetes-tools-ecosystem",
+          "source_path": "data/guides/kubernetes-tools-ecosystem.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-010",
+          "title_vi": null,
+          "title_source": "Kubernetes Periodic Table",
+          "source_url": "https://bytebytego.com/guides/kubernetes-periodic-table",
+          "source_path": "data/guides/kubernetes-periodic-table.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-011",
+          "title_vi": null,
+          "title_source": "9 Docker Best Practices You Must Know",
+          "source_url": "https://bytebytego.com/guides/9-docker-best-practices-you-must-know",
+          "source_path": "data/guides/9-docker-best-practices-you-must-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-012",
+          "title_vi": null,
+          "title_source": "Netflix Tech Stack - CI/CD Pipeline",
+          "source_url": "https://bytebytego.com/guides/netflix-tech-stack-cicd-pipeline",
+          "source_path": "data/guides/netflix-tech-stack-cicd-pipeline.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-013",
+          "title_vi": null,
+          "title_source": "Top 8 Must-Know Docker Concepts",
+          "source_url": "https://bytebytego.com/guides/top-8-must-know-docker-concepts",
+          "source_path": "data/guides/top-8-must-know-docker-concepts.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-014",
+          "title_vi": null,
+          "title_source": "CI/CD Simplified Visual Guide",
+          "source_url": "https://bytebytego.com/guides/cicd-simplified-visual-guide",
+          "source_path": "data/guides/cicd-simplified-visual-guide.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-015",
+          "title_vi": null,
+          "title_source": "Top 5 Most-Used Deployment Strategies",
+          "source_url": "https://bytebytego.com/guides/top-5-most-used-deployment-strategies",
+          "source_path": "data/guides/top-5-most-used-deployment-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-016",
+          "title_vi": null,
+          "title_source": "Kubernetes Command Cheatsheet",
+          "source_url": "https://bytebytego.com/guides/the-ultimate-kubernetes-command-cheatsheet",
+          "source_path": "data/guides/the-ultimate-kubernetes-command-cheatsheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-017",
+          "title_vi": null,
+          "title_source": "Kubernetes Deployment Strategies",
+          "source_url": "https://bytebytego.com/guides/kubernetes-deployment-strategies",
+          "source_path": "data/guides/kubernetes-deployment-strategies.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-018",
+          "title_vi": null,
+          "title_source": "How does Terraform turn Code into Cloud?",
+          "source_url": "https://bytebytego.com/guides/how-does-terraform-turn-code-into-cloud",
+          "source_path": "data/guides/how-does-terraform-turn-code-into-cloud.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-019",
+          "title_vi": null,
+          "title_source": "DevOps vs. SRE vs. Platform Engineering",
+          "source_url": "https://bytebytego.com/guides/devops-vs-sre-vs-paltform-engg",
+          "source_path": "data/guides/devops-vs-sre-vs-paltform-engg.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-020",
+          "title_vi": null,
+          "title_source": "Deployment Strategies",
+          "source_url": "https://bytebytego.com/guides/how-to-deploy-services",
+          "source_path": "data/guides/how-to-deploy-services.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-021",
+          "title_vi": null,
+          "title_source": "Logging, Tracing, and Metrics",
+          "source_url": "https://bytebytego.com/guides/logging-tracing-metrics",
+          "source_path": "data/guides/logging-tracing-metrics.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-022",
+          "title_vi": null,
+          "title_source": "Log Parsing Cheat Sheet",
+          "source_url": "https://bytebytego.com/guides/log-parsing-cheat-sheet",
+          "source_path": "data/guides/log-parsing-cheat-sheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-023",
+          "title_vi": null,
+          "title_source": "DevOps vs NoOps: What's the Difference?",
+          "source_url": "https://bytebytego.com/guides/devops-vs-noops",
+          "source_path": "data/guides/devops-vs-noops.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-024",
+          "title_vi": null,
+          "title_source": "Why is Nginx so Popular?",
+          "source_url": "https://bytebytego.com/guides/why-is-nginx-so-popular",
+          "source_path": "data/guides/why-is-nginx-so-popular.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-025",
+          "title_vi": null,
+          "title_source": "What is Kubernetes (k8s)?",
+          "source_url": "https://bytebytego.com/guides/what-is-k8s-kubernetes",
+          "source_path": "data/guides/what-is-k8s-kubernetes.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-026",
+          "title_vi": null,
+          "title_source": "How does Docker work?",
+          "source_url": "https://bytebytego.com/guides/how-does-docker-work",
+          "source_path": "data/guides/how-does-docker-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-13-027",
+          "title_vi": null,
+          "title_source": "CI/CD Pipeline Explained in Simple Terms",
+          "source_url": "https://bytebytego.com/guides/cicd-pipeline-explained-in-simple-terms",
+          "source_path": "data/guides/cicd-pipeline-explained-in-simple-terms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-14",
+      "title_vi": "Bảo mật",
+      "title_source": "Security",
+      "lessons": [
+        {
+          "id": "sd-14-001",
+          "title_vi": null,
+          "title_source": "What is DevSecOps?",
+          "source_url": "https://bytebytego.com/guides/what-is-devsecops",
+          "source_path": "data/guides/what-is-devsecops.md",
+          "status": "planned",
+          "source_body_reviewed": true
+        },
+        {
+          "id": "sd-14-002",
+          "title_vi": null,
+          "title_source": "Encoding vs Encryption vs Tokenization",
+          "source_url": "https://bytebytego.com/guides/encoding-vs-encryption-vs-tokenization",
+          "source_path": "data/guides/encoding-vs-encryption-vs-tokenization.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-003",
+          "title_vi": null,
+          "title_source": "Storing Passwords Safely: A Comprehensive Guide",
+          "source_url": "https://bytebytego.com/guides/how-to-store-passwords-in-the-database",
+          "source_path": "data/guides/how-to-store-passwords-in-the-database.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-004",
+          "title_vi": null,
+          "title_source": "Designing a Permission System",
+          "source_url": "https://bytebytego.com/guides/how-do-we-design-a-permission-system",
+          "source_path": "data/guides/how-do-we-design-a-permission-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-005",
+          "title_vi": null,
+          "title_source": "How Password Managers Work",
+          "source_url": "https://bytebytego.com/guides/how-does-a-password-manager-such-as-1password-or-lastpass-work",
+          "source_path": "data/guides/how-does-a-password-manager-such-as-1password-or-lastpass-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-006",
+          "title_vi": null,
+          "title_source": "Is PassKey Shaping a Passwordless Future?",
+          "source_url": "https://bytebytego.com/guides/is-passkey-shaping-a-passwordless-future",
+          "source_path": "data/guides/is-passkey-shaping-a-passwordless-future.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-007",
+          "title_vi": null,
+          "title_source": "Firewall Explained to Kids and Adults",
+          "source_url": "https://bytebytego.com/guides/firewall-explained-to-kids-and-adults",
+          "source_path": "data/guides/firewall-explained-to-kids-and-adults.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-008",
+          "title_vi": null,
+          "title_source": "Cookies vs Sessions",
+          "source_url": "https://bytebytego.com/guides/what-are-the-differences-between-cookies-and-sessions",
+          "source_path": "data/guides/what-are-the-differences-between-cookies-and-sessions.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-009",
+          "title_vi": null,
+          "title_source": "HTTP Cookies Explained With a Simple Diagram",
+          "source_url": "https://bytebytego.com/guides/http-cookies-explained-with-a-simple-diagram",
+          "source_path": "data/guides/http-cookies-explained-with-a-simple-diagram.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-010",
+          "title_vi": null,
+          "title_source": "Token, Cookie, Session",
+          "source_url": "https://bytebytego.com/guides/token-cookie-session",
+          "source_path": "data/guides/token-cookie-session.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-011",
+          "title_vi": null,
+          "title_source": "Sessions, Tokens, JWT, SSO, and OAuth Explained",
+          "source_url": "https://bytebytego.com/guides/explaining-sessions-tokens-jwt-sso-and-oauth-in-one-diagram",
+          "source_path": "data/guides/explaining-sessions-tokens-jwt-sso-and-oauth-in-one-diagram.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-012",
+          "title_vi": null,
+          "title_source": "How to Design a Secure System",
+          "source_url": "https://bytebytego.com/guides/how-do-we-design-a-secure-system",
+          "source_path": "data/guides/how-do-we-design-a-secure-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-013",
+          "title_vi": null,
+          "title_source": "Top 6 Firewall Use Cases",
+          "source_url": "https://bytebytego.com/guides/top-6-firewall-use-cases",
+          "source_path": "data/guides/top-6-firewall-use-cases.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-014",
+          "title_vi": null,
+          "title_source": "Top 4 Authentication Mechanisms",
+          "source_url": "https://bytebytego.com/guides/top-4-forms-of-authentication-mechanisms",
+          "source_path": "data/guides/top-4-forms-of-authentication-mechanisms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-015",
+          "title_vi": null,
+          "title_source": "How Digital Signatures Work",
+          "source_url": "https://bytebytego.com/guides/how-digital-signatures-work",
+          "source_path": "data/guides/how-digital-signatures-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-016",
+          "title_vi": null,
+          "title_source": "How do we manage sensitive data in a system?",
+          "source_url": "https://bytebytego.com/guides/how-do-we-manage-sensitive-data-in-a-system",
+          "source_path": "data/guides/how-do-we-manage-sensitive-data-in-a-system.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-017",
+          "title_vi": null,
+          "title_source": "HTTPS, SSL Handshake, and Data Encryption Explained",
+          "source_url": "https://bytebytego.com/guides/https-ssl-handshake-and-data-encryption-explained-to-kids",
+          "source_path": "data/guides/https-ssl-handshake-and-data-encryption-explained-to-kids.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-018",
+          "title_vi": null,
+          "title_source": "Symmetric vs Asymmetric Encryption",
+          "source_url": "https://bytebytego.com/guides/symmetric-encryption-vs-asymmetric-encryption",
+          "source_path": "data/guides/symmetric-encryption-vs-asymmetric-encryption.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-019",
+          "title_vi": null,
+          "title_source": "Session-based Authentication vs. JWT",
+          "source_url": "https://bytebytego.com/guides/what's-the-difference-between-session-based-authentication-and-jwts",
+          "source_path": "data/guides/what's-the-difference-between-session-based-authentication-and-jwts.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-020",
+          "title_vi": null,
+          "title_source": "JWT 101: Key to Stateless Authentication",
+          "source_url": "https://bytebytego.com/guides/jwt-101-key-to-stateless-authentication",
+          "source_path": "data/guides/jwt-101-key-to-stateless-authentication.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-021",
+          "title_vi": null,
+          "title_source": "Is HTTPS Safe?",
+          "source_url": "https://bytebytego.com/guides/is-https-safe",
+          "source_path": "data/guides/is-https-safe.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-022",
+          "title_vi": null,
+          "title_source": "Cybersecurity 101",
+          "source_url": "https://bytebytego.com/guides/cybersecurity-101-in-one-picture",
+          "source_path": "data/guides/cybersecurity-101-in-one-picture.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-023",
+          "title_vi": null,
+          "title_source": "Cookies vs Sessions vs JWT vs PASETO",
+          "source_url": "https://bytebytego.com/guides/cookies-vs-sessions-vs-jwt-vs-paseto",
+          "source_path": "data/guides/cookies-vs-sessions-vs-jwt-vs-paseto.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-024",
+          "title_vi": null,
+          "title_source": "How does SSH work?",
+          "source_url": "https://bytebytego.com/guides/how-does-ssh-work",
+          "source_path": "data/guides/how-does-ssh-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-025",
+          "title_vi": null,
+          "title_source": "How Does a VPN Work?",
+          "source_url": "https://bytebytego.com/guides/how-does-a-vpn-work",
+          "source_path": "data/guides/how-does-a-vpn-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-026",
+          "title_vi": null,
+          "title_source": "How Google Authenticator Works",
+          "source_url": "https://bytebytego.com/guides/how-does-google-authenticator-or-other-types-of-2-factor-authenticators-work",
+          "source_path": "data/guides/how-does-google-authenticator-or-other-types-of-2-factor-authenticators-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-027",
+          "title_vi": null,
+          "title_source": "Types of VPNs",
+          "source_url": "https://bytebytego.com/guides/types-of-vpns",
+          "source_path": "data/guides/types-of-vpns.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-028",
+          "title_vi": null,
+          "title_source": "What is a Cookie?",
+          "source_url": "https://bytebytego.com/guides/what-is-a-cookie",
+          "source_path": "data/guides/what-is-a-cookie.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-029",
+          "title_vi": null,
+          "title_source": "OAuth 2.0 Flows",
+          "source_url": "https://bytebytego.com/guides/oauth-20-flows",
+          "source_path": "data/guides/oauth-20-flows.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-030",
+          "title_vi": null,
+          "title_source": "Top Network Security Cheatsheet",
+          "source_url": "https://bytebytego.com/guides/top-network-security-cheatsheet",
+          "source_path": "data/guides/top-network-security-cheatsheet.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-031",
+          "title_vi": null,
+          "title_source": "What is SSO (Single Sign-On)?",
+          "source_url": "https://bytebytego.com/guides/v1what-is-sso-single-sign-on",
+          "source_path": "data/guides/v1what-is-sso-single-sign-on.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-032",
+          "title_vi": null,
+          "title_source": "How does HTTPS work?",
+          "source_url": "https://bytebytego.com/guides/how-does-https-work",
+          "source_path": "data/guides/how-does-https-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-033",
+          "title_vi": null,
+          "title_source": "Session, Cookie, JWT, Token, SSO, and OAuth 2.0 Explained",
+          "source_url": "https://bytebytego.com/guides/session-cookie-jwt-token-sso-and-oauth-2",
+          "source_path": "data/guides/session-cookie-jwt-token-sso-and-oauth-2.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-034",
+          "title_vi": null,
+          "title_source": "Explaining JSON Web Token (JWT) to a 10 Year Old Kid",
+          "source_url": "https://bytebytego.com/guides/explaining-json-web-token-jwt-to-a-10-year-old-kid",
+          "source_path": "data/guides/explaining-json-web-token-jwt-to-a-10-year-old-kid.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-14-035",
+          "title_vi": null,
+          "title_source": "OAuth 2.0 Explained With Simple Terms",
+          "source_url": "https://bytebytego.com/guides/oauth-2-explained-with-siple-terms",
+          "source_path": "data/guides/oauth-2-explained-with-siple-terms.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    },
+    {
+      "id": "sd-15",
+      "title_vi": "Nền tảng máy tính",
+      "title_source": "Computer Fundamentals",
+      "lessons": [
+        {
+          "id": "sd-15-001",
+          "title_vi": null,
+          "title_source": "Paging vs Segmentation",
+          "source_url": "https://bytebytego.com/guides/what-are-the-differences-between-paging-and-segmentation",
+          "source_path": "data/guides/what-are-the-differences-between-paging-and-segmentation.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-002",
+          "title_vi": null,
+          "title_source": "IPv4 vs. IPv6: Differences",
+          "source_url": "https://bytebytego.com/guides/ipv4-vs-ipv6",
+          "source_path": "data/guides/ipv4-vs-ipv6.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-003",
+          "title_vi": null,
+          "title_source": "Top 4 Most Popular Use Cases for UDP",
+          "source_url": "https://bytebytego.com/guides/top-4-most-popular-use-cases-for-udp",
+          "source_path": "data/guides/top-4-most-popular-use-cases-for-udp.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-004",
+          "title_vi": null,
+          "title_source": "How Does the Domain Name System (DNS) Lookup Work?",
+          "source_url": "https://bytebytego.com/guides/how-does-the-domain-name-system-dns-lookup-work",
+          "source_path": "data/guides/how-does-the-domain-name-system-dns-lookup-work.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-005",
+          "title_vi": null,
+          "title_source": "DNS Record Types You Should Know",
+          "source_url": "https://bytebytego.com/guides/dns-record-types-you-should-know",
+          "source_path": "data/guides/dns-record-types-you-should-know.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-006",
+          "title_vi": null,
+          "title_source": "TCP vs UDP for Online Gaming",
+          "source_url": "https://bytebytego.com/guides/what-protocol-does-online-gaming-use-to-transmit-data",
+          "source_path": "data/guides/what-protocol-does-online-gaming-use-to-transmit-data.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-007",
+          "title_vi": null,
+          "title_source": "What is a Deadlock?",
+          "source_url": "https://bytebytego.com/guides/what-is-a-deadlock",
+          "source_path": "data/guides/what-is-a-deadlock.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-008",
+          "title_vi": null,
+          "title_source": "Process vs Thread: Key Differences",
+          "source_url": "https://bytebytego.com/guides/what-is-the-difference-between-process-and-thread",
+          "source_path": "data/guides/what-is-the-difference-between-process-and-thread.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-009",
+          "title_vi": null,
+          "title_source": "OSI Model Explained",
+          "source_url": "https://bytebytego.com/guides/what-is-osi-model",
+          "source_path": "data/guides/what-is-osi-model.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-010",
+          "title_vi": null,
+          "title_source": "Visualizing a SQL Query",
+          "source_url": "https://bytebytego.com/guides/visualizing-a-sql-query",
+          "source_path": "data/guides/visualizing-a-sql-query.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-011",
+          "title_vi": null,
+          "title_source": "Explaining 8 Popular Network Protocols in 1 Diagram",
+          "source_url": "https://bytebytego.com/guides/explaining-8-popular-network-protocols-in-1-diagram",
+          "source_path": "data/guides/explaining-8-popular-network-protocols-in-1-diagram.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        },
+        {
+          "id": "sd-15-012",
+          "title_vi": null,
+          "title_source": "What is the Best Way to Learn SQL?",
+          "source_url": "https://bytebytego.com/guides/what-is-the-best-way-to-learn-sql",
+          "source_path": "data/guides/what-is-the-best-way-to-learn-sql.md",
+          "status": "planned",
+          "source_body_reviewed": false
+        }
+      ]
+    }
+  ]
+}
