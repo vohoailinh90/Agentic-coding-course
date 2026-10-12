@@ -104,10 +104,12 @@ cầu, hạ tầng và mức phức tạp chấp nhận được.
   lại không tự bảo đảm không mất sự kiện; máy chủ phải hỗ trợ việc gửi bù.
 - Với HTTP/1.1, trình duyệt giới hạn số kết nối mỗi tên miền, nên nhiều tab SSE có thể chạm giới
   hạn. HTTP/2 đỡ vấn đề này.
-- `EventSource` gốc không cho tự đặt header tùy ý, nên gắn token xác thực cần thiết kế riêng.
-  WebSocket thì cần xác thực ngay ở bước bắt tay.
-- WebSocket không tự có bảo đảm giao tin, thứ tự giữa nhiều kết nối hay phát lại; nếu cần, phải tự
-  thiết kế.
+- `EventSource` gốc không cho tự đặt header tùy ý, và `WebSocket` của trình duyệt cũng vậy ở bước
+  bắt tay, nên gắn token xác thực cần thiết kế riêng. Có thể xác thực ở bước bắt tay (ví dụ bằng
+  cookie), hoặc nhận kết nối rồi bắt thông điệp đầu tiên mang thông tin xác thực và đóng kết nối
+  nào chưa xác thực. Tránh để token dài hạn trong URL.
+- WebSocket chạy trên TCP nên trong một kết nối, tin đến đúng thứ tự. Nhưng không có xác nhận ở mức
+  ứng dụng và không tự phát lại tin bị lỡ khi nối lại; nếu cần, phải tự thiết kế.
 
 </details>
 
