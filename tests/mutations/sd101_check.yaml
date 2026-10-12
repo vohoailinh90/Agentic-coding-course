@@ -523,7 +523,7 @@ mutations:
 - label: an SVG that is not in the SVG namespace is refused
   find: namespace_of(element.tag) not in ("", SVG_NAMESPACE)
   replace: namespace_of(element.tag) != SVG_NAMESPACE
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_real_looking_svg_drawing_is_accepted
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_local_svg_figure_is_accepted_in_every_form_and_in_any_case
 - label: path is not a drawing element
   find: '    "path", "rect", "circle",'
   replace: '    "rect", "circle",'
