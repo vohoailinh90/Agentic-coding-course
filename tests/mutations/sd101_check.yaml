@@ -49,9 +49,17 @@ mutations:
   replace: '            and (isinstance(when, str) and ISO_DATE.fullmatch(when) is not None))'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_image_evidence_with_real_values_is_accepted_as_a_string_or_a_date
 - label: an unclosed code fence is accepted
-  find: '    if text.count("```") % 2:'
+  find: '    if has_unclosed_fence(text):'
   replace: '    if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_unclosed_code_fence_is_reported
+- label: only backtick fences are recognised as closing a fence
+  find: '            if not (closing and set(closing) == {token.markup[0]} and len(closing) >= len(token.markup)):'
+  replace: '            if not closing.startswith("```"):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_closed_fences_of_either_marker_and_any_length_are_accepted
+- label: a closing fence shorter than the opening one closes it
+  find: '            if not (closing and set(closing) == {token.markup[0]} and len(closing) >= len(token.markup)):'
+  replace: '            if not (closing and set(closing) == {token.markup[0]}):'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_closing_fence_shorter_than_the_opening_one_does_not_close_it
 - label: a relative link that leads nowhere is accepted
   find: '        if target is not None and not (lesson_dir / target).exists():'
   replace: '        if False:'
@@ -80,10 +88,14 @@ mutations:
   find: '            elif item.type in ("html_inline", "html_block"):'
   replace: '            elif False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_an_html_anchor_is_a_link
-- label: a link inside an HTML comment counts as a link
-  find: '                found.update(HTML_LINK.findall(HTML_COMMENT.sub("", item.content)))'
-  replace: '                found.update(HTML_LINK.findall(item.content))'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_an_html_comment_is_not_a_link
+- label: HTML is scanned with a pattern, so a comment or an attribute value can hold a link
+  find: '                parser.feed(item.content)'
+  replace: '                parser.hrefs.extend(re.findall(r"href=.?([^\s\"''>]+)", item.content))'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
+- label: an href on a tag other than <a> counts as a link
+  find: '        if tag == "a":'
+  replace: '        if True:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_href_text_inside_another_attribute_is_not_a_link
 - label: a mention of a lesson that has no directory is accepted
   find: '        if mentioned not in lesson_ids:'
   replace: '        if False:'
@@ -116,6 +128,10 @@ mutations:
   find: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:").lower()'
   replace: '    return re.sub(r"<[^>]+>|[*_`~]", "", cell).strip(" .,;:")'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_formatted_or_capitalised_status_in_a_readme_row_is_reported
+- label: README rows are inspected only when the lesson path is written in the row itself
+  find: '    for row in (line for line in text.splitlines() if line.startswith("|")):'
+  replace: '    for row in (line for line in text.splitlines() if line.startswith("|") and "lessons/" in line):'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_status_in_a_row_whose_lesson_link_is_a_reference_is_reported
 - label: a status repeated in a README row is accepted
   find: '        if cells & CONTENT_STATUS:'
   replace: '        if False:'

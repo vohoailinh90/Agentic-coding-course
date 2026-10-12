@@ -169,6 +169,22 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=BODY + "\n```mermaid\nflowchart TB\n")
         self.assertProblem("unclosed code fence")
 
+    def test_an_unclosed_tilde_fence_is_reported(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n~~~mermaid\nflowchart TB\n")
+        self.assertProblem("unclosed code fence")
+
+    def test_closed_fences_of_either_marker_and_any_length_are_accepted(self) -> None:
+        for name, fence in {"backticks": "```mermaid\nx\n```", "tildes": "~~~\nx\n~~~",
+                            "long backticks": "````\nx\n````",
+                            "a long fence may contain a short one": "````\n```\nx\n```\n````"}.items():
+            with self.subTest(fence=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + fence + "\n")
+                self.assertEqual([], self.problems())
+
+    def test_a_closing_fence_shorter_than_the_opening_one_does_not_close_it(self) -> None:
+        self.write_lesson("sd-01-001", body=BODY + "\n````\ncode\n```\n")
+        self.assertProblem("unclosed code fence")
+
     def test_unbalanced_details_tags_are_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\n<details>\n<summary>x</summary>\n")
         self.assertProblem("unbalanced <details>")
@@ -248,6 +264,21 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=f'# Bài một\n\n<a href="{SNAPSHOT}">nguồn</a>\n')
         self.assertEqual([], self.problems())
 
+    def test_href_text_inside_another_attribute_is_not_a_link(self) -> None:
+        for name, tag in {"title": f"<a title='href=\"{SNAPSHOT}\"'>nguồn</a>",
+                          "no href": f'<a data-x="{SNAPSHOT}">nguồn</a>',
+                          "other tag": f'<span href="{SNAPSHOT}">nguồn</span>'}.items():
+            with self.subTest(tag=name):
+                self.write_lesson("sd-01-001", body=f"# Bài một\n\n{tag}\n")
+                self.assertProblem("pinned source snapshot")
+
+    def test_an_upper_case_or_single_quoted_html_anchor_is_a_link(self) -> None:
+        for name, tag in {"upper case": f'<A HREF="{SNAPSHOT}">nguồn</A>',
+                          "single quotes": f"<a href='{SNAPSHOT}'>nguồn</a>"}.items():
+            with self.subTest(tag=name):
+                self.write_lesson("sd-01-001", body=f"# Bài một\n\n{tag}\n")
+                self.assertEqual([], self.problems())
+
     def test_a_snapshot_given_as_a_reference_style_link_is_a_link(self) -> None:
         self.write_lesson("sd-01-001", body=f"# Bài một\n\n[nguồn][s]\n\n[s]: {SNAPSHOT}\n")
         self.assertEqual([], self.problems())
@@ -295,6 +326,18 @@ class ReadmeRuleTests(StoreCase):
                 row = f"| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài một | {cell} |\n"
                 self.write_readme("# Kho\n\n| ID | Bài | Ghi chú |\n|---|---|---|\n" + row)
                 self.assertProblem("repeats a lesson status")
+
+    def test_a_status_in_a_row_whose_lesson_link_is_a_reference_is_reported(self) -> None:
+        row = "| [sd-01-001][one] | Bài một | drafted |\n\n[one]: lessons/sd-01-001/lesson.md\n"
+        self.write_readme("# Kho\n\n| ID | Bài | Ghi chú |\n|---|---|---|\n" + row)
+        found = self.problems()
+        self.assertTrue(any("repeats a lesson status" in line for line in found), found)
+        self.assertFalse(any("does not link" in line for line in found), found)
+
+    def test_an_html_anchor_whose_title_mentions_the_path_is_not_a_readme_link(self) -> None:
+        path = "lessons/sd-01-001/lesson.md"
+        self.write_readme(f"# Kho\n\n<a title='href=\"{path}\"'>bài một</a>\n")
+        self.assertProblem("does not link lessons/sd-01-001/lesson.md")
 
     def test_a_status_word_inside_a_longer_title_is_not_a_status(self) -> None:
         row = "| [sd-01-001](lessons/sd-01-001/lesson.md) | Bài đã drafted xong |\n"

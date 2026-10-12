@@ -19,7 +19,7 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     learner_test is pending | done; `approved` needs all of them `done`
   - image_evidence is a list, and each entry has an http(s) url, a 64-hex sha256 and
     a retrieved_on date
-  - lesson.md: code fences and <details> are balanced, every relative link
+  - lesson.md: no code fence (``` or ~~~) is left open, <details> tags are balanced, every relative link
     (inline, reference-style or <a href>) resolves,
     it links the pinned source snapshot (as a real Markdown or HTML link, not text
     in a code block or a comment), it mentions no lesson id that has no lesson
@@ -28,6 +28,9 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
 And once for the store: README.md links every lesson directory (as a real link, not a
 path in a comment or a code block) and carries no status words in its table, however formatted
 (status lives only in lesson.yaml).
+
+This guards against honest mistakes while ~400 lessons are written; it is not a security
+boundary. Markup crafted to slip past a rule on purpose is out of scope.
 
 Not checked, because it is not computable here: whether a claim is true, whether a
 figure reads well, and the Mermaid text-size estimate (needs a browser).
@@ -48,6 +51,7 @@ import posixpath
 import re
 import sys
 from dataclasses import dataclass
+from html.parser import HTMLParser
 from urllib.parse import unquote
 
 import yaml
@@ -68,8 +72,6 @@ SHA256 = re.compile(r"[0-9a-fA-F]{64}")
 ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
-HTML_LINK = re.compile(r"""<a\b[^>]*?\bhref\s*=\s*["']?([^"'\s>]+)""", re.IGNORECASE)
-HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
 
 
 @dataclass(frozen=True)
@@ -86,6 +88,29 @@ def load_source_map(path: pathlib.Path) -> dict[str, dict]:
     return {lesson["id"]: lesson for category in data["categories"] for lesson in category["lessons"]}
 
 
+class AnchorHrefs(HTMLParser):
+    """The href of every <a> tag in a piece of HTML. Comments and attribute text are not tags."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.hrefs: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "a":
+            self.hrefs.extend(value for name, value in attrs if name == "href" and value)
+
+
+def has_unclosed_fence(text: str) -> bool:
+    """True when a code fence (``` or ~~~, any length) is still open at the end of the file."""
+    lines = text.split("\n")
+    for token in MarkdownIt("commonmark").parse(text):
+        if token.type == "fence" and token.map:
+            closing = lines[token.map[1] - 1].strip() if token.map[1] - 1 < len(lines) else ""
+            if not (closing and set(closing) == {token.markup[0]} and len(closing) >= len(token.markup)):
+                return True
+    return False
+
+
 def link_destinations(text: str) -> set[str]:
     """Destinations of the links Markdown would render: [x](url), [x][ref] and <a href>.
 
@@ -97,7 +122,9 @@ def link_destinations(text: str) -> set[str]:
             if item.type == "link_open":
                 found.add(item.attrGet("href") or "")
             elif item.type in ("html_inline", "html_block"):
-                found.update(HTML_LINK.findall(HTML_COMMENT.sub("", item.content)))
+                parser = AnchorHrefs()
+                parser.feed(item.content)
+                found.update(parser.hrefs)
     return found
 
 
@@ -164,7 +191,7 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
 def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries: dict[str, dict],
                    lesson_ids: set[str]) -> list[Problem]:
     problems: list[Problem] = []
-    if text.count("```") % 2:
+    if has_unclosed_fence(text):
         problems.append(Problem(lesson_id, "lesson.md has an unclosed code fence"))
     if text.count("<details>") != text.count("</details>"):
         problems.append(Problem(lesson_id, "lesson.md has unbalanced <details> tags"))
@@ -196,7 +223,7 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     linked = {posixpath.normpath(destination) for destination in link_destinations(text)}
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
-    for row in (line for line in text.splitlines() if line.startswith("|") and "lessons/" in line):
+    for row in (line for line in text.splitlines() if line.startswith("|")):
         cells = {plain_cell(cell) for cell in row.strip().strip("|").split("|")}
         if cells & CONTENT_STATUS:
             problems.append(Problem("README.md", "repeats a lesson status; it lives only in lesson.yaml"))
