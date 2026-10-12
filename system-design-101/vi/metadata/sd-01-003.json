@@ -100,5 +100,5 @@
     }
   ],
   "design_notes_vi": "Five new vertical cards distinguish registered, unassigned and reserved status using text, not only colour. No source image used. Based on technical registry and standards, not a trace of source art.",
-  "editorial_note_vi": "Adopts pre-existing main draft into canonical single-ID store; replaces unverified blanket labels with IANA distinctions. Technical/visual review for new integration remains pending."
+  "editorial_note_vi": "Adopts pre-existing main draft into canonical single-ID store; replaces unverified blanket labels with IANA distinctions. Technical review and CI passed at 034a992d1b90d023083b2fe03790c06fdf991bca; mobile checked at 320/375/430px. Does not claim learner testing or publication approval."
 }
