@@ -642,10 +642,6 @@ mutations:
   find: '        return (resolved == boundary or boundary in resolved.parents) and resolved.exists()'
   replace: '        return resolved == boundary and resolved.exists()'
   test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_and_comes_back_into_the_store_is_fine
-- label: the target is not normalised before the boundary is tested
-  find: '        resolved = (base / target).resolve()'
-  replace: '        resolved = base / target'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_and_comes_back_into_the_store_is_fine
 - label: the target is not normalised so a ../ link is judged by its text
   find: '        resolved = (base / target).resolve()'
   replace: '        resolved = base / target'
@@ -653,7 +649,7 @@ mutations:
 - label: the repository root is always the checkout, even for a store outside it
   find: '    return ROOT if resolved == ROOT or ROOT in resolved.parents else resolved'
   replace: '    return ROOT'
-  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_out_of_the_store_is_reported
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_link_that_climbs_and_comes_back_into_the_store_is_fine
 - label: the repository root is always the store, so README cannot link the brainstorm notes
   find: '    return ROOT if resolved == ROOT or ROOT in resolved.parents else resolved'
   replace: '    return resolved'

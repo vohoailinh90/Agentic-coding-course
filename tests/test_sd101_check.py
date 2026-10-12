@@ -530,7 +530,8 @@ class LessonMarkdownRuleTests(StoreCase):
         on_this_machine = self.root / "exists.md"
         on_this_machine.write_text("x", encoding="utf-8")
         for name, destination in {"a file on this machine": str(on_this_machine), "a directory": str(self.root),
-                                  "the filesystem root": "/", "a missing one": "/no/such/file"}.items():
+                                  "the filesystem root": "/", "a missing one": "/no/such/file",
+                                  "a file inside the store, by its absolute path": str(self.store / "README.md")}.items():
             with self.subTest(destination=name):
                 self.write_lesson("sd-01-001", body=BODY + f"\n[x]({destination})\n")
                 self.assertProblem(f"relative link '{destination}' does not resolve")
@@ -1005,8 +1006,10 @@ class ReadmeRuleTests(StoreCase):
 
     def test_a_root_relative_readme_link_is_reported(self) -> None:
         (self.root / "exists.md").write_text("x", encoding="utf-8")
-        self.write_readme(README + f"\n[x]({self.root / 'exists.md'})\n")
-        self.assertProblem("README.md: relative link")
+        for destination in (self.root / "exists.md", self.store / "lessons" / "sd-01-001" / "lesson.md"):
+            with self.subTest(destination=str(destination)):
+                self.write_readme(README + f"\n[x]({destination})\n")
+                self.assertProblem("README.md: relative link")
 
     def test_a_missing_readme_is_reported(self) -> None:
         (self.store / "README.md").unlink()
