@@ -230,7 +230,7 @@ def top_level_problems(data: dict) -> list[str]:
         value = data.get(key)
         if not (isinstance(value, str) and COMMIT.fullmatch(value)):
             found.append(f"{key} must be a 40-hex Git object id")
-    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):
+    if not valid_date(data.get("observed_on")):
         found.append("observed_on must be a YYYY-MM-DD date")
     if not text_value(data.get("note")):
         found.append("note must be a non-empty string")

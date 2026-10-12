@@ -898,10 +898,6 @@ mutations:
   find: '    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):'
   replace: '    if False:'
   test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
-- label: a numeric observation date is accepted
-  find: '    if not valid_date(data.get("observed_on")) or not isinstance(data.get("observed_on"), str):'
-  replace: '    if not valid_date(data.get("observed_on")):'
-  test: tests.test_sd101_check.SourceMapPinTests.test_the_top_level_records_of_the_real_map_are_pinned
 - label: an empty note is accepted
   find: '    if not text_value(data.get("note")):'
   replace: '    if False:'

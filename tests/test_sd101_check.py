@@ -425,6 +425,9 @@ class SourceMapPinTests(unittest.TestCase):
             "an empty title_vi": lambda data: data["categories"][2].update(title_vi=""),
             "a null title_vi": lambda data: data["categories"][2].update(title_vi=None),
             "no title_source": lambda data: data["categories"][2].pop("title_source"),
+            "an empty title_source": lambda data: data["categories"][2].update(title_source=""),
+            "a blank title_source": lambda data: data["categories"][2].update(title_source="  "),
+            "a numeric title_source": lambda data: data["categories"][2].update(title_source=5),
             "an unknown group key": lambda data: data["categories"][2].update(status="drafted"),
         }
         for name, change in cases.items():
@@ -722,7 +725,9 @@ class LessonMarkdownRuleTests(StoreCase):
         (copy / "lesson.md").write_text(BODY, encoding="utf-8")
         (copy / "lesson.yaml").write_text(yaml.safe_dump(META), encoding="utf-8")
         (self.store / "lessons" / "sd-01-002").symlink_to(copy, target_is_directory=True)
-        self.assertProblem("lessons: sd-01-002 is not a lesson directory")
+        found = self.problems()
+        self.assertTrue(any("lessons: sd-01-002 is not a lesson directory" in line for line in found), found)
+        self.assertFalse(any(line.startswith("sd-01-002:") for line in found), "the linked directory is not checked as a lesson")
         (self.store / "lessons" / "sd-01-002").unlink()
         readme = self.store / "README.md"
         real = self.root / "README.real"
