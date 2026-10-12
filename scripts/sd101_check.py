@@ -13,14 +13,16 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
   - lesson.yaml is a mapping with exactly: id, title_vi, content_status,
     verification (source_read, claims, technical, mobile), learner_test,
     image_evidence
-  - id equals the directory name, exists in the source map, and title_vi equals
-    the source map's title_vi
+  - id equals the directory name and exists in the source map; title_vi is a
+    non-empty string equal to the source map's title_vi (a null there is not a title)
   - content_status is planned | drafted | approved; each verification field and
     learner_test is pending | done; `approved` needs all of them `done`
   - image_evidence is a list, and each entry has url, sha256 and retrieved_on
   - lesson.md: code fences and <details> are balanced, relative links resolve,
-    it links the pinned source snapshot, it mentions no lesson id that has no
-    lesson directory, and it embeds no image from assets.bytebytego.com
+    it links the pinned source snapshot (as a real Markdown or HTML link, not text
+    in a code block or a comment), it mentions no lesson id that has no lesson
+    directory, and it never contains assets.bytebytego.com, the host of every
+    source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
 And once for the store: README.md links every lesson directory and carries no
 status words in its table (status lives only in lesson.yaml).
 
@@ -43,6 +45,7 @@ import sys
 from dataclasses import dataclass
 
 import yaml
+from markdown_it import MarkdownIt
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DEFAULT_STORE = ROOT / "system-design-101" / "vi"
@@ -56,7 +59,9 @@ IMAGE_EVIDENCE_KEYS = {"url", "sha256", "retrieved_on"}
 
 LESSON_ID = re.compile(r"\bsd-\d{2}-\d{3}\b")
 RELATIVE_LINK = re.compile(r"\]\((?!https?:|#)([^)]+)\)")
-SOURCE_IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*assets\.bytebytego\.com[^)]*\)")
+SOURCE_IMAGE_HOST = "assets.bytebytego.com"
+HTML_LINK = re.compile(r"""<a\b[^>]*?\bhref\s*=\s*["']?([^"'\s>]+)""", re.IGNORECASE)
+HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
 
 
 @dataclass(frozen=True)
@@ -73,6 +78,21 @@ def load_source_map(path: pathlib.Path) -> dict[str, dict]:
     return {lesson["id"]: lesson for category in data["categories"] for lesson in category["lessons"]}
 
 
+def link_destinations(text: str) -> set[str]:
+    """Destinations of the links Markdown would render: [x](url), [x][ref] and <a href>.
+
+    A URL in a code block, an HTML comment or plain prose is not a link, so it is not returned.
+    """
+    found: set[str] = set()
+    for token in MarkdownIt("commonmark").parse(text):
+        for item in [token, *(token.children or [])]:
+            if item.type == "link_open":
+                found.add(item.attrGet("href") or "")
+            elif item.type in ("html_inline", "html_block"):
+                found.update(HTML_LINK.findall(HTML_COMMENT.sub("", item.content)))
+    return found
+
+
 def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[Problem]:
     if not isinstance(meta, dict):
         return [Problem(lesson_id, "lesson.yaml is not a mapping")]
@@ -82,9 +102,12 @@ def check_yaml(lesson_id: str, meta: object, entries: dict[str, dict]) -> list[P
     if meta.get("id") != lesson_id:
         problems.append(Problem(lesson_id, f"id is {meta.get('id')!r}, expected the directory name"))
     entry = entries.get(lesson_id)
+    title = meta.get("title_vi")
     if entry is None:
         problems.append(Problem(lesson_id, "id is not in the source map"))
-    elif meta.get("title_vi") != entry.get("title_vi"):
+    if not isinstance(title, str) or not title.strip():
+        problems.append(Problem(lesson_id, "title_vi must be a non-empty string"))
+    elif entry is not None and title != entry.get("title_vi"):
         problems.append(Problem(lesson_id, "title_vi differs from the source map"))
 
     status = meta.get("content_status")
@@ -123,13 +146,13 @@ def check_markdown(lesson_id: str, text: str, lesson_dir: pathlib.Path, entries:
         if not (lesson_dir / target.split("#")[0]).exists():
             problems.append(Problem(lesson_id, f"relative link {target!r} does not resolve"))
     snapshot = entries.get(lesson_id, {}).get("source_snapshot_url")
-    if snapshot and snapshot not in text.replace("\n", ""):
+    if snapshot and snapshot not in link_destinations(text):
         problems.append(Problem(lesson_id, "lesson.md does not link the pinned source snapshot"))
     for mentioned in sorted(set(LESSON_ID.findall(text))):
         if mentioned not in lesson_ids:
             problems.append(Problem(lesson_id, f"mentions {mentioned}, which has no lesson directory"))
-    if SOURCE_IMAGE.search(text):
-        problems.append(Problem(lesson_id, "embeds an image from assets.bytebytego.com"))
+    if SOURCE_IMAGE_HOST in text.lower():
+        problems.append(Problem(lesson_id, f"contains {SOURCE_IMAGE_HOST}; lessons must not use source images"))
     return problems
 
 

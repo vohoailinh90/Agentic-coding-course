@@ -4,8 +4,9 @@
 # in turn and require the named test to fail. A mutation that SURVIVES means the test guards nothing.
 
 target: scripts/sd101_check.py
-note: The checker is what stops ~400 hand-written lessons drifting from the schema in DECISIONS.md.
-  Each entry switches one rule off and names the test that must notice.
+note: The checker is what stops ~400 hand-written lessons drifting from the schema in DECISIONS.md and
+  what keeps source images out of a public repository. Each entry switches one rule off and names the
+  test that must notice.
 mutations:
 - label: approved no longer needs the verification fields to be done
   find: '    if status == "approved" and any(value != "done" for value in states.values()):'
@@ -20,9 +21,13 @@ mutations:
   replace: '    if False:'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_an_id_that_is_not_the_directory_name_is_reported
 - label: a title that differs from the source map is accepted
-  find: '    elif meta.get("title_vi") != entry.get("title_vi"):'
+  find: '    elif entry is not None and title != entry.get("title_vi"):'
   replace: '    elif False:'
   test: tests.test_sd101_check.LessonYamlRuleTests.test_a_title_that_differs_from_the_source_map_is_reported
+- label: a null title that equals a null source map title is accepted
+  find: '    if not isinstance(title, str) or not title.strip():'
+  replace: '    if False:'
+  test: tests.test_sd101_check.LessonYamlRuleTests.test_a_null_title_that_matches_a_null_source_map_title_is_reported
 - label: an image evidence entry may lack its digest
   find: '            if not isinstance(item, dict) or set(item) != IMAGE_EVIDENCE_KEYS:'
   replace: '            if not isinstance(item, dict):'
@@ -35,18 +40,30 @@ mutations:
   find: '        if not (lesson_dir / target.split("#")[0]).exists():'
   replace: '        if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_relative_link_that_does_not_resolve_is_reported
-- label: a snapshot link wrapped across lines is no longer recognised
-  find: '    if snapshot and snapshot not in text.replace("\n", ""):'
+- label: the pinned snapshot URL counts wherever it appears in the file, not only as a link
+  find: '    if snapshot and snapshot not in link_destinations(text):'
   replace: '    if snapshot and snapshot not in text:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_link_broken_across_lines_still_counts
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_a_code_block_is_not_a_link
+- label: an HTML anchor is no longer recognised as a link
+  find: '            elif item.type in ("html_inline", "html_block"):'
+  replace: '            elif False:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_given_as_an_html_anchor_is_a_link
+- label: a link inside an HTML comment counts as a link
+  find: '                found.update(HTML_LINK.findall(HTML_COMMENT.sub("", item.content)))'
+  replace: '                found.update(HTML_LINK.findall(item.content))'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_snapshot_url_in_an_html_comment_is_not_a_link
 - label: a mention of a lesson that has no directory is accepted
   find: '        if mentioned not in lesson_ids:'
   replace: '        if False:'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_a_mention_of_a_lesson_without_a_directory_is_reported
-- label: an embedded source image is accepted
-  find: '    if SOURCE_IMAGE.search(text):'
+- label: the source image host is no longer forbidden
+  find: '    if SOURCE_IMAGE_HOST in text.lower():'
   replace: '    if False:'
-  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_an_embedded_source_image_is_reported
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_every_form_of_source_image_embed_is_reported
+- label: the source image host check becomes case sensitive
+  find: '    if SOURCE_IMAGE_HOST in text.lower():'
+  replace: '    if SOURCE_IMAGE_HOST in text:'
+  test: tests.test_sd101_check.LessonMarkdownRuleTests.test_every_form_of_source_image_embed_is_reported
 - label: the README is no longer checked at all
   find: '    problems.extend(check_readme(store, lesson_ids))'
   replace: '    pass'

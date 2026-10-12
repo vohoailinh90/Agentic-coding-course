@@ -103,6 +103,16 @@ class LessonYamlRuleTests(StoreCase):
         self.write_lesson("sd-01-001", meta=self.meta(title_vi="Tiêu đề khác"))
         self.assertProblem("title_vi differs")
 
+    def test_a_null_title_that_matches_a_null_source_map_title_is_reported(self) -> None:
+        self.write_source_map({"sd-01-001": (None, SNAPSHOT)})
+        self.write_lesson("sd-01-001", meta=self.meta(title_vi=None))
+        self.assertProblem("title_vi must be a non-empty string")
+
+    def test_an_empty_title_is_reported(self) -> None:
+        self.write_source_map({"sd-01-001": ("", SNAPSHOT)})
+        self.write_lesson("sd-01-001", meta=self.meta(title_vi="  "))
+        self.assertProblem("title_vi must be a non-empty string")
+
     def test_a_status_outside_the_vocabulary_is_reported(self) -> None:
         self.write_lesson("sd-01-001", meta=self.meta(content_status="done"))
         self.assertProblem("content_status")
@@ -155,11 +165,6 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body="# Bài một\n\nKhông có nguồn.\n")
         self.assertProblem("pinned source snapshot")
 
-    def test_a_snapshot_link_broken_across_lines_still_counts(self) -> None:
-        wrapped = SNAPSHOT[:30] + "\n" + SNAPSHOT[30:]
-        self.write_lesson("sd-01-001", body=f"# Bài một\n\n[nguồn]({wrapped})\n")
-        self.assertEqual([], self.problems())
-
     def test_a_mention_of_a_lesson_without_a_directory_is_reported(self) -> None:
         self.write_lesson("sd-01-001", body=BODY + "\nĐọc cùng sd-01-011.\n")
         self.assertProblem("mentions sd-01-011")
@@ -171,15 +176,50 @@ class LessonMarkdownRuleTests(StoreCase):
         self.write_lesson("sd-01-001", body=BODY + "\nXem sd-01-002 và chính sd-01-001.\n")
         self.assertEqual([], self.problems())
 
-    def test_an_embedded_source_image_is_reported(self) -> None:
-        image = "\n![](https://assets.bytebytego.com/diagrams/0001-x.png)\n"
-        self.write_lesson("sd-01-001", body=BODY + image)
-        self.assertProblem("assets.bytebytego.com")
 
-    def test_a_plain_mention_of_the_source_image_host_is_not_an_embedded_image(self) -> None:
-        self.write_lesson("sd-01-001", body=BODY + "\nẢnh nguồn ở assets.bytebytego.com chưa được mở.\n")
+    def test_a_snapshot_url_in_a_code_block_is_not_a_link(self) -> None:
+        self.write_lesson("sd-01-001", body=f"# Bài một\n\n```\n{SNAPSHOT}\n```\n")
+        self.assertProblem("pinned source snapshot")
+
+    def test_a_snapshot_url_in_an_html_comment_is_not_a_link(self) -> None:
+        for name, comment in {"markdown link": f"<!-- [nguồn]({SNAPSHOT}) -->",
+                              "html anchor": f'<!-- <a href="{SNAPSHOT}">nguồn</a> -->'}.items():
+            with self.subTest(comment=name):
+                self.write_lesson("sd-01-001", body=f"# Bài một\n\n{comment}\n")
+                self.assertProblem("pinned source snapshot")
+
+    def test_a_snapshot_url_in_plain_text_is_not_a_link(self) -> None:
+        self.write_lesson("sd-01-001", body=f"# Bài một\n\nNguồn: {SNAPSHOT}\n")
+        self.assertProblem("pinned source snapshot")
+
+    def test_a_snapshot_given_as_an_html_anchor_is_a_link(self) -> None:
+        self.write_lesson("sd-01-001", body=f'# Bài một\n\n<a href="{SNAPSHOT}">nguồn</a>\n')
         self.assertEqual([], self.problems())
 
+    def test_a_snapshot_given_as_a_reference_style_link_is_a_link(self) -> None:
+        self.write_lesson("sd-01-001", body=f"# Bài một\n\n[nguồn][s]\n\n[s]: {SNAPSHOT}\n")
+        self.assertEqual([], self.problems())
+
+    def test_every_form_of_source_image_embed_is_reported(self) -> None:
+        url = "https://assets.bytebytego.com/diagrams/0001-x.png"
+        forms = {
+            "inline image": f"![]({url})",
+            "reference-style image": f"![x][img]\n\n[img]: {url}",
+            "html img": f'<img src="{url}">',
+            "html picture": f'<picture><source srcset="{url}"></picture>',
+            "bare url": url,
+            "upper case host": "HTTPS://ASSETS.BYTEBYTEGO.COM/diagrams/0001-x.png",
+            "plain mention of the host": "Ảnh nguồn ở assets.bytebytego.com chưa được mở.",
+        }
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_lesson("sd-01-001", body=BODY + "\n" + form + "\n")
+                self.assertProblem("lessons must not use source images")
+
+    def test_a_local_image_is_not_a_source_image(self) -> None:
+        lesson_dir = self.write_lesson("sd-01-001", body=BODY + "\n![sơ đồ](diagram.svg)\n")
+        (lesson_dir / "diagram.svg").write_text("<svg/>", encoding="utf-8")
+        self.assertEqual([], self.problems())
 
 class ReadmeRuleTests(StoreCase):
     def test_a_lesson_missing_from_the_readme_is_reported(self) -> None:
