@@ -508,12 +508,14 @@ tracking errors, Excel corruption, unsafe file handling and violations
 of the acceptance criteria in Issue #42.
 ```
 
-Claude must request a new review only when:
+Requesting that first review is mandatory for every PR Claude creates, at every tier; the loop it starts, through to the merge, is "The loop every PR goes through" in section 20.
 
-- The PR head SHA has changed; or
-- The previous Codex review failed to run.
+Claude must request a new review only for the review command being requested (standard review here, security review in section 12), and only when:
 
-Claude must not request repeated reviews for the same PR head SHA.
+- That command has not yet reviewed the current PR head SHA — a head that changed, or an unchanged head on which a required security review follows the standard review; or
+- That command's previous review of this head failed to run.
+
+Claude must not request the same review command again for a PR head SHA it already reviewed.
 
 ## 12. Security review
 
@@ -560,13 +562,13 @@ write_policy: current_pr_branch
 constraints:
   - Modify only the current PR branch.
   - Avoid unrelated refactoring.
-  - Add or update a regression test.
-  - Run the relevant tests.
+  - Add or update a regression test where the defect has testable behavior; a prose-only fix (a fact, a clarity or a translation correction) keeps the repository's normal content checks instead.
+  - Run the relevant tests and checks.
 
 acceptance_criteria:
   - The confirmed defect no longer reproduces.
-  - A regression test covers the confirmed defect.
-  - Relevant tests pass.
+  - A regression test covers the confirmed defect where it has testable behavior; a prose-only fix passes the repository's normal content checks.
+  - Relevant tests and checks pass.
 
 required_output:
   - Summary
@@ -634,7 +636,7 @@ The `STALE` check compares against different things depending on the mode, becau
 - IMPLEMENT and FIX: `requested_sha` is only the starting base commit — comparing it to `current_sha` is meaningless, since a successful run necessarily advances the branch past it. Instead use `STALE` whenever `current_sha` (the `target_branch` head — PR head if one exists, else the branch head per section 10) simply does not equal `reported_sha` — not only when it has moved further ahead. A reset, rebase, or force-push can replace `reported_sha` with a divergent commit that isn't its descendant, so an ancestry/"moved past" check alone would miss that the reported output no longer exists at the branch head; a plain inequality catches every case where the branch no longer points at what Codex reported producing. Confirming `requested_sha` was a valid starting point is a separate check (step 3), not part of the `STALE` decision.
 - MERGE: does not use `STALE` at all — a completed merge is a terminal event, not something that becomes outdated the way a live branch head does. Instead: `current_sha` is the PR's actual `merge_commit_sha` on GitHub (present only once GitHub shows the PR as merged); `reported_sha` is the merge commit SHA Codex's response reports. Two things must both hold: `current_sha` equals `reported_sha`, and the PR's recorded head SHA immediately before merge equals the `validated_head_sha` from section 20 (i.e. the merge commit's non-base parent, or the PR's `head.sha`) — confirming the merge landed the exact validated content, not a head that moved after validation but before the merge executed. If either does not hold, this does not validate — use `CHANGES_REQUIRED` (Codex reported success but the merge commit or merged head doesn't match) or `BLOCKED` (the PR shows no merge at all), never `STALE`.
 
-For a built-in command response (`@codex review`, `@codex review for ...`, `@codex security review`, or `@codex merge this pull request`), which section 6 exempts from carrying a `task_id`: set `task_id: null` and `codex_mode: "REVIEW"`, `"SECURITY_REVIEW"`, or `"MERGE"`. For REVIEW/SECURITY_REVIEW, establish identity from `requested_sha`/`current_sha` alone (matching Codex's own "Reviewed commit" line). For MERGE, establish identity from `reported_sha`/`current_sha` as defined above.
+For a built-in command response (`@codex review`, `@codex review for ...`, `@codex security review`, or `@codex merge this pull request`), which section 6 exempts from carrying a `task_id`: set `task_id: null` and `codex_mode: "REVIEW"`, `"SECURITY_REVIEW"`, or `"MERGE"`. For REVIEW/SECURITY_REVIEW, establish identity from `requested_sha`/`current_sha` alone (matching Codex's own "Reviewed commit" line). A bare 👍 reaction on the request comment is not a response to validate: it names no commit, so it cannot be matched to a head (section 17). For MERGE, establish identity from `reported_sha`/`current_sha` as defined above.
 
 ## 15. State labels
 
@@ -677,6 +679,7 @@ Claude must follow these rules:
 
 - Maximum brainstorm rounds: `2`
 - Maximum correction rounds: `2`
+- Maximum review rounds per PR: none — the repository owner set no limit on 2026-10-12. A review is bounded instead by the rules below: each review command (standard, security) runs once per head SHA, one request is active at a time, and the previous response is validated first
 - Only one active Codex request per Issue or PR
 - Never trigger the same task mode twice for the same SHA, with two documented exceptions:
   - a built-in command (review or merge) that ends in a trigger failure (section 17: no response, or an explicit error/rate-limit message instead of the expected output) on an unchanged PR head, as sections 11 and 20 authorize — at most once per SHA; if the retry itself also ends in a trigger failure, do not retry again: follow section 17 step 2 instead; or
@@ -687,6 +690,15 @@ Claude must follow these rules:
 - Escalate unresolved P0 and P1 disagreements to the repository owner
 
 Claude must never use repeated `@codex` comments to test whether the integration is working.
+
+### No review limit
+
+Reviews are not capped, so a P0 or P1 fix is reviewed like any other: push it, then request the next review on the new head. What ends the loop is a clean review of the current head from every review command the work requires (section 20), or one of two exits:
+
+- **A disagreement.** A finding Claude rejected with evidence on its thread. At P2 or P3 the recorded rejection stands at once and the finding blocks nothing, even if Codex raises it again. At P0 or P1 it survives only if a review keeps it: when other confirmed fixes make a new head, push it and let the next review decide — not raised again, it is closed; raised again, unchanged or reworded or moved when it is substantially the same issue, it is an unresolved disagreement. When no code change is pending there is no new head to review, so it is an unresolved disagreement at once. An unresolved disagreement goes to the repository owner with the finding, the evidence and the fixes so far, and the PR is not merged until the owner decides.
+- **A genuine blocker** (section 20), including Codex being unreachable (section 17, section 18).
+
+Never request a review command for a head that command already reviewed (a required security review may follow the standard review on the same head, as section 14 treats them as separate modes), never while a request is unanswered, and never before the previous response was validated: these three, not a count, are what keep the loop from spinning. They are rules, not script gates: nothing computable sees both the PR head and Codex's reaction (a run may leave only a thumbs-up, which no list carries and which section 17 treats as an unsuccessful completion, never as a clean review), so an unanswered request cannot be told from a clean review by a script.
 
 ## 17. Confirming that Codex was triggered
 
@@ -706,7 +718,7 @@ A **trigger failure** is either of:
 
 This 10-minute wait applies only to the no-evidence-at-all case above. Do not post the retry before that wait has elapsed with no evidence — posting early risks a duplicate review landing once the first one completes, breaking the "one active request" rule in section 16. An explicit error/rate-limit response is itself immediate evidence of a trigger failure and needs no wait: proceed straight to the retry.
 
-A third case is neither of these: Codex acknowledges the trigger (reacts, or a linked task appears) but the task does not produce the mode's expected final output — a review for any built-in review command (`@codex review`, `@codex review for ...`, `@codex security review`), a merged PR with a reported merge commit SHA for `@codex merge this pull request`, or the `required_output` report described in sections 7-10/13 for every other mode. A valid final response in that expected shape is success, whatever the mode; only its absence is a problem. This is an **unsuccessful completion**, not a trigger failure — the trigger worked, so the review retry below does not apply (retrying would risk a second concurrent Codex run against the same request). It covers two shapes:
+A third case is neither of these: Codex acknowledges the trigger (reacts, or a linked task appears) but the task does not produce the mode's expected final output — a review for any built-in review command (`@codex review`, `@codex review for ...`, `@codex security review`), a merged PR with a reported merge commit SHA for `@codex merge this pull request`, or the `required_output` report described in sections 7-10/13 for every other mode. A valid final response in that expected shape is success, whatever the mode; only its absence is a problem. A bare 👍 reaction on the request comment, with no review and no verdict, is an absence of that output: Codex's own footer says it may react with 👍 when it finds nothing, but a reaction names no commit and no command, so nothing ties it to the head or to the command that was requested. It is an unsuccessful completion, not a clean review. This is an **unsuccessful completion**, not a trigger failure — the trigger worked, so the review retry below does not apply (retrying would risk a second concurrent Codex run against the same request). It covers two shapes:
 
 - **Stalled**: no final response of the expected shape arrives within a reasonable time (a further 30+ minutes with no update after the acknowledgement).
 - **Terminal failure**: the linked task itself later posts an explicit failure, error, or cancellation instead of its expected output.
@@ -816,6 +828,19 @@ With that precondition confirmed, close the head-side gap immediately before mer
      ```
 
 Record the merge commit SHA and a one-line summary of what shipped, in the same PR or Issue thread.
+
+### The loop every PR goes through
+
+CLAUDE.md (*Pull request lifecycle*) makes this loop mandatory for every PR Claude creates, at every tier. The sections it cites keep their own rules; this only fixes the order and the exit.
+
+1. **Review, at once.** As soon as the PR is open, request the review (section 11); Codex's own opening review is off, so none comes unless requested.
+2. **Validate.** Check the response per section 14. Act on a finding only after confirming it against the code (section 13); a wrong one is answered on its thread with the evidence, never ignored.
+3. **Fix, then review the new head.** Fix each confirmed finding, with a regression test where the defect has testable behavior; a prose-only fix (a fact, a clarity or a translation correction) keeps the repository's normal content checks instead. Run the repository's checks and push. Request the next review on the new head SHA (each review command runs once per head), with no request unanswered (section 16).
+4. **Exit when clean.** The loop ends when every review command the work requires (the standard review, and a security review where the change touches authentication, authorization, secrets, payments or personal data, section 12) has a review whose `Reviewed commit:` is the *current* PR head and which carries no open finding — a no-findings verdict such as "Didn't find any major issues", never the review-status summary comment (section 16) and never a bare 👍 reaction, which names no commit and is an unsuccessful completion under section 17 — and every earlier finding was fixed or rejected with evidence. A finding is not open when it was fixed, or when it is a P2/P3 whose rejection stands under "No review limit"; a rejected P0/P1 is open until that section's disagreement rules close it. A fix pushed after the last review is unreviewed and does not end the loop.
+5. **Merge.** Check the definition of done above and merge under this section without asking anyone.
+6. **Continue.** After the merge the session takes its next outstanding task (CLAUDE.md); it does not stop to ask.
+
+Reviews have no cap (section 16), so the loop runs until every review command the work requires is clean on the current head; the two exits in "No review limit" (an unresolved P0/P1 disagreement, a genuine blocker) are the only other ways out. If Codex cannot be reached (section 17, section 18), the PR is `BLOCKED`, never merged unreviewed, and switching who does the work never waives the PR's Codex review.
 
 A human is needed only for:
 

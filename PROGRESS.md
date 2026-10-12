@@ -33,7 +33,7 @@
     `workflow-frameworks` (PR #16), `model-plus-harness`, `context-engineering`, `prompt-engineering-for-agents`, `hooks-and-permissions`, `tests-and-ci-for-agents`, `memory-and-skills`, `agents-and-workflows`, `mcp`, `evals`, `project-retrospective`, `project-mcp-tool`, `capstone-your-idea`; Codex viết `security-basics`, `prompting-basics` (PR #5),
     `next-token-prediction`, `tool-calling` (PR #8), `what-is-software`, `project-anatomy` (PR #9) —
     **52/52 bài**. Từ PR #10, mỗi đợt Claude viết đều
-    qua Codex review trước khi merge (thường tối đa 2 vòng; PR #21 lặp tới khi Codex không còn finding).
+    qua Codex review trước khi merge (trước 2026-10-12 thường tối đa 2 vòng; từ 2026-10-12 không giới hạn số vòng: lặp tới khi Codex không còn finding, như PR #21).
   - `validate` báo lỗi khi một sơ đồ phải cắt đôi một từ vì ô quá hẹp (`diagram_word_split`), khi đáp
     án quiz khác nhau giữa các ngôn ngữ, và khi nhắc tới một bài bằng số thứ tự hay vị trí.
   - Chương trình `python -m src.main`: `validate`, `build`, `stats`, `scaffold`, `fb-draft`, `export`
