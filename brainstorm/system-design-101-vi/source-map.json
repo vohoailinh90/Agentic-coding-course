@@ -67,7 +67,7 @@
           "title_source": "Important Things About HTTP Headers",
           "source_url": "https://bytebytego.com/guides/important-things-about-http-headers-you-may-not-know",
           "source_path": "data/guides/important-things-about-http-headers-you-may-not-know.md",
-          "source_body_reviewed": false,
+          "source_body_reviewed": true,
           "source_blob_sha": "9000212d3bb0bb132f39a6f67725de6c679f176a",
           "source_snapshot_url": "https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/important-things-about-http-headers-you-may-not-know.md"
         },
