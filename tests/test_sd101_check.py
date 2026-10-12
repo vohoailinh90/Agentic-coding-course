@@ -101,7 +101,7 @@ class SourceMapPinTests(unittest.TestCase):
         def remove(data):
             del data["categories"][0]["lessons"][3]  # sd-01-004
         found = self.check(remove)
-        self.assertTrue(any("has 15 groups of sizes (49, 32," in line for line in found), found)
+        self.assertTrue(any("first difference: ('sd-01', 49) instead of ('sd-01', 50)" in line for line in found), found)
         self.assertTrue(any("sd-01-005 should be sd-01-004" in line for line in found), found)
 
     def test_the_other_ways_to_change_the_roster_are_reported(self) -> None:
@@ -125,9 +125,28 @@ class SourceMapPinTests(unittest.TestCase):
         def empty(data):
             data["categories"] = []
 
+        def rename_a_group_and_its_ids(data):
+            group = data["categories"][-1]
+            group["id"] = "sd-99"
+            for number, lesson in enumerate(group["lessons"], 1):
+                lesson["id"] = f"sd-99-{number:03d}"
+
+        def rename_a_group_only(data):
+            data["categories"][5]["id"] = "sd-66"
+
+        def swap_two_groups(data):
+            data["categories"][2], data["categories"][3] = data["categories"][3], data["categories"][2]
+
+        def renumber_a_group_as_another(data):
+            for number, lesson in enumerate(data["categories"][0]["lessons"], 1):
+                lesson["id"] = f"sd-02-{number:03d}"
+            data["categories"][0]["id"] = "sd-02"
+
         for name, change in {"the last entry removed": drop_last, "a group removed": drop_group,
                              "an entry added": add_entry, "two entries swapped": swap, "an id renumbered": renumber,
-                             "no groups": empty}.items():
+                             "no groups": empty, "a group and its ids renamed": rename_a_group_and_its_ids,
+                             "a group renamed, its ids kept": rename_a_group_only, "two groups swapped": swap_two_groups,
+                             "a group renumbered as another": renumber_a_group_as_another}.items():
             with self.subTest(change=name):
                 self.assertTrue(self.check(change), name)
 
@@ -140,7 +159,7 @@ class SourceMapPinTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             copy = Path(tmp) / "source-map.json"
             copy.write_bytes(check.DEFAULT_SOURCE_MAP.read_bytes())
-            with mock.patch.object(check, "EXPECTED_GROUP_SIZES", (1,)), contextlib.redirect_stdout(io.StringIO()):
+            with mock.patch.object(check, "EXPECTED_GROUPS", (("sd-01", 1),)), contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(1, check.main([]))
                 self.assertEqual(1, check.main(["--source-map", str(check.DEFAULT_SOURCE_MAP.parent / ".." /
                                                                    check.DEFAULT_SOURCE_MAP.parent.name /

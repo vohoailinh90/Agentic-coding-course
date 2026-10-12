@@ -710,14 +710,6 @@ mutations:
   find: '            if pin_roster and lesson_id != f"{category.get(''id'')}-{number:03d}":'
   replace: '            if False:'
   test: tests.test_sd101_check.SourceMapPinTests.test_the_other_ways_to_change_the_roster_are_reported
-- label: the group sizes of the roster are not compared
-  find: '    if pin_roster and tuple(sizes) != EXPECTED_GROUP_SIZES:'
-  replace: '    if False:'
-  test: tests.test_sd101_check.SourceMapPinTests.test_removing_an_unwritten_entry_is_reported
-- label: the roster is pinned for every source map, even a small one
-  find: '    if pin_roster and tuple(sizes) != EXPECTED_GROUP_SIZES:'
-  replace: '    if tuple(sizes) != EXPECTED_GROUP_SIZES:'
-  test: tests.test_sd101_check.SourceMapRuleTests.test_a_good_source_map_with_two_categories_is_fine
 - label: a source map without its own pinned commit is accepted
   find: "    if not pinned:\n        problems.append"
   replace: "    if False:\n        problems.append"
@@ -762,3 +754,19 @@ mutations:
   find: "            if lesson_id in entries:\n                problems.append(Problem(\"source map\", f\"{lesson_id} is listed twice\"))"
   replace: "            if False:\n                problems.append(Problem(\"source map\", f\"{lesson_id} is listed twice\"))"
   test: tests.test_sd101_check.SourceMapRuleTests.test_a_malformed_category_or_lesson_entry_is_reported_not_raised
+- label: the groups of the roster are not compared
+  find: '    if pin_roster and tuple(groups) != EXPECTED_GROUPS:'
+  replace: '    if False:'
+  test: tests.test_sd101_check.SourceMapPinTests.test_removing_an_unwritten_entry_is_reported
+- label: a renamed group with consistently renamed ids is accepted
+  find: '    if pin_roster and tuple(groups) != EXPECTED_GROUPS:'
+  replace: '    if pin_roster and tuple(size for _, size in groups) != tuple(size for _, size in EXPECTED_GROUPS):'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_other_ways_to_change_the_roster_are_reported
+- label: the roster is pinned for every source map, even a small one
+  find: '    if pin_roster and tuple(groups) != EXPECTED_GROUPS:'
+  replace: '    if tuple(groups) != EXPECTED_GROUPS:'
+  test: tests.test_sd101_check.SourceMapRuleTests.test_a_good_source_map_with_two_categories_is_fine
+- label: the order of the groups is not part of the pin
+  find: '    if pin_roster and tuple(groups) != EXPECTED_GROUPS:'
+  replace: '    if pin_roster and sorted(map(str, groups)) != sorted(map(str, EXPECTED_GROUPS)):'
+  test: tests.test_sd101_check.SourceMapPinTests.test_the_other_ways_to_change_the_roster_are_reported

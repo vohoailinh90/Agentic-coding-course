@@ -60,6 +60,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import ipaddress
+import itertools
 import json
 import pathlib
 import posixpath
@@ -96,7 +97,9 @@ ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
 STORE_ENTRIES = {"README.md", "lessons"}
 # DECISIONS.md keeps all 15 groups and 404 ids of the source, in its order; ids are never removed or reused.
 # Changing the roster means changing this line and that decision together.
-EXPECTED_GROUP_SIZES = (50, 32, 8, 47, 5, 29, 20, 24, 20, 28, 49, 18, 27, 35, 12)
+EXPECTED_GROUPS = (("sd-01", 50), ("sd-02", 32), ("sd-03", 8), ("sd-04", 47), ("sd-05", 5), ("sd-06", 29),
+                   ("sd-07", 20), ("sd-08", 24), ("sd-09", 20), ("sd-10", 28), ("sd-11", 49), ("sd-12", 18),
+                   ("sd-13", 27), ("sd-14", 35), ("sd-15", 12))
 REPOSITORY = re.compile(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")
 COMMIT = re.compile(r"[0-9a-f]{40}")
 LESSON_LINK = re.compile(r"lessons/(sd-\d{2}-\d{3})/lesson\.md")
@@ -129,8 +132,8 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
     """The source map's lessons by id, in source order, and what is wrong with the file (if anything).
 
     Every entry's source_snapshot_url must be the blob URL of its source_path at the map's own pinned commit,
-    so a moving URL (/blob/main/...) cannot slip in. With pin_roster the map must also keep the 15 groups and
-    404 ids of DECISIONS.md, each group numbered 001, 002, ... in order.
+    so a moving URL (/blob/main/...) cannot slip in. With pin_roster the map must also keep the 15 groups (by id
+    and size) and 404 ids of DECISIONS.md, each group numbered 001, 002, ... in order.
     """
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -146,13 +149,13 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
     problems: list[Problem] = []
     if not pinned:
         problems.append(Problem("source map", "needs a source_repository (owner/name) and a 40-hex source_commit_sha"))
-    sizes: list[int] = []
+    groups: list[tuple[object, int]] = []
     for position, category in enumerate(categories):
         lessons = category.get("lessons") if isinstance(category, dict) else None
         if not isinstance(lessons, list):
             problems.append(Problem("source map", f"category {position} has no 'lessons' list"))
             continue
-        sizes.append(len(lessons))
+        groups.append((category.get("id"), len(lessons)))
         for number, lesson in enumerate(lessons, 1):
             lesson_id = lesson.get("id") if isinstance(lesson, dict) else None
             if not isinstance(lesson_id, str):
@@ -170,10 +173,12 @@ def load_source_map(path: pathlib.Path, pin_roster: bool = False) -> tuple[dict[
                            or lesson.get("source_snapshot_url") != f"https://github.com/{repository}/blob/{commit}/{source_path}"):
                 problems.append(Problem("source map", f"{lesson_id}: source_snapshot_url is not "
                                                       f"https://github.com/{repository}/blob/{commit}/<source_path>"))
-    if pin_roster and tuple(sizes) != EXPECTED_GROUP_SIZES:
-        problems.append(Problem("source map", f"has {len(sizes)} groups of sizes {tuple(sizes)} ({sum(sizes)} ids), "
-                                              f"but DECISIONS.md keeps {EXPECTED_GROUP_SIZES} "
-                                              f"({sum(EXPECTED_GROUP_SIZES)} ids)"))
+    if pin_roster and tuple(groups) != EXPECTED_GROUPS:
+        first = next(f"{got} instead of {want}" for got, want in itertools.zip_longest(groups, EXPECTED_GROUPS)
+                     if got != want)
+        problems.append(Problem("source map", f"does not keep the {len(EXPECTED_GROUPS)} groups and "
+                                              f"{sum(size for _, size in EXPECTED_GROUPS)} ids of DECISIONS.md in "
+                                              f"order (first difference: {first})"))
     return entries, problems
 
 
