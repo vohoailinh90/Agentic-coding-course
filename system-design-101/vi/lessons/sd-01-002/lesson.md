@@ -9,22 +9,22 @@ Ngoài chia tải, một LB phù hợp còn hỗ trợ các tình huống dướ
 
 ## Đọc hình
 
-**① Xử lý lỗi.** Khi A bị loại khỏi nhóm phục vụ, request mới có thể đi tới B còn khỏe.
+**1. Xử lý lỗi.** Khi A bị loại khỏi nhóm phục vụ, request mới có thể đi tới B còn khỏe.
 LB không tự cứu request đang xử lý dở trên A.
 
-**② Kiểm tra sức khỏe.** LB gửi request kiểm tra định kỳ. Kết quả giúp quyết định máy nào
+**2. Kiểm tra sức khỏe.** LB gửi request kiểm tra định kỳ. Kết quả giúp quyết định máy nào
 được nhận lưu lượng; bài kiểm tra cần phản ánh khả năng phục vụ thật.
 
-**③ Phân luồng theo nền tảng.** LB ở lớp HTTP có thể dùng luật theo header để chọn
+**3. Phân luồng theo nền tảng.** LB ở lớp HTTP có thể dùng luật theo header để chọn
 nhóm máy phục vụ mobile hoặc desktop. Nó không tự nhận diện chính xác mọi thiết bị.
 
-**④ Kết thúc TLS.** Kết nối HTTPS từ người dùng kết thúc tại LB. LB xử lý mã hóa trên chặng đó;
+**4. Kết thúc TLS.** Kết nối HTTPS từ người dùng kết thúc tại LB. LB xử lý mã hóa trên chặng đó;
 chặng tới máy phía sau có thể cấu hình HTTP hoặc HTTPS riêng.
 
-**⑤ Chia tải xuyên vùng sẵn sàng.** Có thể phân phối request tới máy ở nhiều vùng sẵn sàng
+**5. Chia tải xuyên vùng sẵn sàng.** Có thể phân phối request tới máy ở nhiều vùng sẵn sàng
 đã bật. Đây không đồng nghĩa với định tuyến xuyên quốc gia.
 
-**⑥ Giữ phiên — stickiness.** Nhiều lượt của cùng người dùng được hướng về cùng máy theo
+**6. Giữ phiên — stickiness.** Nhiều lượt của cùng người dùng được hướng về cùng máy theo
 chính sách đã chọn. Máy đó lỗi thì việc giữ phiên không bảo đảm giữ nguyên trạng thái ứng dụng.
 
 ## Giới hạn cần nhớ
@@ -35,7 +35,7 @@ Vì vậy đừng hiểu “health check” là cam kết hệ thống luôn ho�
 
 ## Nhìn hình trả lời
 
-Trong khung ①, A lỗi và B vẫn khỏe: mũi tên request mới đi tới máy nào?
+Trong khung 1., A lỗi và B vẫn khỏe: mũi tên request mới đi tới máy nào?
 
 <details>
 <summary>Xem đáp án</summary>

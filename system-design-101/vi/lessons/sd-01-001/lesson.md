@@ -6,16 +6,16 @@
 
 ## Đọc hình
 
-**① Polling ngắn — hỏi lại định kỳ.** Máy chủ trả lời mỗi lượt, dù chưa có tin mới.
+**1. Polling ngắn — hỏi lại định kỳ.** Máy chủ trả lời mỗi lượt, dù chưa có tin mới.
 Hỏi thường xuyên hơn giúp cập nhật nhanh hơn, nhưng tăng số request.
 
-**② Polling dài — hỏi rồi chờ.** Máy chủ giữ lượt hỏi tới khi có tin hoặc hết hạn.
+**2. Polling dài — hỏi rồi chờ.** Máy chủ giữ lượt hỏi tới khi có tin hoặc hết hạn.
 Trình duyệt nhận phản hồi rồi mở lượt hỏi tiếp. Cách này vẫn dùng tài nguyên cho các request chờ.
 
-**③ SSE — nhận luồng sự kiện.** Trình duyệt mở luồng HTTP; máy chủ gửi trạng thái mới qua luồng đó.
+**3. SSE — nhận luồng sự kiện.** Trình duyệt mở luồng HTTP; máy chủ gửi trạng thái mới qua luồng đó.
 SSE truyền sự kiện từ máy chủ tới trình duyệt. Muốn hủy đơn, trình duyệt vẫn gửi được HTTP request riêng.
 
-**④ WebSocket — hai chiều.** Sau khi thiết lập kết nối, cả hai phía đều có thể chủ động gửi message.
+**4. WebSocket — hai chiều.** Sau khi thiết lập kết nối, cả hai phía đều có thể chủ động gửi message.
 Hợp với chat hoặc tương tác hai chiều liên tục; ứng dụng cần xử lý nối lại khi mất kết nối.
 
 Các mũi tên đi xuống theo thời gian. “Đơn được xác nhận” là dữ liệu đơn hàng,
@@ -32,7 +32,7 @@ không phải xác nhận do SSE tạo ra. Request mới trong polling có thể
 
 ## Nhìn hình trả lời
 
-Trong khung ③, sau khi mở luồng SSE, phía nào gửi các trạng thái đơn hàng?
+Trong khung 3., sau khi mở luồng SSE, phía nào gửi các trạng thái đơn hàng?
 
 <details>
 <summary>Xem đáp án</summary>
