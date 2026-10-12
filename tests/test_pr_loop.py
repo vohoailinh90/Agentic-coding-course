@@ -111,6 +111,16 @@ class PullRequestLoopTests(unittest.TestCase):
         for phrase in ("only a thumbs-up", "👍 reaction on that command's request comment",
                        "provided the PR head has not moved since that request was posted"):
             self.assertIn(phrase, exit_rule)
+        sec14 = protocol[protocol.index("## 14. "):protocol.index("## 15. ")]
+        sec17 = protocol[protocol.index("## 17. "):protocol.index("## 18. ")]
+        self.assertIn("only the bot's 👍 reaction on the request comment", sec14)
+        self.assertIn("👍 reaction on the request comment is such a response too", sec17)
+
+    def test_the_merge_step_defers_to_the_decision_records(self) -> None:
+        """ADR 010 (owner merges) and ADR 011 (Claude merges lesson PRs) decide who merges; the lifecycle must not contradict them."""
+        self.assertIn("ADR 010", self.section)
+        self.assertIn("ADR 011", self.section)
+        self.assertNotIn("FIX round caps", self.section)
 
     def test_every_protocol_section_it_cites_exists(self) -> None:
         protocol = read(PROTOCOL)
