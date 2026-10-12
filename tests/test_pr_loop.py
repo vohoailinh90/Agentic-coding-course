@@ -55,6 +55,10 @@ class PullRequestLoopTests(unittest.TestCase):
 
     def test_a_prose_only_fix_needs_no_regression_test(self) -> None:
         self.assertIn("with a regression test where the defect has testable behavior", self.section)
+        protocol = read(PROTOCOL).replace("\n", " ")
+        loop = protocol[protocol.index("Fix, then review the new head."):]
+        self.assertIn("with a regression test where the defect has testable behavior", loop[:600])
+        self.assertIn("a prose-only fix", loop[:600])
 
     def test_no_document_still_caps_review_rounds(self) -> None:
         """The handoff and ADR 010 once said at most two review rounds; both must say the cap is gone."""
@@ -73,6 +77,26 @@ class PullRequestLoopTests(unittest.TestCase):
     def test_the_trigger_string_ban_keeps_the_intentional_comment_exception(self) -> None:
         self.assertIn("except the intentional trigger comments the protocol authorizes", self.section)
         self.assertIn("each review request of steps 1 and 3, a security review", self.section)
+
+    def test_the_trigger_exception_names_every_task_contract_mode(self) -> None:
+        """The exception must list exactly the modes section 5 defines, or a supported mode becomes forbidden."""
+        modes = re.search(r'^mode: "([A-Z |]+)"', read(PROTOCOL), re.MULTILINE)
+        self.assertIsNotNone(modes, "section 5 no longer lists the task-contract modes")
+        listed = [m.strip() for m in modes.group(1).split("|")]
+        self.assertGreaterEqual(len(listed), 5)
+        self.assertIn(f"each task-contract request ({', '.join(listed)})", self.section)
+
+    def test_no_summary_ends_the_loop_on_one_clean_review(self) -> None:
+        """A security-sensitive route needs every required review command clean on the head; every summary must say so."""
+        stale = ("until a review of the current head is clean", "until a review is clean")
+        required = re.compile(r"every\s+review\s+command\s+the\s+work\s+requires\s+is\s+clean\s+on\s+the\s+current\s+head")
+        for rel in ("CLAUDE.md", "docs/claude-to-codex.md", "docs/handoff.md",
+                    "docs/decisions/010-claude-writes-codex-reviews.md"):
+            text = read(ROOT / rel).replace("\n", " ")
+            with self.subTest(path=rel):
+                for phrase in stale:
+                    self.assertNotIn(phrase, text)
+                self.assertRegex(text, required)
 
     def test_every_protocol_section_it_cites_exists(self) -> None:
         protocol = read(PROTOCOL)

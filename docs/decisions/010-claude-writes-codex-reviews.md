@@ -1,7 +1,7 @@
 # 010 — Claude writes the lessons; Codex reviews each batch
 
 Status: accepted by the owner, 2026-09-27. Updated 2026-10-12: the cap of two review rounds per batch
-is removed — reviews are repeated on each new head until a review of the current head is clean (see
+is removed — reviews are repeated on each new head until every review command the work requires is clean on the current head (see
 *Pull request lifecycle* in `CLAUDE.md`). The rest stands, including that the owner merges while
 `main` has no branch protection.
 
