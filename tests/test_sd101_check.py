@@ -793,6 +793,35 @@ class ReadmeRuleTests(StoreCase):
                           "[again](lessons/sd-01-001/lesson.md#phan-1)\n")
         self.assertEqual([], self.problems())
 
+    def test_the_store_holds_only_the_readme_and_the_lessons_directory(self) -> None:
+        for name in ("copied-source.png", "notes.md", ".DS_Store", "figure.svg"):
+            with self.subTest(file=name):
+                (self.store / name).write_bytes(b"x")
+                self.assertProblem(f"{name}: is not allowed in the store")
+                (self.store / name).unlink()
+        (self.store / "images").mkdir()
+        self.assertProblem("images: is not allowed in the store")
+
+    def test_lessons_holds_only_lesson_directories(self) -> None:
+        (self.store / "lessons" / "copied-source.png").write_bytes(b"x")
+        self.assertProblem("lessons: copied-source.png is not a lesson directory")
+
+    def test_the_readme_embeds_no_image(self) -> None:
+        (self.store / "copied-source.png").write_bytes(b"x")
+        (self.store / "figure.svg").write_text("<svg/>", encoding="utf-8")
+        forms = {"inline png": "![source](copied-source.png)", "inline svg": "![f](figure.svg)",
+                 "reference": "![f][i]\n\n[i]: figure.svg", "html img": '<img src="figure.svg" alt="f">',
+                 "html srcset": '<img srcset="figure.svg 1x" alt="f">', "html img without a source": "<img alt='f'>"}
+        for name, form in forms.items():
+            with self.subTest(form=name):
+                self.write_readme(README + "\n" + form + "\n")
+                self.assertProblem("README.md: embeds the image")
+
+    def test_a_readme_may_link_to_an_image_without_embedding_it(self) -> None:
+        (self.store / "figure.svg").write_text("<svg/>", encoding="utf-8")
+        self.write_readme(README + "\n[hình](figure.svg)\n")
+        self.assertFalse(any("embeds the image" in line for line in self.problems()), self.problems())
+
     def test_a_missing_readme_is_reported(self) -> None:
         (self.store / "README.md").unlink()
         self.assertProblem("README.md: is missing")

@@ -33,10 +33,11 @@ What is checked, per lesson directory `<store>/lessons/<id>/`:
     in a code block or a comment; a #fragment on it is fine), it mentions no lesson id that has no lesson
     directory, and it never contains assets.bytebytego.com, the host of every
     source image, in any form: ![]() , ![x][ref], <img>, <picture>, a bare URL
-And once for the store: README.md links every lesson directory (as a real link, not a
-path in a comment or a code block), every relative link in it resolves (a row left behind for a
-deleted lesson is an error), and it carries no status words in its table, however formatted
-(status lives only in lesson.yaml).
+And once for the store: it holds only README.md and lessons/, and lessons/ holds only lesson
+directories (an image dropped beside the README is refused like one in a lesson); README.md embeds
+no image, links every lesson directory (as a real link, not a path in a comment or a code block),
+every relative link in it resolves (a row left behind for a deleted lesson is an error), and it
+carries no status words in its table, however formatted (status lives only in lesson.yaml).
 
 This guards against honest mistakes while ~400 lessons are written; it is not a security
 boundary. Markup crafted to slip past a rule on purpose is out of scope.
@@ -86,6 +87,7 @@ HOSTNAME = re.compile(r"(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)*[A-Z
 SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 SOURCE_IMAGE_HOST = "assets.bytebytego.com"
 ALLOWED_FILES = {"lesson.md", "lesson.yaml"}
+STORE_ENTRIES = {"README.md", "lessons"}
 ALLOWED_HTML = {"details", "summary", "br", "a", "img", "sub", "sup", "kbd"}
 RASTER_ELEMENTS = {"image", "feimage", "img"}
 SVG_NAMESPACE = "http://www.w3.org/2000/svg"
@@ -453,6 +455,8 @@ def check_readme(store: pathlib.Path, lesson_ids: set[str]) -> list[Problem]:
     linked = {posixpath.normpath(target) for target in destinations.values() if target}
     problems = [Problem("README.md", f"does not link lessons/{lesson_id}/lesson.md")
                 for lesson_id in sorted(lesson_ids) if f"lessons/{lesson_id}/lesson.md" not in linked]
+    problems.extend(Problem("README.md", f"embeds the image {source!r}; the index has no figures")
+                    for source in sorted(image_sources(text)))
     problems.extend(Problem("README.md", f"relative link {destination!r} does not resolve")
                     for destination, target in sorted(destinations.items())
                     if target and not exists(store / target))
@@ -467,6 +471,12 @@ def check_store(store: pathlib.Path, source_map: pathlib.Path) -> list[Problem]:
     lesson_dirs = sorted(path for path in lessons_dir.iterdir() if path.is_dir()) if lessons_dir.is_dir() else []
     lesson_ids = {path.name for path in lesson_dirs}
     problems: list[Problem] = []
+    for path in sorted(store.iterdir()) if store.is_dir() else []:
+        if path.name not in STORE_ENTRIES:
+            problems.append(Problem(path.name, "is not allowed in the store, which holds only README.md and lessons/"))
+    for path in sorted(lessons_dir.iterdir()) if lessons_dir.is_dir() else []:
+        if not path.is_dir():
+            problems.append(Problem("lessons", f"{path.name} is not a lesson directory"))
     for lesson_dir in lesson_dirs:
         lesson_id = lesson_dir.name
         markdown, meta_file = lesson_dir / "lesson.md", lesson_dir / "lesson.yaml"

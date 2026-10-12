@@ -544,3 +544,19 @@ mutations:
   find: '"radialgradient", "stop",'
   replace: '"radialgradient",'
   test: tests.test_sd101_check.LessonMarkdownRuleTests.test_the_elements_of_an_ordinary_drawing_are_accepted
+- label: a file dropped beside the README is accepted
+  find: '        if path.name not in STORE_ENTRIES:'
+  replace: '        if False:'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_the_store_holds_only_the_readme_and_the_lessons_directory
+- label: a stray file inside lessons/ is accepted
+  find: "        if not path.is_dir():\n            problems.append(Problem(\"lessons\""
+  replace: "        if False:\n            problems.append(Problem(\"lessons\""
+  test: tests.test_sd101_check.ReadmeRuleTests.test_lessons_holds_only_lesson_directories
+- label: an image embedded in the README is accepted
+  find: '                    for source in sorted(image_sources(text)))'
+  replace: '                    for source in [])'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_the_readme_embeds_no_image
+- label: a README link to an image is taken for an embedded image
+  find: '                    for source in sorted(image_sources(text)))'
+  replace: '                    for source in sorted(link_destinations(text) | image_sources(text)) if source.endswith(".svg"))'
+  test: tests.test_sd101_check.ReadmeRuleTests.test_a_readme_may_link_to_an_image_without_embedding_it
