@@ -508,12 +508,14 @@ tracking errors, Excel corruption, unsafe file handling and violations
 of the acceptance criteria in Issue #42.
 ```
 
-Claude must request a new review only when:
+Requesting that first review is mandatory for every PR Claude creates, at every tier; the loop it starts, through to the merge, is "The loop every PR goes through" in section 20.
 
-- The PR head SHA has changed; or
-- The previous Codex review failed to run.
+Claude must request a new review only for the review command being requested (standard review here, security review in section 12), and only when:
 
-Claude must not request repeated reviews for the same PR head SHA.
+- That command has not yet reviewed the current PR head SHA — a head that changed, or an unchanged head on which a required security review follows the standard review; or
+- That command's previous review of this head failed to run.
+
+Claude must not request the same review command again for a PR head SHA it already reviewed.
 
 ## 12. Security review
 
@@ -677,6 +679,7 @@ Claude must follow these rules:
 
 - Maximum brainstorm rounds: `2`
 - Maximum correction rounds: `2`
+- Maximum review rounds per PR: none — the repository owner set no limit on 2026-10-12. A review is bounded instead by the rules below: each review command (standard, security) runs once per head SHA, one request is active at a time, and the previous response is validated first
 - Only one active Codex request per Issue or PR
 - Never trigger the same task mode twice for the same SHA, with two documented exceptions:
   - a built-in command (review or merge) that ends in a trigger failure (section 17: no response, or an explicit error/rate-limit message instead of the expected output) on an unchanged PR head, as sections 11 and 20 authorize — at most once per SHA; if the retry itself also ends in a trigger failure, do not retry again: follow section 17 step 2 instead; or
@@ -687,6 +690,15 @@ Claude must follow these rules:
 - Escalate unresolved P0 and P1 disagreements to the repository owner
 
 Claude must never use repeated `@codex` comments to test whether the integration is working.
+
+### No review limit
+
+Reviews are not capped, so a P0 or P1 fix is reviewed like any other: push it, then request the next review on the new head. What ends the loop is a clean review of the current head (section 20), or one of two exits:
+
+- **A disagreement.** A finding Claude rejected with evidence on its thread. At P2 or P3 the recorded rejection stands at once and the finding blocks nothing, even if Codex raises it again. At P0 or P1 it survives only if a review keeps it: when other confirmed fixes make a new head, push it and let the next review decide — not raised again, it is closed; raised again, unchanged or reworded or moved when it is substantially the same issue, it is an unresolved disagreement. When no code change is pending there is no new head to review, so it is an unresolved disagreement at once. An unresolved disagreement goes to the repository owner with the finding, the evidence and the fixes so far, and the PR is not merged until the owner decides.
+- **A genuine blocker** (section 20), including Codex being unreachable (section 17, section 18).
+
+Never request a review command for a head that command already reviewed (a required security review may follow the standard review on the same head, as section 14 treats them as separate modes), never while a request is unanswered, and never before the previous response was validated: these three, not a count, are what keep the loop from spinning. They are rules, not script gates: nothing computable sees both the PR head and Codex's reaction (a clean review may leave only a thumbs-up, which no list carries), so an unanswered request cannot be told from a clean review by a script.
 
 ## 17. Confirming that Codex was triggered
 
@@ -816,6 +828,19 @@ With that precondition confirmed, close the head-side gap immediately before mer
      ```
 
 Record the merge commit SHA and a one-line summary of what shipped, in the same PR or Issue thread.
+
+### The loop every PR goes through
+
+CLAUDE.md (*Pull request lifecycle*) makes this loop mandatory for every PR Claude creates, at every tier. The sections it cites keep their own rules; this only fixes the order and the exit.
+
+1. **Review, at once.** As soon as the PR is open, request the review (section 11); Codex's own opening review is off, so none comes unless requested.
+2. **Validate.** Check the response per section 14. Act on a finding only after confirming it against the code (section 13); a wrong one is answered on its thread with the evidence, never ignored.
+3. **Fix, then review the new head.** Fix each confirmed finding with a regression test and push. Request the next review on the new head SHA (each review command runs once per head), with no request unanswered (section 16).
+4. **Exit when clean.** The loop ends when a review whose `Reviewed commit:` is the *current* PR head carries no open finding — a no-findings verdict such as "Didn't find any major issues", never the review-status summary comment (section 16) — and every earlier finding was fixed or rejected with evidence. A finding is not open when it was fixed, or when it is a P2/P3 whose rejection stands under "No review limit"; a rejected P0/P1 is open until that section's disagreement rules close it. A fix pushed after the last review is unreviewed and does not end the loop.
+5. **Merge.** Check the definition of done above and merge under this section without asking anyone.
+6. **Continue.** After the merge the session takes its next outstanding task (CLAUDE.md); it does not stop to ask.
+
+Reviews have no cap (section 16), so the loop runs until a review is clean; the two exits in "No review limit" (an unresolved P0/P1 disagreement, a genuine blocker) are the only other ways out. If Codex cannot be reached (section 17, section 18), the PR is `BLOCKED`, never merged unreviewed, and switching who does the work never waives the PR's Codex review.
 
 A human is needed only for:
 
