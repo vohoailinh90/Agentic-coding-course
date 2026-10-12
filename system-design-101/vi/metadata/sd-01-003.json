@@ -3,7 +3,7 @@
   "title_vi": "Năm mã trạng thái HTTP kỳ lạ",
   "language": "vi",
   "kind": "reference",
-  "content_status": "review",
+  "content_status": "done",
   "source_ref": "sd-01-003",
   "source_snapshot": {
     "repository": "ByteByteGoHq/system-design-101",
@@ -25,8 +25,12 @@
       "scope": "Registration status, 451/418/429 semantics and Pantheon usage. Source-only trivia explicitly qualified; not independently verified."
     },
     "technical_review": {
-      "status": "pending",
-      "reason": "New integration with main; no old review covers lesson 3."
+      "status": "checked",
+      "reviewed_sha": "034a992d1b90d023083b2fe03790c06fdf991bca",
+      "base_sha": "89186c1a1aeb90a47e2a563fdc7786b2dacec787",
+      "evidence_url": "https://github.com/vohoailinh90/Agentic-coding-course/pull/25#issuecomment-6128611337",
+      "ci_run": 38279292220,
+      "note": "Technical completion on stated snapshot, not approval to publish; user testing remains not performed."
     },
     "mobile": {
       "status": "checked",
@@ -96,5 +100,5 @@
     }
   ],
   "design_notes_vi": "Five new vertical cards distinguish registered, unassigned and reserved status using text, not only colour. No source image used. Based on technical registry and standards, not a trace of source art.",
-  "editorial_note_vi": "Adopts pre-existing main draft into canonical single-ID store; replaces unverified blanket labels with IANA distinctions. Technical/visual review for new integration remains pending."
+  "editorial_note_vi": "Adopts pre-existing main draft into canonical single-ID store; replaces unverified blanket labels with IANA distinctions. Technical review and CI passed at 034a992d1b90d023083b2fe03790c06fdf991bca; mobile checked at 320/375/430px. Does not claim learner testing or publication approval."
 }

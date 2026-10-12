@@ -3,7 +3,7 @@
   "title_vi": "Ứng dụng thực tế của bộ cân bằng tải",
   "language": "vi",
   "kind": "topology",
-  "content_status": "review",
+  "content_status": "done",
   "source_ref": "sd-01-002",
   "source_snapshot": {
     "repository": "ByteByteGoHq/system-design-101",
@@ -30,8 +30,12 @@
       "checked_on": "2026-10-12"
     },
     "technical_review": {
-      "status": "pending",
-      "reason": "Merged main snapshot and reconciled canonical paths; old review does not approve new integration."
+      "status": "checked",
+      "reviewed_sha": "034a992d1b90d023083b2fe03790c06fdf991bca",
+      "base_sha": "89186c1a1aeb90a47e2a563fdc7786b2dacec787",
+      "evidence_url": "https://github.com/vohoailinh90/Agentic-coding-course/pull/25#issuecomment-6128611337",
+      "ci_run": 38279292220,
+      "note": "Technical completion on stated snapshot, not approval to publish; user testing remains not performed."
     },
     "mobile": {
       "status": "checked",
