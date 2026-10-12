@@ -4,7 +4,7 @@
   "source_repository": "ByteByteGoHq/system-design-101",
   "source_readme_blob_sha": "0a75df39b6f3efbff31365615ea0dd052004ab4b",
   "observed_on": "2026-10-12",
-  "note": "Bản kiểm kê cho brainstorm. File này chỉ ghi sự thật về nguồn: đường dẫn, phiên bản đã ghim, đã đọc thân bài chưa (source_body_reviewed), và mục trùng nguồn (same_source_as). title_vi là tiêu đề tiếng Việt đề xuất, dịch từ title_source; có title_vi không có nghĩa bài đã được đọc hay biên soạn. title_vi=null là chưa đặt tiêu đề. Tiến độ biên soạn và kiểm chứng nằm ở file của từng bài trong kho nội dung (xem DECISIONS.md), không ghi ở đây.",
+  "note": "Bản kiểm kê cho brainstorm. File này chỉ ghi sự thật về nguồn: đường dẫn, phiên bản đã ghim, đã đọc thân bài chưa (source_body_reviewed), và mục trùng nguồn (same_source_as). title_vi là tiêu đề tiếng Việt đề xuất, dịch từ title_source; có title_vi không có nghĩa bài đã được đọc hay biên soạn. title_vi=null là chưa đặt tiêu đề. Tiến độ biên soạn và kiểm chứng nằm ở file của từng bài trong kho nội dung (xem DECISIONS.md), không ghi ở đây. source_blob_sha là Git blob OID của source_path tại source_commit_sha; kiểm lại bằng `git rev-parse <source_commit_sha>:<source_path>` trong bản sao của repo nguồn. Đã đối chiếu đủ 404 mục khớp upstream.",
   "categories": [
     {
       "id": "sd-01",
