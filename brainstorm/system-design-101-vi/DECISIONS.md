@@ -56,9 +56,11 @@ verification:                # mỗi mục: pending | done
   claims: pending
   technical: pending
   mobile: pending
+learner_test: pending        # pending | done; chỉ ghi done sau khi đã thử với người học thật
 ```
 
-Viết nháp có thể diễn ra trước khi kiểm chứng xong. `approved` cần cả bốn mục `verification` là `done`.
+Viết nháp có thể diễn ra trước khi kiểm chứng xong. `approved` cần cả bốn mục `verification` và
+`learner_test` là `done`; chưa thử với người học thì bài giữ `drafted`, không chặn bài kế tiếp.
 
 ## Phản biện kỹ thuật dựa trên tiêu chuẩn
 
