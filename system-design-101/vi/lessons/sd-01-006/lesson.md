@@ -1,0 +1,70 @@
+# Những điều cần biết về HTTP headers
+
+> Bản nháp `sd-01-006`, chưa duyệt. Trạng thái và các bước kiểm chứng ở [lesson.yaml](lesson.yaml).
+
+**Mỗi lần mở một trang web, trình duyệt và máy chủ trao đổi nhiều hơn là chỉ "cho tôi trang này": còn có những dòng thông tin đi kèm. Đó là gì?**
+
+## 🏠 Hiểu bằng chuyện đời thường
+
+Hãy nghĩ tới một lá thư gửi bưu điện. **Lá thư bên trong** là nội dung chính. **Phong bì bên ngoài** ghi thêm: ai
+gửi, thư thuộc loại nào, viết bằng ngôn ngữ gì, dặn dò đặc biệt như "giao tận tay". Người đưa thư đọc phong bì để biết
+xử lý thế nào, chưa cần mở thư. **HTTP header** chính là phần ghi trên phong bì của mỗi yêu cầu và mỗi câu trả lời
+trên web.
+
+## 🗺️ Nhìn hình
+
+```mermaid
+%%{init: {"sequence": {"width": 100, "actorMargin": 30, "messageMargin": 24, "mirrorActors": false}}}%%
+sequenceDiagram
+    participant B as Trình duyệt
+    participant S as Máy chủ
+    B->>S: Yêu cầu<br/>+ header
+    S-->>B: Phản hồi + header<br/>+ nội dung
+```
+
+Đọc hình: mỗi lần trao đổi là một cặp **yêu cầu** rồi **phản hồi**. Cả hai chiều đều mang theo header. Header của yêu
+cầu nói về người hỏi và điều họ muốn. Header của phản hồi nói về thứ máy chủ đang gửi và cách dùng nó.
+
+## 🔍 Vài header quen thuộc
+
+| Header | Thường gặp ở | Hiểu đơn giản |
+|---|---|---|
+| `Content-Type` | cả hai | Nội dung bên trong thuộc loại gì, như văn bản, JSON hay hình |
+| `Accept` | yêu cầu | Tôi nhận được những dạng nội dung nào |
+| `User-Agent` | yêu cầu | Tôi là phần mềm nào, như một trình duyệt hay một ứng dụng |
+| `Authorization` | yêu cầu | Đây là thông tin xác nhận tôi là ai |
+| `Cache-Control` | chủ yếu phản hồi | Bản này được giữ lại dùng lại trong bao lâu |
+| `Set-Cookie` | phản hồi | Hãy lưu giúp tôi một mẩu thông tin nhỏ này |
+
+Hiểu header giúp hai bên hiểu đúng nhau: gửi đúng loại dữ liệu và đọc đúng câu trả lời. Đây là điều cần biết khi
+xây dựng các ứng dụng giao tiếp theo kiểu REST.
+
+## ⚠️ Giới hạn cần nhớ
+
+- Header đi kèm ở mọi yêu cầu. Nếu kết nối không được mã hóa (HTTPS), người đứng giữa đường có thể đọc chúng, nên
+  thông tin nhạy cảm như `Authorization` cần dùng HTTPS.
+- Phía gửi tự điền header, nên có thể điền sai hoặc giả (ví dụ `User-Agent`). Máy chủ không nên tin hoàn toàn.
+
+## 📖 Từ khó, giải nghĩa
+
+- **Yêu cầu (request) và phản hồi (response):** một lần hỏi và một lần đáp giữa trình duyệt và máy chủ.
+- **Nội dung (body):** phần dữ liệu chính, như trang web hay dữ liệu JSON.
+- **Cookie:** mẩu thông tin nhỏ trình duyệt lưu lại theo yêu cầu của máy chủ, thường để nhớ bạn đã đăng nhập.
+
+## ❓ Nhìn hình trả lời
+
+Header nào cho phía nhận biết nội dung bên trong là JSON hay là hình ảnh?
+
+<details>
+<summary>Xem đáp án</summary>
+
+`Content-Type`. Nó nằm trong header của yêu cầu hoặc phản hồi có mang nội dung, và nói rõ loại dữ liệu.
+
+</details>
+
+## 🔗 Liên hệ nguồn
+
+Chủ đề và thứ tự theo mục `sd-01-006` của
+[bài ByteByteGo, bản đã ghim](https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/important-things-about-http-headers-you-may-not-know.md).
+Bài này viết bằng lời riêng, sơ đồ thiết kế mới, không dùng ảnh nguồn. Những nhận định kỹ thuật ngoài bài nguồn
+chưa được đối chiếu với tài liệu chính thức trong bản nháp này; chỗ ghi "theo nguồn" chỉ dựa vào bài nguồn.
