@@ -35,13 +35,16 @@ Cuối cùng dịch vụ đơn hàng trả lời ứng dụng khách.
 
 - 📞 **RPC (gọi hàm từ xa):** chương trình gọi một hàm nằm trên máy khác, nhưng viết ra gần như gọi hàm tại chỗ.
   Thường gặp khi hệ thống được chia thành nhiều dịch vụ nhỏ.
-- 🧑 **Stub (người đại diện tại chỗ):** đoạn mã sinh sẵn ở mỗi bên. Bạn gọi stub như một hàm thường; stub lo ép
-  dữ liệu thành nhị phân rồi gửi đi.
+- 🧑 **Stub (người đại diện tại chỗ):** phía máy khách có một đối tượng sinh sẵn gọi là stub. Bạn gọi stub như
+  một hàm thường; stub lo ép dữ liệu thành nhị phân rồi gửi đi.
+- 🛎️ **Phía máy chủ:** máy chủ cài đặt phần việc thật cho các hàm đã khai báo trong biểu mẫu chung, và chạy một
+  máy chủ gRPC để nhận các cuộc gọi đó. Phía này không dùng stub để gọi, mà xử lý cuộc gọi đến.
 - 📦 **Nhị phân:** dữ liệu mã hóa thành các byte gọn thay vì chữ. Nhỏ hơn và máy xử lý nhanh hơn, nhưng người khó
   đọc trực tiếp.
 - 🛣️ **HTTP/2:** giao thức mà gRPC chạy trên đó, cho phép nhiều yêu cầu chạy xen kẽ trên cùng một kết nối.
-- 📜 **Biểu mẫu chung:** hai bên thường dùng một file mô tả dịch vụ (thường viết theo Protocol Buffers, một cách mô tả dữ liệu và dịch vụ) để sinh stub cho
-  nhiều ngôn ngữ lập trình.
+- 📜 **Biểu mẫu chung:** hai bên thường dùng một file mô tả dịch vụ (thường viết theo Protocol Buffers, một cách
+  mô tả dữ liệu và dịch vụ). Từ file này công cụ sinh sẵn mã cho nhiều ngôn ngữ lập trình: stub cho phía máy
+  khách và khung xử lý cho phía máy chủ.
 
 ## ⚠️ Giới hạn cần nhớ
 
