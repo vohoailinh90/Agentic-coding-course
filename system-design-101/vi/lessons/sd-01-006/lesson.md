@@ -7,8 +7,7 @@
 ## 🏠 Hiểu bằng chuyện đời thường
 
 Hãy nghĩ tới một lá thư gửi bưu điện. **Lá thư bên trong** là nội dung chính. **Phong bì bên ngoài** ghi thêm vài chỉ dẫn: thư thuộc loại nào, viết bằng ngôn ngữ gì, dặn dò đặc biệt như "giao tận tay". Người đưa thư đọc phong bì để biết
-xử lý thế nào, chưa cần mở thư. **HTTP header** chính là phần ghi trên phong bì của mỗi yêu cầu và mỗi câu trả lời
-trên web.
+xử lý thế nào, chưa cần mở thư. **HTTP header** chính là phần ghi trên phong bì của các yêu cầu và câu trả lời trên web.
 
 ## 🗺️ Nhìn hình
 
@@ -22,7 +21,7 @@ sequenceDiagram
 
 ```
 
-Đọc hình: mỗi lần trao đổi là một cặp **yêu cầu** rồi **phản hồi**, và cả hai thường mang theo header. Trong yêu cầu, header `Accept` cho biết trình duyệt nhận được JSON (giá trị chuẩn là `application/json`). Trong phản hồi, header `Content-Type` cho biết nội dung gửi về là JSON, cũng bằng giá trị `application/json`. Header của yêu cầu nói về người hỏi và điều họ muốn; header của phản hồi nói về thứ máy chủ đang
+Đọc hình: mỗi lần trao đổi là một cặp **yêu cầu** rồi **phản hồi**, và cả hai thường mang theo header. Trong yêu cầu, header `Accept` cho biết trình duyệt chấp nhận, hoặc muốn nhận, JSON (giá trị chuẩn là `application/json`); máy chủ không bắt buộc phải trả đúng loại đó. Trong phản hồi, header `Content-Type` nói nội dung gửi về là JSON, cũng bằng giá trị `application/json`. Header của yêu cầu nói về người hỏi và điều họ muốn; header của phản hồi nói về thứ máy chủ đang
 gửi và cách dùng nó.
 
 ## 🔍 Vài header quen thuộc
@@ -41,15 +40,14 @@ xây dựng các ứng dụng giao tiếp theo kiểu REST.
 
 ## ⚠️ Giới hạn cần nhớ
 
-- Header thường đi kèm các yêu cầu và phản hồi. Nếu kết nối không được mã hóa (HTTPS), người đứng giữa đường có thể đọc chúng, nên
-  thông tin nhạy cảm như `Authorization` cần dùng HTTPS.
+- Header thường đi kèm các yêu cầu và phản hồi. Nếu kết nối không dùng HTTPS (tức là không được mã hóa), người đứng giữa đường có thể đọc chúng. Vì vậy thông tin nhạy cảm như `Authorization` cần đi qua kết nối dùng HTTPS.
 - Phía gửi tự điền header, nên có thể điền sai hoặc giả (ví dụ `User-Agent`). Máy chủ không nên tin hoàn toàn.
 
 ## 📖 Từ khó, giải nghĩa
 
 - **Kiểu nội dung (media type):** tên chuẩn của một loại dữ liệu, viết dạng `loại/phụ`, như `application/json` cho JSON hay `image/png` cho ảnh PNG. Các header `Accept` và `Content-Type` dùng kiểu này.
 - **Header (tiêu đề):** các dòng thông tin kèm theo một yêu cầu hoặc phản hồi, mỗi dòng gồm một tên và một giá trị.
-- **HTTPS:** HTTP có mã hóa kết nối, để người đứng giữa đường không đọc được nội dung và header.
+- **HTTPS:** HTTP có mã hóa kết nối, để người đứng giữa đường thường không đọc được nội dung và header.
 - **Yêu cầu (request) và phản hồi (response):** một lần hỏi và một lần đáp giữa trình duyệt và máy chủ.
 - **Nội dung (body):** phần dữ liệu chính, như trang web hay dữ liệu JSON.
 - **Cookie:** mẩu thông tin nhỏ trình duyệt lưu lại theo yêu cầu của máy chủ, thường để nhớ bạn đã đăng nhập.
@@ -61,7 +59,7 @@ Trong hình, header nào của phản hồi cho trình duyệt biết nội dung
 <details>
 <summary>Xem đáp án</summary>
 
-`Content-Type`. Nếu máy chủ gửi một hình ảnh, header này vẫn có mặt nhưng ghi một kiểu hình ảnh (ví dụ `image/png`) thay vì `application/json`.
+`Content-Type`. Nếu máy chủ gửi một hình ảnh, header này thường vẫn được gửi kèm, nhưng ghi một kiểu hình ảnh (ví dụ `image/png`) thay vì `application/json`. Header này nên có, nhưng không phải lúc nào cũng được đảm bảo có mặt.
 
 </details>
 
