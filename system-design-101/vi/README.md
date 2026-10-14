@@ -25,5 +25,6 @@ trong `lesson.md` chỉ gồm `details`, `summary`, `br`, `a`, `img`, `sub`, `su
 | [sd-01-004](lessons/sd-01-004/lesson.md) | gRPC hoạt động thế nào? |
 | [sd-01-005](lessons/sd-01-005/lesson.md) | NAT giúp Internet mở rộng ra sao? |
 | [sd-01-006](lessons/sd-01-006/lesson.md) | Những điều cần biết về HTTP headers |
+| [sd-01-007](lessons/sd-01-007/lesson.md) | Chính sách định tuyến lưu lượng Internet |
 
 Trạng thái từng bài xem ở `lesson.yaml` của bài đó, không lặp lại ở đây.
