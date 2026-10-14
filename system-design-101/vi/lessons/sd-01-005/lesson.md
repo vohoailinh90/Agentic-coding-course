@@ -11,7 +11,9 @@ tòa nhà. Khi phòng 12 muốn gọi ra ngoài, lễ tân dùng số chung đ�
 Khi bên kia trả lời, lễ tân tra sổ rồi nối về đúng phòng 12. Người ngoài chỉ thấy số chung, không biết phòng nào đã
 gọi. Mỗi cuộc gọi ra còn được gắn một số thứ tự riêng, để khi hai phòng cùng gọi một lúc lễ tân vẫn phân biệt
 được. Còn nếu một người lạ tự gọi vào số chung mà sổ không có dòng nào liên quan, lễ tân không biết nối cho ai.
-**NAT** (dịch địa chỉ mạng) chính là người lễ tân đó, nằm trong router của nhà bạn.
+**NAT** (dịch địa chỉ mạng) chính là người lễ tân đó, nằm trong router của nhà bạn. Chính xác hơn, kiểu NAT
+thường gặp ở router gia đình tên là **NAPT** (hay PAT): nó dịch cả địa chỉ lẫn số cổng, nên mới cho nhiều thiết bị
+dùng chung một địa chỉ.
 
 ## 🗺️ Nhìn hình
 
@@ -35,8 +37,8 @@ Khi câu trả lời về, router tra bảng, đổi địa chỉ ngược lại
 ## 🔍 Các ý chính
 
 - 🧮 **Tiết kiệm và chia sẻ địa chỉ:** địa chỉ IPv4 có khoảng 4,3 tỷ giá trị (2 mũ 32), không đủ để mỗi
-  thiết bị trên thế giới có một địa chỉ công khai riêng. NAT cho cả nhà hay cả văn phòng dùng chung một địa chỉ
-  công khai.
+  thiết bị trên thế giới có một địa chỉ công khai riêng. NAT (ở dạng NAPT như trên) cho cả nhà hay cả văn phòng
+  dùng chung một địa chỉ công khai.
 - 🧱 **Che địa chỉ nội bộ:** bên ngoài không thấy địa chỉ riêng của từng máy. Kèm theo, gói tin không có dòng
   tương ứng trong bảng ghi nhớ thường bị bỏ (xem phần giới hạn); đây chưa phải sự bảo vệ thật sự.
 - 🛠️ **Dễ quản lý:** mạng nội bộ tự đặt địa chỉ riêng mà không cần xin một địa chỉ công khai cho từng máy.
@@ -47,8 +49,9 @@ Khi câu trả lời về, router tra bảng, đổi địa chỉ ngược lại
 - Thông thường bảng ghi nhớ chỉ có dòng cho những kết nối do bên trong mở ra. Muốn người bên ngoài chủ động gọi
   vào một máy trong nhà (ví dụ chơi game, chạy một máy chủ riêng) thường phải cấu hình thêm, như chuyển tiếp cổng.
 - IPv6 có số địa chỉ lớn hơn rất nhiều nên không cần NAT chỉ vì thiếu địa chỉ.
-- Một số nhà mạng còn đặt thêm một lớp NAT ở phía họ, nên địa chỉ "công khai" mà router nhà bạn nhận được có
-  thể vẫn được nhiều nhà dùng chung.
+- Một số nhà mạng còn đặt thêm một lớp NAT ở phía họ (gọi là CGNAT). Khi đó router nhà bạn chỉ nhận một địa chỉ
+  dùng chung, chưa phải địa chỉ công khai thật; địa chỉ công khai nằm ở thiết bị của nhà mạng và được nhiều nhà
+  dùng chung.
 
 ## 📖 Từ khó, giải nghĩa
 
@@ -56,8 +59,11 @@ Khi câu trả lời về, router tra bảng, đổi địa chỉ ngược lại
 - **Địa chỉ riêng / công khai:** địa chỉ riêng chỉ dùng trong mạng nội bộ (nhiều mạng gia đình dùng dạng
   `192.168.x.x`), địa chỉ công khai là địa chỉ Internet nhìn thấy.
 - **Router:** thiết bị nối mạng trong nhà với Internet.
-- **Cổng (port):** số thứ tự đi kèm địa chỉ để phân biệt nhiều kết nối dùng chung một địa chỉ. NAT dựa vào đó để biết
+- **Cổng (port):** số thứ tự đi kèm địa chỉ để phân biệt nhiều kết nối dùng chung một địa chỉ. NAPT dựa vào đó để biết
   câu trả lời thuộc về thiết bị nào.
+- **NAPT / PAT:** dạng NAT dịch cả địa chỉ lẫn số cổng, nhờ vậy nhiều thiết bị dùng chung một địa chỉ công khai;
+  router gia đình thường làm kiểu này. NAT chỉ đổi địa chỉ, không dùng cổng để phân biệt, thường cần một nhóm
+  địa chỉ công khai thay vì một địa chỉ.
 
 ## ❓ Nhìn hình trả lời
 
