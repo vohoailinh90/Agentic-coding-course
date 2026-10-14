@@ -31,7 +31,7 @@ flowchart TB
 ```
 
 Đọc hình, từ trên xuống (mũi tên hai chiều là đi và về trên cùng một đường): thiết bị trong nhà gửi yêu cầu tới router, kèm địa chỉ riêng của mình. Router đổi
-địa chỉ riêng thành địa chỉ công khai của nhà rồi mới đẩy ra Internet, đồng thời ghi nhớ "yêu cầu này của máy nào".
+địa chỉ riêng (cùng số cổng) thành địa chỉ công khai của nhà rồi mới đẩy ra Internet, đồng thời ghi nhớ "yêu cầu này của máy nào".
 Khi câu trả lời về, router tra bảng, đổi địa chỉ ngược lại và chuyển đúng cho thiết bị đã hỏi.
 
 ## 🔍 Các ý chính
@@ -62,8 +62,9 @@ Khi câu trả lời về, router tra bảng, đổi địa chỉ ngược lại
 - **Cổng (port):** số thứ tự đi kèm địa chỉ để phân biệt nhiều kết nối dùng chung một địa chỉ. NAPT dựa vào đó để biết
   câu trả lời thuộc về thiết bị nào.
 - **NAPT / PAT:** dạng NAT dịch cả địa chỉ lẫn số cổng, nhờ vậy nhiều thiết bị dùng chung một địa chỉ công khai;
-  router gia đình thường làm kiểu này. NAT chỉ đổi địa chỉ, không dùng cổng để phân biệt, thường cần một nhóm
-  địa chỉ công khai thay vì một địa chỉ.
+  router gia đình thường làm kiểu này.
+- **Basic NAT:** dạng NAT chỉ đổi địa chỉ, không dịch số cổng, nên thường cần một nhóm địa chỉ công khai thay vì
+  một địa chỉ duy nhất.
 
 ## ❓ Nhìn hình trả lời
 
