@@ -47,7 +47,7 @@
           "title_source": "How does gRPC work?",
           "source_url": "https://bytebytego.com/guides/how-does-grpc-work",
           "source_path": "data/guides/how-does-grpc-work.md",
-          "source_body_reviewed": false,
+          "source_body_reviewed": true,
           "source_blob_sha": "da39fb58d0a338dfb6eed07b9a6ce0afc4e11e1a",
           "source_snapshot_url": "https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/how-does-grpc-work.md"
         },
