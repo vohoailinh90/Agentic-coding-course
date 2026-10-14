@@ -9,7 +9,7 @@
 Hai phòng ban của một công ty lớn ngồi ở hai tòa nhà khác nhau. Cách quen thuộc là viết thư tay đầy đủ câu chữ
 rồi gửi qua lại: dễ đọc nhưng dài dòng (giống JSON, một cách ghi dữ liệu thành chữ có cấu trúc). gRPC giống như hai phòng thống nhất trước
 một **biểu mẫu in sẵn**: mỗi ô có tên và kiểu dữ liệu rõ ràng, điền xong thì ép gọn thành một mã ngắn rồi gửi đi.
-Bên nhận có cùng biểu mẫu nên đọc ra ngay. Nhờ vậy thư ngắn hơn, xử lý nhanh hơn, và việc nhờ phòng kia làm gì đó
+Bên nhận có cùng biểu mẫu nên đọc ra ngay. Nhờ vậy thư thường ngắn hơn và dễ xử lý hơn (tùy nội dung), và việc nhờ phòng kia làm gì đó
 nghe gần như nhờ đồng nghiệp ngồi cạnh.
 
 ## 🗺️ Nhìn hình
@@ -39,8 +39,9 @@ Cuối cùng dịch vụ đơn hàng trả lời ứng dụng khách.
   một hàm thường; stub lo ép dữ liệu thành nhị phân rồi gửi đi.
 - 🛎️ **Phía máy chủ:** máy chủ cài đặt phần việc thật cho các hàm đã khai báo trong biểu mẫu chung, và chạy một
   máy chủ gRPC để nhận các cuộc gọi đó. Phía này không dùng stub để gọi, mà xử lý cuộc gọi đến.
-- 📦 **Nhị phân:** dữ liệu mã hóa thành các byte gọn thay vì chữ. Nhỏ hơn và máy xử lý nhanh hơn, nhưng người khó
-  đọc trực tiếp.
+- 📦 **Nhị phân:** dữ liệu mã hóa thành các byte thay vì chữ. Với cách mã hóa mà gRPC thường dùng (Protocol
+  Buffers), dữ liệu thường gọn hơn và máy xử lý nhanh hơn so với chữ, nhưng mức chênh lệch tùy kích thước dữ liệu,
+  cách mã hóa và hệ thống; với tin nhắn rất nhỏ thì có thể không đáng kể. Người đọc thì khó đọc trực tiếp.
 - 🛣️ **HTTP/2:** giao thức mà gRPC chạy trên đó, cho phép nhiều yêu cầu chạy xen kẽ trên cùng một kết nối.
 - 📜 **Biểu mẫu chung:** hai bên thường dùng một file mô tả dịch vụ (thường viết theo Protocol Buffers, một cách
   mô tả dữ liệu và dịch vụ). Từ file này công cụ sinh sẵn mã cho nhiều ngôn ngữ lập trình: stub cho phía máy
@@ -57,7 +58,7 @@ Cuối cùng dịch vụ đơn hàng trả lời ứng dụng khách.
 ## 📖 Từ khó, giải nghĩa
 
 - **JSON:** cách ghi dữ liệu thành chữ có cấu trúc, người đọc được, thường dùng trong REST.
-- **Protocol Buffers:** cách mô tả cấu trúc dữ liệu và dịch vụ để máy ép gọn dữ liệu thành nhị phân.
+- **Protocol Buffers:** cách mô tả cấu trúc dữ liệu và dịch vụ, từ đó máy mã hóa dữ liệu thành nhị phân.
 - **gRPC-Web:** lớp chuyển đổi giúp trình duyệt nói chuyện được với dịch vụ gRPC.
 
 ## ❓ Nhìn hình trả lời
