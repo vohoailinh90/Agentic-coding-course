@@ -21,8 +21,7 @@ sequenceDiagram
 
 ```
 
-Đọc hình: mỗi lần trao đổi là một cặp **yêu cầu** rồi **phản hồi**, và cả hai thường mang theo header. Trong yêu cầu, header `Accept` cho biết trình duyệt chấp nhận, hoặc muốn nhận, JSON (giá trị chuẩn là `application/json`); máy chủ không bắt buộc phải trả đúng loại đó. Trong phản hồi, header `Content-Type` nói nội dung gửi về là JSON, cũng bằng giá trị `application/json`. Header của yêu cầu nói về người hỏi và điều họ muốn; header của phản hồi nói về thứ máy chủ đang
-gửi và cách dùng nó.
+Đọc hình: mỗi lần trao đổi là một cặp **yêu cầu** rồi **phản hồi**, và cả hai thường mang theo header. Trong yêu cầu, header `Accept` cho biết trình duyệt chấp nhận, hoặc muốn nhận, JSON (giá trị chuẩn là `application/json`); máy chủ không bắt buộc phải trả đúng loại đó. Trong phản hồi, header `Content-Type` nói nội dung gửi về là JSON, cũng bằng giá trị `application/json`. Cột "Thường gặp ở" trong bảng dưới cho biết mỗi header hay nằm ở yêu cầu hay ở phản hồi.
 
 ## 🔍 Vài header quen thuộc
 
@@ -35,8 +34,7 @@ gửi và cách dùng nó.
 | `Cache-Control` | chủ yếu phản hồi | Có được lưu lại để dùng lại không, và trong bao lâu |
 | `Set-Cookie` | phản hồi | Hãy lưu mẩu thông tin nhỏ này và gửi lại cho tôi ở lần sau (trình duyệt gửi lại bằng header `Cookie`) |
 
-Hiểu header giúp hai bên hiểu đúng nhau: gửi đúng loại dữ liệu và đọc đúng câu trả lời. Đây là điều cần biết khi
-xây dựng các ứng dụng giao tiếp theo kiểu REST.
+Nhìn bảng trên có thể thấy header trả lời những câu hỏi mà phần nội dung không tự nói ra: nội dung thuộc loại gì, có nên lưu lại không, và người gửi cần được xác nhận thế nào.
 
 ## ⚠️ Giới hạn cần nhớ
 
@@ -48,7 +46,7 @@ xây dựng các ứng dụng giao tiếp theo kiểu REST.
 - **Kiểu nội dung (media type):** tên chuẩn của một loại dữ liệu, viết dạng `loại/phụ`, như `application/json` cho JSON hay `image/png` cho ảnh PNG. Các header `Accept` và `Content-Type` dùng kiểu này.
 - **Header (tiêu đề):** các dòng thông tin kèm theo một yêu cầu hoặc phản hồi, mỗi dòng gồm một tên và một giá trị.
 - **HTTPS:** HTTP có mã hóa kết nối, để người đứng giữa đường thường không đọc được nội dung và header.
-- **Yêu cầu (request) và phản hồi (response):** một lần hỏi và một lần đáp giữa trình duyệt và máy chủ.
+- **Yêu cầu (request) và phản hồi (response):** một lần trình duyệt gửi yêu cầu tới máy chủ, và câu trả lời nhận lại.
 - **Nội dung (body):** phần dữ liệu chính, như trang web hay dữ liệu JSON.
 - **Cookie:** mẩu thông tin nhỏ trình duyệt lưu lại theo yêu cầu của máy chủ, thường để nhớ bạn đã đăng nhập.
 
