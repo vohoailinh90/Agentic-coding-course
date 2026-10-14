@@ -7,7 +7,7 @@
 ## 🏠 Hiểu bằng chuyện đời thường
 
 Hai phòng ban của một công ty lớn ngồi ở hai tòa nhà khác nhau. Cách quen thuộc là viết thư tay đầy đủ câu chữ
-rồi gửi qua lại: dễ đọc nhưng dài dòng (giống dữ liệu JSON dạng chữ). gRPC giống như hai phòng thống nhất trước
+rồi gửi qua lại: dễ đọc nhưng dài dòng (giống JSON, một cách ghi dữ liệu thành chữ có cấu trúc). gRPC giống như hai phòng thống nhất trước
 một **biểu mẫu in sẵn**: mỗi ô có tên và kiểu dữ liệu rõ ràng, điền xong thì ép gọn thành một mã ngắn rồi gửi đi.
 Bên nhận có cùng biểu mẫu nên đọc ra ngay. Nhờ vậy thư ngắn hơn, xử lý nhanh hơn, và việc nhờ phòng kia làm gì đó
 nghe gần như nhờ đồng nghiệp ngồi cạnh.
@@ -40,16 +40,22 @@ Cuối cùng dịch vụ đơn hàng trả lời ứng dụng khách.
 - 📦 **Nhị phân:** dữ liệu mã hóa thành các byte gọn thay vì chữ. Nhỏ hơn và máy xử lý nhanh hơn, nhưng người khó
   đọc trực tiếp.
 - 🛣️ **HTTP/2:** giao thức mà gRPC chạy trên đó, cho phép nhiều yêu cầu chạy xen kẽ trên cùng một kết nối.
-- 📜 **Biểu mẫu chung:** hai bên thường dùng một file mô tả dịch vụ (viết theo Protocol Buffers) để sinh stub cho
+- 📜 **Biểu mẫu chung:** hai bên thường dùng một file mô tả dịch vụ (thường viết theo Protocol Buffers, một cách mô tả dữ liệu và dịch vụ) để sinh stub cho
   nhiều ngôn ngữ lập trình.
 
 ## ⚠️ Giới hạn cần nhớ
 
-- Theo nguồn, gRPC có thể nhanh hơn JSON nhiều lần nhờ dữ liệu nhị phân và tối ưu mạng. Mức nhanh thực tế phụ
+- Theo nguồn, gRPC có thể nhanh hơn REST/JSON nhiều lần nhờ dữ liệu nhị phân và tối ưu mạng. Mức nhanh thực tế phụ
   thuộc dữ liệu và cách đo, nên đừng coi đó là một con số cố định.
 - Dữ liệu nhị phân khó đọc bằng mắt, nên gỡ lỗi cần công cụ riêng.
-- Trình duyệt thường không gọi gRPC trực tiếp được, cần thêm lớp chuyển đổi như gRPC-Web. Vì vậy gRPC hay dùng
+- Trình duyệt thường không gọi gRPC trực tiếp được, cần thêm một lớp chuyển đổi dành cho trình duyệt (gọi là gRPC-Web). Vì vậy gRPC hay dùng
   giữa các dịch vụ phía máy chủ.
+
+## 📖 Từ khó, giải nghĩa
+
+- **JSON:** cách ghi dữ liệu thành chữ có cấu trúc, người đọc được, thường dùng trong REST.
+- **Protocol Buffers:** cách mô tả cấu trúc dữ liệu và dịch vụ để máy ép gọn dữ liệu thành nhị phân.
+- **gRPC-Web:** lớp chuyển đổi giúp trình duyệt nói chuyện được với dịch vụ gRPC.
 
 ## ❓ Nhìn hình trả lời
 

@@ -30,18 +30,18 @@ cầu nói về người hỏi và điều họ muốn. Header của phản hồ
 | Header | Thường gặp ở | Hiểu đơn giản |
 |---|---|---|
 | `Content-Type` | cả hai | Nội dung bên trong thuộc loại gì, như văn bản, JSON hay hình |
-| `Accept` | yêu cầu | Tôi nhận được những dạng nội dung nào |
+| `Accept` | yêu cầu | Tôi nhận được những loại nội dung nào |
 | `User-Agent` | yêu cầu | Tôi là phần mềm nào, như một trình duyệt hay một ứng dụng |
 | `Authorization` | yêu cầu | Đây là thông tin xác nhận tôi là ai |
-| `Cache-Control` | chủ yếu phản hồi | Bản này được giữ lại dùng lại trong bao lâu |
-| `Set-Cookie` | phản hồi | Hãy lưu giúp tôi một mẩu thông tin nhỏ này |
+| `Cache-Control` | chủ yếu phản hồi | Có được lưu lại để dùng lại không, và trong bao lâu |
+| `Set-Cookie` | phản hồi | Hãy lưu mẩu thông tin nhỏ này và gửi lại cho tôi ở lần sau |
 
 Hiểu header giúp hai bên hiểu đúng nhau: gửi đúng loại dữ liệu và đọc đúng câu trả lời. Đây là điều cần biết khi
 xây dựng các ứng dụng giao tiếp theo kiểu REST.
 
 ## ⚠️ Giới hạn cần nhớ
 
-- Header đi kèm ở mọi yêu cầu. Nếu kết nối không được mã hóa (HTTPS), người đứng giữa đường có thể đọc chúng, nên
+- Header đi kèm ở mọi yêu cầu và phản hồi. Nếu kết nối không được mã hóa (HTTPS), người đứng giữa đường có thể đọc chúng, nên
   thông tin nhạy cảm như `Authorization` cần dùng HTTPS.
 - Phía gửi tự điền header, nên có thể điền sai hoặc giả (ví dụ `User-Agent`). Máy chủ không nên tin hoàn toàn.
 

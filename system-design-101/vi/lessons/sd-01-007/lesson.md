@@ -37,14 +37,14 @@ khác nhau; bảng dưới đây nêu cả sáu.
 
 | Chính sách | DNS làm gì | Ví dụ dễ hiểu |
 |---|---|---|
-| **Simple** (đơn giản) | Luôn trả về một đích | Trang nhỏ chỉ có một máy chủ |
-| **Failover** (dự phòng) | Trả về đích chính, nếu hỏng thì chuyển sang đích phụ | Máy chủ chính sập mà trang vẫn mở được |
-| **Geolocation** (theo vị trí) | Chọn theo vị trí địa lý của người hỏi | Khách ở châu Á đến máy chủ châu Á, hoặc nội dung theo từng vùng |
-| **Latency** (độ trễ) | Chọn đích phản hồi nhanh nhất cho người hỏi | Trang tải nhanh hơn |
-| **Multivalue answer** (nhiều giá trị) | Trả về nhiều địa chỉ để máy khách tự chọn | Không thay thế bộ cân bằng tải |
-| **Weighted** (theo trọng số) | Chia khách theo tỷ lệ đặt trước | Cho một phần nhỏ khách thử máy chủ mới |
+| **Simple** (đơn giản) | Chỉ có một đích, ai hỏi cũng nhận cùng câu trả lời | Trang nhỏ chỉ có một máy chủ |
+| **Failover** (dự phòng) | Dùng đích chính; khi đích đó hỏng thì chuyển sang đích phụ (nhờ kiểm tra sức khỏe, và vẫn chịu độ trễ do cache) | Máy chủ chính sập mà trang vẫn mở được |
+| **Geolocation** (theo vị trí) | Xem người hỏi ở đâu rồi chọn đích tương ứng | Khách ở châu Á đến máy chủ châu Á, hoặc nội dung theo từng vùng |
+| **Latency** (độ trễ) | Chọn đích mà người hỏi nhận được câu trả lời nhanh nhất | Khách ở Nhật được dẫn tới máy chủ cho độ trễ thấp nhất, kể cả khi đó không phải máy chủ gần nhất |
+| **Multivalue answer** (nhiều giá trị) | Đưa ra vài địa chỉ để máy khách tự thử | Trả vài địa chỉ; nếu một máy hỏng, trình duyệt có thể thử địa chỉ khác |
+| **Weighted** (theo trọng số) | Chia khách theo tỷ lệ định trước | Cho một phần nhỏ khách thử máy chủ mới |
 
-Các tên gọi này khớp với cách đặt tên ở một số dịch vụ DNS đám mây, như Amazon Route 53.
+Tên gọi tương tự xuất hiện ở một số dịch vụ DNS đám mây (chưa đối chiếu tài liệu trong bản nháp này).
 
 ## ⚠️ Giới hạn cần nhớ
 

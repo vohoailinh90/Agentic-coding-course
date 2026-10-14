@@ -33,18 +33,18 @@ Khi câu trả lời về, router tra bảng, đổi địa chỉ ngược lại
 
 ## 🔍 Các ý chính
 
-- 🧮 **Tiết kiệm địa chỉ:** địa chỉ IPv4 có khoảng 4,3 tỷ giá trị, không đủ để mỗi thiết bị trên thế giới có một địa
-  chỉ công khai riêng. NAT cho nhiều thiết bị dùng chung một địa chỉ công khai.
-- 🤝 **Chia sẻ:** cả nhà hay cả văn phòng dùng chung một địa chỉ công khai.
-- 🧱 **Che địa chỉ nội bộ:** bên ngoài không thấy địa chỉ riêng từng máy, nên có tác dụng giống một lớp tường lửa
-  cơ bản.
+- 🧮 **Tiết kiệm và chia sẻ địa chỉ:** địa chỉ IPv4 có khoảng 4,3 tỷ giá trị (2 mũ 32), không đủ để mỗi
+  thiết bị trên thế giới có một địa chỉ công khai riêng. NAT cho cả nhà hay cả văn phòng dùng chung một địa chỉ
+  công khai.
+- 🧱 **Che địa chỉ nội bộ:** bên ngoài không thấy địa chỉ riêng của từng máy. Kèm theo, gói tin không có dòng
+  tương ứng trong bảng ghi nhớ thường bị bỏ (xem phần giới hạn); đây chưa phải sự bảo vệ thật sự.
 - 🛠️ **Dễ quản lý:** mạng nội bộ tự đặt địa chỉ riêng mà không cần xin một địa chỉ công khai cho từng máy.
 
 ## ⚠️ Giới hạn cần nhớ
 
-- Tác dụng "giống tường lửa" chỉ là hệ quả đi kèm, không phải tính năng bảo mật. NAT không thay thế tường lửa thật.
-- Bảng ghi nhớ chỉ có dòng cho những kết nối do bên trong mở ra. Muốn người bên ngoài chủ động gọi vào một máy
-  trong nhà (ví dụ chơi game, chạy một máy chủ riêng) thường phải cấu hình thêm, như chuyển tiếp cổng.
+- NAT không phải tường lửa. Che địa chỉ chỉ là hệ quả đi kèm; muốn chặn truy cập trái phép vẫn cần tường lửa thật.
+- Thông thường bảng ghi nhớ chỉ có dòng cho những kết nối do bên trong mở ra. Muốn người bên ngoài chủ động gọi
+  vào một máy trong nhà (ví dụ chơi game, chạy một máy chủ riêng) thường phải cấu hình thêm, như chuyển tiếp cổng.
 - IPv6 có số địa chỉ lớn hơn rất nhiều nên không cần NAT chỉ vì thiếu địa chỉ.
 
 ## 📖 Từ khó, giải nghĩa
@@ -62,8 +62,7 @@ NAT thường làm gì?
 <details>
 <summary>Xem đáp án</summary>
 
-Thường router không biết chuyển cho thiết bị nào, vì bảng ghi nhớ chưa có dòng tương ứng, nên bỏ gói dữ liệu đó.
-Trừ khi bạn đã cấu hình sẵn một quy tắc chuyển tiếp.
+Thường router không chuyển gói đó cho máy nào và bỏ nó đi, vì bảng ghi nhớ chưa có dòng tương ứng. Trừ khi bạn đã cấu hình sẵn một quy tắc chuyển tiếp.
 
 </details>
 
