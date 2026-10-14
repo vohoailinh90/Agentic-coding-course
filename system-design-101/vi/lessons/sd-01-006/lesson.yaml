@@ -1,0 +1,10 @@
+id: sd-01-006
+title_vi: Những điều cần biết về HTTP headers
+content_status: drafted      # planned | drafted | approved
+verification:                # mỗi mục: pending | done
+  source_read: done          # đã đọc thân bài nguồn ở blob ghim trong source-map.json
+  claims: pending            # chưa đối chiếu RFC 9110 (ngữ nghĩa HTTP) và tài liệu tham khảo về header (không truy cập được lúc viết)
+  technical: pending         # chờ review kỹ thuật
+  mobile: pending            # đo ước lượng đã đạt ngưỡng (Mermaid + Chromium; chữ >= 15 px ở 375 px và >= 12,6 px ở 320 px); chờ kiểm tra thật trên GitHub hoặc điện thoại
+learner_test: pending        # chưa thử với người học
+image_evidence: []           # không dùng ảnh nguồn
