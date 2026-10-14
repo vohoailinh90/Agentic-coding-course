@@ -57,7 +57,7 @@
           "title_source": "How NAT Enabled the Internet",
           "source_url": "https://bytebytego.com/guides/how-nat-made-the-growth-of-the-internet-possible",
           "source_path": "data/guides/how-nat-made-the-growth-of-the-internet-possible.md",
-          "source_body_reviewed": false,
+          "source_body_reviewed": true,
           "source_blob_sha": "ee73767aa48a016ff32a1a8c93909ad792300042",
           "source_snapshot_url": "https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/how-nat-made-the-growth-of-the-internet-possible.md"
         },

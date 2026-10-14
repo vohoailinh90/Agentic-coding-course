@@ -23,5 +23,6 @@ trong `lesson.md` chỉ gồm `details`, `summary`, `br`, `a`, `img`, `sub`, `su
 | [sd-01-002](lessons/sd-01-002/lesson.md) | Ứng dụng thực tế của bộ cân bằng tải |
 | [sd-01-003](lessons/sd-01-003/lesson.md) | 5 mã HTTP kỳ lạ và bối cảnh sử dụng |
 | [sd-01-004](lessons/sd-01-004/lesson.md) | gRPC hoạt động thế nào? |
+| [sd-01-005](lessons/sd-01-005/lesson.md) | NAT giúp Internet mở rộng ra sao? |
 
 Trạng thái từng bài xem ở `lesson.yaml` của bài đó, không lặp lại ở đây.
