@@ -77,7 +77,7 @@
           "title_source": "Internet Traffic Routing Policies",
           "source_url": "https://bytebytego.com/guides/internet-traffic-routing-policies",
           "source_path": "data/guides/internet-traffic-routing-policies.md",
-          "source_body_reviewed": false,
+          "source_body_reviewed": true,
           "source_blob_sha": "ad8b1c2d58de19d1332e34c953992f4c333883fb",
           "source_snapshot_url": "https://github.com/ByteByteGoHq/system-design-101/blob/b28380a4710c5ec9638ec037d4168e288f334cba/data/guides/internet-traffic-routing-policies.md"
         },
