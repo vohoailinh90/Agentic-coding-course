@@ -45,4 +45,4 @@ Nếu chính repo này đã ghi quy tắc riêng cho một bước ở trên (ai
 ## Ghi chú riêng của repo này
 
 - Exception in this repository (replaces the matching rule above): Who merges is decided by the decision records, and the merge step above applies only as they allow: ADR 010 (the owner merges while main has no branch protection) and ADR 011 (Claude merges the System Design lesson pull requests once the review reports no finding, pinned to the reviewed head SHA).
-- Exception in this repository (replaces the matching rule above): Before any commit that touches course/ run `python -m src.main validate`, and before any commit that touches system-design-101/ run `python3 scripts/sd101_check.py`.
+- Exception in this repository (replaces the matching rule above): Before any commit that touches course/ run `python -m src.main build`, then `python -m src.main validate` (it must pass) and `python -m pytest -q`; before any commit that touches system-design-101/ run `python3 scripts/sd101_check.py`.

@@ -56,7 +56,7 @@ If you are Claude Code or Codex working on this repository directly (a spec, an 
 Exceptions in this repository, which replace the matching rule above:
 
 - Who merges is decided by the decision records, and the merge step above applies only as they allow: ADR 010 (the owner merges while main has no branch protection) and ADR 011 (Claude merges the System Design lesson pull requests once the review reports no finding, pinned to the reviewed head SHA).
-- Before any commit that touches course/ run `python -m src.main validate`, and before any commit that touches system-design-101/ run `python3 scripts/sd101_check.py`.
+- Before any commit that touches course/ run `python -m src.main build`, then `python -m src.main validate` (it must pass) and `python -m pytest -q`; before any commit that touches system-design-101/ run `python3 scripts/sd101_check.py`.
 
 Where this repository documents its own rule for one of these steps elsewhere (who merges, what gates a merge, how the review is requested, a cap on rounds), that rule governs that step; this process covers whatever the repository leaves unsaid.
 <!-- team-onboarding:end -->
