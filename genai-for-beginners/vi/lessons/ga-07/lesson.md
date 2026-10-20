@@ -24,8 +24,9 @@
 
 ## Chatbot hay ứng dụng chat?
 
-**Chatbot** tự động hóa một vài việc trò chuyện cụ thể, như trả lời câu hỏi thường gặp hay tra đơn hàng. **Ứng dụng chat
-dùng AI tạo sinh** là một môi trường rộng hơn nhiều cho nhiều kiểu trò chuyện số.
+**Chatbot** tự động hóa một vài việc trò chuyện cụ thể, như trả lời câu hỏi thường gặp hay tra đơn hàng; nó chạy theo luật
+hoặc theo thuật toán AI phức tạp. **Ứng dụng chat dùng AI tạo sinh** là một môi trường rộng hơn nhiều cho nhiều kiểu
+trò chuyện số, cả chữ, giọng nói và video giữa người dùng.
 
 | Chatbot | Ứng dụng chat dùng AI tạo sinh |
 |---|---|
@@ -45,7 +46,7 @@ Bước đầu tốt là xem có gì làm sẵn. Dùng SDK và API có tài li�
   nhiên.
 
 Muốn dùng, bạn thường cần **khóa API** (hay token xác thực). Ví dụ với thư viện OpenAI cho Python, khóa đọc từ biến môi
-trường:
+trường (giá trị hệ điều hành giữ hộ chương trình):
 
 ```python
 import os
@@ -69,7 +70,8 @@ Ngoài các nguyên tắc UX chung, ứng dụng chat dùng AI cần thêm:
 - **Cá nhân hóa**: ví dụ hồ sơ người dùng. Tính năng "Custom instructions" của ChatGPT cho bạn khai thông tin về mình để
   làm ngữ cảnh cho mọi prompt; nhờ vậy, khi nhờ soạn giáo án, câu trả lời hợp với trình độ của bạn hơn.
 
-**Khung viết tin nhắn hệ thống của Microsoft** chia làm bốn phần:
+**Tin nhắn hệ thống** là lời dặn đặt trước cho mô hình, người dùng không thấy. Hướng dẫn viết tin nhắn hệ thống của
+Microsoft chia làm bốn phần:
 
 1. mô hình phục vụ ai, làm được gì và không làm được gì;
 2. định dạng câu trả lời;
