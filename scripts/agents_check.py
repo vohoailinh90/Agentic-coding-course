@@ -62,7 +62,9 @@ MIN_LAYOUT_KINDS = 5
 LAYOUT_KEYS = {"slides", "first_concept", "cannot"}
 FIRST_SECTION = "Từ viết tắt"
 SOURCES_SECTION = "Nguồn đối chiếu"
-CREDIT = ("microsoft/ai-agents-for-beginners", "MIT")  # docs/agents-slides.md: the attribution line
+CREDIT = "microsoft/ai-agents-for-beginners (MIT License, © Microsoft Corporation)"  # docs/agents-slides.md
+DETAILS = re.compile(r"<details>(.*?)</details>", re.S)
+SUMMARY = re.compile(r"<summary>.*?</summary>", re.S)
 FENCE = re.compile(r" {0,3}(`{3,}|~{3,})(.*)")
 UNREADABLE = "unreadable"  # the status of a held record that cannot be parsed: it holds, and never yields
 SETUP_BRANCH = "origin/claude/gallant-cannon-hdn047"  # the base of the worker branches until it merges into main
@@ -254,7 +256,7 @@ def sections(text: str) -> list[tuple[str, str]]:
 
 def lesson_problems(text: str, entry: dict) -> list[str]:
     problems: list[str] = []
-    if not text.startswith("# "):
+    if not re.match(r"# +\S", text):
         problems.append("lesson.md must start with a `# ` title")
     if scan_fences(text)[1]:
         problems.append("lesson.md leaves a code fence open")
@@ -266,15 +268,16 @@ def lesson_problems(text: str, entry: dict) -> list[str]:
         if name not in headings:
             problems.append(f"lesson.md: section `## {name}` is missing")
     check_body = "\n".join(body for heading, body in found if heading == CHECK_SECTION)
-    if CHECK_SECTION in headings and not ("?" in check_body and "<details>" in check_body
-                                          and "</details>" in check_body):
+    answer = DETAILS.search(check_body)
+    if CHECK_SECTION in headings and not (answer and "?" in check_body[:answer.start()]
+                                          and SUMMARY.sub("", answer.group(1)).strip()):
         problems.append(f"lesson.md: `## {CHECK_SECTION}` must hold a question (`?`) and its answer in "
                         "<details>...</details>")
     sources = "\n".join(body for heading, body in found if heading == SOURCES_SECTION)
     if SOURCES_SECTION in headings:
         if entry["source_url"] not in sources:
             problems.append(f"lesson.md: `## {SOURCES_SECTION}` must link the pinned source {entry['source_url']}")
-        if not all(word in sources for word in CREDIT):
+        if CREDIT not in " ".join(sources.split()):
             problems.append(f"lesson.md: `## {SOURCES_SECTION}` must credit the source: "
                             "microsoft/ai-agents-for-beginners (MIT License, © Microsoft Corporation)")
     return problems
