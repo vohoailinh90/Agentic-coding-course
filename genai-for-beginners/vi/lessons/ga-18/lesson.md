@@ -48,8 +48,8 @@ kém đi trong lĩnh vực của bạn. Trước khi làm, tự hỏi:
 - **Lợi ích**: có hơn mốc so sánh không; có bớt token nhờ prompt gọn hơn không; có dùng lại mô hình gốc
   cho lĩnh vực mới được không.
 
-Chỉ nên làm khi **lợi ích lớn hơn chi phí**. Trên Foundry, ba việc cần biết: kỹ thuật, tầng huấn luyện và
-kinh nghiệm hay.
+Chỉ nên làm khi **lợi ích lớn hơn chi phí**. Trên Foundry, cần biết ba bước (chọn kỹ thuật, tầng huấn
+luyện, mô hình gốc) và vài kinh nghiệm hay.
 
 ## Cần gì để tinh chỉnh
 

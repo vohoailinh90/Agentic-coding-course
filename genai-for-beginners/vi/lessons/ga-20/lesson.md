@@ -2,7 +2,8 @@
 
 Mistral có nhiều mô hình, mỗi cái mạnh một kiểu. Bài này giới thiệu ba mô hình: **Mistral Large**,
 **Mistral Small** và **Mistral NeMo**, mỗi cái hợp với việc gì, và vài ví dụ mã cho thấy điểm riêng của
-từng mô hình. Cả ba đều dùng miễn phí được trên Microsoft Foundry Models.
+từng mô hình. Cả ba đều dùng miễn phí được trên Microsoft Foundry Models; riêng NeMo còn có
+giấy phép mã nguồn mở Apache 2.
 
 ## Từ viết tắt
 
