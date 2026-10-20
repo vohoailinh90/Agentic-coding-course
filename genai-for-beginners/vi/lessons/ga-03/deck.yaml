@@ -1,5 +1,28 @@
 id: ga-03
-status: doing
+status: done
 owner: claude/genai-slides-w1
 session: session_01NYe8fhTTux6kZXaxkptcrc
 claimed_at: '2026-10-20T09:14:47Z'
+done_at: '2026-10-20T10:04:30Z'
+moda_canvas: cvs_7G7HA09WT588VANPHSF19K1S9D
+moda_url: https://moda.app/canvas/f03c5404-f345-4236-aada-39785330e52d
+slide_count: 11
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides:
+  - numbered-rows
+  - card-grid
+  - lookup-table
+  - one-highlighted-sentence
+  - card-grid
+  - flow
+  - layers
+  - connection-diagram
+  - numbered-rows
+  - two-column-comparison
+  - lookup-table
+  first_concept: 3
+  cannot:
+    2x2-matrix: bài không có hai trục nào để xếp nội dung thành ma trận 2x2

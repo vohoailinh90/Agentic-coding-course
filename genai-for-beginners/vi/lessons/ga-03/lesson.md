@@ -23,7 +23,7 @@ này bạn sẽ biết:
 
 Làm sản phẩm thì đặt người dùng vào trung tâm, luôn nghĩ tới lợi ích của họ, sẽ cho kết quả tốt nhất. Sức mạnh
 của AI tạo sinh là tạo ra câu trả lời, thông tin, hướng dẫn và nội dung hữu ích mà không cần nhiều bước thủ công.
-Nhưng nếu thiếu kế hoạch, nó cũng có thể gây hại cho người dùng, cho sản phẩm và cho cả xã hội. Ba tác hại thường
+Nhưng nếu thiếu kế hoạch, nó cũng có thể gây hại cho người dùng, cho sản phẩm và cho cả xã hội. Ba tác hại có thể
 gặp (chưa phải tất cả):
 
 ### Ảo giác
@@ -33,7 +33,7 @@ gặp (chưa phải tất cả):
 Giả sử startup giáo dục của chúng ta làm tính năng cho học sinh hỏi về lịch sử. Một học sinh hỏi: *"Ai là người
 sống sót duy nhất của tàu Titanic?"*. Mô hình trả lời rất tự tin và chi tiết, nhưng sai: chỉ cần tìm hiểu một chút là
 biết có nhiều người sống sót. Với một học sinh mới tìm hiểu, câu trả lời đủ thuyết phục để được tin là thật. Hậu quả:
-hệ thống AI thành ra không đáng tin, và uy tín của startup bị ảnh hưởng. Mỗi phiên bản LLM mới đều giảm được ảo giác,
+hệ thống AI thành ra không đáng tin, và uy tín của startup bị ảnh hưởng. Các phiên bản LLM mới đã giảm ảo giác dần,
 nhưng người làm ứng dụng và người dùng vẫn phải nhớ giới hạn này.
 
 ### Nội dung độc hại
@@ -57,10 +57,13 @@ dạng.
 
 ## Sáu nguyên tắc của AI có trách nhiệm
 
-Trong suốt khóa học, startup của chúng ta dựa trên sáu nguyên tắc: **Công bằng**, **Bao trùm** (không bỏ ai lại phía
+AI tạo sinh đang thu hút rất nhiều người làm, sự chú ý và tiền đầu tư. Điều đó tốt cho ai muốn xây sản phẩm,
+nhưng càng phải đi từng bước có trách nhiệm. Trong suốt khóa học, startup của chúng ta dựa trên sáu nguyên tắc: **Công bằng**, **Bao trùm** (không bỏ ai lại phía
 sau), **Tin cậy và an toàn**, **Bảo mật và quyền riêng tư**, **Minh bạch** và **Chịu trách nhiệm**.
 
 ## Dùng AI tạo sinh có trách nhiệm: các bước
+
+Bài nguồn nói có bốn bước nhưng mô tả ba bước dưới đây; việc đánh giá mô hình được nói chung trong bước giảm tác hại.
 
 ```mermaid
 flowchart LR
@@ -75,11 +78,11 @@ dùng nhiều khả năng sẽ gõ. Với sản phẩm giáo dục, có thể ch
 
 ### Giảm tác hại theo bốn lớp
 
-1. **Mô hình.** Chọn đúng mô hình cho đúng việc. Mô hình lớn và phức tạp như GPT-4 có thể dễ sinh nội dung độc hại hơn
+1. **Mô hình.** Chọn đúng mô hình cho đúng việc. Mô hình lớn và phức tạp như GPT-4 (một mô hình của OpenAI) có thể dễ sinh nội dung độc hại hơn
    khi dùng cho việc nhỏ và hẹp. Tinh chỉnh bằng dữ liệu của mình cũng giảm rủi ro này.
-2. **Hệ thống an toàn.** Bộ công cụ và cấu hình trên nền tảng chạy mô hình, ví dụ bộ lọc nội dung của Azure OpenAI.
-   Hệ thống cũng nên phát hiện các kiểu tấn công "bẻ khóa" (jailbreak) và hoạt động lạ như yêu cầu từ bot.
-3. **Metaprompt.** Các chỉ dẫn hệ thống để định hướng và giới hạn mô hình, giữ câu trả lời trong phạm vi của sản phẩm.
+2. **Hệ thống an toàn.** Bộ công cụ và cấu hình trên nền tảng chạy mô hình, ví dụ bộ lọc nội dung của Azure OpenAI (dịch vụ AI trên đám mây của Microsoft).
+   Hệ thống cũng nên phát hiện các kiểu tấn công "bẻ khóa" (jailbreak) và hoạt động không mong muốn như yêu cầu từ bot.
+3. **Metaprompt và grounding (neo vào nguồn).** Các chỉ dẫn hệ thống để định hướng và giới hạn mô hình, giữ câu trả lời trong phạm vi của sản phẩm.
    Có thể dùng RAG để mô hình chỉ lấy thông tin từ các nguồn tin cậy.
 4. **Trải nghiệm người dùng (UX).** Thiết kế giao diện để giới hạn loại đầu vào người dùng gửi cho mô hình và nội dung
    hiện ra cho họ. Phải nói rõ ứng dụng làm được gì và không làm được gì.
@@ -94,8 +97,8 @@ hoạch triển khai, xử lý sự cố và quay lui (rollback) để tác hạ
 
 ## Công cụ
 
-Làm AI có trách nhiệm nghe có vẻ nhiều việc, nhưng rất đáng. Công cụ hỗ trợ cũng ngày càng nhiều. Ví dụ, **Azure AI
-Content Safety** phát hiện nội dung và hình ảnh độc hại chỉ qua một lần gọi API.
+Làm AI có trách nhiệm nghe có vẻ nhiều việc, nhưng rất đáng. Công cụ hỗ trợ sẽ ngày càng nhiều. Ví dụ, **Azure AI
+Content Safety** phát hiện nội dung và hình ảnh độc hại qua một lệnh gọi API.
 
 ## Thực hành
 
@@ -106,7 +109,7 @@ Content Safety** phát hiện nội dung và hình ảnh độc hại chỉ qua 
 Để dùng AI có trách nhiệm, bạn cần quan tâm điều gì?
 
 1. Câu trả lời phải đúng.
-2. Việc dùng gây hại, ví dụ AI không bị dùng cho mục đích phạm pháp.
+2. Tránh dùng AI gây hại, như dùng cho mục đích phạm pháp.
 3. Bảo đảm AI không thiên lệch, không phân biệt đối xử.
 
 <details>
