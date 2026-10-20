@@ -15,7 +15,7 @@ Sau bài này bạn có thể:
 - **System message / system prompt** — chỉ dẫn nền đặt ra luật chơi và hướng dẫn cho LLM khi nó làm việc với người dùng và dữ liệu.
 - **Meta prompt** — lời nhắc dùng để LLM tự viết ra system prompt cho agent.
 - **Docker container** — một môi trường chạy tách biệt, bị giới hạn, cho ứng dụng.
-- **SMS** — tin nhắn văn bản trên điện thoại.
+- **Human-in-the-loop** — con người đưa phản hồi cho agent ngay lúc nó đang chạy.
 
 ## An toàn nghĩa là gì
 
@@ -51,6 +51,8 @@ Muốn agent đáng tin, cần hiểu và giảm các rủi ro. Bài chỉ nêu 
 | Quá tải tài nguyên và dịch vụ | Gửi lượng yêu cầu lớn qua agent tới các dịch vụ, gây hỏng hệ thống hoặc tốn kém | Đặt chính sách giới hạn số yêu cầu agent gửi tới một dịch vụ; giới hạn lượt hội thoại và yêu cầu |
 | Đầu độc cơ sở tri thức | Nhắm vào cơ sở tri thức và dịch vụ agent dùng, làm hỏng dữ liệu khiến kết quả thiên lệch hoặc ngoài ý muốn | Thường xuyên kiểm tra dữ liệu agent dùng; bảo đảm chỉ người đáng tin được sửa dữ liệu |
 | Lỗi dây chuyền | Lỗi do kẻ tấn công gây ra lan sang các hệ thống khác agent đang nối, khó khắc phục | Cho agent chạy trong môi trường giới hạn (như Docker container); có cơ chế dự phòng và thử lại khi hệ thống báo lỗi |
+
+Để dễ nhớ, có thể gom các cách giảm trên thành ba nhóm: kiểm tra và giới hạn (lọc đầu vào, giới hạn lượt và yêu cầu, kiểm tra dữ liệu), quyền hạn (quyền tối thiểu, kênh an toàn, xác thực, chỉ người đáng tin được sửa dữ liệu), và chống lan lỗi (môi trường giới hạn, dự phòng, thử lại). Cách gom này là của khóa học, không phải của bài gốc.
 
 ## Con người trong vòng lặp
 

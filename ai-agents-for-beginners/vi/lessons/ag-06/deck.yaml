@@ -1,5 +1,15 @@
 id: ag-06
-status: doing
+status: done
 owner: claude/agents-slides-w1
 session: session_01YGSUXJYSMCgd8FmP4BFSad
 claimed_at: '2026-10-20T10:22:50Z'
+done_at: '2026-10-20T10:51:47Z'
+moda_canvas: cvs_5BG12JXW0J94A8P3B86PT8107N
+moda_url: https://moda.app/canvas/ab80452e-f012-4914-8b0d-6835b48080f5
+slide_count: 11
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides: [one-highlighted-sentence, card-grid, numbered-rows, two-column-comparison, connection-diagram, lookup-table, sequence-diagram, layers, card-grid, one-highlighted-sentence, lookup-table]
+  first_concept: 3
