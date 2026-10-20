@@ -72,3 +72,11 @@ mutations:
   find: '"--no-merges", "--no-renames",'
   replace: '"--no-merges",'
   test: tests.test_agents_check.GitFlowCase.test_scope_sees_both_paths_of_a_rename
+- label: an empty self-check section passes
+  find: '    if CHECK_SECTION in headings and not ("?" in check_body and "<details>" in check_body'
+  replace: '    if False and not ("?" in check_body and "<details>" in check_body'
+  test: tests.test_agents_check.StoreCase.test_check_section_needs_question_and_answer
+- label: status reports an unreadable held record as free
+  find: '    if held:'
+  replace: '    if False:'
+  test: tests.test_agents_check.GitFlowCase.test_status_reports_an_unreadable_record_as_held

@@ -67,6 +67,7 @@ FENCE = re.compile(r" {0,3}(`{3,}|~{3,})(.*)")
 UNREADABLE = "unreadable"  # the status of a held record that cannot be parsed: it holds, and never yields
 SETUP_BRANCH = "origin/claude/gallant-cannon-hdn047"  # the base of the worker branches until it merges into main
 REQUIRED_SECTIONS = ("Từ viết tắt", "Nhìn hình trả lời", "Nguồn đối chiếu")
+CHECK_SECTION = "Nhìn hình trả lời"  # docs/agents-slides.md: a check question with its answer in <details>
 PPTX_PARTS = ("[Content_Types].xml", "ppt/presentation.xml")
 PPTX_SLIDE = re.compile(r"ppt/slides/slide\d+\.xml")
 MODA_BADGE = b"moda-export-watermark"  # the picture Moda's free plan puts on every slide it exports
@@ -264,6 +265,11 @@ def lesson_problems(text: str, entry: dict) -> list[str]:
     for name in REQUIRED_SECTIONS:
         if name not in headings:
             problems.append(f"lesson.md: section `## {name}` is missing")
+    check_body = "\n".join(body for heading, body in found if heading == CHECK_SECTION)
+    if CHECK_SECTION in headings and not ("?" in check_body and "<details>" in check_body
+                                          and "</details>" in check_body):
+        problems.append(f"lesson.md: `## {CHECK_SECTION}` must hold a question (`?`) and its answer in "
+                        "<details>...</details>")
     sources = "\n".join(body for heading, body in found if heading == SOURCES_SECTION)
     if SOURCES_SECTION in headings:
         if entry["source_url"] not in sources:
@@ -451,6 +457,20 @@ def stamp() -> str:
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def lesson_state(records: list[tuple[str, dict]]) -> str:
+    """How `status` reports a lesson: done, doing, held (a record claim refuses to yield) or free."""
+    done = [r for _, r in records if r.get("status") == "done"]
+    doing = [r for _, r in records if r.get("status") == "doing"]
+    held = [r for _, r in records if r.get("status") not in ("done", "doing")]
+    if done:
+        return f"done by {done[0].get('owner')} (exports {done[0].get('exports')})"
+    if doing:
+        return f"doing by {doing[0].get('owner')}"
+    if held:
+        return f"held by {held[0].get('owner')}"
+    return "free"
+
+
 def cmd_status(args: argparse.Namespace) -> int:
     source = load_source_map(STORE)
     board = load_board(STORE)
@@ -463,14 +483,7 @@ def cmd_status(args: argparse.Namespace) -> int:
     for lesson_id, entry in source.items():
         assignment = assigned_branch(board, lesson_id)
         records = found.get(lesson_id, [])
-        done = [r for _, r in records if r.get("status") == "done"]
-        doing = [r for _, r in records if r.get("status") == "doing"]
-        if done:
-            state = f"done by {done[0].get('owner')} (exports {done[0].get('exports')})"
-        elif doing:
-            state = f"doing by {doing[0].get('owner')}"
-        else:
-            state = "free"
+        state = lesson_state(records)
         owners = {r.get("owner") for _, r in records if r.get("owner")}
         warning = "  WARNING: held by several branches" if len(owners) > 1 else ""
         where = assignment[0] if assignment else "unassigned"

@@ -21,7 +21,7 @@ from scripts import agents_check as check
 REAL_STORE = Path(__file__).resolve().parent.parent / "ai-agents-for-beginners" / "vi"
 SOURCE_URL = "https://github.com/microsoft/ai-agents-for-beginners/blob/abc/01-intro-to-ai-agents/README.md"
 LESSON = ("# AI agent\n\n## Từ viết tắt\n\n- **AI** (Artificial Intelligence) — trí tuệ nhân tạo.\n\n"
-          "## Ý chính\n\nNội dung.\n\n## Nhìn hình trả lời\n\nCâu hỏi?\n\n"
+          "## Ý chính\n\nNội dung.\n\n## Nhìn hình trả lời\n\nCâu hỏi?\n\n<details><summary>Đáp án</summary>Đáp.</details>\n\n"
           f"## Nguồn đối chiếu\n\n- [Bài gốc]({SOURCE_URL})\n\nDựa trên bài 01 của microsoft/ai-agents-for-beginners "
           "(MIT License, © Microsoft Corporation).\n")
 # ag-01: the first concept's signature kind is LAYOUT_KINDS[1 % 12] = flow
@@ -92,6 +92,14 @@ class StoreCase(unittest.TestCase):
     def test_lesson_must_credit_the_source(self) -> None:
         (self.folder / "lesson.md").write_text(LESSON.replace("MIT License", "giấy phép"), encoding="utf-8")
         self.assertProblem("must credit the source")
+
+    def test_check_section_needs_question_and_answer(self) -> None:
+        empty = LESSON.replace("Câu hỏi?\n\n<details><summary>Đáp án</summary>Đáp.</details>\n\n", "\n")
+        (self.folder / "lesson.md").write_text(empty, encoding="utf-8")
+        self.assertProblem("must hold a question (`?`) and its answer in <details>")
+        no_answer = LESSON.replace("<details><summary>Đáp án</summary>Đáp.</details>", "Đáp.")
+        (self.folder / "lesson.md").write_text(no_answer, encoding="utf-8")
+        self.assertProblem("must hold a question (`?`) and its answer in <details>")
 
     def test_fence_closes_only_on_a_long_enough_line(self) -> None:
         fenced = "````md\n```\n## Nhìn hình trả lời\n```\n````\n\n"
@@ -304,6 +312,12 @@ class GitFlowCase(unittest.TestCase):
         self.assertEqual(self.tool(w2, "claim", "ag-01", "--session", "s2", "--take-over")[0], 0)
         record = yaml.safe_load((w2 / check.STORE_REL / "lessons/ag-01/deck.yaml").read_text(encoding="utf-8"))
         self.assertEqual((record["owner"], record["session"]), ("w2", "s2"))
+
+    def test_status_reports_an_unreadable_record_as_held(self) -> None:
+        unreadable = check.parse_held("[: not yaml", "origin/claude/x")
+        self.assertEqual(check.lesson_state([("origin/claude/x", unreadable)]),
+                         "held by an unreadable deck.yaml on origin/claude/x")
+        self.assertEqual(check.lesson_state([]), "free")
 
     def test_claims_pushed_after_a_clone_are_fetched(self) -> None:
         self.run_git(self.tmp, "clone", "-q", "--single-branch", "remote.git", "late")  # tracks main only
