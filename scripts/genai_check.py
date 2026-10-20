@@ -64,6 +64,7 @@ FIRST_SECTION = "Từ viết tắt"
 SOURCES_SECTION = "Nguồn đối chiếu"
 CREDIT = ("microsoft/generative-ai-for-beginners", "MIT")  # docs/genai-slides.md: the attribution line
 FENCE = re.compile(r" {0,3}(`{3,}|~{3,})(.*)")
+UNREADABLE = "unreadable"  # the status of a held record that cannot be parsed: it holds, and never yields
 SETUP_BRANCH = "origin/claude/genai-slides-setup"  # the base of the worker branches until it merges into main
 REQUIRED_SECTIONS = ("Từ viết tắt", "Nhìn hình trả lời", "Nguồn đối chiếu")
 PPTX_PARTS = ("[Content_Types].xml", "ppt/presentation.xml")
@@ -382,14 +383,14 @@ def parse_held(text: str, where: str) -> dict:
         record = yaml.safe_load(text)
     except (yaml.YAMLError, ValueError):
         record = None
-    return record if isinstance(record, dict) else {"owner": f"an unreadable deck.yaml on {where}", "status": "doing"}
+    return record if isinstance(record, dict) else {"owner": f"an unreadable deck.yaml on {where}", "status": UNREADABLE}
 
 
 def refresh(args: argparse.Namespace) -> None:
     """Fetch every branch of origin: a cloud session's clone tracks only main, and a claim that cannot see the
     other sessions' branches protects nothing."""
     if not args.no_fetch:
-        git("fetch", "--quiet", "origin", "+refs/heads/*:refs/remotes/origin/*")
+        git("fetch", "--quiet", "--prune", "origin", "+refs/heads/*:refs/remotes/origin/*")
 
 
 def remote_refs() -> list[str]:
@@ -431,6 +432,9 @@ def claim_problem(lesson_id: str, branch: str, board: list[dict], held: list[tup
             continue
         if record.get("status") == "done":
             return f"{lesson_id} is already done by {record.get('owner')} ({where})"
+        if record.get("status") != "doing":
+            return (f"{lesson_id} is already held by {record.get('owner')} ({where}); only a readable `doing` "
+                    "record can be taken over")
         if not take_over:
             return (f"{lesson_id} is already held by {record.get('owner')} ({where}); if the coordinator moved it "
                     "to this branch, claim it with --take-over")
@@ -521,13 +525,18 @@ def cmd_scope(args: argparse.Namespace) -> int:
     branch = current_branch()
     refresh(args)
     ids = [lesson_id for row in board if row["branch"] == branch for lesson_id in expand_range(row["range"])]
-    base = args.base or (SETUP_BRANCH if SETUP_BRANCH in remote_refs() else "origin/main")
-    paths = git("diff", "--name-only", f"{base}...HEAD").split()
+    # the files of this branch's own commits: neither a merge of main (other ranges' lessons) nor the setup
+    # commits it was made from count, and a rename shows both of its paths
+    refs = remote_refs()
+    bases = [args.base] if args.base else [ref for ref in ("origin/main", SETUP_BRANCH) if ref in refs]
+    output = git("log", "--no-merges", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)
+    paths = sorted({path.strip("\n") for path in output.split("\0") if path.strip("\n")})
     problems = scope_problems(paths, ids)
     for problem in problems:
         print(problem)
-    print(f"{len(problems)} path(s) out of scope against {base}" if problems
-          else f"scope OK: {len(paths)} changed path(s) against {base}, all in {branch}'s lesson folders")
+    against = " and ".join(bases) or "nothing"
+    print(f"{len(problems)} path(s) out of scope against {against}" if problems
+          else f"scope OK: {len(paths)} changed path(s) against {against}, all in {branch}'s lesson folders")
     return 1 if problems else 0
 
 

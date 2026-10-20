@@ -25,7 +25,8 @@ chưa có branch protection).
    Chỉ phiên điều phối sửa bảng.
 2. **Nhận trước khi làm**: `python3 scripts/genai_check.py claim <id>... --session <session_id>` ghi
    `lessons/<id>/deck.yaml` với `status: doing`. `status`, `claim` và `scope` tự `git fetch` mọi nhánh của
-   `origin` trước (bản clone của phiên cloud chỉ theo dõi `main`). Lệnh từ chối bài không thuộc dải của nhánh đang đứng, và bài
+   `origin` trước (bản clone của phiên cloud chỉ theo dõi `main`; khi không có mạng, đặt cờ trước lệnh con:
+   `genai_check.py --no-fetch status`). Lệnh từ chối bài không thuộc dải của nhánh đang đứng, và bài
    mà một nhánh `origin/*` khác đang giữ. Commit và **push ngay** bản ghi `doing`: chưa push thì chưa giữ được gì.
 3. `python3 scripts/genai_check.py status` cho biết từng bài `free`, `doing` hay `done`
    trên mọi nhánh, và cảnh báo khi một bài bị hai nhánh giữ.
@@ -35,7 +36,8 @@ chưa có branch protection).
    sau đó so với `origin/main`) và phải qua trước khi mở PR.
 5. **Nhánh**: dùng đúng tên nhánh bảng giao cho dải, tạo từ `origin/claude/genai-slides-setup` khi PR setup
    chưa merge, từ `origin/main` khi đã merge. Nhánh của phiên mang tên khác thì dừng, hỏi phiên điều phối.
-6. Phiên chết giữa chừng: phiên điều phối giao lại dải (đổi `branch` trong bảng). Phiên mới tạo nhánh từ nhánh
+6. Phiên chết giữa chừng: phiên điều phối giao lại **nguyên** dải cho một nhánh mới (đổi `branch` trong bảng; không
+   chia đôi dải chết, vì nhánh mới mang theo mọi thư mục bài của nhánh cũ và `scope` sẽ báo phần không thuộc nó). Phiên mới tạo nhánh từ nhánh
    cũ (để giữ bài đã xong), rồi `claim <id>... --session ... --take-over` cho các bài cũ đang `doing`: lệnh chỉ
    nhường bản ghi `doing` của nhánh mà bảng không còn giao, không bao giờ nhường bài `done`. Tìm canvas cũ bằng
    `canvas_search` theo id (`ga-07`) và làm tiếp trên đó, không tạo canvas thứ hai.
@@ -53,6 +55,8 @@ python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi
 3. **Dựng deck trên Moda** (mục *Slide*): `moda_bootstrap`, `load_skill("moda-core")`, `load_skill("moda-deck")`
    và các skill nó chỉ tới. Brand kit: **không dùng** (đã chốt, không hỏi lại). Mỗi slide một
    `canvas_apply_markup`; chụp **mọi** slide bằng `canvas_screenshot` và sửa trước khi sang slide sau.
+   **Không gọi `canvas_delete`**: Moda bắt người duyệt tay lệnh này, phiên không ai trông sẽ đứng chờ. Muốn bỏ
+   một phần slide thì vẽ lại cả trang bằng `canvas_apply_markup` thay trang (`replace_page_nodes`).
 4. **Xuất PPTX**: `export(canvas, format="pptx")`, tải link bằng `curl` về
    `lessons/<id>/<id>.pptx`. Gói Moda miễn phí gắn huy hiệu `moda.app` lên mọi slide: **không bao giờ gỡ**.
 5. **Phản biện** (mục *Phản biện*), sửa mọi lỗi được xác nhận.

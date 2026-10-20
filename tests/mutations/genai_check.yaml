@@ -21,7 +21,7 @@ mutations:
   test: tests.test_genai_check.ClaimCase.test_take_over_yields_doing_never_done
 - label: an unreadable record no longer holds its lesson
   find: '    return record if isinstance(record, dict) else {"owner": f"an unreadable deck.yaml on {where}", "status":
-    "doing"}'
+    UNREADABLE}'
   replace: '    return record if isinstance(record, dict) else {}'
   test: tests.test_genai_check.ClaimCase.test_unreadable_record_holds_its_lesson
 - label: scope accepts any path
@@ -60,3 +60,15 @@ mutations:
   find: '    if not args.no_fetch:'
   replace: '    if False:'
   test: tests.test_genai_check.GitFlowCase.test_claims_pushed_after_a_clone_are_fetched
+- label: take-over yields a record that cannot be read
+  find: '        if record.get("status") != "doing":'
+  replace: '        if False:'
+  test: tests.test_genai_check.ClaimCase.test_take_over_yields_doing_never_done
+- label: scope counts what a merge of main brought in
+  find: '    output = git("log", "--no-merges", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)'
+  replace: '    output = git("diff", "--name-only", "-z", f"{SETUP_BRANCH if SETUP_BRANCH in refs else ''origin/main''}...HEAD")'
+  test: tests.test_genai_check.GitFlowCase.test_scope_ignores_lessons_merged_in_from_main
+- label: scope sees only the new path of a rename
+  find: '"--no-merges", "--no-renames",'
+  replace: '"--no-merges",'
+  test: tests.test_genai_check.GitFlowCase.test_scope_sees_both_paths_of_a_rename
