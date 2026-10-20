@@ -27,7 +27,7 @@ chứng được: kiểm toán viên không cần tin bạn, chỉ cần khóa c
 ## Biên nhận mật mã là gì
 
 Biên nhận là một đối tượng JSON ghi lại agent đã làm gì, kèm chữ ký số. Các trường chính: loại biên nhận, mã agent, tên
-công cụ, băm của đối số, băm của kết quả, mã chính sách, thời điểm, số thứ tự, băm của biên nhận trước, và đối tượng
+công cụ, băm SHA-256 của đối số, băm của kết quả, mã chính sách, thời điểm, số thứ tự, băm của biên nhận trước, và đối tượng
 chữ ký. Băm đối số và kết quả (thay vì chép nguyên văn) giữ biên nhận nhỏ và giữ kín nội dung nhạy cảm; kiểm toán viên
 so băm với bản gốc lưu riêng.
 
@@ -47,7 +47,8 @@ Ba tính chất ấy cho ba bảo đảm: **quy kết** (khóa này đã ký n�
 ## Thử ngay: ký và xác minh
 
 Không cần thư viện đặc biệt: bạn dựng bằng Python thuần với PyNaCl (Ed25519) và gói `jcs`. Phần cốt lõi của bước xác
-minh, đảo ngược việc ký, nằm trong vài dòng:
+minh, đảo ngược việc ký, gồm ba việc: bỏ trường chữ ký ra, chuẩn hóa JCS, rồi kiểm chữ ký bằng khóa công khai.
+Nó nằm trong vài dòng:
 
 ```python
 payload = {k: v for k, v in receipt.items() if k != "signature"}
@@ -92,7 +93,7 @@ nhưng quyền lực không bao giờ lẫn.
 Tính chất đạt được: *người đã duyệt đúng hành động này, và agent đã chạy đúng hành động được duyệt.* Chữ ký duyệt tự nó
 không phải quyền lực: quyền lực chỉ có khi cả hai biên nhận vẫn gắn cùng một hành động chuẩn tắc lúc thực thi. Chữ ký còn
 hợp lệ vẫn bị từ chối nếu quyền lực đã cũ (chính sách đổi phiên bản, khóa người duyệt bị thu hồi, hay lệnh duyệt hết hạn), hoặc nếu biên nhận hành động trỏ
-tới một lệnh duyệt thật nhưng gắn với hành động khác.
+tới một lệnh duyệt thật nhưng gắn với hành động khác. Biên nhận duyệt này là cách ghép mang tính giáo dục do bài gốc đặt ra, không phải một loại biên nhận trong tiêu chuẩn nào.
 
 ## Đưa lên sản xuất
 
