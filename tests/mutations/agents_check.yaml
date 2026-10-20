@@ -65,12 +65,12 @@ mutations:
   replace: '        if False:'
   test: tests.test_agents_check.ClaimCase.test_take_over_yields_doing_never_done
 - label: scope counts what a merge of main brought in
-  find: '    output = git("log", "--no-merges", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)'
+  find: '    output = git("log", "-c", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)'
   replace: '    output = git("diff", "--name-only", "-z", f"{SETUP_BRANCH if SETUP_BRANCH in refs else ''origin/main''}...HEAD")'
   test: tests.test_agents_check.GitFlowCase.test_scope_ignores_lessons_merged_in_from_main
 - label: scope sees only the new path of a rename
-  find: '"--no-merges", "--no-renames",'
-  replace: '"--no-merges",'
+  find: '"-c", "--no-renames",'
+  replace: '"-c",'
   test: tests.test_agents_check.GitFlowCase.test_scope_sees_both_paths_of_a_rename
 - label: an empty self-check section passes
   find: '    if CHECK_SECTION in headings and not ("?" in check_body and "<details>" in check_body'
@@ -80,3 +80,15 @@ mutations:
   find: '    if held:'
   replace: '    if False:'
   test: tests.test_agents_check.GitFlowCase.test_status_reports_an_unreadable_record_as_held
+- label: slide 2 (the goal slide) passes as the first concept
+  find: '    if not (_count(first) and 3 <= first <= total - 1):'
+  replace: '    if not (_count(first) and 2 <= first <= total - 1):'
+  test: tests.test_agents_check.StoreCase.test_first_concept_range
+- label: scope drops what a merge resolution edited
+  find: '    output = git("log", "-c", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)'
+  replace: '    output = git("log", "--no-merges", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)'
+  test: tests.test_agents_check.GitFlowCase.test_scope_sees_an_edit_made_in_a_merge_resolution
+- label: scope lists every path a merge brought in from main
+  find: '    output = git("log", "-c", "--no-renames",'
+  replace: '    output = git("log", "-m", "--no-renames",'
+  test: tests.test_agents_check.GitFlowCase.test_scope_ignores_lessons_merged_in_from_main

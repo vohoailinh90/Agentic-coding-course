@@ -120,7 +120,9 @@ class StoreCase(unittest.TestCase):
 
     def test_first_concept_range(self) -> None:
         self.write_record(self.done(layouts={"slides": LAYOUTS, "first_concept": 10}))
-        self.assertProblem("first_concept must be the number of the first concept's slide, from 2 to 9")
+        self.assertProblem("first_concept must be the number of the first concept's slide, from 3 to 9")
+        self.write_record(self.done(layouts={"slides": LAYOUTS, "first_concept": 2}))
+        self.assertProblem("first_concept must be the number of the first concept's slide, from 3 to 9")
 
     def test_doing_record_without_lesson_passes(self) -> None:
         (self.folder / "lesson.md").unlink()
@@ -355,6 +357,24 @@ class GitFlowCase(unittest.TestCase):
         code, out = self.tool(w1, "scope")
         self.assertEqual(code, 0, out)
         self.assertIn("1 changed path(s)", out)
+
+    def test_scope_sees_an_edit_made_in_a_merge_resolution(self) -> None:
+        w1 = self.clone("w1", "w1")
+        self.tool(w1, "claim", "ag-01", "--session", "s1")
+        self.push(w1, "w1")
+        main = self.clone("main2")
+        (main / "notes.md").write_text("from main", encoding="utf-8")
+        self.run_git(main, "add", "-A")
+        self.run_git(main, "commit", "-q", "-m", "main moves")
+        self.run_git(main, "push", "-q", "origin", "main")
+        self.run_git(w1, "fetch", "-q", "origin")
+        self.run_git(w1, "merge", "-q", "--no-commit", "origin/main")
+        (w1 / "notes.md").write_text("edited while merging", encoding="utf-8")
+        self.run_git(w1, "add", "-A")
+        self.run_git(w1, "commit", "-q", "--no-edit")
+        code, out = self.tool(w1, "scope")
+        self.assertEqual(code, 1, out)
+        self.assertIn("notes.md is outside", out)
 
     def test_scope_sees_both_paths_of_a_rename(self) -> None:
         w1 = self.clone("w1", "w1")

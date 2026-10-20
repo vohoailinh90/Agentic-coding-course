@@ -161,9 +161,9 @@ def layout_problems(layouts: object, lesson_id: str, slide_count: object) -> lis
     if repeats:
         problems.append(f"layouts: the same kind on adjacent slides {', '.join(repeats)}")
     first = layouts.get("first_concept")
-    if not (_count(first) and 2 <= first <= total - 1):
-        return problems + [f"layouts: first_concept must be the number of the first concept's slide, from 2 to "
-                           f"{total - 1} (the cover and the terms and sources slide are not concepts)"]
+    if not (_count(first) and 3 <= first <= total - 1):
+        return problems + [f"layouts: first_concept must be the number of the first concept's slide, from 3 to "
+                           f"{total - 1} (the cover, the goal slide and the terms and sources slide are not concepts)"]
     cannot = layouts.get("cannot", {})
     if not (isinstance(cannot, dict) and all(isinstance(kind, str) and _text(why) for kind, why in cannot.items())):
         return problems + ["layouts: cannot must give, for each kind that could not show the content, the reason"]
@@ -542,7 +542,9 @@ def cmd_scope(args: argparse.Namespace) -> int:
     # commits it was made from count, and a rename shows both of its paths
     refs = remote_refs()
     bases = [args.base] if args.base else [ref for ref in ("origin/main", SETUP_BRANCH) if ref in refs]
-    output = git("log", "--no-merges", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)
+    # -c: a merge commit lists only the paths its result changes against every parent, i.e. what its
+    # resolution itself edited; what it brought in from a parent unchanged is not this branch's work
+    output = git("log", "-c", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)
     paths = sorted({path.strip("\n") for path in output.split("\0") if path.strip("\n")})
     problems = scope_problems(paths, ids)
     for problem in problems:
