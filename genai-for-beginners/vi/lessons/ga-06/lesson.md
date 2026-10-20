@@ -59,13 +59,14 @@ Python) và **Semantic Kernel** của Microsoft (hỗ trợ C#, Python, Java). B
 Nên tách khóa API khỏi code bằng **biến môi trường** (giá trị hệ điều hành giữ hộ chương trình), ví dụ đặt biến
 `OPENAI_API_KEY`, hoặc ghi vào tệp `.env` rồi nạp bằng thư viện `python-dotenv`.
 
-## Sinh văn bản: năm dòng code
+## Thử ngay: sáu dòng code
 
 ```python
 from openai import OpenAI
 client = OpenAI(api_key="sk-...")
 prompt = "Hoàn thành câu: Ngày xửa ngày xưa có một"
-response = client.responses.create(model="gpt-5-mini", input=prompt, store=False)
+response = client.responses.create(
+    model="gpt-5-mini", input=prompt, store=False)
 print(response.output_text)
 ```
 
