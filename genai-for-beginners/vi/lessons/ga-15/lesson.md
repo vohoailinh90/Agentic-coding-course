@@ -16,7 +16,8 @@ liệu vector.
 
 Tình huống của bài: chatbot ôn thi dùng ghi chú riêng. Một công ty khởi nghiệp giáo dục muốn chatbot của
 mình dùng **ghi chú học tập** (bài *Mạng nơ-ron* trong khóa AI for Beginners) để giúp người học ôn thi:
-tạo **câu hỏi luyện tập**, **thẻ ghi nhớ** và **bản tóm tắt ngắn**. Học xong, bạn sẽ:
+tạo **câu hỏi luyện tập**, **thẻ ghi nhớ** và **bản tóm tắt ngắn**. Công cụ: Azure OpenAI làm LLM, Azure AI
+Search và Azure Cosmos DB làm kho vector. Học xong, bạn sẽ:
 
 1. giải thích RAG là gì, vì sao quan trọng;
 2. dựng ứng dụng RAG neo vào dữ liệu riêng, tức là câu trả lời của LLM dựa trên dữ liệu của bạn;
@@ -45,7 +46,7 @@ Bốn bước của RAG:
 1. **Kho tri thức**: tài liệu được nạp và xử lý trước. Ta chia mẩu, biến thành embedding (một dãy số),
    lưu lại vào cơ sở dữ liệu.
 2. **Câu hỏi**: người dùng đặt câu hỏi.
-3. **Truy xuất**: mô hình embedding tìm mẩu liên quan trong kho, thêm vào prompt làm ngữ cảnh.
+3. **Truy xuất**: mô hình embedding tìm mẩu liên quan trong kho, thêm vào prompt (đoạn chữ gửi cho LLM) làm ngữ cảnh.
 4. **Sinh câu trả lời**: LLM trả lời dựa trên kiến thức đã học và ngữ cảnh vừa tìm được.
 
 Nhờ vậy câu trả lời được "neo" vào dữ liệu của bạn.
@@ -58,7 +59,7 @@ flowchart LR
   P --> L[LLM trả lời]
 ```
 
-Bài báo gốc về RAG nêu hai cách làm: **RAG-Sequence** dùng các tài liệu tìm được để dự đoán câu trả lời
+Bài báo gốc về RAG (*Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*) nêu hai cách làm: **RAG-Sequence** dùng các tài liệu tìm được để dự đoán câu trả lời
 tốt nhất, còn **RAG-Token** dùng tài liệu để sinh từng token tiếp theo.
 
 ## Dựng kho tri thức: cơ sở dữ liệu vector
@@ -66,7 +67,7 @@ tốt nhất, còn **RAG-Token** dùng tài liệu để sinh từng token tiế
 Gọn lại: chia mẩu, thành số, cất vào kho. **Cơ sở dữ liệu vector** là loại cơ sở dữ liệu chuyên lưu,
 quản lý và tìm kiếm embedding, tức là dạng số của tài liệu.
 
-Vì sao phải chia nhỏ? LLM nhận số token giới hạn, nên không thể đưa cả kho vào; ta chỉ gửi kèm mẩu giống
+Vì sao phải chia nhỏ? LLM nhận số token (mẩu chữ mô hình đọc) giới hạn, nên không thể đưa cả kho vào; ta chỉ gửi kèm mẩu giống
 câu hỏi nhất. Chia nhỏ còn giảm số token phải trả tiền.
 
 - **Chia mẩu** theo câu hoặc theo đoạn. Có thể thêm ngữ cảnh cho mẩu, ví dụ tên tài liệu hay vài câu
@@ -79,10 +80,10 @@ câu hỏi nhất. Chia nhỏ còn giảm số token phải trả tiền.
 
 ## Tìm lại: từ khóa, vector hay cả hai
 
-Khi có câu hỏi, hệ thống biến câu hỏi thành vector rồi tìm trong chỉ mục những vector liên quan. Có ba
+Khi có câu hỏi, hệ thống biến câu hỏi thành vector rồi tìm trong chỉ mục (bảng tra giúp tìm nhanh) những vector liên quan. Có ba
 cách tìm:
 
-- **Tìm theo từ khóa**: khớp chữ, câu hỏi và tài liệu phải có cùng từ.
+- **Tìm theo từ khóa**: khớp chữ, dùng cho tìm kiếm văn bản.
 - **Tìm theo vector**: tìm theo nghĩa (tìm kiếm ngữ nghĩa), lấy tài liệu có vector gần câu hỏi nhất.
 - **Kết hợp (hybrid)**: dùng cả hai. Bài này chọn cách này.
 
@@ -112,8 +113,7 @@ prompt = "\n\n".join(history)
 response = client.responses.create(model=..., input=prompt)
 ```
 
-Bài nguồn còn thêm một lời dặn hệ thống ("You are an AI assistant that helps with AI questions.") và dùng
-mô hình `gpt-5-mini`. Hỏi *"what is a perceptron?"*: chatbot trả lời từ ghi chú về perceptron vừa tìm được.
+Bài nguồn dùng mô hình `gpt-5-mini`. Hỏi *"what is a perceptron?"*: chatbot trả lời từ ghi chú về perceptron vừa tìm được.
 
 ## Ứng dụng và đánh giá
 
