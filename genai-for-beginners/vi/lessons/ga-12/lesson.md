@@ -11,8 +11,9 @@
 một công cụ hay một thiết kế. Người dùng cần làm việc với ứng dụng của bạn một cách **hiệu quả**. Nhưng chưa đủ: ứng
 dụng còn phải **dùng được cho mọi người**, và với ứng dụng AI, trải nghiệm còn phải **có đạo đức**.
 
-Tình huống của bài: startup giáo dục (hư cấu) có hai nhóm người dùng chính, **giáo viên** và **học sinh**, mỗi nhóm có
-nhu cầu riêng: ví dụ giáo viên cần ứng dụng tự chấm bài, học sinh cần thẻ ghi nhớ để ôn tập. Thiết kế **lấy người dùng làm trung tâm** nghĩa là đặt người dùng lên trước, để sản phẩm thật sự hữu ích
+Tình huống của bài: startup (công ty khởi nghiệp) giáo dục (hư cấu) có hai nhóm người dùng chính, **giáo viên** và **học sinh**, mỗi nhóm có
+nhu cầu riêng: ví dụ ứng dụng tự chấm bài
+cho giáo viên, thẻ ghi nhớ giúp học sinh ôn tập. Thiết kế **lấy người dùng làm trung tâm** nghĩa là đặt người dùng lên trước, để sản phẩm thật sự hữu ích
 cho đúng người cần nó.
 
 Học xong bài, bạn sẽ:
@@ -47,7 +48,8 @@ Hai cách đặt niềm tin vào giữa thiết kế: **giải thích được**
 
 ### Giải thích được
 
-**Giải thích được** (explainability) là giúp người dùng hiểu AI ra quyết định thế nào. Thiết kế cho điều này gồm:
+**Giải thích được** (explainability) là giúp người dùng hiểu AI ra quyết định thế nào. Thiết kế cho điều này gồm thêm chi tiết cho thấy AI đi
+đến kết quả thế nào, và:
 
 - **nói rõ đây là AI**, không phải người. Ví dụ thay vì "Bắt đầu trò chuyện với gia sư của bạn ngay", hãy viết "Dùng gia
   sư AI tự điều chỉnh theo nhu cầu, giúp bạn học theo tốc độ của mình";
@@ -77,6 +79,15 @@ Nếu AI trả lời sai thì sao? Ứng dụng xử lý lỗi thế nào: đổ
 - **Nói rõ khả năng và giới hạn**: khi người dùng hỏi ngoài phạm vi, ứng dụng cần có cách xử lý. Ví dụ ứng dụng chỉ học dữ
   liệu Lịch sử và Toán, gặp câu hỏi Địa lý thì trả lời: "Xin lỗi, sản phẩm của chúng tôi chỉ được huấn luyện
   với dữ liệu các môn: Lịch sử, Toán. Tôi không trả lời được câu bạn hỏi."
+
+```mermaid
+sequenceDiagram
+    participant H as Học sinh
+    participant U as Ứng dụng AI
+    H->>U: Hỏi một câu Địa lý
+    U-->>H: Xin lỗi, tôi chỉ được huấn luyện với các môn Lịch sử, Toán
+    H->>U: Bấm thích hoặc không thích
+```
 
 AI sẽ có lúc sai. Khi thiết kế, hãy chừa chỗ cho người dùng góp ý và xử lý lỗi theo cách đơn giản, dễ hiểu.
 
