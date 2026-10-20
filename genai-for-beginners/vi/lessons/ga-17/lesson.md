@@ -1,6 +1,6 @@
 # AI agent
 
-Một chatbot thường chỉ trả lời. Một AI agent thì làm được việc: nó lên kế hoạch, gọi công cụ, nhớ mình đã
+Chatbot thường chỉ trả lời. Một AI agent thì làm được việc: nó lên kế hoạch, gọi công cụ, nhớ mình đã
 làm gì rồi làm tiếp. Bài này cho bạn một định nghĩa đơn giản về agent, giới thiệu năm framework để dựng
 agent, và cho thấy nhiều agent phối hợp với nhau ra sao.
 
@@ -35,7 +35,9 @@ Một agent gồm ba thứ:
 - **Công cụ (tools)**, tức đôi tay: thứ LLM cần để làm xong việc người dùng giao. Ví dụ: một cơ sở dữ liệu, một API,
   một ứng dụng khác, thậm chí một LLM khác.
 
-Vòng lặp của agent: lên kế hoạch → gọi công cụ → cập nhật trạng thái → lặp lại.
+Vì LLM dựa vào việc đã làm và ngữ cảnh hiện tại để quyết bước tiếp, ta có thể hình dung công việc của
+agent như một vòng (đây là cách nhìn của bài viết lại, không phải của bài nguồn): lên kế hoạch → gọi
+công cụ → cập nhật trạng thái → lặp lại.
 
 ```mermaid
 flowchart LR
@@ -60,7 +62,8 @@ Cả năm đều trả lời hai câu: giữ trạng thái thế nào, đưa cô
 - **LangChain Agents**: `AgentExecutor` nhận agent và các công cụ, lưu lịch sử chat làm ngữ cảnh. Công
   cụ lấy từ một danh mục do cộng đồng và đội LangChain làm. Để thấy LLM dùng công cụ nào và vì sao, đội
   LangChain làm thêm LangSmith.
-- **AutoGen** xoay quanh hội thoại. Agent **trò chuyện được** (một LLM mở và nối tiếp cuộc trò chuyện với
+- **AutoGen** xoay quanh hội thoại. Để thay đổi và giữ trạng thái, agent trợ lý tự viết mã Python để làm
+  việc. Agent **trò chuyện được** (một LLM mở và nối tiếp cuộc trò chuyện với
   LLM khác, qua các `AssistantAgent` có system message riêng) và **tùy biến được** (agent có thể là một
   người dùng hay một công cụ; `UserProxyAgent` hỏi ý kiến người dùng để làm tiếp hoặc dừng).
 - **Microsoft Agent Framework** là SDK mã nguồn mở của Microsoft cho Python và .NET, gộp thế mạnh doanh
@@ -96,8 +99,8 @@ Khung này đi từ một agent trò chuyện đơn lẻ lên tới các luồng
 
 ## Thử ngay
 
-Một agent có một công cụ tự viết, rút gọn từ ví dụ Microsoft Agent Framework (cài bằng
-`pip install agent-framework-core`):
+Một agent, một công cụ tự viết, rút gọn từ ví dụ Microsoft Agent Framework (cài bằng
+`pip install agent-framework-core`; bản đầy đủ còn import `Agent` và `OpenAIChatClient`):
 
 ```python
 def get_weather(location: str) -> str:
@@ -111,7 +114,8 @@ Công cụ chỉ là một hàm Python bình thường. Kiểu tham số của h
 
 **Bài tập**: dùng Microsoft Agent Framework mô phỏng một cuộc họp của công ty khởi nghiệp giáo dục. Viết
 system message cho từng phòng ban (vai trò, ưu tiên riêng); người dùng trình bày ý tưởng sản phẩm mới; mỗi
-phòng ban đặt câu hỏi tiếp theo để làm ý tưởng tốt hơn.
+phòng ban đặt câu hỏi tiếp theo để làm ý tưởng tốt hơn. Mỗi phòng ban có system message riêng (vai trò,
+ưu tiên).
 
 ## Nhìn hình trả lời
 
