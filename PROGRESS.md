@@ -77,6 +77,9 @@
   `python3 scripts/genai_check.py status`, không lặp lại ở đây.
 - Phản biện bằng Claude subagent (Codex hết quota, owner quyết định 2026-10-20); agent báo hết finding thì phiên mở
   PR tự merge, từng PR một (owner quyết định 2026-10-20, `docs/genai-slides.md` mục *Merge*).
+- **Xong 21/21 bài (2026-10-20)**: mỗi bài có `lesson.md`, deck Moda 10–12 slide và PPTX còn huy hiệu moda.app.
+  Đã merge PR #40 (kho, bảng giao việc, `genai_check.py`), #41 (ga-15..21), #43 (ga-08..14), #44 (ga-01..07);
+  ba dải trong `assignments.yaml` là `done`. Việc còn lại: Linh duyệt nội dung và slide trước khi đăng.
 
 ## Bước tiếp theo
 
