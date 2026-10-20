@@ -45,7 +45,7 @@ mutations:
   replace: '            if False:'
   test: tests.test_agents_check.StoreCase.test_badged_pptx_checked
 - label: a lesson need not credit the source
-  find: '        if not all(word in sources for word in CREDIT):'
+  find: '        if CREDIT not in " ".join(sources.split()):'
   replace: '        if False:'
   test: tests.test_agents_check.StoreCase.test_lesson_must_credit_the_source
 - label: a fence closes on a shorter line
@@ -73,8 +73,8 @@ mutations:
   replace: '"-c",'
   test: tests.test_agents_check.GitFlowCase.test_scope_sees_both_paths_of_a_rename
 - label: an empty self-check section passes
-  find: '    if CHECK_SECTION in headings and not ("?" in check_body and "<details>" in check_body'
-  replace: '    if False and not ("?" in check_body and "<details>" in check_body'
+  find: '    if CHECK_SECTION in headings and not (answer and "?" in check_body[:answer.start()]'
+  replace: '    if False and not (answer and "?" in check_body[:answer.start()]'
   test: tests.test_agents_check.StoreCase.test_check_section_needs_question_and_answer
 - label: status reports an unreadable held record as free
   find: '    if held:'
@@ -92,3 +92,15 @@ mutations:
   find: '    output = git("log", "-c", "--no-renames",'
   replace: '    output = git("log", "-m", "--no-renames",'
   test: tests.test_agents_check.GitFlowCase.test_scope_ignores_lessons_merged_in_from_main
+- label: a lesson with an empty title passes
+  find: '    if not re.match(r"# +\S", text):'
+  replace: '    if not text.startswith("# "):'
+  test: tests.test_agents_check.StoreCase.test_lesson_title_must_not_be_empty
+- label: an empty answer inside details passes
+  find: '                                          and SUMMARY.sub("", answer.group(1)).strip()):'
+  replace: '                                          and True):'
+  test: tests.test_agents_check.StoreCase.test_check_section_needs_question_and_answer
+- label: the URL and the word MIT pass as the credit
+  find: '        if CREDIT not in " ".join(sources.split()):'
+  replace: '        if not all(word in sources for word in ("microsoft/ai-agents-for-beginners", "MIT")):'
+  test: tests.test_agents_check.StoreCase.test_credit_needs_the_whole_attribution

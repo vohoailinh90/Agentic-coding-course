@@ -100,6 +100,22 @@ class StoreCase(unittest.TestCase):
         no_answer = LESSON.replace("<details><summary>Đáp án</summary>Đáp.</details>", "Đáp.")
         (self.folder / "lesson.md").write_text(no_answer, encoding="utf-8")
         self.assertProblem("must hold a question (`?`) and its answer in <details>")
+        empty_answer = LESSON.replace("<details><summary>Đáp án</summary>Đáp.</details>",
+                                      "<details><summary>Đáp án</summary> </details>")
+        (self.folder / "lesson.md").write_text(empty_answer, encoding="utf-8")
+        self.assertProblem("must hold a question (`?`) and its answer in <details>")
+
+    def test_lesson_title_must_not_be_empty(self) -> None:
+        (self.folder / "lesson.md").write_text(LESSON.replace("# AI agent\n", "# \n", 1), encoding="utf-8")
+        self.assertProblem("must start with a `# ` title")
+
+    def test_credit_needs_the_whole_attribution(self) -> None:
+        text = LESSON.replace(" (MIT License, © Microsoft Corporation)", " MIT")
+        (self.folder / "lesson.md").write_text(text, encoding="utf-8")
+        self.assertProblem("must credit the source")
+        wrapped = LESSON.replace("(MIT License, © Microsoft Corporation)", "(MIT License, © Microsoft\nCorporation)")
+        (self.folder / "lesson.md").write_text(wrapped, encoding="utf-8")
+        self.assertEqual(self.problems(), [])
 
     def test_fence_closes_only_on_a_long_enough_line(self) -> None:
         fenced = "````md\n```\n## Nhìn hình trả lời\n```\n````\n\n"
