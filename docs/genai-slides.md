@@ -55,6 +55,8 @@ python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi
 3. **Dựng deck trên Moda** (mục *Slide*): `moda_bootstrap`, `load_skill("moda-core")`, `load_skill("moda-deck")`
    và các skill nó chỉ tới. Brand kit: **không dùng** (đã chốt, không hỏi lại). Mỗi slide một
    `canvas_apply_markup`; chụp **mọi** slide bằng `canvas_screenshot` và sửa trước khi sang slide sau.
+   **Không gọi `canvas_delete`**: Moda bắt người duyệt tay lệnh này, phiên không ai trông sẽ đứng chờ. Muốn bỏ
+   một phần slide thì vẽ lại cả trang bằng `canvas_apply_markup` thay trang (`replace_page_nodes`).
 4. **Xuất PPTX**: `export(canvas, format="pptx")`, tải link bằng `curl` về
    `lessons/<id>/<id>.pptx`. Gói Moda miễn phí gắn huy hiệu `moda.app` lên mọi slide: **không bao giờ gỡ**.
 5. **Phản biện** (mục *Phản biện*), sửa mọi lỗi được xác nhận.
