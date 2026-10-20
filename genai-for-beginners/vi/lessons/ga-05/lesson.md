@@ -50,7 +50,7 @@ lập trình sẵn vào mô hình; người ta phát hiện ra nó khi dùng mô
 trả lời: *"Đại số là một nhánh toán học nghiên cứu các ký hiệu toán học và quy tắc biến đổi chúng."*
 
 **Few-shot** kèm vài ví dụ trong cùng prompt. Ví dụ: *"Viết một bài thơ theo phong cách Shakespeare"*, dán kèm vài
-đoạn trích sonnet của Shakespeare, rồi mới yêu cầu *"Giờ hãy viết một bài sonnet về vẻ đẹp của mặt trăng"*. Ví dụ
+đoạn trích sonnet (thể thơ 14 câu) của Shakespeare, rồi mới yêu cầu *"Giờ hãy viết một bài sonnet về vẻ đẹp của mặt trăng"*. Ví dụ
 cho mô hình biết ngữ cảnh, định dạng hay văn phong mong muốn, nên câu trả lời đúng ý và sát việc hơn.
 
 ### Chuỗi suy luận
@@ -104,7 +104,7 @@ nên nhờ chính mô hình tự phê bình. Các bước:
 4. Mô hình trả lời lại, có tính tới lời phê bình.
 
 Lặp lại bao nhiêu lần tùy ý. Ví dụ: nhờ viết một Web API bằng Python có hai đường dẫn *products* và *customers*; mô
-hình viết xong thì hỏi tiếp *"Gợi ý 3 cải tiến cho đoạn code trên"*. Mô hình chỉ ra lỗi import, đề nghị thêm phần
+hình viết xong thì hỏi tiếp *"Gợi ý 3 cải tiến cho đoạn code trên"*. Mô hình chỉ ra lỗi ở dòng import (dòng khai báo thư viện cần dùng), đề nghị thêm phần
 chạy chương trình chính, rồi viết lại đoạn code tốt hơn.
 
 ### Hỏi gợi mở

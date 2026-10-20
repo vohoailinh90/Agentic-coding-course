@@ -49,7 +49,7 @@ Python) và **Semantic Kernel** của Microsoft (hỗ trợ C#, Python, Java). B
 
 ## Chuẩn bị
 
-1. Cài thư viện: `pip install openai`.
+1. Cài thư viện bằng `pip` (trình cài thư viện của Python): `pip install openai`.
 2. Có tài khoản dịch vụ chạy mô hình. Bài nguồn dùng Azure OpenAI (dịch vụ AI trên đám mây của Microsoft, nay thuộc
    Microsoft Foundry): tạo tài khoản Azure, xin quyền dùng Azure OpenAI, cài Python và tạo một tài nguyên Azure OpenAI.
    Cũng có thể dùng thẳng OpenAI.
@@ -84,7 +84,8 @@ Cũng cách gọi này dùng được cho chatbot nhiều lượt: bạn đưa m
 Có code chạy rồi, bạn chỉ cần đổi prompt để làm việc khác:
 
 - **sinh một loại văn bản**: bài thơ, câu hỏi trắc nghiệm…;
-- **tra thông tin**: *"CORS nghĩa là gì trong lập trình web?"*;
+- **tra thông tin**: *"CORS nghĩa là gì trong lập trình web?"* (CORS là quy tắc của trình duyệt cho phép một trang web gọi sang tên miền
+  khác);
 - **sinh code**: một biểu thức chính quy kiểm tra email, hay cả một ứng dụng web.
 
 ## Ví dụ thực tế: ứng dụng gợi ý món ăn

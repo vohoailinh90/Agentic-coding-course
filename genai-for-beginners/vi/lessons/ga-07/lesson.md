@@ -70,7 +70,7 @@ Ngoài các nguyên tắc UX chung, ứng dụng chat dùng AI cần thêm:
 - **Cá nhân hóa**: ví dụ hồ sơ người dùng. Tính năng "Custom instructions" của ChatGPT cho bạn khai thông tin về mình để
   làm ngữ cảnh cho mọi prompt; nhờ vậy, khi nhờ soạn giáo án, câu trả lời hợp với trình độ của bạn hơn.
 
-**Tin nhắn hệ thống** là lời dặn đặt trước cho mô hình, người dùng không thấy. Hướng dẫn viết tin nhắn hệ thống của
+**Tin nhắn hệ thống** là lời dặn đặt trước cho mô hình, thường người dùng không nhìn thấy. Hướng dẫn viết tin nhắn hệ thống của
 Microsoft chia làm bốn phần:
 
 1. mô hình phục vụ ai, làm được gì và không làm được gì;
@@ -110,7 +110,7 @@ và đáng tin hơn, nhưng cần một bộ dữ liệu lớn, sát với các 
 | Precision | Trong các lần đoán "có", tỉ lệ đoán đúng | Kiểm tra thế nào? |
 | Recall | Trong các trường hợp thật sự "có", tỉ lệ đoán ra | Đo và cải thiện thế nào? |
 | F1 | Trung bình điều hòa của precision và recall | Mục tiêu bao nhiêu, cân bằng hai cái thế nào? |
-| Perplexity | Phân bố xác suất mô hình đoán khớp dữ liệu thật tới đâu | Giảm thế nào? |
+| Perplexity | Phân bố xác suất mô hình đoán khớp dữ liệu thật tới đâu (hiểu nôm na: mô hình càng ít "bất ngờ" trước dữ liệu thật thì càng thấp) | Giảm thế nào? |
 | Mức hài lòng | Người dùng thấy ứng dụng ra sao, thường qua khảo sát | Bao lâu thu phản hồi một lần? |
 | Tỉ lệ lỗi | Mô hình sai khi hiểu hay khi trả lời bao nhiêu | Có cách gì để giảm? |
 | Chu kỳ huấn luyện lại | Bao lâu cập nhật mô hình với dữ liệu mới | Điều gì kích hoạt việc huấn luyện lại? |
