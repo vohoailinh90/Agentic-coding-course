@@ -11,7 +11,7 @@ mỗi phiên một nhánh, không ai sửa file của phiên khác.**
 
 | Vai | Làm gì | Không được làm |
 |---|---|---|
-| Phiên điều phối | Sửa `genai-for-beginners/vi/assignments.yaml` (giao dải), mở và theo dõi các phiên làm việc, gom kết quả | Viết bài trong dải đã giao cho phiên khác |
+| Phiên điều phối | Sửa `genai-for-beginners/vi/assignments.yaml` (giao dải), mở và theo dõi các phiên làm việc (phiên mới dùng model Sonnet, effort high; owner quyết định 2026-10-20), gom kết quả | Viết bài trong dải đã giao cho phiên khác |
 | Phiên làm việc (1 dải) | Nhận bài trong dải của mình, viết `lesson.md`, dựng deck Moda, xuất PPTX, gọi agent phản biện, mở PR | Sửa bất kỳ file nào ngoài `genai-for-beginners/vi/lessons/<id>/` của dải mình |
 | Agent phản biện (Claude subagent) | Đọc bài + nguồn + ảnh chụp slide, báo lỗi | Sửa file |
 
@@ -24,20 +24,28 @@ chưa có branch protection).
 1. **Bảng giao việc** `genai-for-beginners/vi/assignments.yaml`: mỗi dải `ga-NN..ga-MM` thuộc đúng một nhánh.
    Chỉ phiên điều phối sửa bảng.
 2. **Nhận trước khi làm**: `python3 scripts/genai_check.py claim <id>... --session <session_id>` ghi
-   `lessons/<id>/deck.yaml` với `status: doing`. Lệnh từ chối bài không thuộc dải của nhánh đang đứng, và bài
+   `lessons/<id>/deck.yaml` với `status: doing`. `status`, `claim` và `scope` tự `git fetch` mọi nhánh của
+   `origin` trước (bản clone của phiên cloud chỉ theo dõi `main`; khi không có mạng, đặt cờ trước lệnh con:
+   `genai_check.py --no-fetch status`). Lệnh từ chối bài không thuộc dải của nhánh đang đứng, và bài
    mà một nhánh `origin/*` khác đang giữ. Commit và **push ngay** bản ghi `doing`: chưa push thì chưa giữ được gì.
-3. `python3 scripts/genai_check.py status` (sau `git fetch origin`) cho biết từng bài `free`, `doing` hay `done`
+3. `python3 scripts/genai_check.py status` cho biết từng bài `free`, `doing` hay `done`
    trên mọi nhánh, và cảnh báo khi một bài bị hai nhánh giữ.
 4. **Mỗi phiên chỉ sửa thư mục bài của mình.** Không sửa README, bảng giao việc, script, tài liệu hay
    `PROGRESS.md`: những file chung đó do phiên điều phối cập nhật sau khi PR merge. Nhờ vậy các PR không
-   bao giờ xung đột.
-5. Phiên chết giữa chừng: phiên điều phối giao lại dải (đổi `branch` trong bảng); phiên mới tìm canvas cũ bằng
+   bao giờ xung đột. `python3 scripts/genai_check.py scope` kiểm điều này (so với nhánh setup khi nhánh đó còn,
+   sau đó so với `origin/main`) và phải qua trước khi mở PR.
+5. **Nhánh**: dùng đúng tên nhánh bảng giao cho dải, tạo từ `origin/claude/genai-slides-setup` khi PR setup
+   chưa merge, từ `origin/main` khi đã merge. Nhánh của phiên mang tên khác thì dừng, hỏi phiên điều phối.
+6. Phiên chết giữa chừng: phiên điều phối giao lại **nguyên** dải cho một nhánh mới (đổi `branch` trong bảng; không
+   chia đôi dải chết, vì nhánh mới mang theo mọi thư mục bài của nhánh cũ và `scope` sẽ báo phần không thuộc nó). Phiên mới tạo nhánh từ nhánh
+   cũ (để giữ bài đã xong), rồi `claim <id>... --session ... --take-over` cho các bài cũ đang `doing`: lệnh chỉ
+   nhường bản ghi `doing` của nhánh mà bảng không còn giao, không bao giờ nhường bài `done`. Tìm canvas cũ bằng
    `canvas_search` theo id (`ga-07`) và làm tiếp trên đó, không tạo canvas thứ hai.
 
 ## Vòng làm một bài
 
 ```bash
-git fetch origin && python3 scripts/genai_check.py status
+python3 scripts/genai_check.py status
 python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi commit + push
 ```
 
@@ -47,6 +55,8 @@ python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi
 3. **Dựng deck trên Moda** (mục *Slide*): `moda_bootstrap`, `load_skill("moda-core")`, `load_skill("moda-deck")`
    và các skill nó chỉ tới. Brand kit: **không dùng** (đã chốt, không hỏi lại). Mỗi slide một
    `canvas_apply_markup`; chụp **mọi** slide bằng `canvas_screenshot` và sửa trước khi sang slide sau.
+   **Không gọi `canvas_delete`**: Moda bắt người duyệt tay lệnh này, phiên không ai trông sẽ đứng chờ. Muốn bỏ
+   một phần slide thì vẽ lại cả trang bằng `canvas_apply_markup` thay trang (`replace_page_nodes`).
 4. **Xuất PPTX**: `export(canvas, format="pptx")`, tải link bằng `curl` về
    `lessons/<id>/<id>.pptx`. Gói Moda miễn phí gắn huy hiệu `moda.app` lên mọi slide: **không bao giờ gỡ**.
 5. **Phản biện** (mục *Phản biện*), sửa mọi lỗi được xác nhận.
@@ -77,7 +87,7 @@ layouts:
 - Viết lại bằng lời của mình cho người mới, tiếng Việt có dấu, khoảng 700–1.200 chữ; **không dịch từng câu**.
   Chỉ dùng điều bài nguồn nói: không thêm số liệu, ví dụ hay khẳng định mới. Bỏ phần quảng cáo, video, link
   khóa học khác; giữ ý chính, ví dụ và phần thực hành cốt lõi (tối đa một đoạn code ngắn mỗi ý).
-- Cấu trúc (`genai_check.py` kiểm): tiêu đề `# `; mục đầu tiên `## Từ viết tắt` (mỗi viết tắt một dòng:
+- Cấu trúc (`genai_check.py` kiểm khi bài `done`; lúc còn `doing` được push bản nháp): tiêu đề `# `; mục đầu tiên `## Từ viết tắt` (mỗi viết tắt một dòng:
   `- **LLM** (Large Language Model) — mô hình ngôn ngữ lớn: ...`); các mục nội dung; `## Nhìn hình trả lời`
   (một câu hỏi kiểm tra và đáp án trong `<details>`); `## Nguồn đối chiếu` có link `source_url` đã ghim và
   dòng ghi công: *Dựa trên bài NN của microsoft/generative-ai-for-beginners (MIT License, © Microsoft
@@ -117,7 +127,7 @@ Mỗi slide đúng một trong 12 kiểu, theo thứ tự này (đếm từ 0): 
 - **Kiểu chữ ký**: slide của khái niệm đầu tiên (`first_concept`) lấy kiểu ở vị trí n mod 12. Không thể hiện được
   nội dung bằng kiểu đó (ví dụ `one-big-number` mà bài không có con số) thì lấy kiểu kế tiếp làm được, và ghi
   từng kiểu bị bỏ qua kèm lý do vào `cannot`.
-- Nền sáng/tối theo nội dung, không quá 3 slide liền nhau cùng nền. Mỗi deck có một ý tưởng hình ảnh riêng lấy từ
+- Nền sáng/tối theo nội dung, không quá 3 slide liền nhau cùng nền (script không kiểm được; phản biện soi). Mỗi deck có một ý tưởng hình ảnh riêng lấy từ
   chính bài (bài embedding xoay quanh "bản đồ khoảng cách", bài agent xoay quanh "vòng lặp"): nói nó trong một
   dòng ở tin nhắn đầu tiên về deck.
 
@@ -130,7 +140,7 @@ quy tắc trong file này. Agent chỉ đọc, không sửa; nó:
 1. đối chiếu từng khẳng định của `lesson.md` với bài nguồn (sai, thêm điều nguồn không nói, bỏ sót ý chính);
 2. đọc tiếng Việt như người mới (khó hiểu, viết tắt chưa giải thích, câu dịch máy);
 3. chụp mọi slide (`canvas_screenshot`) và soi: chữ tràn/bị co, chữ < 22 px, góc dưới phải không trống, sai
-   footer, sai màu khái niệm, slide chép chữ không có trong `lesson.md`;
+   footer, sai màu khái niệm, quá 3 slide liền cùng nền, slide chép chữ không có trong `lesson.md`;
 4. trả danh sách lỗi, mỗi lỗi ghi mức **P1** (sai sự thật, vỡ slide, thiếu phần bắt buộc) hoặc **P2/P3**.
 
 Phiên làm việc kiểm từng lỗi, sửa lỗi đúng, ghi lý do khi bác lỗi sai. P1 sửa tới khi hết (gọi lại phản biện
@@ -141,7 +151,7 @@ cho riêng các lỗi P1 sau khi sửa). P2/P3 tối đa 2 vòng phản biện m
 
 Một PR cho cả dải, từ nhánh của dải vào `main`, tiêu đề `genai slides: ga-NN..ga-MM`. Mô tả: bảng mỗi bài
 (link editor Moda, số slide, bảng `layouts`, kết quả phản biện) và lỗi P2/P3 còn để lại. Kiểm trước khi mở:
-`python3 scripts/genai_check.py`, `python3 -m pytest -q tests/test_genai_check.py`. Không merge; không đăng gì
+`python3 scripts/genai_check.py`, `python3 scripts/genai_check.py scope`, `python3 -m pytest -q tests/test_genai_check.py`. Không merge; không đăng gì
 lên Facebook.
 
 ## Prompt khởi động một phiên làm việc

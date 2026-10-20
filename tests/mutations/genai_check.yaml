@@ -1,0 +1,74 @@
+# Mutation manifest — see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each rule of the Generative AI store checker
+# in turn and require the named test to fail. A mutation that SURVIVES means the test guards nothing.
+
+target: scripts/genai_check.py
+note: The checker is what keeps three parallel sessions from claiming one lesson and what stops a broken
+  deck record or PPTX from passing. Each entry switches one rule off and names the test that must notice.
+mutations:
+- label: another branch's pushed claim no longer refuses a plain claim
+  find: '        if not take_over:'
+  replace: '        if False:'
+  test: tests.test_genai_check.ClaimCase.test_claim_rules
+- label: a lesson outside the branch's range can be claimed
+  find: '    if owner != branch:'
+  replace: '    if False:'
+  test: tests.test_genai_check.ClaimCase.test_claim_rules
+- label: take-over also yields a done deck
+  find: '        if record.get("status") == "done":'
+  replace: '        if False:'
+  test: tests.test_genai_check.ClaimCase.test_take_over_yields_doing_never_done
+- label: an unreadable record no longer holds its lesson
+  find: '    return record if isinstance(record, dict) else {"owner": f"an unreadable deck.yaml on {where}", "status":
+    UNREADABLE}'
+  replace: '    return record if isinstance(record, dict) else {}'
+  test: tests.test_genai_check.ClaimCase.test_unreadable_record_holds_its_lesson
+- label: scope accepts any path
+  find: '    return [f"{path} is outside this branch''s lesson folders" for path in paths if not path.startswith(prefixes)]'
+  replace: '    return []'
+  test: tests.test_genai_check.ClaimCase.test_scope
+- label: the same layout kind on adjacent slides passes
+  find: '    if repeats:'
+  replace: '    if False:'
+  test: tests.test_genai_check.StoreCase.test_adjacent_kinds
+- label: the signature layout may fall back without naming the kinds passed over
+  find: '    if sorted(cannot) != sorted(passed):'
+  replace: '    if False:'
+  test: tests.test_genai_check.StoreCase.test_signature_layout_needs_named_fallback
+- label: a done deck no longer needs its review
+  find: '    if "review" in record and record["review"] not in REVIEWS:'
+  replace: '    if False:'
+  test: tests.test_genai_check.StoreCase.test_review_must_have_passed
+- label: the moda.app badge may be missing from a slide
+  find: '            if badges != slides:'
+  replace: '            if False:'
+  test: tests.test_genai_check.StoreCase.test_badged_pptx_checked
+- label: a lesson need not credit the source
+  find: '        if not all(word in sources for word in CREDIT):'
+  replace: '        if False:'
+  test: tests.test_genai_check.StoreCase.test_lesson_must_credit_the_source
+- label: a fence closes on a shorter line
+  find: ' and len(match.group(1)) >= len(opener)'
+  replace: ''
+  test: tests.test_genai_check.StoreCase.test_fence_closes_only_on_a_long_enough_line
+- label: two board rows may give one lesson
+  find: '            elif lesson_id in seen:'
+  replace: '            elif False:'
+  test: tests.test_genai_check.StoreCase.test_board_overlap_and_unknown
+- label: status and claim no longer fetch the other sessions' branches
+  find: '    if not args.no_fetch:'
+  replace: '    if False:'
+  test: tests.test_genai_check.GitFlowCase.test_claims_pushed_after_a_clone_are_fetched
+- label: take-over yields a record that cannot be read
+  find: '        if record.get("status") != "doing":'
+  replace: '        if False:'
+  test: tests.test_genai_check.ClaimCase.test_take_over_yields_doing_never_done
+- label: scope counts what a merge of main brought in
+  find: '    output = git("log", "--no-merges", "--no-renames", "--name-only", "--format=", "-z", "HEAD", "--not", *bases)'
+  replace: '    output = git("diff", "--name-only", "-z", f"{SETUP_BRANCH if SETUP_BRANCH in refs else ''origin/main''}...HEAD")'
+  test: tests.test_genai_check.GitFlowCase.test_scope_ignores_lessons_merged_in_from_main
+- label: scope sees only the new path of a rename
+  find: '"--no-merges", "--no-renames",'
+  replace: '"--no-merges",'
+  test: tests.test_genai_check.GitFlowCase.test_scope_sees_both_paths_of_a_rename
