@@ -3,8 +3,8 @@
 ## Từ viết tắt
 
 - **AI** (Artificial Intelligence) — trí tuệ nhân tạo: máy làm được việc cần trí thông minh.
-- **GPT** (Generative Pre-trained Transformer) — họ mô hình ngôn ngữ của OpenAI, được huấn luyện trước trên rất nhiều dữ
-  liệu để sinh chữ giống người viết.
+- **GPT** (Generative Pre-trained Transformer) — họ mô hình ngôn ngữ được huấn luyện trước trên rất nhiều dữ liệu để sinh
+  chữ giống người viết.
 - **API** (Application Programming Interface) — giao diện lập trình: "cửa" để chương trình gọi một dịch vụ khác.
 
 ## Low-code là gì
@@ -22,7 +22,7 @@ Học xong bài, bạn sẽ:
 1. hiểu Copilot làm việc thế nào trong Power Platform;
 2. làm một ứng dụng theo dõi bài tập của học sinh cho startup giáo dục;
 3. làm một luồng tự động xử lý hóa đơn, dùng AI để trích thông tin từ hóa đơn;
-4. biết mô hình Create Text with GPT dùng để làm gì;
+4. biết mô hình Create Text with GPT dùng để làm gì (bài nguồn gợi ý tìm hiểu thêm cách dùng tốt trong một khóa học riêng);
 5. hiểu Microsoft Copilot Studio là gì và dùng nó để làm agent.
 
 ## AI tạo sinh trong Power Platform
@@ -72,22 +72,26 @@ Làm tương tự, bạn có thể nhờ Copilot tạo một **bảng thông tin
 ## AI Builder: mô hình AI dựng sẵn
 
 **AI Builder** là năng lực AI low-code trong Power Platform: dùng mô hình AI để **tự động hóa quy trình** và **dự đoán kết
-quả**, nối với dữ liệu trong Dataverse hoặc các nguồn đám mây như SharePoint, OneDrive, Azure. Có hai loại mô hình:
+quả**, nối với dữ liệu trong Dataverse hoặc các nguồn đám mây như SharePoint, OneDrive (dịch vụ lưu file trên mạng của Microsoft) hay Azure (đám mây
+Microsoft). Có hai loại mô hình:
 
-- **Dựng sẵn** (prebuilt): Microsoft đã huấn luyện, dùng ngay, không phải tự thu thập dữ liệu hay huấn luyện. Ví dụ: trích
-  cụm từ khóa, nhận diện ngôn ngữ, phân tích cảm xúc, đọc danh thiếp, nhận diện chữ trong ảnh, phát hiện vật thể, xử lý
-  biểu mẫu, **xử lý hóa đơn**.
+- **Dựng sẵn** (prebuilt): Microsoft đã huấn luyện, dùng ngay, không phải tự thu thập dữ liệu hay huấn luyện. Ví dụ:
+  làm việc với chữ: trích cụm từ khóa, nhận diện ngôn ngữ, phân tích cảm xúc; làm việc với ảnh và giấy tờ: đọc danh
+  thiếp, nhận diện chữ trong ảnh, phát hiện vật thể, xử lý biểu mẫu, **xử lý hóa đơn**.
 - **Tùy chỉnh** (custom): đưa mô hình của bạn vào AI Builder và huấn luyện bằng dữ liệu của bạn (có một số giới hạn).
 
 ### Luồng xử lý hóa đơn
 
-Bộ phận tài chính cần trích thông tin từ hóa đơn và lưu vào bảng Dataverse. Trong Power Automate:
+Bộ phận tài chính cần trích thông tin từ hóa đơn, lưu vào bảng Dataverse và gửi email thông tin đó cho bộ phận. Trong
+Power Automate:
 
 1. Mô tả cho Copilot: *"Process an invoice when it arrives in my mailbox"*. Copilot gợi ý các bước, bạn thiết lập kết nối
    rồi bấm **Create flow**.
 2. Cho luồng chỉ chạy khi có **email kèm file** trong thư mục, ví dụ **Inbox**.
 3. Bước **Extract Information from invoices** (mô hình xử lý hóa đơn) đọc file đính kèm.
 4. Bước **Add a new row** ghi vào bảng hóa đơn: mã, số tiền, ngày, tên, email nhà cung cấp và trạng thái **Pending**.
+
+Bài tập về nhà: làm thêm luồng gửi email cho nhà cung cấp mỗi khi trạng thái hóa đơn thay đổi.
 
 ```mermaid
 flowchart LR
@@ -96,12 +100,12 @@ flowchart LR
 
 ### Sinh chữ với GPT
 
-Mô hình **Create Text with GPT** trong AI Builder sinh chữ từ một prompt, chạy trên dịch vụ Azure OpenAI. Đưa nó vào luồng
+Mô hình **Create Text with GPT** trong AI Builder sinh chữ từ một prompt (câu mô tả bạn gõ cho AI), chạy trên dịch vụ Azure OpenAI. Đưa nó vào luồng
 tự động, bạn có thể tự soạn nháp email, mô tả sản phẩm, hay giúp nhân viên chăm sóc khách hàng trả lời nhanh hơn.
 
 ## Copilot Studio: làm agent không cần code
 
-**Microsoft Copilot Studio** (trước gọi là Power Virtual Agents) là thành viên low-code để làm **agent AI**: trợ lý trò
+**Microsoft Copilot Studio** (trước gọi là Power Virtual Agents) là sản phẩm low-code trong Power Platform để làm **agent AI**: trợ lý trò
 chuyện biết trả lời câu hỏi, làm việc và tự động hóa thay người dùng. Bạn mô tả agent cần làm gì, Copilot Studio giúp dựng
 phần hướng dẫn, kiến thức và hành động. Ví dụ startup có thể làm agent trả lời câu hỏi về khóa học, kiểm tra hạn nộp bài,
 gửi email cho giáo viên.
@@ -113,6 +117,7 @@ Một số khả năng:
 - **hành động**: dùng hơn 1.500 bộ kết nối có sẵn, luồng Power Automate, API tùy chỉnh;
 - **agent tự chạy**: kích hoạt bởi sự kiện như email mới, rồi làm việc ở chế độ nền;
 - **nhiều agent phối hợp**: agent gọi được agent khác;
+- **chọn mô hình**: dùng thêm mô hình trong danh mục của Microsoft Foundry;
 - **xuất bản nhiều nơi**: Microsoft Teams, Microsoft 365 Copilot, website.
 
 ## Nhìn hình trả lời
