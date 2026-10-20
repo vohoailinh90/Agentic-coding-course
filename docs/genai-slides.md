@@ -11,7 +11,7 @@ mỗi phiên một nhánh, không ai sửa file của phiên khác.**
 
 | Vai | Làm gì | Không được làm |
 |---|---|---|
-| Phiên điều phối | Sửa `genai-for-beginners/vi/assignments.yaml` (giao dải), mở và theo dõi các phiên làm việc, gom kết quả | Viết bài trong dải đã giao cho phiên khác |
+| Phiên điều phối | Sửa `genai-for-beginners/vi/assignments.yaml` (giao dải), mở và theo dõi các phiên làm việc (phiên mới dùng model Sonnet, effort high; owner quyết định 2026-10-20), gom kết quả | Viết bài trong dải đã giao cho phiên khác |
 | Phiên làm việc (1 dải) | Nhận bài trong dải của mình, viết `lesson.md`, dựng deck Moda, xuất PPTX, gọi agent phản biện, mở PR | Sửa bất kỳ file nào ngoài `genai-for-beginners/vi/lessons/<id>/` của dải mình |
 | Agent phản biện (Claude subagent) | Đọc bài + nguồn + ảnh chụp slide, báo lỗi | Sửa file |
 
