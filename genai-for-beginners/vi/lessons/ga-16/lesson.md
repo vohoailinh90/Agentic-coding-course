@@ -1,7 +1,6 @@
 # Mô hình mã nguồn mở và Hugging Face
 
-Ngoài các mô hình đóng như GPT, có cả một thế giới mô hình ngôn ngữ "mở" mà ai cũng tải về, chỉnh sửa và
-chạy được. Bài này giải thích thế nào mới thật sự là mã nguồn mở, mô hình mở có lợi gì, ba họ mô hình
+Thế giới LLM mở đang sôi động và thay đổi liên tục. Bài này giải thích thế nào mới thật sự là mã nguồn mở, mô hình mở có lợi gì, ba họ mô hình
 mở tiêu biểu (một gốc mở, nhiều nhánh tinh chỉnh), và cách chọn một mô hình cho việc của bạn.
 
 ## Từ viết tắt
@@ -29,7 +28,7 @@ LLM nghĩa là gì. Muốn khớp định nghĩa truyền thống, một mô hì
 | Thứ phải công khai |
 |---|
 | Dữ liệu dùng để huấn luyện |
-| Toàn bộ trọng số của mô hình |
+| Toàn bộ trọng số của mô hình trong quá trình huấn luyện |
 | Mã đánh giá |
 | Mã tinh chỉnh |
 | Trọng số đầy đủ và các chỉ số huấn luyện |
@@ -41,7 +40,7 @@ trong số đó. Vì thế bài gọi chung là **"mô hình mở"**: nhiều m�
 
 - **Tùy biến cao.** Mô hình mở đi kèm thông tin huấn luyện chi tiết, nên người làm có thể sửa bên trong
   mô hình và tinh chỉnh nó cho một việc hẹp, ví dụ sinh mã, làm toán hay sinh học.
-- **Chi phí.** Giá mỗi token khi dùng và triển khai thấp hơn mô hình đóng. Khi làm ứng dụng, hãy cân
+- **Chi phí.** Giá mỗi token (mẩu chữ mô hình đọc và viết) khi dùng và triển khai thấp hơn mô hình đóng. Khi làm ứng dụng, hãy cân
   hiệu năng với giá cho đúng việc của bạn.
 - **Linh hoạt.** Bạn đổi qua lại hoặc kết hợp nhiều mô hình. Ví dụ HuggingChat Assistants cho người dùng
   chọn mô hình ngay trên giao diện.
@@ -65,8 +64,8 @@ flowchart LR
   Llama* chuyên tiếng Nhật, *Llama Pro* là bản nâng cấp của mô hình gốc.
 - **Mistral** nhắm vào hiệu năng cao và tiết kiệm. Nhánh: *BioMistral* cho y khoa, *OpenMath Mistral*
   cho tính toán.
-- **Falcon** do TII tạo ra. Falcon-40B có 40 tỷ tham số, được cho là làm tốt hơn GPT-3 với ít tài nguyên
-  tính toán hơn. Nhờ thuật toán FlashAttention và multiquery attention, nó cần ít bộ nhớ hơn lúc chạy,
+- **Falcon** do TII tạo ra. Falcon-40B có 40 tỷ tham số (các con số mô hình học được), được cho là làm tốt hơn GPT-3 với ít tài nguyên
+  tính toán hơn. Nhờ thuật toán FlashAttention và multiquery attention (các kỹ thuật giảm bộ nhớ), nó cần ít bộ nhớ hơn lúc chạy,
   nên hợp với ứng dụng trò chuyện. Nhánh: *OpenAssistant*, trợ lý xây trên mô hình mở; *GPT4ALL*, cho
   hiệu năng cao hơn mô hình gốc.
 
@@ -88,7 +87,7 @@ flowchart LR
 
 Không có một đáp án chung. Có hai việc: tra cứu, rồi tự thử.
 
-- **Nơi tra cứu**: bộ lọc theo task của danh mục mô hình Microsoft Foundry (cho biết mô hình được huấn
+- **Nơi tra cứu**: bộ lọc theo task (loại việc) của danh mục mô hình Microsoft Foundry (kho mô hình trên Azure) (cho biết mô hình được huấn
   luyện cho việc gì); bảng xếp hạng LLM Leaderboard của Hugging Face (mô hình tốt nhất theo từng chỉ số);
   Artificial Analysis (so sánh nhiều loại LLM).
 - **Cách thử**: tìm các bản tinh chỉnh cùng lĩnh vực với việc của bạn; thử vài mô hình mở, so với kỳ vọng

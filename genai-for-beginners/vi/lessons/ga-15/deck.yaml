@@ -11,5 +11,5 @@ size: 1920x1080
 exports: badged
 review: passed
 layouts:
-  slides: [card-grid, numbered-rows, 2x2-matrix, flow, connection-diagram, two-column-comparison, lookup-table, numbered-rows, card-grid, one-highlighted-sentence, lookup-table]
+  slides: [card-grid, numbered-rows, 2x2-matrix, flow, connection-diagram, two-column-comparison, lookup-table, numbered-rows, card-grid, one-highlighted-sentence, card-grid]
   first_concept: 3
