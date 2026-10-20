@@ -8,7 +8,7 @@ huấn luyện lại chính mô hình bằng dữ liệu thêm.
 
 - **LLM** (Large Language Model) — mô hình ngôn ngữ lớn: mô hình đọc và viết văn bản.
 - **RAG** (Retrieval Augmented Generation) — tìm tài liệu liên quan rồi đưa vào prompt cho mô hình.
-- **SFT** (Supervised Fine-Tuning) — tinh chỉnh có giám sát: học từ các cặp câu hỏi và câu trả lời mẫu.
+- **SFT** (Supervised Fine-Tuning) — tinh chỉnh có giám sát: học từ các cặp đầu vào và đầu ra mẫu.
 - **DPO** (Direct Preference Optimization) — học từ cặp câu trả lời "được chọn" và "không được chọn".
 - **RFT** (Reinforcement Fine-Tuning) — tinh chỉnh bằng học tăng cường, dựa trên điểm thưởng của bộ chấm.
 - **LoRA** (Low-Rank Adaptation) — cách tinh chỉnh tiết kiệm, không phải huấn luyện lại mọi trọng số.
@@ -73,11 +73,11 @@ Microsoft Foundry là nơi tinh chỉnh, triển khai và quản lý mô hình r
 |---|---|---|
 | SFT | Học từ cặp đầu vào và đầu ra mẫu | Mặc định cho hầu hết việc |
 | DPO | Học từ cặp câu trả lời được chọn và không được chọn | Nâng chất lượng, an toàn khi có phản hồi so sánh |
-| RFT | Tối ưu theo điểm thưởng của bộ chấm | Toán, hóa, lý: có đúng sai rõ ràng |
+| RFT | Tối ưu theo điểm thưởng của bộ chấm | Toán, hóa, lý: có đúng sai rõ ràng; cần nhiều chuyên môn hơn |
 
-**Bước 2, chọn tầng huấn luyện** (chọn tầng, rồi chọn mô hình gốc): **Standard** chạy trong vùng của bạn, giữ dữ liệu tại vùng; **Global**
-rẻ hơn và xếp hàng nhanh hơn nhờ dùng năng lực ngoài vùng; **Developer** rẻ nhất, dùng năng lực rảnh, hợp
-để thử nghiệm.
+**Bước 2, chọn tầng huấn luyện** (chọn tầng, rồi chọn mô hình gốc): **Standard** chạy trong vùng (khu trung tâm dữ liệu của Azure) của bạn, giữ dữ liệu tại vùng; **Global**
+rẻ hơn và xếp hàng nhanh hơn nhờ dùng máy ở vùng khác (dữ liệu được chép ra ngoài vùng, nên dùng khi
+không bắt buộc giữ dữ liệu tại vùng); **Developer** rẻ nhất, dùng máy đang rảnh, hợp để thử nghiệm.
 
 **Bước 3, chọn mô hình gốc**, ví dụ `gpt-4.1-mini`, `gpt-4o` hay mô hình mở như `Llama-3.3-70B-Instruct`.
 Luôn xem danh sách mô hình tinh chỉnh được mới nhất.
@@ -89,8 +89,8 @@ Luôn xem danh sách mô hình tinh chỉnh được mới nhất.
   lượng hơn số lượng.
 - **Đúng định dạng**: tệp JSONL, UTF-8 có BOM, dưới 512 MB; luôn có tệp kiểm định để phát hiện học vẹt
   (overfitting).
-- **Giữ nguyên system message** lúc dùng như lúc huấn luyện.
-- **Chọn checkpoint tốt nhất**, đừng mặc định triển khai cái cuối.
+- **Giữ nguyên system message** (lời dặn cố định gửi kèm mọi prompt) lúc dùng như lúc huấn luyện.
+- **Chọn checkpoint (bản lưu giữa chừng khi huấn luyện) tốt nhất**, đừng mặc định triển khai cái cuối.
 - **Để ý phí chạy**: mô hình riêng tính tiền theo giờ; bản triển khai bỏ không 15 ngày sẽ bị gỡ.
 
 **Bài tập**: chọn một hướng dẫn có sẵn (OpenAI, Microsoft Foundry, Hugging Face, AutoTrain hoặc Unsloth)
