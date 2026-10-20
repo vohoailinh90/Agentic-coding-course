@@ -28,8 +28,13 @@ the sessions review their own work with a Claude subagent instead.
 - **Review:** each worker session calls one Claude subagent per lesson to check the lesson against the
   source and the slides against the style; P1 findings are fixed until none is left, P2/P3 get at most
   two rounds per lesson. No Codex review is requested for these pull requests.
-- **Merge:** the owner merges, as ADR 010 says while `main` has no branch protection; the
-  Codex-based self-merge rules do not apply because there is no Codex review.
+- **Merge (amended by the owner on 2026-10-20):** when the Claude review subagent reports no finding
+  left on a pull request's head, the session that opened the pull request merges it itself, even though
+  `main` has no branch protection (the same exception ADR 011 makes for the System Design lessons). One
+  pull request at a time, setup first; the session merges `main` in, waits for green CI, records the head
+  and `main` SHAs, has that exact head reviewed, re-reads both SHAs just before merging, merges with a merge
+  commit pinned to the reviewed head and checks that the merge commit's first parent is the recorded `main`
+  (`docs/genai-slides.md`, *Merge*). A P1 it cannot settle goes to the owner, unmerged.
 
 ## Consequences
 

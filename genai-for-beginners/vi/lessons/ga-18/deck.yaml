@@ -1,0 +1,15 @@
+id: ga-18
+status: done
+owner: claude/genai-slides-w3
+session: session_01PyCAdnHUgbeL2zUPENzUFA
+claimed_at: '2026-10-20T09:14:55Z'
+done_at: '2026-10-20T10:04:21Z'
+moda_canvas: cvs_1DSQ61G8YB800SMBTHCCF1SHKR
+moda_url: https://moda.app/canvas/2dcdcc18-23cb-4001-9a2f-51631e1cc678
+slide_count: 10
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides: [card-grid, one-highlighted-sentence, numbered-rows, two-column-comparison, flow, lookup-table, card-grid, one-big-number, one-highlighted-sentence, lookup-table]
+  first_concept: 3

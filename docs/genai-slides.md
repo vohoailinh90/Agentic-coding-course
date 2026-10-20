@@ -16,8 +16,8 @@ mỗi phiên một nhánh, không ai sửa file của phiên khác.**
 | Agent phản biện (Claude subagent) | Đọc bài + nguồn + ảnh chụp slide, báo lỗi | Sửa file |
 
 Không dùng Codex cho bộ này (owner quyết định 2026-10-20: Codex hết quota). Phản biện độc lập là một Claude
-subagent do chính phiên làm việc gọi (mục *Phản biện* bên dưới). Owner (Linh) merge các PR (ADR 010: `main`
-chưa có branch protection).
+subagent do chính phiên làm việc gọi (mục *Phản biện* bên dưới). Agent phản biện báo hết finding thì **chính phiên
+mở PR tự merge** PR đó (owner quyết định 2026-10-20, mục *Merge* bên dưới; ADR 012).
 
 ## Luật chống trùng
 
@@ -61,7 +61,7 @@ python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi
    `lessons/<id>/<id>.pptx`. Gói Moda miễn phí gắn huy hiệu `moda.app` lên mọi slide: **không bao giờ gỡ**.
 5. **Phản biện** (mục *Phản biện*), sửa mọi lỗi được xác nhận.
 6. **Ghi `done`** vào `deck.yaml` (mẫu bên dưới), chạy `python3 scripts/genai_check.py` (phải `genai store OK`),
-   commit + push. Làm xong cả dải thì mở **một PR** vào `main`, không merge.
+   commit + push. Làm xong cả dải thì mở **một PR** vào `main`; merge theo mục *Merge*.
 
 ```yaml
 id: ga-01
@@ -123,10 +123,29 @@ Mỗi slide đúng một trong 12 kiểu, theo thứ tự này (đếm từ 0): 
 `two-column-comparison`, `2x2-matrix`, `lookup-table`, `card-grid`, `numbered-rows`, `connection-diagram`,
 `layers`, `timeline`, `one-big-number`, `one-highlighted-sentence`.
 
+Mỗi kiểu là gì (chọn theo cái slide đang **cho thấy**, không theo số ô):
+
+| Kiểu | Slide cho thấy |
+|---|---|
+| `sequence-diagram` | hai hay nhiều bên trao đổi qua lại theo thời gian (cột dọc mỗi bên, mũi tên ngang) |
+| `flow` | các bước nối nhau bằng mũi tên, có thể rẽ nhánh hoặc lặp |
+| `two-column-comparison` | hai phương án đặt cạnh nhau, cùng tiêu chí |
+| `2x2-matrix` | hai trục, mỗi trục hai mức, bốn ô sinh ra từ hai trục đó (có ghi tên trục) |
+| `lookup-table` | bảng hàng × cột để tra |
+| `card-grid` | nhiều thẻ ngang hàng, không trục, không thứ tự (bốn đáp án của câu hỏi là `card-grid`) |
+| `numbered-rows` | danh sách có số thứ tự từ trên xuống |
+| `connection-diagram` | các khối nối với nhau theo quan hệ, không theo thứ tự thời gian |
+| `layers` | các tầng chồng hoặc lồng nhau |
+| `timeline` | các mốc trên một trục thời gian |
+| `one-big-number` | một con số bài nêu, thật to, kèm một câu |
+| `one-highlighted-sentence` | một câu chính, thật to |
+
 - Một deck dùng **ít nhất 5 kiểu** và không bao giờ cùng kiểu ở hai slide liền nhau.
 - **Kiểu chữ ký**: slide của khái niệm đầu tiên (`first_concept`) lấy kiểu ở vị trí n mod 12. Không thể hiện được
   nội dung bằng kiểu đó (ví dụ `one-big-number` mà bài không có con số) thì lấy kiểu kế tiếp làm được, và ghi
-  từng kiểu bị bỏ qua kèm lý do vào `cannot`.
+  từng kiểu bị bỏ qua kèm lý do vào `cannot`. `genai_check.py` kiểm đúng slide số `first_concept`: kiểu của
+  **chính slide đó** phải là kiểu chữ ký (hoặc kiểu lùi đã ghi `cannot`), nên chọn kiểu chữ ký khi vẽ slide
+  khái niệm đầu tiên, đừng chọn sau khi vẽ xong.
 - Nền sáng/tối theo nội dung, không quá 3 slide liền nhau cùng nền (script không kiểm được; phản biện soi). Mỗi deck có một ý tưởng hình ảnh riêng lấy từ
   chính bài (bài embedding xoay quanh "bản đồ khoảng cách", bài agent xoay quanh "vòng lặp"): nói nó trong một
   dòng ở tin nhắn đầu tiên về deck.
@@ -151,13 +170,30 @@ cho riêng các lỗi P1 sau khi sửa). P2/P3 tối đa 2 vòng phản biện m
 
 Một PR cho cả dải, từ nhánh của dải vào `main`, tiêu đề `genai slides: ga-NN..ga-MM`. Mô tả: bảng mỗi bài
 (link editor Moda, số slide, bảng `layouts`, kết quả phản biện) và lỗi P2/P3 còn để lại. Kiểm trước khi mở:
-`python3 scripts/genai_check.py`, `python3 scripts/genai_check.py scope`, `python3 -m pytest -q tests/test_genai_check.py`. Không merge; không đăng gì
+`python3 scripts/genai_check.py`, `python3 scripts/genai_check.py scope`, `python3 -m pytest -q tests/test_genai_check.py`. Không đăng gì
 lên Facebook.
+
+## Merge (owner quyết định 2026-10-20)
+
+Phiên mở PR tự merge PR của mình khi agent phản biện báo hết finding. Mỗi lúc chỉ một PR được merge (mỗi lần merge
+làm `main` dịch đi), nên chỉ bắt đầu khi phiên điều phối báo tới lượt; PR setup luôn vào `main` trước.
+
+1. Đưa tip `main` vào nhánh: `git fetch origin main && git merge origin/main` (không rebase), chạy lại ba lệnh kiểm
+   ở trên, push, chờ CI xanh trên head đó.
+2. Ghi `head=<sha>` và `main=<sha>` lúc đó. Gọi **một** agent phản biện (`model: sonnet`) duyệt cả PR trên đúng head
+   đó (`git diff origin/main...HEAD`), theo mục *Phản biện*.
+3. **Hết finding** = agent báo không còn finding nào, hoặc mỗi finding còn lại đã được sửa (sửa xong là head mới:
+   quay lại bước 1) hoặc là P2/P3 đã bác bằng bằng chứng ghi trong PR. P1 không sửa được thì không merge, báo phiên
+   điều phối.
+4. Ngay trước khi merge: head của PR và tip `main` vẫn đúng hai SHA đã ghi, CI xanh trên head, không xung đột, không
+   comment hay review mới chưa xử lý (nhất là của Linh). Lệch điều nào thì quay lại bước 1.
+5. Merge bằng **merge commit**, khoá `sha` = head đã ghi. Sau merge, kiểm parent đầu của merge commit đúng bằng `main`
+   đã ghi (lệch thì báo Linh, không tự revert). Ghi SHA merge commit và một dòng tóm tắt lên PR, báo phiên điều phối.
 
 ## Prompt khởi động một phiên làm việc
 
 > Làm dải `<range>` của bộ Generative AI cho người mới trong repo `vohoailinh90/agentic-coding-course`, nhánh
 > `<branch>`. Đọc `docs/genai-slides.md` và làm đúng theo đó: claim dải bằng `scripts/genai_check.py`, viết
 > `lesson.md` từ bài nguồn đã ghim, dựng deck trên Moda, chụp từng slide, xuất PPTX (giữ huy hiệu moda.app), gọi
-> một agent phản biện cho mỗi bài, sửa lỗi, ghi `done`, mở một PR vào `main`. Không dùng Codex, không merge, không
-> sửa file ngoài thư mục bài của dải mình.
+> một agent phản biện cho mỗi bài, sửa lỗi, ghi `done`, mở một PR vào `main`, rồi merge theo mục *Merge* khi phiên
+> điều phối báo tới lượt. Không dùng Codex, không sửa file ngoài thư mục bài của dải mình.
