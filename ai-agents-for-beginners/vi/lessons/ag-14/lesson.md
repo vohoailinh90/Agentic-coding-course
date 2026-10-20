@@ -5,7 +5,6 @@
 - **MAF** (Microsoft Agent Framework) — khung hợp nhất của Microsoft để dựng AI agent.
 - **LLM** (Large Language Model) — mô hình ngôn ngữ lớn: bộ não chữ nghĩa đứng sau agent.
 - **SDK** (Software Development Kit) — bộ công cụ lập trình của một dịch vụ.
-- **API** (Application Programming Interface) — cổng để chương trình này gọi dịch vụ của chương trình khác.
 - **MCP** (Model Context Protocol) — giao thức để agent kết nối với công cụ và dữ liệu bên ngoài.
 - **A2A** (Agent-to-Agent) — giao thức để các agent nói chuyện và cùng làm việc với nhau.
 - **OTel** (OpenTelemetry) — chuẩn chung để agent phát ra dữ liệu theo dõi.
@@ -22,7 +21,7 @@ nhiều tình huống thật, từ sản xuất đến nghiên cứu. Về **cá
 - **Bàn giao**: agent chuyển việc cho nhau khi xong từng việc con.
 - **Magnetic**: một agent quản lý tạo và sửa danh sách việc, rồi điều phối các agent con.
 
-Để đưa agent vào sản xuất, MAF có thêm: **quan sát** bằng OpenTelemetry (mọi hành động của agent đều ghi
+Để đưa agent vào sản xuất, MAF có thêm: **quan sát** bằng OpenTelemetry (OTel) (mọi hành động của agent đều ghi
 được, theo dõi hiệu năng qua bảng điều khiển Microsoft Foundry); **bảo mật** khi chạy agent trên
 Microsoft Foundry (phân quyền theo vai trò, xử lý dữ liệu riêng tư, kiểm duyệt nội dung); **bền bỉ**
 (luồng và quy trình có thể tạm dừng, chạy tiếp, phục hồi sau lỗi); **kiểm soát** (có bước cần con người
@@ -40,6 +39,7 @@ liệu, bộ nhớ như Microsoft Fabric, SharePoint, Pinecone, Qdrant.
 Tạo agent bằng cách khai báo: dịch vụ suy luận (nhà cung cấp LLM), chỉ dẫn agent phải theo, và một tên.
 
 ```python
+# client: dịch vụ LLM đã tạo
 agent = client.create_agent(
     instructions="You are good at recommending trips",
     name="TripRecommender")
@@ -104,6 +104,12 @@ phải hội thoại.
 
 Agent đặt phòng cần: nếu hết phòng thì gợi ý phương án khác, và khách ưu tiên thì đi theo quy trình riêng.
 Hai việc đó dùng loại cạnh (edge) nào của workflow?
+
+```mermaid
+flowchart LR
+  E[Executor] -->|hết phòng| A[Phương án khác]
+  E -->|khách ưu tiên| P[Quy trình riêng]
+```
 
 <details>
 <summary>Đáp án</summary>
