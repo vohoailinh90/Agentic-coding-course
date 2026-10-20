@@ -17,7 +17,7 @@ Các bài trước nói về prompt và kỹ thuật viết prompt. Nhiều côn
 
 - giải thích được ứng dụng sinh văn bản là gì;
 - xây được một ứng dụng sinh văn bản bằng thư viện `openai` của Python;
-- chỉnh ứng dụng dùng nhiều hay ít token, và đổi temperature để câu trả lời đa dạng hơn.
+- chỉnh ứng dụng dùng nhiều hay ít **token** (mẩu chữ nhỏ mô hình đọc và viết; dịch vụ tính tiền theo token), và đổi temperature để câu trả lời đa dạng hơn.
 
 ## Ứng dụng sinh văn bản là gì
 
@@ -73,7 +73,8 @@ print(response.output_text)
 - `OpenAI(...)` tạo **client**, đối tượng nói chuyện với dịch vụ. Với Azure, thêm `base_url` là endpoint của bạn
   nối thêm `/openai/v1/`.
 - `responses.create` gửi prompt (`input`) tới mô hình (`model`; với Azure đây là tên bản triển khai của bạn). `store=False`
-  bảo dịch vụ không lưu lại câu trả lời.
+  bảo dịch vụ không lưu lại câu trả lời. Khóa đặt thẳng trong code chỉ để thử; bản thật đọc khóa từ biến môi
+  trường.
 - `response.output_text` là văn bản mô hình viết ra, ví dụ: *"…một nàng tiên cá rất buồn."*
 
 Cũng cách gọi này dùng được cho chatbot nhiều lượt: bạn đưa một danh sách tin nhắn vào `input`. Bài sau nói kỹ hơn.
@@ -117,8 +118,8 @@ flowchart LR
   sao cho cần ít token hơn.
 - **Temperature**: càng cao câu trả lời càng ngẫu nhiên, càng thấp càng dễ đoán. Đặt bằng tham số `temperature`, ví dụ
   0,5; càng gần 1,0 càng đa dạng.
-- **Mô hình suy luận không dùng temperature.** Theo bài nguồn, các mô hình hiện hành trên Microsoft Foundry là mô hình
-  suy luận (họ GPT-5, dòng o) và **không hỗ trợ** `temperature`, `top_p`; gửi `temperature` cho `gpt-5-mini` sẽ bị báo lỗi
+- **Mô hình suy luận không dùng temperature.** Theo bài nguồn, các mô hình hiện hành trên Microsoft Foundry (nền tảng AI
+  của Microsoft) là mô hình suy luận (họ GPT-5, dòng o) và **không hỗ trợ** `temperature`; gửi `temperature` cho `gpt-5-mini` sẽ bị báo lỗi
   tham số không được hỗ trợ. Muốn thử temperature, dùng mô hình còn hỗ trợ, như Llama. Với mô hình suy luận, bạn điều
   khiển câu trả lời bằng kỹ thuật viết prompt và các tham số về mức suy luận.
 
