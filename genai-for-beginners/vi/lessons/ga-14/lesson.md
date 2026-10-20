@@ -9,8 +9,8 @@
 - **LLMOps** (Large Language Model Operations) — cách làm, triển khai và vận hành ứng dụng dùng LLM.
 - **RAG** (Retrieval Augmented Generation) — sinh câu trả lời có tra cứu thêm dữ liệu bên ngoài.
 - **POC** (Proof of Concept) — bản thử để chứng minh một ý tưởng làm được.
-- **SDK** (Software Development Kit) và **CLI** (Command-Line Interface) — bộ công cụ cho lập trình viên và giao diện
-  dòng lệnh, để làm việc bằng code thay vì bấm chuột.
+- **SDK** (Software Development Kit) — bộ công cụ cho lập trình viên, để làm việc bằng code.
+- **CLI** (Command-Line Interface) — giao diện dòng lệnh: gõ lệnh thay vì bấm chuột.
 
 ## Vì sao cần một vòng đời
 
@@ -34,7 +34,8 @@ chia ra: ứng dụng cũ là **"ứng dụng ML"**, ứng dụng mới là **"�
 So với vòng đời MLOps quen thuộc, LLM có nhiều yêu cầu mới:
 
 - **viết prompt** (câu mô tả gửi cho AI);
-- các kỹ thuật mới để tăng chất lượng: **tinh chỉnh** (fine-tuning), **RAG**, **metaprompt**;
+- các kỹ thuật mới để tăng chất lượng: **tinh chỉnh** (fine-tuning: huấn luyện thêm mô hình bằng dữ liệu riêng), **RAG**,
+  **metaprompt** (đoạn chữ đặt trước prompt của người dùng để định hướng câu trả lời);
 - đánh giá theo hướng **AI có trách nhiệm**;
 - **chỉ số đo mới** (xem dưới).
 
@@ -53,11 +54,12 @@ Trong LLMOps, trọng tâm là **nhà phát triển ứng dụng**: chú trọng
 
 ## Vòng đời LLM: ba bước lớn
 
-Vòng đời này **không đi theo đường thẳng**: nó gồm nhiều **vòng lặp** lồng nhau, làm đi làm lại, bên trong một vòng lớn
+Vòng đời này **không đi theo đường thẳng**: nó gồm nhiều **vòng lặp** gắn với nhau, làm đi làm lại, bên trong một vòng lớn
 bao trùm.
 
 1. **Khám phá** (ý tưởng): tìm hướng theo nhu cầu kinh doanh. Dùng kỹ thuật viết prompt để thử với nhiều LLM, xem giả
-   thuyết có đúng không. Làm bản mẫu (prototype) bằng **PromptFlow** và thử xem đủ hiệu quả chưa.
+   thuyết có đúng không. Làm bản mẫu (prototype) bằng **PromptFlow** (công cụ của Microsoft,
+   xem dưới) và thử xem đủ hiệu quả chưa.
 2. **Xây dựng và tăng cường**: đánh giá trên bộ dữ liệu lớn hơn, dùng tinh chỉnh và RAG để kiểm tra độ vững. Chưa đạt
    thì làm lại: thêm bước vào luồng hoặc sắp xếp lại dữ liệu. Thử luồng và quy mô, đạt các chỉ số thì sang bước sau.
 3. **Vận hành**: thêm hệ thống **giám sát và cảnh báo**, triển khai và tích hợp vào ứng dụng.
@@ -79,17 +81,17 @@ Microsoft có **nền tảng Azure AI** và **PromptFlow** để làm vòng đ�
 
 - **Microsoft Foundry** (trước gọi là Azure AI Studio): cổng web để khám phá mô hình, ví dụ mẫu và công cụ, quản lý tài
   nguyên, và làm việc bằng giao diện kéo thả hoặc bằng code qua SDK, CLI.
-- **Azure AI**: quản lý vận hành, dịch vụ, dự án, tìm kiếm vector và cơ sở dữ liệu.
+- **Azure AI**: quản lý vận hành, dịch vụ, dự án, tìm kiếm vector (tìm theo ý nghĩa) và cơ sở dữ liệu.
 - **PromptFlow**: đưa ứng dụng từ **POC** tới ứng dụng quy mô lớn:
-  1. thiết kế và xây ứng dụng trong VS Code (trình soạn code), với công cụ trực quan;
-  2. thử và tinh chỉnh để ứng dụng đạt chất lượng;
-  3. dùng Microsoft Foundry để tích hợp với đám mây, rồi đẩy lên và triển khai.
+  1. thiết kế: xây ứng dụng trong VS Code (trình soạn code), với công cụ trực quan;
+  2. thử: thử và tinh chỉnh để ứng dụng đạt chất lượng;
+  3. triển khai: dùng Microsoft Foundry để tích hợp với đám mây, rồi đẩy lên và triển khai.
 
 Muốn xem một ví dụ đầy đủ, bài nguồn gợi ý ứng dụng mẫu **Contoso Chat**.
 
 ## Nhìn hình trả lời
 
-Bạn vừa thử prompt với vài LLM và làm một bản mẫu bằng PromptFlow để xem ý tưởng có khả thi. Bạn đang ở bước nào của
+Nhìn sơ đồ vòng đời ở trên. Bạn vừa thử prompt với vài LLM và làm một bản mẫu bằng PromptFlow để xem ý tưởng có khả thi. Bạn đang ở bước nào của
 vòng đời?
 
 - A. Khám phá
