@@ -216,6 +216,9 @@ class ClaimCase(unittest.TestCase):
         self.assertIsNone(check.claim_problem("ga-01", branch, BOARD, doing, take_over=True))
         done = [("origin/claude/dead", {"owner": "claude/dead", "status": "done"})]
         self.assertIn("already done by claude/dead", check.claim_problem("ga-01", branch, BOARD, done, take_over=True))
+        unreadable = [("origin/claude/dead", check.parse_held("id: [", "origin/claude/dead"))]
+        self.assertIn("only a readable `doing` record",
+                      check.claim_problem("ga-01", branch, BOARD, unreadable, take_over=True))
 
     def test_unreadable_record_holds_its_lesson(self) -> None:
         record = check.parse_held("id: [unclosed", "origin/claude/other")
@@ -322,6 +325,35 @@ class GitFlowCase(unittest.TestCase):
         code, out = self.tool(w1, "scope")
         self.assertEqual(code, 1)
         self.assertIn("README.md is outside", out)
+
+    def test_scope_ignores_lessons_merged_in_from_main(self) -> None:
+        self.run_git(self.tmp / "seed", "push", "-q", "origin", "main:claude/genai-slides-setup")  # setup still exists
+        w1 = self.clone("w1", "w1")
+        self.tool(w1, "claim", "ga-01", "--session", "s1")
+        self.push(w1, "w1")
+        w2 = self.clone("w2", "w2")
+        self.tool(w2, "claim", "ga-02", "--session", "s2")
+        self.run_git(w2, "add", "-A")
+        self.run_git(w2, "commit", "-q", "-m", "claim")
+        self.run_git(w2, "push", "-q", "origin", "w2:main")  # w2's range merged into main first
+        self.run_git(w1, "fetch", "-q", "origin")
+        self.run_git(w1, "merge", "-q", "--no-edit", "origin/main")
+        code, out = self.tool(w1, "scope")
+        self.assertEqual(code, 0, out)
+        self.assertIn("1 changed path(s)", out)
+
+    def test_scope_sees_both_paths_of_a_rename(self) -> None:
+        w1 = self.clone("w1", "w1")
+        (w1 / "notes.md").write_text("x", encoding="utf-8")
+        self.run_git(w1, "add", "-A")
+        self.run_git(w1, "commit", "-q", "-m", "notes")
+        self.run_git(w1, "push", "-q", "origin", "w1:main")
+        self.tool(w1, "claim", "ga-01", "--session", "s1")
+        self.run_git(w1, "mv", "notes.md", f"{check.STORE_REL}/lessons/ga-01/notes.md")
+        self.push(w1, "w1")
+        code, out = self.tool(w1, "scope")
+        self.assertEqual(code, 1, out)
+        self.assertIn("notes.md is outside", out)
 
     def test_claim_without_remote_refs_or_git_exits_2(self) -> None:
         bare = self.tmp / "plain"
