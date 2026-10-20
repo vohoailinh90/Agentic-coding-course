@@ -21,7 +21,7 @@ from scripts import agents_check as check
 REAL_STORE = Path(__file__).resolve().parent.parent / "ai-agents-for-beginners" / "vi"
 SOURCE_URL = "https://github.com/microsoft/ai-agents-for-beginners/blob/abc/01-intro-to-ai-agents/README.md"
 LESSON = ("# AI agent\n\n## Từ viết tắt\n\n- **AI** (Artificial Intelligence) — trí tuệ nhân tạo.\n\n"
-          "## Ý chính\n\nNội dung.\n\n## Nhìn hình trả lời\n\nCâu hỏi?\n\n"
+          "## Ý chính\n\nNội dung.\n\n## Nhìn hình trả lời\n\nCâu hỏi?\n\n<details><summary>Đáp án</summary>Đáp.</details>\n\n"
           f"## Nguồn đối chiếu\n\n- [Bài gốc]({SOURCE_URL})\n\nDựa trên bài 01 của microsoft/ai-agents-for-beginners "
           "(MIT License, © Microsoft Corporation).\n")
 # ag-01: the first concept's signature kind is LAYOUT_KINDS[1 % 12] = flow
@@ -93,6 +93,14 @@ class StoreCase(unittest.TestCase):
         (self.folder / "lesson.md").write_text(LESSON.replace("MIT License", "giấy phép"), encoding="utf-8")
         self.assertProblem("must credit the source")
 
+    def test_check_section_needs_question_and_answer(self) -> None:
+        empty = LESSON.replace("Câu hỏi?\n\n<details><summary>Đáp án</summary>Đáp.</details>\n\n", "\n")
+        (self.folder / "lesson.md").write_text(empty, encoding="utf-8")
+        self.assertProblem("must hold a question (`?`) and its answer in <details>")
+        no_answer = LESSON.replace("<details><summary>Đáp án</summary>Đáp.</details>", "Đáp.")
+        (self.folder / "lesson.md").write_text(no_answer, encoding="utf-8")
+        self.assertProblem("must hold a question (`?`) and its answer in <details>")
+
     def test_fence_closes_only_on_a_long_enough_line(self) -> None:
         fenced = "````md\n```\n## Nhìn hình trả lời\n```\n````\n\n"
         text = LESSON.replace("## Ý chính", fenced + "## Ý chính").replace("## Nhìn hình trả lời\n\nCâu", "## Hỏi\n\nCâu")
@@ -112,7 +120,9 @@ class StoreCase(unittest.TestCase):
 
     def test_first_concept_range(self) -> None:
         self.write_record(self.done(layouts={"slides": LAYOUTS, "first_concept": 10}))
-        self.assertProblem("first_concept must be the number of the first concept's slide, from 2 to 9")
+        self.assertProblem("first_concept must be the number of the first concept's slide, from 3 to 9")
+        self.write_record(self.done(layouts={"slides": LAYOUTS, "first_concept": 2}))
+        self.assertProblem("first_concept must be the number of the first concept's slide, from 3 to 9")
 
     def test_doing_record_without_lesson_passes(self) -> None:
         (self.folder / "lesson.md").unlink()
@@ -305,6 +315,12 @@ class GitFlowCase(unittest.TestCase):
         record = yaml.safe_load((w2 / check.STORE_REL / "lessons/ag-01/deck.yaml").read_text(encoding="utf-8"))
         self.assertEqual((record["owner"], record["session"]), ("w2", "s2"))
 
+    def test_status_reports_an_unreadable_record_as_held(self) -> None:
+        unreadable = check.parse_held("[: not yaml", "origin/claude/x")
+        self.assertEqual(check.lesson_state([("origin/claude/x", unreadable)]),
+                         "held by an unreadable deck.yaml on origin/claude/x")
+        self.assertEqual(check.lesson_state([]), "free")
+
     def test_claims_pushed_after_a_clone_are_fetched(self) -> None:
         self.run_git(self.tmp, "clone", "-q", "--single-branch", "remote.git", "late")  # tracks main only
         late = self.tmp / "late"
@@ -341,6 +357,24 @@ class GitFlowCase(unittest.TestCase):
         code, out = self.tool(w1, "scope")
         self.assertEqual(code, 0, out)
         self.assertIn("1 changed path(s)", out)
+
+    def test_scope_sees_an_edit_made_in_a_merge_resolution(self) -> None:
+        w1 = self.clone("w1", "w1")
+        self.tool(w1, "claim", "ag-01", "--session", "s1")
+        self.push(w1, "w1")
+        main = self.clone("main2")
+        (main / "notes.md").write_text("from main", encoding="utf-8")
+        self.run_git(main, "add", "-A")
+        self.run_git(main, "commit", "-q", "-m", "main moves")
+        self.run_git(main, "push", "-q", "origin", "main")
+        self.run_git(w1, "fetch", "-q", "origin")
+        self.run_git(w1, "merge", "-q", "--no-commit", "origin/main")
+        (w1 / "notes.md").write_text("edited while merging", encoding="utf-8")
+        self.run_git(w1, "add", "-A")
+        self.run_git(w1, "commit", "-q", "--no-edit")
+        code, out = self.tool(w1, "scope")
+        self.assertEqual(code, 1, out)
+        self.assertIn("notes.md is outside", out)
 
     def test_scope_sees_both_paths_of_a_rename(self) -> None:
         w1 = self.clone("w1", "w1")
