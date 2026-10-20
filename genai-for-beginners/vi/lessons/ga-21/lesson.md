@@ -53,7 +53,8 @@ Nhờ vậy Llama 3.1 làm được những việc phức tạp hơn khi dựng 
 
 - **Gọi hàm có sẵn** (native function calling): gọi công cụ và hàm bên ngoài luồng làm việc của LLM.
 - **RAG tốt hơn**, nhờ cửa sổ ngữ cảnh lớn.
-- **Sinh dữ liệu tổng hợp**: tạo dữ liệu dùng được cho việc như tinh chỉnh.
+- **Sinh dữ liệu tổng hợp**: tạo dữ liệu dùng được cho việc như tinh chỉnh (dạy thêm một mô hình có sẵn
+  cho việc riêng).
 
 ## Llama 3.1 gọi hàm thế nào
 
@@ -88,7 +89,8 @@ loại đầu vào khác như hình ảnh để trả lời. Đây là điểm c
 
 - **Đa phương thức**: đọc được cả prompt chữ lẫn prompt ảnh.
 - **Cỡ nhỏ đến vừa (11B và 90B)**: nhiều lựa chọn triển khai linh hoạt.
-- **Bản chỉ có chữ (1B và 3B)**: đặt được lên thiết bị biên hoặc điện thoại, độ trễ thấp.
+- **Bản chỉ có chữ (1B và 3B)**: đặt được lên thiết bị biên (máy tại chỗ, gần người dùng) hoặc điện
+  thoại, độ trễ (thời gian chờ trả lời) thấp.
 
 Hỗ trợ đa phương thức là một bước tiến lớn với mô hình mã nguồn mở. Ví dụ của bài nguồn gửi cho
 Llama 3.2 90B cả một ảnh lẫn một prompt chữ để nhận phân tích về bức ảnh.

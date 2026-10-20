@@ -1,5 +1,15 @@
 id: ga-21
-status: doing
+status: done
 owner: claude/genai-slides-w3
 session: session_01PyCAdnHUgbeL2zUPENzUFA
 claimed_at: '2026-10-20T09:14:55Z'
+done_at: '2026-10-20T10:19:55Z'
+moda_canvas: cvs_0KNW3BDSA0987BXDP1CDJKKK0P
+moda_url: https://moda.app/canvas/13af06b6-e540-4a0e-beb6-c1636539cc16
+slide_count: 10
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides: [card-grid, numbered-rows, timeline, two-column-comparison, card-grid, sequence-diagram, lookup-table, card-grid, one-highlighted-sentence, lookup-table]
+  first_concept: 3
