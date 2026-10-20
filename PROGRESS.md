@@ -75,7 +75,8 @@
 - Ba phiên Claude làm song song, mỗi phiên một dải trong `genai-for-beginners/vi/assignments.yaml`
   (ga-01..07, ga-08..14, ga-15..21); `scripts/genai_check.py claim` chặn nhận trùng. Trạng thái từng bài:
   `python3 scripts/genai_check.py status`, không lặp lại ở đây.
-- Phản biện bằng Claude subagent (Codex hết quota, owner quyết định 2026-10-20); owner merge các PR.
+- Phản biện bằng Claude subagent (Codex hết quota, owner quyết định 2026-10-20); agent báo hết finding thì phiên mở
+  PR tự merge, từng PR một (owner quyết định 2026-10-20, `docs/genai-slides.md` mục *Merge*).
 
 ## Bước tiếp theo
 

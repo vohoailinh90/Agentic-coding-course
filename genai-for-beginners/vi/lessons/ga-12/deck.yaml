@@ -1,0 +1,16 @@
+id: ga-12
+status: done
+owner: claude/genai-slides-w2
+session: session_01Kt7uyc92S8eLq51wMAKrTz
+claimed_at: '2026-10-20T09:14:50Z'
+done_at: '2026-10-20T10:08:51Z'
+moda_canvas: cvs_1X9T640WMT8KGTFWTH8JCK6F7S
+moda_url: https://moda.app/canvas/3d4e8c40-729a-44e1-a7f3-514499333cf9
+slide_count: 11
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides: [one-highlighted-sentence, numbered-rows, two-column-comparison, card-grid, two-column-comparison, card-grid, flow, one-highlighted-sentence, sequence-diagram, 2x2-matrix, lookup-table]
+  first_concept: 3
+  cannot: {sequence-diagram: "khái niệm đầu (giáo viên và học sinh, lấy người dùng làm trung tâm) không có trao đổi qua lại giữa các bên", flow: "khái niệm đầu không có các bước theo thứ tự"}
