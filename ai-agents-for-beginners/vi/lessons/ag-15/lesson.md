@@ -39,7 +39,7 @@ bằng mã. Chọn theo việc có đoán trước được không:
 
 | Tình huống | Dùng agent | Dùng actor |
 |---|---|---|
-| Bố cục động | Có: AI thích nghi khi trang đổi | Không: bộ chọn cứng dễ gãy |
+| Bố cục động | Có: AI thích nghi khi trang đổi | Không: bộ chọn cứng (đoạn mã trỏ đúng một phần tử trên trang) dễ gãy |
 | Cấu trúc đã biết | Không: agent chậm hơn | Có: nhanh và chính xác |
 | Tìm phần tử | Có: nói bằng ngôn ngữ tự nhiên | Không: cần bộ chọn chính xác |
 | Kiểm soát thời gian | Không: khó đoán hơn | Có: toàn quyền chờ và thử lại |
@@ -57,20 +57,24 @@ Cài các gói mà notebook dùng:
 ```bash
 pip install browser_use playwright python-dotenv
 playwright install chromium
-# .env
+```
+
+Rồi đặt biến môi trường cho Azure OpenAI, ví dụ trong file `.env` (thêm cả tên deployment chat):
+
+```bash
 AZURE_OPENAI_ENDPOINT=...
 AZURE_OPENAI_API_KEY=...
 ```
 
-Rồi đặt biến môi trường cho Azure OpenAI (thêm cả tên deployment chat). Cần Python
-3.12 trở lên, Chrome hoặc Chromium cài sẵn, và biết cơ bản về Python bất đồng bộ.
+Cần Python
+3.12 trở lên, Chrome hoặc Chromium cài sẵn, và biết cơ bản về Python bất đồng bộ (async).
 
 ## Rào an toàn cho agent trình duyệt
 
 Agent trình duyệt chạy trên website thật, nên cần ranh giới chặt hơn một đoạn mã chỉ gọi API đã biết. Bảy
 việc nên làm:
 
-1. **Khoanh vùng môi trường duyệt**: chạy trong hồ sơ trình duyệt riêng hoặc hộp cát, chỉ cho vào những
+1. **Khoanh vùng môi trường duyệt**: chạy trong hồ sơ trình duyệt riêng hoặc hộp cát (môi trường tách biệt), chỉ cho vào những
    tên miền cần cho việc.
 2. **Tách quan sát khỏi hành động**: cho agent tìm, đọc, rút dữ liệu trước; cần bước duyệt rõ ràng trước
    khi nó gửi biểu mẫu, nhắn tin, đặt chỗ, mua hàng, xóa dữ liệu hay đổi cài đặt tài khoản.
