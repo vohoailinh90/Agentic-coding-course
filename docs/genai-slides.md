@@ -11,7 +11,7 @@ mỗi phiên một nhánh, không ai sửa file của phiên khác.**
 
 | Vai | Làm gì | Không được làm |
 |---|---|---|
-| Phiên điều phối | Sửa `genai-for-beginners/vi/assignments.yaml` (giao dải), mở và theo dõi các phiên làm việc, gom kết quả | Viết bài trong dải đã giao cho phiên khác |
+| Phiên điều phối | Sửa `genai-for-beginners/vi/assignments.yaml` (giao dải), mở và theo dõi các phiên làm việc (phiên mới dùng model Sonnet, effort high; owner quyết định 2026-10-20), gom kết quả | Viết bài trong dải đã giao cho phiên khác |
 | Phiên làm việc (1 dải) | Nhận bài trong dải của mình, viết `lesson.md`, dựng deck Moda, xuất PPTX, gọi agent phản biện, mở PR | Sửa bất kỳ file nào ngoài `genai-for-beginners/vi/lessons/<id>/` của dải mình |
 | Agent phản biện (Claude subagent) | Đọc bài + nguồn + ảnh chụp slide, báo lỗi | Sửa file |
 
@@ -55,6 +55,8 @@ python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi
 3. **Dựng deck trên Moda** (mục *Slide*): `moda_bootstrap`, `load_skill("moda-core")`, `load_skill("moda-deck")`
    và các skill nó chỉ tới. Brand kit: **không dùng** (đã chốt, không hỏi lại). Mỗi slide một
    `canvas_apply_markup`; chụp **mọi** slide bằng `canvas_screenshot` và sửa trước khi sang slide sau.
+   **Không gọi `canvas_delete`**: Moda bắt người duyệt tay lệnh này, phiên không ai trông sẽ đứng chờ. Muốn bỏ
+   một phần slide thì vẽ lại cả trang bằng `canvas_apply_markup` thay trang (`replace_page_nodes`).
 4. **Xuất PPTX**: `export(canvas, format="pptx")`, tải link bằng `curl` về
    `lessons/<id>/<id>.pptx`. Gói Moda miễn phí gắn huy hiệu `moda.app` lên mọi slide: **không bao giờ gỡ**.
 5. **Phản biện** (mục *Phản biện*), sửa mọi lỗi được xác nhận.
