@@ -114,8 +114,7 @@ Công cụ chỉ là một hàm Python bình thường. Kiểu tham số của h
 
 **Bài tập**: dùng Microsoft Agent Framework mô phỏng một cuộc họp của công ty khởi nghiệp giáo dục. Viết
 system message cho từng phòng ban (vai trò, ưu tiên riêng); người dùng trình bày ý tưởng sản phẩm mới; mỗi
-phòng ban đặt câu hỏi tiếp theo để làm ý tưởng tốt hơn. Mỗi phòng ban có system message riêng (vai trò,
-ưu tiên).
+phòng ban đặt câu hỏi tiếp theo để làm ý tưởng tốt hơn.
 
 ## Nhìn hình trả lời
 
