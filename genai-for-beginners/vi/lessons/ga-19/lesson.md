@@ -47,7 +47,7 @@ Dù nhỏ, SLM vẫn làm được nhiều việc NLP: **sinh văn bản** mạc
 **dịch** giữa các ngôn ngữ, **tóm tắt** văn bản dài. Đổi lại, hiệu năng hoặc độ hiểu sâu có thể kém mô
 hình lớn.
 
-SLM được huấn luyện như LLM: thu thập dữ liệu chữ, làm sạch, huấn luyện, rồi tinh chỉnh cho việc cụ thể.
+SLM được huấn luyện qua bốn bước: thu thập dữ liệu chữ, làm sạch, huấn luyện, rồi tinh chỉnh cho việc cụ thể.
 Nó ra đời vì cần mô hình chạy được ở nơi ít tài nguyên, như **thiết bị di động** hay **thiết bị biên**
 (edge, máy đặt gần nơi dùng), nơi LLM đầy đủ quá nặng. Ứng dụng: chatbot chăm sóc khách hàng, hỗ trợ viết
 nội dung, giáo dục (viết bài, học ngoại ngữ), công cụ cho người khuyết tật như chuyển chữ thành giọng nói.
@@ -133,12 +133,13 @@ Muốn tìm hiểu sâu hơn, đọc Phi-3 Cookbook của Microsoft.
 ## Nhìn hình trả lời
 
 Bạn cần một mô hình tóm tắt ghi chú ngay trên laptop, không có mạng và không có tài khoản Azure. Theo
-bảng "Chạy họ Phi thế nào", bạn chọn mô hình và cách chạy nào?
+bảng "Chạy họ Phi thế nào", bạn chọn phương án nào: (A) GPT-4 qua cụm GPU lớn, (B) Phi-3.5-mini qua
+Foundry Local hoặc Ollama, (C) Phi-3.5-MoE qua Microsoft Foundry?
 
 <details>
 <summary>Đáp án</summary>
 
-Một SLM như **Phi-3.5-mini**, chạy bằng **Foundry Local** (không cần mạng, không cần tài khoản Azure)
+**B.** Một SLM như **Phi-3.5-mini**, chạy bằng **Foundry Local** (không cần mạng, không cần tài khoản Azure)
 hoặc **Ollama** (`ollama run phi3.5`). SLM nhỏ nên chạy được trên máy cục bộ, và tóm tắt là việc SLM làm
 được.
 
