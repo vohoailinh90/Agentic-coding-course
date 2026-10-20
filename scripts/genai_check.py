@@ -385,6 +385,13 @@ def parse_held(text: str, where: str) -> dict:
     return record if isinstance(record, dict) else {"owner": f"an unreadable deck.yaml on {where}", "status": "doing"}
 
 
+def refresh(args: argparse.Namespace) -> None:
+    """Fetch every branch of origin: a cloud session's clone tracks only main, and a claim that cannot see the
+    other sessions' branches protects nothing."""
+    if not args.no_fetch:
+        git("fetch", "--quiet", "origin", "+refs/heads/*:refs/remotes/origin/*")
+
+
 def remote_refs() -> list[str]:
     return [ref for ref in git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").split()
             if ref not in ("origin", "origin/HEAD")]
@@ -440,13 +447,14 @@ def stamp() -> str:
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def cmd_status(_args: argparse.Namespace) -> int:
+def cmd_status(args: argparse.Namespace) -> int:
     source = load_source_map(STORE)
     board = load_board(STORE)
     problems = board_problems(board, set(source))
     if problems:
         print("\n".join(problems), file=sys.stderr)
         return 1
+    refresh(args)
     found = holders()
     for lesson_id, entry in source.items():
         assignment = assigned_branch(board, lesson_id)
@@ -474,6 +482,7 @@ def cmd_claim(args: argparse.Namespace) -> int:
         print("\n".join(problems), file=sys.stderr)
         return 1
     branch = current_branch()
+    refresh(args)
     if not remote_refs():
         print("no origin/* branch is known (run `git fetch origin`): a claim cannot see other sessions", file=sys.stderr)
         return 2
@@ -510,6 +519,7 @@ def cmd_scope(args: argparse.Namespace) -> int:
         print("\n".join(problems), file=sys.stderr)
         return 1
     branch = current_branch()
+    refresh(args)
     ids = [lesson_id for row in board if row["branch"] == branch for lesson_id in expand_range(row["range"])]
     base = args.base or (SETUP_BRANCH if SETUP_BRANCH in remote_refs() else "origin/main")
     paths = git("diff", "--name-only", f"{base}...HEAD").split()
@@ -531,6 +541,8 @@ def cmd_check(_args: argparse.Namespace) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--no-fetch", action="store_true",
+                        help="do not fetch every origin branch first (status, claim and scope fetch by default)")
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("check", help="check the store (default)")
     sub.add_parser("status", help="free / doing / done for every lesson, across origin/* branches")

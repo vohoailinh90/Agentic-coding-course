@@ -24,9 +24,10 @@ chưa có branch protection).
 1. **Bảng giao việc** `genai-for-beginners/vi/assignments.yaml`: mỗi dải `ga-NN..ga-MM` thuộc đúng một nhánh.
    Chỉ phiên điều phối sửa bảng.
 2. **Nhận trước khi làm**: `python3 scripts/genai_check.py claim <id>... --session <session_id>` ghi
-   `lessons/<id>/deck.yaml` với `status: doing`. Lệnh từ chối bài không thuộc dải của nhánh đang đứng, và bài
+   `lessons/<id>/deck.yaml` với `status: doing`. `status`, `claim` và `scope` tự `git fetch` mọi nhánh của
+   `origin` trước (bản clone của phiên cloud chỉ theo dõi `main`). Lệnh từ chối bài không thuộc dải của nhánh đang đứng, và bài
    mà một nhánh `origin/*` khác đang giữ. Commit và **push ngay** bản ghi `doing`: chưa push thì chưa giữ được gì.
-3. `python3 scripts/genai_check.py status` (sau `git fetch origin`) cho biết từng bài `free`, `doing` hay `done`
+3. `python3 scripts/genai_check.py status` cho biết từng bài `free`, `doing` hay `done`
    trên mọi nhánh, và cảnh báo khi một bài bị hai nhánh giữ.
 4. **Mỗi phiên chỉ sửa thư mục bài của mình.** Không sửa README, bảng giao việc, script, tài liệu hay
    `PROGRESS.md`: những file chung đó do phiên điều phối cập nhật sau khi PR merge. Nhờ vậy các PR không
@@ -42,7 +43,7 @@ chưa có branch protection).
 ## Vòng làm một bài
 
 ```bash
-git fetch origin && python3 scripts/genai_check.py status
+python3 scripts/genai_check.py status
 python3 scripts/genai_check.py claim ga-01 ga-02 --session session_...   # rồi commit + push
 ```
 

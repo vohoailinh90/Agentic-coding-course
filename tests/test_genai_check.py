@@ -302,6 +302,15 @@ class GitFlowCase(unittest.TestCase):
         record = yaml.safe_load((w2 / check.STORE_REL / "lessons/ga-01/deck.yaml").read_text(encoding="utf-8"))
         self.assertEqual((record["owner"], record["session"]), ("w2", "s2"))
 
+    def test_claims_pushed_after_a_clone_are_fetched(self) -> None:
+        self.run_git(self.tmp, "clone", "-q", "--single-branch", "remote.git", "late")  # tracks main only
+        late = self.tmp / "late"
+        w1 = self.clone("w1", "w1")
+        self.tool(w1, "claim", "ga-01", "--session", "s1")
+        self.push(w1, "w1")
+        self.assertIn("ga-01  free", self.tool(late, "--no-fetch", "status")[1])
+        self.assertIn("ga-01  doing by w1", self.tool(late, "status")[1])
+
     def test_scope_flags_shared_files(self) -> None:
         w1 = self.clone("w1", "w1")
         self.tool(w1, "claim", "ga-01", "--session", "s1")

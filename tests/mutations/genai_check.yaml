@@ -56,3 +56,7 @@ mutations:
   find: '            elif lesson_id in seen:'
   replace: '            elif False:'
   test: tests.test_genai_check.StoreCase.test_board_overlap_and_unknown
+- label: status and claim no longer fetch the other sessions' branches
+  find: '    if not args.no_fetch:'
+  replace: '    if False:'
+  test: tests.test_genai_check.GitFlowCase.test_claims_pushed_after_a_clone_are_fetched
