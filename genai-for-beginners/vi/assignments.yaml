@@ -6,10 +6,10 @@
 #   status: assigned | done   (done = PR của dải đã merge; dải không còn nhận thêm việc)
 - range: ga-01..ga-07
   branch: claude/genai-slides-w1
-  status: assigned
+  status: done
 - range: ga-08..ga-14
   branch: claude/genai-slides-w2
-  status: assigned
+  status: done
 - range: ga-15..ga-21
   branch: claude/genai-slides-w3
-  status: assigned
+  status: done
