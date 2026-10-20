@@ -25,7 +25,7 @@ học. Nhóm biết mình không làm được điều đó nếu không dùng t
 ## AI tạo sinh: nói bằng lời, nhận lại nội dung
 
 AI tạo sinh là loại AI **tạo ra** được chữ, hình ảnh và các nội dung khác. Điều làm nó đặc biệt: ai cũng
-dùng được. Bạn không phải học Java hay SQL; bạn chỉ cần viết điều mình muốn bằng ngôn ngữ thường ngày, gọi là
+dùng được. Bạn không phải học một ngôn ngữ lập trình như Java hay SQL; bạn chỉ cần viết điều mình muốn bằng ngôn ngữ thường ngày, gọi là
 **prompt**, và mô hình trả lại một gợi ý. Phần mô hình trả lại gọi là **completion** (phần "viết tiếp"),
 vì mô hình làm việc bằng cách viết tiếp phần bạn đã đưa vào.
 
@@ -41,7 +41,7 @@ có thêm công cụ mới để đánh giá và góp ý cho học sinh.
 
 AI tạo sinh trông như mới xuất hiện, nhưng nó là kết quả của hàng chục năm nghiên cứu.
 
-- **Thập niên 1960:** những nguyên mẫu đầu tiên là chatbot gõ phím. Chúng dựa vào kho kiến thức do chuyên gia
+- **Từ thập niên 1960:** nghiên cứu bắt đầu. Những nguyên mẫu đầu tiên là chatbot gõ phím. Chúng dựa vào kho kiến thức do chuyên gia
   soạn sẵn; câu trả lời bật ra khi câu hỏi chứa đúng từ khóa. Cách này sớm lộ ra là không mở rộng được.
 - **Thập niên 1990:** cách tiếp cận thống kê ra đời, gọi là **học máy** (machine learning): máy tự học quy luật
   từ dữ liệu thay vì được lập trình từng luật. Mô hình học từ các cặp "câu – nhãn" để đoán ý định của một câu mới.
@@ -68,7 +68,8 @@ flowchart TB
 
 Phần lớn mô hình AI tạo sinh gần đây được gọi là **LLM**, vì chúng nhận chữ và trả ra chữ, và hầu hết dựa trên
 Transformer. Chúng được huấn luyện trên lượng rất lớn dữ liệu chưa gán nhãn (sách, bài báo, trang web), nên dùng
-được cho rất nhiều việc khác nhau và viết ra câu đúng ngữ pháp, có chút "sáng tạo".
+được cho rất nhiều việc khác nhau và viết ra câu đúng ngữ pháp, có chút "sáng tạo". Chúng không chỉ giúp máy "hiểu"
+chữ đưa vào tốt hơn hẳn, mà còn viết được câu trả lời mới bằng ngôn ngữ của con người.
 
 ## LLM làm việc thế nào
 
@@ -93,8 +94,8 @@ flowchart LR
 
 Prompt có thể là:
 
-- **một chỉ dẫn**: tóm tắt một bài báo, cuốn sách hay các bình luận sản phẩm; gợi ý ý tưởng cho một bài luận
-  hay một bài tập;
+- **một chỉ dẫn** (đôi khi kèm vài ví dụ hoặc dữ liệu bổ sung): tóm tắt một bài báo, cuốn sách hay các bình luận
+  sản phẩm, rút ra điều đáng chú ý từ dữ liệu chưa sắp xếp; gợi ý ý tưởng cho một bài luận hay một bài tập;
 - **một câu hỏi**, hỏi như đang trò chuyện;
 - **một đoạn văn để viết tiếp**, tức là nhờ trợ giúp viết;
 - **một đoạn code** kèm yêu cầu giải thích, hoặc một dòng chú thích nhờ viết code làm một việc cụ thể.
@@ -135,4 +136,4 @@ chờ nó làm hoàn hảo: nó làm phần nặng nhọc, cho bạn một bản
 
 - Bài nguồn (đã ghim): [Introduction to Generative AI and Large Language Models](https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/01-introduction-to-genai/README.md)
 
-*Dựa trên bài 01 của microsoft/generative-ai-for-beginners (MIT License, © Microsoft Corporation).*
+*Dựa trên bài 01 của microsoft/generative-ai-for-beginners (MIT License, © Microsoft Corporation), commit c35bc19.*
