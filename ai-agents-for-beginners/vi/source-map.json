@@ -1,0 +1,171 @@
+{
+  "source_repo": "https://github.com/microsoft/ai-agents-for-beginners",
+  "source_commit": "9923c54bcc2df67e7119945e12cd2d45944da2f6",
+  "source_license": "MIT",
+  "retrieved_on": "2026-10-20",
+  "note": "00-course-setup is left out: it installs the course's own environment and teaches no concept.",
+  "lessons": [
+    {
+      "id": "ag-01",
+      "number": 1,
+      "title_en": "Introduction to AI Agents and Agent Use Cases",
+      "title_vi": "AI agent là gì và dùng vào việc gì",
+      "kind": "learn",
+      "source_path": "01-intro-to-ai-agents/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/01-intro-to-ai-agents/README.md"
+    },
+    {
+      "id": "ag-02",
+      "number": 2,
+      "title_en": "Explore AI Agent Frameworks",
+      "title_vi": "Khám phá các framework dựng AI agent",
+      "kind": "learn",
+      "source_path": "02-explore-agentic-frameworks/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/02-explore-agentic-frameworks/README.md"
+    },
+    {
+      "id": "ag-03",
+      "number": 3,
+      "title_en": "AI Agentic Design Principles",
+      "title_vi": "Nguyên tắc thiết kế AI agent",
+      "kind": "learn",
+      "source_path": "03-agentic-design-patterns/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/03-agentic-design-patterns/README.md"
+    },
+    {
+      "id": "ag-04",
+      "number": 4,
+      "title_en": "Tool Use Design Pattern",
+      "title_vi": "Mẫu thiết kế dùng công cụ",
+      "kind": "build",
+      "source_path": "04-tool-use/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/04-tool-use/README.md"
+    },
+    {
+      "id": "ag-05",
+      "number": 5,
+      "title_en": "Agentic RAG",
+      "title_vi": "Agentic RAG: agent tự đi tìm thông tin",
+      "kind": "build",
+      "source_path": "05-agentic-rag/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/05-agentic-rag/README.md"
+    },
+    {
+      "id": "ag-06",
+      "number": 6,
+      "title_en": "Building Trustworthy AI Agents",
+      "title_vi": "Xây AI agent đáng tin cậy",
+      "kind": "learn",
+      "source_path": "06-building-trustworthy-agents/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/06-building-trustworthy-agents/README.md"
+    },
+    {
+      "id": "ag-07",
+      "number": 7,
+      "title_en": "Planning Design",
+      "title_vi": "Mẫu thiết kế lập kế hoạch",
+      "kind": "learn",
+      "source_path": "07-planning-design/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/07-planning-design/README.md"
+    },
+    {
+      "id": "ag-08",
+      "number": 8,
+      "title_en": "Multi-agent design patterns",
+      "title_vi": "Mẫu thiết kế nhiều agent",
+      "kind": "learn",
+      "source_path": "08-multi-agent/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/08-multi-agent/README.md"
+    },
+    {
+      "id": "ag-09",
+      "number": 9,
+      "title_en": "Metacognition in AI Agents",
+      "title_vi": "Siêu nhận thức: agent tự xem lại cách nghĩ",
+      "kind": "learn",
+      "source_path": "09-metacognition/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/09-metacognition/README.md"
+    },
+    {
+      "id": "ag-10",
+      "number": 10,
+      "title_en": "AI Agents in Production: Observability & Evaluation",
+      "title_vi": "Đưa AI agent vào vận hành: quan sát và đánh giá",
+      "kind": "learn",
+      "source_path": "10-ai-agents-production/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/10-ai-agents-production/README.md"
+    },
+    {
+      "id": "ag-11",
+      "number": 11,
+      "title_en": "Using Agentic Protocols (MCP, A2A and NLWeb)",
+      "title_vi": "Giao thức cho agent: MCP, A2A và NLWeb",
+      "kind": "learn",
+      "source_path": "11-agentic-protocols/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/11-agentic-protocols/README.md"
+    },
+    {
+      "id": "ag-12",
+      "number": 12,
+      "title_en": "Context Engineering for AI Agents",
+      "title_vi": "Thiết kế ngữ cảnh cho AI agent",
+      "kind": "learn",
+      "source_path": "12-context-engineering/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/12-context-engineering/README.md"
+    },
+    {
+      "id": "ag-13",
+      "number": 13,
+      "title_en": "Memory for AI Agents",
+      "title_vi": "Bộ nhớ của AI agent",
+      "kind": "learn",
+      "source_path": "13-agent-memory/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/13-agent-memory/README.md"
+    },
+    {
+      "id": "ag-14",
+      "number": 14,
+      "title_en": "Exploring Microsoft Agent Framework",
+      "title_vi": "Tìm hiểu Microsoft Agent Framework",
+      "kind": "build",
+      "source_path": "14-microsoft-agent-framework/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/14-microsoft-agent-framework/README.md"
+    },
+    {
+      "id": "ag-15",
+      "number": 15,
+      "title_en": "Building Computer Use Agents (CUA)",
+      "title_vi": "Xây agent điều khiển máy tính",
+      "kind": "build",
+      "source_path": "15-browser-use/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/15-browser-use/README.md"
+    },
+    {
+      "id": "ag-16",
+      "number": 16,
+      "title_en": "Deploying Scalable Agents with Microsoft Foundry",
+      "title_vi": "Triển khai agent mở rộng được với Microsoft Foundry",
+      "kind": "build",
+      "source_path": "16-deploying-scalable-agents/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/16-deploying-scalable-agents/README.md"
+    },
+    {
+      "id": "ag-17",
+      "number": 17,
+      "title_en": "Creating Local AI Agents Using Microsoft Foundry Local and Qwen",
+      "title_vi": "Tạo AI agent chạy trên máy với Foundry Local và Qwen",
+      "kind": "build",
+      "source_path": "17-creating-local-ai-agents/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/17-creating-local-ai-agents/README.md"
+    },
+    {
+      "id": "ag-18",
+      "number": 18,
+      "title_en": "Securing AI Agents with Cryptographic Receipts",
+      "title_vi": "Bảo mật AI agent bằng biên nhận mật mã",
+      "kind": "build",
+      "source_path": "18-securing-ai-agents/README.md",
+      "source_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/9923c54bcc2df67e7119945e12cd2d45944da2f6/18-securing-ai-agents/README.md"
+    }
+  ]
+}

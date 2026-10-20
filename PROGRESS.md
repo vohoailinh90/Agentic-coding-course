@@ -94,3 +94,12 @@
    [docs/handoff.md](docs/handoff.md). Sau mỗi đợt, xuất lại HTML.
 3. Bắt đầu đăng Facebook từ các bài `done`: `python -m src.main fb-draft <lesson-id>`, ảnh đăng kèm là
    hình tóm tắt của bài.
+
+## AI Agent cho người mới (bài + slide Moda, bắt đầu 2026-10-20)
+
+- Kho riêng `ai-agents-for-beginners/vi/`: 18 bài dựa trên microsoft/ai-agents-for-beginners (MIT, ghim
+  `9923c54`), cùng quy trình với bộ Generative AI nhưng file riêng
+  ([ADR 013](docs/decisions/013-ai-agents-for-beginners-slides.md), [docs/agents-slides.md](docs/agents-slides.md)).
+- Hai phiên Claude (Sonnet, effort high) làm song song: `claude/agents-slides-w1` (ag-01..09) và
+  `claude/agents-slides-w2` (ag-10..18); `scripts/agents_check.py claim` chặn nhận trùng. Trạng thái:
+  `python3 scripts/agents_check.py status`.
