@@ -1,13 +1,18 @@
 """scripts/genai_check.py: the Generative AI slide store rules, on fixtures and on the real store."""
 from __future__ import annotations
 
+import contextlib
 import copy
+import io
 import json
+import os
 import shutil
+import subprocess
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest import mock
 
 import yaml
 
@@ -17,7 +22,8 @@ REAL_STORE = Path(__file__).resolve().parent.parent / "genai-for-beginners" / "v
 SOURCE_URL = "https://github.com/microsoft/generative-ai-for-beginners/blob/abc/01-introduction-to-genai/README.md"
 LESSON = ("# AI tạo sinh\n\n## Từ viết tắt\n\n- **AI** (Artificial Intelligence) — trí tuệ nhân tạo.\n\n"
           "## Ý chính\n\nNội dung.\n\n## Nhìn hình trả lời\n\nCâu hỏi?\n\n"
-          f"## Nguồn đối chiếu\n\n- [Bài gốc]({SOURCE_URL})\n")
+          f"## Nguồn đối chiếu\n\n- [Bài gốc]({SOURCE_URL})\n\nDựa trên bài 01 của microsoft/generative-ai-for-beginners "
+          "(MIT License, © Microsoft Corporation).\n")
 # ga-01: the first concept's signature kind is LAYOUT_KINDS[1 % 12] = flow
 LAYOUTS = ["one-highlighted-sentence", "card-grid", "flow", "two-column-comparison", "layers", "numbered-rows",
            "lookup-table", "timeline", "card-grid", "lookup-table"]
@@ -74,6 +80,39 @@ class StoreCase(unittest.TestCase):
 
     def test_fixture_passes(self) -> None:
         self.assertEqual(self.problems(), [])
+
+    def test_doing_lesson_may_be_a_draft(self) -> None:
+        self.write_record({"id": "ga-01", "status": "doing", "owner": "claude/genai-slides-w1",
+                           "session": "session_x", "claimed_at": "2026-10-20T09:00:00Z"})
+        (self.folder / "lesson.md").write_text("bản nháp, chưa có mục nào\n", encoding="utf-8")
+        self.assertEqual(self.problems(), [])
+        (self.folder / "01.png").write_bytes(b"x")
+        self.assertProblem("01.png does not belong")
+
+    def test_lesson_must_credit_the_source(self) -> None:
+        (self.folder / "lesson.md").write_text(LESSON.replace("MIT License", "giấy phép"), encoding="utf-8")
+        self.assertProblem("must credit the source")
+
+    def test_fence_closes_only_on_a_long_enough_line(self) -> None:
+        fenced = "````md\n```\n## Nhìn hình trả lời\n```\n````\n\n"
+        text = LESSON.replace("## Ý chính", fenced + "## Ý chính").replace("## Nhìn hình trả lời\n\nCâu", "## Hỏi\n\nCâu")
+        (self.folder / "lesson.md").write_text(text, encoding="utf-8")
+        self.assertProblem("`## Nhìn hình trả lời` is missing")
+
+    def test_inline_triple_backticks_are_not_a_fence(self) -> None:
+        text = LESSON.replace("Nội dung.", "Viết ```x``` trong một dòng.")
+        (self.folder / "lesson.md").write_text(text, encoding="utf-8")
+        self.assertEqual(self.problems(), [])
+        (self.folder / "lesson.md").write_text(LESSON + "\n```python\nprint(1)\n", encoding="utf-8")
+        self.assertProblem("leaves a code fence open")
+
+    def test_cannot_names_only_kinds_passed_over(self) -> None:
+        self.write_record(self.done(layouts={"slides": LAYOUTS, "first_concept": 3, "cannot": {"timeline": "x"}}))
+        self.assertProblem("cannot must name no kind and names timeline")
+
+    def test_first_concept_range(self) -> None:
+        self.write_record(self.done(layouts={"slides": LAYOUTS, "first_concept": 10}))
+        self.assertProblem("first_concept must be the number of the first concept's slide, from 2 to 9")
 
     def test_doing_record_without_lesson_passes(self) -> None:
         (self.folder / "lesson.md").unlink()
@@ -170,10 +209,115 @@ class ClaimCase(unittest.TestCase):
         done = [{**BOARD[0], "status": "done"}]
         self.assertIn("takes no more work", check.claim_problem("ga-01", branch, done, []))
 
+    def test_take_over_yields_doing_never_done(self) -> None:
+        branch = "claude/genai-slides-w1"
+        doing = [("origin/claude/dead", {"owner": "claude/dead", "status": "doing"})]
+        self.assertIn("--take-over", check.claim_problem("ga-01", branch, BOARD, doing))
+        self.assertIsNone(check.claim_problem("ga-01", branch, BOARD, doing, take_over=True))
+        done = [("origin/claude/dead", {"owner": "claude/dead", "status": "done"})]
+        self.assertIn("already done by claude/dead", check.claim_problem("ga-01", branch, BOARD, done, take_over=True))
+
+    def test_unreadable_record_holds_its_lesson(self) -> None:
+        record = check.parse_held("id: [unclosed", "origin/claude/other")
+        self.assertIn("already held by an unreadable deck.yaml on origin/claude/other",
+                      check.claim_problem("ga-01", "claude/genai-slides-w1", BOARD, [("origin/claude/other", record)]))
+
+    def test_scope(self) -> None:
+        paths = ["genai-for-beginners/vi/lessons/ga-01/deck.yaml", "genai-for-beginners/vi/lessons/ga-03/lesson.md",
+                 "genai-for-beginners/vi/assignments.yaml"]
+        self.assertEqual(check.scope_problems(paths, ["ga-01", "ga-02"]),
+                         ["genai-for-beginners/vi/lessons/ga-03/lesson.md is outside this branch's lesson folders",
+                          "genai-for-beginners/vi/assignments.yaml is outside this branch's lesson folders"])
+
     def test_expand_range(self) -> None:
         self.assertEqual(check.expand_range("ga-08..ga-10"), ["ga-08", "ga-09", "ga-10"])
         self.assertIsNone(check.expand_range("ga-10..ga-08"))
         self.assertIsNone(check.expand_range("ga-1..ga-2"))
+
+
+GIT_ENV = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t", "GIT_COMMITTER_NAME": "t",
+           "GIT_COMMITTER_EMAIL": "t@t", "GIT_CONFIG_GLOBAL": os.devnull, "GIT_CONFIG_NOSYSTEM": "1"}
+
+
+class GitFlowCase(unittest.TestCase):
+    """claim, status and scope against a real bare remote with two worker clones."""
+
+    def setUp(self) -> None:
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.tmp = Path(tmp.name)
+        self.run_git(self.tmp, "init", "-q", "--bare", "-b", "main", "remote.git")
+        seed = self.clone("seed")
+        store = seed / check.STORE_REL
+        store.mkdir(parents=True)
+        lessons = [{"id": f"ga-0{n}", "number": n, "title_vi": f"Bài {n}", "source_url": SOURCE_URL} for n in (1, 2)]
+        (store / "source-map.json").write_text(json.dumps({"lessons": lessons}), encoding="utf-8")
+        self.board = [{"range": "ga-01..ga-01", "branch": "w1", "status": "assigned"},
+                      {"range": "ga-02..ga-02", "branch": "w2", "status": "assigned"}]
+        (store / "assignments.yaml").write_text(yaml.safe_dump(self.board), encoding="utf-8")
+        self.run_git(seed, "add", "-A")
+        self.run_git(seed, "commit", "-q", "-m", "seed")
+        self.run_git(seed, "push", "-q", "origin", "main")
+
+    def run_git(self, cwd: Path, *args: str) -> str:
+        return subprocess.run(["git", *args], cwd=cwd, env=GIT_ENV, check=True, capture_output=True,
+                              text=True).stdout
+
+    def clone(self, name: str, branch: str | None = None) -> Path:
+        self.run_git(self.tmp, "clone", "-q", "remote.git", name)
+        if branch:
+            self.run_git(self.tmp / name, "checkout", "-q", "-b", branch)
+        return self.tmp / name
+
+    def tool(self, root: Path, *argv: str) -> tuple[int, str]:
+        out = io.StringIO()
+        with mock.patch.object(check, "ROOT", root), mock.patch.object(check, "STORE", root / check.STORE_REL), \
+                mock.patch.dict(os.environ, GIT_ENV), contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+            code = check.main(list(argv))
+        return code, out.getvalue()
+
+    def push(self, root: Path, branch: str) -> None:
+        self.run_git(root, "add", "-A")
+        self.run_git(root, "commit", "-q", "-m", "claim")
+        self.run_git(root, "push", "-q", "origin", branch)
+
+    def test_claims_never_overlap_and_take_over_follows_the_board(self) -> None:
+        w1 = self.clone("w1", "w1")
+        self.assertEqual(self.tool(w1, "claim", "ga-01", "--session", "s1")[0], 0)
+        self.push(w1, "w1")
+        self.assertEqual(self.tool(w1, "claim", "ga-02", "--session", "s1")[0], 1)  # w2's range
+        w2 = self.clone("w2", "w2")
+        code, out = self.tool(w2, "claim", "ga-01", "--session", "s2")
+        self.assertEqual(code, 1)
+        self.assertIn("assigned to w1", out)
+        code, out = self.tool(w2, "status")
+        self.assertIn("ga-01  doing by w1", out)
+        # the coordinator moves ga-01 to w2 (w1's session died): a plain claim still yields to the pushed record
+        board = [{**self.board[0], "branch": "w2"}, self.board[1]]
+        (w2 / check.STORE_REL / "assignments.yaml").write_text(yaml.safe_dump(board), encoding="utf-8")
+        code, out = self.tool(w2, "claim", "ga-01", "--session", "s2")
+        self.assertEqual(code, 1)
+        self.assertIn("already held by w1", out)
+        self.assertEqual(self.tool(w2, "claim", "ga-01", "--session", "s2", "--take-over")[0], 0)
+        record = yaml.safe_load((w2 / check.STORE_REL / "lessons/ga-01/deck.yaml").read_text(encoding="utf-8"))
+        self.assertEqual((record["owner"], record["session"]), ("w2", "s2"))
+
+    def test_scope_flags_shared_files(self) -> None:
+        w1 = self.clone("w1", "w1")
+        self.tool(w1, "claim", "ga-01", "--session", "s1")
+        self.push(w1, "w1")
+        code, out = self.tool(w1, "scope")
+        self.assertEqual(code, 0, out)
+        (w1 / check.STORE_REL / "README.md").write_text("x", encoding="utf-8")
+        self.push(w1, "w1")
+        code, out = self.tool(w1, "scope")
+        self.assertEqual(code, 1)
+        self.assertIn("README.md is outside", out)
+
+    def test_claim_without_remote_refs_or_git_exits_2(self) -> None:
+        bare = self.tmp / "plain"
+        shutil.copytree(self.tmp / "seed" / "genai-for-beginners", bare / "genai-for-beginners")
+        self.assertEqual(self.tool(bare, "claim", "ga-01", "--session", "s")[0], 2)
 
 
 class RealStoreCase(unittest.TestCase):

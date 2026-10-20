@@ -8,6 +8,8 @@ them at once, so who may take which lesson is computable and lives here, not in 
   check            (default) every lesson folder, the source map and the assignment board
   status           every lesson: free, doing or done, read from this checkout and every origin/* branch
   claim ID...      write the `doing` record of lessons assigned to the current branch
+                   (--take-over: the board moved the lesson here from a branch whose session died)
+  scope            fail unless this branch changes only its own lesson folders (run before opening a PR)
 
 What `check` enforces, per `lessons/<id>/`:
   - the id is in source-map.json; the folder holds only lesson.md, deck.yaml and <id>.pptx
@@ -16,9 +18,9 @@ What `check` enforces, per `lessons/<id>/`:
   - a done deck: 10 to 12 slides, size 1920x1080, exports pending | badged, review passed, and the
     layout table of docs/genai-slides.md (known kinds, one per slide, at least five kinds, never the
     same kind on two adjacent slides, the first concept on its signature kind or a named fallback)
-  - lesson.md (required once the deck is done): a `# ` title, `## Từ viết tắt` as the first section,
-    `## Nhìn hình trả lời` and `## Nguồn đối chiếu` sections, the latter linking the pinned source
-    file, and no code fence left open
+  - lesson.md, once the deck is done (a `doing` lesson may hold a draft): a `# ` title, `## Từ viết tắt`
+    as the first section, `## Nhìn hình trả lời` and `## Nguồn đối chiếu` sections, the latter linking
+    the pinned source file and crediting it (MIT), and no code fence left open
   - <id>.pptx exists exactly when exports is badged: a whole ZIP holding a presentation, with as
     many slides as slide_count and the moda.app badge on every slide (it is never removed)
 The board (assignments.yaml) gives each id to at most one branch, and only ids of the source map.
@@ -59,6 +61,10 @@ LAYOUT_KINDS = ("sequence-diagram", "flow", "two-column-comparison", "2x2-matrix
 MIN_LAYOUT_KINDS = 5
 LAYOUT_KEYS = {"slides", "first_concept", "cannot"}
 FIRST_SECTION = "Từ viết tắt"
+SOURCES_SECTION = "Nguồn đối chiếu"
+CREDIT = ("microsoft/generative-ai-for-beginners", "MIT")  # docs/genai-slides.md: the attribution line
+FENCE = re.compile(r" {0,3}(`{3,}|~{3,})(.*)")
+SETUP_BRANCH = "origin/claude/genai-slides-setup"  # the base of the worker branches until it merges into main
 REQUIRED_SECTIONS = ("Từ viết tắt", "Nhìn hình trả lời", "Nguồn đối chiếu")
 PPTX_PARTS = ("[Content_Types].xml", "ppt/presentation.xml")
 PPTX_SLIDE = re.compile(r"ppt/slides/slide\d+\.xml")
@@ -213,36 +219,42 @@ def record_problems(record: object, lesson_id: str) -> list[str]:
     return problems
 
 
+def scan_fences(text: str) -> tuple[list[tuple[str, bool]], bool]:
+    """Every line with whether it sits in a code fence, and whether a fence is left open. A fence closes on a
+    line of the same character at least as long as its opener (CommonMark); a backtick opener cannot hold a
+    backtick in its info string, so an inline ```x``` is not a fence."""
+    lines: list[tuple[str, bool]] = []
+    opener = None
+    for line in text.splitlines():
+        match = FENCE.fullmatch(line)
+        if opener is None:
+            if match and not (match.group(1)[0] == "`" and "`" in match.group(2)):
+                opener = match.group(1)
+            lines.append((line, opener is not None))
+            continue
+        if (match and match.group(1)[0] == opener[0] and len(match.group(1)) >= len(opener)
+                and not match.group(2).strip()):
+            opener = None
+        lines.append((line, True))
+    return lines, opener is not None
+
+
 def sections(text: str) -> list[tuple[str, str]]:
     """Every `## ` section of a Markdown text as (heading, body), outside code fences."""
     found: list[tuple[str, list[str]]] = []
-    fence = None
-    for line in text.splitlines():
-        stripped = line.strip()
-        marker = stripped[:3]
-        if marker in ("```", "~~~"):
-            fence = None if fence == marker else (fence or marker)
-        if fence is None and line.startswith("## "):
+    for line, fenced in scan_fences(text)[0]:
+        if not fenced and line.startswith("## "):
             found.append((line[3:].strip(), []))
         elif found:
             found[-1][1].append(line)
     return [(heading, "\n".join(body)) for heading, body in found]
 
 
-def open_fence(text: str) -> bool:
-    fence = None
-    for line in text.splitlines():
-        marker = line.strip()[:3]
-        if marker in ("```", "~~~"):
-            fence = None if fence == marker else (fence or marker)
-    return fence is not None
-
-
 def lesson_problems(text: str, entry: dict) -> list[str]:
     problems: list[str] = []
     if not text.startswith("# "):
         problems.append("lesson.md must start with a `# ` title")
-    if open_fence(text):
+    if scan_fences(text)[1]:
         problems.append("lesson.md leaves a code fence open")
     found = sections(text)
     headings = [heading for heading, _ in found]
@@ -251,9 +263,13 @@ def lesson_problems(text: str, entry: dict) -> list[str]:
     for name in REQUIRED_SECTIONS:
         if name not in headings:
             problems.append(f"lesson.md: section `## {name}` is missing")
-    sources = "\n".join(body for heading, body in found if heading == "Nguồn đối chiếu")
-    if "Nguồn đối chiếu" in headings and entry["source_url"] not in sources:
-        problems.append(f"lesson.md: `## Nguồn đối chiếu` must link the pinned source {entry['source_url']}")
+    sources = "\n".join(body for heading, body in found if heading == SOURCES_SECTION)
+    if SOURCES_SECTION in headings:
+        if entry["source_url"] not in sources:
+            problems.append(f"lesson.md: `## {SOURCES_SECTION}` must link the pinned source {entry['source_url']}")
+        if not all(word in sources for word in CREDIT):
+            problems.append(f"lesson.md: `## {SOURCES_SECTION}` must credit the source: "
+                            "microsoft/generative-ai-for-beginners (MIT License, © Microsoft Corporation)")
     return problems
 
 
@@ -294,13 +310,16 @@ def folder_problems(folder: pathlib.Path, entry: dict) -> list[str]:
         return problems + ["deck.yaml is missing: a lesson folder exists only once the lesson is claimed"]
     try:
         record = yaml.safe_load(deck.read_text(encoding="utf-8"))
-    except yaml.YAMLError as error:
+    except (yaml.YAMLError, ValueError) as error:
         return problems + [f"deck.yaml does not parse: {error}"]
     problems += record_problems(record, lesson_id)
     done = isinstance(record, dict) and record.get("status") == "done"
     lesson = folder / "lesson.md"
-    if lesson.is_file():
-        problems += lesson_problems(lesson.read_text(encoding="utf-8"), entry)
+    if lesson.is_file() and done:
+        try:
+            problems += lesson_problems(lesson.read_text(encoding="utf-8"), entry)
+        except ValueError as error:
+            problems.append(f"lesson.md is not UTF-8 text: {error}")
     elif done:
         problems.append("lesson.md is missing: a done deck is built from its lesson")
     pptx = folder / f"{lesson_id}.pptx"
@@ -357,30 +376,41 @@ def current_branch() -> str:
     return branch
 
 
+def parse_held(text: str, where: str) -> dict:
+    """A deck record read from a branch; one that cannot be read still holds its lesson."""
+    try:
+        record = yaml.safe_load(text)
+    except (yaml.YAMLError, ValueError):
+        record = None
+    return record if isinstance(record, dict) else {"owner": f"an unreadable deck.yaml on {where}", "status": "doing"}
+
+
+def remote_refs() -> list[str]:
+    return [ref for ref in git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").split()
+            if ref not in ("origin", "origin/HEAD")]
+
+
 def holders() -> dict[str, list[tuple[str, dict]]]:
     """Every deck.yaml on every origin/* branch and in this checkout, as id -> [(where, record)]."""
     found: dict[str, list[tuple[str, dict]]] = {}
-    refs = [ref for ref in git("for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").split()
-            if ref not in ("origin", "origin/HEAD")]
-    for ref in refs:
+    for ref in remote_refs():
         listing = git("ls-tree", "-r", "--name-only", ref, "--", f"{STORE_REL}/lessons")
         for path in listing.split():
             parts = path.split("/")
             if parts[-1] != "deck.yaml" or len(parts) != 5:
                 continue
-            try:
-                record = yaml.safe_load(git("show", f"{ref}:{path}"))
-            except yaml.YAMLError:
-                record = None
-            found.setdefault(parts[-2], []).append((ref, record if isinstance(record, dict) else {}))
+            found.setdefault(parts[-2], []).append((ref, parse_held(git("show", f"{ref}:{path}"), ref)))
     for deck in sorted((STORE / "lessons").glob("ga-*/deck.yaml")):
-        record = yaml.safe_load(deck.read_text(encoding="utf-8"))
-        found.setdefault(deck.parent.name, []).append(("checkout", record if isinstance(record, dict) else {}))
+        text = deck.read_bytes().decode("utf-8", errors="replace")
+        found.setdefault(deck.parent.name, []).append(("checkout", parse_held(text, "this checkout")))
     return found
 
 
-def claim_problem(lesson_id: str, branch: str, board: list[dict], held: list[tuple[str, dict]]) -> str | None:
-    """Why the current branch may not claim a lesson, or None."""
+def claim_problem(lesson_id: str, branch: str, board: list[dict], held: list[tuple[str, dict]],
+                  take_over: bool = False) -> str | None:
+    """Why the current branch may not claim a lesson, or None. The board is the authority: with take_over, a
+    `doing` record of another branch (whose session died and whose range the coordinator moved here) yields;
+    a `done` deck never does."""
     assignment = assigned_branch(board, lesson_id)
     if assignment is None:
         return f"{lesson_id} is on no row of assignments.yaml; ask the coordinator"
@@ -390,9 +420,20 @@ def claim_problem(lesson_id: str, branch: str, board: list[dict], held: list[tup
     if status != "assigned":
         return f"{lesson_id}'s range is {status}; it takes no more work"
     for where, record in held:
-        if record.get("owner") not in (None, branch):
-            return f"{lesson_id} is already held by {record.get('owner')} ({where})"
+        if record.get("owner") == branch:
+            continue
+        if record.get("status") == "done":
+            return f"{lesson_id} is already done by {record.get('owner')} ({where})"
+        if not take_over:
+            return (f"{lesson_id} is already held by {record.get('owner')} ({where}); if the coordinator moved it "
+                    "to this branch, claim it with --take-over")
     return None
+
+
+def scope_problems(paths: list[str], ids: list[str]) -> list[str]:
+    """Each changed path outside the lesson folders of the given ids."""
+    prefixes = tuple(f"{STORE_REL}/lessons/{lesson_id}/" for lesson_id in ids)
+    return [f"{path} is outside this branch's lesson folders" for path in paths if not path.startswith(prefixes)]
 
 
 def stamp() -> str:
@@ -402,9 +443,13 @@ def stamp() -> str:
 def cmd_status(_args: argparse.Namespace) -> int:
     source = load_source_map(STORE)
     board = load_board(STORE)
+    problems = board_problems(board, set(source))
+    if problems:
+        print("\n".join(problems), file=sys.stderr)
+        return 1
     found = holders()
     for lesson_id, entry in source.items():
-        assignment = assigned_branch(board, lesson_id) if isinstance(board, list) else None
+        assignment = assigned_branch(board, lesson_id)
         records = found.get(lesson_id, [])
         done = [r for _, r in records if r.get("status") == "done"]
         doing = [r for _, r in records if r.get("status") == "doing"]
@@ -429,24 +474,51 @@ def cmd_claim(args: argparse.Namespace) -> int:
         print("\n".join(problems), file=sys.stderr)
         return 1
     branch = current_branch()
+    if not remote_refs():
+        print("no origin/* branch is known (run `git fetch origin`): a claim cannot see other sessions", file=sys.stderr)
+        return 2
     found = holders()
     refusals = [problem for lesson_id in args.ids for problem in
                 [f"{lesson_id} is not in source-map.json" if lesson_id not in source
-                 else claim_problem(lesson_id, branch, board, found.get(lesson_id, []))] if problem]
+                 else claim_problem(lesson_id, branch, board, found.get(lesson_id, []), args.take_over)] if problem]
     if refusals:
         print("\n".join(refusals), file=sys.stderr)
         return 1
     for lesson_id in args.ids:
         deck = STORE / "lessons" / lesson_id / "deck.yaml"
-        if deck.exists():
+        record = yaml.safe_load(deck.read_text(encoding="utf-8")) if deck.exists() else None
+        if isinstance(record, dict) and record.get("owner") == branch:
             print(f"{lesson_id}: already claimed by this branch")
             continue
+        if isinstance(record, dict) and record.get("status") == "doing":  # --take-over of a record in this checkout
+            verb = f"taken over from {record.get('owner')}"
+            record.update(owner=branch, session=args.session)
+        else:
+            record = {"id": lesson_id, "status": "doing", "owner": branch, "session": args.session,
+                      "claimed_at": stamp()}
+            verb = "claimed"
         deck.parent.mkdir(parents=True, exist_ok=True)
-        record = {"id": lesson_id, "status": "doing", "owner": branch, "session": args.session,
-                  "claimed_at": stamp()}
         deck.write_text(yaml.safe_dump(record, allow_unicode=True, sort_keys=False), encoding="utf-8")
-        print(f"{lesson_id}: claimed for {branch}; commit and push it before building")
+        print(f"{lesson_id}: {verb} for {branch}; commit and push it before building")
     return 0
+
+
+def cmd_scope(args: argparse.Namespace) -> int:
+    board = load_board(STORE)
+    problems = board_problems(board, set(load_source_map(STORE)))
+    if problems:
+        print("\n".join(problems), file=sys.stderr)
+        return 1
+    branch = current_branch()
+    ids = [lesson_id for row in board if row["branch"] == branch for lesson_id in expand_range(row["range"])]
+    base = args.base or (SETUP_BRANCH if SETUP_BRANCH in remote_refs() else "origin/main")
+    paths = git("diff", "--name-only", f"{base}...HEAD").split()
+    problems = scope_problems(paths, ids)
+    for problem in problems:
+        print(problem)
+    print(f"{len(problems)} path(s) out of scope against {base}" if problems
+          else f"scope OK: {len(paths)} changed path(s) against {base}, all in {branch}'s lesson folders")
+    return 1 if problems else 0
 
 
 def cmd_check(_args: argparse.Namespace) -> int:
@@ -465,12 +537,19 @@ def main(argv: list[str] | None = None) -> int:
     claim = sub.add_parser("claim", help="claim lessons assigned to the current branch")
     claim.add_argument("ids", nargs="+")
     claim.add_argument("--session", required=True, help="this session's id (session_...)")
+    claim.add_argument("--take-over", action="store_true",
+                       help="take a `doing` lesson from a branch the board no longer assigns it to")
+    scope = sub.add_parser("scope", help="fail unless this branch changes only its own lesson folders")
+    scope.add_argument("--base", help=f"compare against this ref (default {SETUP_BRANCH} while it exists, "
+                                      "else origin/main)")
     args = parser.parse_args(argv)
-    command = {"status": cmd_status, "claim": cmd_claim}.get(args.command, cmd_check)
+    command = {"status": cmd_status, "claim": cmd_claim, "scope": cmd_scope}.get(args.command, cmd_check)
     try:
         return command(args)
-    except GitError as error:
-        print(error, file=sys.stderr)
+    except BrokenPipeError:  # `status | head`
+        return 0
+    except (GitError, OSError, ValueError, KeyError, TypeError, yaml.YAMLError) as error:
+        print(f"{type(error).__name__}: {error}", file=sys.stderr)
         return 2
 
 
