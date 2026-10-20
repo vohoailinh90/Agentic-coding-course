@@ -33,7 +33,7 @@ một khoa học: cách tốt nhất để giỏi lên là luyện tập nhiều
 
 ## Ba khái niệm nền
 
-- **Token hóa: mô hình "thấy" prompt thế nào.** LLM nhìn prompt như một dãy token, và mỗi mô hình có thể cắt cùng
+- **Token hóa: mô hình "thấy" prompt thế nào.** LLM nhìn prompt như một dãy **token** (mẩu chữ nhỏ mô hình xử lý, như một từ hay một phần của từ), và mỗi mô hình có thể cắt cùng
   một prompt theo cách khác nhau. Vì LLM được huấn luyện trên token, cách cắt ảnh hưởng thẳng tới chất lượng câu trả
   lời. Bạn có thể thử công cụ OpenAI Tokenizer để xem một prompt bị cắt thành token ra sao.
 - **LLM nền: mô hình "xử lý" prompt thế nào.** Mô hình nền (foundation model) đoán token kế tiếp dựa trên quan hệ
@@ -56,7 +56,8 @@ LLM hiện nay có ba thách thức:
 Khóa học dùng từ "bịa" (fabrication) thay cho "ảo giác" để không gán đặc điểm con người cho máy. Ví dụ: prompt
 *"Soạn giáo án về Cuộc chiến sao Hỏa năm 2076"* (một sự kiện không có thật, vì 2076 còn ở tương lai). Ba mô hình khác
 nhau đều trả lời khác nhau một chút, nhưng cả ba đều viết ra giáo án đủ thuyết phục để người không biết tin là thật.
-Metaprompt và chỉnh temperature có thể giảm phần nào chuyện bịa.
+Metaprompt (chỉ dẫn đặt sẵn cho mô hình) và chỉnh temperature (mức ngẫu nhiên của câu trả lời) có thể giảm phần nào
+chuyện bịa; bài sau nói kỹ hơn.
 
 Trường hợp thực tế: GitHub Copilot, "lập trình viên AI ngồi cạnh bạn", biến prompt chữ thành code. Bản đầu dựa trên
 mô hình Codex của OpenAI; các kỹ sư nhanh chóng thấy cần tinh chỉnh mô hình và viết prompt tốt hơn để code tốt hơn.
@@ -71,14 +72,14 @@ flowchart LR
 - **Prompt cơ bản**: chỉ một đoạn chữ, không ngữ cảnh. Gửi vài chữ đầu một bài hát, mô hình viết tiếp ngay.
 - **Prompt phức tạp**: một chuỗi tin nhắn gồm **tin nhắn hệ thống** (đặt bối cảnh, tính cách cho trợ lý) và các cặp
   tin nhắn người dùng / trợ lý. Đổi tin nhắn hệ thống có thể ảnh hưởng tới chất lượng ngang với đổi câu hỏi.
-- **Prompt chỉ dẫn**: nói rõ nhiệm vụ. "Viết về cuộc Nội chiến" cho một đoạn văn; thêm "trong 1 đoạn, 3 gạch đầu dòng
-  về các mốc thời gian, trả về dạng JSON" thì nhận được đúng khuôn đó.
+- **Prompt chỉ dẫn**: nói rõ nhiệm vụ. "Viết về cuộc Nội chiến" cho một đoạn văn; thêm "trong 1 đoạn, 3 gạch đầu dòng về các mốc thời gian
+  và ý nghĩa, 3 gạch về các nhân vật, trả về dạng JSON" thì nhận được đúng khuôn đó.
 
 **Nội dung chính.** Chia prompt thành chỉ dẫn (làm gì) và nội dung liên quan (làm trên cái gì), ví dụ một đoạn văn
 về Sao Mộc kèm "Tóm tắt trong 2 câu ngắn". Nội dung chính dùng được theo ba cách:
 
 - **Ví dụ**: cho mô hình xem mẫu rồi để nó tự suy ra. Không ví dụ là *zero-shot*, một ví dụ là *one-shot*, vài ví dụ
-  là *few-shot*. Với few-shot, mô hình đoán đúng mà không cần chỉ dẫn thêm.
+  là *few-shot*. Với few-shot, mô hình đoán chính xác hơn mà không cần thêm chỉ dẫn.
 - **Gợi ý (cue)**: viết sẵn phần mở đầu câu trả lời, như "Ba điều ta học được:", để mô hình viết tiếp đúng kiểu.
 - **Mẫu (template)**: "công thức" prompt có chỗ trống để điền dữ liệu, dùng lại được nhiều lần. Thư viện Prompts For
   Edu gom các mẫu prompt cho giáo dục.
