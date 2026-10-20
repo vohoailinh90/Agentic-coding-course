@@ -13,7 +13,7 @@ LLM không chỉ viết chữ. Ta còn tạo được **ảnh từ một đoạn
 kiến trúc, du lịch, làm game, marketing...
 
 Bài này dùng họ mô hình **`gpt-image`** của OpenAI, thế hệ mô hình tạo ảnh hiện nay, có trên **Microsoft Foundry**
-và nền tảng OpenAI. Chúng thay cho các mô hình DALL·E cũ.
+(dịch vụ AI trên đám mây của Microsoft) và nền tảng OpenAI. Chúng thay cho các mô hình DALL·E cũ.
 
 Tình huống xuyên suốt: **Edu4All**, một startup (hư cấu) làm công cụ học tập, muốn tạo hình minh họa cho bài tập và
 tài liệu học.
@@ -28,7 +28,7 @@ Học xong bài, bạn sẽ:
 ## Tạo ảnh là gì
 
 Mô hình tạo ảnh nhận một **câu mô tả** (prompt) và vẽ ra một bức ảnh. Các mô hình hiện đại như `gpt-image` kết hợp
-kỹ thuật transformer và **khuếch tán** (diffusion):
+kiến trúc transformer (một kiểu cấu tạo mô hình) và kỹ thuật **khuếch tán** (diffusion):
 
 1. Khi huấn luyện, mô hình học mối liên hệ giữa chữ và ảnh.
 2. Khi bạn đưa prompt, nó bắt đầu từ **nhiễu ngẫu nhiên** (một mảng chấm lộn xộn).
@@ -43,7 +43,7 @@ flowchart LR
 Hai họ mô hình tạo ảnh nổi tiếng:
 
 - **`gpt-image`** (OpenAI): thế hệ hiện nay, dùng trong bài. Tạo ảnh từ chữ và sửa ảnh (vẽ lại một vùng theo mặt nạ).
-- **Midjourney**: mô hình của bên thứ ba, có dịch vụ riêng, làm việc qua Discord.
+- **Midjourney**: mô hình của bên thứ ba, có dịch vụ riêng, làm việc qua ứng dụng chat Discord.
 
 ## Chọn mô hình `gpt-image` nào
 
@@ -59,10 +59,14 @@ Trên Microsoft Foundry, bài nguồn liệt kê:
 **DALL·E 2** và **DALL·E 3** là mô hình cũ: DALL·E 3 không còn cho triển khai mới. Ứng dụng mới nên dùng `gpt-image`.
 Danh sách mô hình và vùng có sẵn thay đổi, nên luôn xem trang danh sách mô hình của Foundry.
 
-Một điểm rất quan trọng: `gpt-image` trả ảnh về dưới dạng **chuỗi base64** (`b64_json`), **không phải URL**. Code
-của bạn phải giải mã chuỗi base64 thành byte rồi tự lưu thành file; không có link nào để tải.
+Một điểm rất quan trọng: `gpt-image` trả ảnh về dưới dạng **chuỗi base64** (`b64_json`), **không phải URL**.
+Base64 là cách viết dữ liệu ảnh thành một chuỗi chữ dài. Code của bạn phải giải mã chuỗi đó thành byte (dữ liệu thô
+của file ảnh) rồi tự lưu thành file; không có link nào để tải.
 
 ## Chuẩn bị
+
+Ví dụ trong bài nguồn chạy được với Azure OpenAI trên Microsoft Foundry hoặc với nền tảng OpenAI. Dưới đây là cách
+dùng Azure:
 
 1. Tạo một tài nguyên Microsoft Foundry và triển khai một mô hình ảnh (nên chọn `gpt-image-2`).
 2. Ghi endpoint, khóa và tên bản triển khai vào file `.env` (lấy ở trang **Deployments** trong Foundry portal):
@@ -88,7 +92,8 @@ with open("images/generated-image.png", "wb") as f:
     f.write(image_bytes)
 ```
 
-Trước đó, `client` là một `AzureOpenAI` tạo từ khóa và endpoint trong `.env`. Kích thước có thể là `1024x1024`,
+Trước đó, `client` là một `AzureOpenAI` tạo từ khóa và endpoint trong `.env`; mô hình ảnh cần một phiên bản API
+(`api_version`) đủ mới, xem tài liệu Foundry. Kích thước có thể là `1024x1024`,
 `1536x1024` (ngang), `1024x1536` (dọc) hoặc `"auto"`. Chạy `python app.py`, bạn có một file PNG trong thư mục
 `images/`.
 
@@ -114,8 +119,9 @@ chữ bạn đặt **trước** prompt của người dùng để giới hạn �
 - yêu cầu: an toàn, hợp với trẻ em, có màu, khổ ngang tỉ lệ 16:9;
 - danh sách cấm: kiếm, bạo lực, máu, khỏa thân, nội dung người lớn...
 
-Sau đó prompt gửi đi là `metaprompt + yêu cầu của người dùng`, ví dụ yêu cầu "vẽ chú thỏ cưỡi ngựa, cầm kẹo mút". Mọi ảnh đều được tạo trong giới hạn đó. Kết hợp thêm bộ
-lọc nội dung có sẵn của Microsoft Foundry để có nhiều lớp bảo vệ.
+Sau đó prompt gửi đi là `metaprompt + yêu cầu của người dùng`, ví dụ yêu cầu "vẽ chú thỏ cưỡi ngựa, cầm kẹo
+mút". Mọi ảnh đều được tạo trong giới hạn đó. Kết hợp thêm bộ lọc nội dung có sẵn của Microsoft Foundry để có
+nhiều lớp bảo vệ.
 
 ## Bài tập
 
