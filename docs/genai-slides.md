@@ -123,10 +123,29 @@ Mỗi slide đúng một trong 12 kiểu, theo thứ tự này (đếm từ 0): 
 `two-column-comparison`, `2x2-matrix`, `lookup-table`, `card-grid`, `numbered-rows`, `connection-diagram`,
 `layers`, `timeline`, `one-big-number`, `one-highlighted-sentence`.
 
+Mỗi kiểu là gì (chọn theo cái slide đang **cho thấy**, không theo số ô):
+
+| Kiểu | Slide cho thấy |
+|---|---|
+| `sequence-diagram` | hai hay nhiều bên trao đổi qua lại theo thời gian (cột dọc mỗi bên, mũi tên ngang) |
+| `flow` | các bước nối nhau bằng mũi tên, có thể rẽ nhánh hoặc lặp |
+| `two-column-comparison` | hai phương án đặt cạnh nhau, cùng tiêu chí |
+| `2x2-matrix` | hai trục, mỗi trục hai mức, bốn ô sinh ra từ hai trục đó (có ghi tên trục) |
+| `lookup-table` | bảng hàng × cột để tra |
+| `card-grid` | nhiều thẻ ngang hàng, không trục, không thứ tự (bốn đáp án của câu hỏi là `card-grid`) |
+| `numbered-rows` | danh sách có số thứ tự từ trên xuống |
+| `connection-diagram` | các khối nối với nhau theo quan hệ, không theo thứ tự thời gian |
+| `layers` | các tầng chồng hoặc lồng nhau |
+| `timeline` | các mốc trên một trục thời gian |
+| `one-big-number` | một con số bài nêu, thật to, kèm một câu |
+| `one-highlighted-sentence` | một câu chính, thật to |
+
 - Một deck dùng **ít nhất 5 kiểu** và không bao giờ cùng kiểu ở hai slide liền nhau.
 - **Kiểu chữ ký**: slide của khái niệm đầu tiên (`first_concept`) lấy kiểu ở vị trí n mod 12. Không thể hiện được
   nội dung bằng kiểu đó (ví dụ `one-big-number` mà bài không có con số) thì lấy kiểu kế tiếp làm được, và ghi
-  từng kiểu bị bỏ qua kèm lý do vào `cannot`.
+  từng kiểu bị bỏ qua kèm lý do vào `cannot`. `genai_check.py` kiểm đúng slide số `first_concept`: kiểu của
+  **chính slide đó** phải là kiểu chữ ký (hoặc kiểu lùi đã ghi `cannot`), nên chọn kiểu chữ ký khi vẽ slide
+  khái niệm đầu tiên, đừng chọn sau khi vẽ xong.
 - Nền sáng/tối theo nội dung, không quá 3 slide liền nhau cùng nền (script không kiểm được; phản biện soi). Mỗi deck có một ý tưởng hình ảnh riêng lấy từ
   chính bài (bài embedding xoay quanh "bản đồ khoảng cách", bài agent xoay quanh "vòng lặp"): nói nó trong một
   dòng ở tin nhắn đầu tiên về deck.
