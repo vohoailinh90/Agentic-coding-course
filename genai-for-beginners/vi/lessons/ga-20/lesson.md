@@ -27,7 +27,7 @@ Học xong, bạn sẽ:
 | Mistral Small | Mô hình ngôn ngữ nhỏ (SLM) | Việc chữ, gọi nhiều lần, cần nhanh |
 | Mistral NeMo | Mô hình miễn phí, giấy phép Apache 2 | Tinh chỉnh, gọi hàm, nhiều ngôn ngữ |
 
-Lưu ý: GitHub Models ngừng hoạt động cuối tháng 7/2026; Microsoft Foundry Models là nơi thay thế.
+Lưu ý: GitHub Models ngừng hoạt động cuối tháng 7/2026; bài nguồn hướng dẫn dùng Microsoft Foundry Models.
 
 ## Mistral Large 2
 
@@ -47,7 +47,8 @@ Nhờ vậy Mistral Large mạnh ở ba việc:
 - **Sinh mã**: giỏi Python, Java, TypeScript và C++.
 
 **Ví dụ RAG.** Câu hỏi viết bằng tiếng Hàn, hỏi về việc tác giả làm trước khi vào đại học. Mô hình
-embedding của Cohere biến tài liệu và câu hỏi thành dãy số; thư viện `faiss` làm kho vector. Prompt gửi
+embedding của Cohere biến tài liệu và câu hỏi thành dãy số (embedding); thư viện `faiss` làm kho vector,
+tức kho lưu các dãy số để tìm mẩu giống nhất. Prompt gửi
 Mistral gồm câu hỏi và các mẩu tài liệu giống câu hỏi nhất; mô hình trả lời bằng ngôn ngữ tự nhiên.
 
 ```python
