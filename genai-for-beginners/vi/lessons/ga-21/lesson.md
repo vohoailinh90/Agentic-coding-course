@@ -37,8 +37,8 @@ Các biến thể có trong Microsoft Foundry Models:
 - Llama 3.2, 90B Vision Instruct
 
 *B* là tỷ (billion) tham số; *tham số* là những con số mô hình học được. Llama 3 cũng có trong danh mục
-nhưng bài này không bàn tới. Lưu ý: GitHub Models ngừng hoạt động cuối tháng 7/2026; Microsoft Foundry
-Models là nơi thay thế.
+nhưng bài này không bàn tới. Lưu ý: GitHub Models ngừng hoạt động cuối tháng 7/2026; bài nguồn
+hướng dẫn dùng Microsoft Foundry Models.
 
 ## Llama 3.1
 
