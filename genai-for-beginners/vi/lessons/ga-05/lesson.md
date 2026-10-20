@@ -81,7 +81,8 @@ Cách làm là dùng một **mẫu** có biến, như `{{budget}}` (ngân sách)
 của công ty.
 
 Ví dụ một công ty bảo hiểm đưa danh sách gói bảo hiểm (giá mỗi tháng) rồi hỏi: *"Ngân sách 1000 USD, cần bảo hiểm xe,
-nhà và nhân thọ, hãy gợi ý"*. Mô hình gợi ý ba gói rẻ nhất, tổng **1200 USD**, vượt ngân sách. Sau vài lần thử và
+nhà và nhân thọ, hãy gợi ý"*. Mô hình gợi ý ba gói rẻ nhất, tổng 1200 USD, trong đó có cả
+bảo hiểm **nhân thọ**, điều nó không nên làm. Sau vài lần thử và
 sửa, prompt được viết lại: ghi rõ **type** (loại) và **cost** (giá) cho từng gói, và thêm từ **restrict** (giới hạn) vào
 yêu cầu: *"chỉ chọn trong loại: Xe, Nhà"*. Lần này mô hình gợi ý đúng gói xe giá rẻ, 500 USD.
 
@@ -122,7 +123,7 @@ nhưng vẫn phải tự kiểm tra kết quả.
 ## Câu trả lời thay đổi: temperature
 
 LLM vốn **không cố định**: chạy cùng một prompt, mỗi lần ra kết quả khác. Ví dụ chạy hai lần prompt *"Viết code cho
-một Web API bằng Python"*: lần hai ra một chương trình khác hẳn lần một.
+một Web API bằng Python"*: lần hai ra một chương trình khác lần một.
 
 Như vậy có phải là vấn đề không? Tùy việc. Cần một câu trả lời cụ thể thì có. Còn với *"Tạo 3 câu hỏi bất kỳ về địa
 lý"*, kết quả khác nhau cũng không sao.
@@ -135,7 +136,7 @@ flowchart LR
   A["Temperature 0,1: hai lần chạy gần như giống nhau"] --- B["Mặc định 0,7"] --- C["Temperature 0,9: hai lần chạy khác hẳn nhau"]
 ```
 
-Còn các tham số khác như top-k, top-p, phạt lặp lại, nhưng nằm ngoài phạm vi khóa học.
+Còn các tham số khác như top-k, top-p, nhưng nằm ngoài phạm vi khóa học (không cần nhớ).
 
 ## Cách làm tốt
 
@@ -150,7 +151,8 @@ Còn các tham số khác như top-k, top-p, phạt lặp lại, nhưng nằm ng
 
 Bài nguồn cho một đoạn code Python nhỏ dùng Flask (thư viện làm web của Python) để dựng một API đơn giản. Dùng trợ lý
 AI như GitHub Copilot hay ChatGPT, áp dụng kỹ thuật **tự sửa** để cải thiện đoạn code. Mẹo: giới hạn số cải tiến bạn
-nhờ, và có thể nói rõ muốn cải thiện mặt nào (kiến trúc, hiệu năng, bảo mật…).
+nhờ, và có thể nói rõ muốn cải thiện mặt nào (kiến trúc, hiệu năng, bảo mật…). Thử thách thêm: lấy một chương trình bạn từng viết, dùng kỹ thuật tự sửa để cải thiện nó, rồi
+so xem kết quả tốt hơn hay tệ hơn.
 
 ## Nhìn hình trả lời
 
