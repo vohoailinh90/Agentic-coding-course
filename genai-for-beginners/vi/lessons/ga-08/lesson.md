@@ -6,6 +6,7 @@
 - **AI** (Artificial Intelligence) — trí tuệ nhân tạo: máy làm được việc cần trí thông minh.
 - **API** (Application Programming Interface) — giao diện lập trình: "cửa" để chương trình của bạn gọi một dịch vụ khác.
 - **JSON** (JavaScript Object Notation) — một định dạng file chữ để lưu dữ liệu có cấu trúc.
+- **ML** (Machine Learning) — học máy: cách cho máy tự học quy luật từ dữ liệu; Azure ML là dịch vụ học máy của Microsoft.
 
 ## Không chỉ để chat
 
@@ -45,13 +46,14 @@ Today we are going to learn about Azure Machine Learning.
 ```
 
 Gửi câu này cho API embedding của OpenAI, ta nhận lại một vector gồm **1536 con số**. Mỗi con số thể hiện một
-khía cạnh khác nhau của câu. Mười số đầu trông như sau:
+khía cạnh khác nhau của câu. Vài số đầu trông như sau:
 
 ```python
 [-0.006655829958617687, 0.0026128944009542465, 0.008792596869170666, -0.02446001023054123, ...]
 ```
 
-Bạn không cần đọc hiểu từng số. Điều quan trọng là: hai đoạn chữ có nghĩa gần nhau sẽ cho hai vector gần nhau.
+Bạn không cần đọc hiểu từng số. Điều quan trọng là các con số này mang nghĩa của câu: đoạn chữ nghĩa gần nhau thì vector
+cũng gần nhau, nhờ đó ta tìm được đoạn giống câu hỏi nhất.
 
 ## Chỉ mục embedding được tạo thế nào
 
@@ -60,8 +62,8 @@ của Microsoft, tính đến tháng 10/2023. Bạn không phải tự tạo nó
 
 1. Tải lời thoại (transcript) của từng video trong danh sách phát AI Show.
 2. Dùng tính năng gọi hàm của OpenAI để thử lấy **tên người nói** từ 3 phút đầu lời thoại.
-3. Cắt lời thoại thành các **đoạn 3 phút**. Mỗi đoạn lấy thêm khoảng 20 từ của đoạn sau, để ý không bị cắt cụt
-   và tìm kiếm có thêm ngữ cảnh.
+3. Cắt lời thoại thành các **đoạn 3 phút**. Mỗi đoạn lấy thêm khoảng 20 từ của đoạn sau, để embedding của mỗi
+   đoạn không bị cắt cụt và tìm kiếm có thêm ngữ cảnh.
 4. Gửi từng đoạn cho API chat của OpenAI để **tóm tắt còn 60 từ**.
 5. Gửi đoạn chữ cho API embedding để lấy **vector 1536 số**, rồi lưu đoạn chữ cùng vector vào chỉ mục.
 
@@ -74,7 +76,7 @@ flowchart LR
 
 ### Cơ sở dữ liệu vector
 
-Cho bài học đơn giản, chỉ mục chỉ là một file JSON, được nạp vào một bảng dữ liệu Pandas. Khi làm sản phẩm thật,
+Cho bài học đơn giản, chỉ mục chỉ là một file JSON, được nạp vào một bảng dữ liệu Pandas (thư viện Python để xử lý bảng). Khi làm sản phẩm thật,
 chỉ mục sẽ được lưu trong một **cơ sở dữ liệu vector** (vector database) như Azure Cognitive Search, Redis,
 Pinecone hay Weaviate.
 
@@ -114,17 +116,18 @@ trong video có câu trả lời.
 Bài nguồn có bài tập: tự tạo dịch vụ Azure OpenAI cho ứng dụng tìm kiếm. Bạn cần một tài khoản Azure. Lời giải
 chạy được trên Windows 11, macOS và Ubuntu 22.04 với Python 3.10 trở lên.
 
-1. Đăng nhập Azure portal, bấm biểu tượng **Cloud Shell** ở góc trên bên phải, chọn **Bash**.
+1. Đăng nhập Azure portal, bấm biểu tượng **Cloud Shell** (cửa sổ dòng lệnh ngay trên trình duyệt) ở góc trên bên phải,
+   chọn **Bash**.
 2. Tạo một nhóm tài nguyên (resource group):
 
    ```shell
    az group create --name semantic-video-search --location eastus
    ```
 
-3. Tạo một tài nguyên Azure OpenAI Service bằng `az cognitiveservices account create` (kiểu `OpenAI`), rồi lấy
-   **endpoint** và **khóa** của nó.
-4. Triển khai mô hình embedding `text-embedding-ada-002`.
-5. Mở notebook lời giải trong GitHub Codespaces, chạy theo hướng dẫn, rồi gõ câu hỏi vào ô nhập.
+3. Tạo một tài nguyên Azure OpenAI Service bằng `az cognitiveservices account create` (kiểu `OpenAI`).
+4. Lấy **endpoint** (địa chỉ để gọi dịch vụ) và **khóa** của tài nguyên đó, dùng cho ứng dụng.
+5. Triển khai mô hình embedding `text-embedding-ada-002`.
+6. Mở notebook lời giải trong GitHub Codespaces, chạy theo hướng dẫn, rồi gõ câu hỏi vào ô nhập.
 
 Đổi vùng (location) khác `eastus` thì xem trước bảng mô hình có sẵn ở từng vùng.
 
