@@ -1,0 +1,197 @@
+{
+  "source_repo": "https://github.com/microsoft/generative-ai-for-beginners",
+  "source_commit": "c35bc1950f9dc56af773d2c362dafce6f76e9a56",
+  "source_license": "MIT",
+  "retrieved_on": "2026-10-20",
+  "lessons": [
+    {
+      "id": "ga-01",
+      "number": 1,
+      "title_en": "Introduction to Generative AI and LLMs",
+      "title_vi": "AI tạo sinh và mô hình ngôn ngữ lớn là gì",
+      "kind": "learn",
+      "source_path": "01-introduction-to-genai/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/01-introduction-to-genai/README.md"
+    },
+    {
+      "id": "ga-02",
+      "number": 2,
+      "title_en": "Exploring and comparing different LLMs",
+      "title_vi": "Khám phá và so sánh các LLM",
+      "kind": "learn",
+      "source_path": "02-exploring-and-comparing-different-llms/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/02-exploring-and-comparing-different-llms/README.md"
+    },
+    {
+      "id": "ga-03",
+      "number": 3,
+      "title_en": "Using Generative AI Responsibly",
+      "title_vi": "Dùng AI tạo sinh có trách nhiệm",
+      "kind": "learn",
+      "source_path": "03-using-generative-ai-responsibly/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/03-using-generative-ai-responsibly/README.md"
+    },
+    {
+      "id": "ga-04",
+      "number": 4,
+      "title_en": "Understanding Prompt Engineering Fundamentals",
+      "title_vi": "Nền tảng kỹ thuật viết prompt",
+      "kind": "learn",
+      "source_path": "04-prompt-engineering-fundamentals/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/04-prompt-engineering-fundamentals/README.md"
+    },
+    {
+      "id": "ga-05",
+      "number": 5,
+      "title_en": "Creating Advanced Prompts",
+      "title_vi": "Viết prompt nâng cao",
+      "kind": "learn",
+      "source_path": "05-advanced-prompts/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/05-advanced-prompts/README.md"
+    },
+    {
+      "id": "ga-06",
+      "number": 6,
+      "title_en": "Building Text Generation Applications",
+      "title_vi": "Xây ứng dụng sinh văn bản",
+      "kind": "build",
+      "source_path": "06-text-generation-apps/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/06-text-generation-apps/README.md"
+    },
+    {
+      "id": "ga-07",
+      "number": 7,
+      "title_en": "Building Chat Applications",
+      "title_vi": "Xây ứng dụng chat",
+      "kind": "build",
+      "source_path": "07-building-chat-applications/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/07-building-chat-applications/README.md"
+    },
+    {
+      "id": "ga-08",
+      "number": 8,
+      "title_en": "Building Search Apps Vector Databases",
+      "title_vi": "Xây ứng dụng tìm kiếm bằng embedding",
+      "kind": "build",
+      "source_path": "08-building-search-applications/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/08-building-search-applications/README.md"
+    },
+    {
+      "id": "ga-09",
+      "number": 9,
+      "title_en": "Building Image Generation Applications",
+      "title_vi": "Xây ứng dụng tạo ảnh",
+      "kind": "build",
+      "source_path": "09-building-image-applications/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/09-building-image-applications/README.md"
+    },
+    {
+      "id": "ga-10",
+      "number": 10,
+      "title_en": "Building Low Code AI Applications",
+      "title_vi": "Xây ứng dụng AI low-code",
+      "kind": "build",
+      "source_path": "10-building-low-code-ai-applications/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/10-building-low-code-ai-applications/README.md"
+    },
+    {
+      "id": "ga-11",
+      "number": 11,
+      "title_en": "Integrating External Applications with Function Calling",
+      "title_vi": "Gọi hàm để nối ứng dụng bên ngoài",
+      "kind": "build",
+      "source_path": "11-integrating-with-function-calling/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/11-integrating-with-function-calling/README.md"
+    },
+    {
+      "id": "ga-12",
+      "number": 12,
+      "title_en": "Designing UX for AI Applications",
+      "title_vi": "Thiết kế trải nghiệm cho ứng dụng AI",
+      "kind": "learn",
+      "source_path": "12-designing-ux-for-ai-applications/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/12-designing-ux-for-ai-applications/README.md"
+    },
+    {
+      "id": "ga-13",
+      "number": 13,
+      "title_en": "Securing Your Generative AI Applications",
+      "title_vi": "Bảo mật ứng dụng AI tạo sinh",
+      "kind": "learn",
+      "source_path": "13-securing-ai-applications/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/13-securing-ai-applications/README.md"
+    },
+    {
+      "id": "ga-14",
+      "number": 14,
+      "title_en": "The Generative AI Application Lifecycle",
+      "title_vi": "Vòng đời ứng dụng AI tạo sinh",
+      "kind": "learn",
+      "source_path": "14-the-generative-ai-application-lifecycle/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/14-the-generative-ai-application-lifecycle/README.md"
+    },
+    {
+      "id": "ga-15",
+      "number": 15,
+      "title_en": "Retrieval Augmented Generation (RAG) and Vector Databases",
+      "title_vi": "RAG và cơ sở dữ liệu vector",
+      "kind": "build",
+      "source_path": "15-rag-and-vector-databases/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/15-rag-and-vector-databases/README.md"
+    },
+    {
+      "id": "ga-16",
+      "number": 16,
+      "title_en": "Open Source Models and Hugging Face",
+      "title_vi": "Mô hình mã nguồn mở và Hugging Face",
+      "kind": "build",
+      "source_path": "16-open-source-models/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/16-open-source-models/README.md"
+    },
+    {
+      "id": "ga-17",
+      "number": 17,
+      "title_en": "AI Agents",
+      "title_vi": "AI agent",
+      "kind": "build",
+      "source_path": "17-ai-agents/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/17-ai-agents/README.md"
+    },
+    {
+      "id": "ga-18",
+      "number": 18,
+      "title_en": "Fine-Tuning LLMs",
+      "title_vi": "Tinh chỉnh LLM",
+      "kind": "learn",
+      "source_path": "18-fine-tuning/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/18-fine-tuning/README.md"
+    },
+    {
+      "id": "ga-19",
+      "number": 19,
+      "title_en": "Building with SLMs",
+      "title_vi": "Làm việc với mô hình ngôn ngữ nhỏ",
+      "kind": "learn",
+      "source_path": "19-slm/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/19-slm/README.md"
+    },
+    {
+      "id": "ga-20",
+      "number": 20,
+      "title_en": "Building with Mistral Models",
+      "title_vi": "Làm việc với họ mô hình Mistral",
+      "kind": "learn",
+      "source_path": "20-mistral/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/20-mistral/README.md"
+    },
+    {
+      "id": "ga-21",
+      "number": 21,
+      "title_en": "Building with Meta Models",
+      "title_vi": "Làm việc với họ mô hình Meta",
+      "kind": "learn",
+      "source_path": "21-meta/README.md",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners/blob/c35bc1950f9dc56af773d2c362dafce6f76e9a56/21-meta/README.md"
+    }
+  ]
+}

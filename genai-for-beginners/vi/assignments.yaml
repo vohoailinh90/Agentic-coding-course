@@ -1,0 +1,15 @@
+# Bảng phân công: mỗi dòng giao trọn một dải bài cho đúng một nhánh (một phiên Claude).
+# Chỉ phiên điều phối sửa file này. `scripts/genai_check.py claim` từ chối mọi bài nằm ngoài dải
+# của nhánh đang đứng, nên hai phiên không thể nhận trùng một bài. Quy trình: docs/genai-slides.md.
+#   range:  ga-NN..ga-MM (gồm cả hai đầu)
+#   branch: nhánh duy nhất được nhận các bài trong dải
+#   status: assigned | done   (done = PR của dải đã merge; dải không còn nhận thêm việc)
+- range: ga-01..ga-07
+  branch: claude/genai-slides-w1
+  status: assigned
+- range: ga-08..ga-14
+  branch: claude/genai-slides-w2
+  status: assigned
+- range: ga-15..ga-21
+  branch: claude/genai-slides-w3
+  status: assigned
