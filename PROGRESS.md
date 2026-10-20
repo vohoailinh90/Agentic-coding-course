@@ -66,6 +66,17 @@
 - **Rủi ro còn mở:** nguồn là CC BY-NC-ND 4.0 và repo công khai; bài viết độc lập bằng lời riêng, sơ đồ mới,
   không dịch sát nguồn. Chưa đăng Facebook/website trước khi giải quyết quyền dùng.
 
+## Generative AI cho người mới (bài + slide Moda, bắt đầu 2026-10-20)
+
+- Kho riêng `genai-for-beginners/vi/`: 21 bài dựa trên microsoft/generative-ai-for-beginners (MIT, ghim
+  `c35bc19`), mỗi bài một `lesson.md` và một deck Moda 10–12 slide xuất PPTX
+  ([ADR 012](docs/decisions/012-genai-for-beginners-slides.md), quy trình ở
+  [docs/genai-slides.md](docs/genai-slides.md)).
+- Ba phiên Claude làm song song, mỗi phiên một dải trong `genai-for-beginners/vi/assignments.yaml`
+  (ga-01..07, ga-08..14, ga-15..21); `scripts/genai_check.py claim` chặn nhận trùng. Trạng thái từng bài:
+  `python3 scripts/genai_check.py status`, không lặp lại ở đây.
+- Phản biện bằng Claude subagent (Codex hết quota, owner quyết định 2026-10-20); owner merge các PR.
+
 ## Bước tiếp theo
 
 1. Linh đọc duyệt **cả 52 bài**, bắt đầu từ lộ trình tối thiểu 19 bài (bản HTML: `python -m src.main
