@@ -55,9 +55,10 @@ Tổ chức MITRE lập ra **ATLAS**, kho kiến thức về các chiến thuậ
 
 ### Danh sách rủi ro của OWASP
 
-**OWASP** có danh sách 10 lỗ hổng nghiêm trọng nhất trong ứng dụng dùng LLM. Ngoài đầu độc dữ liệu, có:
+Bài nguồn dẫn danh sách 10 lỗ hổng nghiêm trọng nhất trong ứng dụng dùng LLM của **OWASP**. Ngoài đầu độc dữ liệu,
+danh sách đó có:
 
-- **Chèn prompt** (prompt injection): kẻ tấn công viết đầu vào khéo léo để LLM làm việc ngoài ý định ban đầu.
+- **Chèn prompt** (prompt injection; prompt là câu lệnh gửi cho AI): kẻ tấn công viết đầu vào khéo léo để LLM làm việc ngoài ý định ban đầu.
 - **Lỗ hổng chuỗi cung ứng**: các thành phần tạo nên ứng dụng, như thư viện Python hay bộ dữ liệu bên ngoài, có thể bị
   tấn công, gây kết quả bất ngờ hoặc thiên lệch.
 - **Quá tin**: LLM có thể "bịa" (hallucinate), cho kết quả sai hoặc không an toàn; đã có người tin ngay và gặp hậu quả
@@ -70,7 +71,7 @@ người dùng hoặc bên kiểm toán độc lập đều có thể làm. Bố
 
 - **Làm sạch dữ liệu**: xóa hoặc ẩn danh thông tin nhạy cảm trong dữ liệu huấn luyện hay đầu vào, để tránh lộ dữ liệu.
 - **Kiểm thử đối kháng**: cố tình đưa ví dụ "gài bẫy" vào để xem hệ thống có chống chịu được tấn công không.
-- **Xác minh mô hình**: kiểm tra tham số và cấu trúc mô hình đúng và đủ, giúp chống trộm mô hình.
+- **Xác minh mô hình**: kiểm tra xem tham số và cấu trúc mô hình có đúng và đủ không, giúp chống trộm mô hình.
 - **Kiểm tra đầu ra**: xem kết quả có nhất quán, chính xác không, để phát hiện bị thao túng.
 
 OpenAI cũng có một loạt bài **đánh giá an toàn**, ví dụ thử xem một AI có lừa được AI khác nói ra một từ bí mật không.
