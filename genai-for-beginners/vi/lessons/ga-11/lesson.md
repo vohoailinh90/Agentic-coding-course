@@ -6,6 +6,7 @@
 - **API** (Application Programming Interface) — giao diện lập trình: "cửa" để chương trình gọi một dịch vụ khác.
 - **JSON** (JavaScript Object Notation) — định dạng chữ để lưu dữ liệu có cấu trúc, dạng `"tên": "giá trị"`.
 - **GPA** (Grade Point Average) — điểm trung bình học tập.
+- **CSV** (Comma-Separated Values) — file bảng dữ liệu dạng chữ, các giá trị cách nhau bằng dấu phẩy.
 
 ## Hai vấn đề cần giải quyết
 
@@ -75,7 +76,7 @@ sequenceDiagram
 
 Có **3 bước chính**:
 
-1. **Gọi** Responses API, gửi kèm danh sách hàm (tools) và tin nhắn của người dùng.
+1. **Gọi** Responses API (API của Azure OpenAI để gửi tin nhắn cho mô hình và nhận câu trả lời), gửi kèm danh sách hàm (tools) và tin nhắn của người dùng.
 2. **Đọc** câu trả lời của mô hình để làm việc cần làm, ví dụ chạy một hàm hay gọi một API.
 3. **Gọi lại** Responses API với kết quả của hàm, để mô hình dùng nó viết câu trả lời cho người dùng.
 
@@ -95,7 +96,7 @@ Ta mô tả hàm `search_courses` (tìm khóa học) với các phần:
 | `parameters` | các giá trị và định dạng mô hình phải trả ra: `role`, `product`, `level` |
 | `required` | tham số bắt buộc, ở đây là `role` |
 
-Lưu ý: phần mô tả hàm được đưa vào tin nhắn hệ thống, nên cũng tốn vào số token (đơn vị chữ) bạn được dùng.
+Lưu ý: phần mô tả hàm được đưa vào tin nhắn hệ thống, nên cũng tốn vào số token (mẩu chữ nhỏ mà mô hình đếm để tính giới hạn) bạn được dùng.
 
 ## Thử ngay: gọi mô hình với danh sách hàm
 
@@ -129,10 +130,15 @@ khi không tìm được khóa học phù hợp.
 
 Khi bạn bật gọi hàm và hỏi "Tìm khóa Azure cho người mới", ai là người thật sự gọi Microsoft Learn API?
 
+- A. LLM tự gọi API
+- B. Ứng dụng của bạn
+- C. Microsoft Learn tự gửi tới
+- D. Người dùng tự mở trang
+
 <details>
 <summary>Đáp án</summary>
 
-Ứng dụng của bạn. LLM chỉ trả về tên hàm `search_courses` và các tham số có cấu trúc; code của bạn chạy hàm, gọi API,
+B, ứng dụng của bạn. LLM chỉ trả về tên hàm `search_courses` và các tham số có cấu trúc; code của bạn chạy hàm, gọi API,
 rồi gửi kết quả lại cho LLM để nó viết câu trả lời.
 
 </details>
