@@ -15,7 +15,7 @@ trợ lý kỹ thuật biết suy luận, gọi công cụ, đọc tệp và tì
 mô hình trên đám mây nào**. Ba lý do thường gặp:
 
 - **Riêng tư**: mã và tài liệu không rời khỏi máy; không câu lệnh, đoạn mã hay dữ liệu khách nào đi qua mạng.
-- **Chi phí**: chạy cục bộ không tính tiền theo token, thử cả ngày chỉ tốn tiền điện.
+- **Chi phí**: chạy cục bộ không tính tiền theo token (đơn vị chữ mà mô hình xử lý), thử cả ngày chỉ tốn tiền điện.
 - **Ngoại tuyến**: trên máy bay, trong cơ sở kín, hay lúc hệ thống sự cố, agent vẫn chạy.
 
 Cái giá là bạn đổi mô hình đám mây hàng đầu lấy một **SLM** chạy trên CPU, GPU hoặc NPU của mình. Bài này dạy dựng
