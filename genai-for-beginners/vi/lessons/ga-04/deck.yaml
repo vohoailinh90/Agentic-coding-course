@@ -1,0 +1,26 @@
+id: ga-04
+status: done
+owner: claude/genai-slides-w1
+session: session_01NYe8fhTTux6kZXaxkptcrc
+claimed_at: '2026-10-20T09:14:47Z'
+done_at: '2026-10-20T10:11:08Z'
+moda_canvas: cvs_4CANSPZKQY99JA3Q2WV8MFHAG9
+moda_url: https://moda.app/canvas/8c55736f-cefe-4a64-a1dc-5cda28f8aa09
+slide_count: 11
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides:
+  - numbered-rows
+  - card-grid
+  - lookup-table
+  - flow
+  - two-column-comparison
+  - one-highlighted-sentence
+  - sequence-diagram
+  - card-grid
+  - lookup-table
+  - numbered-rows
+  - lookup-table
+  first_concept: 3
