@@ -136,6 +136,12 @@ class DispatchShellTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(argv[-2:], ["/usr/local/bin/team", "queue"])
 
+    def test_a_feature_is_refused_for_queue(self):
+        # It would otherwise be echoed, unchecked, into the run summary.
+        result, argv, _ = self.run_step(ACTION="queue", FEATURE="# injected")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIsNone(argv)
+
     def test_a_shell_metacharacter_in_the_feature_never_reaches_sudo(self):
         for bad in ("F12; rm -rf /", "$(id)", "F12 --force", "../x", "-F12", "a" * 65, "F 12"):
             with self.subTest(feature=bad):

@@ -54,3 +54,7 @@ mutations:
   find: "permissions: {}\n"
   replace: "permissions: write-all\n"
   test: tests.test_team_dispatch.WorkflowShapeTests.test_it_holds_no_token_permissions
+- label: queue accepts a feature that is then echoed into the summary
+  find: "              [ -z \"${FEATURE}\" ] || { echo \"'feature' does not apply to queue\" >&2; exit 1; }\n"
+  replace: "              :\n"
+  test: tests.test_team_dispatch.DispatchShellTests.test_a_feature_is_refused_for_queue

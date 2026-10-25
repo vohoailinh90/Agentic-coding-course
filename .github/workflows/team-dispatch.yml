@@ -79,7 +79,9 @@ jobs:
           esac
           args=()
           case "${ACTION}" in
-            queue) ;;
+            queue)
+              [ -z "${FEATURE}" ] || { echo "'feature' does not apply to queue" >&2; exit 1; }
+              ;;
             status|run)
               [ -n "${FEATURE}" ] || { echo "${ACTION} needs a feature id" >&2; exit 1; }
               # The same shape team.py accepts (ID_RE), checked here so a bad
