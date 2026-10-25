@@ -1,0 +1,28 @@
+id: ag-10
+status: done
+owner: claude/agents-slides-w2
+session: session_01Fs75arxq1Hk3URpSN9iTva
+claimed_at: '2026-10-20T10:22:49Z'
+done_at: '2026-10-20T10:29:55Z'
+moda_canvas: cvs_34FPPNTA7S9149Q1NPKD14G8D7
+moda_url: https://moda.app/canvas/647dad5d-28f9-4848-9b86-b69b424821a7
+slide_count: 11
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides:
+  - numbered-rows
+  - card-grid
+  - one-highlighted-sentence
+  - lookup-table
+  - connection-diagram
+  - two-column-comparison
+  - flow
+  - 2x2-matrix
+  - numbered-rows
+  - card-grid
+  - lookup-table
+  first_concept: 3
+  cannot:
+    one-big-number: bài không có con số nào đáng làm số lớn

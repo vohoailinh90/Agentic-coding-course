@@ -1,0 +1,12 @@
+# Bảng phân công: mỗi dòng giao trọn một dải bài cho đúng một nhánh (một phiên Claude).
+# Chỉ phiên điều phối sửa file này. `scripts/agents_check.py claim` từ chối mọi bài nằm ngoài dải
+# của nhánh đang đứng, nên hai phiên không thể nhận trùng một bài. Quy trình: docs/agents-slides.md.
+#   range:  ag-NN..ag-MM (gồm cả hai đầu)
+#   branch: nhánh duy nhất được nhận các bài trong dải
+#   status: assigned | done   (done = PR của dải đã merge; dải không còn nhận thêm việc)
+- range: ag-01..ag-09
+  branch: claude/agents-slides-w1
+  status: assigned
+- range: ag-10..ag-18
+  branch: claude/agents-slides-w2
+  status: assigned

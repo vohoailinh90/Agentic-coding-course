@@ -1,0 +1,26 @@
+id: ag-13
+status: done
+owner: claude/agents-slides-w2
+session: session_01Fs75arxq1Hk3URpSN9iTva
+claimed_at: '2026-10-20T10:22:49Z'
+done_at: '2026-10-20T10:41:00Z'
+moda_canvas: cvs_0JYB1AA2KB8B9S49T0PDEKZ4JS
+moda_url: https://moda.app/canvas/12f2c2a5-0a6b-42d3-9227-40b35d3f9259
+slide_count: 11
+size: 1920x1080
+exports: badged
+review: passed
+layouts:
+  slides:
+  - layers
+  - card-grid
+  - flow
+  - lookup-table
+  - two-column-comparison
+  - connection-diagram
+  - timeline
+  - numbered-rows
+  - one-highlighted-sentence
+  - card-grid
+  - lookup-table
+  first_concept: 3
