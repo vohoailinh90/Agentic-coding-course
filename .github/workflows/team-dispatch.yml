@@ -1,0 +1,118 @@
+# ci-runner-mode: pinned
+#
+# Pinned on purpose: this job must never follow CI_RUNNER, which moves ordinary
+# CI between GitHub-hosted and the VPS runner that executes pull-request code.
+# It runs only on TEAM_DISPATCH_LABEL, a runner of its own (see below).
+#
+# team-dispatch: start (or look at) a VPS team run from GitHub.
+#
+# This is the web-side door to the VPS team pipeline (docs/team-dispatch.md; the
+# pipeline itself is docs/vps-team.md of claude-agent-routing-template): a Claude Code web session
+# runs in a cloud container with no route to the VPS, so GitHub is the only
+# door. It has the same limits as Hermes: it can look (`status`, `queue`) and
+# start a run (`run ID --queue`), never push, force, wait, cancel or create a
+# feature. Those limits are NOT in this file. A workflow file is repository
+# content, and workflow_dispatch runs the copy on whichever ref is picked, so
+# anyone who can push a branch can dispatch an edited one. What bounds the
+# runner is the root-owned /usr/local/bin/team wrapper, which refuses anything
+# else for the `team-dispatch` account whatever this file says.
+#
+# Opt-in, and on its own runner. This job executes on the VPS as a user that may
+# `sudo -u team`; run it on the same runner as `python-app.yml` and
+# pull-request code would reach that sudo rule. Hence a separate label and no
+# default: with TEAM_DISPATCH_LABEL unset there is no job at all, rather than one
+# that queues forever against a label nobody registered.
+
+name: Team dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      team:
+        description: "Which team's command to run (team = Claude leads, team-codex = Codex leads)"
+        type: choice
+        options: [team, team-codex]
+        default: team
+      action:
+        description: "run = start the pipeline and join the queue; status and queue only read"
+        type: choice
+        options: [run, status, queue]
+        default: status
+      feature:
+        description: "Feature id (letters, digits, '.', '_', '-'); needed for run and status"
+        type: string
+        default: ""
+      from:
+        description: "run only; empty or one of tester, coder, review, pack, verdict (empty = the step that failed)"
+        # A string, not a choice with an empty option: GitHub's handling of an empty
+        # option is not something this repository can check, and the step validates it anyway.
+        type: string
+        default: ""
+
+permissions: {}
+
+# No `concurrency:` group, on purpose: with cancel-in-progress off GitHub keeps
+# one pending run per group and silently cancels the older ones, so three quick
+# dispatches would lose the middle one. `team run --queue` already takes its
+# own lock and keeps the real queue.
+
+jobs:
+  dispatch:
+    if: ${{ vars.TEAM_DISPATCH_LABEL != '' }}
+    runs-on: ${{ vars.TEAM_DISPATCH_LABEL }}
+    timeout-minutes: 5
+    steps:
+      # No checkout, on purpose: nothing from the repository is executed here.
+      - name: Dispatch
+        env:
+          # Inputs reach the shell as environment variables, never spliced into
+          # the script text, so a crafted value cannot become a command.
+          TEAM: ${{ inputs.team }}
+          ACTION: ${{ inputs.action }}
+          FEATURE: ${{ inputs.feature }}
+          FROM: ${{ inputs.from }}
+        run: |
+          set -euo pipefail
+          case "${TEAM}" in
+            team|team-codex) ;;
+            *) echo "unknown team '${TEAM}'" >&2; exit 1 ;;
+          esac
+          args=()
+          case "${ACTION}" in
+            queue)
+              [ -z "${FEATURE}" ] || { echo "'feature' does not apply to queue" >&2; exit 1; }
+              ;;
+            status|run)
+              [ -n "${FEATURE}" ] || { echo "${ACTION} needs a feature id" >&2; exit 1; }
+              # The same shape team.py accepts (ID_RE), checked here so a bad
+              # value fails fast; team.py checks it again.
+              [[ "${FEATURE}" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]] || { echo "invalid feature id" >&2; exit 1; }
+              args+=("${FEATURE}")
+              ;;
+            *) echo "unknown action '${ACTION}'" >&2; exit 1 ;;
+          esac
+          if [ "${ACTION}" = run ]; then
+            case "${FROM}" in
+              "") ;;
+              tester|coder|review|pack|verdict) args+=(--from "${FROM}") ;;
+              *) echo "unknown step '${FROM}'" >&2; exit 1 ;;
+            esac
+            args+=(--queue)
+          elif [ -n "${FROM}" ]; then
+            echo "'from' only applies to run" >&2; exit 1
+          fi
+          # Exactly how Hermes reaches the wrapper: as user team, by absolute path.
+          out="$(mktemp)"
+          trap 'rm -f "${out}"' EXIT
+          rc=0
+          # ${args[@]+...}: an empty array is an unbound variable under `set -u` on bash older than 4.4.
+          sudo -n -u team -- "/usr/local/bin/${TEAM}" "${ACTION}" ${args[@]+"${args[@]}"} > "${out}" 2>&1 || rc=$?
+          cat "${out}"
+          # Written before exiting, so a failure reaches the run summary too.
+          {
+            echo "### ${TEAM} ${ACTION} ${FEATURE} (exit ${rc})"
+            echo '```'
+            cat "${out}"
+            echo '```'
+          } >> "${GITHUB_STEP_SUMMARY}"
+          exit "${rc}"
