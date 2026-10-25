@@ -81,6 +81,14 @@
   Đã merge PR #40 (kho, bảng giao việc, `genai_check.py`), #41 (ga-15..21), #43 (ga-08..14), #44 (ga-01..07);
   ba dải trong `assignments.yaml` là `done`. Việc còn lại: Linh duyệt nội dung và slide trước khi đăng.
 
+## Team VPS kích hoạt từ Claude Code web (2026-10-25)
+
+- Workflow `team-dispatch.yml` (chỉ `workflow_dispatch`, runner riêng `TEAM_DISPATCH_LABEL`) cho phép phiên Claude
+  Code trên web gọi `status`/`queue`/`run ID --queue` của team VPS qua GitHub Actions; mọi giới hạn (không `push`,
+  `--force`, `new`…) nằm ở wrapper của root trên VPS. Hướng dẫn: [docs/team-dispatch.md](docs/team-dispatch.md).
+- **Việc còn lại cho Linh (phía VPS, chưa kiểm trên máy thật):** `setup-vps-team.sh --with-dispatch`, đăng ký runner
+  riêng, `gh variable set TEAM_DISPATCH_LABEL`, rồi thử `action=status`.
+
 ## Bước tiếp theo
 
 1. Linh đọc duyệt **cả 52 bài**, bắt đầu từ lộ trình tối thiểu 19 bài (bản HTML: `python -m src.main

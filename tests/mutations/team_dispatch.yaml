@@ -1,0 +1,56 @@
+# Mutation manifest - see scripts/mutation_check.py
+#
+# A passing test proves nothing on its own. These break each behavior in turn
+# and require the named test to fail. A mutation that SURVIVES means the test
+# guards nothing.
+
+target: .github/workflows/team-dispatch.yml
+note: The workflow is the only door from a Claude Code web session to the VPS team pipeline, and it
+  runs as a user that may sudo to `team`. Its real limits live in the root-owned wrapper on the VPS, so
+  what the workflow itself owes is narrow - opt-in, its own runner, no repository code, no input spliced
+  into shell text, one sudo call per dispatch - and each entry removes one of those.
+mutations:
+- label: push becomes an action the workflow will forward
+  find: "            status|run)\n"
+  replace: "            status|run|push)\n"
+  test: tests.test_team_dispatch.DispatchShellTests.test_actions_beyond_the_three_are_refused
+- label: the feature id is no longer shape-checked
+  find: "[[ \"${FEATURE}\" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]] ||"
+  replace: "[[ \"${FEATURE}\" =~ ^.*$ ]] ||"
+  test: tests.test_team_dispatch.DispatchShellTests.test_a_shell_metacharacter_in_the_feature_never_reaches_sudo
+- label: a run no longer joins the queue
+  find: "            args+=(--queue)\n"
+  replace: "            :\n"
+  test: tests.test_team_dispatch.DispatchShellTests.test_run_always_joins_the_queue
+- label: an unregistered team is accepted
+  find: "            team|team-codex) ;;\n"
+  replace: "            team|team-codex|team-video) ;;\n"
+  test: tests.test_team_dispatch.DispatchShellTests.test_an_unknown_team_is_refused
+- label: a failed pipeline no longer fails the job
+  find: "          exit \"${rc}\"\n"
+  replace: "          exit 0\n"
+  test: tests.test_team_dispatch.DispatchShellTests.test_a_failing_pipeline_fails_the_job_and_still_reaches_the_summary
+- label: the job runs even when no dispatch runner is configured
+  find: "    if: ${{ vars.TEAM_DISPATCH_LABEL != '' }}\n"
+  replace: "    if: ${{ true }}\n"
+  test: tests.test_team_dispatch.WorkflowShapeTests.test_it_runs_on_its_own_label_and_not_at_all_without_one
+- label: the job falls back to the ordinary CI runner
+  find: "    runs-on: ${{ vars.TEAM_DISPATCH_LABEL }}\n"
+  replace: "    runs-on: ${{ vars.CI_RUNNER || vars.TEAM_DISPATCH_LABEL }}\n"
+  test: tests.test_team_dispatch.WorkflowShapeTests.test_it_runs_on_its_own_label_and_not_at_all_without_one
+- label: repository code is checked out on the dispatch runner
+  find: "      - name: Dispatch\n"
+  replace: "      - uses: actions/checkout@v4\n      - name: Dispatch\n"
+  test: tests.test_team_dispatch.WorkflowShapeTests.test_it_executes_nothing_from_the_repository
+- label: an input is spliced into the script text
+  find: "          sudo -n -u team -- \"/usr/local/bin/${TEAM}\""
+  replace: "          sudo -n -u team -- \"/usr/local/bin/${{ inputs.team }}\""
+  test: tests.test_team_dispatch.WorkflowShapeTests.test_no_input_is_spliced_into_shell_text
+- label: the workflow gains a push trigger
+  find: "on:\n  workflow_dispatch:\n"
+  replace: "on:\n  push:\n  workflow_dispatch:\n"
+  test: tests.test_team_dispatch.WorkflowShapeTests.test_it_is_dispatch_only
+- label: the token gets write access
+  find: "permissions: {}\n"
+  replace: "permissions: write-all\n"
+  test: tests.test_team_dispatch.WorkflowShapeTests.test_it_holds_no_token_permissions
